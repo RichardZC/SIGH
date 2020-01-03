@@ -1,0 +1,18 @@
+codigo	String	20	
+Nombre	String	150	
+Precio	Currency		
+saldoI	Number		
+Ingresos	Number		
+DevolucionesP	Number		
+ab	Number		
+reingresos	Number		
+TotIngresos	Number		
+Distribucion	Number		
+Transferencia	Number		
+DevolVencido	Number		
+DevolMerma	Number		
+VentaInst	Number		
+Exoner	Number		
+otrasS	Number		
+TotSalidas	Number		
+FechaVencimiento	Date		

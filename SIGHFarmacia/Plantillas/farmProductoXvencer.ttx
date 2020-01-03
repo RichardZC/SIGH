@@ -1,0 +1,8 @@
+idAlmacen	Number		
+idProducto	Number		
+lote	String	20	
+FechaVencimiento	Date
+cantidad	Number		
+descripcion	String	150	
+nombre	String	150	
+codigo	String	10	

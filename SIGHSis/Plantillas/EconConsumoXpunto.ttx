@@ -1,0 +1,7 @@
+NroHistoria	Number
+Paciente	String	100
+idCuentaAtencion	Number
+idPuntoCarga	Number
+dPuntoCarga	String	40
+Consumo	currency
+

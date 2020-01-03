@@ -1,0 +1,5 @@
+idPlan	Number
+Plan	String	50	
+dTServicio	String	10	
+Cantidad	Number	
+total	currency

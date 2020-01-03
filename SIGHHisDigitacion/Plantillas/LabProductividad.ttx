@@ -1,0 +1,7 @@
+codigo	String	20	
+Nombre	String	150	
+buenos	Number		
+fallados	Number		
+repetidos	Number		
+total	Number	
+Importe	Currency	

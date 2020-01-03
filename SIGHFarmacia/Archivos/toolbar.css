@@ -1,0 +1,12 @@
+.FondoDeBoton
+{
+	fill:skyblue;
+	stroke:blue;
+	stroke-width:2;
+}
+.FondoDeToolbar
+{
+	fill:gray;
+	stroke:black;
+	stroke-width:2;
+}

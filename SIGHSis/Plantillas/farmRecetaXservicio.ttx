@@ -1,0 +1,7 @@
+id	Number
+dservicio	String	50
+movnumero	String	20
+recetaInterna	Number
+recetaExterna	Number
+SinReceta	Number
+total	Number

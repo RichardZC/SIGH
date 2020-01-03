@@ -1,0 +1,14 @@
+NombreP	String	100	
+codigoP	String	50	
+cama	String	10	
+servicio	String	50	
+HC	String	10	
+Dx	String	50	
+Alta	String	20	
+tipo	String	50	
+Codigo	string	20		
+Nombre	String	50	
+Cantidad	Number		
+Precio	Currency		
+Total	Currency		
+idProducto	Number		

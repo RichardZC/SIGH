@@ -1,0 +1,11 @@
+fechaCreacion	Date		
+codigo	String	10	
+nombre	String	150	
+preciou	Currency		
+concepto	String	50	
+idAlmacenDestino	Number		
+idAlmacenOrigen	Number		
+lote	String	20	
+cantidad	Number
+FechaVencimiento	Date
+monto	Currency	

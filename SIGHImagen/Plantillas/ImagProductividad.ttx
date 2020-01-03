@@ -1,0 +1,13 @@
+codigo	String	20	
+Nombre	String	150	
+buenos	Number		
+fallados	Number		
+repetidos	Number		
+total	Number	
+Importe	Currency	
+emergencia	Number	
+ImpCE	Currency	
+ImpEmer	Currency	
+ImpHosp	Currency	
+ImpExt	Currency
+Financ	String	150		

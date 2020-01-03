@@ -1,0 +1,13 @@
+FechaCreacion	Date
+HoraCreacion	String	5	
+MovNumero	String	15	
+codigo	String	10	
+nombre	String	150	
+cantidad	Number		
+precio	Currency
+total	Currency		
+estado	String	20
+dalmacen	String	100
+dfinanciamiento	String	50
+usuario	String	30
+tipo	String	30

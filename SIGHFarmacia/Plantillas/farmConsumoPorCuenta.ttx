@@ -1,0 +1,49 @@
+FechaCreacion	Date
+HoraCreacion	String	5	
+MovNumero	String	15	
+codigo	String	10	
+nombre	String	150	
+cantidad	Number		
+precio	Currency
+total	Currency		
+estado	String	20
+dalmacen	String	100
+dfinanciamiento	String	50
+usuario	String	30
+tipo	String	30
+uno	Number
+dos	Number
+tres	Number
+cuatro	Number
+cinco	Number
+seis	Number
+siete	Number
+ocho	Number
+nueve	Number
+diez	Number
+once	Number
+doce	Number
+trece	Number
+catorce	Number
+quince	Number
+dieciseis	Number
+diecisiete	Number
+dieciocho	Number
+diecinueve	Number
+veinte	Number
+veinteuno	Number
+veintedos	Number
+veintetres	Number
+veintecuatro	Number
+veintecinco	Number
+veintesies	Number
+veintesiete	Number
+veinteocho	Number
+veintenueve	Number
+treinta	Number
+treintayuno	Number
+totalconsumo	Number
+saldoanterior	Number
+saldoposterior	Number
+totalgen	Number
+mes	Date

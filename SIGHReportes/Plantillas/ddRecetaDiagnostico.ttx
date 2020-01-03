@@ -1,0 +1,4 @@
+Tipo	String	200	DEFINITIVO
+idDiagnostico	Long		1
+codigoCIE10	String	10	A.2015
+descripcion	String	300	ABDOMEN AGUDO

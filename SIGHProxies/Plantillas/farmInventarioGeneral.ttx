@@ -1,0 +1,22 @@
+movNumero	String	9
+movTipo	String	1
+idproducto	Number
+Lote	String	20
+FechaVencimiento	Date
+item	Number
+Cantidad	Number
+Precio	Currency
+total	Currency
+RegistroSanitario	String	50
+codigo	String	10	
+Nombre	String	150
+Presentacion	String	100	
+idAlmcen	Number
+Totalactual	Currency
+CantidadSaldo	Currency
+CantidadFaltante	Currency
+CantidadSobrante	Currency
+totalgen	Currency
+totalf	Currency
+totals	Currency
+FormaFarmaceutica	String	10

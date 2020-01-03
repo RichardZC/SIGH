@@ -1,0 +1,8 @@
+Fecha	String	16
+MovTipo	String	1	
+idMovimiento	Number	
+ingresos	Number		
+salidas	Number		
+saldo	Number		
+Concepto	String	100	
+Observacion	String	100	

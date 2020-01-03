@@ -1,0 +1,13 @@
+FechaCreacion	Date
+HoraCreacion	String	5	
+MovTipo	String	1	
+MovNumero	String	10	
+ingresos	Number		
+salidas	Number		
+saldo	Number		
+Abreviatura	String	10	
+DocumentoNumero	String	20	
+Concepto	String	100	
+fOrigen	String	100	
+Lote	String	20	
+FechaVencimiento	Date

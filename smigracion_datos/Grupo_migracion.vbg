@@ -1,0 +1,8 @@
+VBGROUP 5.0
+StartupProject=CtrolMigracion.vbp
+Project=..\SIGHComun\SIGHComun.vbp
+Project=..\SIGHDatos\SIGHDatos.vbp
+Project=..\SIGHNegocios\SIGHNegocios.vbp
+Project=..\SIGHEntidades\SIGHEntidades.vbp
+Project=..\SIGHProxies\SIGHProxies.vbp
+Project=..\SIGHSis\SIGHSis.vbp

@@ -1,0 +1,16 @@
+VBGROUP 5.0
+StartupProject=SIGH\SISGalenPlus.vbp
+Project=SIGHCatalogos\SIGHCatalogos.vbp
+Project=SIGHComun\SIGHComun.vbp
+Project=SIGHDatos\SIGHDatos.vbp
+Project=SIGHFacturacion\SIGHFacturacion.vbp
+Project=SIGHFarmacia\SIGHFarmacia.vbp
+Project=SIGHEntidades\SIGHEntidades.vbp
+Project=SIGHHisDigitacion\SIGHhisDigitacion.vbp
+Project=SIGHImagen\SIGHImagen.vbp
+Project=SIGHLaboratorio\SIGHLaboratorio.vbp
+Project=SIGHIntegracion\SIGHIntegracion.vbp
+Project=SIGHNegocios\SIGHNegocios.vbp
+Project=SIGHReportes\SIGHReportes.vbp
+Project=SIGHProxies\SIGHProxies.vbp
+Project=SIGHSis\SIGHSis.vbp

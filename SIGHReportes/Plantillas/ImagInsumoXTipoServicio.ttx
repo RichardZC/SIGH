@@ -1,0 +1,6 @@
+codigo	String	20	
+Nombre	String	150	
+ce	Number		
+hospitalizados	Number	
+externos	Number	
+total	Number	

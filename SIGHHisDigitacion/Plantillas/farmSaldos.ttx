@@ -1,0 +1,10 @@
+idAlmacen	Number		
+idProducto	Number		
+precio	Currency		
+codigo	String	10	
+nombre	String	150	
+cantidad	Number		
+stockMinimo	Number		
+lote	String	20
+FechaVencimiento	Date
+cantidadLote	Number

@@ -1,0 +1,19 @@
+codigo	String	20	
+Nombre	String	150	
+Ene	Number		
+Feb	Number		
+Mar	Number		
+Abr	Number		
+May	Number		
+Jun	Number		
+Jul	Number		
+Ago	Number		
+Set	Number		
+Oct	Number		
+Nov	Number		
+Dic	Number		
+Total	Number		
+TotalAlm	Number		
+Promedio	Currency
+mesesExistencia	Currency
+Estado	String	50		

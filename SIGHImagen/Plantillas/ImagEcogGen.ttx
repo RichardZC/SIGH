@@ -1,0 +1,14 @@
+Fecha	String	10
+FechaHr	String	16
+idMovimiento	Number	
+paciente	String	60	
+sexo	String	1	
+edad	Number		
+nroCuenta	Number		
+procedencia	String	50	
+plan	String	50	
+recibo	String	15	
+resultado	String	100	
+codigo	String	20	
+nombre	String	150	
+total	Currency		

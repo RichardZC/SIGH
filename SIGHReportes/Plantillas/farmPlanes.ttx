@@ -1,0 +1,5 @@
+idPlan	Number
+plan	String	50
+mbruto	Currency		
+mdevoluciones	Currency		
+mpagoneto	Currency		

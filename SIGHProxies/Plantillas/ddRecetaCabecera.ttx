@@ -1,0 +1,29 @@
+﻿ApellidoPaterno	String	40	GARAY
+ApellidoMaterno	String	40	VILCHEZ
+PrimerNombre	String	40	MARIO
+NroHistoriaClinica	Long		1254
+PuntoCarga	String	150	Farmacia
+idCuentaAtencion	Long		1
+idReceta	Long		1
+FechaReceta	Date		2014-02-02
+Servicio	String	150	CONSULTA EXTERNA
+IdPuntoCarga	Long		1
+IdFormaPago	Long		1
+idComprobantePago	Long		1
+IdservicioIngreso	Long		1
+IdMedicoIngreso	Long		1
+descripcion	String	150	HOLA
+NombreMedico	String	200	GARAY MARIO
+NombrePaciente	String	200	GARCIA URBANO
+FechaAtencion	Date		2014-02-15
+HoraAtencion	Date		2014-02-15 16:15
+NombreEspecialidad	String	100	MEDICINA GENERAL
+ValidoHasta	String	100	
+IdAtencion	Long		1
+TipoServicio	String	380	PIURA
+EdadPaciente	String	150	3 AÑOS
+NombreEESS	String	380	CAYETANO HEREDIA
+DireccionEESS	String	380	PIURA
+TelefonoEESS	String	380	979698002
+RucEESS		String	380	10804442877
+FechaVigencia	Date		2014-02-15

@@ -1,0 +1,22 @@
+codigo	String	20	
+Nombre	String	150	
+Precio	Currency		
+saldoI	Number		
+Ingresos	Number		
+DevolucionesP	Number		
+TotIngresos	Number		
+ventas	Number		
+sis	Number		
+soat	Number		
+convenio	Number		
+creditoH	Number		
+defensaN	Number		
+OsDevol	Number		
+OsVencim	Number		
+OsMerma	Number		
+Exonerac	Number		
+IntervencionS	Number		
+otrasS	Number		
+TotSalidas	Number		
+FechaVencimiento	Date	
+tipo	String	1	

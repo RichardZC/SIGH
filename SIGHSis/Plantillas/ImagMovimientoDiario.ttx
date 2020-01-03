@@ -1,0 +1,8 @@
+codigo	String	20	
+Nombre	String	150	
+saldoI	Number		
+Ingresos	Number		
+salidas	Number		
+salidasImg	Number		
+TotSalidas	Number		
+saldoF	Number		

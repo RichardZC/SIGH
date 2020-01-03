@@ -1,0 +1,6 @@
+VBGROUP 5.0
+StartupProject=ProcesosEnMemoria.vbp
+Project=..\SIGHComun\SIGHComun.vbp
+Project=..\SIGHDatos\SIGHDatos.vbp
+Project=..\SIGHNegocios\SIGHNegocios.vbp
+Project=..\SIGHEntidades\SIGHEntidades.vbp

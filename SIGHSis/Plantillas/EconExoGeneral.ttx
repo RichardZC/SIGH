@@ -1,0 +1,12 @@
+IdTipoServicio	Number
+TipoServicio	String	50
+IdDepartamento	Number
+Departamento	String	50
+IdEspecialidad	Number
+Especialidad	String	50
+IdServicio	Number
+Servicio	String	50
+Cantidad	Number
+CostoReal	currency
+CostoExonerado	currency
+Pago	currency

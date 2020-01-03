@@ -1,0 +1,4 @@
+precio	Currency		
+codigo	String	10	
+nombre	String	150	
+TotSalidas	Number

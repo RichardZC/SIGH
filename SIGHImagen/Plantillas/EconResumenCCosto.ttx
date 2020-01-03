@@ -1,0 +1,9 @@
+idCentroCosto	Number
+CentroCosto	String	100
+ImpAnulado	currency
+ImpExonerado	currency
+ImpNormal	currency
+ImpCancelado	currency
+
+
+

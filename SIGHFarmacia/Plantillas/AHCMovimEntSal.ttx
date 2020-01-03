@@ -1,0 +1,6 @@
+nroHistoria	Number
+es	String	1
+entSal	String	30
+idServicio	Number
+dServicio	String	50
+nroFila	Number

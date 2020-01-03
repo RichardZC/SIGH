@@ -1,0 +1,59 @@
+.mapadefault
+{
+	fill:#FFFBD9;
+	stroke:gray;
+	stroke-width:0.75;
+	opacity:0.9;
+}
+.mapabackdefault
+{
+	fill:green;
+	stroke:gray;
+	stroke-width:0.75;
+	opacity:0.5;
+}
+.estadocama0
+{
+	fill:gray;
+	stroke:white;
+	stroke-width:1;
+	opacity:0.2;
+}
+.estadocama1
+{
+	fill:white;
+	stroke:black;
+	stroke-width:1;
+	opacity:0.9;
+}
+.estadocama2
+{
+	fill:#B6BFF2;
+	stroke:white;
+	stroke-width:1;
+	opacity:1;
+}
+.estadocama3
+{
+	fill:greenyellow;
+	stroke:green;
+	stroke-width:0.5;
+}
+.estadocama4
+{
+	fill:white;
+	stroke:green;
+	stroke-width:0.5;
+}
+.estadocama5
+{
+	fill:red;
+	stroke:green;
+	stroke-width:0.5;
+}
+.estadocama6
+{
+	fill:blue;
+	stroke:green;
+	stroke-width:0.5;
+}

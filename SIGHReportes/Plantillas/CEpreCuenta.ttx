@@ -1,0 +1,13 @@
+FechaIngreso	String	100
+Paciente	String	100
+Usuario	String	100
+NroHistoriaClinica	String	100
+Servicio	String	100
+Medico	String	100
+Interconsulta	String	100
+ColaTipoS	String	100
+turno		String	100
+cola		String	100
+fboleta		String	100
+
+

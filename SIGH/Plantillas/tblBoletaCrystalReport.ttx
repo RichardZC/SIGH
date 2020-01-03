@@ -1,0 +1,6 @@
+codigo	String	20
+NombreProducto	String	300
+cantidad	Number
+precioUnitario	currency
+totalPorPagar	currency
+

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet type="text/css" href="leyenda.css" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN" "http://gis002/SGRGIS/DTD/svg11.dtd">
+<svg id = "Map" x = "0.00" y = "0.00" width = "250.00" height = "650.00" 
+viewBox = "0 0 250 650" 
+xmlns:svg = "http://www.w3.org/2000/svg" 
+xmlns:xlink = "http://www.w3.org/1999/xlink" 
+xmlns:gui = "http://www.eworks.com.pe" 
+onload = "OnLoad(evt)"
+>
+<script xlink:href='leyenda.js'/>
+<script type="text/jscript" >
+<![CDATA[
+]]>
+</script>
+
+<!--	ICONOS LEYENDA  -->
+<defs id="Iconos">
+			<symbol id="servicio" viewBox="0 0 40 20" preserveAspectRatio="none">
+							<rect x="0" y="0" width="40" height="20" class="Defaultservicio" />
+			</symbol>
+			<symbol id="paciente" viewBox="0 0 20 20" preserveAspectRatio="none">
+							<circle cx="10" cy="10" r="10" fill="red" class="Defaultpaciente" />
+			</symbol>
+</defs>
+</svg>

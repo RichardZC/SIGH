@@ -1,0 +1,9 @@
+Codigo	String	7	A12521
+Nombre	String	300	ASPIRINA
+Concentracion	String	100	500 ML
+FormaFarmaceutica	String	100	TABLETA
+CantidadPedida	Number		15
+idDosisRecetada	Long		1
+ViaAdministracion	String	200	ORAL
+Dosis	String	100	2
+Frecuencia	String	300	CADA 8 HORAS

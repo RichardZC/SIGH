@@ -1,0 +1,5 @@
+codigo	String	20	
+Nombre	String	150	
+idServicio	Number	
+dServicio	String	100	
+total	Number	

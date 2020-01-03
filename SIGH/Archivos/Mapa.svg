@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet type="text/css" href="sigh.css" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN" "http://gis002/SGRGIS/DTD/svg11.dtd">
+<svg id = "Map" x = "0.00" y = "0.00" width = "1024.00" height = "768.00" 
+viewBox = "0 0 1024 768" 
+xmlns:svg = "http://www.w3.org/2000/svg" 
+xmlns:xlink = "http://www.w3.org/1999/xlink" 
+xmlns:gui = "http://www.eworks.com.pe" 
+onload = "OnLoad(evt)">
+<script xlink:href='mapa.js'/><script><![CDATA[var lIdTipoServicio = 2var lIdUsuario = 0var lIdServicio = 138var sCodigoServicio = '2193'var sNombreServicio = 'OBSERVACION GENERAL']]></script><g id="herramientas1"><rect id="MouseTrackerBackground" x="-1000" y="-1000" width="10000" height="10000" fill="back" opacity="0.1" visibility="visible" onmousedown="MouseTrackerBackOnMouseDown(evt)" onmousemove="MouseTrackerBackOnMouseMove(evt)" /></g><g id='plano'><rect id="c1" x="0" y="0" width="600" height="600" class="mapabackdefault" onmousemove="MouseTrackerBackOnMouseMove(evt)" />
+<rect id="c1" x="25" y="25" width="250" height="250" class="mapadefault" onmousemove="MouseTrackerBackOnMouseMove(evt)" />
+<rect id="c1" x="325" y="25" width="250" height="250" class="mapadefault" onmousemove="MouseTrackerBackOnMouseMove(evt)" />
+<rect id="c1" x="325" y="325" width="250" height="250" class="mapadefault" onmousemove="MouseTrackerBackOnMouseMove(evt)" />
+<rect id="c1" x="25" y="325" width="250" height="250" class="mapadefault" onmousemove="MouseTrackerBackOnMouseMove(evt)" />
+</g><g id='camas'><g><use id='233' x='' y='' width='60' height='100' xlink:href='#cama' onmousedown='ObjetoOnMouseDown(evt)' class='estadocama1'/><text id='t233' x='' y=''><tspan fill='black'><tspan dx= '0.5em' dy='1em'>Nº : OG2  </tspan></tspan></text></g></g><g id="herramientas2"><rect id="MouseTrackerForeground" x="-1000" y="-1000" width="10000" height="10000" fill="blue" opacity="0.1" visibility="hidden" onmouseup="MouseTrackerOnMouseUp(evt)" onmousemove="MouseTrackerOnMouseMove(evt)" /></g><defs id="symbols">
+<symbol id="cama" viewBox="0 0 60 100">
+	<g><rect x="0" y="0" width="60" height="100" /></g>
+</symbol>
+</defs><defs>
+	<menu id="defaultMenu" xmlns="http://www.wcastrogrijalva.com/">
+    	<header>Menu</header>
+	<item onactivate="OnClickAgregarCama()">Agregar Cama</item>
+	<item onactivate="OnClickModificarCama()">Modificar Cama</item>
+	<item onactivate="OnClickEliminarCama()">Eliminar Cama</item>
+    	<separator />
+	<item action='ZoomIn'>Aumentar</item>
+    	<item action='ZoomOut'>Reducir</item>
+	<item action='OriginalView'>Vista Original</item>
+    	<separator />
+	<item action='About'>Acerca del visor SVG de Adobe ...</item>
+	</menu>
+</defs></svg>

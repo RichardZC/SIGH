@@ -1,0 +1,15 @@
+idProducto	Number
+codigo	String	20
+Producto	String	100
+precio	currency
+SubTotal	currency
+canSubTotal	Number
+ImpExonerado	currency
+CanExonerado	Number
+ImpAnulado	currency
+CanAnulado	Number
+PagoCta	currency
+ImpTotal	currency
+canTotal	Number
+
+

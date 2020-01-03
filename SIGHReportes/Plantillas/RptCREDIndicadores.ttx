@@ -1,0 +1,5 @@
+Dpto	String	255	PUIRA
+Provincia	String	255	MORROPON
+Distrito	String	255	CHULUCANAS
+CentroPoblado	String	255	MATANZA
+total	Number		5

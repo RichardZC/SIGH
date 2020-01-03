@@ -1,0 +1,17 @@
+movNumero	String	9
+movTipo	String	1	
+idProducto	Number
+lote	String	20
+FechaVencimiento	Date
+item	Number
+cantidad	Number
+precio	Currency
+Total	Currency
+RegistroSanitario	String	10	
+codigo	String	10	
+nombre	String	150
+idTipoSalidaBienInsumo	Number
+formaFarmaceutica	String	10
+
+
+	

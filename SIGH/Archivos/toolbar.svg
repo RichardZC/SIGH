@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet type="text/css" href="toolbar.css" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN" "http://gis002/SGRGIS/DTD/svg11.dtd">
+<svg id = "Map" x = "0.00" y = "0.00" width = "1024.00" height = "44.00" 
+viewBox = "0 0 1024 44" 
+xmlns:svg = "http://www.w3.org/2000/svg" 
+xmlns:xlink = "http://www.w3.org/1999/xlink" 
+xmlns:gui = "http://www.eworks.com.pe" 
+onload = "OnLoad(evt)"
+>
+<script xlink:href='toolbar.js'/>
+<script type="text/jscript" >
+<![CDATA[
+]]>
+</script>
+<!--	FONDO TOOLBAR -->
+			<rect x="0" y="0" width="1024" height="44" class="FondoDeToolbar" />
+			
+<!--	BOTONES TOOLBAR -->
+			<use id="btnAcercar" x="10" y="10" width="24" height="24" xlink:href='#Acercar' onclick="BotonesOnMouseClick(evt)" />
+			<use id="btnOriginal" x="38" y="10" width="24" height="24" xlink:href='#Original' onclick="BotonesOnMouseClick(evt)" />
+			<use id="btnAlejar" x="66" y="10" width="24" height="24" xlink:href='#Alejar' onclick="BotonesOnMouseClick(evt)" />
+			<use id="btnRotarIzq" x="66" y="10" width="24" height="24" xlink:href='#RotarIzq' onclick="BotonesOnMouseClick(evt)" />
+			<use id="btnRotarDer" x="94" y="10" width="24" height="24" xlink:href='#RotarDer' onclick="BotonesOnMouseClick(evt)" />
+			<use id="btnLeyenda" x="122" y="10" width="24" height="24" xlink:href='#Leyenda' onclick="BotonesOnMouseClick(evt)" />
+			<use id="btnAyuda" x="150" y="10" width="24" height="24" xlink:href='#Ayuda' onclick="BotonesOnMouseClick(evt)" />
+			<use id="btnSalir" x="178" y="10" width="24" height="24" xlink:href='#Salir' onclick="BotonesOnMouseClick(evt)" />
+
+<!--	ICONOS TOOLBAR  -->
+<defs id="Iconos">
+			<symbol id="Acercar" viewBox="0 0 24 24" preserveAspectRatio="none">
+							<rect x="0" y="0" width="24" height="24" class="FondoDeBoton" />
+			</symbol>
+			<symbol id="Alejar" viewBox="0 0 24 24" preserveAspectRatio="none">
+							<rect x="0" y="0" width="24" height="24" class="FondoDeBoton" />
+			</symbol>
+			<symbol id="Original" viewBox="0 0 24 24" preserveAspectRatio="none">
+							<rect x="0" y="0" width="24" height="24" class="FondoDeBoton" />
+			</symbol>
+			<symbol id="RotarIzq" viewBox="0 0 24 24" preserveAspectRatio="none">
+							<rect x="0" y="0" width="24" height="24" class="FondoDeBoton" />
+			</symbol>
+			<symbol id="RotarDer" viewBox="0 0 24 24" preserveAspectRatio="none">
+							<rect x="0" y="0" width="24" height="24" class="FondoDeBoton" />
+			</symbol>
+			<symbol id="Leyenda" viewBox="0 0 24 24" preserveAspectRatio="none">
+							<rect x="0" y="0" width="24" height="24" class="FondoDeBoton" />
+			</symbol>
+			<symbol id="Ayuda" viewBox="0 0 24 24" preserveAspectRatio="none">
+							<rect x="0" y="0" width="24" height="24" class="FondoDeBoton" />
+			</symbol>
+			<symbol id="Salir" viewBox="0 0 24 24" preserveAspectRatio="none">
+							<rect x="0" y="0" width="24" height="24" class="FondoDeBoton" />
+			</symbol>
+</defs>
+</svg>

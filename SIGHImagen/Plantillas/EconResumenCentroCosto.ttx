@@ -1,0 +1,9 @@
+idCentroCosto	Number
+CentroCosto	String	100
+SubTotal	currency
+ImpExonerado	currency
+ImpAnulado	currency
+PagoCta	currency
+ImpTotal	currency
+
+

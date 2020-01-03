@@ -1,0 +1,908 @@
+Attribute VB_Name = "Funciones"
+'------------------------------------------------------------------------------------
+'        Organización: Usaid - Politicas en Salud
+'        Aplicativo: SisGalenPlus v.3
+'        Programa: Módulo para Excel
+'        Programado por: Barrantes D
+'        Fecha: Enero 2010
+'
+'------------------------------------------------------------------------------------
+Declare Function GetPrivateProfileString Lib "KERNEL32" Alias "GetPrivateProfileStringA" (ByVal lpApplicationName As String, ByVal lpKeyName As Any, ByVal lpDefault As String, ByVal lpReturnedString As String, ByVal nSize As Long, ByVal lpFileName As String) As Long
+Dim mo_ExcelApplication As Excel.Application
+'mgaray
+'Función api que Escribe un valor - dato en un archivo Ini
+'Private Declare Function WritePrivateProfileString Lib "kernel32" Alias "WritePrivateProfileStringA" ( _
+'    ByVal lpApplicationName As String, _
+'    ByVal lpKeyName As String, _
+'    ByVal lpString As String, _
+'    ByVal lpFileName As String) As Long
+''============================================
+'
+Function GalenhosExcelApplication() As Excel.Application
+    If mo_ExcelApplication Is Nothing Then
+        Set mo_ExcelApplication = New Excel.Application
+    End If
+    Set GalenhosExcelApplication = mo_ExcelApplication
+End Function
+Function GalenhosKillExcelApplication()
+    Set mo_ExcelApplication = Nothing
+End Function
+
+
+
+Sub PAbreBD(wxBd As String)
+       Dim lnLinea As Integer
+       Dim oCrypKey As New CrypKey.Util
+       On Error GoTo ErrorPabreBD
+       lnLinea = 1
+       wxConexionRed.CommandTimeout = 300
+       wxConexionRed.CursorLocation = adUseClient
+       wxConexionRed.Open oCrypKey.DecryptString(wxBd)
+       wxBDGalenhos = oCrypKey.DecryptString(wxBd)
+       '
+       lnLinea = 2
+       wxBd = "Provider=SQLOLEDB.1;User Id=sa;Password=1234;Integrated Security=SSPI;Initial Catalog=Lolcli2000;Data Source=" & Mid(wxBDGalenhos, InStr(wxBDGalenhos, "ce=") + 3, 50)
+       wxBd = "Provider=SQLOLEDB;Data Source=" & Mid(wxBDGalenhos, InStr(wxBDGalenhos, "ce=") + 3, 50) & ";Initial Catalog=Lolcli2000;User Id=sa;pwd=1234"
+       wxBDLolcli = wxBd
+       wxConexion.CommandTimeout = 300
+       wxConexion.CursorLocation = adUseClient
+       wxConexion.Open wxBd
+       Exit Sub
+ErrorPabreBD:
+       If lnLinea = 1 Then
+          MsgBox "No se pudo Abrir el ODBC=galenHos" & Chr(13) & "Error (" & Err.Number & ") " & Err.Description, vbCritical, "Error"
+       Else
+          MsgBox "No se pudo Abrir el ODBC=LolCli" & Chr(13) & "Error (" & Err.Number & ") " & Err.Description, vbCritical, "Error"
+       End If
+      ' End
+End Sub
+
+
+Sub PAbreBDhbtMono(wxBd As String)
+       Dim lnLinea As Integer
+       Dim oCrypKey As New CrypKey.Util
+       On Error GoTo ErrorPabreBD
+       lnLinea = 1
+       wxConexionRed.CommandTimeout = 150
+       wxConexionRed.CursorLocation = adUseClient
+       wxConexionRed.Open wxBd
+       wxBDGalenhos = wxBd
+       Exit Sub
+ErrorPabreBD:
+       If lnLinea = 1 Then
+          MsgBox "No se pudo Abrir el ODBC=galenHos" & Chr(13) & "Error (" & Err.Number & ") " & Err.Description, vbCritical, "Error"
+       Else
+          MsgBox "No se pudo Abrir el ODBC=LolCli" & Chr(13) & "Error (" & Err.Number & ") " & Err.Description, vbCritical, "Error"
+       End If
+      ' End
+End Sub
+
+Sub Terminar()
+     wxConexionRed.Close
+     End
+End Sub
+
+
+
+'Function BuscaSiAccesa(wprg As String) As Boolean
+'     Dim wrs_Prg As New ADODB.Recordset
+'     Wok = False
+'     wprg = UCase(wprg)
+'     With wrs_Prg
+'         .Open "select * from Tprogramas where prgdebb='" & wprg & "'", wxConexionRed, adOpenKeyset, adLockOptimistic
+'         If .RecordCount > 0 Then
+'            wprog = .Fields("codpro").Value
+'            .Close
+'            .Open "select * from taccesos where codpro='" & wprog & "' and usuario='" & wxUsuarioSist & "'", wxConexionRed, adOpenKeyset, adLockOptimistic
+'            If .RecordCount > 0 Then
+'               If Not .Fields("activo").Value Then
+'                  Wok = True
+'               End If
+'            End If
+'         End If
+'         .Close
+'     End With
+'     If Wok Then
+'        BuscaSiAccesa = True
+'     Else
+'        Dim ww As New Comp_debb.cls_Mensaje
+'        ww.PasaMensaje "No tiene Acceso", wxSki
+'        BuscaSiAccesa = False
+'     End If
+'End Function
+
+'Resta 2 Tiempos (HH:MM) de 0 a 24 horas
+Function RestaTimes(Time1 As String, time2 As String) As String
+    RestaTimes = "__:__"
+    If Time1 <> "__:__" And time2 <> "__:__" Then
+        whora1 = Val(Left(Time1, 2)): wminu1 = Val(Right(Time1, 2))
+        whora2 = Val(Left(time2, 2)): wminu2 = Val(Right(time2, 2))
+        wdif = ((whora2 * 60) + wminu2) - ((whora1 * 60) + wminu1)
+        If wdif >= 0 Then
+           whora = Int(wdif / 60)
+           wminu = wdif - whora * 60
+           RestaTimes = Right("0" & Trim(Str(whora)), 2) & ":" & Right("0" & Trim(Str(wminu)), 2)
+        Else
+           whora2 = whora2 + 24
+           wdif = ((whora2 * 60) + wminu2) - ((whora1 * 60) + wminu1)
+           whora = Int(wdif / 60)
+           wminu = wdif - whora * 60
+           RestaTimes = Right("0" & Trim(Str(whora)), 2) & ":" & Right("0" & Trim(Str(wminu)), 2)
+        End If
+    End If
+End Function
+
+' Tiempo (HH:MM) de 0 a 24 horas
+Function DevuelveMinutosDeUnaHora(Time1 As String) As Long
+    DevuelveMinutosDeUnaHora = 0
+    If Time1 <> "__:__" Then
+        whora1 = Val(Left(Time1, 2)): wminu1 = Val(Right(Time1, 2))
+        DevuelveMinutosDeUnaHora = ((whora1 * 60) + wminu1)
+    End If
+End Function
+
+
+'Suma Minutos(MM) a una Hora (HH:MM de 0 a 24 horas)
+Function SumaMinutoTimes(Time1 As String, Minutos1 As String) As String
+    SumaMinutoTimes = "__:__"
+    If Time1 <> "__:__" And Val(Minutos1) > 0 Then
+        whora1 = Val(Left(Time1, 2))
+        wminu1 = Val(Right(Time1, 2))
+        wminu2 = Val(Minutos1)
+        wtotal = (whora1 * 60) + wminu1 + wminu2
+        If wtotal >= 0 Then
+           whora = Int(wtotal / 60)
+           wminu = wtotal - whora * 60
+           SumaMinutoTimes = Right("0" & Trim(Str(whora)), 2) & ":" & Right("0" & Trim(Str(wminu)), 2)
+        End If
+    End If
+End Function
+
+'cambia el Formato de una FECHA (hh:mm PM) hacia 0 a 24 horas
+Function CambiaFormatoTime24(TimeAmPm1 As String) As String
+    CambiaFormatoTime24 = "__:__"
+    If Left(TimeAmPm1, 5) <> "__:__" Then
+        whora1 = Val(Left(TimeAmPm1, 2))
+        wminu1 = Val(Mid(TimeAmPm1, 4, 2))
+        If UCase(Right(TimeAmPm1, 2)) <> "AM" Then
+           If whora1 <> 12 Then
+              whora1 = whora1 + 12
+           End If
+        Else
+           If whora1 = 12 Then
+              whora1 = 0
+           End If
+        End If
+        CambiaFormatoTime24 = Right("0" & Trim(Str(whora1)), 2) & ":" & Right("0" & Trim(Str(wminu1)), 2)
+    End If
+End Function
+'cambia el Formato de una FECHA (desde 0 a 24 horas) hacia (hh:mm PM)
+Function CambiaFormatoTimeAMPM(Time24 As String) As String
+    CambiaFormatoTimeAMPM = "__:__"
+    If Left(Time24, 5) <> "__:__" Then
+        whora1 = Val(Left(Time24, 2))
+        wminu1 = Val(Mid(Time24, 4, 2))
+        If whora1 > 12 Then
+           whora1 = whora1 - 12
+           CambiaFormatoTimeAMPM = Right("0" & Trim(Str(whora1)), 2) & ":" & Right("0" & Trim(Str(wminu1)), 2) & " PM"
+        ElseIf whora1 = 12 Then
+           CambiaFormatoTimeAMPM = Right("0" & Trim(Str(whora1)), 2) & ":" & Right("0" & Trim(Str(wminu1)), 2) & " PM"
+        Else
+           CambiaFormatoTimeAMPM = Right("0" & Trim(Str(whora1)), 2) & ":" & Right("0" & Trim(Str(wminu1)), 2) & " AM"
+        End If
+    End If
+End Function
+
+Function RetornaNombreDiaSemana(lnNumeroDiaSemana As Long) As String
+         RetornaNombreDiaSemana = ""
+         Select Case lnNumeroDiaSemana
+         Case 1
+              RetornaNombreDiaSemana = "Dom"
+         Case 2
+              RetornaNombreDiaSemana = "Lun"
+         Case 3
+              RetornaNombreDiaSemana = "Mar"
+         Case 4
+              RetornaNombreDiaSemana = "Mie"
+         Case 5
+              RetornaNombreDiaSemana = "Jue"
+         Case 6
+              RetornaNombreDiaSemana = "Vie"
+         Case 7
+              RetornaNombreDiaSemana = "Sab"
+         End Select
+End Function
+
+
+
+
+
+Sub MantenimientoDeBD()
+    Dim wrs_Pend As New ADODB.Recordset
+    Dim wrs_borra As New ADODB.Recordset
+    Dim WCN As New ADODB.Connection
+'    wrpta = MsgBox("Borrara Todos los Datos ?", vbQuestion + vbYesNo, wxSistema)
+'    If wrpta = vbYes Then
+'       wrs_borra.Open "delete from movimientos", wxconexionred, adOpenKeyset, adLockOptimistic
+'       wrs_borra.Open "delete from expedientes", wxconexionred, adOpenKeyset, adLockOptimistic
+'       wrs_borra.Open "delete from Acabados", wxconexionred, adOpenKeyset, adLockOptimistic
+'       wrs_borra.Open "update tpersonal set cantidad=0", wxconexionred, adOpenKeyset, adLockOptimistic
+'    End If
+    
+    With wrs_borra
+           .Open "SELECT * FROM TREPUESTOS ", wxConexionRed, adOpenKeyset, adLockOptimistic
+           WCN.Open "DSN=tmimdes_access"
+           wrs_Pend.Open "SELECT * FROM TREPUESTOS ", WCN, adOpenKeyset, adLockOptimistic
+           wrs_Pend.MoveFirst
+           Do While Not wrs_Pend.EOF
+                .AddNew
+                .Fields!codigo = wrs_Pend.Fields!codigo
+                .Fields!descrip = wrs_Pend.Fields!descrip
+                .Update
+                wrs_Pend.MoveNext
+           Loop
+           .Close
+           wrs_Pend.Close
+           .Open "SELECT * FROM Tservicios ", wxConexionRed, adOpenKeyset, adLockOptimistic
+           wrs_Pend.Open "SELECT * FROM Tservicios ", WCN, adOpenKeyset, adLockOptimistic
+           wrs_Pend.MoveFirst
+           Do While Not wrs_Pend.EOF
+                .AddNew
+                .Fields!codigo = wrs_Pend.Fields!codigo
+                .Fields!descrip = wrs_Pend.Fields!descrip
+                .Update
+                wrs_Pend.MoveNext
+           Loop
+           .Close
+           wrs_Pend.Close
+    End With
+    
+    
+    
+    wrs_borra.Open "ALTER TABLE Reparacion add column Factura TEXT(20) ", wxConexionRed, adOpenKeyset, adLockOptimistic
+    wrs_borra.Open "Update  Reparacion set Factura=''", wxConexionRed, adOpenKeyset, adLockOptimistic
+    'falta LLAVE: KEY+FACTURA
+    
+    
+'    wrs_borra.Open "ALTER TABLE expedientes add column MENSAJE Logical,fMENSAJE DATE", wxconexionred, adOpenKeyset, adLockOptimistic
+'    wrs_borra.Open "ALTER TABLE expedientes add column FOLIO TEXT(3),OBSERVACIONES TEXT(50)", wxconexionred, adOpenKeyset, adLockOptimistic
+'    wrs_borra.Open "ALTER TABLE expedientes add column CARGO TEXT(4)", wxconexionred, adOpenKeyset, adLockOptimistic
+'    wrs_borra.Open "ALTER TABLE tempresa add column mCARGO TEXT(4)", wxconexionred, adOpenKeyset, adLockOptimistic
+'    wrs_borra.Open "ALTER TABLE tempresa add column aCARGO TEXT(4)", wxconexionred, adOpenKeyset, adLockOptimistic
+'    wrs_borra.Open "ALTER TABLE expedientes add column tpago TEXT(1)", wxconexionred, adOpenKeyset, adLockOptimistic
+ '   wrs_borra.Open "ALTER TABLE expedientes add column mCARGO TEXT(4),mNumero text(20),mtNumero text(1)", wxconexionred, adOpenKeyset, adLockOptimistic
+     'wrs_borra.Open "ALTER TABLE expedientes add column FFIRMA DATE", wxconexionred, adOpenKeyset, adLockOptimistic
+     
+'     'Expedientes Duplicados
+'     With wrs_pend
+'          .Fields.Append "expediente", adBSTR, 6
+'          .Fields.Append "anio", adBSTR, 4
+'          .Fields.Append "mesa", adBSTR, 1
+'          .CursorType = adOpenStatic
+'          .LockType = adLockOptimistic
+'          .Open
+'     End With
+'     With wrs_borra
+'         .Open "select * from expedientes where persona='13' and aboga=0", wxconexionred, adOpenKeyset, adLockOptimistic
+'         .MoveFirst
+'         Do While Not .EOF
+'            wexp = .Fields("expediente").Value
+'            wano = .Fields("ano").Value
+'            wmesa = .Fields("mesa").Value
+'            wTipDoc = .Fields("tipDoc").Value
+'            wsql = "select * from acabados where expediente='" & wexp & "' and ano='" & wano & "' and mesa='" & wmesa & "' and tipDoc='" & wTipDoc & "'"
+'            wrs_Pend.Open wsql, wxconexionred, adOpenKeyset, adLockOptimistic
+'            If wrs_Pend.RecordCount > 0 Then
+'               wrs_Pend.MoveFirst
+'               Do While Not wrs_Pend.EOF
+'                  wrs_Pend.Fields("fecha") = Date
+'                  wrs_Pend.Update
+'                  wrs_Pend.MoveNext
+'               Loop
+'            End If
+'            wrs_Pend.Close
+'            wsql = "select * from movimientos where expediente='" & wexp & "' and ano='" & wano & "' and mesa='" & wmesa & "' and tipDoc='" & wTipDoc & "'"
+'            wrs_Pend.Open wsql, wxconexionred, adOpenKeyset, adLockOptimistic
+'            If wrs_Pend.RecordCount > 0 Then
+'               wrs_Pend.MoveFirst
+'               Do While Not wrs_Pend.EOF
+'                  wrs_Pend.Fields("fecha") = Date
+'                  wrs_Pend.Update
+'                  wrs_Pend.MoveNext
+'               Loop
+'            End If
+'            wrs_Pend.Close
+'            .Fields("persona").Value = "19"
+'            .Fields("fecha").Value = Date
+'            .Update
+'            .MoveNext
+'         Loop
+'         .Close
+'     End With
+
+'wrs_borra.Open "ALTER TABLE expAnulados add column persona text(6),fecha DATE", wxconexionred, adOpenKeyset, adLockOptimistic
+'wrs_borra.Open "ALTER TABLE expAnulados add column ANULADO logical", wxconexionred, adOpenKeyset, adLockOptimistic
+'With wrs_borra
+'  .Open "SELECT * FROM TPROGRAMAS", wxconexionred, adOpenKeyset, adLockOptimistic
+'  .AddNew
+'  .Fields("CODPRO") = "P0407"
+'  .Fields("PROGRAMA") = "EXP/DOC POR ASUNTO"
+'  .Fields("PRGDEBB") = "REXPFREG"
+'  .Update
+'  .AddNew
+'  .Fields("CODPRO") = "P0604"
+'  .Fields("PROGRAMA") = "ANULACION DE EXP/DOC"
+'  .Fields("PRGDEBB") = "ANULADOS"
+'  .Update
+'End With
+'wrs_borra.Open "ALTER TABLE expedientes add column APELACION Logical", wxconexionred, adOpenKeyset, adLockOptimistic
+'With wrs_borra
+'  .Open "SELECT * FROM TPROGRAMAS", wxconexionred, adOpenKeyset, adLockOptimistic
+'  .AddNew
+'  .Fields("CODPRO") = "P0107"
+'  .Fields("PROGRAMA") = "APELACION"
+'  .Fields("PRGDEBB") = "APELACION"
+'  .Update
+'  .AddNew
+'  .Fields("CODPRO") = "P0408"
+'  .Fields("PROGRAMA") = "RESUMEN ANUAL"
+'  .Fields("PRGDEBB") = "RRESANUAL"
+'  .Update
+'End With
+'wrs_borra.Open "create TABLE TAsuntos (casunto text(2),descrip text(50))", wxconexionred, adOpenKeyset, adLockOptimistic
+'wrs_borra.Open "ALTER TABLE expedientes add column casunto text(2)", wxconexionred, adOpenKeyset, adLockOptimistic
+'Actualiza Codigo de Asuntos
+'Dim wwcon As New ADODB.Connection
+'Dim wwrs As New ADODB.Recordset
+'wwcon.Open "dsn=asuntos"
+'With wwrs
+'    .Open "select * from maching", wwcon, adOpenKeyset, adLockOptimistic
+'    .MoveFirst
+'    Do While Not .EOF
+'       wrs_borra.Open "select * from expedientes where left(asunto,35)='" & Left(.Fields("asunto").Value, 35) & "'", wxconexionred, adOpenKeyset, adLockOptimistic
+'       If wrs_borra.RecordCount > 0 Then
+'           wrs_borra.MoveFirst
+'          Do While Not wrs_borra.EOF
+'            If wrs_borra.Fields("casunto") = Null Or wrs_borra.Fields("casunto") = Space(2) Then
+'              wrs_borra.Fields("casunto").Value = Right("0" & Trim(.Fields("codigo").Value), 2)
+'              wrs_borra.Update
+'            End If
+'            wrs_borra.MoveNext
+'          Loop
+'       End If
+'       wrs_borra.Close
+'       .MoveNext
+'    Loop
+'    .Close
+'End With
+
+'Dim wwcon As New ADODB.Connection
+'Dim wwrs As New ADODB.Recordset
+'wwcon.Open "dsn=asuntos"
+'With wwrs
+'    .Open "select * from expSinAs", wwcon, adOpenKeyset, adLockOptimistic
+'    .MoveFirst
+'    Do While Not .EOF
+'       wExpediente = .Fields("expediente").Value
+'       wano = .Fields("ano").Value
+'       wmesa = .Fields("mesa").Value
+'       wTipDoc = .Fields("tipdoc").Value
+'       wrs_borra.Open "select * from expedientes where expediente='" & wExpediente & "' and ano='" & wano & "' and tipDoc='" & wTipDoc & "' and mesa='" & wmesa & "'", wxconexionred, adOpenKeyset, adLockOptimistic
+'       If wrs_borra.RecordCount > 0 Then
+'              wrs_borra.Fields("casunto").Value = Right("0" & Trim(Str(.Fields("casunto").Value)), 2)
+'              wrs_borra.Update
+'       End If
+'       wrs_borra.Close
+'       .MoveNext
+'    Loop
+'    .Close
+'End With
+'wrs_borra.Open "select * from tpersonal", wxconexionred, adOpenKeyset, adLockOptimistic
+'Set DataGrid1.DataSource = wrs_borra
+'wrs_borra.Open "ALTER TABLE Tpersonal add column destajo Logical", wxconexionred, adOpenKeyset, adLockOptimistic
+'With wrs_Pend
+'   .Open "select * from exped01", wxconexionred, adOpenKeyset, adLockOptimistic
+'   .MoveFirst
+'   Do While Not .EOF
+'       wExpediente = .Fields("numero").Value
+'       wano = .Fields("ano").Value
+'       wmesa = .Fields("mesa").Value
+'       wTipDoc = "E"
+'       wrs_borra.Open "select * from expedientes where expediente='" & wExpediente & "' and ano='" & wano & "' and tipDoc='" & wTipDoc & "' and mesa='" & wmesa & "'", wxconexionred, adOpenKeyset, adLockOptimistic
+'       If wrs_borra.RecordCount > 0 Then
+'              .Fields("asunto").Value = wrs_borra.Fields("asunto").Value
+'              .Fields("contribuye").Value = Left(wrs_borra.Fields("contribuye").Value, 50)
+'              .Update
+'              If Val(.Fields("con_contri").Value) > 1 Then
+'                 wrs_borra.Fields("cod_contri") = .Fields("con_contri").Value
+'                 wrs_borra.Update
+'              End If
+'       Else
+'          wTipDoc = "D"
+'          wrs_borra.Close
+'          wrs_borra.Open "select * from expedientes where expediente='" & wExpediente & "' and ano='" & wano & "' and tipDoc='" & wTipDoc & "' and mesa='" & wmesa & "'", wxconexionred, adOpenKeyset, adLockOptimistic
+'          If wrs_borra.RecordCount > 0 Then
+'                   .Fields("asunto").Value = wrs_borra.Fields("asunto").Value
+'                   .Fields("contribuye").Value = Left(wrs_borra.Fields("contribuye").Value, 50)
+'                   .Update
+'                    If Val(.Fields("con_contri").Value) > 1 Then
+'                       wrs_borra.Fields("cod_contri") = .Fields("con_contri").Value
+'                       wrs_borra.Update
+'                    End If
+'          Else
+'             MsgBox "No existe Exp: " & wExpediente & " - " & wano & " - " & wmesa
+'          End If
+'       End If
+'       wrs_borra.Close
+'
+'      .MoveNext
+'   Loop
+'   .Close
+'End With
+'With wrs_Pend
+'   wrs_P.Open "delete from exped01BK", wxconexionred, adOpenKeyset, adLockOptimistic
+'   wrs_P.Open "select * from exped01BK", wxconexionred, adOpenKeyset, adLockOptimistic
+'   .Open "select * from exped01 order by asunto", wxconexionred, adOpenKeyset, adLockOptimistic
+'   .MoveFirst
+'   Do While Not .EOF
+'       wasunto = .Fields("asunto").Value
+'
+'       Do While Not .EOF And wasunto = .Fields("asunto").Value
+'          .MoveNext
+'          If .EOF Then
+'             Exit Do
+'          End If
+'       Loop
+'       wrs_borra.Open "select * from expedientes where asunto='" & wasunto & "'", wxconexionred, adOpenKeyset, adLockOptimistic
+'       If wrs_borra.RecordCount > 0 Then
+'          wrs_borra.MoveFirst
+'          Do While Not wrs_borra.EOF
+'            If wrs_borra.Fields("mensaje").Value = False Then
+'                wrs_P.AddNew
+'                wrs_P.Fields("numero") = wrs_borra.Fields("EXPEDIENTE").Value
+'                wrs_P.Fields("ano") = wrs_borra.Fields("ano").Value
+'                wrs_P.Fields("mesa") = wrs_borra.Fields("mesa").Value
+'                wrs_P.Fields("tipDoc") = wrs_borra.Fields("tipdoc").Value
+'                wrs_P.Fields("recurrente") = wrs_borra.Fields("contribuye").Value
+'                wrs_P.Fields("con_contri") = IIf(IsNull(wrs_borra.Fields("cod_contri").Value), " ", wrs_borra.Fields("cod_contri").Value)
+'                wrs_P.Fields("asunto") = wrs_borra.Fields("asunto").Value
+'                wrs_P.Fields("mensajeria") = wrs_borra.Fields("mensaje").Value
+'                wrs_P.Update
+'            End If
+'            wrs_borra.MoveNext
+'          Loop
+'       End If
+'       wrs_borra.Close
+'   Loop
+'End With
+'With wrs_Pend
+'    .Open "select * from debb", wxTConexion, adOpenKeyset, adLockOptimistic
+'    .MoveFirst
+'    Do While Not .EOF
+'       wExpediente = .Fields("numero").Value
+'       wano = .Fields("ano").Value
+'       wmesa = .Fields("mesa").Value
+'       wTipDoc = .Fields("tipdoc").Value
+'       wrs_borra.Open "select * from expedientes where expediente='" & wExpediente & "' and ano='" & wano & "' and tipDoc='" & wTipDoc & "' and mesa='" & wmesa & "'", wxconexionred, adOpenKeyset, adLockOptimistic
+'       If wrs_borra.RecordCount > 0 Then
+'              wrs_borra.Fields("cobranza").Value = True
+'              wrs_borra.Update
+'       End If
+'       wrs_borra.Close
+'       .MoveNext
+'    Loop
+'    .Close
+'End With
+'With wrs_borra
+'  .Open "SELECT * FROM TTipoExp", wxconexionred, adOpenKeyset, adLockOptimistic
+'  .AddNew
+'  .Fields("tipo") = 55
+'  .Fields("descripcion") = "Exp/Doc Jorge Fuentes"
+'  .Update
+'  .Close
+'End With
+'wrs_borra.Open "create TABLE PENDIENTES (EXPEDIENTE text(6),ANO text(4),MESA TEXT(1),TIPDOC TEXT(1),FECHA DATE)", wxconexionred, adOpenKeyset, adLockOptimistic
+'wrs_borra.Open "create TABLE TERMINADOS (EXPEDIENTE text(6),ANO text(4),MESA TEXT(1),TIPDOC TEXT(1),FECHAABO DATE)", wxconexionred, adOpenKeyset, adLockOptimistic
+'wrs_borra.Open "ALTER TABLE pendientes add column persona text(6)", wxconexionred, adOpenKeyset, adLockOptimistic
+'wrs_borra.Open "ALTER TABLE terminados add column persona text(6)", wxconexionred, adOpenKeyset, adLockOptimistic
+'WSQL = "SELECT Expedientes.expediente, Expedientes.ano, Expedientes.Mesa, Expedientes.TipDoc, TPersonal.personal, TPersonal.nombre, Expedientes.contribuye, Expedientes.fecha_exp, Expedientes.fecha, Expedientes.fechaabo, Expedientes.fechater FROM TPersonal RIGHT JOIN Expedientes ON TPersonal.personal = Expedientes.persona;"
+'wrs_borra.Open "create view Cons_rDistrib as " & WSQL, wxconexionred, adOpenKeyset, adLockOptimistic
+'WSQL = "SELECT Expedientes.expediente, Expedientes.ano, Expedientes.TipDoc, Expedientes.Mesa, Expedientes.persona, TPersonal.nombre, Expedientes.fecha_exp, TPersonal.tipo, TPersonal.ESTADO FROM TPersonal RIGHT JOIN Expedientes ON TPersonal.personal = Expedientes.persona;"
+'wrs_borra.Open "create view Cons_ResTraDoc as " & WSQL, wxconexionred, adOpenKeyset, adLockOptimistic
+'WSQL = "SELECT Expedientes.expediente, Expedientes.ano, Expedientes.TipDoc, Expedientes.Mesa, TPersonal.nombre, TPersonal.tipo, TPersonal.personal, TPersonal.ESTADO, Expedientes.fecha, Expedientes.aboga FROM TPersonal RIGHT JOIN Expedientes ON TPersonal.personal = Expedientes.persona;"
+'wrs_borra.Open "create view Cons_rResPer as " & WSQL, wxconexionred, adOpenKeyset, adLockOptimistic
+'WSQL = "SELECT Expedientes.expediente, Expedientes.aboga, Expedientes.fecha, Expedientes.persona, TPersonal.nombre, Expedientes.fechaabo, TPersonal.tipo, TPersonal.ESTADO FROM TPersonal RIGHT JOIN Expedientes ON TPersonal.personal = Expedientes.persona;"
+'wrs_borra.Open "create view Cons_rResTerm as " & WSQL, wxconexionred, adOpenKeyset, adLockOptimistic
+
+'With wrs_borra
+'    .Open "select * from expedientes", wxconexionred, adOpenKeyset, adLockOptimistic
+'    .MoveFirst
+'    Do While Not .EOF
+'       If .Fields("casunto").Value = "00" Or .Fields("casunto").Value = Space(2) Then
+'          If IsNull(.Fields("asunto").Value) Or .Fields("asunto").Value = Space(110) Then
+'            .Fields("casunto").Value = "19"
+'          Else
+'            .Fields("casunto").Value = "17"
+'          End If
+'          .Update
+'       End If
+'       .MoveNext
+'    Loop
+'    .Close
+'End With
+
+'WSQL = "SELECT Expedientes.expediente, Expedientes.fecha_exp, Expedientes.aboga, Expedientes.casunto, TAsuntos.descrip FROM Expedientes LEFT JOIN TAsuntos ON Expedientes.casunto = TAsuntos.casunto;"
+'wrs_borra.Open "SELECT * FROM EXPEDIENTES ORDER BY EXPEDIENTE", wxconexionred, adOpenKeyset, adLockOptimistic
+'Set DataGrid1.DataSource = wrs_borra
+'WSQL = "SELECT movimientos.fecha, TPersonal.nombre, movimientos.expediente, movimientos.ano, movimientos.TipDoc, movimientos.Mesa, movimientos.contribuye, movimientos.asunto, movimientos.anexo FROM TPersonal RIGHT JOIN movimientos ON TPersonal.personal = movimientos.persona;"
+'wrs_borra.Open "create view Cons_Distrib as " & WSQL, wxconexionred, adOpenKeyset, adLockOptimistic
+'wrs_borra.Open "select * from pendientes order by expediente", wxconexionred, adOpenKeyset, adLockOptimistic
+'Set DataGrid1.DataSource = wrs_borra
+'wrs_borra.Open "ALTER TABLE expedientes add column soluc_exp text(1)", wxconexionred, adOpenKeyset, adLockOptimistic
+'wrs_borra.Open "ALTER TABLE acabados add column soluc_exp text(1)", wxconexionred, adOpenKeyset, adLockOptimistic
+'wrs_borra.Open "ALTER TABLE movimientos drop column fecha_exp", wxconexionred, adOpenKeyset, adLockOptimistic
+'wrs_borra.Open "ALTER TABLE movimientos drop column tipo", wxconexionred, adOpenKeyset, adLockOptimistic
+'wrs_borra.Open "ALTER TABLE movimientos drop column usuariosist", wxconexionred, adOpenKeyset, adLockOptimistic
+'WSQL = "SELECT Expedientes.expediente, Expedientes.ano, Expedientes.contribuye, Expedientes.asunto, Expedientes.fecha_exp, Expedientes.fechaabo, Expedientes.fechater, Expedientes.fecha, Expedientes.TipDoc, Expedientes.Mesa, TPersonal.nombre FROM TPersonal RIGHT JOIN Expedientes ON TPersonal.personal = Expedientes.persona;"
+'wrs_Borra.Open "create view CEXPED as " & WSQL, wxconexionred, adOpenKeyset, adLockOptimistic
+'WSQL = "SELECT movimientos.fecha, TPersonal.nombre, movimientos.expediente, movimientos.ano, movimientos.TipDoc, movimientos.Mesa, movimientos.contribuye, movimientos.asunto, movimientos.anexo FROM TPersonal RIGHT JOIN movimientos ON TPersonal.personal = movimientos.persona;"
+'wrs_Borra.Open "create view CONS_DISTRIB as " & WSQL, wxconexionred, adOpenKeyset, adLockOptimistic
+'WSQL = "SELECT Expedientes.expediente, Expedientes.ano, Expedientes.Mesa, Expedientes.TipDoc, TPersonal.personal, TPersonal.nombre, Expedientes.contribuye, Expedientes.fecha_exp, Expedientes.fecha, Expedientes.fechaabo, Expedientes.fechater FROM TPersonal RIGHT JOIN Expedientes ON TPersonal.personal = Expedientes.persona;"
+'wrs_Borra.Open "create view CONS_RDISTRIB as " & WSQL, wxconexionred, adOpenKeyset, adLockOptimistic
+'WSQL = "SELECT Expedientes.expediente, Expedientes.ano, Expedientes.TipDoc, Expedientes.Mesa, Expedientes.persona, TPersonal.nombre, Expedientes.fecha_exp, TPersonal.tipo, TPersonal.ESTADO FROM TPersonal RIGHT JOIN Expedientes ON TPersonal.personal = Expedientes.persona;"
+'wrs_Borra.Open "create view CONS_RESTRADOC as " & WSQL, wxconexionred, adOpenKeyset, adLockOptimistic
+'WSQL = "SELECT Expedientes.expediente, Expedientes.ano, Expedientes.TipDoc, Expedientes.Mesa, TPersonal.nombre, TPersonal.tipo, TPersonal.personal, TPersonal.ESTADO, Expedientes.fecha, Expedientes.aboga FROM TPersonal RIGHT JOIN Expedientes ON TPersonal.personal = Expedientes.persona;"
+'wrs_Borra.Open "create view CONS_RRESPER as " & WSQL, wxconexionred, adOpenKeyset, adLockOptimistic
+'WSQL = "SELECT Expedientes.expediente, Expedientes.aboga, Expedientes.fecha, Expedientes.persona, TPersonal.nombre, Expedientes.fechaabo, TPersonal.tipo, TPersonal.ESTADO FROM TPersonal RIGHT JOIN Expedientes ON TPersonal.personal = Expedientes.persona;"
+'wrs_Borra.Open "create view CONS_RRESTERM as " & WSQL, wxconexionred, adOpenKeyset, adLockOptimistic
+'WSQL = "SELECT Expedientes.expediente, Expedientes.fecha_exp, Expedientes.aboga, Expedientes.casunto, TAsuntos.descrip FROM Expedientes LEFT JOIN TAsuntos ON Expedientes.casunto = TAsuntos.casunto;"
+'wrs_Borra.Open "create view CONSASUNTOTABLA as " & WSQL, wxconexionred, adOpenKeyset, adLockOptimistic
+'wrs_borra.Open "ALTER TABLE EXPEDIENTES add column MENSCORR TEXT(4)", wxconexionred, adOpenKeyset, adLockOptimistic
+'wrs_borra.Open "create TABLE archivo (EXPEDIENTE text(6),ANO text(4),MESA TEXT(1),TIPDOC TEXT(1),FARCHIVO DATE,FOLIO TEXT(3),OBSERVACIONES TEXT(50),CARGO TEXT(4))", wxconexionred, adOpenKeyset, adLockOptimistic
+'wrs_borra.Open "create TABLE mensajeria (EXPEDIENTE text(6),ANO text(4),MESA TEXT(1),TIPDOC TEXT(1),FMENSAJE DATE,MTNUMERO TEXT(1),MNUMERO TEXT(20),MCARGO TEXT(4),MENSCORR TEXT(4))", wxconexionred, adOpenKeyset, adLockOptimistic
+'Carga Mensajeria
+'wrs_borra.Open "delete from mensajeria", wxconexionred, adOpenKeyset, adLockOptimistic
+'wrs_borra.Open "select * from mensajeria", wxconexionred, adOpenKeyset, adLockOptimistic
+'With wrs_Pend
+'    .Open "select * from expedientes where mensaje<>0", wxconexionred, adOpenKeyset, adLockOptimistic
+'    .MoveFirst
+'    Do While Not .EOF
+'       wrs_borra.AddNew
+'       wrs_borra.Fields("expediente") = .Fields("expediente").Value
+'       wrs_borra.Fields("ano") = .Fields("ano").Value
+'       wrs_borra.Fields("mesa") = .Fields("mesa").Value
+'       wrs_borra.Fields("tipdoc") = .Fields("tipdoc").Value
+'       wrs_borra.Fields("fmensaje") = .Fields("fmensaje").Value
+'       wrs_borra.Fields("mtnumero") = .Fields("mtnumero").Value
+'       wrs_borra.Fields("mnumero") = .Fields("mnumero").Value
+'       wrs_borra.Fields("mcargo") = .Fields("mcargo").Value
+'       wrs_borra.Fields("menscorr") = .Fields("menscorr").Value
+'       wrs_borra.Update
+'       .MoveNext
+'    Loop
+'    wrs_borra.Close
+' End With
+'Borrar columnas de Archivo
+'wrs_borra.Open "ALTER TABLE expediEntes drop column farchivo", wxconexionred, adOpenKeyset, adLockOptimistic
+'wrs_borra.Open "ALTER TABLE expediEntes drop column folio", wxconexionred, adOpenKeyset, adLockOptimistic
+'wrs_borra.Open "ALTER TABLE expediEntes drop column observaciones", wxconexionred, adOpenKeyset, adLockOptimistic
+'wrs_borra.Open "ALTER TABLE expediEntes drop column cargo", wxconexionred, adOpenKeyset, adLockOptimistic
+'wrs_borra.Open "ALTER TABLE expediEntes drop column archivo", wxconexionred, adOpenKeyset, adLockOptimistic
+'wrs_borra.Open "ALTER TABLE expedientes drop column fmensaje", wxconexionred, adOpenKeyset, adLockOptimistic
+'wrs_borra.Open "ALTER TABLE expedientes drop column mensaje", wxconexionred, adOpenKeyset, adLockOptimistic
+'wrs_borra.Open "ALTER TABLE expedientes drop column mtnumero", wxconexionred, adOpenKeyset, adLockOptimistic
+'wrs_borra.Open "ALTER TABLE expedientes drop column mnumero", wxconexionred, adOpenKeyset, adLockOptimistic
+'wrs_borra.Open "ALTER TABLE expedientes drop column mcargo", wxconexionred, adOpenKeyset, adLockOptimistic
+'wrs_borra.Open "ALTER TABLE expedientes drop column menscorr", wxconexionred, adOpenKeyset, adLockOptimistic
+'wrs_borra.Open "ALTER TABLE expedientes add column MENSAJE Logical,ARCHIVO LOGICAL", wxconexionred, adOpenKeyset, adLockOptimistic
+'With wrs_Pend
+'    .Open "select * from mensajeria", wxconexionred, adOpenKeyset, adLockOptimistic
+'    .MoveFirst
+'    Do While Not .EOF
+'
+'       wExpediente = .Fields("expediente").Value
+'       wano = .Fields("ano").Value
+'       wmesa = .Fields("mesa").Value
+'       wTipDoc = .Fields("tipdoc").Value
+'       wrs_borra.Open "select * from expedientes where expediente='" & wExpediente & "' and ano='" & wano & "' and tipDoc='" & wTipDoc & "' and mesa='" & wmesa & "'", wxconexionred, adOpenKeyset, adLockOptimistic
+'       wrs_borra.Fields("mensaje") = True
+'       wrs_borra.Update
+'       wrs_borra.Close
+'       .MoveNext
+'    Loop
+'    .Close
+'
+' End With
+'Guardando en Historico el Valor de Cada Expediete
+'wrs_borra.Open "ALTER TABLE EXPEDIENtes add column Valor SINGLE", wxconexionred, adOpenKeyset, adLockOptimistic
+'With wrs_Pend
+'    .Open "select * from expedientes", wxconexionred, adOpenKeyset, adLockOptimistic
+'    .MoveFirst
+'    Do While Not .EOF
+'       Select Case .Fields("tpago").Value
+'       Case "C"
+'           If .Fields("fechater").Value > CDate("9/5/2002") Then
+'              .Fields("valor") = 8
+'           Else
+'              .Fields("valor") = 12
+'           End If
+'           .Update
+'       Case "I"
+'           If .Fields("fechater").Value > CDate("9/5/2002") Then
+'              .Fields("valor") = 5
+'           Else
+'              .Fields("valor") = 10
+'           End If
+'           .Update
+'       Case "R"
+'           If .Fields("fechater").Value > CDate("9/5/2002") Then
+'              .Fields("valor") = 15
+'           Else
+'              .Fields("valor") = 15
+'           End If
+'           .Update
+'       Case Else
+'
+'       End Select
+'
+'       .MoveNext
+'    Loop
+'    .Close
+'
+' End With
+'Buscando Mayores Deudores
+'Dim wrsB As New ADODB.Recordset
+'    wrsB.Open "delete from mayorConExp", wxconexionred, adOpenKeyset, adLockOptimistic
+'    wrsB.Open "select * from mayorConExp", wxconexionred, adOpenKeyset, adLockOptimistic
+'    .Open "select * from mayorCont", wxconexionred, adOpenKeyset, adLockOptimistic
+'    .MoveFirst
+'    Do While Not .EOF
+'       wcontinua = True
+'       wcodigo = .Fields("codigo").Value
+'       wnombre = .Fields("contribuyente").Value
+'       wsql = "SELECT Expedientes.*, TAsuntos.descrip FROM TAsuntos RIGHT JOIN Expedientes ON TAsuntos.casunto = Expedientes.casunto"
+'       wrs_borra.Open wsql & " where Expedientes.cod_contri='" & wcodigo & "'", wxconexionred, adOpenKeyset, adLockOptimistic
+'       If wrs_borra.RecordCount = 0 Then
+'          wcodigo = Right("000000" & Trim(.Fields("codigo").Value), 6)
+'          wrs_borra.Close
+'          wrs_borra.Open wsql & " where Expedientes.cod_contri='" & wcodigo & "'", wxconexionred, adOpenKeyset, adLockOptimistic
+'          If wrs_borra.RecordCount = 0 Then
+'             wrs_borra.Close
+'             wrs_borra.Open wsql & " where expedientes.contribuye='" & wnombre & "'", wxconexionred, adOpenKeyset, adLockOptimistic
+'             If wrs_borra.RecordCount = 0 Then
+'                wcontinua = False
+'             End If
+'          End If
+'       End If
+'       If wcontinua Then
+'          wrs_borra.MoveFirst
+'          Do While Not wrs_borra.EOF
+'             wrsB.AddNew
+'             wrsB.Fields("con_contri") = .Fields("codigo").Value
+'             wrsB.Fields("nombre") = .Fields("contribuyente").Value
+'             wrsB.Fields("tieneexp") = .Fields("tieneexp").Value
+'             wrsB.Fields("existe") = .Fields("existe").Value
+'             wrsB.Fields("tip_contri") = .Fields("tip_contri").Value
+'             wrsB.Fields("expediente") = wrs_borra.Fields("expediente").Value
+'             wrsB.Fields("mesa") = wrs_borra.Fields("mesa").Value
+'             wrsB.Fields("tipDoc") = wrs_borra.Fields("tipdoc").Value
+'             wrsB.Fields("anio") = wrs_borra.Fields("ano").Value
+'             wrsB.Fields("asunto") = Left(wrs_borra.Fields("asunto").Value, 100)
+'             wrsB.Fields("asunto_tabla") = Left(wrs_borra.Fields("descrip").Value, 100)
+'             wrsB.Fields("mensajeria") = IIf(wrs_borra.Fields("mensaje").Value = True, "S", " ")
+'             wrsB.Fields("fechatr") = wrs_borra.Fields("fecha_exp").Value
+'             wrsB.Fields("ftermino") = wrs_borra.Fields("fechater").Value
+'             wrsB.Update
+'             wrs_borra.MoveNext
+'          Loop
+'       Else
+'          dffd = 0
+'       End If
+'       wrs_borra.Close
+'       .MoveNext
+'    Loop
+'    .Close
+'    wrsB.Close
+
+End Sub
+
+
+Public Function DevuelveDebeDebemosCliente(lcDeben As String, lcDebemos As String, lcDate As Date) As String
+        DevuelveDebeDebemosCliente = ""
+        If Trim(lcDebemos) <> "" And Trim(lcDebemos) <> "0" Then
+           DevuelveDebeDebemosCliente = DevuelveDebeDebemosCliente & "Debemos(min): " & Trim(lcDebemos)
+        End If
+        If Trim(lcDeben) <> "" And Trim(lcDeben) <> "0" Then
+           DevuelveDebeDebemosCliente = DevuelveDebeDebemosCliente & "- deben(S/): " & Trim(lcDeben)
+        End If
+        If Trim(DevuelveDebeDebemosCliente) <> "" Then
+           'DevuelveDebeDebemosCliente = Left(DevuelveDebeDebemosCliente & "(" & Date & ")", 40)
+           DevuelveDebeDebemosCliente = DevuelveDebeDebemosCliente & " (" & lcDate & ")"
+        End If
+End Function
+Public Sub CargaHoraFechaEnEsteMomento()
+      wxTime = Time  'Esto debe cargarlo desde TGENERAL cada minuto
+      wxDate = Date
+      Dim wrs_uhc As New ADODB.Recordset
+      wrs_uhc.Open "select * from TEMPRESA", wxConexionRed, adOpenKeyset, adLockOptimistic
+      wxTime = wrs_uhc.Fields("horaActual").Value
+      wxDate = wrs_uhc.Fields("FechaActual").Value
+      wxUsuarioSist = IIf(IsNull(wrs_uhc.Fields("usuario").Value), "", wrs_uhc.Fields("usuario").Value)
+      wrs_uhc.Close
+      Set wrs_uhc = Nothing
+End Sub
+
+Function MinutosRegaladosQueSeDescuentan(lnMinPedidos As Long, lnMinQuedan As Long) As Long
+    MinutosRegaladosQueSeDescuentan = 0
+    If lnMinPedidos >= wxMinRegaloApartirDe And lnMinQuedan <= wxMinRegaloNumero Then
+        MinutosRegaladosQueSeDescuentan = wxMinRegaloNumero
+    End If
+End Function
+Function MinutosConsumidos(lcHrInicio As String, lcHrSalio As String, lnMinPedidos As Long, lnMinQuedan As Long) As Long
+    If lnMinPedidos >= wxMinRegaloApartirDe And lnMinQuedan <= wxMinRegaloNumero Then
+       MinutosConsumidos = lnMinPedidos - wxMinRegaloNumero
+    Else
+       MinutosConsumidos = DevuelveMinutosDeUnaHora(RestaTimes(CambiaFormatoTime24(lcHrInicio), CambiaFormatoTime24(Format(lcHrSalio, "hh:mm AM/PM"))))
+    End If
+End Function
+
+Sub CargaIni()
+ Dim sIniFile As String
+ sIniFile = App.Path & "\setup.ini"
+ If Dir$(sIniFile) <> "" Then
+    lcNumeroPc = sGetINI(sIniFile, "Variables", "Pc", "?")
+    wxNombreServidorRed = sGetINI(sIniFile, "Variables", "Servidor", "?")
+    wxRutaBaseDatos = sGetINI(sIniFile, "Variables", "RutaBD", "?")
+ Else
+    MsgBox "Se ha borrado el archivo de Configuracion", vbCritical, ""
+ End If
+End Sub
+
+Function sGetINI(sIniFile As String, sSection As String, sKey As String, sDefault As String) As String
+    Dim sTemp As String * 256
+    Dim nLength As Integer
+    sTemp = Space$(256)
+    nLength = GetPrivateProfileString(sSection, sKey, sDefault, sTemp, 255, sIniFile)
+    sGetINI = Left$(sTemp, nLength)
+End Function
+
+
+'mgaray
+'Function sSetINI(sIniFile As String, sSection As String, sKey As String, sDefault As String) As String
+'    Call WritePrivateProfileString(sSection, sKey, sDefault, sIniFile)
+'End Function
+
+Public Sub seleccionarTexto(oObjeto As TextBox)
+    oObjeto.SelStart = 0
+    oObjeto.SelLength = Len(oObjeto.Text)
+End Sub
+
+Public Function verifyPath(sPath As String) As Boolean
+    verifyPath = False
+    If Dir$(sPath, vbDirectory) <> "" Then
+        verifyPath = True
+    End If
+End Function
+'==========================================================
+
+
+
+Sub CalculaPercentiles(lnPesoKg As Double, lnTallaCM As Long, ml_EdadEnMeses As Long, _
+                       ml_idTipoSexo As Long, lnEdadEnAniosEnAtencion As Integer, _
+                       ByRef lnPercentilPE As Long, ByRef lnPercentilTE As Long, ByRef lnPercentilPT As Long, ByRef lnPercentilIMC As Double, _
+                       ByRef lnPercentilPE_Z As Double, ByRef lnPercentilTE_Z As Double, ByRef lnPercentilPT_Z As Double, ByRef lnPercentilIMC_Z As Double)
+    Const lnPercentilNull As Long = 0
+    lnPercentilPE = lnPercentilNull: lnPercentilTE = lnPercentilNull: lnPercentilPT = lnPercentilNull: lnPercentilIMC = lnPercentilNull
+    lnPercentilPE_Z = lnPercentilNull: lnPercentilTE_Z = lnPercentilNull: lnPercentilPT_Z = lnPercentilNull: lnPercentilIMC_Z = lnPercentilNull
+    If lnPesoKg > 0 And lnTallaCM > 0 Then
+       On Error Resume Next
+       Dim EXL As Excel.Application
+       Set EXL = New Excel.Application
+       Dim W As Excel.Workbook
+       Dim lnEdadUSAmaxima
+       lnEdadUSAmaxima = 5
+       If lnEdadEnAniosEnAtencion > lnEdadUSAmaxima Then
+           Set W = EXL.Workbooks.Open(App.Path & "\Plantillas\cred.xls")       'usa
+       Else
+           Set W = EXL.Workbooks.Open(App.Path & "\Plantillas\cred who.xls")    'oms
+       End If
+       Dim s As Excel.Worksheet
+       Dim lnEdadEnMesesMasPuntoCinco As Double, lnMinimo As Double, lnMaximo As Double, lnIMC As Double
+       Dim lnTallaEnCmMasPuntoCinco As Double
+       lnEdadEnMesesMasPuntoCinco = ml_EdadEnMeses + 0.5
+       lnTallaEnCmMasPuntoCinco = lnTallaCM + 0.5
+       'Peso Edad
+       Set s = W.Sheets("P-E")
+       
+       If lnEdadEnAniosEnAtencion > lnEdadUSAmaxima Then
+          lnMinimo = s.Cells(2, IIf(ml_idTipoSexo = 1, 2, 18)).Value
+          lnMaximo = s.Cells(243, IIf(ml_idTipoSexo = 1, 2, 18)).Value
+          lnPercentilPE = lnPercentilNull
+          s.Cells(246, IIf(ml_idTipoSexo = 1, 4, 20)).Value = lnEdadEnMesesMasPuntoCinco
+          s.Cells(247, IIf(ml_idTipoSexo = 1, 4, 20)).Value = lnPesoKg
+          lnPercentilPE = s.Cells(255, IIf(ml_idTipoSexo = 1, 3, 19)).Value
+          lnPercentilPE_Z = s.Cells(254, IIf(ml_idTipoSexo = 1, 3, 19)).Value
+       Else
+          lnMinimo = s.Cells(2, IIf(ml_idTipoSexo = 1, 2, 18)).Value
+          lnMaximo = s.Cells(1858, IIf(ml_idTipoSexo = 1, 2, 18)).Value
+          lnPercentilPE = lnPercentilNull
+          s.Cells(1861, IIf(ml_idTipoSexo = 1, 5, 21)).Value = lnEdadEnMesesMasPuntoCinco
+          s.Cells(1862, IIf(ml_idTipoSexo = 1, 5, 21)).Value = lnPesoKg
+          lnPercentilPE = s.Cells(1870, IIf(ml_idTipoSexo = 1, 4, 20)).Value
+          lnPercentilPE_Z = s.Cells(1869, IIf(ml_idTipoSexo = 1, 4, 20)).Value
+       End If
+
+
+
+
+
+       'Talla Edad
+       Set s = W.Sheets("T-E")
+       'If lnEdadEnAniosEnAtencion <= lnEdadUSAmaxima Then
+       If lnEdadEnAniosEnAtencion > lnEdadUSAmaxima Then
+          lnMinimo = s.Cells(2, IIf(ml_idTipoSexo = 1, 2, 18)).Value
+          lnMaximo = s.Cells(243, IIf(ml_idTipoSexo = 1, 2, 18)).Value
+          lnPercentilTE = lnPercentilNull
+          s.Cells(246, IIf(ml_idTipoSexo = 1, 4, 20)).Value = lnEdadEnMesesMasPuntoCinco
+          s.Cells(247, IIf(ml_idTipoSexo = 1, 4, 20)).Value = lnTallaCM
+          lnPercentilTE = s.Cells(255, IIf(ml_idTipoSexo = 1, 3, 19)).Value
+          lnPercentilTE_Z = s.Cells(254, IIf(ml_idTipoSexo = 1, 3, 19)).Value
+       Else
+          lnMinimo = s.Cells(2, IIf(ml_idTipoSexo = 1, 2, 18)).Value
+          lnMaximo = s.Cells(1858, IIf(ml_idTipoSexo = 1, 2, 18)).Value
+          lnPercentilTE = lnPercentilNull
+          s.Cells(1861, IIf(ml_idTipoSexo = 1, 5, 21)).Value = lnEdadEnMesesMasPuntoCinco
+          s.Cells(1862, IIf(ml_idTipoSexo = 1, 5, 21)).Value = lnTallaCM
+          lnPercentilTE = s.Cells(1870, IIf(ml_idTipoSexo = 1, 4, 20)).Value
+          lnPercentilTE_Z = s.Cells(1869, IIf(ml_idTipoSexo = 1, 4, 20)).Value
+       End If
+       'Peso Talla
+       Set s = W.Sheets("P-T")
+       'If lnEdadEnAniosEnAtencion <= lnEdadUSAmaxima Then
+       If lnEdadEnAniosEnAtencion > lnEdadUSAmaxima Then
+          lnMinimo = s.Cells(2, IIf(ml_idTipoSexo = 1, 2, 18)).Value
+          lnMaximo = s.Cells(61, IIf(ml_idTipoSexo = 1, 2, 18)).Value
+          lnPercentilPT = lnPercentilNull
+          s.Cells(64, IIf(ml_idTipoSexo = 1, 4, 20)).Value = lnTallaEnCmMasPuntoCinco
+          s.Cells(65, IIf(ml_idTipoSexo = 1, 4, 20)).Value = lnPesoKg
+          lnPercentilPT = s.Cells(73, IIf(ml_idTipoSexo = 1, 3, 19)).Value
+          lnPercentilPT_Z = s.Cells(72, IIf(ml_idTipoSexo = 1, 3, 19)).Value
+       Else
+          lnMinimo = s.Cells(2, IIf(ml_idTipoSexo = 1, 2, 18)).Value
+          lnMaximo = s.Cells(652, IIf(ml_idTipoSexo = 1, 2, 18)).Value
+          lnPercentilPT = lnPercentilNull
+          s.Cells(655, IIf(ml_idTipoSexo = 1, 5, 21)).Value = lnTallaEnCmMasPuntoCinco
+          s.Cells(656, IIf(ml_idTipoSexo = 1, 5, 21)).Value = lnPesoKg
+          lnPercentilPT = s.Cells(664, IIf(ml_idTipoSexo = 1, 4, 20)).Value
+          lnPercentilPT_Z = s.Cells(663, IIf(ml_idTipoSexo = 1, 4, 20)).Value
+       End If
+
+       'Edad IMC
+       lnIMC = Round((lnPesoKg / (lnTallaCM * lnTallaCM)), 0)
+       Set s = W.Sheets("E-IMC")
+       'If lnEdadEnAniosEnAtencion <= lnEdadUSAmaxima Then
+       If lnEdadEnAniosEnAtencion > lnEdadUSAmaxima Then
+          lnMinimo = s.Cells(2, IIf(ml_idTipoSexo = 1, 2, 19)).Value
+          lnMaximo = s.Cells(220, IIf(ml_idTipoSexo = 1, 2, 19)).Value
+          lnPercentilIMC = lnPercentilNull
+          s.Cells(223, IIf(ml_idTipoSexo = 1, 4, 21)).Value = lnEdadEnMesesMasPuntoCinco
+          s.Cells(224, IIf(ml_idTipoSexo = 1, 4, 21)).Value = lnIMC
+          lnPercentilIMC = s.Cells(232, IIf(ml_idTipoSexo = 1, 3, 20)).Value
+          lnPercentilIMC_Z = s.Cells(231, IIf(ml_idTipoSexo = 1, 3, 20)).Value
+       Else
+          lnMinimo = s.Cells(2, IIf(ml_idTipoSexo = 1, 2, 18)).Value
+          lnMaximo = s.Cells(1858, IIf(ml_idTipoSexo = 1, 2, 18)).Value
+          lnPercentilIMC = lnPercentilNull
+          s.Cells(1861, IIf(ml_idTipoSexo = 1, 5, 21)).Value = lnEdadEnMesesMasPuntoCinco
+          s.Cells(1862, IIf(ml_idTipoSexo = 1, 5, 21)).Value = lnIMC
+          lnPercentilIMC = s.Cells(1870, IIf(ml_idTipoSexo = 1, 4, 20)).Value
+          lnPercentilIMC_Z = s.Cells(1869, IIf(ml_idTipoSexo = 1, 4, 20)).Value
+       End If
+       W.Close False
+       Set s = Nothing
+       Set W = Nothing
+       Set EXL = Nothing
+    End If
+End Sub
+
+
