@@ -26,8 +26,8 @@ Begin VB.Form AdmisionCEDetalle
       Top             =   60
       Visible         =   0   'False
       Width           =   2925
-      _ExtentX        =   5159
-      _ExtentY        =   503
+      _extentx        =   5159
+      _extenty        =   503
    End
    Begin SISGalenPlus.UcSISafiliacion UcSISafiliacion1 
       Height          =   600
@@ -36,8 +36,8 @@ Begin VB.Form AdmisionCEDetalle
       Top             =   720
       Visible         =   0   'False
       Width           =   3855
-      _ExtentX        =   6800
-      _ExtentY        =   1270
+      _extentx        =   6800
+      _extenty        =   1270
    End
    Begin UltraGrid.SSUltraGrid grdPacientesEncontrados 
       Height          =   375
@@ -101,8 +101,8 @@ Begin VB.Form AdmisionCEDetalle
          TabIndex        =   9
          Top             =   330
          Width           =   11745
-         _ExtentX        =   20823
-         _ExtentY        =   11351
+         _extentx        =   20823
+         _extenty        =   11351
       End
       Begin TabDlg.SSTab SSTab1 
          Height          =   6405
@@ -168,9 +168,9 @@ Begin VB.Form AdmisionCEDetalle
          TabCaption(1)   =   "2.2 Citas para otros días"
          TabPicture(1)   =   "AdmisionDetalle.frx":0D1E
          Tab(1).ControlEnabled=   0   'False
-         Tab(1).Control(0)=   "UcPacientesSunasa1"
+         Tab(1).Control(0)=   "Label9"
          Tab(1).Control(1)=   "ucCitasLista11"
-         Tab(1).Control(2)=   "Label9"
+         Tab(1).Control(2)=   "UcPacientesSunasa1"
          Tab(1).ControlCount=   3
          Begin VB.Frame FraGeneraCita 
             Caption         =   "Forma que se genera la CITA"
@@ -257,8 +257,8 @@ Begin VB.Form AdmisionCEDetalle
             Top             =   45
             Visible         =   0   'False
             Width           =   1965
-            _ExtentX        =   20294
-            _ExtentY        =   10451
+            _extentx        =   20294
+            _extenty        =   10451
          End
          Begin VB.Frame Frame5 
             Height          =   4995
@@ -280,8 +280,8 @@ Begin VB.Form AdmisionCEDetalle
                TabIndex        =   121
                Top             =   1905
                Width           =   5520
-               _ExtentX        =   9737
-               _ExtentY        =   609
+               _extentx        =   9737
+               _extenty        =   609
             End
             Begin VB.ComboBox cmbFormaPago 
                BeginProperty Font 
@@ -393,8 +393,8 @@ Begin VB.Form AdmisionCEDetalle
                TabIndex        =   100
                Top             =   1500
                Width           =   5505
-               _ExtentX        =   9710
-               _ExtentY        =   609
+               _extentx        =   9710
+               _extenty        =   609
             End
             Begin VB.Label lblNroAtencion 
                AutoSize        =   -1  'True
@@ -1738,8 +1738,8 @@ Begin VB.Form AdmisionCEDetalle
             TabIndex        =   48
             Top             =   420
             Width           =   11745
-            _ExtentX        =   20717
-            _ExtentY        =   5265
+            _extentx        =   20717
+            _extenty        =   5265
          End
          Begin SISGalenPlus.UcEpisodioClinico UcEpisodioClinico1 
             Height          =   585
@@ -1748,8 +1748,8 @@ Begin VB.Form AdmisionCEDetalle
             Top             =   5610
             Visible         =   0   'False
             Width           =   3435
-            _ExtentX        =   6059
-            _ExtentY        =   1032
+            _extentx        =   6059
+            _extenty        =   1032
          End
          Begin SISGalenPlus.ucCitasLista ucCitasLista11 
             Height          =   5670
@@ -1757,8 +1757,8 @@ Begin VB.Form AdmisionCEDetalle
             TabIndex        =   127
             Top             =   345
             Width           =   11625
-            _ExtentX        =   11086
-            _ExtentY        =   8599
+            _extentx        =   11086
+            _extenty        =   8599
          End
          Begin VB.Label Label9 
             AutoSize        =   -1  'True
@@ -2255,8 +2255,8 @@ Begin VB.Form AdmisionCEDetalle
          Top             =   150
          Visible         =   0   'False
          Width           =   1995
-         _ExtentX        =   3519
-         _ExtentY        =   1085
+         _extentx        =   3519
+         _extenty        =   1085
       End
    End
    Begin VB.Frame Frame3 
@@ -2273,8 +2273,8 @@ Begin VB.Form AdmisionCEDetalle
          TabIndex        =   20
          Top             =   210
          Width           =   2085
-         _ExtentX        =   3678
-         _ExtentY        =   1111
+         _extentx        =   3678
+         _extenty        =   1111
       End
    End
    Begin UltraGrid.SSUltraGrid grdAnteriores 
@@ -3337,7 +3337,7 @@ Sub grdPacientesEncontradosSIS()
             lnAfiliacionSIS4 = oRecordset.Fields!idSiaSis
             lcSIScodigo = oRecordset.Fields!Codigo
             
-            lnDocumentoTipoSIS = oRecordset!DocumentoTipo
+            lnDocumentoTipoSIS = oRecordset.Fields!DocumentoTipo
             
             
             lcDniSIS = IIf(IsNull(oRecordset.Fields!DNI), "", oRecordset.Fields!DNI)
