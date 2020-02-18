@@ -259,6 +259,10 @@ End Property
 Property Let Parametro378valorInt(sValor As String)
     oReg.GuardarCadena oReg.HKEY_LOCAL_MACHINE, RutaDeRegistroSIGH + "\", "Parametro378valorInt:", sValor
 End Property
+'Se agregó la escritura de un parámetro:
+Property Let Acceso(sValor As String)
+    oReg.GuardarCadena oReg.HKEY_LOCAL_MACHINE, RutaDeRegistroSIGH + "\", "Acceso:", sValor
+End Property
 
 Function DevuelveNumeroRedondeado(lnTotalIngresado As Double) As Double
         If Parametro387valorInt = 1 Then

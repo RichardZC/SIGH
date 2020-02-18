@@ -1,6 +1,6 @@
 VERSION 5.00
-Object = "{CDE57A40-8B86-11D0-B3C6-00A0C90AEA82}#1.0#0"; "msdatgrd.ocx"
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "tabctl32.ocx"
+Object = "{CDE57A40-8B86-11D0-B3C6-00A0C90AEA82}#1.0#0"; "MSDATGRD.OCX"
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
 Object = "{C932BA88-4374-101B-A56C-00AA003668DC}#1.1#0"; "msmask32.ocx"
 Object = "{F20E41DE-526A-423A-B746-D860D06076B4}#4.0#0"; "IGTHRE~1.OCX"
 Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "COMCTL32.OCX"
@@ -2306,7 +2306,9 @@ Dim mo_Procesos As New SIGHProxies.Procesos
 Private Sub cmdActWeb_Click()
         Dim lcMensaje As String, lbSeTerminaSistema As Boolean, oRsTmp1 As Recordset
         lblHoraInicio.Caption = Format(Now, "hh:mm:ss")
-        mo_Procesos.SomeeActualizaDatos 2, lcMensaje, "", "", CDate(Me.txtFweb1.Text), CDate(Me.txtFweb2.Text), lbSeTerminaSistema, oRsTmp1
+        'SCCQ 14/02/2020 Cambio3 Inicio
+        ''mo_Procesos.SomeeActualizaDatos 2, lcMensaje, "", "", CDate(Me.txtFweb1.Text), CDate(Me.txtFweb2.Text), lbSeTerminaSistema, oRsTmp1
+        'SCCQ 14/02/2020 Cambio3 Fin
         lblHoraFin.Caption = Format(Now, "hh:mm:ss")
         Set oRsTmp1 = Nothing
         MsgBox lcMensaje, vbInformation, Me.Caption
@@ -2343,7 +2345,7 @@ Private Sub cmdCambiaCPT_Click()
      lnIdProductoQueda = 51554
      oConexion.CursorLocation = adUseClient
      oConexion.CommandTimeout = 300
-     oConexion.Open sighentidades.CadenaConexion
+     oConexion.Open SIGHEntidades.CadenaConexion
      lcSql = "SELECT     dbo.LabMovimientoLaboratorio.IdCuentaAtencion, dbo.LabMovimientoLaboratorio.IdComprobantePago, dbo.LabMovimiento.IdLabEstado" & _
 "                      dbo.LabMovimiento.IdMovimiento, dbo.LabMovimiento.Fecha, dbo.LabMovimientoCPT.idProductoCPT," & _
 "                      dbo.LabMovimientoLaboratorio.IdOrden" & _
@@ -2407,7 +2409,7 @@ Private Sub cmdCambiaCuenta_Click()
         Dim lcSql As String
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open sighentidades.CadenaConexion
+        oConexion.Open SIGHEntidades.CadenaConexion
         
         If Me.optFarmacia.Value = True Then
            lcSql = "SELECT     dbo.farmMovimiento.DocumentoNumero, dbo.farmMovimientoVentas.idCuentaAtencion, dbo.Atenciones.IdFormaPago, " & _
@@ -2565,7 +2567,7 @@ Private Sub cmdCitas_Click()
      '
      oConexion.CursorLocation = adUseClient
      oConexion.CommandTimeout = 300
-     oConexion.Open sighentidades.CadenaConexion
+     oConexion.Open SIGHEntidades.CadenaConexion
      oConexionMDB.Open "Driver=Microsoft Access Driver (*.mdb);DBQ=" & App.Path & "\tablasYpa.mdb;"
      '
      lcRenaes = txtRenaes.Text
@@ -3057,7 +3059,7 @@ Private Sub cmdHistorias_Click()
        Me.MousePointer = 11
        ms_MensajeError = ""
        oConexHBT.Open "dsn=" & txtOdbc.Text
-       oConexion.Open sighentidades.CadenaConexion
+       oConexion.Open SIGHEntidades.CadenaConexion
        oConexion.BeginTrans
        '
        Set oMovimientosHistoriaClinica.Conexion = oConexion
@@ -3165,7 +3167,7 @@ Private Sub cmdPacientes_Click()
        ms_MensajeError = ""
        ml_Errores = ""
        oConexHBT.Open "dsn=" & txtOdbc.Text
-       oConexion.Open sighentidades.CadenaConexion
+       oConexion.Open SIGHEntidades.CadenaConexion
        oConexion.BeginTrans
        '
        Set oPaciente.Conexion = oConexion
@@ -3534,7 +3536,7 @@ Private Sub cmdPreciosSismedv2_Click()
     oConexionFox.CommandTimeout = 150
     oConexionFox.CursorLocation = adUseServer
     oConexionFox.Open "dsn=" & Me.txtSismedv2.Text
-    oConexion.Open sighentidades.CadenaConexion
+    oConexion.Open SIGHEntidades.CadenaConexion
     oConexion.BeginTrans
     '
     oRsSeguros.Open "select * from TiposFinanciamiento where seIngresPrecios=1  and idTipoFinanciamiento<>0 and idTipoFinanciamiento<>1000", oConexion, adOpenKeyset, adLockOptimistic
@@ -4012,7 +4014,7 @@ Private Sub cmdProgramacion_Click()
        Me.MousePointer = 11
        ms_MensajeError = ""
        oConexHBT.Open "dsn=" & txtOdbc.Text
-       oConexion.Open sighentidades.CadenaConexion
+       oConexion.Open SIGHEntidades.CadenaConexion
        oConexion.BeginTrans
        '
        Set oProgramacionMedica.Conexion = oConexion
@@ -4144,7 +4146,7 @@ Private Sub cmdSoloFarmacia_Click()
      '
      oConexion.CursorLocation = adUseClient
      oConexion.CommandTimeout = 300
-     oConexion.Open sighentidades.CadenaConexion
+     oConexion.Open SIGHEntidades.CadenaConexion
      oConexionMDB.Open "Driver=Microsoft Access Driver (*.mdb);DBQ=" & App.Path & "\tablasYpa.mdb;"
      '
      lcRenaes = txtRenaes.Text
@@ -4216,40 +4218,40 @@ Private Sub cmdSoloFarmacia_Click()
                     Select Case Month(oRsTmp1.Fields!FechaCreacion)
                     Case 1
                         lnEne = lnEne + oRsTmp1.Fields!cantidad
-                        lnEne1 = lnEne1 + oRsTmp1.Fields!TOTAL
+                        lnEne1 = lnEne1 + oRsTmp1.Fields!Total
                     Case 2
                         lnFeb = lnFeb + oRsTmp1.Fields!cantidad
-                        lnFeb1 = lnFeb1 + oRsTmp1.Fields!TOTAL
+                        lnFeb1 = lnFeb1 + oRsTmp1.Fields!Total
                     Case 3
                         lnMar = lnMar + oRsTmp1.Fields!cantidad
-                        lnMar1 = lnMar1 + oRsTmp1.Fields!TOTAL
+                        lnMar1 = lnMar1 + oRsTmp1.Fields!Total
                     Case 4
                         lnAbr = lnAbr + oRsTmp1.Fields!cantidad
-                        lnAbr1 = lnAbr1 + oRsTmp1.Fields!TOTAL
+                        lnAbr1 = lnAbr1 + oRsTmp1.Fields!Total
                     Case 5
                         lnMay = lnMay + oRsTmp1.Fields!cantidad
-                        lnMay1 = lnMay1 + oRsTmp1.Fields!TOTAL
+                        lnMay1 = lnMay1 + oRsTmp1.Fields!Total
                     Case 6
                         lnJun = lnJun + oRsTmp1.Fields!cantidad
-                        lnJun1 = lnJun1 + oRsTmp1.Fields!TOTAL
+                        lnJun1 = lnJun1 + oRsTmp1.Fields!Total
                     Case 7
                         lnJul = lnJul + oRsTmp1.Fields!cantidad
-                        lnJul1 = lnJul1 + oRsTmp1.Fields!TOTAL
+                        lnJul1 = lnJul1 + oRsTmp1.Fields!Total
                     Case 8
                         lnAgo = lnAgo + oRsTmp1.Fields!cantidad
-                        lnAgo1 = lnAgo1 + oRsTmp1.Fields!TOTAL
+                        lnAgo1 = lnAgo1 + oRsTmp1.Fields!Total
                     Case 9
                         lnSet = lnSet + oRsTmp1.Fields!cantidad
-                        lnSet1 = lnSet1 + oRsTmp1.Fields!TOTAL
+                        lnSet1 = lnSet1 + oRsTmp1.Fields!Total
                     Case 10
                         lnOct = lnOct + oRsTmp1.Fields!cantidad
-                        lnOct1 = lnOct1 + oRsTmp1.Fields!TOTAL
+                        lnOct1 = lnOct1 + oRsTmp1.Fields!Total
                     Case 11
                         lnNov = lnNov + oRsTmp1.Fields!cantidad
-                        lnNov1 = lnNov1 + oRsTmp1.Fields!TOTAL
+                        lnNov1 = lnNov1 + oRsTmp1.Fields!Total
                     Case 12
                         lnDic = lnDic + oRsTmp1.Fields!cantidad
-                        lnDic1 = lnDic1 + oRsTmp1.Fields!TOTAL
+                        lnDic1 = lnDic1 + oRsTmp1.Fields!Total
                     End Select
                     DoEvents: ProgressBar1.Value = ProgressBar1.Value + 1: Me.Refresh
                     oRsTmp1.MoveNext
@@ -4356,7 +4358,7 @@ Private Sub cmdStock_Click()
      '
      oConexion.CursorLocation = adUseClient
      oConexion.CommandTimeout = 300
-     oConexion.Open sighentidades.CadenaConexion
+     oConexion.Open SIGHEntidades.CadenaConexion
      oConexionMDB.Open "Driver=Microsoft Access Driver (*.mdb);DBQ=" & App.Path & "\tablasYpa.mdb;"
      '
      lcRenaes = txtRenaes.Text
@@ -4662,14 +4664,14 @@ Private Sub Command2_Click()
     Dim oRs4 As New Recordset
     'INICIO-Actualiza Precio Venta Farmacia para los nuevos Tarifarios,
     '       en base a la tarifa idTipoFinanciamiento=1
-    oRs4.Open "select * from FactCatalogoBienesInsumosHosp where idTipoFinanciamiento=1 and activo=1", sighentidades.CadenaConexion, adOpenKeyset, adLockOptimistic
-    oRs1.Open "select * from TiposFinanciamiento where SeIngresPrecios=1 and idTipoFinanciamiento>0", sighentidades.CadenaConexion, adOpenKeyset, adLockOptimistic
+    oRs4.Open "select * from FactCatalogoBienesInsumosHosp where idTipoFinanciamiento=1 and activo=1", SIGHEntidades.CadenaConexion, adOpenKeyset, adLockOptimistic
+    oRs1.Open "select * from TiposFinanciamiento where SeIngresPrecios=1 and idTipoFinanciamiento>0", SIGHEntidades.CadenaConexion, adOpenKeyset, adLockOptimistic
     oRs4.MoveFirst
     Do While Not oRs4.EOF
        oRs1.MoveFirst
        Do While Not oRs1.EOF
             lcSql = "select * from FactCatalogoBienesInsumosHosp where idProducto=" & oRs4.Fields!idProducto & " and idTipoFinanciamiento=" & oRs1.Fields!IdTipoFinanciamiento
-            oRs2.Open lcSql, sighentidades.CadenaConexion, adOpenKeyset, adLockOptimistic
+            oRs2.Open lcSql, SIGHEntidades.CadenaConexion, adOpenKeyset, adLockOptimistic
             If oRs2.RecordCount > 0 Then
                oRs2.Fields!PrecioUnitario = oRs4.Fields!PrecioUnitario
                oRs2.Update
@@ -4744,17 +4746,17 @@ End Sub
 Private Sub Command28_Click()
    Dim oRsTmp0 As New Recordset
    Dim oRsTmp1 As New Recordset
-   oRsTmp0.Open "select * from FarmMovimientoVentas where idfuenteFinanciamiento=14", sighentidades.CadenaConexion, adOpenKeyset, adLockOptimistic
+   oRsTmp0.Open "select * from FarmMovimientoVentas where idfuenteFinanciamiento=14", SIGHEntidades.CadenaConexion, adOpenKeyset, adLockOptimistic
    If oRsTmp0.RecordCount > 0 Then
       oRsTmp0.MoveFirst
       Do While Not oRsTmp0.EOF
          lcSql = "update FarmMovimiento set idTipoConcepto=23 where movNumero='" & oRsTmp0.Fields!movNumero & "' and movTipo='" & oRsTmp0.Fields!movTipo & "'"
-         oRsTmp1.Open lcSql, sighentidades.CadenaConexion, adOpenKeyset, adLockOptimistic
+         oRsTmp1.Open lcSql, SIGHEntidades.CadenaConexion, adOpenKeyset, adLockOptimistic
          oRsTmp0.MoveNext
       Loop
    End If
    oRsTmp0.Close
-   oRsTmp1.Open "update FuentesFinanciamiento set idTipoConceptoFarmacia=23 where idFuenteFinanciamiento=14", sighentidades.CadenaConexion, adOpenKeyset, adLockOptimistic
+   oRsTmp1.Open "update FuentesFinanciamiento set idTipoConceptoFarmacia=23 where idFuenteFinanciamiento=14", SIGHEntidades.CadenaConexion, adOpenKeyset, adLockOptimistic
    Unload Me
 End Sub
 
@@ -4791,7 +4793,7 @@ Sub GeneraOactualizaPuntoDeCargaPorCadaCPT(lnIdPuntoCarga As Long, lnIdServicioP
            DServicio = "Bioquímica"
         End If
         lcSql = "select * from Servicios where nombre='" & DServicio & "'"
-        oRsFiltraCPT.Open lcSql, sighentidades.CadenaConexion, adOpenKeyset, adLockOptimistic
+        oRsFiltraCPT.Open lcSql, SIGHEntidades.CadenaConexion, adOpenKeyset, adLockOptimistic
         If oRsFiltraCPT.RecordCount = 0 Then
            oRsFiltraCPT.AddNew
            oRsFiltraCPT.Fields!nombre = DServicio
@@ -4809,7 +4811,7 @@ Sub GeneraOactualizaPuntoDeCargaPorCadaCPT(lnIdPuntoCarga As Long, lnIdServicioP
    End If
    'Actualiza IdServicio en tabla 'FactPuntoCarga'
    lcSql = "update FactPuntosCarga set idServicio=" & lnIdServicioPuntoCarga & " where idPuntoCarga=" & lnIdPuntoCarga
-   oRsTmp1.Open lcSql, sighentidades.CadenaConexionShape, adOpenKeyset, adLockOptimistic
+   oRsTmp1.Open lcSql, SIGHEntidades.CadenaConexionShape, adOpenKeyset, adLockOptimistic
    '
    If lnIdServicioPuntoCarga > 0 And lnIdPuntoCarga > 0 Then
         lcFiltraCPT = "SELECT      dbo.FactCatalogoServicios.IdProducto, dbo.FactCatalogoServicios.Codigo, dbo.FactCatalogoServicios.Nombre, " & _
@@ -4821,11 +4823,11 @@ Sub GeneraOactualizaPuntoDeCargaPorCadaCPT(lnIdPuntoCarga As Long, lnIdServicioP
                  " WHERE     (dbo.FactCatalogoServiciosPtos.idPuntoCarga = " & lnIdPuntoCarga & ") AND (dbo.FactCatalogoServiciosHosp.IdTipoFinanciamiento = 1) AND" & _
                  "                      (dbo.FactCatalogoServicios.EsCPT = 1)" & _
                  " ORDER BY dbo.FactCatalogoServicios.Nombre"
-         oRsTmp1.Open lcFiltraCPT, sighentidades.CadenaConexionShape, adOpenKeyset, adLockOptimistic
+         oRsTmp1.Open lcFiltraCPT, SIGHEntidades.CadenaConexionShape, adOpenKeyset, adLockOptimistic
          If oRsTmp1.RecordCount > 0 Then
             Do While Not oRsTmp1.EOF
                lcSql = "select * from FactCatalogoServiciosPtos where idPuntoCarga=" & lnIdPuntoCarga & " and idProducto=" & oRsTmp1.Fields!idProducto
-               oRsTmp2.Open lcSql, sighentidades.CadenaConexionShape, adOpenKeyset, adLockOptimistic
+               oRsTmp2.Open lcSql, SIGHEntidades.CadenaConexionShape, adOpenKeyset, adLockOptimistic
                If oRsTmp2.RecordCount > 0 Then
                   oRsTmp2.Fields!EsPreVenta = 1
                   oRsTmp2.Update
@@ -4850,7 +4852,7 @@ Private Sub Command29_Click()
    oRsUltCodigo = 999991
    'Agregar Servicio de "Estadistica" y actualizar en tabla "parametros"
    lcSql = "select * from Servicios where nombre='Estadística'"
-   oRsFiltraCPT.Open lcSql, sighentidades.CadenaConexion, adOpenKeyset, adLockOptimistic
+   oRsFiltraCPT.Open lcSql, SIGHEntidades.CadenaConexion, adOpenKeyset, adLockOptimistic
    If oRsFiltraCPT.RecordCount = 0 Then
       oRsFiltraCPT.AddNew
       oRsFiltraCPT.Fields!nombre = "Estadística"
@@ -4865,7 +4867,7 @@ Private Sub Command29_Click()
    lnIdServicio = oRsFiltraCPT.Fields!IdServicio
    oRsFiltraCPT.Close
    lcSql = "update parametros set valorTexto='" & Trim(Str(lnIdServicio)) & "' where idParametro=256"
-   oRsFiltraCPT.Open lcSql, sighentidades.CadenaConexion, adOpenKeyset, adLockOptimistic
+   oRsFiltraCPT.Open lcSql, SIGHEntidades.CadenaConexion, adOpenKeyset, adLockOptimistic
    oRsUltCodigo = oRsUltCodigo + 1
    'Rx
    lnIdPuntoCarga = 21
@@ -4945,7 +4947,7 @@ Private Sub Command30_Click()
             "                      dbo.FacturacionBienesPagos ON dbo.FactOrdenesBienes.idOrden = dbo.FacturacionBienesPagos.IdOrden" & _
             " Where (dbo.CajaComprobantesPago.IdEstadoComprobante = 9)" & _
             " ORDER BY dbo.CajaComprobantesPago.NroSerie, dbo.CajaComprobantesPago.NroDocumento"
-     oRsTmp.Open lcSql, sighentidades.CadenaConexion, adOpenKeyset, adLockOptimistic
+     oRsTmp.Open lcSql, SIGHEntidades.CadenaConexion, adOpenKeyset, adLockOptimistic
      If oRsTmp.RecordCount > 0 Then
         With wrs_Gal
             .Fields.Append "Serie", adVarChar, 5, adFldIsNullable
@@ -4963,11 +4965,11 @@ Private Sub Command30_Click()
            Do While Not oRsTmp.EOF And lcSerie = oRsTmp.Fields!NroSerie And lcDcto = oRsTmp.Fields!NroDocumento
               If oRsTmp.Fields!idPreventa > 0 Then
                  lcSql = "select * from FarmPreventa where idPreventa=" & oRsTmp.Fields!idPreventa
-                 oRsTmp1.Open lcSql, sighentidades.CadenaConexion, adOpenKeyset, adLockOptimistic
+                 oRsTmp1.Open lcSql, SIGHEntidades.CadenaConexion, adOpenKeyset, adLockOptimistic
                  If oRsTmp1.RecordCount > 0 And oRsTmp1.Fields!idEstadoPreventa = 1 Then
                     lbProceso = True
                     lcSql = "update FactORdenesBienes set idComprobantePago=null where idOrden=" & oRsTmp.Fields!IdOrden
-                    oRsTmp2.Open lcSql, sighentidades.CadenaConexion, adOpenKeyset, adLockOptimistic
+                    oRsTmp2.Open lcSql, SIGHEntidades.CadenaConexion, adOpenKeyset, adLockOptimistic
                  End If
                  oRsTmp1.Close
               End If
@@ -5030,7 +5032,7 @@ Private Sub Command7_Click()
     On Error GoTo ErrorC7
     Dim oRsTmp As New Recordset
     Dim oConexion As New Connection
-    oConexion.Open sighentidades.CadenaConexion
+    oConexion.Open SIGHEntidades.CadenaConexion
     oConexion.BeginTrans
     oRsTmp.Open "update historiasClinicas set NroHistoriaClinica=" & lcNroHistoriaNew & " where nroHistoriaClinica=" & txtGalenHos.Text, oConexion, adOpenKeyset, adLockOptimistic
     oRsTmp.Open "update pacientes set NroHistoriaClinica=" & lcNroHistoriaNew & " where nroHistoriaClinica=" & txtGalenHos.Text, oConexion, adOpenKeyset, adLockOptimistic
@@ -5125,8 +5127,8 @@ Private Sub Form_Load()
        Me.Caption = Me.Caption & " (BD SQL2008)"
     End If
     '
-    txtF1.Text = Format(Date - 1, sighentidades.DevuelveFechaSoloFormato_DMY)
-    txtF2.Text = Format(Date - 1, sighentidades.DevuelveFechaSoloFormato_DMY)
+    txtF1.Text = Format(Date - 1, SIGHEntidades.DevuelveFechaSoloFormato_DMY)
+    txtF2.Text = Format(Date - 1, SIGHEntidades.DevuelveFechaSoloFormato_DMY)
     '
     txtFweb1.Text = Date
     txtFweb2.Text = Date
@@ -5219,12 +5221,12 @@ Private Sub grdFactOrdenesBienes_DblClick()
         Dim lnLinea As Integer
         lnLinea = 1
         lcSql = "select * from FacturacionBienesPagos where idOrden=" & oRsFactOrdenesBienes.Fields!IdOrden
-        oRsFacturacionBienesPagos.Open lcSql, sighentidades.CadenaConexion, adOpenKeyset, adLockOptimistic
+        oRsFacturacionBienesPagos.Open lcSql, SIGHEntidades.CadenaConexion, adOpenKeyset, adLockOptimistic
         Set grdFacturacionBienesPagos.DataSource = oRsFacturacionBienesPagos
         lnLinea = 2
        If oRsFactOrdenesBienes.Fields!idComprobantePago > 0 Then
             lcSql = "select * from CajaComprobantesPago where idComprobantePago=" & oRsFactOrdenesBienes.Fields!idComprobantePago
-            oRsCajaComprobantePago.Open lcSql, sighentidades.CadenaConexion, adOpenKeyset, adLockOptimistic
+            oRsCajaComprobantePago.Open lcSql, SIGHEntidades.CadenaConexion, adOpenKeyset, adLockOptimistic
             Set grdCajaComprobantesPago.DataSource = oRsCajaComprobantePago
        Else
             Set grdCajaComprobantesPago.DataSource = Nothing
@@ -5247,11 +5249,11 @@ Private Sub grdFactOrdenServicio_DblClick()
        Dim lnLinea As Integer
        lnLinea = 1
        lcSql = "select * from FactOrdenServicioPagos where idOrden=" & oRsFactOrdenServicio.Fields!IdOrden
-       oRsFactOrdenServicioPagos.Open lcSql, sighentidades.CadenaConexion, adOpenKeyset, adLockOptimistic
+       oRsFactOrdenServicioPagos.Open lcSql, SIGHEntidades.CadenaConexion, adOpenKeyset, adLockOptimistic
        Set grdFactOrdenServicioPagos.DataSource = oRsFactOrdenServicioPagos
        lnLinea = 2
        lcSql = "select * from FacturacionServicioFinanciamientos where idOrden=" & oRsFactOrdenServicio.Fields!IdOrden
-       oRsFacturacionServicioFinanciamientos.Open lcSql, sighentidades.CadenaConexion, adOpenKeyset, adLockOptimistic
+       oRsFacturacionServicioFinanciamientos.Open lcSql, SIGHEntidades.CadenaConexion, adOpenKeyset, adLockOptimistic
        Set grdFacturacionServicioFinanciamientos.DataSource = oRsFacturacionServicioFinanciamientos
        
        Set grdCajaComprobantesPagoS.DataSource = Nothing
@@ -5275,12 +5277,12 @@ Private Sub grdFactOrdenServicioPagos_DblClick()
        Dim lnLinea As Integer
        lnLinea = 1
        lcSql = "select * from FacturacionServicioPagos where idOrdenPago=" & oRsFactOrdenServicioPagos.Fields!idOrdenPago
-       oRsFacturacionServicioPagos.Open lcSql, sighentidades.CadenaConexion, adOpenKeyset, adLockOptimistic
+       oRsFacturacionServicioPagos.Open lcSql, SIGHEntidades.CadenaConexion, adOpenKeyset, adLockOptimistic
        Set grdFacturacionServicioPagos.DataSource = oRsFacturacionServicioPagos
        lnLinea = 2
        If oRsFactOrdenServicioPagos.Fields!idComprobantePago > 0 Then
             lcSql = "select * from CajaComprobantesPago where idComprobantePago=" & oRsFactOrdenServicioPagos.Fields!idComprobantePago
-            oRsCajaComprobantePagoS.Open lcSql, sighentidades.CadenaConexion, adOpenKeyset, adLockOptimistic
+            oRsCajaComprobantePagoS.Open lcSql, SIGHEntidades.CadenaConexion, adOpenKeyset, adLockOptimistic
             Set grdCajaComprobantesPagoS.DataSource = oRsCajaComprobantePagoS
        Else
             Set grdCajaComprobantesPagoS.DataSource = Nothing
@@ -5304,11 +5306,11 @@ Private Sub grdFarmMovimientoVentas_DblClick()
        Dim lnLinea As Integer
        lnLinea = 1
        lcSql = "select * from FactOrdenesBienes where movNumero='" & oRsFarmMovimientoVentas.Fields!movNumero & "' and movTipo='" & oRsFarmMovimientoVentas.Fields!movTipo & "'"
-       oRsFactOrdenesBienes.Open lcSql, sighentidades.CadenaConexion, adOpenKeyset, adLockOptimistic
+       oRsFactOrdenesBienes.Open lcSql, SIGHEntidades.CadenaConexion, adOpenKeyset, adLockOptimistic
        Set grdFactOrdenesBienes.DataSource = oRsFactOrdenesBienes
        lnLinea = 2
        lcSql = "select * from FacturacionBienesFinanciamientos where movNumero='" & oRsFarmMovimientoVentas.Fields!movNumero & "' and movTipo='" & oRsFarmMovimientoVentas.Fields!movTipo & "'"
-       oRsFacturacionBienesFinanciamiento.Open lcSql, sighentidades.CadenaConexion, adOpenKeyset, adLockOptimistic
+       oRsFacturacionBienesFinanciamiento.Open lcSql, SIGHEntidades.CadenaConexion, adOpenKeyset, adLockOptimistic
        Set grdFacturacionBienesFinanciamiento.DataSource = oRsFacturacionBienesFinanciamiento
        
        Set grdCajaComprobantesPago.DataSource = Nothing
@@ -5341,11 +5343,11 @@ Private Sub txtCuentaS_KeyPress(KeyAscii As Integer)
        Dim lnLinea As Integer
        lnLinea = 1
        lcSql = "select * from FactOrdenServicio where idCuentaAtencion=" & txtCuentaS.Text
-       oRsFactOrdenServicio.Open lcSql, sighentidades.CadenaConexion, adOpenKeyset, adLockOptimistic
+       oRsFactOrdenServicio.Open lcSql, SIGHEntidades.CadenaConexion, adOpenKeyset, adLockOptimistic
        Set grdFactOrdenServicio.DataSource = oRsFactOrdenServicio
        lnLinea = 2
        lcSql = "select * from CajaComprobantesPago where IdTipoOrden=1 and idCuentaAtencion=" & txtCuentaS.Text
-       oRsCajaComprobantePagoS.Open lcSql, sighentidades.CadenaConexion, adOpenKeyset, adLockOptimistic
+       oRsCajaComprobantePagoS.Open lcSql, SIGHEntidades.CadenaConexion, adOpenKeyset, adLockOptimistic
        Set grdCajaComprobantesPagoS.DataSource = oRsCajaComprobantePagoS
     End If
     Exit Sub
@@ -5372,7 +5374,7 @@ End Sub
 Sub usarSelectGalenHos(txt As String)
     Dim wrs_Prg As New ADODB.Recordset
     On Error GoTo eRRCarga2
-    wrs_Gal.Open txt, sighentidades.CadenaConexionShape, adOpenKeyset, adLockOptimistic
+    wrs_Gal.Open txt, SIGHEntidades.CadenaConexionShape, adOpenKeyset, adLockOptimistic
     Set grdGalenHos.DataSource = wrs_Gal
     Exit Sub
 eRRCarga2:
@@ -5392,11 +5394,11 @@ Private Sub txtNroCuenta_KeyPress(KeyAscii As Integer)
        lnLinea = 1
        Set grdFarmMovimientoVentas.DataSource = Nothing
        lcSql = "select * from FarmMovimientoVentas where idCuentaAtencion=" & txtNroCuenta.Text
-       oRsFarmMovimientoVentas.Open lcSql, sighentidades.CadenaConexionShape, adOpenKeyset, adLockOptimistic
+       oRsFarmMovimientoVentas.Open lcSql, SIGHEntidades.CadenaConexionShape, adOpenKeyset, adLockOptimistic
        Set grdFarmMovimientoVentas.DataSource = oRsFarmMovimientoVentas
        lnLinea = 2
        lcSql = "select * from CajaComprobantesPago where IdTipoOrden<>1 and idCuentaAtencion=" & txtCuentaS.Text
-       oRsCajaComprobantePago.Open lcSql, sighentidades.CadenaConexion, adOpenKeyset, adLockOptimistic
+       oRsCajaComprobantePago.Open lcSql, SIGHEntidades.CadenaConexion, adOpenKeyset, adLockOptimistic
        Set grdCajaComprobantesPago.DataSource = oRsCajaComprobantePago
     End If
     Exit Sub
@@ -5931,7 +5933,7 @@ End If
              lcTalla_rn = oRsMDB.Fields!talla_ra
              lcPeso_rn = oRsMDB.Fields!peso_rn
              lcEdadG = oRsMDB.Fields!EDAD_GESTA
-             If sighentidades.EsFecha(oRsMDB.Fields!Fecha, "DD/MM/AAAA") = True Then
+             If SIGHEntidades.EsFecha(oRsMDB.Fields!Fecha, "DD/MM/AAAA") = True Then
                 ldFecha = oRsMDB.Fields!Fecha
              End If
              Peso1 = 0: Peso2 = 0: Peso3 = 0: Peso4 = 0: Peso5 = 0
@@ -6929,7 +6931,7 @@ Private Sub cmdActualizaPercentil_Click()
                lnTalla = Val(s1.Cells(oFila, 17).Value)
                If lnPeso > 0 And lnTalla > 0 And IsDate(ldFechaNacimiento) And IsDate(ldFechaAtencion) Then
                     lnPercentilPE = lnPercentilNull: lnPercentilTE = lnPercentilNull: lnPercentilPT = lnPercentilNull
-                    ml_EdadEnMeses = sighentidades.DevuelveEdadEnMeses(ldFechaNacimiento, ldFechaAtencion)
+                    ml_EdadEnMeses = SIGHEntidades.DevuelveEdadEnMeses(ldFechaNacimiento, ldFechaAtencion)
                     lnEdadEnMesesMasPuntoCinco = ml_EdadEnMeses + 0.5
                     lnTallaEnCmMasPuntoCinco = lnTalla + 0.5
                     'Peso Edad
@@ -7029,7 +7031,7 @@ Private Sub cmdAgregaAtencionCE_Click()
     Dim lnIdCuentaPorProcesar As Long
     
     mo_lnIdTablaLISTBARITEMS = 103
-    mo_lcNombrePc = sighentidades.RetornaNombrePC
+    mo_lcNombrePc = SIGHEntidades.RetornaNombrePC
     wxParametro302 = lcBuscaParametro.SeleccionaFilaParametro(302)
     
     oConexMDB.CommandTimeout = 300
@@ -7040,7 +7042,7 @@ Private Sub cmdAgregaAtencionCE_Click()
     oConexMDB.Open lcSql
     oConexion.CommandTimeout = 300
     oConexion.CursorLocation = adUseClient
-    oConexion.Open sighentidades.CadenaConexion
+    oConexion.Open SIGHEntidades.CadenaConexion
     oConexJamo.CommandTimeout = 300
     oConexJamo.Open lcBuscaParametro.SeleccionaFilaParametro(sghBaseDatosExterna.sghJamo)
     
@@ -7176,7 +7178,7 @@ End If
                                       oRsMDB1!IdServicioIngreso, oRsMDB1!IdMedicoIngreso, ".", _
                                       ".", Date, 0, 1, ".", _
                                       ".", oRsMDB1!idFuenteFinanciamiento, ldFechaHoy, lcHoraHoy, _
-                                      lnHistoriaCreada, oConexion, sighentidades.USUARIO, 500 + 183, mo_lcNombrePc, _
+                                      lnHistoriaCreada, oConexion, SIGHEntidades.USUARIO, 500 + 183, mo_lcNombrePc, _
                                       lbEsCitaAdicional, oRsMDB1!idPaciente, lnIdAtencionNueva, 0, "", "", 0, "") = True Then
                           Set mo_atenciones = mo_AdminAdmision.AtencionesSeleccionarPorId(lnIdAtencionNueva, oConexion)
                           lnIdCuentaAtencionNueva = mo_atenciones.idCuentaAtencion
@@ -7221,7 +7223,7 @@ End If
                         .HoraEgreso = ""
                         .FechaEgreso = 0
                         .IdTipoGravedad = 0
-                        .IdUsuarioAuditoria = sighentidades.USUARIO
+                        .IdUsuarioAuditoria = SIGHEntidades.USUARIO
                         .IdEstadoAtencion = sghEstadoTabla.sghRegistrado
                         .IdTipoCondicionALEstab = IIf(IsNull(oRsMDB1!IdTipoCondicionALEstab), 1, oRsMDB1!IdTipoCondicionALEstab)
                         .IdTipoCondicionAlServicio = IIf(IsNull(oRsMDB1!IdTipoCondicionAlServicio), 1, oRsMDB1!IdTipoCondicionAlServicio)
@@ -7418,7 +7420,7 @@ End If
                                                  .labConfHIS = oRsMDB3!labConfHIS
                                                  .precio = oRsMDB3!precio
                                                  .SubGrupoHIS = oRsMDB3!SubGrupoHIS
-                                                 .TOTAL = oRsMDB3!TOTAL
+                                                 .Total = oRsMDB3!Total
                                             End With
                                             If oFacturacionServicioDespacho.Insertar(oDoFacturacionServicioDespacho) = True Then
                                                lcSql = oFacturacionServicioDespacho.MensajeError
@@ -7443,7 +7445,7 @@ End If
           Do While Not oRsPacientesDiferentes.EOF
              mo_ReglasComunes.ActualizaIdPacienteEnTodasLasTablasSegunNroCuenta oRsPacientesDiferentes!idPacienteNew, _
                               oRsPacientesDiferentes!idCuentaAtencion, oRsPacientesDiferentes!idAtencion, _
-                              0, sighentidades.USUARIO, "", ""
+                              0, SIGHEntidades.USUARIO, "", ""
              oRsPacientesDiferentes.MoveNext
           Loop
        End If
@@ -8246,10 +8248,10 @@ Function GrabaAtencionJamo(mo_lnIdTablaLISTBARITEMS As Long, ml_lcServicio As St
                 Dim ml_idTipoSexo As Long
                 oConexion.CommandTimeout = 300
                 oConexion.CursorLocation = adUseClient
-                oConexion.Open sighentidades.CadenaConexion
+                oConexion.Open SIGHEntidades.CadenaConexion
                 lnPesoKg = Val(mo_DOAtencionesCE.TriajePeso)
                 lnTallaCM = Val(mo_DOAtencionesCE.TriajeTalla)
-                ml_EdadEnMeses = sighentidades.DevuelveEdadEnMeses(mo_paciente.FechaNacimiento, mo_atenciones.FechaIngreso)
+                ml_EdadEnMeses = SIGHEntidades.DevuelveEdadEnMeses(mo_paciente.FechaNacimiento, mo_atenciones.FechaIngreso)
                 lnEdadEnAniosEnAtencion = IIf(mo_atenciones.IdTipoEdad = 1, mo_atenciones.Edad, 0)
                 ml_idTipoSexo = mo_paciente.idTipoSexo
                 lnIdDxNutricional = 0
@@ -8377,7 +8379,7 @@ Sub PacienteDatosAdicionalesGrabar(ml_idPaciente As Long, ml_idUsuario As Long, 
     Dim oRsTmp9 As New Recordset
     
     oConexion.CursorLocation = adUseClient
-    oConexion.Open sighentidades.CadenaConexion
+    oConexion.Open SIGHEntidades.CadenaConexion
     'buscar pacientesdAtosAdicionales (mdb)
     lcSql = "select * from PacientesDAtosAdicionales where idPaciente=" & Trim(Str(ml_idPaciente))
     oRsTmp9.Open lcSql, oConexMDB, adOpenKeyset, adLockOptimistic

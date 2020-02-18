@@ -1,7 +1,7 @@
 VERSION 5.00
 Object = "{5A9433E9-DD7B-4529-91B6-A5E8CA054615}#2.0#0"; "IGULTR~1.OCX"
 Object = "{C932BA88-4374-101B-A56C-00AA003668DC}#1.1#0"; "msmask32.ocx"
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "tabctl32.ocx"
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
 Object = "{F20E41DE-526A-423A-B746-D860D06076B4}#4.0#0"; "IGTHRE~1.OCX"
 Begin VB.Form SisFua 
    BorderStyle     =   3  'Fixed Dialog
@@ -195,23 +195,23 @@ Begin VB.Form SisFua
       TabCaption(1)   =   "Serv.Prev/Vacunas/Dx  (F4)"
       TabPicture(1)   =   "SisFua.frx":2DA5
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "Label53"
-      Tab(1).Control(1)=   "Label54"
-      Tab(1).Control(2)=   "btnRefrescar"
-      Tab(1).Control(3)=   "Frame5"
-      Tab(1).Control(4)=   "Frame4"
-      Tab(1).Control(5)=   "FraDx"
-      Tab(1).Control(6)=   "txtMedico"
-      Tab(1).Control(7)=   "txtMedicoColegiatura"
-      Tab(1).Control(8)=   "txtMedicoDni"
-      Tab(1).Control(9)=   "txtMedicoEspecialidad"
+      Tab(1).Control(0)=   "txtMedicoEspecialidad"
+      Tab(1).Control(1)=   "txtMedicoDni"
+      Tab(1).Control(2)=   "txtMedicoColegiatura"
+      Tab(1).Control(3)=   "txtMedico"
+      Tab(1).Control(4)=   "FraDx"
+      Tab(1).Control(5)=   "Frame4"
+      Tab(1).Control(6)=   "Frame5"
+      Tab(1).Control(7)=   "btnRefrescar"
+      Tab(1).Control(8)=   "Label54"
+      Tab(1).Control(9)=   "Label53"
       Tab(1).ControlCount=   10
       TabCaption(2)   =   "Medicamentos/Cpt  (F5)"
       TabPicture(2)   =   "SisFua.frx":2DC1
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "Frame19"
+      Tab(2).Control(0)=   "FraFarmacia"
       Tab(2).Control(1)=   "FraPatologia"
-      Tab(2).Control(2)=   "FraFarmacia"
+      Tab(2).Control(2)=   "Frame19"
       Tab(2).ControlCount=   3
       Begin VB.CommandButton btnBuscarPaciente 
          Caption         =   "..."

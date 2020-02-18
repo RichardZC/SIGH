@@ -1,0 +1,7 @@
+[History]
+1=#P0#=mb	#P1#=cmdActWeb_Click	#P2#=CtrolMigracion/frmActualizaTablas/cmdActWeb_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200214145642	#P7#=0	#P8#=-2	.
+2=#P0#=mb	#P1#=Command6_Click	#P2#=CtrolMigracion/mVariosProcesos/Command6_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200214134109	#P7#=0	#P8#=48	.
+3=#P0#=mb	#P1#=Command2_Click	#P2#=CtrolMigracion/mVariosProcesos/Command2_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200214130553	#P7#=0	#P8#=8	.
+4=#P0#=mb	#P1#=cmdPasaMovimientos_Click	#P2#=CtrolMigracion/mVariosProcesos/cmdPasaMovimientos_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200214104632	#P7#=0	#P8#=12	.
+5=#P0#=mb	#P1#=Form_Load	#P2#=CtrolMigracion/Login/Form_Load	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200214092546	#P7#=0	#P8#=1	.
+6=#P0#=mb	#P1#=cmdAceptar_Click	#P2#=CtrolMigracion/Login/cmdAceptar_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200214092725	#P7#=0	#P8#=3	.

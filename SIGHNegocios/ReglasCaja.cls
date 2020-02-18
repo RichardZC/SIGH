@@ -354,7 +354,7 @@ Dim ItemDocumento As DOCajaNroDocumento
     oConexion.BeginTrans
     Set oCaja.Conexion = oConexion
     Set oNroDocumento.Conexion = oConexion
-    If oCaja.Modificar(oDOCaja) Then
+    If oCaja.modificar(oDOCaja) Then
         If Not oNroDocumento.EliminarPorCaja(oDOCaja.idCaja) Then
             ms_MensajeError = oNroDocumento.MensajeError
             Exit Function
@@ -555,7 +555,7 @@ Dim oCajero As New CajaCajero
     oConexion.Open sighentidades.CadenaConexion
     Set oCajero.Conexion = oConexion
        
-    If oCajero.Modificar(oDOCajero) Then
+    If oCajero.modificar(oDOCajero) Then
         CajeroModificar = True
     Else
         ms_MensajeError = oCajero.MensajeError
@@ -791,7 +791,7 @@ Dim total As Double
     
     total = oCajaGestion.TotalPorGestion(oDoCajaGestion.IdGestionCaja)
     oDoCajaGestion.TotalCobrado = total
-    If oCajaGestion.Modificar(oDoCajaGestion) Then
+    If oCajaGestion.modificar(oDoCajaGestion) Then
         CajaGestionModificar = True
     Else
         ms_MensajeError = oCajaGestion.MensajeError
@@ -1308,7 +1308,7 @@ Dim sResultado As String
             bProcesoOK = False: GoTo ErrorManager
         End If
     Else
-        If Not oFactOrdenesBienes.Modificar(oDOFactOrdenBien) Then
+        If Not oFactOrdenesBienes.modificar(oDOFactOrdenBien) Then
             bProcesoOK = False: GoTo ErrorManager
         End If
     End If
@@ -1377,7 +1377,7 @@ Dim sResultado As String
                                                                    oDOCajaComprobantePago.idTipoComprobante)
     oDoCajaNroDocumento.NroDocumento = Format(Val(oDOCajaComprobantePago.NroDocumento) + 1, "000000")
     oDoCajaNroDocumento.NroSerie = oDOCajaComprobantePago.NroSerie
-    If Not oCajaNroDocumento.Modificar(oDoCajaNroDocumento) Then
+    If Not oCajaNroDocumento.modificar(oDoCajaNroDocumento) Then
         bProcesoOK = False: GoTo ErrorManager
     End If
     
@@ -2101,7 +2101,7 @@ Dim oParameter As ADODB.Parameter
     
     '*********comprobante pago
     oDOCajaComprobantePago.idEstadoComprobante = 9   'anulada
-    If Not oCajaComprobantePago.Modificar(oDOCajaComprobantePago) Then
+    If Not oCajaComprobantePago.modificar(oDOCajaComprobantePago) Then
         bProcesoOK = False: GoTo ErrorManager1El
     End If
     '
@@ -2119,7 +2119,7 @@ Dim oParameter As ADODB.Parameter
             oDoFactOrdenServPagos.IdEstadoFacturacion = 9  'Anulada
             oDoFactOrdenServPagos.IdUsuarioAuditoria = oDOCajaComprobantePago.IdUsuarioAuditoria
             oDoFactOrdenServPagos.IdOrden = lnIdOrden_QueQueda
-            If Not oFactOrdenServicioPagos.Modificar(oDoFactOrdenServPagos) Then
+            If Not oFactOrdenServicioPagos.modificar(oDoFactOrdenServPagos) Then
                bProcesoOK = False: GoTo ErrorManager1El
             End If
             oDoFactOrdenServ.IdOrden = oRsListaOrdenes.Fields!IdOrden
@@ -2133,7 +2133,7 @@ Dim oParameter As ADODB.Parameter
                oDoFactOrdenServ.IdEstadoFacturacion = IIf(oDOCajaComprobantePago.idCuentaAtencion > 0, 1, 9) 'Registrada / Anulada
             End If
             oDoFactOrdenServ.IdUsuarioAuditoria = oDOCajaComprobantePago.IdUsuarioAuditoria
-            If Not oFactOrdenServicio.Modificar(oDoFactOrdenServ) Then
+            If Not oFactOrdenServicio.modificar(oDoFactOrdenServ) Then
                bProcesoOK = False: GoTo ErrorManager1El
             End If
             
@@ -2193,7 +2193,7 @@ Dim oParameter As ADODB.Parameter
             End If
             oDOCita.IdEstadoCita = 1   'registrado
             oDOCita.IdUsuarioAuditoria = oDOCajaComprobantePago.IdUsuarioAuditoria
-            If Not oCitas.Modificar(oDOCita) Then
+            If Not oCitas.modificar(oDOCita) Then
                 bProcesoOK = False: GoTo ErrorManager1El
             End If
             MsgBox "Nueva Nro Orden Pago: " & oDoFactOrdenServPagos.idOrdenPago & Chr(13) & Chr(13) & " o busque pulsando clic en botón PUNTOS"
@@ -2543,6 +2543,8 @@ End Function
 Function RetornaTotalDescuentosPorAdelantosSegunCuenta(lnIdCuentaAtencion As Long, oConexion As Connection) As Double
         Dim oRsTmp1 As New Recordset
         Dim lnAdelantos As Double, lnPagosAdelantados As Double
+        'PRIMERA CONSULTA SOBRE LOS PAGOS ADELANTADOS para cargar a lnPagosAdelantados
+        'Consulta los pagos a cuenta (adelantos) segun producto 4691 que corresponde a adelantos del idParametro 245
         Set oRsTmp1 = CajaComprobantesPagoSeleccionarPagosACuentaPorIdCuenta(lnIdCuentaAtencion, Val(lcBuscaParametro.SeleccionaFilaParametro(245)), oConexion)
         lnPagosAdelantados = 0
         If oRsTmp1.RecordCount > 0 Then
@@ -2552,6 +2554,7 @@ Function RetornaTotalDescuentosPorAdelantosSegunCuenta(lnIdCuentaAtencion As Lon
               oRsTmp1.MoveNext
            Loop
         End If
+        'SEGUNDA CONSULTA SOBRE LOS PAGOS ADELANTADOS para cargar a lnAdelantos
         Set oRsTmp1 = CajaComprobantesPagoSeleccionarAdelantosPorIdCuenta(lnIdCuentaAtencion, oConexion)
         lnAdelantos = 0
         If oRsTmp1.RecordCount > 0 Then
@@ -2862,7 +2865,7 @@ Dim mo_ReglasFarmacia As New SIGHNegocios.ReglasFarmacia
                                                                    oDOCajaComprobantePago.idTipoComprobante)
     oDoCajaNroDocumento.NroDocumento = Format(Val(oDOCajaComprobantePago.NroDocumento) + 1, "000000")
     oDoCajaNroDocumento.NroSerie = oDOCajaComprobantePago.NroSerie
-    If Not oCajaNroDocumento.Modificar(oDoCajaNroDocumento) Then
+    If Not oCajaNroDocumento.modificar(oDoCajaNroDocumento) Then
         bProcesoOK = False: ms_MensajeError = oCajaNroDocumento.MensajeError: GoTo ErrorManager
     End If
     oConexion.CommitTrans
@@ -5619,7 +5622,7 @@ Dim oCajaDevoluciones As New cajadevoluciones
     
     'total = oCajaGestion.TotalPorGestion(oDoCajaGestion.IdGestionCaja)
     'oDoCajaGestion.TotalCobrado = total
-    If oCajaDevoluciones.Modificar(oDoCajaDevoluciones) Then
+    If oCajaDevoluciones.modificar(oDoCajaDevoluciones) Then
         CajaDevolucionesModificar = True
     Else
         ms_MensajeError = oCajaDevoluciones.MensajeError
@@ -6030,7 +6033,7 @@ Function NotaCreditoDebitoAgregar(oDoNotaCreditoDebito As DoNotaCreditoDebito, T
                             oDoAtencion.idAtencion = orsTemp2.Fields!idAtencion
                             If oAtenciones.SeleccionarPorId(oDoAtencion) Then
                                 oDoAtencion.IdEstadoAtencion = sghEstadoTabla.sghAnulado
-                                If Not oAtenciones.Modificar(oDoAtencion) Then
+                                If Not oAtenciones.modificar(oDoAtencion) Then
                                     bProcesoOK = False: ms_MensajeError = oAtenciones.MensajeError: GoTo ErrorManager
                                 End If
                             End If
@@ -6059,7 +6062,7 @@ Function NotaCreditoDebitoAgregar(oDoNotaCreditoDebito As DoNotaCreditoDebito, T
         oDONotaCreditoDebitoTipoNota.TipoNota = TipoNota
         If oNotaCreditoDebitoTipoNota.SeleccionarPorIdTipoNota(oDONotaCreditoDebitoTipoNota) Then
             oDONotaCreditoDebitoTipoNota.NroDocumento = oDoNotaCreditoDebito.NroDocumento
-            If Not oNotaCreditoDebitoTipoNota.Modificar(oDONotaCreditoDebitoTipoNota) Then
+            If Not oNotaCreditoDebitoTipoNota.modificar(oDONotaCreditoDebitoTipoNota) Then
                 bProcesoOK = False: ms_MensajeError = oNotaCreditoDebitoTipoNota.MensajeError: GoTo ErrorManager
             End If
         End If
@@ -6094,7 +6097,7 @@ Function NotaCreditoDebitoModificar(oDoNotaCreditoDebito As DoNotaCreditoDebito)
     
     oConexion.Open sighentidades.CadenaConexion
     Set oNotaCreditoDebito.Conexion = oConexion
-    If oNotaCreditoDebito.Modificar(oDoNotaCreditoDebito) Then
+    If oNotaCreditoDebito.modificar(oDoNotaCreditoDebito) Then
         NotaCreditoDebitoModificar = True
     Else
         ms_MensajeError = oNotaCreditoDebito.MensajeError
@@ -6679,7 +6682,7 @@ Function NotaCreditoDebitoTipoNotaModificar(oDONotaCreditoDebitoTipoNota As DONo
     
     oConexion.Open sighentidades.CadenaConexion
     Set oNotaCreditoDebitoTipoNota.Conexion = oConexion
-    If oNotaCreditoDebitoTipoNota.Modificar(oDONotaCreditoDebitoTipoNota) Then
+    If oNotaCreditoDebitoTipoNota.modificar(oDONotaCreditoDebitoTipoNota) Then
         NotaCreditoDebitoTipoNotaModificar = True
     Else
         ms_MensajeError = oNotaCreditoDebitoTipoNota.MensajeError
@@ -6752,7 +6755,7 @@ Function CajaNroDocumentoModificar(oDoCajaNroDocumento As DOCajaNroDocumento) As
     oConexion.Open sighentidades.CadenaConexion
     
     Set oCajaNroDocumento.Conexion = oConexion
-    If oCajaNroDocumento.Modificar(oDoCajaNroDocumento) Then
+    If oCajaNroDocumento.modificar(oDoCajaNroDocumento) Then
         CajaNroDocumentoModificar = True
     Else
         ms_MensajeError = oCajaNroDocumento.MensajeError

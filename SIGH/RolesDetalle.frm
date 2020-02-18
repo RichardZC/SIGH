@@ -1,7 +1,7 @@
 VERSION 5.00
 Object = "{0FAA9261-2AF4-11D3-9995-00A0CC3A27A9}#1.0#0"; "PVCombo.ocx"
 Object = "{5A9433E9-DD7B-4529-91B6-A5E8CA054615}#2.0#0"; "IGULTR~1.OCX"
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "tabctl32.ocx"
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
 Begin VB.Form RolesDetalle 
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "Form1"
@@ -749,8 +749,8 @@ Attribute VB_Exposed = False
 '
 '------------------------------------------------------------------------------------
 Option Explicit
-Dim mo_Teclado As New sighentidades.Teclado
-Dim mo_Formulario As New sighentidades.Formulario
+Dim mo_Teclado As New sighEntidades.Teclado
+Dim mo_Formulario As New sighEntidades.Formulario
 Dim mo_AdminSeguridad As New SIGHNegocios.ReglasDeSeguridad
 Dim mo_Roles As New DORol
 Dim ml_idUsuario As Long
@@ -768,7 +768,7 @@ Dim mo_RolItems As New Collection
 Dim mo_RolPermisos As New Collection
 Dim mo_RolReportes As New Collection
 
-Dim mo_Apariencia As New sighentidades.GridInfragistic
+Dim mo_Apariencia As New sighEntidades.GridInfragistic
 Dim mo_lnIdTablaLISTBARITEMS As Long
 Dim mo_lcNombrePc As String
 Property Let lcNombrePc(lValue As String)
@@ -841,7 +841,7 @@ Dim oCampos() As String
     With mrs_RolPermisos
         .AddNew
         .Fields!IdPermiso = oCampos(0)
-        .Fields!Descripcion = oCampos(1)
+        .Fields!descripcion = oCampos(1)
     End With
 
 
@@ -1062,11 +1062,11 @@ Sub CargarDatosAlFormulario()
  Select Case mi_Opcion
      Case sghAgregar
      Case sghModificar
-         CargarDatosALosControles
+         CargarDatosAlosControles
      Case sghConsultar
-         CargarDatosALosControles
+         CargarDatosAlosControles
      Case sghEliminar
-         CargarDatosALosControles
+         CargarDatosAlosControles
  End Select
 
  Select Case mi_Opcion
@@ -1273,7 +1273,7 @@ End Function
 '   Parámetros:     Ninguno
 '------------------------------------------------------------------------------------
 
-Sub CargarDatosALosControles()
+Sub CargarDatosAlosControles()
 
        Set mo_Roles = mo_AdminSeguridad.RolesSeleccionarPorId(Me.IdRol)
         If mo_AdminSeguridad.MensajeError <> "" Then
@@ -1327,18 +1327,18 @@ Dim lcSql As String
         End With
         rsRolItems.MoveNext
     Loop
-    mo_Apariencia.ConfigurarFilasBiColores Me.grdPermisos, sighentidades.GrillaConFilasBicolor
+    mo_Apariencia.ConfigurarFilasBiColores Me.grdPermisos, sighEntidades.GrillaConFilasBicolor
     
     Set rsPermisos = mo_AdminSeguridad.RolesPermisosSeleccionarPorRol(ml_IdRol)
     Do While Not rsPermisos.EOF
         With mrs_RolPermisos
             .AddNew
             .Fields!IdPermiso = rsPermisos!IdPermiso
-            .Fields!Descripcion = rsPermisos!Descripcion
+            .Fields!descripcion = rsPermisos!descripcion
         End With
         rsPermisos.MoveNext
     Loop
-    mo_Apariencia.ConfigurarFilasBiColores Me.grdPermisos2, sighentidades.GrillaConFilasBicolor
+    mo_Apariencia.ConfigurarFilasBiColores Me.grdPermisos2, sighEntidades.GrillaConFilasBicolor
     '
     Set rsRolReportes = mo_AdminSeguridad.RolesReportesSeleccionarXrol(ml_IdRol)
     If rsRolReportes.RecordCount > 0 Then
@@ -1355,7 +1355,7 @@ Dim lcSql As String
           rsRolReportes.MoveNext
        Loop
     End If
-    mo_Apariencia.ConfigurarFilasBiColores Me.grdReportes, sighentidades.GrillaConFilasBicolor
+    mo_Apariencia.ConfigurarFilasBiColores Me.grdReportes, sighEntidades.GrillaConFilasBicolor
     
 End Sub
 
@@ -1422,7 +1422,7 @@ Sub GenerarRecordsetTemporal()
           .Open
     End With
     Set Me.grdPermisos.DataSource = mrs_RolItems
-    mo_Apariencia.ConfigurarFilasBiColores Me.grdPermisos, sighentidades.GrillaConFilasBicolor
+    mo_Apariencia.ConfigurarFilasBiColores Me.grdPermisos, sighEntidades.GrillaConFilasBicolor
     
     With mrs_RolPermisos
           .Fields.Append "IdPermiso", adInteger, 4, adFldIsNullable
@@ -1432,7 +1432,7 @@ Sub GenerarRecordsetTemporal()
           .Open
     End With
     Set Me.grdPermisos2.DataSource = mrs_RolPermisos
-    mo_Apariencia.ConfigurarFilasBiColores Me.grdPermisos2, sighentidades.GrillaConFilasBicolor
+    mo_Apariencia.ConfigurarFilasBiColores Me.grdPermisos2, sighEntidades.GrillaConFilasBicolor
     
     With mrs_RolReporte
           .Fields.Append "IdReporte", adInteger, 4, adFldIsNullable
@@ -1444,7 +1444,7 @@ Sub GenerarRecordsetTemporal()
           .Open
     End With
     Set Me.grdReportes.DataSource = mrs_RolReporte
-    mo_Apariencia.ConfigurarFilasBiColores Me.grdReportes, sighentidades.GrillaConFilasBicolor
+    mo_Apariencia.ConfigurarFilasBiColores Me.grdReportes, sighEntidades.GrillaConFilasBicolor
 End Sub
 
 Private Sub btnAgregarDx_Click()

@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "tabctl32.ocx"
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
 Begin VB.Form PacienteDetalle 
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "Form1"
@@ -174,10 +174,10 @@ Attribute VB_Exposed = False
 '------------------------------------------------------------------------------------
 Option Explicit
 
-Dim mo_Teclado As New SIGHEntidades.Teclado
-Dim mo_Formulario As New SIGHEntidades.Formulario
-Dim ml_IdUsuario As Long
-Dim ml_idPaciente As Long
+Dim mo_Teclado As New sighEntidades.Teclado
+Dim mo_Formulario As New sighEntidades.Formulario
+Dim ml_idUsuario As Long
+Dim ml_IdPaciente As Long
 Dim ms_MensajeError As String
 Dim mi_Opcion As sghOpciones
 Dim mb_ExistenDatos As Boolean
@@ -225,17 +225,17 @@ End Property
 Property Get MensajeError() As String
    MensajeError = ms_MensajeError
 End Property
-Property Let IdUsuario(lValue As Long)
-   ml_IdUsuario = lValue
+Property Let idUsuario(lValue As Long)
+   ml_idUsuario = lValue
 End Property
-Property Get IdUsuario() As Long
-   IdUsuario = ml_IdUsuario
+Property Get idUsuario() As Long
+   idUsuario = ml_idUsuario
 End Property
 Property Let idPaciente(lValue As Long)
-   ml_idPaciente = lValue
+   ml_IdPaciente = lValue
 End Property
 Property Get idPaciente() As Long
-   idPaciente = ml_idPaciente
+   idPaciente = ml_IdPaciente
 End Property
 Property Let TipoServicio(sValue As sghTipoServicio)
    ml_TipoServicio = sValue
@@ -312,8 +312,8 @@ Sub ImprimeFiliacion(lbCargaDatos As Boolean)
     If lbCargaDatos = True Then
        CargaDatosAlObjetosDeDatos
     End If
-    oEdad = SIGHEntidades.CalcularEdad(mo_Pacientes.FechaNacimiento, mo_Historia.fechacreacion)
-    oImprime.ImprimeEnFormatoDeFiliacionParaHistoriaClinica ml_idPaciente, oEdad.Edad, oEdad.TipoEdad, Me.hwnd
+    oEdad = sighEntidades.CalcularEdad(mo_Pacientes.FechaNacimiento, mo_Historia.fechacreacion)
+    oImprime.ImprimeEnFormatoDeFiliacionParaHistoriaClinica ml_IdPaciente, oEdad.Edad, oEdad.TipoEdad, Me.hwnd
     Set oImprime = Nothing
 End Sub
 
@@ -350,12 +350,12 @@ Sub Form_Load()
         mb_AlPulsarClicEnACEPTARdebeSalirDeVentana = False
         ucPacientesDetalle1.meHwnd = Me.hwnd
         ucPacientesDetalle1.Opcion = mi_Opcion
-        ucPacientesDetalle1.inicializar
+        ucPacientesDetalle1.Inicializar
         '
         UcPacientesSunasa1.idTipoFinanciamiento = sghTrabajaSeguroSIS
         UcPacientesSunasa1.Opcion = mi_Opcion
-        UcPacientesSunasa1.idPaciente = ml_idPaciente
-        UcPacientesSunasa1.inicializar
+        UcPacientesSunasa1.idPaciente = ml_IdPaciente
+        UcPacientesSunasa1.Inicializar
         UcPacientesSunasa1.YaNoTieneSeguro
         '
        Select Case mi_Opcion
@@ -446,7 +446,7 @@ Private Sub btnAceptar_Click()
                 If AgregarDatos() Then
                      GrabaParametro8 "paso AGREGARDATOS"
                      If mb_AlPulsarClicEnACEPTARdebeSalirDeVentana = True Then
-                        ml_idPaciente = mo_Pacientes.idPaciente
+                        ml_IdPaciente = mo_Pacientes.idPaciente
                         Me.Visible = False
                      Else
                         GrabaParametro8 "antes de msgbox"
@@ -459,14 +459,14 @@ Private Sub btnAceptar_Click()
                         Dim oConexion As New Connection
                         oConexion.CommandTimeout = 300
                         oConexion.CursorLocation = adUseClient
-                        oConexion.Open SIGHEntidades.CadenaConexion
+                        oConexion.Open sighEntidades.CadenaConexion
                         mo_ReglasArchivoClinico.generadorNroHistoriaClinicaActualizaNroAutomaticoDeHistoriaClinica oConexion
                         oConexion.Close
                         Set oConexion = Nothing
                         '
                         
                         If MsgBox("¿Imprime Datos del paciente (Filiación)  ?", vbYesNo, Me.Caption) = vbYes Then
-                           ml_idPaciente = mo_Pacientes.idPaciente
+                           ml_IdPaciente = mo_Pacientes.idPaciente
                            ImprimeFiliacion False
                         End If
                         ucPacientesDetalle1.LimpiarDatosDePaciente wxParametro211, ldFechaActualServidor
@@ -484,7 +484,10 @@ Private Sub btnAceptar_Click()
        If ValidarDatosObligatorios() Then
             CargaDatosAlObjetosDeDatos
             If ValidarReglas() Then
+           
                 If ModificarDatos() Then
+                    'AGREGAR CODIGO PARA MODIFICAR datos en FUA y pasar parametro mo_Paciente
+                    
                     If mo_Pacientes.FichaFamiliar = "" Then
                        MsgBox "Los datos se modificaron correctamente" & Chr(13) & "N° Historia Clínica: " & HCigualDNI_DevuelveHistoriaConCerosIzquierda(Trim(Str(mo_Pacientes.NroHistoriaClinica)), False), vbInformation, Me.Caption
                     Else
@@ -524,7 +527,7 @@ Sub GrabaParametro8(lcValorTExto As String)
     Dim lcSql As String
     oConexion1.CommandTimeout = 900
     oConexion1.CursorLocation = adUseClient
-    oConexion1.Open SIGHEntidades.CadenaConexion
+    oConexion1.Open sighEntidades.CadenaConexion
     lcSql = "update parametros set valorTexto='" & lcValorTExto & "' where idparametro=8"
     oRsTmp1.Open lcSql, oConexion1, adOpenKeyset, adLockOptimistic
     oConexion1.Close
@@ -648,10 +651,10 @@ End Function
 
 Sub CargaDatosAlObjetosDeDatos()
 
-    ucPacientesDetalle1.IdUsuario = ml_IdUsuario
+    ucPacientesDetalle1.idUsuario = ml_idUsuario
     ucPacientesDetalle1.CargarDatosAlObjetoDatos mo_Pacientes, mo_Historia, mo_DoPacientesDatosAdd
     '
-    Me.UcPacientesSunasa1.IdUsuario = ml_IdUsuario
+    Me.UcPacientesSunasa1.idUsuario = ml_idUsuario
     Me.UcPacientesSunasa1.CargarDatosAlObjetoDatos oDoSunasaPacientesHistoricos
 End Sub
 
@@ -665,7 +668,7 @@ Sub CargarDatosAlosControles()
         Dim oConexion As New Connection
         oConexion.CommandTimeout = 300
         oConexion.CursorLocation = adUseClient
-        oConexion.Open SIGHEntidades.CadenaConexion
+        oConexion.Open sighEntidades.CadenaConexion
         
         
         ucPacientesDetalle1.idPaciente = Me.idPaciente

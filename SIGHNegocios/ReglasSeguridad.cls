@@ -463,6 +463,12 @@ End Function
 
 'debb-19/03/2018
 Function EmpleadosAutenticar(sUsuario As String) As ADODB.Recordset
+'SCCQ 10/02/2019 Cambio6 Inicio
+Dim contador As Integer
+contador = 0
+Inicio:
+contador = contador + 1
+'SCCQ 10/02/2019 Cambio6 Fin
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New Empleados
 Dim lnErrorEnOpen As Boolean
@@ -488,10 +494,22 @@ ErrMens:
    '    sighentidades.CadenaConexion = sighentidades.ConexionCopia
    '    Resume
    ' Else
-       MsgBox "Error en cadena 'CadenaConexion' del regedit" & Chr(13) & Err.Number & Chr(13) & Err.Description
+       '
    ' End If
+     'SCCQ 10/02/2019 Cambio6 Inicio
+        If contador <= 1 Then
+            'Si se genera un error
+            Dim oReg As New sighentidades.Configuracion
+            oReg.Acceso = "Acceso1"
+            '*********************
+        Else
+    'SCCQ 10/02/2019 Cambio6 Fin
+            MsgBox "Error en cadena 'CadenaConexion' del regedit" & Chr(13) & Err.Number & Chr(13) & Err.Description
+    'SCCQ 10/02/2019 Cambio6 Inicio
+        End If
+    GoTo Inicio
+    'SCCQ 10/02/2019 Cambio6 Fin
 End Function
-
 Function EmpleadosAutenticarMaquina(sUsuario As String, nMaquina As String) As ADODB.Recordset
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New Empleados

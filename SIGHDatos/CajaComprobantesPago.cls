@@ -81,7 +81,7 @@ Dim oParameter As ADODB.Parameter
            Set oParameter = .CreateParameter("@Dctos", adCurrency, adParamInput, 0, oTabla.Dctos): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@Adelantos", adCurrency, adParamInput, 0, oTabla.Adelantos): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@idTipoFinanciamiento", adInteger, adParamInput, 0, IIf(oTabla.idTipoFinanciamiento = 0, Null, oTabla.idTipoFinanciamiento)): oParameter.Precision = 10: oParameter.NumericScale = 0: .Parameters.Append oParameter
-           Set oParameter = .CreateParameter("@DNI", adVarChar, adParamInput, 11, oTabla.dni): .Parameters.Append oParameter
+           Set oParameter = .CreateParameter("@DNI", adVarChar, adParamInput, 11, oTabla.DNI): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@TieneCredito", adVarChar, adParamInput, 11, IIf(oTabla.TieneCredito = "", Null, oTabla.TieneCredito)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@fechaEmision", adDBTimeStamp, adParamInput, 0, IIf(oTabla.fechaEmision = 0, Null, oTabla.fechaEmision)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@SunatTotalIgv", adCurrency, adParamInput, 0, oTabla.SunatTotalIgv): .Parameters.Append oParameter
@@ -180,7 +180,7 @@ Dim oParameter As ADODB.Parameter
            Set oParameter = .CreateParameter("@idCaja", adInteger, adParamInput, 0, IIf(oTabla.IdCaja = 0, Null, oTabla.IdCaja)): oParameter.Precision = 10: oParameter.NumericScale = 0: .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@idTurno", adInteger, adParamInput, 0, IIf(oTabla.IdTurno = 0, Null, oTabla.IdTurno)): oParameter.Precision = 10: oParameter.NumericScale = 0: .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@idCajero", adInteger, adParamInput, 0, IIf(oTabla.IdCajero = 0, Null, oTabla.IdCajero)): oParameter.Precision = 10: oParameter.NumericScale = 0: .Parameters.Append oParameter
-           Set oParameter = .CreateParameter("@DNI", adVarChar, adParamInput, 11, oTabla.dni): .Parameters.Append oParameter
+           Set oParameter = .CreateParameter("@DNI", adVarChar, adParamInput, 11, oTabla.DNI): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@TieneCredito", adVarChar, adParamInput, 11, IIf(oTabla.TieneCredito = "", Null, oTabla.TieneCredito)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@fechaEmision", adDBTimeStamp, adParamInput, 0, IIf(oTabla.fechaEmision = 0, Null, oTabla.fechaEmision)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@SunatTotalIgv", adCurrency, adParamInput, 0, oTabla.SunatTotalIgv): .Parameters.Append oParameter
@@ -256,7 +256,7 @@ Sub ActualizaTabla(ByRef oTabla As DOCajaComprobantesPago, oRecordset As Records
        oTabla.Exoneraciones = IIf(IsNull(oRecordset!Exoneraciones), 0, oRecordset!Exoneraciones)
        oTabla.Adelantos = IIf(IsNull(oRecordset!Adelantos), 0, oRecordset!Adelantos)
        oTabla.idTipoFinanciamiento = IIf(IsNull(oRecordset!idTipoFinanciamiento), 0, oRecordset!idTipoFinanciamiento)
-       oTabla.dni = IIf(IsNull(oRecordset!dni), "", oRecordset!dni)
+       oTabla.DNI = IIf(IsNull(oRecordset!DNI), "", oRecordset!DNI)
        oTabla.TieneCredito = IIf(IsNull(oRecordset!TieneCredito), "", oRecordset!TieneCredito)
        oTabla.fechaEmision = IIf(IsNull(oRecordset!fechaEmision), 0, oRecordset!fechaEmision)
        oTabla.SunatTotalIgv = IIf(IsNull(oRecordset!SunatTotalIgv), 0, oRecordset!SunatTotalIgv)

@@ -21,6 +21,7 @@ Begin VB.UserControl ucGestionCaja
       _ExtentX        =   23257
       _ExtentY        =   16484
       _Version        =   393216
+      Tab             =   1
       TabHeight       =   520
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "Tahoma"
@@ -33,48 +34,73 @@ Begin VB.UserControl ucGestionCaja
       EndProperty
       TabCaption(0)   =   "Gestión de caja"
       TabPicture(0)   =   "ucGestionCaja.ctx":0000
-      Tab(0).ControlEnabled=   -1  'True
-      Tab(0).Control(0)=   "lblNombre"
-      Tab(0).Control(0).Enabled=   0   'False
-      Tab(0).Control(1)=   "frmResumenCaja"
-      Tab(0).Control(1).Enabled=   0   'False
-      Tab(0).Control(2)=   "frmGestionCaja"
-      Tab(0).Control(2).Enabled=   0   'False
-      Tab(0).Control(3)=   "fraCajero"
-      Tab(0).Control(3).Enabled=   0   'False
+      Tab(0).ControlEnabled=   0   'False
+      Tab(0).Control(0)=   "fraCajero"
+      Tab(0).Control(1)=   "frmGestionCaja"
+      Tab(0).Control(2)=   "frmResumenCaja"
+      Tab(0).Control(3)=   "lblNombre"
       Tab(0).ControlCount=   4
       TabCaption(1)   =   "Registro de comprobante"
       TabPicture(1)   =   "ucGestionCaja.ctx":001C
-      Tab(1).ControlEnabled=   0   'False
+      Tab(1).ControlEnabled=   -1  'True
       Tab(1).Control(0)=   "Label8"
+      Tab(1).Control(0).Enabled=   0   'False
       Tab(1).Control(1)=   "optPagarEstadoDeCTAFarmacia"
+      Tab(1).Control(1).Enabled=   0   'False
       Tab(1).Control(2)=   "optPagarEstadoDeCuenta"
+      Tab(1).Control(2).Enabled=   0   'False
       Tab(1).Control(3)=   "cmbOrdenProvenienteDe"
+      Tab(1).Control(3).Enabled=   0   'False
       Tab(1).Control(4)=   "OptOrdenFarmacia"
+      Tab(1).Control(4).Enabled=   0   'False
       Tab(1).Control(5)=   "optRealizarDevolucion"
+      Tab(1).Control(5).Enabled=   0   'False
       Tab(1).Control(6)=   "optReimprimirComprobante"
+      Tab(1).Control(6).Enabled=   0   'False
       Tab(1).Control(7)=   "optCobrarOrdenExistente"
+      Tab(1).Control(7).Enabled=   0   'False
       Tab(1).Control(8)=   "txtFechaApertura"
+      Tab(1).Control(8).Enabled=   0   'False
       Tab(1).Control(9)=   "txtNombres"
+      Tab(1).Control(9).Enabled=   0   'False
       Tab(1).Control(10)=   "fraPaciente"
+      Tab(1).Control(10).Enabled=   0   'False
       Tab(1).Control(11)=   "Frame3"
+      Tab(1).Control(11).Enabled=   0   'False
       Tab(1).Control(12)=   "Frame4"
+      Tab(1).Control(12).Enabled=   0   'False
       Tab(1).Control(13)=   "Frame5"
+      Tab(1).Control(13).Enabled=   0   'False
       Tab(1).Control(14)=   "fraOpciones"
+      Tab(1).Control(14).Enabled=   0   'False
       Tab(1).Control(15)=   "ucFacturacionProductos"
+      Tab(1).Control(15).Enabled=   0   'False
       Tab(1).Control(16)=   "UcFacturacionContado1"
+      Tab(1).Control(16).Enabled=   0   'False
       Tab(1).Control(17)=   "frmPreventaServ"
+      Tab(1).Control(17).Enabled=   0   'False
       Tab(1).Control(18)=   "cmbFechaIngreso"
+      Tab(1).Control(18).Enabled=   0   'False
       Tab(1).Control(19)=   "cmbIdPuntoDeCarga"
+      Tab(1).Control(19).Enabled=   0   'False
       Tab(1).Control(20)=   "cmbIdTurno"
+      Tab(1).Control(20).Enabled=   0   'False
       Tab(1).Control(21)=   "cmbIdCaja"
+      Tab(1).Control(21).Enabled=   0   'False
       Tab(1).Control(22)=   "Frame1"
+      Tab(1).Control(22).Enabled=   0   'False
       Tab(1).Control(23)=   "cmdPendientesFarmacia"
+      Tab(1).Control(23).Enabled=   0   'False
       Tab(1).Control(24)=   "cmdPendientesPago"
+      Tab(1).Control(24).Enabled=   0   'False
       Tab(1).Control(25)=   "Frame2"
+      Tab(1).Control(25).Enabled=   0   'False
       Tab(1).Control(26)=   "tabFactProductosPorCuenta"
+      Tab(1).Control(26).Enabled=   0   'False
       Tab(1).Control(27)=   "FraServHosp"
+      Tab(1).Control(27).Enabled=   0   'False
       Tab(1).Control(28)=   "ucGestionCajaFact1"
+      Tab(1).Control(28).Enabled=   0   'False
       Tab(1).ControlCount=   29
       TabCaption(2)   =   "Devolución por Nota de Crédito (F1)"
       TabPicture(2)   =   "ucGestionCaja.ctx":0038
@@ -84,7 +110,7 @@ Begin VB.UserControl ucGestionCaja
       Tab(2).ControlCount=   2
       Begin SISGalenPlus.ucGestionCajaFact ucGestionCajaFact1 
          Height          =   1545
-         Left            =   -74850
+         Left            =   150
          TabIndex        =   177
          Top             =   5370
          Visible         =   0   'False
@@ -103,7 +129,7 @@ Begin VB.UserControl ucGestionCaja
             Strikethrough   =   0   'False
          EndProperty
          Height          =   1395
-         Left            =   120
+         Left            =   -74880
          TabIndex        =   159
          Top             =   840
          Width           =   12900
@@ -375,7 +401,7 @@ Begin VB.UserControl ucGestionCaja
          EndProperty
          ForeColor       =   &H00000000&
          Height          =   6135
-         Left            =   120
+         Left            =   -74880
          TabIndex        =   156
          Top             =   2250
          Width           =   12975
@@ -427,7 +453,7 @@ Begin VB.UserControl ucGestionCaja
       Begin VB.Frame frmResumenCaja 
          BorderStyle     =   0  'None
          Height          =   855
-         Left            =   120
+         Left            =   -74880
          TabIndex        =   145
          Top             =   8370
          Width           =   12975
@@ -1262,7 +1288,7 @@ Begin VB.UserControl ucGestionCaja
       End
       Begin VB.Frame FraServHosp 
          Height          =   2325
-         Left            =   -70530
+         Left            =   4470
          TabIndex        =   95
          Top             =   360
          Width           =   1875
@@ -1472,7 +1498,7 @@ Begin VB.UserControl ucGestionCaja
       End
       Begin TabDlg.SSTab tabFactProductosPorCuenta 
          Height          =   3300
-         Left            =   -74880
+         Left            =   120
          TabIndex        =   39
          Top             =   4200
          Visible         =   0   'False
@@ -1676,7 +1702,7 @@ Begin VB.UserControl ucGestionCaja
       End
       Begin VB.Frame Frame2 
          Height          =   2325
-         Left            =   -74820
+         Left            =   180
          TabIndex        =   43
          Top             =   360
          Width           =   4275
@@ -1906,7 +1932,7 @@ Begin VB.UserControl ucGestionCaja
             Strikethrough   =   0   'False
          EndProperty
          Height          =   315
-         Left            =   -72150
+         Left            =   2850
          TabIndex        =   78
          ToolTipText     =   "Busca ORDENES pendientes de Pago"
          Top             =   930
@@ -1925,7 +1951,7 @@ Begin VB.UserControl ucGestionCaja
             Strikethrough   =   0   'False
          EndProperty
          Height          =   315
-         Left            =   -72150
+         Left            =   2850
          TabIndex        =   77
          ToolTipText     =   "Busca PREVENTAS pendientes de Pago"
          Top             =   1290
@@ -1943,7 +1969,7 @@ Begin VB.UserControl ucGestionCaja
             Strikethrough   =   0   'False
          EndProperty
          Height          =   2355
-         Left            =   -68640
+         Left            =   6360
          TabIndex        =   18
          Top             =   330
          Width           =   6600
@@ -2277,7 +2303,7 @@ Begin VB.UserControl ucGestionCaja
             Strikethrough   =   0   'False
          EndProperty
          Height          =   315
-         Left            =   -69330
+         Left            =   5670
          Style           =   2  'Dropdown List
          TabIndex        =   68
          Top             =   1050
@@ -2294,7 +2320,7 @@ Begin VB.UserControl ucGestionCaja
             Strikethrough   =   0   'False
          EndProperty
          Height          =   315
-         Left            =   -67380
+         Left            =   7620
          Style           =   2  'Dropdown List
          TabIndex        =   67
          Top             =   1050
@@ -2311,7 +2337,7 @@ Begin VB.UserControl ucGestionCaja
             Strikethrough   =   0   'False
          EndProperty
          Height          =   315
-         Left            =   -65970
+         Left            =   9030
          Locked          =   -1  'True
          Style           =   2  'Dropdown List
          TabIndex        =   66
@@ -2329,7 +2355,7 @@ Begin VB.UserControl ucGestionCaja
             Strikethrough   =   0   'False
          EndProperty
          Height          =   330
-         Left            =   -63810
+         Left            =   11190
          Locked          =   -1  'True
          TabIndex        =   65
          Top             =   1050
@@ -2337,7 +2363,7 @@ Begin VB.UserControl ucGestionCaja
       End
       Begin VB.Frame frmPreventaServ 
          Height          =   915
-         Left            =   -73230
+         Left            =   1770
          TabIndex        =   57
          Top             =   8340
          Visible         =   0   'False
@@ -2380,7 +2406,7 @@ Begin VB.UserControl ucGestionCaja
       End
       Begin SISGalenPlus.UcFacturacionContado UcFacturacionContado1 
          Height          =   2865
-         Left            =   -74820
+         Left            =   180
          TabIndex        =   48
          Top             =   4860
          Visible         =   0   'False
@@ -2390,7 +2416,7 @@ Begin VB.UserControl ucGestionCaja
       End
       Begin SISGalenPlus.ucFacturacionItems ucFacturacionProductos 
          Height          =   3540
-         Left            =   -74850
+         Left            =   150
          TabIndex        =   38
          Top             =   4200
          Width           =   12855
@@ -2400,7 +2426,7 @@ Begin VB.UserControl ucGestionCaja
       Begin VB.Frame fraOpciones 
          BorderStyle     =   0  'None
          Height          =   345
-         Left            =   -70440
+         Left            =   4560
          TabIndex        =   37
          Top             =   60
          Width           =   4125
@@ -2460,7 +2486,7 @@ Begin VB.UserControl ucGestionCaja
             Strikethrough   =   0   'False
          EndProperty
          Height          =   915
-         Left            =   -70470
+         Left            =   4530
          TabIndex        =   30
          Top             =   8370
          Width           =   8475
@@ -2585,7 +2611,7 @@ Begin VB.UserControl ucGestionCaja
             Strikethrough   =   0   'False
          EndProperty
          Height          =   705
-         Left            =   -74850
+         Left            =   150
          TabIndex        =   19
          Top             =   7740
          Width           =   12870
@@ -2826,7 +2852,7 @@ Begin VB.UserControl ucGestionCaja
       End
       Begin VB.Frame Frame3 
          Height          =   915
-         Left            =   -74850
+         Left            =   150
          TabIndex        =   17
          Top             =   8340
          Width           =   1590
@@ -2863,7 +2889,7 @@ Begin VB.UserControl ucGestionCaja
             Strikethrough   =   0   'False
          EndProperty
          Height          =   1530
-         Left            =   -74850
+         Left            =   150
          TabIndex        =   14
          Top             =   2625
          Width           =   12840
@@ -3130,7 +3156,7 @@ Begin VB.UserControl ucGestionCaja
             Strikethrough   =   0   'False
          EndProperty
          Height          =   330
-         Left            =   -68910
+         Left            =   6090
          Locked          =   -1  'True
          MaxLength       =   30
          TabIndex        =   70
@@ -3149,7 +3175,7 @@ Begin VB.UserControl ucGestionCaja
             Strikethrough   =   0   'False
          EndProperty
          Height          =   315
-         Left            =   -68250
+         Left            =   6750
          MaxLength       =   30
          TabIndex        =   71
          Top             =   1470
@@ -3158,7 +3184,7 @@ Begin VB.UserControl ucGestionCaja
       End
       Begin Threed.SSOption optCobrarOrdenExistente 
          Height          =   255
-         Left            =   -74820
+         Left            =   180
          TabIndex        =   73
          Top             =   990
          Width           =   3225
@@ -3178,7 +3204,7 @@ Begin VB.UserControl ucGestionCaja
       End
       Begin Threed.SSOption optReimprimirComprobante 
          Height          =   255
-         Left            =   -71670
+         Left            =   3330
          TabIndex        =   74
          Top             =   1890
          Visible         =   0   'False
@@ -3199,7 +3225,7 @@ Begin VB.UserControl ucGestionCaja
       End
       Begin Threed.SSOption optRealizarDevolucion 
          Height          =   255
-         Left            =   -71670
+         Left            =   3330
          TabIndex        =   75
          Top             =   2160
          Visible         =   0   'False
@@ -3220,7 +3246,7 @@ Begin VB.UserControl ucGestionCaja
       End
       Begin Threed.SSOption OptOrdenFarmacia 
          Height          =   255
-         Left            =   -74820
+         Left            =   180
          TabIndex        =   76
          Top             =   1365
          Width           =   3285
@@ -3250,7 +3276,7 @@ Begin VB.UserControl ucGestionCaja
          EndProperty
          Height          =   315
          ItemData        =   "ucGestionCaja.ctx":A869
-         Left            =   -71220
+         Left            =   3780
          List            =   "ucGestionCaja.ctx":A873
          TabIndex        =   79
          Text            =   "Combo1"
@@ -3260,7 +3286,7 @@ Begin VB.UserControl ucGestionCaja
       End
       Begin Threed.SSOption optPagarEstadoDeCuenta 
          Height          =   255
-         Left            =   -74790
+         Left            =   210
          TabIndex        =   89
          Top             =   2085
          Width           =   2955
@@ -3280,7 +3306,7 @@ Begin VB.UserControl ucGestionCaja
       End
       Begin Threed.SSOption optPagarEstadoDeCTAFarmacia 
          Height          =   255
-         Left            =   -74820
+         Left            =   180
          TabIndex        =   90
          Top             =   1710
          Width           =   3495
@@ -3311,7 +3337,7 @@ Begin VB.UserControl ucGestionCaja
             Strikethrough   =   0   'False
          EndProperty
          Height          =   225
-         Left            =   -69330
+         Left            =   5670
          TabIndex        =   69
          Top             =   840
          Width           =   6915
@@ -3330,7 +3356,7 @@ Begin VB.UserControl ucGestionCaja
          EndProperty
          ForeColor       =   &H00FFFFFF&
          Height          =   465
-         Left            =   120
+         Left            =   -74880
          TabIndex        =   13
          Top             =   390
          Width           =   12945
@@ -5595,6 +5621,7 @@ End Function
 
 Private Sub txtNroCuenta_KeyPress(KeyAscii As Integer)
    If KeyAscii = 13 Then
+      
       If mo_Teclado.TextoEsSoloNumeros(txtNroCuenta.Text) Then
             If Len(txtNroCuenta.Text) > 9 Then
                MsgBox "El Nro Cuenta no debe pasar de 9 nùmeros", vbInformation, "caja"
@@ -5642,6 +5669,7 @@ Sub BuscaPagoConHistoriaUsandoNroCuenta()
     txtRazonSocial.Text = txtNombres
     ml_IdPaciente = rsRespuesta!idPaciente
     rsRespuesta.Close
+    'Carga al objeto mo_DoAtencion valores de la ultima atención registrada en la tabla Atenciones de la BD
     Set mo_DoAtencion = mo_ReglasFacturacion.SeleccionarUltimaAtencion(ml_IdPaciente, ml_idCuentaAtencion)
     mo_cmbIdTipoFinanciamiento.BoundText = mo_DoAtencion.IdFormaPago
     If mo_cmbIdTipoFinanciamiento.BoundText = "" Then
@@ -6338,7 +6366,8 @@ Sub AgregarComprobantePorCuentaTotal()
            optServicios.Value = False
            txtExonerado.Text = txtCtaFarmExonerado.Text
            lnTotalGrid = Val(txtCtaFarmTfarmacia.Text)
-           CargaDatosDeTotalesDeLaCuenta ml_idCuentaAtencion
+           'CALCULO EN FARMACIA
+           CargaDatosDeTotalesDeLaCuenta ml_idCuentaAtencion 'Calcula el pago por adelanto primero por farmacia
            If ValidarDatosObligatorios() Then
                 CargaDatosAlObjetosDeDatos
                 If AgregarDatosPorCuentaTotal() Then
@@ -8585,7 +8614,7 @@ Dim oConexion As New Connection
                 ucFactBienesPorCuenta.TiposFinanciamiento = "1,2,3,5,9"
                 ucFactBienesPorCuenta.idCuentaAtencion = lIdCuentaAtencion
                 ucFactBienesPorCuenta.TipoProducto = sghbien
-                ucFactBienesPorCuenta.CargaProductosPorIdCuentaAtencion
+                ucFactBienesPorCuenta.CargaProductosPorIdCuentaAtencion 'Carga productos consumido en farmacia
                 txtCtaFarmExonerado.Text = ucFactBienesPorCuenta.DevuelveTotalImporteExonerado()
                 tabFactProductosPorCuenta.TabVisible(1) = True
                 tabFactProductosPorCuenta.Tab = 1
@@ -8595,7 +8624,7 @@ Dim oConexion As New Connection
                 ucFactServiciosPorCuenta.TiposFinanciamiento = "1,2,3,5,9"
                 ucFactServiciosPorCuenta.idCuentaAtencion = lIdCuentaAtencion
                 ucFactServiciosPorCuenta.TipoProducto = sghServicio
-                ucFactServiciosPorCuenta.CargaProductosPorIdCuentaAtencion
+                ucFactServiciosPorCuenta.CargaProductosPorIdCuentaAtencion 'Carga servicios consumidos
                 txtCtaServExonerado.Text = ucFactServiciosPorCuenta.DevuelveTotalImporteExonerado()
                 tabFactProductosPorCuenta.TabVisible(0) = True
                 tabFactProductosPorCuenta.Tab = 0
@@ -8606,6 +8635,7 @@ Dim oConexion As New Connection
             txtEfectivo.Text = txtTotal.Text
             'debb-17/02/2011
         End If
+        'Consulta el tipo de financiamiento por lIdCuentaAtencion de la tabla Tipofinanciamiento
         Set oRsTmp = mo_AdminAdmision.atencionesXtipoFinanciamiento(lIdCuentaAtencion, oConexion)
         If oRsTmp.RecordCount > 0 Then
            mo_cmbIdTipoFinanciamiento.BoundText = oRsTmp.Fields!IdFormaPago
@@ -8637,22 +8667,29 @@ Sub CargaDatosDeTotalesDeLaCuenta(lIdCuentaAtencion As Long)
     oConexion.Open sighEntidades.CadenaConexion
 
     oConexion.CursorLocation = adUseClient
+    'Cargar a lnTotalDctosPorAdelantos el total de pagos a cuenta(adelantos)
     lnTotalDctosPorAdelantos = mo_AdminCaja.RetornaTotalDescuentosPorAdelantosSegunCuenta(lIdCuentaAtencion, oConexion)
     lnPagosXdevoluciones = mo_ReglasFacturacion.RetornaImporteDePagosXdevolucionesPorNroCuenta(ml_idCuentaAtencion, oConexion)
     lnTotalDctosPorAdelantos = lnTotalDctosPorAdelantos - lnPagosXdevoluciones
-    If (lnTotalDctosPorAdelantos) > 0 Then
+    If (lnTotalDctosPorAdelantos) > 0 Then 'Si se registraron adelantos para la cuenta
+    'Consulta el monto total de lo consumido en farmacia
        lnTotalPagarFarmacia = mo_ReglasFacturacion.RetornaTotalPagosFarmaciaPendientesPorNroCuentadebb(lIdCuentaAtencion)
        If tabFactProductosPorCuenta.Tab = 0 Then
           '****SERVICIOS: disminuir consumo de FARMACIA del Adelanto
           txtPagoACuenta.Text = lnTotalDctosPorAdelantos - lnTotalPagarFarmacia
-       Else
+       Else 'Cuando tabFactProductosPorCuenta.Tab = 1 -> es consumo en farmacia
           '****FARMACIA:
-          lnTotalGrid = lnTotalPagarFarmacia
-          If (lnTotalDctosPorAdelantos) > lnTotalPagarFarmacia Then
-             txtPagoACuenta.Text = lnTotalPagarFarmacia
+          lnTotalGrid = lnTotalPagarFarmacia 'lnTotalPagarFarmacia=135.12
+          If (lnTotalDctosPorAdelantos) > lnTotalPagarFarmacia Then 'lnTotalDctosPorAdelantos=500
+            'Si el el pago adelantado es mayor a lo consumido en farmacia, txtPagoACuenta será el total a lo consumido en farmacia
+             txtPagoACuenta.Text = lnTotalPagarFarmacia 'txtPagoACuenta.Text= 135.12
           Else
+          'Si el pago adelantado es menor (Ejm: 100) que lo consumido en farmacia (135.12)
+          'entonces el txtPagoACuenta = al pago por adelanto --> txtPagoACuenta.Text=100
              txtPagoACuenta.Text = lnTotalDctosPorAdelantos
           End If
+          'Aqui se declara la variable que tendra el pagoAdelantadoFarmacia= txtPagoACuenta.Text =135.12
+          'Comrpobar si se puede insertar aqui el procedimiento almacenado
        End If
     End If
     ActualizaTotalApagar

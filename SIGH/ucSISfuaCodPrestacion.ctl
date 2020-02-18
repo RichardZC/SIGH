@@ -146,8 +146,8 @@ Attribute VB_Exposed = False
 '
 '------------------------------------------------------------------------------------
 Option Explicit
-Dim mo_Teclado As New sighentidades.Teclado
-Dim mo_Formulario As New sighentidades.Formulario
+Dim mo_Teclado As New sighEntidades.Teclado
+Dim mo_Formulario As New sighEntidades.Formulario
 Dim mo_ReglasSISgalenhos As New SIGHSis.ReglasSISgalenhos
 Dim oRsPrestaciones As New Recordset
 Dim mo_CodigoPrestacion As String

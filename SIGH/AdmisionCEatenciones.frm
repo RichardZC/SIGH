@@ -268,11 +268,11 @@ Begin VB.Form AdmisionCEatenciones
       TabCaption(2)   =   "3.3 Ordenes Médicas"
       TabPicture(2)   =   "AdmisionCEatenciones.frx":605F
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "txtCitaExClinicos"
-      Tab(2).Control(1)=   "btnImprimir"
+      Tab(2).Control(0)=   "btnAgregaApoyoDx"
+      Tab(2).Control(1)=   "UcRecetas1"
       Tab(2).Control(2)=   "btnImprimirOrden"
-      Tab(2).Control(3)=   "UcRecetas1"
-      Tab(2).Control(4)=   "btnAgregaApoyoDx"
+      Tab(2).Control(3)=   "btnImprimir"
+      Tab(2).Control(4)=   "txtCitaExClinicos"
       Tab(2).ControlCount=   5
       TabCaption(3)   =   "3.4 Tratamiento"
       TabPicture(3)   =   "AdmisionCEatenciones.frx":607B
@@ -282,18 +282,12 @@ Begin VB.Form AdmisionCEatenciones
       TabCaption(4)   =   "3.5 Destino Atención"
       TabPicture(4)   =   "AdmisionCEatenciones.frx":6097
       Tab(4).ControlEnabled=   0   'False
-      Tab(4).Control(0)=   "lblNroAtencion"
-      Tab(4).Control(0).Enabled=   0   'False
-      Tab(4).Control(1)=   "ucCitasLista1"
-      Tab(4).Control(1).Enabled=   0   'False
-      Tab(4).Control(2)=   "UcEpisodioClinico1"
-      Tab(4).Control(2).Enabled=   0   'False
-      Tab(4).Control(3)=   "Frame1"
-      Tab(4).Control(3).Enabled=   0   'False
-      Tab(4).Control(4)=   "fraDatosReferenciaDestino"
-      Tab(4).Control(4).Enabled=   0   'False
-      Tab(4).Control(5)=   "Frame11"
-      Tab(4).Control(5).Enabled=   0   'False
+      Tab(4).Control(0)=   "Frame11"
+      Tab(4).Control(1)=   "fraDatosReferenciaDestino"
+      Tab(4).Control(2)=   "Frame1"
+      Tab(4).Control(3)=   "UcEpisodioClinico1"
+      Tab(4).Control(4)=   "ucCitasLista1"
+      Tab(4).Control(5)=   "lblNroAtencion"
       Tab(4).ControlCount=   6
       Begin VB.CommandButton btnAgregaApoyoDx 
          DisabledPicture =   "AdmisionCEatenciones.frx":60B3
@@ -957,8 +951,8 @@ Begin VB.Form AdmisionCEatenciones
          TabIndex        =   49
          Top             =   315
          Width           =   11685
-         _extentx        =   20611
-         _extenty        =   16219
+         _ExtentX        =   20611
+         _ExtentY        =   16219
       End
       Begin VB.CommandButton btnImprimirOrden 
          BeginProperty Font 
@@ -1515,8 +1509,8 @@ Begin VB.Form AdmisionCEatenciones
             Top             =   2385
             Visible         =   0   'False
             Width           =   9090
-            _extentx        =   20558
-            _extenty        =   12515
+            _ExtentX        =   20558
+            _ExtentY        =   12515
          End
          Begin SISGalenPlus.ucPerinatalAS ucPerinatalAS1 
             Height          =   1440
@@ -1808,8 +1802,8 @@ Begin VB.Form AdmisionCEatenciones
          TabIndex        =   80
          Top             =   420
          Width           =   6285
-         _extentx        =   11086
-         _extenty        =   8599
+         _ExtentX        =   11086
+         _ExtentY        =   8599
       End
       Begin VB.Label lblNroAtencion 
          Alignment       =   1  'Right Justify

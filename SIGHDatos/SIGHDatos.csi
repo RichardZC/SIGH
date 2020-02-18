@@ -1,0 +1,6 @@
+[History]
+1=#P0#=mb	#P1#=SeleccionarPorTipoServicioDptoEspecialidad	#P2#=SIGHDatos/Servicios/SeleccionarPorTipoServicioDptoEspecialidad	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200218114438	#P7#=0	#P8#=0	.
+2=#P0#=mb	#P1#=Conexion	#P2#=SIGHDatos/Servicios/Conexion [Set]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200217120949	#P7#=0	#P8#=0	.
+3=#P0#=mb	#P1#=MensajeError	#P2#=SIGHDatos/Servicios/MensajeError [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200217120859	#P7#=0	#P8#=2	.
+4=#P0#=mb	#P1#=SeleccionarPorTipoV2	#P2#=SIGHDatos/Servicios/SeleccionarPorTipoV2	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200218155225	#P7#=0	#P8#=1	.
+5=#P0#=mb	#P1#=ServiciosSeleccionarConsultoriosPorEspecialidadDEBB	#P2#=SIGHDatos/Servicios/ServiciosSeleccionarConsultoriosPorEspecialidadDEBB	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200217111131	#P7#=0	#P8#=5	.

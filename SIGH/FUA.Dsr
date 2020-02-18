@@ -1,9 +1,9 @@
 VERSION 5.00
 Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} FUA 
-   ClientHeight    =   10410
+   ClientHeight    =   9375
    ClientLeft      =   165
    ClientTop       =   555
-   ClientWidth     =   20280
+   ClientWidth     =   20250
    WindowState     =   2  'Maximized
    _ExtentX        =   35772
    _ExtentY        =   18362
