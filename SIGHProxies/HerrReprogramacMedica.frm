@@ -4,19 +4,35 @@ Object = "{F20E41DE-526A-423A-B746-D860D06076B4}#4.0#0"; "IGTHRE~1.OCX"
 Begin VB.Form HerrReprogramacMedica 
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "Reprogramación Médica"
-   ClientHeight    =   6675
+   ClientHeight    =   7335
    ClientLeft      =   45
    ClientTop       =   435
-   ClientWidth     =   11400
+   ClientWidth     =   12225
    Icon            =   "HerrReprogramacMedica.frx":0000
    LinkTopic       =   "Form1"
-   LockControls    =   -1  'True
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   6675
-   ScaleWidth      =   11400
+   ScaleHeight     =   7335
+   ScaleWidth      =   12225
    ShowInTaskbar   =   0   'False
    StartUpPosition =   2  'CenterScreen
+   Begin VB.ComboBox cmbNuevoIdServicioCE 
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   315
+      Left            =   2940
+      Style           =   2  'Dropdown List
+      TabIndex        =   46
+      Top             =   5085
+      Width           =   3015
+   End
    Begin VB.Frame Frame5 
       Caption         =   "Reprogramación x Paciente"
       BeginProperty Font 
@@ -29,7 +45,7 @@ Begin VB.Form HerrReprogramacMedica
          Strikethrough   =   0   'False
       EndProperty
       Height          =   6105
-      Left            =   5700
+      Left            =   6330
       TabIndex        =   24
       Top             =   510
       Width           =   5610
@@ -449,10 +465,10 @@ Begin VB.Form HerrReprogramacMedica
          Strikethrough   =   0   'False
       EndProperty
       Height          =   1995
-      Left            =   30
+      Left            =   45
       TabIndex        =   13
       Top             =   510
-      Width           =   5610
+      Width           =   6165
       Begin VB.ListBox cmbConsideraciones 
          BackColor       =   &H80000003&
          BeginProperty Font 
@@ -469,7 +485,7 @@ Begin VB.Form HerrReprogramacMedica
          Left            =   90
          TabIndex        =   14
          Top             =   240
-         Width           =   5295
+         Width           =   5940
       End
    End
    Begin VB.Frame Frame2 
@@ -483,11 +499,11 @@ Begin VB.Form HerrReprogramacMedica
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   4080
-      Left            =   30
+      Height          =   4650
+      Left            =   15
       TabIndex        =   8
       Top             =   2550
-      Width           =   5610
+      Width           =   6165
       Begin VB.CommandButton btnAceptar 
          Caption         =   "Aceptar (F2)"
          DisabledPicture =   "HerrReprogramacMedica.frx":28B0
@@ -506,7 +522,7 @@ Begin VB.Form HerrReprogramacMedica
          Picture         =   "HerrReprogramacMedica.frx":3185
          Style           =   1  'Graphical
          TabIndex        =   44
-         Top             =   3270
+         Top             =   3855
          Width           =   1365
       End
       Begin VB.CommandButton btnCancelar 
@@ -527,7 +543,7 @@ Begin VB.Form HerrReprogramacMedica
          Picture         =   "HerrReprogramacMedica.frx":3FAA
          Style           =   1  'Graphical
          TabIndex        =   43
-         Top             =   3285
+         Top             =   3870
          Width           =   1365
       End
       Begin VB.Frame Frame1 
@@ -541,11 +557,19 @@ Begin VB.Form HerrReprogramacMedica
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Height          =   1320
+         Height          =   1980
          Left            =   120
          TabIndex        =   15
          Top             =   1800
-         Width           =   5385
+         Width           =   5880
+         Begin VB.CommandButton btnBuscarCEDisponible 
+            Caption         =   "..."
+            Height          =   360
+            Left            =   2220
+            TabIndex        =   47
+            Top             =   705
+            Width           =   525
+         End
          Begin VB.ComboBox cmbIdResponsableNew 
             BeginProperty Font 
                Name            =   "Tahoma"
@@ -557,15 +581,15 @@ Begin VB.Form HerrReprogramacMedica
                Strikethrough   =   0   'False
             EndProperty
             Height          =   315
-            Left            =   2460
+            Left            =   3015
             Style           =   2  'Dropdown List
             TabIndex        =   16
-            Top             =   750
+            Top             =   1350
             Width           =   2805
          End
          Begin MSMask.MaskEdBox txtFechaRequeridaDesde 
             Height          =   315
-            Left            =   3870
+            Left            =   4425
             TabIndex        =   17
             Top             =   330
             Width           =   1380
@@ -610,7 +634,7 @@ Begin VB.Form HerrReprogramacMedica
             Height          =   285
             Left            =   120
             TabIndex        =   19
-            Top             =   750
+            Top             =   1350
             Width           =   2385
             _ExtentX        =   4207
             _ExtentY        =   503
@@ -625,6 +649,25 @@ Begin VB.Form HerrReprogramacMedica
                Strikethrough   =   0   'False
             EndProperty
             Caption         =   "Médico que reemplaza"
+         End
+         Begin VB.Label Label15 
+            AutoSize        =   -1  'True
+            BackStyle       =   0  'Transparent
+            Caption         =   "Servicio CE Disponible"
+            BeginProperty Font 
+               Name            =   "Tahoma"
+               Size            =   9
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            Height          =   210
+            Left            =   375
+            TabIndex        =   45
+            Top             =   780
+            Width           =   885
          End
       End
       Begin VB.PictureBox progressRpt 
@@ -652,7 +695,7 @@ Begin VB.Form HerrReprogramacMedica
          Style           =   2  'Dropdown List
          TabIndex        =   5
          Top             =   315
-         Width           =   4395
+         Width           =   4845
       End
       Begin VB.ComboBox cmbIdServicioCE 
          BeginProperty Font 
@@ -669,7 +712,7 @@ Begin VB.Form HerrReprogramacMedica
          Style           =   2  'Dropdown List
          TabIndex        =   6
          Top             =   690
-         Width           =   4395
+         Width           =   4830
       End
       Begin MSMask.MaskEdBox txtFechaInicio 
          Height          =   315
@@ -695,7 +738,7 @@ Begin VB.Form HerrReprogramacMedica
       End
       Begin MSMask.MaskEdBox txtHrInicio 
          Height          =   315
-         Left            =   3270
+         Left            =   3540
          TabIndex        =   20
          Top             =   1110
          Width           =   750
@@ -717,7 +760,7 @@ Begin VB.Form HerrReprogramacMedica
       End
       Begin MSMask.MaskEdBox txtHrFin 
          Height          =   315
-         Left            =   4770
+         Left            =   5220
          TabIndex        =   21
          Top             =   1110
          Width           =   750
@@ -750,7 +793,7 @@ Begin VB.Form HerrReprogramacMedica
             Strikethrough   =   0   'False
          EndProperty
          Height          =   210
-         Left            =   4290
+         Left            =   4650
          TabIndex        =   23
          Top             =   1170
          Width           =   435
@@ -768,7 +811,7 @@ Begin VB.Form HerrReprogramacMedica
             Strikethrough   =   0   'False
          EndProperty
          Height          =   210
-         Left            =   2730
+         Left            =   3000
          TabIndex        =   22
          Top             =   1170
          Width           =   510
@@ -1274,14 +1317,24 @@ ErrorProceso:
     Resume
 End Sub
 
+'SCCQ 19/02/2020 Cambio 7 Inicio
+Private Sub LlenarCmbNuevoIdServicioCE()
+Dim mo_AdminServHosp As New ReglasServiciosHosp
+Dim mo_cmbNuevoIdServicioCE As New sighentidades.ListaDespleglable
+ Set mo_cmbNuevoIdServicioCE.MiComboBox = cmbIdServicioCE
+       mo_cmbNuevoIdServicioCE.BoundColumn = "idServicio"
+       mo_cmbNuevoIdServicioCE.ListField = "descripcionLarga"
+       Set mo_cmbNuevoIdServicioCE.RowSource = mo_AdminServHosp.ServiciosSeleccionarPorTipoV2(1, sghFiltraSoloActivos)
+End Sub
+
+Private Sub btnBuscarCEDisponible_Click()
+LlenarCmbNuevoIdServicioCE
+End Sub
+
+'SCCQ 19/02/2020 Cambio 7 Fin
 Private Sub btnCancelar_Click()
      Me.Visible = False
 End Sub
-
-
-
-
-
 
 Private Sub cmbIdResponsableNewPac_KeyDown(KeyCode As Integer, Shift As Integer)
         mo_Teclado.RealizarNavegacion KeyCode, cmbIdResponsableNewPac
@@ -1629,8 +1682,6 @@ Private Sub Form_Load()
        lcParametro524 = lcBuscaParametro.SeleccionaFilaParametro(524)
        lcParametro205 = lcBuscaParametro.SeleccionaFilaParametro(205)
 End Sub
-
-
 
 
 
