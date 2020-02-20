@@ -649,9 +649,9 @@ Dim oConexion As New Connection
         Set oDOServicio = mo_AdminServiciosHosp.ServiciosSeleccionarPorId(oBusqueda.IdRegistroSeleccionado, oConexion)
         If Not oDOServicio Is Nothing Then
             If Val(Me.cmbIdTipoServicio.BoundText) = oDOServicio.idTipoServicio Then
-                Me.txtIdServicioPropietario.Text = oDOServicio.Codigo
+                Me.txtIdServicioPropietario.Text = oDOServicio.codigo
                 Me.txtIdServicioPropietario.Tag = oDOServicio.idServicio
-                Me.lblNombreServicioPropietario = oDOServicio.Nombre
+                Me.lblNombreServicioPropietario = oDOServicio.nombre
             Else
                 MsgBox "El servicio seleccionado no pertenece a emergencia", vbInformation, Me.Caption
                 Me.txtIdServicioPropietario.Text = ""
@@ -680,9 +680,9 @@ Dim oConexion As New Connection
         Set oDOServicio = mo_AdminServiciosHosp.ServiciosSeleccionarPorId(oBusqueda.IdRegistroSeleccionado, oConexion)
         If Not oDOServicio Is Nothing Then
             If Val(Me.cmbIdTipoServicio.BoundText) = oDOServicio.idTipoServicio Then
-                Me.txtIdServicioUbicacionActual.Text = oDOServicio.Codigo
+                Me.txtIdServicioUbicacionActual.Text = oDOServicio.codigo
                 Me.txtIdServicioUbicacionActual.Tag = oDOServicio.idServicio
-                Me.lblNombreServicioUbicacionActual = oDOServicio.Nombre
+                Me.lblNombreServicioUbicacionActual = oDOServicio.nombre
                 ml_IdServicioActual = oDOServicio.idServicio
             Else
                 MsgBox "El servicio seleccionado no pertenece a emergencia", vbInformation, Me.Caption
@@ -1010,9 +1010,9 @@ Sub CargaDatosAlObjetosDeDatos()
 
    With mo_Camas
            .x = Me.Xini
-           .y = Me.Yini
+           .Y = Me.Yini
            .IdServicioUbicacionActual = Val(Me.txtIdServicioUbicacionActual.Tag)
-           .Codigo = Trim(Me.txtCodigo.Text)
+           .codigo = Trim(Me.txtCodigo.Text)
            .IdEstadoCama = Val(Me.cmbIdEstadoCama.BoundText)
            .IdCondicionOcupacion = Val(Me.cmbIdCondicionOcupacion.BoundText)
            .IdTiposCama = Val(Me.cmbIdTiposCama.BoundText)
@@ -1080,8 +1080,8 @@ Sub CargarDatosALosControles()
        If Not mo_Camas Is Nothing Then
            With mo_Camas
                 Me.Xini = .x
-                Me.Yini = .y
-                Me.txtCodigo.Text = .Codigo
+                Me.Yini = .Y
+                Me.txtCodigo.Text = .codigo
                 
                 Me.cmbIdEstadoCama.BoundText = .IdEstadoCama
                 Me.cmbIdCondicionOcupacion.BoundText = .IdCondicionOcupacion
@@ -1090,8 +1090,8 @@ Sub CargarDatosALosControles()
                 Set oDOServicio = mo_AdminServiciosHosp.ServiciosSeleccionarPorId(.IdServicioPropietario, oConexion)
                 If Not oDOServicio Is Nothing Then
                     Me.txtIdServicioPropietario.Tag = oDOServicio.idServicio
-                    Me.txtIdServicioPropietario.Text = oDOServicio.Codigo
-                    Me.lblNombreServicioPropietario = oDOServicio.Nombre
+                    Me.txtIdServicioPropietario.Text = oDOServicio.codigo
+                    Me.lblNombreServicioPropietario = oDOServicio.nombre
                 Else
                     Me.txtIdServicioPropietario.Tag = ""
                     Me.lblNombreServicioPropietario = ""
@@ -1100,8 +1100,8 @@ Sub CargarDatosALosControles()
                 Set oDOServicio = mo_AdminServiciosHosp.ServiciosSeleccionarPorId(.IdServicioUbicacionActual, oConexion)
                 If Not oDOServicio Is Nothing Then
                     Me.txtIdServicioUbicacionActual.Tag = oDOServicio.idServicio
-                    Me.txtIdServicioUbicacionActual.Text = oDOServicio.Codigo
-                    Me.lblNombreServicioUbicacionActual = oDOServicio.Nombre
+                    Me.txtIdServicioUbicacionActual.Text = oDOServicio.codigo
+                    Me.lblNombreServicioUbicacionActual = oDOServicio.nombre
                     ml_IdServicioActual = oDOServicio.idServicio
                 Else
                     Me.txtIdServicioUbicacionActual.Tag = ""
@@ -1242,7 +1242,7 @@ Sub CompletarDatosDeServicioEnElLostFocus(txtIdServicio As TextBox, lblDescripci
         If Not oDOServicio Is Nothing Then
             If cmbIdTipoServicio.BoundText = oDOServicio.idTipoServicio Then
                 txtIdServicio.Tag = oDOServicio.idServicio
-                lblDescripcionServicio = oDOServicio.Nombre
+                lblDescripcionServicio = oDOServicio.nombre
             Else
                 MsgBox "El servicio ingresado no pertenece es de emergencia", vbInformation, Me.Caption
                 txtIdServicio.Tag = ""

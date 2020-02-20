@@ -398,7 +398,37 @@ ManejadorDeError:
    ms_MensajeError = Err.Number & " " + Err.Description: MsgBox ms_MensajeError + Chr(13) + "Por favor contacte al personal de soporte técnico", vbInformation, "Error en la interface de acceso a datos"
 Exit Function
 End Function
+'SCCQ 20/02/2020 Cambio7 Incio
+Function SeleccionarCEDisponibles(IdEspecialidad As Long, lnHoraInicio As String, lnHoraFin As String, lnFecha As String) As ADODB.Recordset
+On Error GoTo ManejadorDeError
+Dim oRecordset As New ADODB.Recordset
+Dim oCommand As New ADODB.Command
+Dim oParameter As ADODB.Parameter
+ Dim fnicio As String
+ Dim ffin As String
+   Set SeleccionarCEDisponibles = Nothing
+   With oCommand
+     .CommandType = adCmdStoredProc
+     Set .ActiveConnection = mo_Conexion
+     .CommandText = "ServiciosSeleccionarCEDisponiblesXFecha"
+     Set oParameter = .CreateParameter("@IdEspecialidad", adInteger, adParamInput, 0, IdEspecialidad): .Parameters.Append oParameter
+     Set oParameter = .CreateParameter("@HoraInicio", adChar, adParamInput, 5, IIf(lnHoraInicio = "", Null, lnHoraInicio)): .Parameters.Append oParameter
+     Set oParameter = .CreateParameter("@HoraFin", adChar, adParamInput, 5, IIf(lnHoraFin = "", Null, lnHoraFin)): .Parameters.Append oParameter
+     Set oParameter = .CreateParameter("@Fecha", adDBTimeStamp, adParamInput, 0, Format(lnFecha, sighentidades.DevuelveFechaSoloFormato_DMY)): .Parameters.Append oParameter
+     Set oRecordset = .Execute
+     Set oRecordset.ActiveConnection = Nothing
+   End With
+   Set SeleccionarCEDisponibles = oRecordset
+ 
+   ms_MensajeError = ""
+ 
+Exit Function
+ManejadorDeError:
+   ms_MensajeError = Err.Number & " " + Err.Description: MsgBox ms_MensajeError + Chr(13) + "Por favor contacte al personal de soporte técnico", vbInformation, "Error en la interface de acceso a datos"
+Exit Function
+End Function
 
+'SCCQ 20/02/2020 Cambio7 Fin
 Function ServiciosSeleccionarConsultoriosPorEspecialidadDEBB(IdEspecialidad As Long, lnTipoEstados As sghTipoEstados) As ADODB.Recordset
 On Error GoTo ManejadorDeError
 Dim oRecordset As New ADODB.Recordset

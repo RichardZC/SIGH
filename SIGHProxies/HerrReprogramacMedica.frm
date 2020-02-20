@@ -522,7 +522,7 @@ Begin VB.Form HerrReprogramacMedica
          Picture         =   "HerrReprogramacMedica.frx":3185
          Style           =   1  'Graphical
          TabIndex        =   44
-         Top             =   3855
+         Top             =   3870
          Width           =   1365
       End
       Begin VB.CommandButton btnCancelar 
@@ -1019,7 +1019,7 @@ If wxFranklin = "*" Then Exit Sub
                 Loop
             End If
             oRsTmp.Close
-        Else
+        Else 'optFecha está seleccionado
             'debb-19/09/2019
             Set oRsTmp = mo_ReglasDeProgMedica.ProgramacionMedicaSeleccionarXfechaConsultorio(txtFechaRequeridaDesde.Text, Val(mo_cmbIdServicioCE.BoundText))
             If oRsTmp.RecordCount > 0 Then
@@ -1318,19 +1318,30 @@ ErrorProceso:
 End Sub
 
 'SCCQ 19/02/2020 Cambio 7 Inicio
-Private Sub LlenarCmbNuevoIdServicioCE()
-Dim mo_AdminServHosp As New ReglasServiciosHosp
-Dim mo_cmbNuevoIdServicioCE As New sighentidades.ListaDespleglable
- Set mo_cmbNuevoIdServicioCE.MiComboBox = cmbIdServicioCE
-       mo_cmbNuevoIdServicioCE.BoundColumn = "idServicio"
-       mo_cmbNuevoIdServicioCE.ListField = "descripcionLarga"
-       Set mo_cmbNuevoIdServicioCE.RowSource = mo_AdminServHosp.ServiciosSeleccionarPorTipoV2(1, sghFiltraSoloActivos)
-End Sub
-
 Private Sub btnBuscarCEDisponible_Click()
 LlenarCmbNuevoIdServicioCE
 End Sub
-
+Private Sub LlenarCmbNuevoIdServicioCE()
+If mo_cmbIdServicioCE.BoundText <> "" Then
+    Dim mo_AdminServHosp As New ReglasServiciosHosp
+    Dim mo_cmbNuevoIdServicioCE As New sighentidades.ListaDespleglable
+    Set mo_cmbNuevoIdServicioCE.MiComboBox = cmbNuevoIdServicioCE
+       mo_cmbNuevoIdServicioCE.BoundColumn = "idServicio"
+       mo_cmbNuevoIdServicioCE.ListField = "descripcionLarga"
+        'Seleccionar el idEspecidad del ServicioCE seleccionado INICIO
+        Dim oDOServicio As New doServicio
+        Dim oConexion As New Connection
+        oConexion.Open sighentidades.CadenaConexion
+        oConexion.CursorLocation = adUseClient
+        Set oDOServicio = mo_AdminServiciosHosp.ServiciosSeleccionarPorId(Val(mo_cmbIdServicioCE.BoundText), oConexion)
+        oConexion.Close
+        Set oConexion = Nothing
+        'Seleccionar el idEspecidad del ServicioCE seleccionado FIN
+       Set mo_cmbNuevoIdServicioCE.RowSource = mo_AdminServHosp.ServiciosSeleccionarCEDisponibles(oDOServicio.IdEspecialidad, txtHrInicio.Text, txtHrFin.Text, txtFechaRequeridaDesde.Text)
+Else
+ MsgBox "Seleccione Servicio CE"
+End If
+End Sub
 'SCCQ 19/02/2020 Cambio 7 Fin
 Private Sub btnCancelar_Click()
      Me.Visible = False

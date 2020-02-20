@@ -400,6 +400,23 @@ Dim oTabla As New Servicios
     Set oTabla = Nothing
 
 End Function
+'SCCQ 19/02/2020 Cambio7 Inicio
+Function ServiciosSeleccionarCEDisponibles(IdEspecialidad As Long, lnHoraInicio As String, lnHoraFin As String, lnFecha As String) As ADODB.Recordset
+Dim oConexion As New ADODB.Connection
+Dim oTabla As New Servicios
+    
+    oConexion.Open sighentidades.CadenaConexion
+    oConexion.CursorLocation = adUseClient
+    
+    Set oTabla.Conexion = oConexion
+    Set ServiciosSeleccionarCEDisponibles = oTabla.SeleccionarCEDisponibles(IdEspecialidad, lnHoraInicio, lnHoraFin, lnFecha)
+    oConexion.Close
+    ms_MensajeError = oTabla.MensajeError
+    Set oConexion = Nothing
+    Set oTabla = Nothing
+
+End Function
+'SCCQ 19/02/2020 Cambio7 Fin
 
 Function ServiciosSeleccionarConsultoriosPorEspecialidadDEBB(IdEspecialidad As Long, lnTipoEstados As sghTipoEstados, oConexion As Connection) As ADODB.Recordset
 Dim oTabla As New Servicios

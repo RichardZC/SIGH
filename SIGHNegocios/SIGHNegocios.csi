@@ -1,2 +1,8 @@
 [History]
-1=#P0#=mb	#P1#=ServiciosSeleccionarPorTipoV2	#P2#=SIGHNegocios/ReglasServiciosHosp/ServiciosSeleccionarPorTipoV2	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200218155234	#P7#=0	#P8#=4	.
+1=#P0#=mb	#P1#=ProgramacionMedicaSeleccionarXfechaConsultorio	#P2#=SIGHNegocios/ReglasDeProgMedica/ProgramacionMedicaSeleccionarXfechaConsultorio	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200220122418	#P7#=0	#P8#=17	.
+2=#P0#=mb	#P1#=ServiciosSeleccionarPorId	#P2#=SIGHNegocios/ReglasServiciosHosp/ServiciosSeleccionarPorId	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200220120131	#P7#=0	#P8#=2	.
+3=#P0#=mb	#P1#=ServiciosDevuelveNombre	#P2#=SIGHNegocios/ReglasServiciosHosp/ServiciosDevuelveNombre	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200220115842	#P7#=0	#P8#=6	.
+4=#P0#=mb	#P1#=EspecialidadesCESeleccionarPorId	#P2#=SIGHNegocios/ReglasServiciosHosp/EspecialidadesCESeleccionarPorId	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200220115813	#P7#=0	#P8#=0	.
+5=#P0#=mb	#P1#=ServiciosSeleccionarPorFiltro	#P2#=SIGHNegocios/ReglasFacturacion/ServiciosSeleccionarPorFiltro	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200220114533	#P7#=0	#P8#=1	.
+6=#P0#=mb	#P1#=ServiciosSeleccionarCEDisponibles	#P2#=SIGHNegocios/ReglasServiciosHosp/ServiciosSeleccionarCEDisponibles	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200220121847	#P7#=0	#P8#=8	.
+7=#P0#=mb	#P1#=ServiciosSeleccionarPorTipoV2	#P2#=SIGHNegocios/ReglasServiciosHosp/ServiciosSeleccionarPorTipoV2	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200218155234	#P7#=0	#P8#=4	.
