@@ -930,7 +930,9 @@ Dim mo_lcNombrePc  As String
 Dim lcBuscaParametro As New SIGHDatos.Parametros
 Dim lcTiempoAtencion As String
 Dim lcParametro523 As String, lcParametro524 As String, lcParametro205 As String
-
+'SCCQ 21/02/2020 Cambio7 Inicio
+ Dim mo_cmbNuevoIdServicioCE As New sighentidades.ListaDespleglable
+'SCCQ 21/02/2020 Cambio7 Fin
 Property Let lcNombrePc(lValue As String)
    mo_lcNombrePc = lValue
 End Property
@@ -993,7 +995,9 @@ If wxFranklin = "*" Then Exit Sub
         Dim oProgramacionMedica As New ProgramacionMedica
         Dim lbHuboCitadoFueraDeHora As Boolean
         Dim lcSql As String
-        
+        'SCCQ 21/02/2020 Cambio7 Inicio
+        Dim lnIdServicioCENew As Long
+        'SCCQ 21/02/2020 Cambio7 Fin
         oConexion.CommandTimeout = 300
         oConexion.CursorLocation = adUseClient
         oConexion.Open sighentidades.CadenaConexion
@@ -1019,9 +1023,18 @@ If wxFranklin = "*" Then Exit Sub
                 Loop
             End If
             oRsTmp.Close
-        Else 'optFecha está seleccionado
+        Else
             'debb-19/09/2019
-            Set oRsTmp = mo_ReglasDeProgMedica.ProgramacionMedicaSeleccionarXfechaConsultorio(txtFechaRequeridaDesde.Text, Val(mo_cmbIdServicioCE.BoundText))
+            'SCCQ 21/02/2020 Cambio7 Inicio
+            MsgBox "IdServicioCE disponible: (" & Val(mo_cmbNuevoIdServicioCE.BoundText) & ")"
+            If Val(mo_cmbNuevoIdServicioCE.BoundText) = 0 Then 'No seleccionó ningún Servicio de CE disponible
+                MsgBox "Debe elegir un consultorio disponible", vbInformation, "Mensaje"
+                Exit Sub
+            End If
+            lnIdServicioCENew = Val(mo_cmbNuevoIdServicioCE.BoundText)
+           
+            Set oRsTmp = mo_ReglasDeProgMedica.ProgramacionMedicaSeleccionarXfechaConsultorio(txtFechaRequeridaDesde.Text, lnIdServicioCENew)
+             'SCCQ 21/02/2020 Cambio7 Fin
             If oRsTmp.RecordCount > 0 Then
                 oRsTmp.MoveFirst
                 Do While Not oRsTmp.EOF
@@ -1031,6 +1044,10 @@ If wxFranklin = "*" Then Exit Sub
                                 MsgBox "Yá se programo a otro 'Médico' ese mismo día, hora inicio", vbInformation, "Mensaje"
                                 oConexion.Close
                                 oConexionExterna.Close
+                                'SCCQ 20/02/2020 Cambio7 Inicio
+                                'BORRAR DATOS DE cmbNuevoIdServicioCE
+                                cmbNuevoIdServicioCE.Clear
+                                'SCCQ 20/02/2020 Cambio7 Fin
                                 Exit Sub
                           End If
                    End If
@@ -1047,7 +1064,11 @@ If wxFranklin = "*" Then Exit Sub
                       (Me.txtHrFin.Text >= oRsTmp!HoraInicio And Me.txtHrFin.Text <= oRsTmp!HoraFin) Then
                         MsgBox "Yá se programo al 'Médico' ese mismo día", vbInformation, "Mensaje"
                         oConexion.Close
-                        oConexionExterna.Close
+                        oConexionExterna.CloDoEvents
+                        'SCCQ 20/02/2020 Cambio7 Inicio
+                        'BORRAR DATOS DE cmbNuevoIdServicioCE
+                        cmbNuevoIdServicioCE.Clear
+                        'SCCQ 20/02/2020 Cambio7 Fin
                         Exit Sub
                    End If
                    oRsTmp.MoveNext
@@ -1063,6 +1084,10 @@ If wxFranklin = "*" Then Exit Sub
            MsgBox "Esa Programación Médica NO EXISTE", vbInformation, "Mensaje"
            oConexion.Close
            oConexionExterna.Close
+           'SCCQ 20/02/2020 Cambio7 Inicio
+           'BORRAR DATOS DE cmbNuevoIdServicioCE
+           cmbNuevoIdServicioCE.Clear
+           'SCCQ 20/02/2020 Cambio7 Fin
            Exit Sub
         End If
         lnIdProgramacion = oRsTmp.Fields!idProgramacion
@@ -1111,6 +1136,12 @@ If wxFranklin = "*" Then Exit Sub
                             oDOProgramacionMedica.idProgramacion = lnIdProgramacion
                             If oProgramacionMedica.SeleccionarPorId(oDOProgramacionMedica) Then
                                oDOProgramacionMedica.fecha = txtFechaRequeridaDesde.Text
+                               'SCCQ 21/02/2020 Cambio7 Inicio
+                               'Inserta nueva programación, ingresar aquí nuevo consultorio disponible
+                               'Verificar si el procedimiento hace la validación de consultorio disponible
+                               'Asignamos el valor del nuevo idServicioCEDisponible
+                               oDOProgramacionMedica.idServicio = Val(mo_cmbNuevoIdServicioCE.BoundText)
+                               'SCCQ 21/02/2020 Cambio7 Fin
                                If oProgramacionMedica.Insertar(oDOProgramacionMedica) Then
                                   lnIdProgramacionNew = oDOProgramacionMedica.idProgramacion
                                Else
@@ -1123,8 +1154,12 @@ If wxFranklin = "*" Then Exit Sub
                             End If
                        End If
                        lnAtencionesPasadas = lnAtencionesPasadas + 1
-                       mo_ReglasDeProgMedica.CitasActualizaDatosDeReprogramacionXfecha txtFechaRequeridaDesde.Text, _
-                                                             oRsTmp1.Fields!idAtencion, lnIdProgramacionNew, oConexion
+                      'SCCQ 21/02/2020 Cambio7 Inicio
+                       'Actualiza citas con nueva programación pasar nuevos datos de idservicioCEdisponible que debe ser igual a la tabla progrmacion
+                       lnIdServicioCENew = Val(mo_cmbNuevoIdServicioCE.BoundText)
+                       mo_ReglasDeProgMedica.CitasActualizaDatosDeReprogramacionXfechaServicioCE txtFechaRequeridaDesde.Text, _
+                                                             oRsTmp1.Fields!idAtencion, lnIdProgramacionNew, lnIdServicioCENew, oConexion
+                       'SCCQ 21/02/2020 Cambio7 Fin
                        If oRsTmp1!idFuenteFinanciamiento = sghFuenteFinanciamiento.sghFFSIS Then
                           ActualizaMedicoEnFuasYaEmitidas oConexionExterna, oRsTmp1!idCuentaAtencion, _
                                                        0, txtFechaRequeridaDesde.Text, ""
@@ -1324,7 +1359,6 @@ End Sub
 Private Sub LlenarCmbNuevoIdServicioCE()
 If mo_cmbIdServicioCE.BoundText <> "" Then
     Dim mo_AdminServHosp As New ReglasServiciosHosp
-    Dim mo_cmbNuevoIdServicioCE As New sighentidades.ListaDespleglable
     Set mo_cmbNuevoIdServicioCE.MiComboBox = cmbNuevoIdServicioCE
        mo_cmbNuevoIdServicioCE.BoundColumn = "idServicio"
        mo_cmbNuevoIdServicioCE.ListField = "descripcionLarga"
@@ -1335,6 +1369,8 @@ If mo_cmbIdServicioCE.BoundText <> "" Then
         oConexion.CursorLocation = adUseClient
         Set oDOServicio = mo_AdminServiciosHosp.ServiciosSeleccionarPorId(Val(mo_cmbIdServicioCE.BoundText), oConexion)
         oConexion.Close
+        MsgBox "IdServivio (" & Val(mo_cmbIdServicioCE.BoundText) & ")"
+        MsgBox "idEspecialidad (" & oDOServicio.IdEspecialidad & ")"
         Set oConexion = Nothing
         'Seleccionar el idEspecidad del ServicioCE seleccionado FIN
        Set mo_cmbNuevoIdServicioCE.RowSource = mo_AdminServHosp.ServiciosSeleccionarCEDisponibles(oDOServicio.IdEspecialidad, txtHrInicio.Text, txtHrFin.Text, txtFechaRequeridaDesde.Text)

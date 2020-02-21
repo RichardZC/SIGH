@@ -1321,6 +1321,32 @@ ErrActCitas:
 '        Set oRsTmp = Nothing
         MsgBox Err.Description
 End Sub
+'SCCQ 21/02/2020 Cambio7 Inicio
+Sub CitasActualizaDatosDeReprogramacionXfechaServicioCE(lcFecha As String, lnIdAtencion As Long, lnIdProgramacionNew As Long, lnIdServicioCENew As Long, oConexion As Connection)
+'        Dim lcSql As String, oRsTmp As New Recordset
+        Dim oCommand As New ADODB.Command
+        Dim oParameter As ADODB.Parameter
+        
+        On Error GoTo ErrActCitas
+
+        With oCommand
+            .CommandType = adCmdStoredProc
+            Set .ActiveConnection = oConexion
+            .CommandTimeout = 150
+            .CommandText = "CitasActualizaDatosDeReprogramacionXfecha"
+            Set oParameter = .CreateParameter("@IdAtencion", adInteger, adParamInput, 0, lnIdAtencion): .Parameters.Append oParameter
+            Set oParameter = .CreateParameter("@IdProgramacionNew", adInteger, adParamInput, 0, lnIdProgramacionNew): .Parameters.Append oParameter
+            Set oParameter = .CreateParameter("@Fecha", adDBTimeStamp, adParamInput, 0, Format(lcFecha, sighentidades.DevuelveFechaSoloFormato_DMY)): .Parameters.Append oParameter
+            Set oParameter = .CreateParameter("@IdServicioCENew", adInteger, adParamInput, 0, lnIdServicioCENew): .Parameters.Append oParameter
+            .Execute
+        End With
+        Set oCommand = Nothing
+        Exit Sub
+ErrActCitas:
+'        Set oRsTmp = Nothing
+        MsgBox Err.Description
+End Sub
+'SCCQ 21/02/2020 Cambio7 Fin
 
 'MODIFICADO POR FRANKLIN CACHAY 10/10/2013 - se cambio a store procedure
 Sub ProgramacionMedicaEliminarPorId(lnIdProgramacion As Long, oConexion As Connection)

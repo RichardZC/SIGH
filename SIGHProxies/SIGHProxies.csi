@@ -1,5 +1,5 @@
 [History]
-1=#P0#=mb	#P1#=btnAceptar_Click	#P2#=SIGHProxies/HerrReprogramacMedica/btnAceptar_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200218090412	#P7#=0	#P8#=67	.
+1=#P0#=mb	#P1#=btnAceptar_Click	#P2#=SIGHProxies/HerrReprogramacMedica/btnAceptar_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200221152339	#P7#=0	#P8#=228	.
 2=#P0#=mb	#P1#=cmdProcesaXpaciente_Click	#P2#=SIGHProxies/HerrReprogramacMedica/cmdProcesaXpaciente_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200218090001	#P7#=0	#P8#=234	.
 3=#P0#=mb	#P1#=Form_Load	#P2#=SIGHProxies/HerrReprogramacMedica/Form_Load	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200218085954	#P7#=0	#P8#=-2	.
 4=#P0#=mb	#P1#=txtFechaAtencionPac_LostFocus	#P2#=SIGHProxies/HerrReprogramacMedica/txtFechaAtencionPac_LostFocus	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200218085708	#P7#=0	#P8#=-1	.
