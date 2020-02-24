@@ -44,10 +44,10 @@ Begin VB.Form HerrReprogramacMedica
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   6105
+      Height          =   6675
       Left            =   6330
       TabIndex        =   24
-      Top             =   510
+      Top             =   525
       Width           =   5610
       Begin VB.TextBox txtDatosDeCuenta 
          BeginProperty Font 
@@ -62,7 +62,7 @@ Begin VB.Form HerrReprogramacMedica
          Height          =   360
          Left            =   60
          TabIndex        =   35
-         Top             =   2190
+         Top             =   2325
          Width           =   5505
       End
       Begin VB.TextBox txtNombrePaciente 
@@ -78,7 +78,7 @@ Begin VB.Form HerrReprogramacMedica
          Height          =   360
          Left            =   60
          TabIndex        =   34
-         Top             =   1800
+         Top             =   1935
          Width           =   5505
       End
       Begin VB.TextBox txtNcuenta 
@@ -111,7 +111,7 @@ Begin VB.Form HerrReprogramacMedica
          Height          =   360
          Left            =   60
          TabIndex        =   33
-         Top             =   2580
+         Top             =   2715
          Width           =   5505
       End
       Begin VB.CommandButton cmdCancelar 
@@ -133,7 +133,7 @@ Begin VB.Form HerrReprogramacMedica
          Picture         =   "HerrReprogramacMedica.frx":167A
          Style           =   1  'Graphical
          TabIndex        =   32
-         Top             =   5250
+         Top             =   5880
          Width           =   1365
       End
       Begin VB.CommandButton cmdProcesaXpaciente 
@@ -154,7 +154,7 @@ Begin VB.Form HerrReprogramacMedica
          Picture         =   "HerrReprogramacMedica.frx":243B
          Style           =   1  'Graphical
          TabIndex        =   4
-         Top             =   5280
+         Top             =   5910
          Width           =   1365
       End
       Begin VB.ComboBox cmbIdServicioCEpac 
@@ -202,10 +202,10 @@ Begin VB.Form HerrReprogramacMedica
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Height          =   2070
-         Left            =   0
+         Height          =   2460
+         Left            =   45
          TabIndex        =   25
-         Top             =   3120
+         Top             =   3345
          Width           =   5505
          Begin VB.ComboBox txtHoraPac 
             BeginProperty Font 
@@ -221,7 +221,7 @@ Begin VB.Form HerrReprogramacMedica
             Left            =   1680
             Style           =   2  'Dropdown List
             TabIndex        =   3
-            Top             =   1080
+            Top             =   1335
             Width           =   1245
          End
          Begin VB.ComboBox cmbIdResponsableNewPac 
@@ -238,14 +238,14 @@ Begin VB.Form HerrReprogramacMedica
             Left            =   1620
             Style           =   2  'Dropdown List
             TabIndex        =   1
-            Top             =   330
+            Top             =   435
             Width           =   3735
          End
          Begin MSMask.MaskEdBox txtFechaNewPac 
             Height          =   315
             Left            =   2340
             TabIndex        =   2
-            Top             =   690
+            Top             =   900
             Width           =   1380
             _ExtentX        =   2434
             _ExtentY        =   556
@@ -267,7 +267,7 @@ Begin VB.Form HerrReprogramacMedica
             Height          =   315
             Left            =   4560
             TabIndex        =   38
-            Top             =   1080
+            Top             =   1335
             Width           =   750
             _ExtentX        =   1323
             _ExtentY        =   556
@@ -300,7 +300,7 @@ Begin VB.Form HerrReprogramacMedica
             Height          =   210
             Left            =   150
             TabIndex        =   41
-            Top             =   720
+            Top             =   930
             Width           =   2070
          End
          Begin VB.Label Label12 
@@ -318,7 +318,7 @@ Begin VB.Form HerrReprogramacMedica
             Height          =   210
             Left            =   150
             TabIndex        =   40
-            Top             =   360
+            Top             =   465
             Width           =   1215
          End
          Begin VB.Label Label11 
@@ -336,7 +336,7 @@ Begin VB.Form HerrReprogramacMedica
             Height          =   210
             Left            =   4080
             TabIndex        =   39
-            Top             =   1140
+            Top             =   1395
             Width           =   435
          End
          Begin VB.Label Label5 
@@ -354,7 +354,7 @@ Begin VB.Form HerrReprogramacMedica
             Height          =   210
             Left            =   150
             TabIndex        =   37
-            Top             =   1140
+            Top             =   1395
             Width           =   1380
          End
       End
@@ -1026,7 +1026,6 @@ If wxFranklin = "*" Then Exit Sub
         Else
             'debb-19/09/2019
             'SCCQ 21/02/2020 Cambio7 Inicio
-            MsgBox "IdServicioCE disponible: (" & Val(mo_cmbNuevoIdServicioCE.BoundText) & ")"
             If Val(mo_cmbNuevoIdServicioCE.BoundText) = 0 Then 'No seleccionó ningún Servicio de CE disponible
                 MsgBox "Debe elegir un consultorio disponible", vbInformation, "Mensaje"
                 Exit Sub
@@ -1137,8 +1136,7 @@ If wxFranklin = "*" Then Exit Sub
                             If oProgramacionMedica.SeleccionarPorId(oDOProgramacionMedica) Then
                                oDOProgramacionMedica.fecha = txtFechaRequeridaDesde.Text
                                'SCCQ 21/02/2020 Cambio7 Inicio
-                               'Inserta nueva programación, ingresar aquí nuevo consultorio disponible
-                               'Verificar si el procedimiento hace la validación de consultorio disponible
+                               'Inserta nueva programación, se ingresa el nuevo consultorio disponible mo_cmbNuevoIdServicioCE
                                'Asignamos el valor del nuevo idServicioCEDisponible
                                oDOProgramacionMedica.idServicio = Val(mo_cmbNuevoIdServicioCE.BoundText)
                                'SCCQ 21/02/2020 Cambio7 Fin
@@ -1155,7 +1153,7 @@ If wxFranklin = "*" Then Exit Sub
                        End If
                        lnAtencionesPasadas = lnAtencionesPasadas + 1
                       'SCCQ 21/02/2020 Cambio7 Inicio
-                       'Actualiza citas con nueva programación pasar nuevos datos de idservicioCEdisponible que debe ser igual a la tabla progrmacion
+                       'Actualiza citas con nueva programación, pasar nuevos datos de idservicioCEdisponible que debe ser igual a la tabla progrmacion
                        lnIdServicioCENew = Val(mo_cmbNuevoIdServicioCE.BoundText)
                        mo_ReglasDeProgMedica.CitasActualizaDatosDeReprogramacionXfechaServicioCE txtFechaRequeridaDesde.Text, _
                                                              oRsTmp1.Fields!idAtencion, lnIdProgramacionNew, lnIdServicioCENew, oConexion
@@ -1369,13 +1367,16 @@ If mo_cmbIdServicioCE.BoundText <> "" Then
         oConexion.CursorLocation = adUseClient
         Set oDOServicio = mo_AdminServiciosHosp.ServiciosSeleccionarPorId(Val(mo_cmbIdServicioCE.BoundText), oConexion)
         oConexion.Close
-        MsgBox "IdServivio (" & Val(mo_cmbIdServicioCE.BoundText) & ")"
-        MsgBox "idEspecialidad (" & oDOServicio.IdEspecialidad & ")"
         Set oConexion = Nothing
         'Seleccionar el idEspecidad del ServicioCE seleccionado FIN
        Set mo_cmbNuevoIdServicioCE.RowSource = mo_AdminServHosp.ServiciosSeleccionarCEDisponibles(oDOServicio.IdEspecialidad, txtHrInicio.Text, txtHrFin.Text, txtFechaRequeridaDesde.Text)
+        If cmbNuevoIdServicioCE.ListCount > 0 Then
+            cmbNuevoIdServicioCE.ListIndex = 0
+        Else
+            MsgBox "No hay consultorios disponibles para esa fecha", vbInformation, "Mensaje"
+       End If
 Else
- MsgBox "Seleccione Servicio CE"
+ MsgBox "Seleccione Servicio CE", vbInformation, "Mensaje"
 End If
 End Sub
 'SCCQ 19/02/2020 Cambio 7 Fin
@@ -1729,9 +1730,6 @@ Private Sub Form_Load()
        lcParametro524 = lcBuscaParametro.SeleccionaFilaParametro(524)
        lcParametro205 = lcBuscaParametro.SeleccionaFilaParametro(205)
 End Sub
-
-
-
 
 Private Sub txtFechaAtencionPac_LostFocus()
 If Not EsFecha(txtFechaAtencionPac.Text, "DD/MM/AAAA") Then
