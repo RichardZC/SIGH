@@ -1,0 +1,7 @@
+[History]
+1=#P0#=mb	#P1#=btnAceptar_Click	#P2#=ProcesosEnMemoria/Procesos/btnAceptar_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200305121622	#P7#=0	#P8#=369	.
+2=#P0#=mb	#P1#=FarmaciaRegeneraSaldos	#P2#=ProcesosEnMemoria/Procesos/FarmaciaRegeneraSaldos	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200305104933	#P7#=0	#P8#=20	.
+3=#P0#=mb	#P1#=Timer1_Timer	#P2#=ProcesosEnMemoria/Procesos/Timer1_Timer	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200305104819	#P7#=0	#P8#=22	.
+4=#P0#=mb	#P1#=CargaIni	#P2#=ProcesosEnMemoria/Module1/CargaIni	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200305104807	#P7#=0	#P8#=5	.
+5=#P0#=mb	#P1#=sGetINI	#P2#=ProcesosEnMemoria/Module1/sGetINI	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200305104656	#P7#=0	#P8#=4	.
+6=#P0#=mb	#P1#=ActualizaAdmisionCita	#P2#=ProcesosEnMemoria/Procesos/ActualizaAdmisionCita	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200305082050	#P7#=0	#P8#=10	.
