@@ -803,12 +803,12 @@ Dim oRsAnatomia As New Recordset, lnIdRecetaAnatomia As Long
 Dim oRsPatologia As New Recordset, lnIdRecetaPatología As Long
 Dim oRsBanco As New Recordset, lnIdRecetaBanco As Long
 Dim oRsFarmacia As New Recordset, lnIdRecetaFarmacia As Long
-Dim mo_Apariencia As New sighentidades.GridInfragistic
-Dim mo_Formulario As New sighentidades.Formulario
+Dim mo_Apariencia As New sighEntidades.GridInfragistic
+Dim mo_Formulario As New sighEntidades.Formulario
 Dim lcSql As String
 Dim ml_IdTipoFinanciamiento As Long
 Dim lcBuscaParametro As New SIGHDatos.Parametros
-Dim mo_reglasComunes As New SIGHNegocios.ReglasComunes
+Dim mo_ReglasComunes As New SIGHNegocios.ReglasComunes
 Dim mo_ReglasFarmacia As New SIGHNegocios.ReglasFarmacia
 Dim mo_ReglasCaja As New SIGHNegocios.ReglasCaja
 Dim mo_sighProxies As New SIGHProxies.Procesos
@@ -864,7 +864,7 @@ Property Set RsServiciosAtenSimultaneaFuaXcorrelativo(oValue As Recordset)
            Do While Not mRs_Fua.EOF
               oRsRayosX.MoveFirst
               Do While Not oRsRayosX.EOF
-                 If oRsRayosX.Fields!Id = mRs_Fua!Item Then
+                 If oRsRayosX.Fields!ID = mRs_Fua!Item Then
                      oRsRayosX.Fields!FUA = mRs_Fua!idFuaCorrelativo
                  End If
                  oRsRayosX.MoveNext
@@ -880,7 +880,7 @@ Property Set RsServiciosAtenSimultaneaFuaXcorrelativo(oValue As Recordset)
            Do While Not mRs_Fua.EOF
               oRsEcografiaO.MoveFirst
               Do While Not oRsEcografiaO.EOF
-                 If oRsEcografiaO.Fields!Id = mRs_Fua!Item Then
+                 If oRsEcografiaO.Fields!ID = mRs_Fua!Item Then
                      oRsEcografiaO.Fields!FUA = mRs_Fua!idFuaCorrelativo
                  End If
                  oRsEcografiaO.MoveNext
@@ -896,7 +896,7 @@ Property Set RsServiciosAtenSimultaneaFuaXcorrelativo(oValue As Recordset)
            Do While Not mRs_Fua.EOF
               oRsEcografiaG.MoveFirst
               Do While Not oRsEcografiaG.EOF
-                 If oRsEcografiaG.Fields!Id = mRs_Fua!Item Then
+                 If oRsEcografiaG.Fields!ID = mRs_Fua!Item Then
                      oRsEcografiaG.Fields!FUA = mRs_Fua!idFuaCorrelativo
                  End If
                  oRsEcografiaG.MoveNext
@@ -912,7 +912,7 @@ Property Set RsServiciosAtenSimultaneaFuaXcorrelativo(oValue As Recordset)
            Do While Not mRs_Fua.EOF
               oRsTomografia.MoveFirst
               Do While Not oRsTomografia.EOF
-                 If oRsTomografia.Fields!Id = mRs_Fua!Item Then
+                 If oRsTomografia.Fields!ID = mRs_Fua!Item Then
                      oRsTomografia.Fields!FUA = mRs_Fua!idFuaCorrelativo
                  End If
                  oRsTomografia.MoveNext
@@ -928,7 +928,7 @@ Property Set RsServiciosAtenSimultaneaFuaXcorrelativo(oValue As Recordset)
            Do While Not mRs_Fua.EOF
               oRsAnatomia.MoveFirst
               Do While Not oRsAnatomia.EOF
-                 If oRsAnatomia.Fields!Id = mRs_Fua!Item Then
+                 If oRsAnatomia.Fields!ID = mRs_Fua!Item Then
                      oRsAnatomia.Fields!FUA = mRs_Fua!idFuaCorrelativo
                  End If
                  oRsAnatomia.MoveNext
@@ -944,7 +944,7 @@ Property Set RsServiciosAtenSimultaneaFuaXcorrelativo(oValue As Recordset)
            Do While Not mRs_Fua.EOF
               oRsPatologia.MoveFirst
               Do While Not oRsPatologia.EOF
-                 If oRsPatologia.Fields!Id = mRs_Fua!Item Then
+                 If oRsPatologia.Fields!ID = mRs_Fua!Item Then
                      oRsPatologia.Fields!FUA = mRs_Fua!idFuaCorrelativo
                  End If
                  oRsPatologia.MoveNext
@@ -960,7 +960,7 @@ Property Set RsServiciosAtenSimultaneaFuaXcorrelativo(oValue As Recordset)
            Do While Not mRs_Fua.EOF
               oRsBanco.MoveFirst
               Do While Not oRsBanco.EOF
-                 If oRsBanco.Fields!Id = mRs_Fua!Item Then
+                 If oRsBanco.Fields!ID = mRs_Fua!Item Then
                      oRsBanco.Fields!FUA = mRs_Fua!idFuaCorrelativo
                  End If
                  oRsBanco.MoveNext
@@ -976,7 +976,7 @@ Property Set RsServiciosAtenSimultaneaFuaXcorrelativo(oValue As Recordset)
            Do While Not mRs_Fua.EOF
               oRsFarmacia.MoveFirst
               Do While Not oRsFarmacia.EOF
-                 If oRsFarmacia.Fields!Id = mRs_Fua!Item Then
+                 If oRsFarmacia.Fields!ID = mRs_Fua!Item Then
                      oRsFarmacia.Fields!FUA = mRs_Fua!idFuaCorrelativo
                  End If
                  oRsFarmacia.MoveNext
@@ -1380,7 +1380,7 @@ Sub CreaTemporales(lbHabilitaFrame As Boolean, _
               .Open
         End With
         Set grdRayos.DataSource = oRsRayosX
-        mo_Apariencia.ConfigurarFilasBiColores grdRayos, sighentidades.GrillaConFilasBicolor
+        mo_Apariencia.ConfigurarFilasBiColores grdRayos, sighEntidades.GrillaConFilasBicolor
         grdRayos.Caption = ""
         If lbHabilitaFrame = True Then
            FraRayos.Enabled = True
@@ -1407,7 +1407,7 @@ Sub CreaTemporales(lbHabilitaFrame As Boolean, _
               .Open
         End With
         Set grdEcografiaO.DataSource = oRsEcografiaO
-        mo_Apariencia.ConfigurarFilasBiColores grdEcografiaO, sighentidades.GrillaConFilasBicolor
+        mo_Apariencia.ConfigurarFilasBiColores grdEcografiaO, sighEntidades.GrillaConFilasBicolor
         grdEcografiaO.Caption = ""
         If lbHabilitaFrame = True Then
            FraEcografiaO.Enabled = True
@@ -1434,7 +1434,7 @@ Sub CreaTemporales(lbHabilitaFrame As Boolean, _
               .Open
         End With
         Set grdEcografiaG.DataSource = oRsEcografiaG
-        mo_Apariencia.ConfigurarFilasBiColores grdEcografiaG, sighentidades.GrillaConFilasBicolor
+        mo_Apariencia.ConfigurarFilasBiColores grdEcografiaG, sighEntidades.GrillaConFilasBicolor
         grdEcografiaG.Caption = ""
         If lbHabilitaFrame = True Then
            FraEcografiaG.Enabled = True
@@ -1461,7 +1461,7 @@ Sub CreaTemporales(lbHabilitaFrame As Boolean, _
               .Open
         End With
         Set grdTomografia.DataSource = oRsTomografia
-        mo_Apariencia.ConfigurarFilasBiColores grdTomografia, sighentidades.GrillaConFilasBicolor
+        mo_Apariencia.ConfigurarFilasBiColores grdTomografia, sighEntidades.GrillaConFilasBicolor
         grdTomografia.Caption = ""
         If lbHabilitaFrame = True Then
             FraTomografia.Enabled = True
@@ -1488,7 +1488,7 @@ Sub CreaTemporales(lbHabilitaFrame As Boolean, _
               .Open
         End With
         Set grdAnatomia.DataSource = oRsAnatomia
-        mo_Apariencia.ConfigurarFilasBiColores grdAnatomia, sighentidades.GrillaConFilasBicolor
+        mo_Apariencia.ConfigurarFilasBiColores grdAnatomia, sighEntidades.GrillaConFilasBicolor
         grdAnatomia.Caption = ""
         If lbHabilitaFrame = True Then
            FraAnatomia.Enabled = True
@@ -1515,7 +1515,7 @@ Sub CreaTemporales(lbHabilitaFrame As Boolean, _
               .Open
         End With
         Set grdPatologia.DataSource = oRsPatologia
-        mo_Apariencia.ConfigurarFilasBiColores grdPatologia, sighentidades.GrillaConFilasBicolor
+        mo_Apariencia.ConfigurarFilasBiColores grdPatologia, sighEntidades.GrillaConFilasBicolor
         grdPatologia.Caption = ""
         If lbHabilitaFrame = True Then
            FraPatologia.Enabled = True
@@ -1542,7 +1542,7 @@ Sub CreaTemporales(lbHabilitaFrame As Boolean, _
               .Open
         End With
         Set grdBanco.DataSource = oRsBanco
-        mo_Apariencia.ConfigurarFilasBiColores grdBanco, sighentidades.GrillaConFilasBicolor
+        mo_Apariencia.ConfigurarFilasBiColores grdBanco, sighEntidades.GrillaConFilasBicolor
         grdBanco.Caption = ""
         If lbHabilitaFrame = True Then
            FraBancoS.Enabled = True
@@ -1573,7 +1573,7 @@ Sub CreaTemporales(lbHabilitaFrame As Boolean, _
               .Open
         End With
         Set grdFarmacia.DataSource = oRsFarmacia
-        mo_Apariencia.ConfigurarFilasBiColores grdFarmacia, sighentidades.GrillaConFilasBicolor
+        mo_Apariencia.ConfigurarFilasBiColores grdFarmacia, sighEntidades.GrillaConFilasBicolor
         grdFarmacia.Caption = ""
         If lbHabilitaFrame = True Then
            fraFarmacia.Enabled = True
@@ -1607,7 +1607,7 @@ Private Sub InicializarLaGrilla(oGrilla As SSUltraGrid)
          oGrilla.Bands(0).Columns("idDosisRecetada").Activation = ssActivationActivateNoEdit
          oGrilla.Bands(0).Columns("idDosisRecetada").Width = 700
          oGrilla.Bands(0).Columns("idDosisRecetada").Header.Caption = "N°Dosis"
-         Set oRsTmp1 = mo_reglasComunes.RecetaDosisSelecionarTodos
+         Set oRsTmp1 = mo_ReglasComunes.RecetaDosisSelecionarTodos
          lnItem = 0
          With oGrilla.ValueLists.Add("Dosis").ValueListItems
                 If oRsTmp1.RecordCount > 0 Then
@@ -1630,13 +1630,13 @@ Private Sub InicializarLaGrilla(oGrilla As SSUltraGrid)
          oGrilla.Bands(0).Columns("Observaciones").Header.Caption = "Frecuencia" 'Actualizado 01102014
          
         'Actualizado 26092014''''''''''''''''''''''''''''''''''''''''''''''''''''
-        Set oRsTmp1 = mo_reglasComunes.RecetasListadoViasAdministracion
+        Set oRsTmp1 = mo_ReglasComunes.RecetasListadoViasAdministracion
         With oGrilla.ValueLists.Add("ViaAdministracion").ValueListItems
 '            grdFarmacia.ValueLists.Add ("ViaAdministracion")
             If oRsTmp1.RecordCount > 0 Then
                 oRsTmp1.MoveFirst
                 While Not oRsTmp1.EOF
-                    .Add CInt(oRsTmp1!IdViaAdministracion), CStr(oRsTmp1!Descripcion)
+                    .Add CInt(oRsTmp1!IdViaAdministracion), CStr(oRsTmp1!descripcion)
                     oRsTmp1.MoveNext
                 Wend
             End If
@@ -1770,9 +1770,9 @@ Public Sub CargaDatosAcontroles(oRsCabeceraRecetas As Recordset, _
           Select Case oRsCabeceraRecetas.Fields!idPuntoCarga
           Case sghPtoCargaServicioHospitalizacion
                lnRecetaOtrosCpt = oRsCabeceraRecetas.Fields!idReceta
-               If oRsCabeceraRecetas.Fields!IdEstado <> sghRecetaEstados.sighRecetaRegistrada Then
+               If oRsCabeceraRecetas.Fields!idEstado <> sghRecetaEstados.sighRecetaRegistrada Then
                   lnRecetaOtrosCpt = -100
-                  Select Case oRsCabeceraRecetas.Fields!IdEstado
+                  Select Case oRsCabeceraRecetas.Fields!idEstado
                   Case sghRecetaEstados.sighRecetaDespachada, sghRecetaEstados.sighRecetaConBoleta
                      If IsNull(oRsCabeceraRecetas.Fields!IdComprobantePago) Then
                         UserControl.ucRecetaCpt1.InhabilitaControles " (Movim: " & oRsCabeceraRecetas.Fields!DocumentoDespacho & ")"
@@ -1785,16 +1785,16 @@ Public Sub CargaDatosAcontroles(oRsCabeceraRecetas As Recordset, _
                      End If
                   End Select
                End If
-               Set oRsDetalleReceta = mo_reglasComunes.RecetasDevuelveDatosDelDetalle(oRsCabeceraRecetas.Fields!idReceta, oRsCabeceraRecetas.Fields!idPuntoCarga)
+               Set oRsDetalleReceta = mo_ReglasComunes.RecetasDevuelveDatosDelDetalle(oRsCabeceraRecetas.Fields!idReceta, oRsCabeceraRecetas.Fields!idPuntoCarga)
                UserControl.ucRecetaCpt1.CargaDatosAcontroles oRsDetalleReceta
                oRsDetalleReceta.Close
           Case sghPtoCargaRayosX
                lnRecetaRayosX = oRsCabeceraRecetas.Fields!idReceta
-               lblRayosX.Caption = "(Receta N° " & Trim(Str(oRsCabeceraRecetas.Fields!idReceta)) & ") (" & mo_reglasComunes.DevuelveEstadoReceta(oRsCabeceraRecetas.Fields!IdEstado) & ")"
-               If oRsCabeceraRecetas.Fields!IdEstado <> sghRecetaEstados.sighRecetaRegistrada Then
+               lblRayosX.Caption = "(Receta N° " & Trim(Str(oRsCabeceraRecetas.Fields!idReceta)) & ") (" & mo_ReglasComunes.DevuelveEstadoReceta(oRsCabeceraRecetas.Fields!idEstado) & ")"
+               If oRsCabeceraRecetas.Fields!idEstado <> sghRecetaEstados.sighRecetaRegistrada Then
                   FraRayos.Enabled = False
                   lnRecetaRayosX = -100
-                  Select Case oRsCabeceraRecetas.Fields!IdEstado
+                  Select Case oRsCabeceraRecetas.Fields!idEstado
                   Case sghRecetaEstados.sighRecetaDespachada, sghRecetaEstados.sighRecetaConBoleta
                      If IsNull(oRsCabeceraRecetas.Fields!IdComprobantePago) Then
                         lblRayosX.Caption = lblRayosX.Caption & " (Movim: " & oRsCabeceraRecetas.Fields!DocumentoDespacho & ")"
@@ -1807,22 +1807,22 @@ Public Sub CargaDatosAcontroles(oRsCabeceraRecetas As Recordset, _
                      End If
                   End Select
                End If
-               Set oRsDetalleReceta = mo_reglasComunes.RecetasDevuelveDatosDelDetalle(oRsCabeceraRecetas.Fields!idReceta, oRsCabeceraRecetas.Fields!idPuntoCarga)
+               Set oRsDetalleReceta = mo_ReglasComunes.RecetasDevuelveDatosDelDetalle(oRsCabeceraRecetas.Fields!idReceta, oRsCabeceraRecetas.Fields!idPuntoCarga)
                If oRsDetalleReceta.RecordCount > 0 Then
                   oRsDetalleReceta.MoveFirst
                   Do While Not oRsDetalleReceta.EOF
                      oRsRayosX.AddNew
-                     oRsRayosX.Fields!Id = oRsDetalleReceta.Fields!idItem
+                     oRsRayosX.Fields!ID = oRsDetalleReceta.Fields!idItem
                      oRsRayosX.Fields!procedimiento = oRsDetalleReceta.Fields!Producto
                      oRsRayosX.Fields!Cantidad = oRsDetalleReceta.Fields!CantidadPedida
-                     oRsRayosX.Fields!Precio = oRsDetalleReceta.Fields!Precio
+                     oRsRayosX.Fields!precio = oRsDetalleReceta.Fields!precio
                      oRsRayosX.Fields!saldoActual = oRsDetalleReceta.Fields!SaldoEnRegistroReceta
-                     oRsRayosX.Fields!receta = oRsCabeceraRecetas.Fields!idReceta
+                     oRsRayosX.Fields!Receta = oRsCabeceraRecetas.Fields!idReceta
                      oRsRayosX.Fields!idDosisRecetada = IIf(IsNull(oRsDetalleReceta.Fields!idDosisRecetada), 0, oRsDetalleReceta.Fields!idDosisRecetada)
                      oRsRayosX.Fields!idEstadoDetalle = IIf(IsNull(oRsDetalleReceta.Fields!idEstadoDetalle), 0, oRsDetalleReceta.Fields!idEstadoDetalle)
                      oRsRayosX.Fields!MotivoAnulacionMedico = IIf(IsNull(oRsDetalleReceta.Fields!MotivoAnulacionMedico), "", oRsDetalleReceta.Fields!MotivoAnulacionMedico)
                      oRsRayosX.Fields!Observaciones = IIf(IsNull(oRsDetalleReceta.Fields!Observaciones), "", oRsDetalleReceta.Fields!Observaciones)
-                     If oRsDetalleReceta.Fields!Precio > 0 Then
+                     If oRsDetalleReceta.Fields!precio > 0 Then
                         oRsRayosX.Fields!hayCpt = True
                      End If
                      oRsRayosX.Fields!Dx = IIf(IsNull(oRsDetalleReceta!Dx), "", oRsDetalleReceta!Dx)
@@ -1833,11 +1833,11 @@ Public Sub CargaDatosAcontroles(oRsCabeceraRecetas As Recordset, _
                oRsDetalleReceta.Close
           Case sghPtoCargaEcogObstetrica
                lnRecetaEcografiaO = oRsCabeceraRecetas.Fields!idReceta
-               lblEcografiaO.Caption = "(Receta N° " & Trim(Str(oRsCabeceraRecetas.Fields!idReceta)) & ") (Estado: " & mo_reglasComunes.DevuelveEstadoReceta(oRsCabeceraRecetas.Fields!IdEstado) & ")"
-               If oRsCabeceraRecetas.Fields!IdEstado <> sghRecetaEstados.sighRecetaRegistrada Then
+               lblEcografiaO.Caption = "(Receta N° " & Trim(Str(oRsCabeceraRecetas.Fields!idReceta)) & ") (Estado: " & mo_ReglasComunes.DevuelveEstadoReceta(oRsCabeceraRecetas.Fields!idEstado) & ")"
+               If oRsCabeceraRecetas.Fields!idEstado <> sghRecetaEstados.sighRecetaRegistrada Then
                   FraEcografiaO.Enabled = False
                   lnRecetaEcografiaO = -100
-                  Select Case oRsCabeceraRecetas.Fields!IdEstado
+                  Select Case oRsCabeceraRecetas.Fields!idEstado
                   Case sghRecetaEstados.sighRecetaDespachada, sghRecetaEstados.sighRecetaConBoleta
                      If IsNull(oRsCabeceraRecetas.Fields!IdComprobantePago) Then
                         lblEcografiaO.Caption = lblEcografiaO.Caption & " (Movim: " & oRsCabeceraRecetas.Fields!DocumentoDespacho & ")"
@@ -1850,20 +1850,20 @@ Public Sub CargaDatosAcontroles(oRsCabeceraRecetas As Recordset, _
                      End If
                   End Select
                End If
-               Set oRsDetalleReceta = mo_reglasComunes.RecetasDevuelveDatosDelDetalle(oRsCabeceraRecetas.Fields!idReceta, oRsCabeceraRecetas.Fields!idPuntoCarga)
+               Set oRsDetalleReceta = mo_ReglasComunes.RecetasDevuelveDatosDelDetalle(oRsCabeceraRecetas.Fields!idReceta, oRsCabeceraRecetas.Fields!idPuntoCarga)
                If oRsDetalleReceta.RecordCount > 0 Then
                   oRsDetalleReceta.MoveFirst
                   Do While Not oRsDetalleReceta.EOF
                      oRsEcografiaO.AddNew
-                     oRsEcografiaO.Fields!Id = oRsDetalleReceta.Fields!idItem
+                     oRsEcografiaO.Fields!ID = oRsDetalleReceta.Fields!idItem
                      oRsEcografiaO.Fields!procedimiento = oRsDetalleReceta.Fields!Producto
                      oRsEcografiaO.Fields!Cantidad = oRsDetalleReceta.Fields!CantidadPedida
-                     oRsEcografiaO.Fields!Precio = oRsDetalleReceta.Fields!Precio
+                     oRsEcografiaO.Fields!precio = oRsDetalleReceta.Fields!precio
                      oRsEcografiaO.Fields!saldoActual = oRsDetalleReceta.Fields!SaldoEnRegistroReceta
-                     If oRsDetalleReceta.Fields!Precio > 0 Then
+                     If oRsDetalleReceta.Fields!precio > 0 Then
                         oRsEcografiaO.Fields!hayCpt = True
                      End If
-                     oRsEcografiaO.Fields!receta = oRsCabeceraRecetas.Fields!idReceta
+                     oRsEcografiaO.Fields!Receta = oRsCabeceraRecetas.Fields!idReceta
                      oRsEcografiaO.Fields!idDosisRecetada = IIf(IsNull(oRsDetalleReceta.Fields!idDosisRecetada), 0, oRsDetalleReceta.Fields!idDosisRecetada)
                      oRsEcografiaO.Fields!idEstadoDetalle = IIf(IsNull(oRsDetalleReceta.Fields!idEstadoDetalle), 0, oRsDetalleReceta.Fields!idEstadoDetalle)
                      oRsEcografiaO.Fields!MotivoAnulacionMedico = IIf(IsNull(oRsDetalleReceta.Fields!MotivoAnulacionMedico), "", oRsDetalleReceta.Fields!MotivoAnulacionMedico)
@@ -1876,11 +1876,11 @@ Public Sub CargaDatosAcontroles(oRsCabeceraRecetas As Recordset, _
                oRsDetalleReceta.Close
           Case sghPtoCargaEcogGeneral
                lnRecetaEcografiaG = oRsCabeceraRecetas.Fields!idReceta
-               lblEcografiaG.Caption = "(Receta N° " & Trim(Str(oRsCabeceraRecetas.Fields!idReceta)) & ") (Estado: " & mo_reglasComunes.DevuelveEstadoReceta(oRsCabeceraRecetas.Fields!IdEstado) & ")"
-               If oRsCabeceraRecetas.Fields!IdEstado <> sghRecetaEstados.sighRecetaRegistrada Then
+               lblEcografiaG.Caption = "(Receta N° " & Trim(Str(oRsCabeceraRecetas.Fields!idReceta)) & ") (Estado: " & mo_ReglasComunes.DevuelveEstadoReceta(oRsCabeceraRecetas.Fields!idEstado) & ")"
+               If oRsCabeceraRecetas.Fields!idEstado <> sghRecetaEstados.sighRecetaRegistrada Then
                   FraEcografiaG.Enabled = False
                   lnRecetaEcografiaG = -100
-                  Select Case oRsCabeceraRecetas.Fields!IdEstado
+                  Select Case oRsCabeceraRecetas.Fields!idEstado
                   Case sghRecetaEstados.sighRecetaDespachada, sghRecetaEstados.sighRecetaConBoleta
                      If IsNull(oRsCabeceraRecetas.Fields!IdComprobantePago) Then
                         lblEcografiaG.Caption = lblEcografiaG.Caption & " (Movim: " & oRsCabeceraRecetas.Fields!DocumentoDespacho & ")"
@@ -1893,20 +1893,20 @@ Public Sub CargaDatosAcontroles(oRsCabeceraRecetas As Recordset, _
                      End If
                   End Select
                End If
-               Set oRsDetalleReceta = mo_reglasComunes.RecetasDevuelveDatosDelDetalle(oRsCabeceraRecetas.Fields!idReceta, oRsCabeceraRecetas.Fields!idPuntoCarga)
+               Set oRsDetalleReceta = mo_ReglasComunes.RecetasDevuelveDatosDelDetalle(oRsCabeceraRecetas.Fields!idReceta, oRsCabeceraRecetas.Fields!idPuntoCarga)
                If oRsDetalleReceta.RecordCount > 0 Then
                   oRsDetalleReceta.MoveFirst
                   Do While Not oRsDetalleReceta.EOF
                      oRsEcografiaG.AddNew
-                     oRsEcografiaG.Fields!Id = oRsDetalleReceta.Fields!idItem
+                     oRsEcografiaG.Fields!ID = oRsDetalleReceta.Fields!idItem
                      oRsEcografiaG.Fields!procedimiento = oRsDetalleReceta.Fields!Producto
                      oRsEcografiaG.Fields!Cantidad = oRsDetalleReceta.Fields!CantidadPedida
-                     oRsEcografiaG.Fields!Precio = oRsDetalleReceta.Fields!Precio
+                     oRsEcografiaG.Fields!precio = oRsDetalleReceta.Fields!precio
                      oRsEcografiaG.Fields!saldoActual = oRsDetalleReceta.Fields!SaldoEnRegistroReceta
-                     If oRsDetalleReceta.Fields!Precio > 0 Then
+                     If oRsDetalleReceta.Fields!precio > 0 Then
                         oRsEcografiaG.Fields!hayCpt = True
                      End If
-                     oRsEcografiaG.Fields!receta = oRsCabeceraRecetas.Fields!idReceta
+                     oRsEcografiaG.Fields!Receta = oRsCabeceraRecetas.Fields!idReceta
                      oRsEcografiaG.Fields!idDosisRecetada = IIf(IsNull(oRsDetalleReceta.Fields!idDosisRecetada), 0, oRsDetalleReceta.Fields!idDosisRecetada)
                      oRsEcografiaG.Fields!idEstadoDetalle = IIf(IsNull(oRsDetalleReceta.Fields!idEstadoDetalle), 0, oRsDetalleReceta.Fields!idEstadoDetalle)
                      oRsEcografiaG.Fields!MotivoAnulacionMedico = IIf(IsNull(oRsDetalleReceta.Fields!MotivoAnulacionMedico), "", oRsDetalleReceta.Fields!MotivoAnulacionMedico)
@@ -1919,11 +1919,11 @@ Public Sub CargaDatosAcontroles(oRsCabeceraRecetas As Recordset, _
                oRsDetalleReceta.Close
           Case sghPtoCargaTomografia
                lnRecetaTomografia = oRsCabeceraRecetas.Fields!idReceta
-               lblTomografia.Caption = "(Receta N° " & Trim(Str(oRsCabeceraRecetas.Fields!idReceta)) & ") (Estado: " & mo_reglasComunes.DevuelveEstadoReceta(oRsCabeceraRecetas.Fields!IdEstado) & ")"
-               If oRsCabeceraRecetas.Fields!IdEstado <> sghRecetaEstados.sighRecetaRegistrada Then
+               lblTomografia.Caption = "(Receta N° " & Trim(Str(oRsCabeceraRecetas.Fields!idReceta)) & ") (Estado: " & mo_ReglasComunes.DevuelveEstadoReceta(oRsCabeceraRecetas.Fields!idEstado) & ")"
+               If oRsCabeceraRecetas.Fields!idEstado <> sghRecetaEstados.sighRecetaRegistrada Then
                   FraTomografia.Enabled = False
                   lnRecetaTomografia = -100
-                  Select Case oRsCabeceraRecetas.Fields!IdEstado
+                  Select Case oRsCabeceraRecetas.Fields!idEstado
                   Case sghRecetaEstados.sighRecetaDespachada, sghRecetaEstados.sighRecetaConBoleta
                      If IsNull(oRsCabeceraRecetas.Fields!IdComprobantePago) Then
                         lblTomografia.Caption = lblTomografia.Caption & " (Movim: " & oRsCabeceraRecetas.Fields!DocumentoDespacho & ")"
@@ -1936,20 +1936,20 @@ Public Sub CargaDatosAcontroles(oRsCabeceraRecetas As Recordset, _
                      End If
                   End Select
                End If
-               Set oRsDetalleReceta = mo_reglasComunes.RecetasDevuelveDatosDelDetalle(oRsCabeceraRecetas.Fields!idReceta, oRsCabeceraRecetas.Fields!idPuntoCarga)
+               Set oRsDetalleReceta = mo_ReglasComunes.RecetasDevuelveDatosDelDetalle(oRsCabeceraRecetas.Fields!idReceta, oRsCabeceraRecetas.Fields!idPuntoCarga)
                If oRsDetalleReceta.RecordCount > 0 Then
                   oRsDetalleReceta.MoveFirst
                   Do While Not oRsDetalleReceta.EOF
                      oRsTomografia.AddNew
-                     oRsTomografia.Fields!Id = oRsDetalleReceta.Fields!idItem
+                     oRsTomografia.Fields!ID = oRsDetalleReceta.Fields!idItem
                      oRsTomografia.Fields!procedimiento = oRsDetalleReceta.Fields!Producto
                      oRsTomografia.Fields!Cantidad = oRsDetalleReceta.Fields!CantidadPedida
-                     oRsTomografia.Fields!Precio = oRsDetalleReceta.Fields!Precio
+                     oRsTomografia.Fields!precio = oRsDetalleReceta.Fields!precio
                      oRsTomografia.Fields!saldoActual = oRsDetalleReceta.Fields!SaldoEnRegistroReceta
-                     If oRsDetalleReceta.Fields!Precio > 0 Then
+                     If oRsDetalleReceta.Fields!precio > 0 Then
                         oRsTomografia.Fields!hayCpt = True
                      End If
-                     oRsTomografia.Fields!receta = oRsCabeceraRecetas.Fields!idReceta
+                     oRsTomografia.Fields!Receta = oRsCabeceraRecetas.Fields!idReceta
                      oRsTomografia.Fields!idDosisRecetada = IIf(IsNull(oRsDetalleReceta.Fields!idDosisRecetada), 0, oRsDetalleReceta.Fields!idDosisRecetada)
                      oRsTomografia.Fields!idEstadoDetalle = IIf(IsNull(oRsDetalleReceta.Fields!idEstadoDetalle), 0, oRsDetalleReceta.Fields!idEstadoDetalle)
                      oRsTomografia.Fields!MotivoAnulacionMedico = IIf(IsNull(oRsDetalleReceta.Fields!MotivoAnulacionMedico), "", oRsDetalleReceta.Fields!MotivoAnulacionMedico)
@@ -1962,11 +1962,11 @@ Public Sub CargaDatosAcontroles(oRsCabeceraRecetas As Recordset, _
                oRsDetalleReceta.Close
           Case sghPtoCargaPatologiaClinica
                lnRecetaPatologiaC = oRsCabeceraRecetas.Fields!idReceta
-               lblPatologia.Caption = "(Receta N° " & Trim(Str(oRsCabeceraRecetas.Fields!idReceta)) & ") (Estado: " & mo_reglasComunes.DevuelveEstadoReceta(oRsCabeceraRecetas.Fields!IdEstado) & ")"
-               If oRsCabeceraRecetas.Fields!IdEstado <> sghRecetaEstados.sighRecetaRegistrada Then
+               lblPatologia.Caption = "(Receta N° " & Trim(Str(oRsCabeceraRecetas.Fields!idReceta)) & ") (Estado: " & mo_ReglasComunes.DevuelveEstadoReceta(oRsCabeceraRecetas.Fields!idEstado) & ")"
+               If oRsCabeceraRecetas.Fields!idEstado <> sghRecetaEstados.sighRecetaRegistrada Then
                   FraPatologia.Enabled = False
                   lnRecetaPatologiaC = -100
-                  Select Case oRsCabeceraRecetas.Fields!IdEstado
+                  Select Case oRsCabeceraRecetas.Fields!idEstado
                   Case sghRecetaEstados.sighRecetaDespachada, sghRecetaEstados.sighRecetaConBoleta
                      If IsNull(oRsCabeceraRecetas.Fields!IdComprobantePago) Then
                         lblPatologia.Caption = lblPatologia.Caption & " (Movim: " & oRsCabeceraRecetas.Fields!DocumentoDespacho & ")"
@@ -1979,20 +1979,20 @@ Public Sub CargaDatosAcontroles(oRsCabeceraRecetas As Recordset, _
                      End If
                   End Select
                End If
-               Set oRsDetalleReceta = mo_reglasComunes.RecetasDevuelveDatosDelDetalle(oRsCabeceraRecetas.Fields!idReceta, oRsCabeceraRecetas.Fields!idPuntoCarga)
+               Set oRsDetalleReceta = mo_ReglasComunes.RecetasDevuelveDatosDelDetalle(oRsCabeceraRecetas.Fields!idReceta, oRsCabeceraRecetas.Fields!idPuntoCarga)
                If oRsDetalleReceta.RecordCount > 0 Then
                   oRsDetalleReceta.MoveFirst
                   Do While Not oRsDetalleReceta.EOF
                      oRsPatologia.AddNew
-                     oRsPatologia.Fields!Id = oRsDetalleReceta.Fields!idItem
+                     oRsPatologia.Fields!ID = oRsDetalleReceta.Fields!idItem
                      oRsPatologia.Fields!procedimiento = oRsDetalleReceta.Fields!Producto
                      oRsPatologia.Fields!Cantidad = oRsDetalleReceta.Fields!CantidadPedida
-                     oRsPatologia.Fields!Precio = oRsDetalleReceta.Fields!Precio
+                     oRsPatologia.Fields!precio = oRsDetalleReceta.Fields!precio
                      oRsPatologia.Fields!saldoActual = oRsDetalleReceta.Fields!SaldoEnRegistroReceta
-                     If oRsDetalleReceta.Fields!Precio > 0 Then
+                     If oRsDetalleReceta.Fields!precio > 0 Then
                         oRsPatologia.Fields!hayCpt = True
                      End If
-                     oRsPatologia.Fields!receta = oRsCabeceraRecetas.Fields!idReceta
+                     oRsPatologia.Fields!Receta = oRsCabeceraRecetas.Fields!idReceta
                      oRsPatologia.Fields!idDosisRecetada = IIf(IsNull(oRsDetalleReceta.Fields!idDosisRecetada), 0, oRsDetalleReceta.Fields!idDosisRecetada)
                      oRsPatologia.Fields!idEstadoDetalle = IIf(IsNull(oRsDetalleReceta.Fields!idEstadoDetalle), 0, oRsDetalleReceta.Fields!idEstadoDetalle)
                      oRsPatologia.Fields!MotivoAnulacionMedico = IIf(IsNull(oRsDetalleReceta.Fields!MotivoAnulacionMedico), "", oRsDetalleReceta.Fields!MotivoAnulacionMedico)
@@ -2005,11 +2005,11 @@ Public Sub CargaDatosAcontroles(oRsCabeceraRecetas As Recordset, _
                oRsDetalleReceta.Close
           Case sghPtoCargaAnatomiaPatologica1
                lnRecetaAnatomiaP = oRsCabeceraRecetas.Fields!idReceta
-               lblAnatomia.Caption = "(Receta N° " & Trim(Str(oRsCabeceraRecetas.Fields!idReceta)) & ") (Estado: " & mo_reglasComunes.DevuelveEstadoReceta(oRsCabeceraRecetas.Fields!IdEstado) & ")"
-               If oRsCabeceraRecetas.Fields!IdEstado <> sghRecetaEstados.sighRecetaRegistrada Then
+               lblAnatomia.Caption = "(Receta N° " & Trim(Str(oRsCabeceraRecetas.Fields!idReceta)) & ") (Estado: " & mo_ReglasComunes.DevuelveEstadoReceta(oRsCabeceraRecetas.Fields!idEstado) & ")"
+               If oRsCabeceraRecetas.Fields!idEstado <> sghRecetaEstados.sighRecetaRegistrada Then
                   FraAnatomia.Enabled = False
                   lnRecetaAnatomiaP = -100
-                  Select Case oRsCabeceraRecetas.Fields!IdEstado
+                  Select Case oRsCabeceraRecetas.Fields!idEstado
                   Case sghRecetaEstados.sighRecetaDespachada, sghRecetaEstados.sighRecetaConBoleta
                      If IsNull(oRsCabeceraRecetas.Fields!IdComprobantePago) Then
                         lblAnatomia.Caption = lblAnatomia.Caption & " (Movim: " & oRsCabeceraRecetas.Fields!DocumentoDespacho & ")"
@@ -2022,20 +2022,20 @@ Public Sub CargaDatosAcontroles(oRsCabeceraRecetas As Recordset, _
                      End If
                   End Select
                End If
-               Set oRsDetalleReceta = mo_reglasComunes.RecetasDevuelveDatosDelDetalle(oRsCabeceraRecetas.Fields!idReceta, oRsCabeceraRecetas.Fields!idPuntoCarga)
+               Set oRsDetalleReceta = mo_ReglasComunes.RecetasDevuelveDatosDelDetalle(oRsCabeceraRecetas.Fields!idReceta, oRsCabeceraRecetas.Fields!idPuntoCarga)
                If oRsDetalleReceta.RecordCount > 0 Then
                   oRsDetalleReceta.MoveFirst
                   Do While Not oRsDetalleReceta.EOF
                      oRsAnatomia.AddNew
-                     oRsAnatomia.Fields!Id = oRsDetalleReceta.Fields!idItem
+                     oRsAnatomia.Fields!ID = oRsDetalleReceta.Fields!idItem
                      oRsAnatomia.Fields!procedimiento = oRsDetalleReceta.Fields!Producto
                      oRsAnatomia.Fields!Cantidad = oRsDetalleReceta.Fields!CantidadPedida
-                     oRsAnatomia.Fields!Precio = oRsDetalleReceta.Fields!Precio
+                     oRsAnatomia.Fields!precio = oRsDetalleReceta.Fields!precio
                      oRsAnatomia.Fields!saldoActual = oRsDetalleReceta.Fields!SaldoEnRegistroReceta
-                     If oRsDetalleReceta.Fields!Precio > 0 Then
+                     If oRsDetalleReceta.Fields!precio > 0 Then
                         oRsAnatomia.Fields!hayCpt = True
                      End If
-                     oRsAnatomia.Fields!receta = oRsCabeceraRecetas.Fields!idReceta
+                     oRsAnatomia.Fields!Receta = oRsCabeceraRecetas.Fields!idReceta
                      oRsAnatomia.Fields!idDosisRecetada = IIf(IsNull(oRsDetalleReceta.Fields!idDosisRecetada), 0, oRsDetalleReceta.Fields!idDosisRecetada)
                      oRsAnatomia.Fields!idEstadoDetalle = IIf(IsNull(oRsDetalleReceta.Fields!idEstadoDetalle), 0, oRsDetalleReceta.Fields!idEstadoDetalle)
                      oRsAnatomia.Fields!MotivoAnulacionMedico = IIf(IsNull(oRsDetalleReceta.Fields!MotivoAnulacionMedico), "", oRsDetalleReceta.Fields!MotivoAnulacionMedico)
@@ -2048,11 +2048,11 @@ Public Sub CargaDatosAcontroles(oRsCabeceraRecetas As Recordset, _
                oRsDetalleReceta.Close
           Case sghPtoCargaBancoSangre1
                lnRecetaBancoS = oRsCabeceraRecetas.Fields!idReceta
-               lblBancoS.Caption = "(Receta N° " & Trim(Str(oRsCabeceraRecetas.Fields!idReceta)) & ") (Estado: " & mo_reglasComunes.DevuelveEstadoReceta(oRsCabeceraRecetas.Fields!IdEstado) & ")"
-               If oRsCabeceraRecetas.Fields!IdEstado <> sghRecetaEstados.sighRecetaRegistrada Then
+               lblBancoS.Caption = "(Receta N° " & Trim(Str(oRsCabeceraRecetas.Fields!idReceta)) & ") (Estado: " & mo_ReglasComunes.DevuelveEstadoReceta(oRsCabeceraRecetas.Fields!idEstado) & ")"
+               If oRsCabeceraRecetas.Fields!idEstado <> sghRecetaEstados.sighRecetaRegistrada Then
                   FraBancoS.Enabled = False
                   lnRecetaBancoS = -100
-                  Select Case oRsCabeceraRecetas.Fields!IdEstado
+                  Select Case oRsCabeceraRecetas.Fields!idEstado
                   Case sghRecetaEstados.sighRecetaDespachada, sghRecetaEstados.sighRecetaConBoleta
                      If IsNull(oRsCabeceraRecetas.Fields!IdComprobantePago) Then
                         lblBancoS.Caption = lblBancoS.Caption & " (Movim: " & oRsCabeceraRecetas.Fields!DocumentoDespacho & ")"
@@ -2065,20 +2065,20 @@ Public Sub CargaDatosAcontroles(oRsCabeceraRecetas As Recordset, _
                      End If
                   End Select
                End If
-               Set oRsDetalleReceta = mo_reglasComunes.RecetasDevuelveDatosDelDetalle(oRsCabeceraRecetas.Fields!idReceta, oRsCabeceraRecetas.Fields!idPuntoCarga)
+               Set oRsDetalleReceta = mo_ReglasComunes.RecetasDevuelveDatosDelDetalle(oRsCabeceraRecetas.Fields!idReceta, oRsCabeceraRecetas.Fields!idPuntoCarga)
                If oRsDetalleReceta.RecordCount > 0 Then
                   oRsDetalleReceta.MoveFirst
                   Do While Not oRsDetalleReceta.EOF
                      oRsBanco.AddNew
-                     oRsBanco.Fields!Id = oRsDetalleReceta.Fields!idItem
+                     oRsBanco.Fields!ID = oRsDetalleReceta.Fields!idItem
                      oRsBanco.Fields!procedimiento = oRsDetalleReceta.Fields!Producto
                      oRsBanco.Fields!Cantidad = oRsDetalleReceta.Fields!CantidadPedida
-                     oRsBanco.Fields!Precio = oRsDetalleReceta.Fields!Precio
+                     oRsBanco.Fields!precio = oRsDetalleReceta.Fields!precio
                      oRsBanco.Fields!saldoActual = oRsDetalleReceta.Fields!SaldoEnRegistroReceta
-                     If oRsDetalleReceta.Fields!Precio > 0 Then
+                     If oRsDetalleReceta.Fields!precio > 0 Then
                         oRsBanco.Fields!hayCpt = True
                      End If
-                     oRsBanco.Fields!receta = oRsCabeceraRecetas.Fields!idReceta
+                     oRsBanco.Fields!Receta = oRsCabeceraRecetas.Fields!idReceta
                      oRsBanco.Fields!idDosisRecetada = IIf(IsNull(oRsDetalleReceta.Fields!idDosisRecetada), 0, oRsDetalleReceta.Fields!idDosisRecetada)
                      oRsBanco.Fields!idEstadoDetalle = IIf(IsNull(oRsDetalleReceta.Fields!idEstadoDetalle), 0, oRsDetalleReceta.Fields!idEstadoDetalle)
                      oRsBanco.Fields!MotivoAnulacionMedico = IIf(IsNull(oRsDetalleReceta.Fields!MotivoAnulacionMedico), "", oRsDetalleReceta.Fields!MotivoAnulacionMedico)
@@ -2098,11 +2098,11 @@ Public Sub CargaDatosAcontroles(oRsCabeceraRecetas As Recordset, _
                End If
                '
                lnRecetaFarmacia = oRsCabeceraRecetas.Fields!idReceta
-               lblFarmacia.Caption = "(Receta N° " & Trim(Str(oRsCabeceraRecetas.Fields!idReceta)) & ") (Estado: " & mo_reglasComunes.DevuelveEstadoReceta(oRsCabeceraRecetas.Fields!IdEstado) & ")"
-               If oRsCabeceraRecetas.Fields!IdEstado <> sghRecetaEstados.sighRecetaRegistrada Then
+               lblFarmacia.Caption = "(Receta N° " & Trim(Str(oRsCabeceraRecetas.Fields!idReceta)) & ") (Estado: " & mo_ReglasComunes.DevuelveEstadoReceta(oRsCabeceraRecetas.Fields!idEstado) & ")"
+               If oRsCabeceraRecetas.Fields!idEstado <> sghRecetaEstados.sighRecetaRegistrada Then
                   lnRecetaFarmacia = -100
                   fraFarmacia.Enabled = False
-                  Select Case oRsCabeceraRecetas.Fields!IdEstado
+                  Select Case oRsCabeceraRecetas.Fields!idEstado
                   Case sghRecetaEstados.sighRecetaDespachada, sghRecetaEstados.sighRecetaConBoleta
                      If IsNull(oRsCabeceraRecetas.Fields!IdComprobantePago) Then
                         lblFarmacia.Caption = lblFarmacia.Caption & " (Movim: " & oRsCabeceraRecetas.Fields!DocumentoDespacho & ")"
@@ -2115,20 +2115,20 @@ Public Sub CargaDatosAcontroles(oRsCabeceraRecetas As Recordset, _
                      End If
                   End Select
                End If
-               Set oRsDetalleReceta = mo_reglasComunes.RecetasDevuelveDatosDelDetalle(oRsCabeceraRecetas.Fields!idReceta, oRsCabeceraRecetas.Fields!idPuntoCarga)
+               Set oRsDetalleReceta = mo_ReglasComunes.RecetasDevuelveDatosDelDetalle(oRsCabeceraRecetas.Fields!idReceta, oRsCabeceraRecetas.Fields!idPuntoCarga)
                If oRsDetalleReceta.RecordCount > 0 Then
                   oRsDetalleReceta.MoveFirst
                   Do While Not oRsDetalleReceta.EOF
                      oRsFarmacia.AddNew
-                     oRsFarmacia.Fields!Id = oRsDetalleReceta.Fields!idItem
+                     oRsFarmacia.Fields!ID = oRsDetalleReceta.Fields!idItem
                      oRsFarmacia.Fields!procedimiento = oRsDetalleReceta.Fields!Producto
                      oRsFarmacia.Fields!Cantidad = oRsDetalleReceta.Fields!CantidadPedida
-                     oRsFarmacia.Fields!Precio = oRsDetalleReceta.Fields!Precio
+                     oRsFarmacia.Fields!precio = oRsDetalleReceta.Fields!precio
                      oRsFarmacia.Fields!saldoActual = oRsDetalleReceta.Fields!SaldoEnRegistroReceta
                      If oRsDetalleReceta.Fields!SaldoEnRegistroReceta > 0 Then
                         oRsFarmacia.Fields!haySaldo = True
                      End If
-                     oRsFarmacia.Fields!receta = oRsCabeceraRecetas.Fields!idReceta
+                     oRsFarmacia.Fields!Receta = oRsCabeceraRecetas.Fields!idReceta
                      oRsFarmacia.Fields!idDosisRecetada = IIf(IsNull(oRsDetalleReceta.Fields!idDosisRecetada), 0, oRsDetalleReceta.Fields!idDosisRecetada)
                      oRsFarmacia.Fields!idEstadoDetalle = IIf(IsNull(oRsDetalleReceta.Fields!idEstadoDetalle), 0, oRsDetalleReceta.Fields!idEstadoDetalle)
                      oRsFarmacia.Fields!MotivoAnulacionMedico = IIf(IsNull(oRsDetalleReceta.Fields!MotivoAnulacionMedico), "", oRsDetalleReceta.Fields!MotivoAnulacionMedico)
@@ -2176,7 +2176,7 @@ Sub LlenaRecetaParaImpresion()
     'Llenado de datos
     If oRsRayosX.RecordCount > 0 Then
         oRsRayosX.MoveFirst
-        lcCabecera = "(Rayos X) (N° Receta: " & Trim(Str(oRsRayosX.Fields!receta)) & ")" & ml_DatoCabeceraReceta
+        lcCabecera = "(Rayos X) (N° Receta: " & Trim(Str(oRsRayosX.Fields!Receta)) & ")" & ml_DatoCabeceraReceta
         txtCitaExClinicos.Text = txtCitaExClinicos.Text & lcLineaChar & Chr(13) & Chr(10)
         txtCitaExClinicos.Text = txtCitaExClinicos.Text & lcLinea & Chr(13) & Chr(10)
         txtCitaExClinicos.Text = txtCitaExClinicos.Text & lcCabecera & Chr(13) & Chr(10)
@@ -2188,7 +2188,7 @@ Sub LlenaRecetaParaImpresion()
     End If
     If oRsEcografiaO.RecordCount > 0 Then
         oRsEcografiaO.MoveFirst
-        lcCabecera = "(Ecografía Obstétrica) (N° Receta: " & Trim(Str(oRsEcografiaO.Fields!receta)) & ")" & ml_DatoCabeceraReceta
+        lcCabecera = "(Ecografía Obstétrica) (N° Receta: " & Trim(Str(oRsEcografiaO.Fields!Receta)) & ")" & ml_DatoCabeceraReceta
         txtCitaExClinicos.Text = txtCitaExClinicos.Text & lcLineaChar & Chr(13) & Chr(10)
         txtCitaExClinicos.Text = txtCitaExClinicos.Text & lcLinea & Chr(13) & Chr(10)
         txtCitaExClinicos.Text = txtCitaExClinicos.Text & lcCabecera & Chr(13) & Chr(10)
@@ -2200,7 +2200,7 @@ Sub LlenaRecetaParaImpresion()
      End If
     If oRsEcografiaG.RecordCount > 0 Then
         oRsEcografiaG.MoveFirst
-        lcCabecera = "(Ecografía General) (N° Receta: " & Trim(Str(oRsEcografiaG.Fields!receta)) & ")" & ml_DatoCabeceraReceta
+        lcCabecera = "(Ecografía General) (N° Receta: " & Trim(Str(oRsEcografiaG.Fields!Receta)) & ")" & ml_DatoCabeceraReceta
         txtCitaExClinicos.Text = txtCitaExClinicos.Text & lcLineaChar & Chr(13) & Chr(10)
         txtCitaExClinicos.Text = txtCitaExClinicos.Text & lcLinea & Chr(13) & Chr(10)
         txtCitaExClinicos.Text = txtCitaExClinicos.Text & lcCabecera & Chr(13) & Chr(10)
@@ -2212,7 +2212,7 @@ Sub LlenaRecetaParaImpresion()
      End If
     If oRsTomografia.RecordCount > 0 Then
         oRsTomografia.MoveFirst
-        lcCabecera = "(Tomografía) (N° Receta: " & Trim(Str(oRsTomografia.Fields!receta)) & ")" & ml_DatoCabeceraReceta
+        lcCabecera = "(Tomografía) (N° Receta: " & Trim(Str(oRsTomografia.Fields!Receta)) & ")" & ml_DatoCabeceraReceta
         txtCitaExClinicos.Text = txtCitaExClinicos.Text & lcLineaChar & Chr(13) & Chr(10)
         txtCitaExClinicos.Text = txtCitaExClinicos.Text & lcLinea & Chr(13) & Chr(10)
         txtCitaExClinicos.Text = txtCitaExClinicos.Text & lcCabecera & Chr(13) & Chr(10)
@@ -2224,7 +2224,7 @@ Sub LlenaRecetaParaImpresion()
      End If
      If oRsAnatomia.RecordCount > 0 Then
         oRsAnatomia.MoveFirst
-        lcCabecera = "(Anatomía Patológica) (N° Receta: " & Trim(Str(oRsAnatomia.Fields!receta)) & ")" & ml_DatoCabeceraReceta
+        lcCabecera = "(Anatomía Patológica) (N° Receta: " & Trim(Str(oRsAnatomia.Fields!Receta)) & ")" & ml_DatoCabeceraReceta
         txtCitaExClinicos.Text = txtCitaExClinicos.Text & lcLineaChar & Chr(13) & Chr(10)
         txtCitaExClinicos.Text = txtCitaExClinicos.Text & lcLinea & Chr(13) & Chr(10)
         txtCitaExClinicos.Text = txtCitaExClinicos.Text & lcCabecera & Chr(13) & Chr(10)
@@ -2236,7 +2236,7 @@ Sub LlenaRecetaParaImpresion()
      End If
      If oRsPatologia.RecordCount > 0 Then
         oRsPatologia.MoveFirst
-        lcCabecera = "(Patológica Clínica) (N° Receta: " & Trim(Str(oRsPatologia.Fields!receta)) & ")" & ml_DatoCabeceraReceta
+        lcCabecera = "(Patológica Clínica) (N° Receta: " & Trim(Str(oRsPatologia.Fields!Receta)) & ")" & ml_DatoCabeceraReceta
         txtCitaExClinicos.Text = txtCitaExClinicos.Text & lcLineaChar & Chr(13) & Chr(10)
         txtCitaExClinicos.Text = txtCitaExClinicos.Text & lcLinea & Chr(13) & Chr(10)
         txtCitaExClinicos.Text = txtCitaExClinicos.Text & lcCabecera & Chr(13) & Chr(10)
@@ -2248,7 +2248,7 @@ Sub LlenaRecetaParaImpresion()
      End If
      If oRsBanco.RecordCount > 0 Then
         oRsBanco.MoveFirst
-        lcCabecera = "(Banco Sangre) (N° Receta: " & Trim(Str(oRsBanco.Fields!receta)) & ")" & ml_DatoCabeceraReceta
+        lcCabecera = "(Banco Sangre) (N° Receta: " & Trim(Str(oRsBanco.Fields!Receta)) & ")" & ml_DatoCabeceraReceta
         txtCitaExClinicos.Text = txtCitaExClinicos.Text & lcLineaChar & Chr(13) & Chr(10)
         txtCitaExClinicos.Text = txtCitaExClinicos.Text & lcLinea & Chr(13) & Chr(10)
         txtCitaExClinicos.Text = txtCitaExClinicos.Text & lcCabecera & Chr(13) & Chr(10)
@@ -2260,7 +2260,7 @@ Sub LlenaRecetaParaImpresion()
      End If
      If oRsFarmacia.RecordCount > 0 Then
         oRsFarmacia.MoveFirst
-        lcCabecera = "(Farmacia:" & Trim(oRsFarmacia.Fields!Almacen) & ") (N° Receta: " & Trim(Str(oRsFarmacia.Fields!receta)) & ")" & ml_DatoCabeceraReceta
+        lcCabecera = "(Farmacia:" & Trim(oRsFarmacia.Fields!Almacen) & ") (N° Receta: " & Trim(Str(oRsFarmacia.Fields!Receta)) & ")" & ml_DatoCabeceraReceta
         txtCitaExClinicos.Text = txtCitaExClinicos.Text & lcLineaChar & Chr(13) & Chr(10)
         txtCitaExClinicos.Text = txtCitaExClinicos.Text & lcLinea & Chr(13) & Chr(10)
         txtCitaExClinicos.Text = txtCitaExClinicos.Text & lcCabecera & Chr(13) & Chr(10)
@@ -2339,8 +2339,8 @@ Private Sub btnImprimir_Click()
 '      ImprimeOrdenMedica True
       If oRsFarmacia.RecordCount > 0 Then
         oRsFarmacia.MoveFirst
-        If Not IsNull(oRsFarmacia.Fields!receta) Then
-            ImprimeOrdenMedicaPorIdReceta oRsFarmacia.Fields!receta, True
+        If Not IsNull(oRsFarmacia.Fields!Receta) Then
+            ImprimeOrdenMedicaPorIdReceta oRsFarmacia.Fields!Receta, True
         End If
       End If
 '      ImprimeOrdenMedicaPorIdReceta
@@ -2352,66 +2352,66 @@ Private Sub btnImprimirOrden_Click()
     
     If oRsRayosX.RecordCount > 0 Then
       oRsRayosX.MoveFirst
-      If Not IsNull(oRsRayosX.Fields!receta) Then
-          If Not oRsRayosX.Fields!receta = 0 Then ImprimeOrdenMedicaPorIdReceta oRsRayosX.Fields!receta, False
+      If Not IsNull(oRsRayosX.Fields!Receta) Then
+          If Not oRsRayosX.Fields!Receta = 0 Then ImprimeOrdenMedicaPorIdReceta oRsRayosX.Fields!Receta, False
       End If
     End If
       
     If oRsEcografiaO.RecordCount > 0 Then
       oRsEcografiaO.MoveFirst
-      If Not IsNull(oRsEcografiaO.Fields!receta) Then
-          If Not oRsEcografiaO.Fields!receta = 0 Then ImprimeOrdenMedicaPorIdReceta oRsEcografiaO.Fields!receta, False
+      If Not IsNull(oRsEcografiaO.Fields!Receta) Then
+          If Not oRsEcografiaO.Fields!Receta = 0 Then ImprimeOrdenMedicaPorIdReceta oRsEcografiaO.Fields!Receta, False
       End If
     End If
     
     If oRsEcografiaG.RecordCount > 0 Then
       oRsEcografiaG.MoveFirst
-      If Not IsNull(oRsEcografiaG.Fields!receta) Then
-          If Not oRsEcografiaG.Fields!receta = 0 Then ImprimeOrdenMedicaPorIdReceta oRsEcografiaG.Fields!receta, False
+      If Not IsNull(oRsEcografiaG.Fields!Receta) Then
+          If Not oRsEcografiaG.Fields!Receta = 0 Then ImprimeOrdenMedicaPorIdReceta oRsEcografiaG.Fields!Receta, False
       End If
     End If
     
     If oRsTomografia.RecordCount > 0 Then
       oRsTomografia.MoveFirst
-      If Not IsNull(oRsTomografia.Fields!receta) Then
-          If Not oRsTomografia.Fields!receta = 0 Then ImprimeOrdenMedicaPorIdReceta oRsTomografia.Fields!receta, False
+      If Not IsNull(oRsTomografia.Fields!Receta) Then
+          If Not oRsTomografia.Fields!Receta = 0 Then ImprimeOrdenMedicaPorIdReceta oRsTomografia.Fields!Receta, False
       End If
     End If
     
     If oRsAnatomia.RecordCount > 0 Then
       oRsAnatomia.MoveFirst
-      If Not IsNull(oRsAnatomia.Fields!receta) Then
-          If Not oRsAnatomia.Fields!receta = 0 Then ImprimeOrdenMedicaPorIdReceta oRsAnatomia.Fields!receta, False
+      If Not IsNull(oRsAnatomia.Fields!Receta) Then
+          If Not oRsAnatomia.Fields!Receta = 0 Then ImprimeOrdenMedicaPorIdReceta oRsAnatomia.Fields!Receta, False
       End If
     End If
     
     If oRsPatologia.RecordCount > 0 Then
       oRsPatologia.MoveFirst
-      If Not IsNull(oRsPatologia.Fields!receta) Then
-          If Not oRsPatologia.Fields!receta = 0 Then ImprimeOrdenMedicaPorIdReceta oRsPatologia.Fields!receta, False
+      If Not IsNull(oRsPatologia.Fields!Receta) Then
+          If Not oRsPatologia.Fields!Receta = 0 Then ImprimeOrdenMedicaPorIdReceta oRsPatologia.Fields!Receta, False
       End If
     End If
       
     If oRsBanco.RecordCount > 0 Then
       oRsBanco.MoveFirst
-      If Not IsNull(oRsBanco.Fields!receta) Then
-          If Not oRsBanco.Fields!receta = 0 Then ImprimeOrdenMedicaPorIdReceta oRsBanco.Fields!receta, False
+      If Not IsNull(oRsBanco.Fields!Receta) Then
+          If Not oRsBanco.Fields!Receta = 0 Then ImprimeOrdenMedicaPorIdReceta oRsBanco.Fields!Receta, False
       End If
     End If
     
 End Sub
 
-Sub ImprimeOrdenMedicaPorIdReceta(lnidReceta As Long, lbEsFarmacia As Boolean)
+Sub ImprimeOrdenMedicaPorIdReceta(lnIdReceta As Long, lbEsFarmacia As Boolean)
     Dim oReporte As New RptCaja
     Dim lbImpresionIndirecta As Boolean
     lbImpresionIndirecta = False
     If lcBuscaParametro.SeleccionaFilaParametro(348) = "S" Then lbImpresionIndirecta = True
     If lbEsFarmacia Then
         'Farmacia
-        oReporte.imprimirReceta_Version2 lnidReceta, lbImpresionIndirecta, mi_lnWnd
+        oReporte.imprimirReceta_Version2 lnIdReceta, lbImpresionIndirecta, mi_lnWnd
     Else
         'Examenes Auxiliareas
-        oReporte.ImpresionOrdenMedica lnidReceta, lbImpresionIndirecta
+        oReporte.ImpresionOrdenMedica lnIdReceta, lbImpresionIndirecta
     End If
     Set oReporte = Nothing
  End Sub
@@ -2424,7 +2424,7 @@ Sub ImprimeOrdenMedica(lbEsFarmacia As Boolean)
     Dim oRecetaCabecera As New RecetaCabecera
     Dim oConexion As New ADODB.Connection
     Dim lbImpresionIndirecta As Boolean
-    oConexion.Open sighentidades.CadenaConexion
+    oConexion.Open sighEntidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
 
     Set oRecetaCabecera.Conexion = oConexion
@@ -2506,7 +2506,7 @@ Public Sub CargaNumeroDeRecetaEimprime(lnRecetaRayosX As Long, lnRecetaEcografia
           Dim oRecetasOtrosCpt As New Recordset
           Dim oRecetaCabecera1 As New RecetaCabecera
           Dim oConexion As New ADODB.Connection
-          sighentidades.AbreConexionSIGH oConexion
+          sighEntidades.AbreConexionSIGH oConexion
           Set oRecetaCabecera1.Conexion = oConexion
           Set oRecetasOtrosCpt = oRecetaCabecera1.SeleccionarPorIdCuentaAtencion(ml_idCuentaAtencion)
           oRecetasOtrosCpt.Filter = "idPuntoCarga = " & sghPuntosCargaBasicos.sghPtoCargaServicioHospitalizacion
@@ -2525,49 +2525,49 @@ Public Sub CargaNumeroDeRecetaEimprime(lnRecetaRayosX As Long, lnRecetaEcografia
        End If
        If lnRecetaRayosX > 0 Then
           oRsRayosX.MoveFirst
-          oRsRayosX.Fields!receta = lnRecetaRayosX
+          oRsRayosX.Fields!Receta = lnRecetaRayosX
           oRsRayosX.Update
           If lbImprimeReceta = True Then ImprimeOrdenMedicaPorIdReceta lnRecetaRayosX, False
        End If
        If lnRecetaEcografiaO > 0 Then
           oRsEcografiaO.MoveFirst
-          oRsEcografiaO.Fields!receta = lnRecetaEcografiaO
+          oRsEcografiaO.Fields!Receta = lnRecetaEcografiaO
           oRsEcografiaO.Update
           If lbImprimeReceta = True Then ImprimeOrdenMedicaPorIdReceta lnRecetaEcografiaO, False
        End If
        If lnRecetaEcografiaG > 0 Then
           oRsEcografiaG.MoveFirst
-          oRsEcografiaG.Fields!receta = lnRecetaEcografiaG
+          oRsEcografiaG.Fields!Receta = lnRecetaEcografiaG
           oRsEcografiaG.Update
           If lbImprimeReceta = True Then ImprimeOrdenMedicaPorIdReceta lnRecetaEcografiaG, False
        End If
        If lnRecetaTomografia > 0 Then
           oRsTomografia.MoveFirst
-          oRsTomografia.Fields!receta = lnRecetaTomografia
+          oRsTomografia.Fields!Receta = lnRecetaTomografia
           oRsTomografia.Update
           If lbImprimeReceta = True Then ImprimeOrdenMedicaPorIdReceta lnRecetaTomografia, False
        End If
        If lnRecetaAnatomiaP > 0 Then
           oRsAnatomia.MoveFirst
-          oRsAnatomia.Fields!receta = lnRecetaAnatomiaP
+          oRsAnatomia.Fields!Receta = lnRecetaAnatomiaP
           oRsAnatomia.Update
           If lbImprimeReceta = True Then ImprimeOrdenMedicaPorIdReceta lnRecetaAnatomiaP, False
        End If
        If lnRecetaPatologiaC > 0 Then
           oRsPatologia.MoveFirst
-          oRsPatologia.Fields!receta = lnRecetaPatologiaC
+          oRsPatologia.Fields!Receta = lnRecetaPatologiaC
           oRsPatologia.Update
           If lbImprimeReceta = True Then ImprimeOrdenMedicaPorIdReceta lnRecetaPatologiaC, False
        End If
        If lnRecetaBancoS > 0 Then
           oRsBanco.MoveFirst
-          oRsBanco.Fields!receta = lnRecetaBancoS
+          oRsBanco.Fields!Receta = lnRecetaBancoS
           oRsBanco.Update
           If lbImprimeReceta = True Then ImprimeOrdenMedicaPorIdReceta lnRecetaBancoS, False
        End If
        If lnRecetaFarmacia > 0 Then
           oRsFarmacia.MoveFirst
-          oRsFarmacia.Fields!receta = lnRecetaFarmacia
+          oRsFarmacia.Fields!Receta = lnRecetaFarmacia
           oRsFarmacia.Update
           If lbImprimeReceta = True Then ImprimeOrdenMedicaPorIdReceta lnRecetaFarmacia, True
        End If
@@ -2634,7 +2634,7 @@ Public Sub CargaRecetaDesdePerinatal(oRsTmpFarmacia As Recordset, oRsTmpCpt As R
     Dim oConexion As New Connection
     oConexion.CommandTimeout = 300
     oConexion.CursorLocation = adUseClient
-    oConexion.Open sighentidades.CadenaConexion
+    oConexion.Open sighEntidades.CadenaConexion
     
     LimpiarDatos True
     
@@ -2702,8 +2702,8 @@ Public Sub CargaRecetaDesdePerinatal(oRsTmpFarmacia As Recordset, oRsTmpCpt As R
        Do While Not oRsTmpCpt.EOF
           lbNuevoRegistro = False
           'mgaray201410e
-          If mo_reglasComunes.ProcedimientoEsParaReceta(oRsTmpCpt!Id) = True Then
-            Set oRsTmp1 = mo_reglasComunes.FactCatalogoServiciosPtosSeleccionarXidProducto(oRsTmpCpt!Id, oConexion)
+          If mo_ReglasComunes.ProcedimientoEsParaReceta(oRsTmpCpt!ID) = True Then
+            Set oRsTmp1 = mo_ReglasComunes.FactCatalogoServiciosPtosSeleccionarXidProducto(oRsTmpCpt!ID, oConexion)
             lnIdPuntoCarga = 0
             If oRsTmp1.RecordCount > 0 Then
                oRsTmp1.MoveFirst
@@ -2725,7 +2725,7 @@ Public Sub CargaRecetaDesdePerinatal(oRsTmpFarmacia As Recordset, oRsTmpCpt As R
                       lnNroItems = oRsPatologia.RecordCount
                       If lnNroItems > 0 Then
                          oRsPatologia.MoveFirst
-                         oRsPatologia.Find "id=" & oRsTmpCpt.Fields!Id
+                         oRsPatologia.Find "id=" & oRsTmpCpt.Fields!ID
                          If oRsPatologia.EOF Then
                             lbNuevoRegistro = True
                          End If
@@ -2734,13 +2734,13 @@ Public Sub CargaRecetaDesdePerinatal(oRsTmpFarmacia As Recordset, oRsTmpCpt As R
                          lnNroItems = 1
                       End If
                       If lbNuevoRegistro = True Then
-                         lnPrecio = mo_reglasComunes.DevuelvePrecioItem(oRsTmpCpt!Id, sghPtoCargaPatologiaClinica, _
+                         lnPrecio = mo_ReglasComunes.DevuelvePrecioItem(oRsTmpCpt!ID, sghPtoCargaPatologiaClinica, _
                                                                         ml_IdTipoFinanciamiento, oConexion)
                          oRsPatologia.AddNew
-                         oRsPatologia.Fields!Id = oRsTmpCpt!Id
+                         oRsPatologia.Fields!ID = oRsTmpCpt!ID
                          oRsPatologia.Fields!procedimiento = oRsTmpCpt!procedimiento
                          oRsPatologia.Fields!Cantidad = 1
-                         oRsPatologia.Fields!Precio = lnPrecio
+                         oRsPatologia.Fields!precio = lnPrecio
                          If lnPrecio > 0 Then
                              oRsPatologia.Fields!hayCpt = True
                          End If
@@ -2753,7 +2753,7 @@ Public Sub CargaRecetaDesdePerinatal(oRsTmpFarmacia As Recordset, oRsTmpCpt As R
                       lnNroItems = oRsAnatomia.RecordCount
                       If lnNroItems > 0 Then
                          oRsAnatomia.MoveFirst
-                         oRsAnatomia.Find "id=" & oRsTmpCpt.Fields!Id
+                         oRsAnatomia.Find "id=" & oRsTmpCpt.Fields!ID
                          If oRsAnatomia.EOF Then
                             lbNuevoRegistro = True
                          End If
@@ -2762,13 +2762,13 @@ Public Sub CargaRecetaDesdePerinatal(oRsTmpFarmacia As Recordset, oRsTmpCpt As R
                          lnNroItems = 1
                       End If
                       If lbNuevoRegistro = True Then
-                         lnPrecio = mo_reglasComunes.DevuelvePrecioItem(oRsTmpCpt!Id, sghPtoCargaAnatomiaPatologica1, _
+                         lnPrecio = mo_ReglasComunes.DevuelvePrecioItem(oRsTmpCpt!ID, sghPtoCargaAnatomiaPatologica1, _
                                                                         ml_IdTipoFinanciamiento, oConexion)
                          oRsAnatomia.AddNew
-                         oRsAnatomia.Fields!Id = oRsTmpCpt!Id
+                         oRsAnatomia.Fields!ID = oRsTmpCpt!ID
                          oRsAnatomia.Fields!procedimiento = oRsTmpCpt!procedimiento
                          oRsAnatomia.Fields!Cantidad = 1
-                         oRsAnatomia.Fields!Precio = lnPrecio
+                         oRsAnatomia.Fields!precio = lnPrecio
                          If lnPrecio > 0 Then
                              oRsAnatomia.Fields!hayCpt = True
                          End If
@@ -2781,7 +2781,7 @@ Public Sub CargaRecetaDesdePerinatal(oRsTmpFarmacia As Recordset, oRsTmpCpt As R
                       lnNroItems = oRsBanco.RecordCount
                       If lnNroItems > 0 Then
                          oRsBanco.MoveFirst
-                         oRsBanco.Find "id=" & oRsTmpCpt.Fields!Id
+                         oRsBanco.Find "id=" & oRsTmpCpt.Fields!ID
                          If oRsBanco.EOF Then
                             lbNuevoRegistro = True
                          End If
@@ -2790,13 +2790,13 @@ Public Sub CargaRecetaDesdePerinatal(oRsTmpFarmacia As Recordset, oRsTmpCpt As R
                          lnNroItems = 1
                       End If
                       If lbNuevoRegistro = True Then
-                         lnPrecio = mo_reglasComunes.DevuelvePrecioItem(oRsTmpCpt!Id, sghPtoCargaBancoSangre1, _
+                         lnPrecio = mo_ReglasComunes.DevuelvePrecioItem(oRsTmpCpt!ID, sghPtoCargaBancoSangre1, _
                                                                         ml_IdTipoFinanciamiento, oConexion)
                          oRsBanco.AddNew
-                         oRsBanco.Fields!Id = oRsTmpCpt!Id
+                         oRsBanco.Fields!ID = oRsTmpCpt!ID
                          oRsBanco.Fields!procedimiento = oRsTmpCpt!procedimiento
                          oRsBanco.Fields!Cantidad = 1
-                         oRsBanco.Fields!Precio = lnPrecio
+                         oRsBanco.Fields!precio = lnPrecio
                          If lnPrecio > 0 Then
                              oRsBanco.Fields!hayCpt = True
                          End If
@@ -2809,7 +2809,7 @@ Public Sub CargaRecetaDesdePerinatal(oRsTmpFarmacia As Recordset, oRsTmpCpt As R
                       lnNroItems = oRsRayosX.RecordCount
                       If lnNroItems > 0 Then
                          oRsRayosX.MoveFirst
-                         oRsRayosX.Find "id=" & oRsTmpCpt.Fields!Id
+                         oRsRayosX.Find "id=" & oRsTmpCpt.Fields!ID
                          If oRsRayosX.EOF Then
                             lbNuevoRegistro = True
                          End If
@@ -2818,13 +2818,13 @@ Public Sub CargaRecetaDesdePerinatal(oRsTmpFarmacia As Recordset, oRsTmpCpt As R
                          lnNroItems = 1
                       End If
                       If lbNuevoRegistro = True Then
-                         lnPrecio = mo_reglasComunes.DevuelvePrecioItem(oRsTmpCpt!Id, sghPtoCargaRayosX, _
+                         lnPrecio = mo_ReglasComunes.DevuelvePrecioItem(oRsTmpCpt!ID, sghPtoCargaRayosX, _
                                                                         ml_IdTipoFinanciamiento, oConexion)
                          oRsRayosX.AddNew
-                         oRsRayosX.Fields!Id = oRsTmpCpt!Id
+                         oRsRayosX.Fields!ID = oRsTmpCpt!ID
                          oRsRayosX.Fields!procedimiento = oRsTmpCpt!procedimiento
                          oRsRayosX.Fields!Cantidad = 1
-                         oRsRayosX.Fields!Precio = lnPrecio
+                         oRsRayosX.Fields!precio = lnPrecio
                          If lnPrecio > 0 Then
                              oRsRayosX.Fields!hayCpt = True
                          End If
@@ -2837,7 +2837,7 @@ Public Sub CargaRecetaDesdePerinatal(oRsTmpFarmacia As Recordset, oRsTmpCpt As R
                       lnNroItems = oRsEcografiaO.RecordCount
                       If lnNroItems > 0 Then
                          oRsEcografiaO.MoveFirst
-                         oRsEcografiaO.Find "id=" & oRsTmpCpt.Fields!Id
+                         oRsEcografiaO.Find "id=" & oRsTmpCpt.Fields!ID
                          If oRsEcografiaO.EOF Then
                             lbNuevoRegistro = True
                          End If
@@ -2846,13 +2846,13 @@ Public Sub CargaRecetaDesdePerinatal(oRsTmpFarmacia As Recordset, oRsTmpCpt As R
                          lnNroItems = 1
                       End If
                       If lbNuevoRegistro = True Then
-                         lnPrecio = mo_reglasComunes.DevuelvePrecioItem(oRsTmpCpt!Id, sghPtoCargaEcogObstetrica, _
+                         lnPrecio = mo_ReglasComunes.DevuelvePrecioItem(oRsTmpCpt!ID, sghPtoCargaEcogObstetrica, _
                                                                         ml_IdTipoFinanciamiento, oConexion)
                          oRsEcografiaO.AddNew
-                         oRsEcografiaO.Fields!Id = oRsTmpCpt!Id
+                         oRsEcografiaO.Fields!ID = oRsTmpCpt!ID
                          oRsEcografiaO.Fields!procedimiento = oRsTmpCpt!procedimiento
                          oRsEcografiaO.Fields!Cantidad = 1
-                         oRsEcografiaO.Fields!Precio = lnPrecio
+                         oRsEcografiaO.Fields!precio = lnPrecio
                          If lnPrecio > 0 Then
                              oRsEcografiaO.Fields!hayCpt = True
                          End If
@@ -2865,7 +2865,7 @@ Public Sub CargaRecetaDesdePerinatal(oRsTmpFarmacia As Recordset, oRsTmpCpt As R
                       lnNroItems = oRsEcografiaG.RecordCount
                       If lnNroItems > 0 Then
                          oRsEcografiaG.MoveFirst
-                         oRsEcografiaG.Find "id=" & oRsTmpCpt.Fields!Id
+                         oRsEcografiaG.Find "id=" & oRsTmpCpt.Fields!ID
                          If oRsEcografiaG.EOF Then
                             lbNuevoRegistro = True
                          End If
@@ -2874,13 +2874,13 @@ Public Sub CargaRecetaDesdePerinatal(oRsTmpFarmacia As Recordset, oRsTmpCpt As R
                          lnNroItems = 1
                       End If
                       If lbNuevoRegistro = True Then
-                         lnPrecio = mo_reglasComunes.DevuelvePrecioItem(oRsTmpCpt!Id, sghPtoCargaEcogGeneral, _
+                         lnPrecio = mo_ReglasComunes.DevuelvePrecioItem(oRsTmpCpt!ID, sghPtoCargaEcogGeneral, _
                                                                         ml_IdTipoFinanciamiento, oConexion)
                          oRsEcografiaG.AddNew
-                         oRsEcografiaG.Fields!Id = oRsTmpCpt!Id
+                         oRsEcografiaG.Fields!ID = oRsTmpCpt!ID
                          oRsEcografiaG.Fields!procedimiento = oRsTmpCpt!procedimiento
                          oRsEcografiaG.Fields!Cantidad = 1
-                         oRsEcografiaG.Fields!Precio = lnPrecio
+                         oRsEcografiaG.Fields!precio = lnPrecio
                          If lnPrecio > 0 Then
                              oRsEcografiaG.Fields!hayCpt = True
                          End If
@@ -2893,7 +2893,7 @@ Public Sub CargaRecetaDesdePerinatal(oRsTmpFarmacia As Recordset, oRsTmpCpt As R
                       lnNroItems = oRsTomografia.RecordCount
                       If lnNroItems > 0 Then
                          oRsTomografia.MoveFirst
-                         oRsTomografia.Find "id=" & oRsTmpCpt.Fields!Id
+                         oRsTomografia.Find "id=" & oRsTmpCpt.Fields!ID
                          If oRsTomografia.EOF Then
                             lbNuevoRegistro = True
                          End If
@@ -2902,13 +2902,13 @@ Public Sub CargaRecetaDesdePerinatal(oRsTmpFarmacia As Recordset, oRsTmpCpt As R
                          lnNroItems = 1
                       End If
                       If lbNuevoRegistro = True Then
-                         lnPrecio = mo_reglasComunes.DevuelvePrecioItem(oRsTmpCpt!Id, sghPtoCargaTomografia, _
+                         lnPrecio = mo_ReglasComunes.DevuelvePrecioItem(oRsTmpCpt!ID, sghPtoCargaTomografia, _
                                                                         ml_IdTipoFinanciamiento, oConexion)
                          oRsTomografia.AddNew
-                         oRsTomografia.Fields!Id = oRsTmpCpt!Id
+                         oRsTomografia.Fields!ID = oRsTmpCpt!ID
                          oRsTomografia.Fields!procedimiento = oRsTmpCpt!procedimiento
                          oRsTomografia.Fields!Cantidad = 1
-                         oRsTomografia.Fields!Precio = lnPrecio
+                         oRsTomografia.Fields!precio = lnPrecio
                          If lnPrecio > 0 Then
                              oRsTomografia.Fields!hayCpt = True
                          End If
@@ -2936,7 +2936,7 @@ Public Sub CargaRecetaDesdeMaterno(oRsTmpFarmacia As Recordset, oRsTmpCpt As Rec
     Dim oConexion As New Connection
     oConexion.CommandTimeout = 300
     oConexion.CursorLocation = adUseClient
-    oConexion.Open sighentidades.CadenaConexion
+    oConexion.Open sighEntidades.CadenaConexion
     
     LimpiarDatos True
     
@@ -2967,8 +2967,8 @@ Public Sub CargaRecetaDesdeMaterno(oRsTmpFarmacia As Recordset, oRsTmpCpt As Rec
                        Do While Not oRsTmp.EOF
                           lnIdAlmacen = oRsTmp.Fields!IdAlmacen
                           lnSaldoActual = 0
-                          lnPrecio = oRsTmp.Fields!Precio
-                          lcAlmacen = oRsTmp.Fields!Descripcion
+                          lnPrecio = oRsTmp.Fields!precio
+                          lcAlmacen = oRsTmp.Fields!descripcion
                           Do While Not oRsTmp.EOF And lnIdAlmacen = oRsTmp.Fields!IdAlmacen
                              lnSaldoActual = lnSaldoActual + oRsTmp.Fields!Cantidad
                              oRsTmp.MoveNext
@@ -2984,14 +2984,14 @@ Public Sub CargaRecetaDesdeMaterno(oRsTmpFarmacia As Recordset, oRsTmpCpt As Rec
                    oRsTmp.Close
                    '
                    oRsFarmacia.AddNew
-                   oRsFarmacia.Fields!Id = oRsTmpFarmacia.Fields!idProducto
+                   oRsFarmacia.Fields!ID = oRsTmpFarmacia.Fields!idProducto
                    oRsFarmacia.Fields!procedimiento = oRsTmpFarmacia.Fields!procedimiento
                    oRsFarmacia.Fields!Cantidad = 1
                    oRsFarmacia.Fields!haySaldo = IIf(lnSaldoActual > 0, True, False)
                    oRsFarmacia.Fields!saldoActual = lnSaldoActual
                    oRsFarmacia.Fields!IdAlmacen = lnIdAlmacen
                    oRsFarmacia.Fields!Almacen = lcAlmacen
-                   oRsFarmacia.Fields!Precio = mo_reglasComunes.DevuelvePrecioItem(oRsTmpFarmacia.Fields!idProducto, sghPtoCargaFarmacia, _
+                   oRsFarmacia.Fields!precio = mo_ReglasComunes.DevuelvePrecioItem(oRsTmpFarmacia.Fields!idProducto, sghPtoCargaFarmacia, _
                                                                         ml_IdTipoFinanciamiento, oConexion)
                    oRsFarmacia.Update
                 End If
@@ -3004,8 +3004,8 @@ Public Sub CargaRecetaDesdeMaterno(oRsTmpFarmacia As Recordset, oRsTmpCpt As Rec
        Do While Not oRsTmpCpt.EOF
           lbNuevoRegistro = False
           'mgaray201410e
-          If mo_reglasComunes.ProcedimientoEsParaReceta(oRsTmpCpt!idProducto) = True Then
-            Set oRsTmp1 = mo_reglasComunes.FactCatalogoServiciosPtosSeleccionarXidProducto(oRsTmpCpt!idProducto, oConexion)
+          If mo_ReglasComunes.ProcedimientoEsParaReceta(oRsTmpCpt!idProducto) = True Then
+            Set oRsTmp1 = mo_ReglasComunes.FactCatalogoServiciosPtosSeleccionarXidProducto(oRsTmpCpt!idProducto, oConexion)
             lnIdPuntoCarga = 0
             If oRsTmp1.RecordCount > 0 Then
                lnIdPuntoCarga = oRsTmp1!idPuntoCarga
@@ -3026,13 +3026,13 @@ Public Sub CargaRecetaDesdeMaterno(oRsTmpFarmacia As Recordset, oRsTmpCpt As Rec
                          lnNroItems = 1
                       End If
                       If lbNuevoRegistro = True Then
-                         lnPrecio = mo_reglasComunes.DevuelvePrecioItem(oRsTmpCpt!idProducto, sghPtoCargaPatologiaClinica, _
+                         lnPrecio = mo_ReglasComunes.DevuelvePrecioItem(oRsTmpCpt!idProducto, sghPtoCargaPatologiaClinica, _
                                                                         ml_IdTipoFinanciamiento, oConexion)
                          oRsPatologia.AddNew
-                         oRsPatologia.Fields!Id = oRsTmpCpt!idProducto
+                         oRsPatologia.Fields!ID = oRsTmpCpt!idProducto
                          oRsPatologia.Fields!procedimiento = oRsTmpCpt!procedimiento
                          oRsPatologia.Fields!Cantidad = 1
-                         oRsPatologia.Fields!Precio = lnPrecio
+                         oRsPatologia.Fields!precio = lnPrecio
                          If lnPrecio > 0 Then
                              oRsPatologia.Fields!hayCpt = True
                          End If
@@ -3054,13 +3054,13 @@ Public Sub CargaRecetaDesdeMaterno(oRsTmpFarmacia As Recordset, oRsTmpCpt As Rec
                          lnNroItems = 1
                       End If
                       If lbNuevoRegistro = True Then
-                         lnPrecio = mo_reglasComunes.DevuelvePrecioItem(oRsTmpCpt!idProducto, sghPtoCargaAnatomiaPatologica1, _
+                         lnPrecio = mo_ReglasComunes.DevuelvePrecioItem(oRsTmpCpt!idProducto, sghPtoCargaAnatomiaPatologica1, _
                                                                         ml_IdTipoFinanciamiento, oConexion)
                          oRsAnatomia.AddNew
-                         oRsAnatomia.Fields!Id = oRsTmpCpt!idProducto
+                         oRsAnatomia.Fields!ID = oRsTmpCpt!idProducto
                          oRsAnatomia.Fields!procedimiento = oRsTmpCpt!procedimiento
                          oRsAnatomia.Fields!Cantidad = 1
-                         oRsAnatomia.Fields!Precio = lnPrecio
+                         oRsAnatomia.Fields!precio = lnPrecio
                          If lnPrecio > 0 Then
                              oRsAnatomia.Fields!hayCpt = True
                          End If
@@ -3082,13 +3082,13 @@ Public Sub CargaRecetaDesdeMaterno(oRsTmpFarmacia As Recordset, oRsTmpCpt As Rec
                          lnNroItems = 1
                       End If
                       If lbNuevoRegistro = True Then
-                         lnPrecio = mo_reglasComunes.DevuelvePrecioItem(oRsTmpCpt!idProducto, sghPtoCargaBancoSangre1, _
+                         lnPrecio = mo_ReglasComunes.DevuelvePrecioItem(oRsTmpCpt!idProducto, sghPtoCargaBancoSangre1, _
                                                                         ml_IdTipoFinanciamiento, oConexion)
                          oRsBanco.AddNew
-                         oRsBanco.Fields!Id = oRsTmpCpt!idProducto
+                         oRsBanco.Fields!ID = oRsTmpCpt!idProducto
                          oRsBanco.Fields!procedimiento = oRsTmpCpt!procedimiento
                          oRsBanco.Fields!Cantidad = 1
-                         oRsBanco.Fields!Precio = lnPrecio
+                         oRsBanco.Fields!precio = lnPrecio
                          If lnPrecio > 0 Then
                              oRsBanco.Fields!hayCpt = True
                          End If
@@ -3110,13 +3110,13 @@ Public Sub CargaRecetaDesdeMaterno(oRsTmpFarmacia As Recordset, oRsTmpCpt As Rec
                          lnNroItems = 1
                       End If
                       If lbNuevoRegistro = True Then
-                         lnPrecio = mo_reglasComunes.DevuelvePrecioItem(oRsTmpCpt!idProducto, sghPtoCargaRayosX, _
+                         lnPrecio = mo_ReglasComunes.DevuelvePrecioItem(oRsTmpCpt!idProducto, sghPtoCargaRayosX, _
                                                                         ml_IdTipoFinanciamiento, oConexion)
                          oRsRayosX.AddNew
-                         oRsRayosX.Fields!Id = oRsTmpCpt!idProducto
+                         oRsRayosX.Fields!ID = oRsTmpCpt!idProducto
                          oRsRayosX.Fields!procedimiento = oRsTmpCpt!procedimiento
                          oRsRayosX.Fields!Cantidad = 1
-                         oRsRayosX.Fields!Precio = lnPrecio
+                         oRsRayosX.Fields!precio = lnPrecio
                          If lnPrecio > 0 Then
                              oRsRayosX.Fields!hayCpt = True
                          End If
@@ -3138,13 +3138,13 @@ Public Sub CargaRecetaDesdeMaterno(oRsTmpFarmacia As Recordset, oRsTmpCpt As Rec
                          lnNroItems = 1
                       End If
                       If lbNuevoRegistro = True Then
-                         lnPrecio = mo_reglasComunes.DevuelvePrecioItem(oRsTmpCpt!idProducto, sghPtoCargaEcogObstetrica, _
+                         lnPrecio = mo_ReglasComunes.DevuelvePrecioItem(oRsTmpCpt!idProducto, sghPtoCargaEcogObstetrica, _
                                                                         ml_IdTipoFinanciamiento, oConexion)
                          oRsEcografiaO.AddNew
-                         oRsEcografiaO.Fields!Id = oRsTmpCpt!idProducto
+                         oRsEcografiaO.Fields!ID = oRsTmpCpt!idProducto
                          oRsEcografiaO.Fields!procedimiento = oRsTmpCpt!procedimiento
                          oRsEcografiaO.Fields!Cantidad = 1
-                         oRsEcografiaO.Fields!Precio = lnPrecio
+                         oRsEcografiaO.Fields!precio = lnPrecio
                          If lnPrecio > 0 Then
                              oRsEcografiaO.Fields!hayCpt = True
                          End If
@@ -3166,13 +3166,13 @@ Public Sub CargaRecetaDesdeMaterno(oRsTmpFarmacia As Recordset, oRsTmpCpt As Rec
                          lnNroItems = 1
                       End If
                       If lbNuevoRegistro = True Then
-                         lnPrecio = mo_reglasComunes.DevuelvePrecioItem(oRsTmpCpt!idProducto, sghPtoCargaEcogGeneral, _
+                         lnPrecio = mo_ReglasComunes.DevuelvePrecioItem(oRsTmpCpt!idProducto, sghPtoCargaEcogGeneral, _
                                                                         ml_IdTipoFinanciamiento, oConexion)
                          oRsEcografiaG.AddNew
-                         oRsEcografiaG.Fields!Id = oRsTmpCpt!idProducto
+                         oRsEcografiaG.Fields!ID = oRsTmpCpt!idProducto
                          oRsEcografiaG.Fields!procedimiento = oRsTmpCpt!procedimiento
                          oRsEcografiaG.Fields!Cantidad = 1
-                         oRsEcografiaG.Fields!Precio = lnPrecio
+                         oRsEcografiaG.Fields!precio = lnPrecio
                          If lnPrecio > 0 Then
                              oRsEcografiaG.Fields!hayCpt = True
                          End If
@@ -3194,13 +3194,13 @@ Public Sub CargaRecetaDesdeMaterno(oRsTmpFarmacia As Recordset, oRsTmpCpt As Rec
                          lnNroItems = 1
                       End If
                       If lbNuevoRegistro = True Then
-                         lnPrecio = mo_reglasComunes.DevuelvePrecioItem(oRsTmpCpt!idProducto, sghPtoCargaTomografia, _
+                         lnPrecio = mo_ReglasComunes.DevuelvePrecioItem(oRsTmpCpt!idProducto, sghPtoCargaTomografia, _
                                                                         ml_IdTipoFinanciamiento, oConexion)
                          oRsTomografia.AddNew
-                         oRsTomografia.Fields!Id = oRsTmpCpt!idProducto
+                         oRsTomografia.Fields!ID = oRsTmpCpt!idProducto
                          oRsTomografia.Fields!procedimiento = oRsTmpCpt!procedimiento
                          oRsTomografia.Fields!Cantidad = 1
-                         oRsTomografia.Fields!Precio = lnPrecio
+                         oRsTomografia.Fields!precio = lnPrecio
                          If lnPrecio > 0 Then
                              oRsTomografia.Fields!hayCpt = True
                          End If
@@ -3233,8 +3233,8 @@ Public Function DevuelveSoloExamenesParaImpresion()
     'Llenado de datos
     If oRsRayosX.RecordCount > 0 Then
         oRsRayosX.MoveFirst
-        lcCabecera = "(Rayos X) (N° Receta: " & Trim(Str(oRsRayosX.Fields!receta)) & ")" & ml_DatoCabeceraReceta
-        lcCabecera = "(Rayos X) (N° Receta: " & Trim(Str(oRsRayosX.Fields!receta)) & ")"
+        lcCabecera = "(Rayos X) (N° Receta: " & Trim(Str(oRsRayosX.Fields!Receta)) & ")" & ml_DatoCabeceraReceta
+        lcCabecera = "(Rayos X) (N° Receta: " & Trim(Str(oRsRayosX.Fields!Receta)) & ")"
         sCadenaImprimir = sCadenaImprimir & lcLineaChar & Chr(13) & Chr(10)
         sCadenaImprimir = sCadenaImprimir & lcLinea & Chr(13) & Chr(10)
         sCadenaImprimir = sCadenaImprimir & lcCabecera & Chr(13) & Chr(10)
@@ -3246,8 +3246,8 @@ Public Function DevuelveSoloExamenesParaImpresion()
     End If
     If oRsEcografiaO.RecordCount > 0 Then
         oRsEcografiaO.MoveFirst
-        lcCabecera = "(Ecografía Obstétrica) (N° Receta: " & Trim(Str(oRsEcografiaO.Fields!receta)) & ")" & ml_DatoCabeceraReceta
-        lcCabecera = "(Ecografía Obstétrica) (N° Receta: " & Trim(Str(oRsEcografiaO.Fields!receta)) & ")"
+        lcCabecera = "(Ecografía Obstétrica) (N° Receta: " & Trim(Str(oRsEcografiaO.Fields!Receta)) & ")" & ml_DatoCabeceraReceta
+        lcCabecera = "(Ecografía Obstétrica) (N° Receta: " & Trim(Str(oRsEcografiaO.Fields!Receta)) & ")"
         sCadenaImprimir = sCadenaImprimir & lcLineaChar & Chr(13) & Chr(10)
         sCadenaImprimir = sCadenaImprimir & lcLinea & Chr(13) & Chr(10)
         sCadenaImprimir = sCadenaImprimir & lcCabecera & Chr(13) & Chr(10)
@@ -3259,8 +3259,8 @@ Public Function DevuelveSoloExamenesParaImpresion()
      End If
     If oRsEcografiaG.RecordCount > 0 Then
         oRsEcografiaG.MoveFirst
-        lcCabecera = "(Ecografía General) (N° Receta: " & Trim(Str(oRsEcografiaG.Fields!receta)) & ")" & ml_DatoCabeceraReceta
-        lcCabecera = "(Ecografía General) (N° Receta: " & Trim(Str(oRsEcografiaG.Fields!receta)) & ")"
+        lcCabecera = "(Ecografía General) (N° Receta: " & Trim(Str(oRsEcografiaG.Fields!Receta)) & ")" & ml_DatoCabeceraReceta
+        lcCabecera = "(Ecografía General) (N° Receta: " & Trim(Str(oRsEcografiaG.Fields!Receta)) & ")"
         sCadenaImprimir = sCadenaImprimir & lcLineaChar & Chr(13) & Chr(10)
         sCadenaImprimir = sCadenaImprimir & lcLinea & Chr(13) & Chr(10)
         sCadenaImprimir = sCadenaImprimir & lcCabecera & Chr(13) & Chr(10)
@@ -3272,8 +3272,8 @@ Public Function DevuelveSoloExamenesParaImpresion()
      End If
     If oRsTomografia.RecordCount > 0 Then
         oRsTomografia.MoveFirst
-        lcCabecera = "(Tomografía) (N° Receta: " & Trim(Str(oRsTomografia.Fields!receta)) & ")" & ml_DatoCabeceraReceta
-        lcCabecera = "(Tomografía) (N° Receta: " & Trim(Str(oRsTomografia.Fields!receta)) & ")"
+        lcCabecera = "(Tomografía) (N° Receta: " & Trim(Str(oRsTomografia.Fields!Receta)) & ")" & ml_DatoCabeceraReceta
+        lcCabecera = "(Tomografía) (N° Receta: " & Trim(Str(oRsTomografia.Fields!Receta)) & ")"
         sCadenaImprimir = sCadenaImprimir & lcLineaChar & Chr(13) & Chr(10)
         sCadenaImprimir = sCadenaImprimir & lcLinea & Chr(13) & Chr(10)
         sCadenaImprimir = sCadenaImprimir & lcCabecera & Chr(13) & Chr(10)
@@ -3285,8 +3285,8 @@ Public Function DevuelveSoloExamenesParaImpresion()
      End If
      If oRsAnatomia.RecordCount > 0 Then
         oRsAnatomia.MoveFirst
-        lcCabecera = "(Anatomía Patológica) (N° Receta: " & Trim(Str(oRsAnatomia.Fields!receta)) & ")" & ml_DatoCabeceraReceta
-        lcCabecera = "(Anatomía Patológica) (N° Receta: " & Trim(Str(oRsAnatomia.Fields!receta)) & ")"
+        lcCabecera = "(Anatomía Patológica) (N° Receta: " & Trim(Str(oRsAnatomia.Fields!Receta)) & ")" & ml_DatoCabeceraReceta
+        lcCabecera = "(Anatomía Patológica) (N° Receta: " & Trim(Str(oRsAnatomia.Fields!Receta)) & ")"
         sCadenaImprimir = sCadenaImprimir & lcLineaChar & Chr(13) & Chr(10)
         sCadenaImprimir = sCadenaImprimir & lcLinea & Chr(13) & Chr(10)
         sCadenaImprimir = sCadenaImprimir & lcCabecera & Chr(13) & Chr(10)
@@ -3298,8 +3298,8 @@ Public Function DevuelveSoloExamenesParaImpresion()
      End If
      If oRsPatologia.RecordCount > 0 Then
         oRsPatologia.MoveFirst
-        lcCabecera = "(Patológica Clínica) (N° Receta: " & Trim(Str(oRsPatologia.Fields!receta)) & ")" & ml_DatoCabeceraReceta
-        lcCabecera = "(Patológica Clínica) (N° Receta: " & Trim(Str(oRsPatologia.Fields!receta)) & ")"
+        lcCabecera = "(Patológica Clínica) (N° Receta: " & Trim(Str(oRsPatologia.Fields!Receta)) & ")" & ml_DatoCabeceraReceta
+        lcCabecera = "(Patológica Clínica) (N° Receta: " & Trim(Str(oRsPatologia.Fields!Receta)) & ")"
         sCadenaImprimir = sCadenaImprimir & lcLineaChar & Chr(13) & Chr(10)
         sCadenaImprimir = sCadenaImprimir & lcLinea & Chr(13) & Chr(10)
         sCadenaImprimir = sCadenaImprimir & lcCabecera & Chr(13) & Chr(10)
@@ -3311,8 +3311,8 @@ Public Function DevuelveSoloExamenesParaImpresion()
      End If
      If oRsBanco.RecordCount > 0 Then
         oRsBanco.MoveFirst
-        lcCabecera = "(Banco Sangre) (N° Receta: " & Trim(Str(oRsBanco.Fields!receta)) & ")" & ml_DatoCabeceraReceta
-        lcCabecera = "(Banco Sangre) (N° Receta: " & Trim(Str(oRsBanco.Fields!receta)) & ")"
+        lcCabecera = "(Banco Sangre) (N° Receta: " & Trim(Str(oRsBanco.Fields!Receta)) & ")" & ml_DatoCabeceraReceta
+        lcCabecera = "(Banco Sangre) (N° Receta: " & Trim(Str(oRsBanco.Fields!Receta)) & ")"
         sCadenaImprimir = sCadenaImprimir & lcLineaChar & Chr(13) & Chr(10)
         sCadenaImprimir = sCadenaImprimir & lcLinea & Chr(13) & Chr(10)
         sCadenaImprimir = sCadenaImprimir & lcCabecera & Chr(13) & Chr(10)
@@ -3334,9 +3334,9 @@ Public Function DevuelveSoloRecetaParaImpresion()
      If oRsFarmacia.RecordCount > 0 Then
         oRsFarmacia.MoveFirst
         lcCabecera = "(Farmacia:" & Trim(oRsFarmacia.Fields!Almacen) & _
-                     ") (N° Receta: " & Trim(Str(oRsFarmacia.Fields!receta)) & ")" & ml_DatoCabeceraReceta
+                     ") (N° Receta: " & Trim(Str(oRsFarmacia.Fields!Receta)) & ")" & ml_DatoCabeceraReceta
         lcCabecera = "(Farmacia:" & Trim(oRsFarmacia.Fields!Almacen) & _
-                     ") (N° Receta: " & Trim(Str(oRsFarmacia.Fields!receta)) & ")"
+                     ") (N° Receta: " & Trim(Str(oRsFarmacia.Fields!Receta)) & ")"
         sCadenaImprimir = sCadenaImprimir & lcLineaChar & Chr(13) & Chr(10)
         sCadenaImprimir = sCadenaImprimir & lcLinea & Chr(13) & Chr(10)
         sCadenaImprimir = sCadenaImprimir & lcCabecera & Chr(13) & Chr(10)
@@ -3467,7 +3467,7 @@ Sub CargaFarmaciasAelegir()
     Dim oConexion As New Connection
     oConexion.CommandTimeout = 300
     oConexion.CursorLocation = adUseClient
-    oConexion.Open sighentidades.CadenaConexion
+    oConexion.Open sighEntidades.CadenaConexion
     cmdFarmacias.AddItem "Muestra todos los ITEMS"
     cmdFarmacias.AddItem "Muestra sólo los q tienen SALDOS mayores a CERO"
     Set oFarmAlmacen.Conexion = oConexion
@@ -3475,14 +3475,14 @@ Sub CargaFarmaciasAelegir()
     If oRsTmp1.RecordCount > 0 Then
        oRsTmp1.MoveFirst
        Do While Not oRsTmp1.EOF
-          cmdFarmacias.AddItem Trim(Str(oRsTmp1.Fields!IdAlmacen)) & " - " & oRsTmp1.Fields!Descripcion
+          cmdFarmacias.AddItem Trim(Str(oRsTmp1.Fields!IdAlmacen)) & " - " & oRsTmp1.Fields!descripcion
           oRsTmp1.MoveNext
        Loop
     End If
     oRsTmp1.Close
     '
     
-    lnIdFarmaciaElegida = Val(sighentidades.IdFarmaciaParaReceta)
+    lnIdFarmaciaElegida = Val(sighEntidades.IdFarmaciaParaReceta)
     If lnIdFarmaciaElegida > 1 Then
        Dim lnFor As Integer, lcFarmacia As String
        For lnFor = 2 To cmdFarmacias.ListCount - 1
@@ -3506,7 +3506,7 @@ Private Sub cmdFarmacias_Click()
     Else
        lnIdFarmaciaElegida = cmdFarmacias.ListIndex
     End If
-    sighentidades.IdFarmaciaParaReceta = Trim(Str(lnIdFarmaciaElegida))
+    sighEntidades.IdFarmaciaParaReceta = Trim(Str(lnIdFarmaciaElegida))
     On Error Resume Next
     If oRsFarmacia.RecordCount > 0 Then
        oRsFarmacia.MoveFirst
@@ -3646,7 +3646,7 @@ Sub ActualizaDxEnGrilla(oRsDx As Recordset)
         MsgBox "Debe registrar DIAGNOSTICOS antes de AGREGAR MEDICAMENTOS/INSUMOS", vbInformation, ""
     End If
     Set grdDiag.DataSource = oRsDx
-    mo_Apariencia.ConfigurarFilasBiColores grdDiag, sighentidades.GrillaConFilasBicolor
+    mo_Apariencia.ConfigurarFilasBiColores grdDiag, sighEntidades.GrillaConFilasBicolor
          grdDiag.Bands(0).Columns("idCuentaAtencion").Hidden = True
          grdDiag.Bands(0).Columns("idTipoDiagnostico").Hidden = True
          grdDiag.Bands(0).Columns("DescripcionTipoDx").Hidden = True
@@ -3744,7 +3744,7 @@ Function ValidaReglas() As Boolean
      End If
   End If
   '
-  If sighentidades.Parametro551 = "S" Then
+  If sighEntidades.Parametro551 = "S" Then
     If oRsTomografia.RecordCount > 0 Then
          oRsTomografia.MoveFirst
          Do While Not oRsTomografia.EOF

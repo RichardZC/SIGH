@@ -1,0 +1,4 @@
+[History]
+1=#P0#=mb	#P1#=Form_Initialize	#P2#=SIGHCatalogos/EmpleadoDetalle/Form_Initialize	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200306104417	#P7#=0	#P8#=7	.
+2=#P0#=mb	#P1#=CargarComboBoxes	#P2#=SIGHCatalogos/EmpleadoDetalle/CargarComboBoxes	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200306104453	#P7#=0	#P8#=31	.
+3=#P0#=mb	#P1#=Form_Activate	#P2#=SIGHCatalogos/EmpleadoDetalle/Form_Activate	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200306102924	#P7#=0	#P8#=1	.

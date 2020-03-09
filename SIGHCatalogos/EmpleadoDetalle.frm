@@ -21,13 +21,28 @@ Begin VB.Form EmpleadoDetalle
    Icon            =   "EmpleadoDetalle.frx":0000
    KeyPreview      =   -1  'True
    LinkTopic       =   "Form1"
-   LockControls    =   -1  'True
    MaxButton       =   0   'False
    MinButton       =   0   'False
    ScaleHeight     =   8925
    ScaleWidth      =   12015
    ShowInTaskbar   =   0   'False
    StartUpPosition =   2  'CenterScreen
+   Begin VB.ComboBox cmbProfesion 
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   315
+      Left            =   5490
+      TabIndex        =   61
+      Top             =   2385
+      Width           =   4710
+   End
    Begin VB.Frame Frame6 
       Height          =   2625
       Left            =   75
@@ -114,10 +129,10 @@ Begin VB.Form EmpleadoDetalle
    End
    Begin VB.Frame Frame5 
       Caption         =   "Labora en:"
-      Height          =   3480
-      Left            =   5370
+      Height          =   2775
+      Left            =   5385
       TabIndex        =   42
-      Top             =   4350
+      Top             =   5040
       Width           =   6585
       Begin VB.CommandButton cmdAddLabora 
          DisabledPicture =   "EmpleadoDetalle.frx":0CCA
@@ -131,12 +146,12 @@ Begin VB.Form EmpleadoDetalle
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Height          =   315
+         Height          =   330
          Left            =   120
          Picture         =   "EmpleadoDetalle.frx":14BF
          Style           =   1  'Graphical
          TabIndex        =   26
-         Top             =   660
+         Top             =   615
          Width           =   795
       End
       Begin VB.CommandButton cmdDelLabora 
@@ -151,12 +166,12 @@ Begin VB.Form EmpleadoDetalle
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Height          =   315
+         Height          =   330
          Left            =   960
          Picture         =   "EmpleadoDetalle.frx":1FE9
          Style           =   1  'Graphical
          TabIndex        =   27
-         Top             =   660
+         Top             =   615
          Width           =   795
       End
       Begin VB.ComboBox cmbArea 
@@ -175,14 +190,14 @@ Begin VB.Form EmpleadoDetalle
          List            =   "EmpleadoDetalle.frx":239C
          Style           =   2  'Dropdown List
          TabIndex        =   24
-         Top             =   300
+         Top             =   255
          Width           =   2865
       End
       Begin MSDataListLib.DataCombo cmbSubArea 
          Height          =   315
          Left            =   3000
          TabIndex        =   25
-         Top             =   300
+         Top             =   255
          Visible         =   0   'False
          Width           =   3525
          _ExtentX        =   6218
@@ -202,13 +217,13 @@ Begin VB.Form EmpleadoDetalle
          EndProperty
       End
       Begin UltraGrid.SSUltraGrid grdLaboraEn 
-         Height          =   2340
-         Left            =   120
+         Height          =   1575
+         Left            =   105
          TabIndex        =   28
-         Top             =   1050
+         Top             =   1020
          Width           =   6405
          _ExtentX        =   11298
-         _ExtentY        =   4128
+         _ExtentY        =   2778
          _Version        =   131072
          GridFlags       =   17040384
          LayoutFlags     =   67108884
@@ -229,7 +244,7 @@ Begin VB.Form EmpleadoDetalle
       Height          =   2160
       Left            =   5370
       TabIndex        =   40
-      Top             =   2160
+      Top             =   2790
       Width           =   6630
       Begin VB.CommandButton btnQuitaCargo 
          DisabledPicture =   "EmpleadoDetalle.frx":249E
@@ -450,7 +465,7 @@ Begin VB.Form EmpleadoDetalle
       Height          =   5190
       Left            =   75
       TabIndex        =   31
-      Top             =   30
+      Top             =   60
       Width           =   5220
       Begin VB.ComboBox cmbIdTipoSexo 
          Height          =   330
@@ -764,6 +779,14 @@ Begin VB.Form EmpleadoDetalle
          Width           =   1500
       End
    End
+   Begin VB.Frame Frame7 
+      Caption         =   "Profesión"
+      Height          =   660
+      Left            =   5385
+      TabIndex        =   62
+      Top             =   2115
+      Width           =   6585
+   End
 End
 Attribute VB_Name = "EmpleadoDetalle"
 Attribute VB_GlobalNameSpace = False
@@ -797,6 +820,10 @@ Dim mo_cmbIdTipoEmpleado As New sighentidades.ListaDespleglable
 Dim mo_cmbIdCondicionTrabajo  As New sighentidades.ListaDespleglable
 Dim mo_cmbIdRol As New sighentidades.ListaDespleglable
 Dim mo_cmbCargos As New sighentidades.ListaDespleglable
+'SCCQ 06/03/2020 Cambio2 Inicio
+Dim mo_cmbProfesion As New sighentidades.ListaDespleglable
+Dim mo_Profesiones As New sighDatos.Profesiones
+'SCCQ 06/03/2020 Cambio2 Fin
 Dim mo_cmbTipoDestacado As New sighentidades.ListaDespleglable
 Dim mo_cmbIdDocIdentidad As New sighentidades.ListaDespleglable
 Dim mo_UsuarioRoles As New Collection
@@ -848,6 +875,11 @@ Dim oConexion As New ADODB.Connection
        mo_cmbCargos.ListField = "Cargo"
        Set mo_cmbCargos.RowSource = mo_ReglasFarmacia.TiposCargoSeleccionarTodos
        
+       'SCCQ 06/03/2020 Cambio2 Inicio
+       mo_cmbProfesion.BoundColumn = "Id_Profesion"
+       mo_cmbProfesion.ListField = "Descripcion_Profesion"
+       Set mo_cmbProfesion.RowSource = mo_Profesiones.maestro_his_profesionSeleccionarTodos
+       'SCCQ 06/03/2020 Cambio2 Fin
        mo_cmbTipoDestacado.BoundColumn = "idDestacado"
        mo_cmbTipoDestacado.ListField = "Destacado"
        Set mo_cmbTipoDestacado.RowSource = mo_AdminServiciosComunes.TiposDestacadosSeleccionarTodos()
@@ -1199,6 +1231,9 @@ Private Sub Form_Initialize()
     Set mo_cmbIdCondicionTrabajo.MiComboBox = cmbIdCondicionTrabajo
     Set mo_cmbIdRol.MiComboBox = cmbIdRol
     Set mo_cmbCargos.MiComboBox = cmbCargos
+    'SCCQ 06/03/2020 Cambio2 Inicio
+    Set mo_cmbProfesion.MiComboBox = cmbProfesion
+    'SCCQ 06/03/2020 Cambio2 Fin
     Set mo_cmbTipoDestacado.MiComboBox = cmbTipoDestacado
     Set mo_cmbIdDocIdentidad.MiComboBox = cmbIdDocIdentidad
     Set mo_CmbIdTipoSexo.MiComboBox = cmbIdTipoSexo
@@ -1235,7 +1270,6 @@ Private Sub grdRoles_InitializeLayout(ByVal Context As UltraGrid.Constants_Conte
     grdRoles.Bands(0).Columns("Nombre").Width = 5500
     
 End Sub
-
 
 
 

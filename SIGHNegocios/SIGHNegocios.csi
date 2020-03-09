@@ -1,6 +1,6 @@
 [History]
-1=#P0#=mb	#P1#=FarmAlmacenSeleccionarSegunFiltro	#P2#=SIGHNegocios/ReglasFarmacia/FarmAlmacenSeleccionarSegunFiltro	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200305105043	#P7#=0	#P8#=9	.
-2=#P0#=mb	#P1#=CitasActualizaDatosDeReprogramacionXfechaServicioCE	#P2#=SIGHNegocios/ReglasDeProgMedica/CitasActualizaDatosDeReprogramacionXfechaServicioCE	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200305120922	#P7#=0	#P8#=0	.
+1=#P0#=mb	#P1#=CitasActualizaDatosDeReprogramacionXfechaServicioCE	#P2#=SIGHNegocios/ReglasDeProgMedica/CitasActualizaDatosDeReprogramacionXfechaServicioCE	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200305120922	#P7#=0	#P8#=0	.
+2=#P0#=mb	#P1#=FarmAlmacenSeleccionarSegunFiltro	#P2#=SIGHNegocios/ReglasFarmacia/FarmAlmacenSeleccionarSegunFiltro	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200305105043	#P7#=0	#P8#=9	.
 3=#P0#=mb	#P1#=CitasActualizaDatosDeReprogramacionXfecha	#P2#=SIGHNegocios/ReglasDeProgMedica/CitasActualizaDatosDeReprogramacionXfecha	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200221120152	#P7#=0	#P8#=24	.
 4=#P0#=mb	#P1#=ProgramacionMedicaEliminarPorId	#P2#=SIGHNegocios/ReglasDeProgMedica/ProgramacionMedicaEliminarPorId	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200221120049	#P7#=0	#P8#=-2	.
 5=#P0#=mb	#P1#=ProgramacionMedicaSeleccionarPorMedicoFechaServicio	#P2#=SIGHNegocios/ReglasDeProgMedica/ProgramacionMedicaSeleccionarPorMedicoFechaServicio	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200221090351	#P7#=0	#P8#=16	.
