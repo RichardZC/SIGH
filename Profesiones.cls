@@ -11,6 +11,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = True
+'SCCQ 09/03/2020 Cambio2 Inicio
 Option Explicit
 Dim mo_Conexion As ADODB.Connection
 Dim ms_MensajeError As String
@@ -34,7 +35,7 @@ Function maestro_his_profesionSeleccionarTodos() As ADODB.Recordset
     Dim oConexion As New ADODB.Connection
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open sighentidades.CadenaConexion
+    oConexion.Open SIGHENTIDADES.CadenaConexion
     Set maestro_his_profesionSeleccionarTodos = Nothing
 
    With oCommand
@@ -52,3 +53,4 @@ Function maestro_his_profesionSeleccionarTodos() As ADODB.Recordset
     Set oCommand = Nothing
     Set oRecordset = Nothing
 End Function
+'SCCQ 09/03/2020 Cambio2 Fin

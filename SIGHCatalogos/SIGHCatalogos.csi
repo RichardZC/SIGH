@@ -1,4 +1,7 @@
 [History]
-1=#P0#=mb	#P1#=Form_Initialize	#P2#=SIGHCatalogos/EmpleadoDetalle/Form_Initialize	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200306104417	#P7#=0	#P8#=7	.
-2=#P0#=mb	#P1#=CargarComboBoxes	#P2#=SIGHCatalogos/EmpleadoDetalle/CargarComboBoxes	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200306104453	#P7#=0	#P8#=31	.
-3=#P0#=mb	#P1#=Form_Activate	#P2#=SIGHCatalogos/EmpleadoDetalle/Form_Activate	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200306102924	#P7#=0	#P8#=1	.
+1=#P0#=mb	#P1#=btnEliminar_Click	#P2#=SIGHCatalogos/MedicoDetalle/btnEliminar_Click	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200323110840	#P7#=0	#P8#=0	.
+2=#P0#=mb	#P1#=CargarComboBoxes	#P2#=SIGHCatalogos/MedicoDetalle/CargarComboBoxes	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200323111403	#P7#=0	#P8#=24	.
+3=#P0#=mb	#P1#=Form_Load	#P2#=SIGHCatalogos/MedicoDetalle/Form_Load	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200323103441	#P7#=0	#P8#=15	.
+4=#P0#=mb	#P1#=CargarComboBoxes	#P2#=SIGHCatalogos/EmpleadoDetalle/CargarComboBoxes	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200306104453	#P7#=0	#P8#=31	.
+5=#P0#=mb	#P1#=Form_Initialize	#P2#=SIGHCatalogos/EmpleadoDetalle/Form_Initialize	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200306104417	#P7#=0	#P8#=7	.
+6=#P0#=mb	#P1#=Form_Activate	#P2#=SIGHCatalogos/EmpleadoDetalle/Form_Activate	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200306102924	#P7#=0	#P8#=1	.

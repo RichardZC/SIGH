@@ -4,7 +4,7 @@ Object = "{5A9433E9-DD7B-4529-91B6-A5E8CA054615}#2.0#0"; "IGULTR~1.OCX"
 Begin VB.Form MedicoDetalle 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "Form1"
-   ClientHeight    =   7650
+   ClientHeight    =   8040
    ClientLeft      =   45
    ClientTop       =   330
    ClientWidth     =   11895
@@ -20,10 +20,9 @@ Begin VB.Form MedicoDetalle
    Icon            =   "MedicoDetalle.frx":0000
    KeyPreview      =   -1  'True
    LinkTopic       =   "Form1"
-   LockControls    =   -1  'True
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   7650
+   ScaleHeight     =   8040
    ScaleWidth      =   11895
    StartUpPosition =   2  'CenterScreen
    Begin VB.Frame Frame3 
@@ -36,7 +35,7 @@ Begin VB.Form MedicoDetalle
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   6555
+      Height          =   6930
       Left            =   5535
       TabIndex        =   31
       Top             =   -30
@@ -96,13 +95,13 @@ Begin VB.Form MedicoDetalle
          Width           =   1005
       End
       Begin UltraGrid.SSUltraGrid grdEspecialidades 
-         Height          =   5040
-         Left            =   120
+         Height          =   5400
+         Left            =   105
          TabIndex        =   18
          Top             =   1395
          Width           =   6090
          _ExtentX        =   10742
-         _ExtentY        =   8890
+         _ExtentY        =   9525
          _Version        =   131072
          GridFlags       =   17040384
          LayoutFlags     =   67108884
@@ -147,7 +146,7 @@ Begin VB.Form MedicoDetalle
       Height          =   1065
       Left            =   45
       TabIndex        =   28
-      Top             =   6585
+      Top             =   6900
       Width           =   11805
       Begin VB.CommandButton Command1 
          Caption         =   "BUSCAR_EESSXCODIGO"
@@ -221,11 +220,28 @@ Begin VB.Form MedicoDetalle
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   6555
+      Height          =   6930
       Left            =   45
       TabIndex        =   21
       Top             =   -30
       Width           =   5385
+      Begin VB.ComboBox cmbIdPais 
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   315
+         Left            =   2100
+         Style           =   2  'Dropdown List
+         TabIndex        =   54
+         Top             =   2010
+         Width           =   3165
+      End
       Begin VB.ComboBox cmbIdTipoSexo 
          Height          =   330
          Left            =   4050
@@ -239,7 +255,7 @@ Begin VB.Form MedicoDetalle
          Height          =   435
          Left            =   90
          TabIndex        =   51
-         Top             =   5400
+         Top             =   5730
          Width           =   2175
       End
       Begin VB.TextBox txtRNE 
@@ -247,7 +263,7 @@ Begin VB.Form MedicoDetalle
          Left            =   2100
          MaxLength       =   50
          TabIndex        =   13
-         Top             =   5115
+         Top             =   5445
          Width           =   3180
       End
       Begin VB.CheckBox chkEsActivoMedico 
@@ -256,7 +272,7 @@ Begin VB.Form MedicoDetalle
          Height          =   435
          Left            =   90
          TabIndex        =   49
-         Top             =   5820
+         Top             =   6150
          Width           =   2190
       End
       Begin VB.TextBox txtSupervisor 
@@ -273,7 +289,7 @@ Begin VB.Form MedicoDetalle
          Left            =   2100
          MaxLength       =   50
          TabIndex        =   43
-         Top             =   4716
+         Top             =   5040
          Width           =   2250
       End
       Begin VB.CommandButton cmdSupervisorDel 
@@ -293,7 +309,7 @@ Begin VB.Form MedicoDetalle
          Picture         =   "MedicoDetalle.frx":467E
          Style           =   1  'Graphical
          TabIndex        =   42
-         Top             =   4710
+         Top             =   5040
          Width           =   435
       End
       Begin VB.CommandButton cmdSupervisorAdd 
@@ -313,7 +329,7 @@ Begin VB.Form MedicoDetalle
          Picture         =   "MedicoDetalle.frx":5204
          Style           =   1  'Graphical
          TabIndex        =   41
-         Top             =   4710
+         Top             =   5040
          Width           =   435
       End
       Begin VB.CommandButton cmdBuscaEnTablasSIS 
@@ -346,14 +362,14 @@ Begin VB.Form MedicoDetalle
          Height          =   315
          Left            =   2100
          TabIndex        =   12
-         Top             =   4338
+         Top             =   4665
          Width           =   3165
       End
       Begin VB.ComboBox cmbTipoDestacado 
          Height          =   330
          Left            =   2100
          TabIndex        =   10
-         Top             =   3567
+         Top             =   3900
          Width           =   3165
       End
       Begin VB.TextBox txtLoteHis 
@@ -361,21 +377,21 @@ Begin VB.Form MedicoDetalle
          Left            =   2100
          MaxLength       =   2
          TabIndex        =   11
-         Top             =   3945
+         Top             =   4275
          Width           =   1095
       End
       Begin VB.ComboBox cmbIdCondicionTrabajo 
          Height          =   330
          Left            =   2100
          TabIndex        =   9
-         Top             =   3180
+         Top             =   3510
          Width           =   3165
       End
       Begin VB.ComboBox cmbIdTipoEmpleado 
          Height          =   330
          Left            =   2100
          TabIndex        =   8
-         Top             =   2790
+         Top             =   3120
          Width           =   3165
       End
       Begin VB.TextBox txtCodigoPlanilla 
@@ -383,7 +399,7 @@ Begin VB.Form MedicoDetalle
          Left            =   2100
          MaxLength       =   8
          TabIndex        =   6
-         Top             =   2055
+         Top             =   2385
          Width           =   1425
       End
       Begin VB.TextBox txtDNI 
@@ -423,7 +439,7 @@ Begin VB.Form MedicoDetalle
          Left            =   2100
          MaxLength       =   6
          TabIndex        =   7
-         Top             =   2400
+         Top             =   2730
          Width           =   1425
       End
       Begin MSMask.MaskEdBox txtFechaNacimiento 
@@ -448,6 +464,16 @@ Begin VB.Form MedicoDetalle
          Mask            =   "##/##/####"
          PromptChar      =   "_"
       End
+      Begin VB.Label Label11 
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Caption         =   "País"
+         Height          =   210
+         Left            =   120
+         TabIndex        =   53
+         Top             =   2025
+         Width           =   300
+      End
       Begin VB.Label Label30 
          AutoSize        =   -1  'True
          BackStyle       =   0  'Transparent
@@ -465,8 +491,8 @@ Begin VB.Form MedicoDetalle
          Index           =   2
          X1              =   15
          X2              =   5325
-         Y1              =   5085
-         Y2              =   5085
+         Y1              =   5415
+         Y2              =   5415
       End
       Begin VB.Line Line 
          BorderColor     =   &H80000005&
@@ -474,8 +500,8 @@ Begin VB.Form MedicoDetalle
          Index           =   1
          X1              =   30
          X2              =   5340
-         Y1              =   3930
-         Y2              =   3930
+         Y1              =   4260
+         Y2              =   4260
       End
       Begin VB.Line Line 
          BorderColor     =   &H80000005&
@@ -483,15 +509,15 @@ Begin VB.Form MedicoDetalle
          Index           =   0
          X1              =   30
          X2              =   5370
-         Y1              =   2010
-         Y2              =   2025
+         Y1              =   2340
+         Y2              =   2355
       End
       Begin VB.Label Label10 
          Caption         =   "RNE (FUA)"
          Height          =   285
          Left            =   105
          TabIndex        =   50
-         Top             =   5145
+         Top             =   5475
          Width           =   1425
       End
       Begin VB.Label Label9 
@@ -500,7 +526,7 @@ Begin VB.Form MedicoDetalle
          Height          =   210
          Left            =   120
          TabIndex        =   44
-         Top             =   4740
+         Top             =   5070
          Width           =   2010
       End
       Begin VB.Label lblHalladosEnSis 
@@ -510,7 +536,7 @@ Begin VB.Form MedicoDetalle
          Height          =   255
          Left            =   150
          TabIndex        =   39
-         Top             =   6225
+         Top             =   6555
          Visible         =   0   'False
          Width           =   4965
       End
@@ -519,7 +545,7 @@ Begin VB.Form MedicoDetalle
          Height          =   285
          Left            =   120
          TabIndex        =   37
-         Top             =   4395
+         Top             =   4725
          Width           =   1725
       End
       Begin VB.Label Label6 
@@ -527,7 +553,7 @@ Begin VB.Form MedicoDetalle
          Height          =   315
          Left            =   120
          TabIndex        =   36
-         Top             =   3630
+         Top             =   3960
          Width           =   1500
       End
       Begin VB.Label Label4 
@@ -543,7 +569,7 @@ Begin VB.Form MedicoDetalle
          Height          =   285
          Left            =   120
          TabIndex        =   34
-         Top             =   4035
+         Top             =   4365
          Width           =   1425
       End
       Begin VB.Label Label2 
@@ -551,7 +577,7 @@ Begin VB.Form MedicoDetalle
          Height          =   315
          Left            =   120
          TabIndex        =   30
-         Top             =   2115
+         Top             =   2445
          Width           =   1500
       End
       Begin VB.Label DNI 
@@ -567,7 +593,7 @@ Begin VB.Form MedicoDetalle
          Height          =   285
          Left            =   120
          TabIndex        =   27
-         Top             =   2490
+         Top             =   2820
          Width           =   1425
       End
       Begin VB.Label lblIdTipoEmpleado 
@@ -576,7 +602,7 @@ Begin VB.Form MedicoDetalle
          Height          =   210
          Left            =   120
          TabIndex        =   26
-         Top             =   2850
+         Top             =   3180
          Width           =   1215
       End
       Begin VB.Label lblIdCondicionTrabajo 
@@ -584,7 +610,7 @@ Begin VB.Form MedicoDetalle
          Height          =   315
          Left            =   120
          TabIndex        =   25
-         Top             =   3240
+         Top             =   3570
          Width           =   1500
       End
       Begin VB.Label lblNombres 

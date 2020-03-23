@@ -1,18 +1,19 @@
 [History]
-1=#P0#=mb	#P1#=Conexion	#P2#=SIGHDatos/Profesiones/Conexion [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200309080216	#P7#=0	#P8#=0	.
-2=#P0#=mb	#P1#=MensajeError	#P2#=SIGHDatos/Empleados/MensajeError [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200306104748	#P7#=0	#P8#=0	.
-3=#P0#=mb	#P1#=SeleccionarSegunFiltro	#P2#=SIGHDatos/FarmAlmacen/SeleccionarSegunFiltro	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200305105026	#P7#=0	#P8#=10	.
-4=#P0#=mb	#P1#=SeleccionarPorId	#P2#=SIGHDatos/ProgramacionMedica/SeleccionarPorId	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200221113202	#P7#=0	#P8#=1	.
-5=#P0#=mb	#P1#=Insertar	#P2#=SIGHDatos/ProgramacionMedica/Insertar	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200221113127	#P7#=0	#P8#=1	.
-6=#P0#=mb	#P1#=SeleccionarCEDisponibles	#P2#=SIGHDatos/Servicios/SeleccionarCEDisponibles	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200220122613	#P7#=0	#P8#=15	.
-7=#P0#=mb	#P1#=ActualizaSaldosPorProducto	#P2#=SIGHDatos/farmMovimientoDetalle/ActualizaSaldosPorProducto	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200220122318	#P7#=0	#P8#=14	.
-8=#P0#=mb	#P1#=SeleccionarPorId	#P2#=SIGHDatos/Servicios/SeleccionarPorId	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200220115226	#P7#=0	#P8#=9	.
-9=#P0#=mb	#P1#=Modificar	#P2#=SIGHDatos/Servicios/Modificar	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200220094804	#P7#=0	#P8#=50	.
-10=#P0#=mb	#P1#=ServiciosSeleccionarConsultoriosPorEspecialidadDEBB	#P2#=SIGHDatos/Servicios/ServiciosSeleccionarConsultoriosPorEspecialidadDEBB	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200220094624	#P7#=0	#P8#=-1	.
-11=#P0#=mb	#P1#=Insertar	#P2#=SIGHDatos/Servicios/Insertar	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200219150246	#P7#=0	#P8#=25	.
-12=#P0#=mb	#P1#=Eliminar	#P2#=SIGHDatos/Servicios/Eliminar	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200219145920	#P7#=0	#P8#=20	.
-13=#P0#=mb	#P1#=GrabaHistorico	#P2#=SIGHDatos/Servicios/GrabaHistorico	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200219145752	#P7#=0	#P8#=42	.
-14=#P0#=mb	#P1#=Conexion	#P2#=SIGHDatos/Servicios/Conexion [Set]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200219145714	#P7#=0	#P8#=1	.
-15=#P0#=mb	#P1#=SeleccionarPorTipoV2	#P2#=SIGHDatos/Servicios/SeleccionarPorTipoV2	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200219094245	#P7#=0	#P8#=5	.
-16=#P0#=mb	#P1#=SeleccionarPorTipoServicioDptoEspecialidad	#P2#=SIGHDatos/Servicios/SeleccionarPorTipoServicioDptoEspecialidad	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200218114438	#P7#=0	#P8#=0	.
-17=#P0#=mb	#P1#=MensajeError	#P2#=SIGHDatos/Servicios/MensajeError [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200217120859	#P7#=0	#P8#=0	.
+1=#P0#=mb	#P1#=maestro_his_profesionSeleccionarTodos	#P2#=SIGHDatos/Profesiones/maestro_his_profesionSeleccionarTodos	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200323100953	#P7#=0	#P8#=0	.
+2=#P0#=mb	#P1#=Conexion	#P2#=SIGHDatos/Profesiones/Conexion [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200309080216	#P7#=0	#P8#=0	.
+3=#P0#=mb	#P1#=MensajeError	#P2#=SIGHDatos/Empleados/MensajeError [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200306104748	#P7#=0	#P8#=0	.
+4=#P0#=mb	#P1#=SeleccionarSegunFiltro	#P2#=SIGHDatos/FarmAlmacen/SeleccionarSegunFiltro	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200305105026	#P7#=0	#P8#=10	.
+5=#P0#=mb	#P1#=SeleccionarPorId	#P2#=SIGHDatos/ProgramacionMedica/SeleccionarPorId	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200221113202	#P7#=0	#P8#=1	.
+6=#P0#=mb	#P1#=Insertar	#P2#=SIGHDatos/ProgramacionMedica/Insertar	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200221113127	#P7#=0	#P8#=1	.
+7=#P0#=mb	#P1#=SeleccionarCEDisponibles	#P2#=SIGHDatos/Servicios/SeleccionarCEDisponibles	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200220122613	#P7#=0	#P8#=15	.
+8=#P0#=mb	#P1#=ActualizaSaldosPorProducto	#P2#=SIGHDatos/farmMovimientoDetalle/ActualizaSaldosPorProducto	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200220122318	#P7#=0	#P8#=14	.
+9=#P0#=mb	#P1#=SeleccionarPorId	#P2#=SIGHDatos/Servicios/SeleccionarPorId	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200220115226	#P7#=0	#P8#=9	.
+10=#P0#=mb	#P1#=Modificar	#P2#=SIGHDatos/Servicios/Modificar	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200220094804	#P7#=0	#P8#=50	.
+11=#P0#=mb	#P1#=ServiciosSeleccionarConsultoriosPorEspecialidadDEBB	#P2#=SIGHDatos/Servicios/ServiciosSeleccionarConsultoriosPorEspecialidadDEBB	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200220094624	#P7#=0	#P8#=-1	.
+12=#P0#=mb	#P1#=Insertar	#P2#=SIGHDatos/Servicios/Insertar	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200219150246	#P7#=0	#P8#=25	.
+13=#P0#=mb	#P1#=Eliminar	#P2#=SIGHDatos/Servicios/Eliminar	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200219145920	#P7#=0	#P8#=20	.
+14=#P0#=mb	#P1#=GrabaHistorico	#P2#=SIGHDatos/Servicios/GrabaHistorico	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200219145752	#P7#=0	#P8#=42	.
+15=#P0#=mb	#P1#=Conexion	#P2#=SIGHDatos/Servicios/Conexion [Set]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200219145714	#P7#=0	#P8#=1	.
+16=#P0#=mb	#P1#=SeleccionarPorTipoV2	#P2#=SIGHDatos/Servicios/SeleccionarPorTipoV2	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200219094245	#P7#=0	#P8#=5	.
+17=#P0#=mb	#P1#=SeleccionarPorTipoServicioDptoEspecialidad	#P2#=SIGHDatos/Servicios/SeleccionarPorTipoServicioDptoEspecialidad	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200218114438	#P7#=0	#P8#=0	.
+18=#P0#=mb	#P1#=MensajeError	#P2#=SIGHDatos/Servicios/MensajeError [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200217120859	#P7#=0	#P8#=0	.
