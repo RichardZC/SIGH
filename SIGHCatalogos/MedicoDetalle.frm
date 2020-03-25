@@ -1621,10 +1621,12 @@ Sub CargarDatosALosControles()
                 'SCCQ 25/03/2020 Cambio2 Inicio
                  Select Case mo_cmbIdDocIdentidad.BoundText
                     Case 1    'dni
-                         mo_CmbIdPais.BoundText = "166" 'Peru
+                    'Si es DNI el país debe ser siempre Perú
+                        mo_CmbIdPais.BoundText = "166" '166 es para Perú
                          cmbIdPais.Enabled = False
                     Case Else
                          cmbIdPais.Enabled = True
+                         mo_CmbIdPais.BoundText = .idpais
                     End Select
                 'SCCQ 25/03/2020 Cambio2 Fin
                 BuscaEmpleadoYllenaDatosDelSupervisor .IdSupervisor

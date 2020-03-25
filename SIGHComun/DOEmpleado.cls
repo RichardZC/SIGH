@@ -46,13 +46,13 @@ Dim ml_IdSupervisor As Long
 Dim ml_EsActivo As Boolean
 Dim ml_idTipoSexo As Long
 'SCCQ 25/03/2020 Cambio2 Inicio
-'Dim ml_idPais As Long
-'Property Let idPais(lValue As Long)
-'   ml_idPais = lValue
-'End Property
-'Property Get idPais() As Long
-'   idPais = ml_idPais
-'End Property
+Dim ml_idPais As Long
+Property Let idPais(lValue As Long)
+   ml_idPais = lValue
+End Property
+Property Get idPais() As Long
+   idPais = ml_idPais
+End Property
 'SCCQ 25/03/2020 Cambio2 Fin
 
 Property Let idTipoSexo(lValue As Long)
