@@ -40,7 +40,7 @@ End Property
 '   Descripción:    Inserta un registro a la tabla Empleados
 '   Parámetros:     Ninguno
 '------------------------------------------------------------------------------------
-Function Insertar(ByVal oTabla As dOEmpleado) As Boolean
+Function Insertar(ByVal oTabla As DOEmpleado) As Boolean
 On Error GoTo ManejadorDeError
 Dim oCommand As New ADODB.Command
 Dim oParameter As ADODB.Parameter
@@ -80,7 +80,9 @@ Dim oCrypKey As New CrypKey.Util
            Set oParameter = .CreateParameter("@idSupervisor", adInteger, adParamInput, 0, IIf(oTabla.IdSupervisor = 0, Null, oTabla.IdSupervisor)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@EsActivo", adBoolean, adParamInput, 0, IIf(oTabla.EsActivo = True, 1, 0)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@idTipoSexo", adInteger, adParamInput, 0, oTabla.idTipoSexo): .Parameters.Append oParameter
-
+           'SCCQ 26/03/2020 Cambio2 Inicio
+           Set oParameter = .CreateParameter("@idPais", adInteger, adParamInput, 0, IIf(oTabla.IdPais = 0, Null, oTabla.IdPais)): .Parameters.Append oParameter
+           'SCCQ 26/03/2020 Cambio2 Fin
        .Execute
            oTabla.IdEmpleado = .Parameters("@IdEmpleado")
    End With
@@ -94,7 +96,7 @@ ManejadorDeError:
 Exit Function
 End Function
 
-Sub GrabaHistorico(oTabla As dOEmpleado)
+Sub GrabaHistorico(oTabla As DOEmpleado)
     On Error GoTo ErrHistorico
     Dim lcSql As String
     Dim oRsParametros As New Recordset
@@ -127,7 +129,7 @@ End Sub
 '   Parámetros:       Ninguno
 '------------------------------------------------------------------------------------
 
-Function Modificar(ByVal oTabla As dOEmpleado) As Boolean
+Function Modificar(ByVal oTabla As DOEmpleado) As Boolean
 On Error GoTo ManejadorDeError
 Dim oCommand As New ADODB.Command
 Dim oParameter As ADODB.Parameter
@@ -162,7 +164,9 @@ Dim oCrypKey As New CrypKey.Util
            Set oParameter = .CreateParameter("@idSupervisor", adInteger, adParamInput, 0, IIf(oTabla.IdSupervisor = 0, Null, oTabla.IdSupervisor)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@EsActivo", adBoolean, adParamInput, 0, IIf(oTabla.EsActivo = True, 1, 0)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@idTipoSexo", adInteger, adParamInput, 0, oTabla.idTipoSexo): .Parameters.Append oParameter
-    
+           'SCCQ 26/03/2020 Cambio2 Inicio
+           Set oParameter = .CreateParameter("@idPais", adInteger, adParamInput, 0, IIf(oTabla.IdPais = 0, Null, oTabla.IdPais)): .Parameters.Append oParameter
+           'SCCQ 26/03/2020 Cambio2 Fin
        .Execute
    End With
  
@@ -181,7 +185,7 @@ End Function
 '   Parámetros:     Ninguno
 '------------------------------------------------------------------------------------
 
-Function Eliminar(ByVal oTabla As dOEmpleado) As Boolean
+Function Eliminar(ByVal oTabla As DOEmpleado) As Boolean
 On Error GoTo ManejadorDeError
 Dim oCommand As New ADODB.Command
 Dim oParameter As ADODB.Parameter
@@ -212,7 +216,7 @@ End Function
 '   Parámetros:     Ninguno
 '------------------------------------------------------------------------------------
 
-Function SeleccionarPorId(ByVal oTabla As dOEmpleado) As Boolean
+Function SeleccionarPorId(ByVal oTabla As DOEmpleado) As Boolean
 On Error GoTo ManejadorDeError
 Dim oRecordset As New ADODB.Recordset
 Dim oCommand As New ADODB.Command
@@ -304,7 +308,7 @@ ManejadorDeError:
 Exit Function
 End Function
 
-Function Filtrar(oDOEmpleado As dOEmpleado) As ADODB.Recordset
+Function Filtrar(oDOEmpleado As DOEmpleado) As ADODB.Recordset
 On Error GoTo ManejadorDeError
 Dim oRecordset As New Recordset
 Dim oCommand As New ADODB.Command
@@ -346,7 +350,7 @@ ManejadorDeError:
 End Function
 
 
-Function SeleccionarPorCodigo(ByVal oDOEmpleado As dOEmpleado) As Boolean
+Function SeleccionarPorCodigo(ByVal oDOEmpleado As DOEmpleado) As Boolean
 
 On Error GoTo ManejadorDeError
 Dim oRecordset As New Recordset
@@ -376,7 +380,7 @@ ManejadorDeError:
     MsgBox Err.Description
 End Function
 
-Function ObtenerConElMismoCodigoPlanilla(ByVal oTabla As dOEmpleado) As ADODB.Recordset
+Function ObtenerConElMismoCodigoPlanilla(ByVal oTabla As DOEmpleado) As ADODB.Recordset
 On Error GoTo ManejadorDeError
 Dim oRecordset As New Recordset
 Dim oCommand As New ADODB.Command
@@ -400,7 +404,7 @@ Dim sSql As String, sOrder As String, sWhere As String
 ManejadorDeError:
     MsgBox Err.Description
 End Function
-Function ObtenerConElMismoUsuario(ByVal oTabla As dOEmpleado) As ADODB.Recordset
+Function ObtenerConElMismoUsuario(ByVal oTabla As DOEmpleado) As ADODB.Recordset
 On Error GoTo ManejadorDeError
 Dim oRecordset As New Recordset
 Dim oCommand As New ADODB.Command

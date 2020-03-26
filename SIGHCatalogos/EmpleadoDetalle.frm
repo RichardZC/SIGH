@@ -5,10 +5,10 @@ Object = "{5A9433E9-DD7B-4529-91B6-A5E8CA054615}#2.0#0"; "IGULTR~1.OCX"
 Begin VB.Form EmpleadoDetalle 
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "Form1"
-   ClientHeight    =   8925
-   ClientLeft      =   45
-   ClientTop       =   330
-   ClientWidth     =   12015
+   ClientHeight    =   8916
+   ClientLeft      =   48
+   ClientTop       =   336
+   ClientWidth     =   12012
    BeginProperty Font 
       Name            =   "Tahoma"
       Size            =   9
@@ -23,14 +23,14 @@ Begin VB.Form EmpleadoDetalle
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   8925
-   ScaleWidth      =   12015
+   ScaleHeight     =   8916
+   ScaleWidth      =   12012
    ShowInTaskbar   =   0   'False
    StartUpPosition =   2  'CenterScreen
    Begin VB.ComboBox cmbProfesion 
       BeginProperty Font 
          Name            =   "Tahoma"
-         Size            =   8.25
+         Size            =   8.4
          Charset         =   0
          Weight          =   400
          Underline       =   0   'False
@@ -139,7 +139,7 @@ Begin VB.Form EmpleadoDetalle
          DownPicture     =   "EmpleadoDetalle.frx":10B3
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   8.25
+            Size            =   7.8
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -159,7 +159,7 @@ Begin VB.Form EmpleadoDetalle
          DownPicture     =   "EmpleadoDetalle.frx":1C56
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   8.25
+            Size            =   7.8
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -177,7 +177,7 @@ Begin VB.Form EmpleadoDetalle
       Begin VB.ComboBox cmbArea 
          BeginProperty Font 
             Name            =   "Tahoma"
-            Size            =   8.25
+            Size            =   8.4
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -200,15 +200,15 @@ Begin VB.Form EmpleadoDetalle
          Top             =   255
          Visible         =   0   'False
          Width           =   3525
-         _ExtentX        =   6218
-         _ExtentY        =   556
+         _ExtentX        =   6223
+         _ExtentY        =   529
          _Version        =   393216
          MatchEntry      =   -1  'True
          Style           =   2
          Text            =   "DataCombo1"
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Tahoma"
-            Size            =   8.25
+            Size            =   8.4
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -222,14 +222,14 @@ Begin VB.Form EmpleadoDetalle
          TabIndex        =   28
          Top             =   1020
          Width           =   6405
-         _ExtentX        =   11298
-         _ExtentY        =   2778
+         _ExtentX        =   11303
+         _ExtentY        =   2773
          _Version        =   131072
          GridFlags       =   17040384
          LayoutFlags     =   67108884
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Tahoma"
-            Size            =   8.25
+            Size            =   8.4
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -251,7 +251,7 @@ Begin VB.Form EmpleadoDetalle
          DownPicture     =   "EmpleadoDetalle.frx":2829
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   8.25
+            Size            =   7.8
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -271,7 +271,7 @@ Begin VB.Form EmpleadoDetalle
          DownPicture     =   "EmpleadoDetalle.frx":3336
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   8.25
+            Size            =   7.8
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -289,7 +289,7 @@ Begin VB.Form EmpleadoDetalle
       Begin VB.ComboBox cmbCargos 
          BeginProperty Font 
             Name            =   "Tahoma"
-            Size            =   8.25
+            Size            =   8.4
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -308,14 +308,14 @@ Begin VB.Form EmpleadoDetalle
          TabIndex        =   23
          Top             =   660
          Width           =   6405
-         _ExtentX        =   11298
-         _ExtentY        =   2461
+         _ExtentX        =   11303
+         _ExtentY        =   2455
          _Version        =   131072
          GridFlags       =   17040384
          LayoutFlags     =   67108884
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Tahoma"
-            Size            =   8.25
+            Size            =   8.4
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -335,7 +335,7 @@ Begin VB.Form EmpleadoDetalle
       Begin VB.ComboBox cmbIdRol 
          BeginProperty Font 
             Name            =   "Tahoma"
-            Size            =   8.25
+            Size            =   8.4
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -353,7 +353,7 @@ Begin VB.Form EmpleadoDetalle
          DownPicture     =   "EmpleadoDetalle.frx":3F37
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   8.25
+            Size            =   7.8
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -373,7 +373,7 @@ Begin VB.Form EmpleadoDetalle
          DownPicture     =   "EmpleadoDetalle.frx":4ADA
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   8.25
+            Size            =   7.8
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -394,14 +394,14 @@ Begin VB.Form EmpleadoDetalle
          TabIndex        =   19
          Top             =   660
          Width           =   6375
-         _ExtentX        =   11245
-         _ExtentY        =   2355
+         _ExtentX        =   11240
+         _ExtentY        =   2350
          _Version        =   131072
          GridFlags       =   17040384
          LayoutFlags     =   67108884
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Tahoma"
-            Size            =   8.25
+            Size            =   8.4
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -414,7 +414,7 @@ Begin VB.Form EmpleadoDetalle
    Begin VB.Frame Frame2 
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   0
          Weight          =   400
          Underline       =   0   'False
@@ -455,7 +455,7 @@ Begin VB.Form EmpleadoDetalle
    Begin VB.Frame Frame1 
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   0
          Weight          =   400
          Underline       =   0   'False
@@ -488,7 +488,7 @@ Begin VB.Form EmpleadoDetalle
          DownPicture     =   "EmpleadoDetalle.frx":71CD
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   8.25
+            Size            =   7.8
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -508,7 +508,7 @@ Begin VB.Form EmpleadoDetalle
          DownPicture     =   "EmpleadoDetalle.frx":7D70
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   8.25
+            Size            =   7.8
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -552,7 +552,7 @@ Begin VB.Form EmpleadoDetalle
          DownPicture     =   "EmpleadoDetalle.frx":881F
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   8.25
+            Size            =   7.8
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -572,7 +572,7 @@ Begin VB.Form EmpleadoDetalle
          DownPicture     =   "EmpleadoDetalle.frx":932C
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   8.25
+            Size            =   7.8
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -655,7 +655,7 @@ Begin VB.Form EmpleadoDetalle
          Top             =   2040
          Width           =   1560
          _ExtentX        =   2752
-         _ExtentY        =   556
+         _ExtentY        =   550
          _Version        =   393216
          MaxLength       =   10
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -821,8 +821,8 @@ Dim mo_cmbIdCondicionTrabajo  As New sighentidades.ListaDespleglable
 Dim mo_cmbIdRol As New sighentidades.ListaDespleglable
 Dim mo_cmbCargos As New sighentidades.ListaDespleglable
 'SCCQ 06/03/2020 Cambio2 Inicio
-Dim mo_cmbProfesion As New sighentidades.ListaDespleglable
-Dim mo_Profesiones As New sighDatos.Profesiones
+'Dim mo_cmbProfesion As New sighentidades.ListaDespleglable
+'Dim mo_Profesiones As New SIGHDatos.Profesiones
 'SCCQ 06/03/2020 Cambio2 Fin
 Dim mo_cmbTipoDestacado As New sighentidades.ListaDespleglable
 Dim mo_cmbIdDocIdentidad As New sighentidades.ListaDespleglable
@@ -876,9 +876,9 @@ Dim oConexion As New ADODB.Connection
        Set mo_cmbCargos.RowSource = mo_ReglasFarmacia.TiposCargoSeleccionarTodos
        
        'SCCQ 06/03/2020 Cambio2 Inicio
-       mo_cmbProfesion.BoundColumn = "Id_Profesion"
-       mo_cmbProfesion.ListField = "Descripcion_Profesion"
-       Set mo_cmbProfesion.RowSource = mo_Profesiones.maestro_his_profesionSeleccionarTodos
+'       mo_cmbProfesion.BoundColumn = "Id_Profesion"
+'       mo_cmbProfesion.ListField = "Descripcion_Profesion"
+'       Set mo_cmbProfesion.RowSource = mo_Profesiones.maestro_his_profesionSeleccionarTodos
        'SCCQ 06/03/2020 Cambio2 Fin
        mo_cmbTipoDestacado.BoundColumn = "idDestacado"
        mo_cmbTipoDestacado.ListField = "Destacado"
@@ -1232,7 +1232,7 @@ Private Sub Form_Initialize()
     Set mo_cmbIdRol.MiComboBox = cmbIdRol
     Set mo_cmbCargos.MiComboBox = cmbCargos
     'SCCQ 06/03/2020 Cambio2 Inicio
-    Set mo_cmbProfesion.MiComboBox = cmbProfesion
+'    Set mo_cmbProfesion.MiComboBox = cmbProfesion
     'SCCQ 06/03/2020 Cambio2 Fin
     Set mo_cmbTipoDestacado.MiComboBox = cmbTipoDestacado
     Set mo_cmbIdDocIdentidad.MiComboBox = cmbIdDocIdentidad

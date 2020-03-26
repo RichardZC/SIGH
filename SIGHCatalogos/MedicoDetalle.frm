@@ -206,7 +206,7 @@ Begin VB.Form MedicoDetalle
          Picture         =   "MedicoDetalle.frx":3AEB
          Style           =   1  'Graphical
          TabIndex        =   19
-         Top             =   225
+         Top             =   216
          Width           =   1365
       End
    End
@@ -774,6 +774,8 @@ Dim sSQL As String
        mo_CmbIdPais.BoundColumn = "IdPais"
        mo_CmbIdPais.ListField = "Nombre"
        Set mo_CmbIdPais.RowSource = mo_AdminServiciosGeograficos.PaisesSeleccionarTodos()
+       mo_CmbIdPais.BoundText = "166"
+       cmbIdPais.Enabled = False
        'SCCQ 25/03/2020 Cambio2 Fin
 End Sub
 
@@ -940,6 +942,7 @@ Private Sub Form_Initialize()
     Set mo_CmbIdPais.MiComboBox = cmbIdPais
     'SCCQ 25/03/2020 Cambio2 Fin
 End Sub
+
 
 Private Sub grdEspecialidades_InitializeLayout(ByVal Context As UltraGrid.Constants_Context, ByVal Layout As UltraGrid.SSLayout)
 Dim Col As SSColumn
@@ -1341,7 +1344,9 @@ Dim sMensaje As String
 '   If Me.txtColegiatura.Text = "" Then sMensaje = sMensaje + "- Ingrese la colegiatura" + Chr(13)
    If Me.txtDNI.Text = "" Then sMensaje = sMensaje + "- Ingrese el número de DNI" + Chr(13)
    If cmbColegioHIS.Text = "" Then sMensaje = sMensaje + "- Elija Colegio Profesional" + Chr(13)
-   
+   'SCCQ 26/03/2020 Cambio2 Inicio
+   If Me.cmbIdPais.Text = "" Then sMensaje = sMensaje + "- Elija el País" + Chr(13)
+   'SCCQ 26/03/2020 Cambio2 Fin
    If sMensaje <> "" Then
        MsgBox sMensaje, vbInformation, Me.Caption
        Exit Function
@@ -1480,6 +1485,9 @@ Sub CargaDatosAlObjetosDeDatos()
               .fechaingreso = Date
            End If
            .idTipoSexo = Val(mo_CmbIdTipoSexo.BoundText)
+           'SCCQ 26/03/2020 Cambio2 Inicio
+           .IdPais = Val(mo_CmbIdPais.BoundText)
+           'SCCQ 26/03/2020 Cambio2 Fin
    End With
    
     With mo_Medico
@@ -1626,7 +1634,7 @@ Sub CargarDatosALosControles()
                          cmbIdPais.Enabled = False
                     Case Else
                          cmbIdPais.Enabled = True
-                         mo_CmbIdPais.BoundText = .idpais
+                         mo_CmbIdPais.BoundText = .IdPais
                     End Select
                 'SCCQ 25/03/2020 Cambio2 Fin
                 BuscaEmpleadoYllenaDatosDelSupervisor .IdSupervisor
