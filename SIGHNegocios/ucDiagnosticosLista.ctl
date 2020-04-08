@@ -1,10 +1,10 @@
 VERSION 5.00
 Object = "{5A9433E9-DD7B-4529-91B6-A5E8CA054615}#2.0#0"; "IGULTR~1.OCX"
 Begin VB.UserControl ucDiagnosticosLista 
-   ClientHeight    =   5595
+   ClientHeight    =   5592
    ClientLeft      =   0
    ClientTop       =   0
-   ClientWidth     =   10110
+   ClientWidth     =   10116
    BeginProperty Font 
       Name            =   "Verdana"
       Size            =   18
@@ -14,8 +14,8 @@ Begin VB.UserControl ucDiagnosticosLista
       Italic          =   0   'False
       Strikethrough   =   0   'False
    EndProperty
-   ScaleHeight     =   5595
-   ScaleWidth      =   10110
+   ScaleHeight     =   5592
+   ScaleWidth      =   10116
    Begin VB.Frame fraBusqueda 
       Caption         =   "Búsqueda"
       BeginProperty Font 
@@ -160,8 +160,8 @@ Begin VB.UserControl ucDiagnosticosLista
       TabIndex        =   4
       Top             =   1515
       Width           =   10005
-      _ExtentX        =   17648
-      _ExtentY        =   7144
+      _ExtentX        =   17653
+      _ExtentY        =   7154
       _Version        =   131072
       GridFlags       =   17040384
       LayoutFlags     =   67108884
@@ -313,7 +313,7 @@ Dim oDODiagnostico As New doDiagnostico
            oDODiagnostico.CodigoCIE2004 = UserControl.txtCodigo
         End If
         
-        If chkAccess.Value = 1 Then
+        If chkAccess.value = 1 Then
            oDODiagnostico.Descripcion = "%" & Trim(UserControl.txtDescripcion) & "%"
            Set grdDiagnosticos.DataSource = DiagnosticosFiltrarMDB(oDODiagnostico, lbSoloMuestraDxGalenHos, lbUSAcodigoCIEsinPto)
         Else
@@ -334,7 +334,7 @@ Dim oDODiagnostico As New doDiagnostico
            Else
                 Set oRsTmp = mo_AdminServiciosComunes.DiagnosticosFiltrarSoloActivos(oDODiagnostico, lbSoloMuestraDxGalenHos, lbUSAcodigoCIEsinPto)
            End If
-           If chkFiltroIzq.Value = 1 And UserControl.txtDescripcion <> "" Then
+           If chkFiltroIzq.value = 1 And UserControl.txtDescripcion <> "" Then
                lcSql = "Descripcion like '" & Trim(UserControl.txtDescripcion) & "%'"
                oRsTmp.Filter = lcSql
            End If
@@ -363,7 +363,7 @@ End Sub
 
 Private Sub chkAccess_Click()
    On Error Resume Next
-   If chkAccess.Value = 1 Then
+   If chkAccess.value = 1 Then
       oConexionMDB.Open "Driver=Microsoft Access Driver (*.mdb);DBQ=" & App.Path & "\archivos\tablas nuevas galenhos.mdb;Password=debb"
    Else
       oConexionMDB.Close
@@ -371,7 +371,7 @@ Private Sub chkAccess_Click()
 End Sub
 
 Private Sub chkFiltroIzq_Click()
-    If chkFiltroIzq.Value = 1 Then
+    If chkFiltroIzq.value = 1 Then
        sighentidades.BuscarSoloIzquierda = "1"
     Else
        sighentidades.BuscarSoloIzquierda = "0"
@@ -379,7 +379,7 @@ Private Sub chkFiltroIzq_Click()
 End Sub
 
 Private Sub chkPorCadaLetra_Click()
-    If chkPorCadaLetra.Value = 1 Then
+    If chkPorCadaLetra.value = 1 Then
        lbPorCadaLetra = True
        
     Else
@@ -441,7 +441,7 @@ Private Sub grdDiagnosticos_InitializeLayout(ByVal Context As UltraGrid.Constant
     grdDiagnosticos.Bands(0).Columns("FechaInicioVigencia").Width = 1100
     grdDiagnosticos.Bands(0).Columns("FechaInicioVigencia").CellAppearance.TextAlign = ssAlignCenter
     
-    chkFiltroIzq.Value = Val(sighentidades.BuscarSoloIzquierda)
+    chkFiltroIzq.value = Val(sighentidades.BuscarSoloIzquierda)
 End Sub
 
 Private Sub grdDiagnosticos_KeyPress(KeyAscii As UltraGrid.SSReturnShort)

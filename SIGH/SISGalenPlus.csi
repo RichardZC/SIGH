@@ -1,0 +1,7 @@
+[History]
+1=#P0#=mb	#P1#=mnuDiarioAgregarCita_Click	#P2#=SISGalenPlus/ucCitasLista/mnuDiarioAgregarCita_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200331175058	#P7#=0	#P8#=129	.
+2=#P0#=mb	#P1#=Diario_DblClick	#P2#=SISGalenPlus/ucCitasLista/Diario_DblClick	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200331175035	#P7#=0	#P8#=2	.
+3=#P0#=mb	#P1#=mnuDiarioConsultarProgramacion_Click	#P2#=SISGalenPlus/ucSIcitasLista/mnuDiarioConsultarProgramacion_Click	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20200331174901	#P7#=0	#P8#=14	.
+4=#P0#=mb	#P1#=mnuDiarioModificarProgramacion_Click	#P2#=SISGalenPlus/ucSIcitasLista/mnuDiarioModificarProgramacion_Click	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20200331174734	#P7#=0	#P8#=36	.
+5=#P0#=mb	#P1#=CargaDataCombos	#P2#=SISGalenPlus/SiCitaDetalleIMG/CargaDataCombos	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20200331174625	#P7#=0	#P8#=2	.
+6=#P0#=mb	#P1#=UserControl_Resize	#P2#=SISGalenPlus/ucSIcitasLista/UserControl_Resize	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200331174601	#P7#=0	#P8#=16	.
