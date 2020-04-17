@@ -750,8 +750,9 @@ Dim sSQL As String
        
        mo_cmbIdTipoEmpleado.BoundColumn = "IdTipoEmpleado"
        mo_cmbIdTipoEmpleado.ListField = "DescripcionLarga"
-       Set mo_cmbIdTipoEmpleado.RowSource = mo_AdminServiciosComunes.TiposEmpleadosSeleccionarSegunFiltro("where esProgramado=1")
-       
+       'SCCQ 16/04/2020 Cambio2 Inicio -->Se agregó and tipoempleadoHIS IS NOT NULL and tipoempleadoHIS<>''
+       Set mo_cmbIdTipoEmpleado.RowSource = mo_AdminServiciosComunes.TiposEmpleadosSeleccionarSegunFiltro("where esProgramado=1 and tipoempleadoHIS IS NOT NULL and tipoempleadoHIS<>''")
+       'SCCQ 16/04/2020 Cambio2 Fin
        mo_cmbIdCondicionTrabajo.BoundColumn = "IdCondicionTrabajo"
        mo_cmbIdCondicionTrabajo.ListField = "DescripcionLarga"
        Set mo_cmbIdCondicionTrabajo.RowSource = mo_AdminServiciosComunes.TiposCondicionTrabajoSeleccionarTodos

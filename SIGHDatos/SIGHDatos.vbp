@@ -291,7 +291,6 @@ Class=SiCitasDetalle; SiCitasDetalle.cls
 Class=SiProgramacion; SiProgramacion.cls
 Class=SunatParteDia; SunatParteDia.cls
 Class=Farm_FormDetL; Farm_FormDetL.cls
-Class=Profesiones; ..\Profesiones.cls
 Startup="(None)"
 HelpFile=""
 Title="SIGHAccesoDatos"

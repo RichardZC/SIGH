@@ -5,7 +5,7 @@ Object = "{5A9433E9-DD7B-4529-91B6-A5E8CA054615}#2.0#0"; "IGULTR~1.OCX"
 Begin VB.Form EmpleadoDetalle 
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "Form1"
-   ClientHeight    =   8916
+   ClientHeight    =   8796
    ClientLeft      =   48
    ClientTop       =   336
    ClientWidth     =   12012
@@ -23,31 +23,15 @@ Begin VB.Form EmpleadoDetalle
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   8916
+   ScaleHeight     =   8796
    ScaleWidth      =   12012
    ShowInTaskbar   =   0   'False
    StartUpPosition =   2  'CenterScreen
-   Begin VB.ComboBox cmbProfesion 
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   8.4
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   315
-      Left            =   5490
-      TabIndex        =   61
-      Top             =   2385
-      Width           =   4710
-   End
    Begin VB.Frame Frame6 
-      Height          =   2625
+      Height          =   2532
       Left            =   75
       TabIndex        =   43
-      Top             =   5220
+      Top             =   5160
       Width           =   5235
       Begin VB.CheckBox chkAutorizadoReniec 
          Alignment       =   1  'Right Justify
@@ -129,10 +113,10 @@ Begin VB.Form EmpleadoDetalle
    End
    Begin VB.Frame Frame5 
       Caption         =   "Labora en:"
-      Height          =   2775
+      Height          =   2784
       Left            =   5385
       TabIndex        =   42
-      Top             =   5040
+      Top             =   4908
       Width           =   6585
       Begin VB.CommandButton cmdAddLabora 
          DisabledPicture =   "EmpleadoDetalle.frx":0CCA
@@ -184,7 +168,7 @@ Begin VB.Form EmpleadoDetalle
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Height          =   315
+         Height          =   300
          ItemData        =   "EmpleadoDetalle.frx":237A
          Left            =   120
          List            =   "EmpleadoDetalle.frx":239C
@@ -217,13 +201,13 @@ Begin VB.Form EmpleadoDetalle
          EndProperty
       End
       Begin UltraGrid.SSUltraGrid grdLaboraEn 
-         Height          =   1575
-         Left            =   105
+         Height          =   1656
+         Left            =   108
          TabIndex        =   28
          Top             =   1020
-         Width           =   6405
+         Width           =   6408
          _ExtentX        =   11303
-         _ExtentY        =   2773
+         _ExtentY        =   2921
          _Version        =   131072
          GridFlags       =   17040384
          LayoutFlags     =   67108884
@@ -241,10 +225,10 @@ Begin VB.Form EmpleadoDetalle
    End
    Begin VB.Frame Frame4 
       Caption         =   "Cargos"
-      Height          =   2160
+      Height          =   2388
       Left            =   5370
       TabIndex        =   40
-      Top             =   2790
+      Top             =   2364
       Width           =   6630
       Begin VB.CommandButton btnQuitaCargo 
          DisabledPicture =   "EmpleadoDetalle.frx":249E
@@ -296,20 +280,20 @@ Begin VB.Form EmpleadoDetalle
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Height          =   315
+         Height          =   300
          Left            =   120
          TabIndex        =   20
          Top             =   270
          Width           =   4710
       End
       Begin UltraGrid.SSUltraGrid grdCargos 
-         Height          =   1395
+         Height          =   1620
          Left            =   120
          TabIndex        =   23
          Top             =   660
-         Width           =   6405
+         Width           =   6408
          _ExtentX        =   11303
-         _ExtentY        =   2455
+         _ExtentY        =   2858
          _Version        =   131072
          GridFlags       =   17040384
          LayoutFlags     =   67108884
@@ -327,7 +311,7 @@ Begin VB.Form EmpleadoDetalle
    End
    Begin VB.Frame Frame3 
       Caption         =   "Roles"
-      Height          =   2115
+      Height          =   2220
       Left            =   5355
       TabIndex        =   39
       Top             =   0
@@ -389,13 +373,13 @@ Begin VB.Form EmpleadoDetalle
          Width           =   825
       End
       Begin UltraGrid.SSUltraGrid grdRoles 
-         Height          =   1335
+         Height          =   1428
          Left            =   120
          TabIndex        =   19
          Top             =   660
-         Width           =   6375
+         Width           =   6372
          _ExtentX        =   11240
-         _ExtentY        =   2350
+         _ExtentY        =   2519
          _Version        =   131072
          GridFlags       =   17040384
          LayoutFlags     =   67108884
@@ -421,10 +405,10 @@ Begin VB.Form EmpleadoDetalle
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   1065
+      Height          =   1044
       Left            =   45
       TabIndex        =   37
-      Top             =   7830
+      Top             =   7704
       Width           =   11910
       Begin VB.CommandButton btnAceptar 
          Caption         =   "Aceptar (F2)"
@@ -462,7 +446,7 @@ Begin VB.Form EmpleadoDetalle
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   5190
+      Height          =   5112
       Left            =   75
       TabIndex        =   31
       Top             =   60
@@ -779,14 +763,6 @@ Begin VB.Form EmpleadoDetalle
          Width           =   1500
       End
    End
-   Begin VB.Frame Frame7 
-      Caption         =   "Profesión"
-      Height          =   660
-      Left            =   5385
-      TabIndex        =   62
-      Top             =   2115
-      Width           =   6585
-   End
 End
 Attribute VB_Name = "EmpleadoDetalle"
 Attribute VB_GlobalNameSpace = False
@@ -820,10 +796,6 @@ Dim mo_cmbIdTipoEmpleado As New sighentidades.ListaDespleglable
 Dim mo_cmbIdCondicionTrabajo  As New sighentidades.ListaDespleglable
 Dim mo_cmbIdRol As New sighentidades.ListaDespleglable
 Dim mo_cmbCargos As New sighentidades.ListaDespleglable
-'SCCQ 06/03/2020 Cambio2 Inicio
-'Dim mo_cmbProfesion As New sighentidades.ListaDespleglable
-'Dim mo_Profesiones As New SIGHDatos.Profesiones
-'SCCQ 06/03/2020 Cambio2 Fin
 Dim mo_cmbTipoDestacado As New sighentidades.ListaDespleglable
 Dim mo_cmbIdDocIdentidad As New sighentidades.ListaDespleglable
 Dim mo_UsuarioRoles As New Collection
@@ -875,11 +847,6 @@ Dim oConexion As New ADODB.Connection
        mo_cmbCargos.ListField = "Cargo"
        Set mo_cmbCargos.RowSource = mo_ReglasFarmacia.TiposCargoSeleccionarTodos
        
-       'SCCQ 06/03/2020 Cambio2 Inicio
-'       mo_cmbProfesion.BoundColumn = "Id_Profesion"
-'       mo_cmbProfesion.ListField = "Descripcion_Profesion"
-'       Set mo_cmbProfesion.RowSource = mo_Profesiones.maestro_his_profesionSeleccionarTodos
-       'SCCQ 06/03/2020 Cambio2 Fin
        mo_cmbTipoDestacado.BoundColumn = "idDestacado"
        mo_cmbTipoDestacado.ListField = "Destacado"
        Set mo_cmbTipoDestacado.RowSource = mo_AdminServiciosComunes.TiposDestacadosSeleccionarTodos()
@@ -1231,9 +1198,6 @@ Private Sub Form_Initialize()
     Set mo_cmbIdCondicionTrabajo.MiComboBox = cmbIdCondicionTrabajo
     Set mo_cmbIdRol.MiComboBox = cmbIdRol
     Set mo_cmbCargos.MiComboBox = cmbCargos
-    'SCCQ 06/03/2020 Cambio2 Inicio
-'    Set mo_cmbProfesion.MiComboBox = cmbProfesion
-    'SCCQ 06/03/2020 Cambio2 Fin
     Set mo_cmbTipoDestacado.MiComboBox = cmbTipoDestacado
     Set mo_cmbIdDocIdentidad.MiComboBox = cmbIdDocIdentidad
     Set mo_CmbIdTipoSexo.MiComboBox = cmbIdTipoSexo
