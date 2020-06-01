@@ -671,9 +671,13 @@ lbEsOpenOffice = IIf(lcBuscaParametro.SeleccionaFilaParametro(284) = "S", True, 
                         oWorkSheet.Cells(f, 13) = IIf(IsNull(rsReporte!CentroPoblado), "", rsReporte!CentroPoblado)
                         oWorkSheet.Cells(f, 14) = IIf(IsNull(rsReporte!idFuenteFinanciamiento), "", rsReporte!idFuenteFinanciamiento)
                         oWorkSheet.Cells(f, 15) = IIf(IsNull(rsReporte!DescFuenteFinanciamiento), "", rsReporte!DescFuenteFinanciamiento)
-                        oWorkSheet.Cells(f, 16) = IIf(IsNull(rsReporte!FechaIngreso), "", rsReporte!FechaIngreso)
+                        'SCCQ 29/05/2020 CambioX Inicio
+                        oWorkSheet.Cells(f, 16) = IIf(IsNull(rsReporte!FechaIngreso), "", Format(rsReporte!FechaIngreso, sighentidades.DevuelveFechaSoloFormato_DMY))
+                        'SCCQ 29/05/2020 CambioX Fin
                         oWorkSheet.Cells(f, 17) = IIf(IsNull(rsReporte!HoraIngreso), "", rsReporte!HoraIngreso)
-                        oWorkSheet.Cells(f, 18) = IIf(IsNull(rsReporte!FechaEgreso), "", rsReporte!FechaEgreso)
+                        'SCCQ 29/05/2020 CambioX Inicio
+                        oWorkSheet.Cells(f, 18) = IIf(IsNull(rsReporte!FechaEgreso), "", Format(rsReporte!FechaEgreso, sighentidades.DevuelveFechaSoloFormato_DMY))
+                        'SCCQ 29/05/2020 CambioX Fin
                         oWorkSheet.Cells(f, 19) = IIf(IsNull(rsReporte!horaEgreso), "", rsReporte!horaEgreso)
                         oWorkSheet.Cells(f, 20) = IIf(IsNull(rsReporte!CondicionAlta), "", rsReporte!CondicionAlta)
                         oWorkSheet.Cells(f, 21) = IIf(IsNull(rsReporte!ServicioIngresoCodigo), "", rsReporte!ServicioIngresoCodigo)

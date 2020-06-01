@@ -431,7 +431,7 @@ Dim lcUsuario As String, ldUsuarioFecha As String, lbPrimeraCuenta As Boolean, l
 
 oConexion.CommandTimeout = 300
 oConexion.CursorLocation = adUseClient
-oConexion.Open SIGHEntidades.CadenaConexion
+oConexion.Open sighentidades.CadenaConexion
 
 lbEsOpenOffice = IIf(lcBuscaParametro.SeleccionaFilaParametro(284) = "S", True, False)
 On Error GoTo ManejadorErrorExcel
@@ -606,8 +606,8 @@ On Error GoTo ManejadorErrorExcel
                 End If
                 '
                 If lbContinuar = True And _
-                   Not (CDate(Format(rsReporte!FechaIngreso, SIGHEntidades.DevuelveFechaSoloFormato_DMY) & " " & rsReporte!HoraIngreso) >= CDate(Format(mda_FechaInicio, SIGHEntidades.DevuelveFechaSoloFormato_DMY) & " " & lcHoraInicio) And _
-                   CDate(Format(rsReporte!FechaIngreso, SIGHEntidades.DevuelveFechaSoloFormato_DMY) & " " & rsReporte!HoraIngreso) <= CDate(Format(mda_FechaFin, SIGHEntidades.DevuelveFechaSoloFormato_DMY) & " " & lcHoraFin)) Then
+                   Not (CDate(Format(rsReporte!FechaIngreso, sighentidades.DevuelveFechaSoloFormato_DMY) & " " & rsReporte!HoraIngreso) >= CDate(Format(mda_FechaInicio, sighentidades.DevuelveFechaSoloFormato_DMY) & " " & lcHoraInicio) And _
+                   CDate(Format(rsReporte!FechaIngreso, sighentidades.DevuelveFechaSoloFormato_DMY) & " " & rsReporte!HoraIngreso) <= CDate(Format(mda_FechaFin, sighentidades.DevuelveFechaSoloFormato_DMY) & " " & lcHoraFin)) Then
                    lbContinuar = False
                 End If
                 '
@@ -646,7 +646,7 @@ On Error GoTo ManejadorErrorExcel
                                            oConexion)
                     If rsServicio.RecordCount > 0 Then
                        lcUsuario = IIf(IsNull(rsServicio!dUsuario), "", rsServicio!dUsuario)
-                       ldUsuarioFecha = IIf(IsNull(rsServicio!fechaHora), "", Format(rsServicio!fechaHora, SIGHEntidades.DevuelveFechaSoloFormato_DMY_HMS))
+                       ldUsuarioFecha = IIf(IsNull(rsServicio!fechaHora), "", Format(rsServicio!fechaHora, sighentidades.DevuelveFechaSoloFormato_DMY_HMS))
                     End If
                     rsServicio.Close
                     '
@@ -711,9 +711,13 @@ On Error GoTo ManejadorErrorExcel
                         oWorkSheet.Cells(iFila, 12).Value = mo_ReporteUtil.NullToVacio(rsReporte.Fields("dist").Value)
                         oWorkSheet.Cells(iFila, 13).Value = mo_ReporteUtil.NullToVacio(rsReporte.Fields("CentP").Value)
                         oWorkSheet.Cells(iFila, 15).Value = lcFuenteFinanciamiento
-                        oWorkSheet.Cells(iFila, 16).Value = rsReporte.Fields("FechaIngreso").Value
+                        'SCCQ 29/05/2020 CambioX Inicio
+                        oWorkSheet.Cells(iFila, 16).Value = Format(rsReporte.Fields("FechaIngreso").Value, sighentidades.DevuelveFechaSoloFormato_DMY)
+                        'SCCQ 29/05/2020 CambioX Fin
                         oWorkSheet.Cells(iFila, 17).Value = Left(rsReporte.Fields("HoraIngreso").Value, 5)
-                        oWorkSheet.Cells(iFila, 18).Value = mo_ReporteUtil.NullToVacio(rsReporte.Fields("FechaEgreso").Value)
+                        'SCCQ 29/05/2020 CambioX Inicio
+                        oWorkSheet.Cells(iFila, 18).Value = mo_ReporteUtil.NullToVacio(Format(rsReporte.Fields("FechaEgreso").Value, sighentidades.DevuelveFechaSoloFormato_DMY))
+                        'SCCQ 29/05/2020 CambioX Fin
                         oWorkSheet.Cells(iFila, 19).Value = mo_ReporteUtil.NullToVacio(rsReporte.Fields("HoraEgreso").Value)
                         oWorkSheet.Cells(iFila, 20).Value = mo_ReporteUtil.NullToVacio(rsReporte.Fields("CondicionAlta").Value)
                         oWorkSheet.Cells(iFila, 21).Value = rsReporte.Fields("CodServIng").Value
@@ -762,7 +766,7 @@ On Error GoTo ManejadorErrorExcel
                 MsgBox "El Reporte se generó en forma exitosa: " & lcArchivoExcel, vbInformation
             Else
                 If oWorkSheet.PageSetup.PrintArea <> "" Then
-                   oWorkSheet.PageSetup.PrintArea = SIGHEntidades.DevuelveRangoExcelAimprimir(oWorkSheet.PageSetup.PrintArea, iFila)
+                   oWorkSheet.PageSetup.PrintArea = sighentidades.DevuelveRangoExcelAimprimir(oWorkSheet.PageSetup.PrintArea, iFila)
                 End If
                 oExcel.Visible = True
                 oWorkSheet.PrintPreview
@@ -827,7 +831,7 @@ Dim oConexion As New ADODB.Connection
 Dim ms_MensajeError  As String
     Set ServiciosSelecionarPorId = Nothing
     ms_MensajeError = ""
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     With oCommand
         .CommandType = adCmdStoredProc
@@ -880,7 +884,7 @@ Dim lcEstadoLlego As String, lcFormaLlego As String, lcFuenteFinanciamiento As S
 
 oConexion.CommandTimeout = 300
 oConexion.CursorLocation = adUseClient
-oConexion.Open SIGHEntidades.CadenaConexion
+oConexion.Open sighentidades.CadenaConexion
 
 lbEsOpenOffice = IIf(lcBuscaParametro.SeleccionaFilaParametro(284) = "S", True, False)
 On Error GoTo ManejadorErrorExcel
@@ -978,8 +982,8 @@ On Error GoTo ManejadorErrorExcel
                 End If
                 '
                 If lbContinuar = True And _
-                   Not (CDate(Format(rsReporte!FechaIngreso, SIGHEntidades.DevuelveFechaSoloFormato_DMY) & " " & rsReporte!HoraIngreso) >= CDate(Format(mda_FechaInicio, SIGHEntidades.DevuelveFechaSoloFormato_DMY) & " " & lcHoraInicio) And _
-                   CDate(Format(rsReporte!FechaIngreso, SIGHEntidades.DevuelveFechaSoloFormato_DMY) & " " & rsReporte!HoraIngreso) <= CDate(Format(mda_FechaFin, SIGHEntidades.DevuelveFechaSoloFormato_DMY) & " " & lcHoraFin)) Then
+                   Not (CDate(Format(rsReporte!FechaIngreso, sighentidades.DevuelveFechaSoloFormato_DMY) & " " & rsReporte!HoraIngreso) >= CDate(Format(mda_FechaInicio, sighentidades.DevuelveFechaSoloFormato_DMY) & " " & lcHoraInicio) And _
+                   CDate(Format(rsReporte!FechaIngreso, sighentidades.DevuelveFechaSoloFormato_DMY) & " " & rsReporte!HoraIngreso) <= CDate(Format(mda_FechaFin, sighentidades.DevuelveFechaSoloFormato_DMY) & " " & lcHoraFin)) Then
                    lbContinuar = False
                 End If
                 '
@@ -1022,7 +1026,7 @@ On Error GoTo ManejadorErrorExcel
                                            oConexion)
                     If rsServicio.RecordCount > 0 Then
                        lcUsuario = IIf(IsNull(rsServicio!dUsuario), "", rsServicio!dUsuario)
-                       ldUsuarioFecha = IIf(IsNull(rsServicio!fechaHora), "", Format(rsServicio!fechaHora, SIGHEntidades.DevuelveFechaSoloFormato_DMY_HMS))
+                       ldUsuarioFecha = IIf(IsNull(rsServicio!fechaHora), "", Format(rsServicio!fechaHora, sighentidades.DevuelveFechaSoloFormato_DMY_HMS))
                     End If
                     rsServicio.Close
                     '
@@ -1092,7 +1096,7 @@ On Error GoTo ManejadorErrorExcel
             If lbEsOpenOffice = True Then
             Else
                 If oWorkSheet.PageSetup.PrintArea <> "" Then
-                   oWorkSheet.PageSetup.PrintArea = SIGHEntidades.DevuelveRangoExcelAimprimir(oWorkSheet.PageSetup.PrintArea, iFila)
+                   oWorkSheet.PageSetup.PrintArea = sighentidades.DevuelveRangoExcelAimprimir(oWorkSheet.PageSetup.PrintArea, iFila)
                 End If
                 oExcel.Visible = True
                 oWorkSheet.PrintPreview
