@@ -711,13 +711,13 @@ On Error GoTo ManejadorErrorExcel
                         oWorkSheet.Cells(iFila, 12).Value = mo_ReporteUtil.NullToVacio(rsReporte.Fields("dist").Value)
                         oWorkSheet.Cells(iFila, 13).Value = mo_ReporteUtil.NullToVacio(rsReporte.Fields("CentP").Value)
                         oWorkSheet.Cells(iFila, 15).Value = lcFuenteFinanciamiento
-                        'SCCQ 29/05/2020 CambioX Inicio
+                        'SCCQ 29/05/2020 Cambio19 Inicio
                         oWorkSheet.Cells(iFila, 16).Value = Format(rsReporte.Fields("FechaIngreso").Value, sighentidades.DevuelveFechaSoloFormato_DMY)
-                        'SCCQ 29/05/2020 CambioX Fin
+                        'SCCQ 29/05/2020 Cambio19 Fin
                         oWorkSheet.Cells(iFila, 17).Value = Left(rsReporte.Fields("HoraIngreso").Value, 5)
-                        'SCCQ 29/05/2020 CambioX Inicio
+                        'SCCQ 29/05/2020 Cambio19 Inicio
                         oWorkSheet.Cells(iFila, 18).Value = mo_ReporteUtil.NullToVacio(Format(rsReporte.Fields("FechaEgreso").Value, sighentidades.DevuelveFechaSoloFormato_DMY))
-                        'SCCQ 29/05/2020 CambioX Fin
+                        'SCCQ 29/05/2020 Cambio19 Fin
                         oWorkSheet.Cells(iFila, 19).Value = mo_ReporteUtil.NullToVacio(rsReporte.Fields("HoraEgreso").Value)
                         oWorkSheet.Cells(iFila, 20).Value = mo_ReporteUtil.NullToVacio(rsReporte.Fields("CondicionAlta").Value)
                         oWorkSheet.Cells(iFila, 21).Value = rsReporte.Fields("CodServIng").Value
