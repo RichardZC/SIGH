@@ -297,7 +297,7 @@ Dim oParameter As ADODB.Parameter
  
    If Not (oRecordset.EOF And oRecordset.BOF) Then
        SeleccionarPorId = True
-       CargaTabla oTabla, oRecordset
+       CargaTabla oTabla, oRecordset 'Carga al objeto oTabla los valores del oRecordset
 '       oTabla.HoraIngreso = IIf(IsNull(oRecordset!HoraIngreso), "", oRecordset!HoraIngreso)
 '       oTabla.FechaIngreso = IIf(IsNull(oRecordset!FechaIngreso), 0, oRecordset!FechaIngreso)
 '       oTabla.IdTipoServicio = IIf(IsNull(oRecordset!IdTipoServicio), 0, oRecordset!IdTipoServicio)
@@ -499,21 +499,21 @@ Dim oParameter As ADODB.Parameter
        
        'Pacientes
        DoPaciente.IdPaisNacimiento = IIf(IsNull(oRecordset!IdPaisNacimiento), 0, oRecordset!IdPaisNacimiento)
-       DoPaciente.apellidomaterno = IIf(IsNull(oRecordset!apellidomaterno), "", oRecordset!apellidomaterno)
+       DoPaciente.ApellidoMaterno = IIf(IsNull(oRecordset!ApellidoMaterno), "", oRecordset!ApellidoMaterno)
        DoPaciente.DireccionDomicilio = IIf(IsNull(oRecordset!DireccionDomicilio), "", oRecordset!DireccionDomicilio)
        DoPaciente.Observacion = IIf(IsNull(oRecordset!obs_pacientes), "", oRecordset!obs_pacientes)
        DoPaciente.IdTipoNumeracion = IIf(IsNull(oRecordset!IdTipoNumeracion), 0, oRecordset!IdTipoNumeracion)
        DoPaciente.IdPaisProcedencia = IIf(IsNull(oRecordset!IdPaisProcedencia), 0, oRecordset!IdPaisProcedencia)
        DoPaciente.IdPaciente = IIf(IsNull(oRecordset!IdPaciente), 0, oRecordset!IdPaciente)
-       DoPaciente.apellidopaterno = IIf(IsNull(oRecordset!apellidopaterno), "", oRecordset!apellidopaterno)
+       DoPaciente.ApellidoPaterno = IIf(IsNull(oRecordset!ApellidoPaterno), "", oRecordset!ApellidoPaterno)
        DoPaciente.PrimerNombre = IIf(IsNull(oRecordset!PrimerNombre), "", oRecordset!PrimerNombre)
        DoPaciente.SegundoNombre = IIf(IsNull(oRecordset!SegundoNombre), "", oRecordset!SegundoNombre)
        DoPaciente.TercerNombre = IIf(IsNull(oRecordset!TercerNombre), "", oRecordset!TercerNombre)
-       DoPaciente.fechanacimiento = IIf(IsNull(oRecordset!fechanacimiento), 0, oRecordset!fechanacimiento)
+       DoPaciente.FechaNacimiento = IIf(IsNull(oRecordset!FechaNacimiento), 0, oRecordset!FechaNacimiento)
        DoPaciente.NroDocumento = IIf(IsNull(oRecordset!NroDocumento), "", oRecordset!NroDocumento)
        DoPaciente.Telefono = IIf(IsNull(oRecordset!Telefono), "", oRecordset!Telefono)
        DoPaciente.Autogenerado = IIf(IsNull(oRecordset!Autogenerado), "", oRecordset!Autogenerado)
-       DoPaciente.IdTipoSexo = IIf(IsNull(oRecordset!IdTipoSexo), 0, oRecordset!IdTipoSexo)
+       DoPaciente.idTipoSexo = IIf(IsNull(oRecordset!idTipoSexo), 0, oRecordset!idTipoSexo)
        DoPaciente.IdProcedencia = IIf(IsNull(oRecordset!IdProcedencia), 0, oRecordset!IdProcedencia)
        DoPaciente.IdGradoInstruccion = IIf(IsNull(oRecordset!IdGradoInstruccion), 0, oRecordset!IdGradoInstruccion)
        DoPaciente.IdEstadoCivil = IIf(IsNull(oRecordset!IdEstadoCivil), 0, oRecordset!IdEstadoCivil)
@@ -680,7 +680,7 @@ Dim oDOAtencion As New DOAtencion
         Set oRecordset.ActiveConnection = Nothing
    End With
    oDOAtencion.idAtencion = IIf(IsNull(oRecordset!IdMaxAtencion), 0, oRecordset!IdMaxAtencion)
-   If SeleccionarPorId(oDOAtencion) Then
+   If SeleccionarPorId(oDOAtencion) Then 'Selecciona de la tabla Atenciones por idAtencion y carga los valores al objeto oDOAtencion
         Set SeleccionarUltimaAtencion = oDOAtencion
    Else
         Set SeleccionarUltimaAtencion = Nothing
@@ -702,11 +702,11 @@ Dim oParameter As ADODB.Parameter
 Dim sSql As String
 Dim sWhere As String
        sWhere = " Atenciones.idEstadoAtencion<>0 and "
-       If oDOPaciente.apellidopaterno <> "" Then
-            sWhere = sWhere + " Pacientes.ApellidoPaterno like '" + oDOPaciente.apellidopaterno + "%' and "
+       If oDOPaciente.ApellidoPaterno <> "" Then
+            sWhere = sWhere + " Pacientes.ApellidoPaterno like '" + oDOPaciente.ApellidoPaterno + "%' and "
        End If
-       If oDOPaciente.apellidomaterno <> "" Then
-            sWhere = sWhere + " Pacientes.ApellidoMaterno like '" + oDOPaciente.apellidomaterno + "%' and "
+       If oDOPaciente.ApellidoMaterno <> "" Then
+            sWhere = sWhere + " Pacientes.ApellidoMaterno like '" + oDOPaciente.ApellidoMaterno + "%' and "
        End If
        If oDOPaciente.PrimerNombre <> "" Then
             sWhere = sWhere + " PAcientes.PrimerNombre like '%" + oDOPaciente.PrimerNombre + "%' and "
@@ -759,11 +759,11 @@ Dim sSql As String
 Dim sWhere As String
         sWhere = ""
         sWhere = " Atenciones.idEstadoAtencion<>0 and "
-       If oDOPaciente.apellidopaterno <> "" Then
-            sWhere = sWhere + " Pacientes.ApellidoPaterno like '" + oDOPaciente.apellidopaterno + "%' and "
+       If oDOPaciente.ApellidoPaterno <> "" Then
+            sWhere = sWhere + " Pacientes.ApellidoPaterno like '" + oDOPaciente.ApellidoPaterno + "%' and "
        End If
-       If oDOPaciente.apellidomaterno <> "" Then
-            sWhere = sWhere + " Pacientes.ApellidoMaterno like '" + oDOPaciente.apellidomaterno + "%' and "
+       If oDOPaciente.ApellidoMaterno <> "" Then
+            sWhere = sWhere + " Pacientes.ApellidoMaterno like '" + oDOPaciente.ApellidoMaterno + "%' and "
        End If
        If oDOPaciente.PrimerNombre <> "" Then
             sWhere = sWhere + " PAcientes.PrimerNombre like '%" + oDOPaciente.PrimerNombre + "%' and "
@@ -808,11 +808,11 @@ Dim sSql As String
 Dim sWhere As String
 
        sWhere = " Atenciones.idEstadoAtencion<>0 and "
-       If oDOPaciente.apellidopaterno <> "" Then
-            sWhere = sWhere + " Pacientes.ApellidoPaterno like '" + oDOPaciente.apellidopaterno + "%' and "
+       If oDOPaciente.ApellidoPaterno <> "" Then
+            sWhere = sWhere + " Pacientes.ApellidoPaterno like '" + oDOPaciente.ApellidoPaterno + "%' and "
        End If
-       If oDOPaciente.apellidomaterno <> "" Then
-            sWhere = sWhere + " Pacientes.ApellidoMaterno like '" + oDOPaciente.apellidomaterno + "%' and "
+       If oDOPaciente.ApellidoMaterno <> "" Then
+            sWhere = sWhere + " Pacientes.ApellidoMaterno like '" + oDOPaciente.ApellidoMaterno + "%' and "
        End If
        If oDOPaciente.PrimerNombre <> "" Then
             sWhere = sWhere + " PAcientes.PrimerNombre like '%" + oDOPaciente.PrimerNombre + "%' and "
@@ -855,11 +855,11 @@ Dim oParameter As ADODB.Parameter
 Dim sSql As String
 Dim sWhere As String
        sWhere = " Atenciones.idEstadoAtencion<>0 and "
-       If oDOPaciente.apellidopaterno <> "" Then
-            sWhere = sWhere + " Pacientes.ApellidoPaterno like '" + oDOPaciente.apellidopaterno + "%' and "
+       If oDOPaciente.ApellidoPaterno <> "" Then
+            sWhere = sWhere + " Pacientes.ApellidoPaterno like '" + oDOPaciente.ApellidoPaterno + "%' and "
        End If
-       If oDOPaciente.apellidomaterno <> "" Then
-            sWhere = sWhere + " Pacientes.ApellidoMaterno like '" + oDOPaciente.apellidomaterno + "%' and "
+       If oDOPaciente.ApellidoMaterno <> "" Then
+            sWhere = sWhere + " Pacientes.ApellidoMaterno like '" + oDOPaciente.ApellidoMaterno + "%' and "
        End If
        If oDOPaciente.PrimerNombre <> "" Then
             sWhere = sWhere + " PAcientes.PrimerNombre like '%" + oDOPaciente.PrimerNombre + "%' and "
@@ -907,11 +907,11 @@ Dim oParameter As ADODB.Parameter
 Dim sSql As String
 Dim sWhere As String
        sWhere = " Atenciones.idEstadoAtencion<>0 and "
-       If oDOPaciente.apellidopaterno <> "" Then
-            sWhere = sWhere + " Pacientes.ApellidoPaterno like '" + oDOPaciente.apellidopaterno + "%' and "
+       If oDOPaciente.ApellidoPaterno <> "" Then
+            sWhere = sWhere + " Pacientes.ApellidoPaterno like '" + oDOPaciente.ApellidoPaterno + "%' and "
        End If
-       If oDOPaciente.apellidomaterno <> "" Then
-            sWhere = sWhere + " Pacientes.ApellidoMaterno like '" + oDOPaciente.apellidomaterno + "%' and "
+       If oDOPaciente.ApellidoMaterno <> "" Then
+            sWhere = sWhere + " Pacientes.ApellidoMaterno like '" + oDOPaciente.ApellidoMaterno + "%' and "
        End If
        If oDOPaciente.PrimerNombre <> "" Then
             sWhere = sWhere + " PAcientes.PrimerNombre like '%" + oDOPaciente.PrimerNombre + "%' and "

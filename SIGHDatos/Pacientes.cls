@@ -52,21 +52,21 @@ Dim lnNroErrores As Integer
        Set .ActiveConnection = mo_Conexion
        .CommandText = "PacientesAgregar"
            Set oParameter = .CreateParameter("@IdPaisNacimiento", adInteger, adParamInput, 0, IIf(oTabla.IdPaisNacimiento = 0, Null, oTabla.IdPaisNacimiento)): .Parameters.Append oParameter
-           Set oParameter = .CreateParameter("@ApellidoMaterno", adVarChar, adParamInput, 40, IIf(oTabla.apellidomaterno = "", Null, oTabla.apellidomaterno)): .Parameters.Append oParameter
+           Set oParameter = .CreateParameter("@ApellidoMaterno", adVarChar, adParamInput, 40, IIf(oTabla.ApellidoMaterno = "", Null, oTabla.ApellidoMaterno)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@DireccionDomicilio", adVarChar, adParamInput, 100, IIf(oTabla.DireccionDomicilio = "", Null, oTabla.DireccionDomicilio)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@Observacion", adVarChar, adParamInput, 150, IIf(oTabla.Observacion = "", Null, oTabla.Observacion)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@IdTipoNumeracion", adInteger, adParamInput, 0, IIf(oTabla.IdTipoNumeracion = 0, Null, oTabla.IdTipoNumeracion)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@IdPaisProcedencia", adInteger, adParamInput, 0, IIf(oTabla.IdPaisProcedencia = 0, Null, oTabla.IdPaisProcedencia)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@IdPaciente", adInteger, adParamOutput, 0): .Parameters.Append oParameter
-           Set oParameter = .CreateParameter("@ApellidoPaterno", adVarChar, adParamInput, 40, IIf(oTabla.apellidopaterno = "", Null, oTabla.apellidopaterno)): .Parameters.Append oParameter
+           Set oParameter = .CreateParameter("@ApellidoPaterno", adVarChar, adParamInput, 40, IIf(oTabla.ApellidoPaterno = "", Null, oTabla.ApellidoPaterno)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@PrimerNombre", adVarChar, adParamInput, 40, IIf(oTabla.PrimerNombre = "", Null, oTabla.PrimerNombre)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@SegundoNombre", adVarChar, adParamInput, 40, IIf(oTabla.SegundoNombre = "", Null, oTabla.SegundoNombre)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@TercerNombre", adVarChar, adParamInput, 40, IIf(oTabla.TercerNombre = "", Null, oTabla.TercerNombre)): .Parameters.Append oParameter
-           Set oParameter = .CreateParameter("@FechaNacimiento", adDBTimeStamp, adParamInput, 0, IIf(oTabla.fechanacimiento = 0, Null, oTabla.fechanacimiento)): .Parameters.Append oParameter
+           Set oParameter = .CreateParameter("@FechaNacimiento", adDBTimeStamp, adParamInput, 0, IIf(oTabla.FechaNacimiento = 0, Null, oTabla.FechaNacimiento)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@NroDocumento", adVarChar, adParamInput, 12, IIf(oTabla.NroDocumento = "", Null, oTabla.NroDocumento)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@Telefono", adVarChar, adParamInput, 10, IIf(oTabla.Telefono = "", Null, oTabla.Telefono)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@Autogenerado", adVarChar, adParamInput, 30, IIf(oTabla.Autogenerado = "", Null, oTabla.Autogenerado)): .Parameters.Append oParameter
-           Set oParameter = .CreateParameter("@IdTipoSexo", adInteger, adParamInput, 0, IIf(oTabla.IdTipoSexo = 0, Null, oTabla.IdTipoSexo)): .Parameters.Append oParameter
+           Set oParameter = .CreateParameter("@IdTipoSexo", adInteger, adParamInput, 0, IIf(oTabla.idTipoSexo = 0, Null, oTabla.idTipoSexo)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@IdProcedencia", adInteger, adParamInput, 0, IIf(oTabla.IdProcedencia = 0, Null, oTabla.IdProcedencia)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@IdGradoInstruccion", adInteger, adParamInput, 0, IIf(oTabla.IdGradoInstruccion = 0, Null, oTabla.IdGradoInstruccion)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@IdEstadoCivil", adInteger, adParamInput, 0, IIf(oTabla.IdEstadoCivil = 0, Null, oTabla.IdEstadoCivil)): .Parameters.Append oParameter
@@ -146,15 +146,15 @@ Sub GrabaHistorico(oTabla As DoPaciente)
 "          )" & _
 "     Values" & _
 "           (" & oTabla.IdPaciente & _
-"           ,'" & oTabla.apellidopaterno & _
-"           ','" & oTabla.apellidomaterno & _
+"           ,'" & oTabla.ApellidoPaterno & _
+"           ','" & oTabla.ApellidoMaterno & _
 "           ','" & oTabla.PrimerNombre & _
 "           ','" & oTabla.SegundoNombre & _
-"           ','" & oTabla.fechanacimiento & _
+"           ','" & oTabla.FechaNacimiento & _
 "           ','" & oTabla.NroDocumento
    lcSql = lcSql & "','" & oTabla.DireccionDomicilio & _
                 "   ','" & oTabla.Autogenerado & _
-                "   '," & oTabla.IdTipoSexo & _
+                "   '," & oTabla.idTipoSexo & _
                 "   ," & oTabla.NroHistoriaClinica & _
                 "   ," & oTabla.IdTipoNumeracion & _
                 "   ," & oTabla.IdDocIdentidad & _
@@ -190,21 +190,21 @@ Dim oParameter As ADODB.Parameter
             Set .ActiveConnection = mo_Conexion
             .CommandText = "PacientesModificar"
                 Set oParameter = .CreateParameter("@IdPaisNacimiento", adInteger, adParamInput, 0, IIf(oTabla.IdPaisNacimiento = 0, Null, oTabla.IdPaisNacimiento)): .Parameters.Append oParameter
-                Set oParameter = .CreateParameter("@ApellidoMaterno", adVarChar, adParamInput, 40, IIf(oTabla.apellidomaterno = "", Null, oTabla.apellidomaterno)): .Parameters.Append oParameter
+                Set oParameter = .CreateParameter("@ApellidoMaterno", adVarChar, adParamInput, 40, IIf(oTabla.ApellidoMaterno = "", Null, oTabla.ApellidoMaterno)): .Parameters.Append oParameter
                 Set oParameter = .CreateParameter("@DireccionDomicilio", adVarChar, adParamInput, 100, IIf(oTabla.DireccionDomicilio = "", Null, oTabla.DireccionDomicilio)): .Parameters.Append oParameter
                 Set oParameter = .CreateParameter("@Observacion", adVarChar, adParamInput, 150, IIf(oTabla.Observacion = "", Null, oTabla.Observacion)): .Parameters.Append oParameter
                 Set oParameter = .CreateParameter("@IdTipoNumeracion", adInteger, adParamInput, 0, IIf(oTabla.IdTipoNumeracion = 0, Null, oTabla.IdTipoNumeracion)): .Parameters.Append oParameter
                 Set oParameter = .CreateParameter("@IdPaisProcedencia", adInteger, adParamInput, 0, IIf(oTabla.IdPaisProcedencia = 0, Null, oTabla.IdPaisProcedencia)): .Parameters.Append oParameter
                 Set oParameter = .CreateParameter("@IdPaciente", adInteger, adParamInput, 0, IIf(oTabla.IdPaciente = 0, Null, oTabla.IdPaciente)): .Parameters.Append oParameter
-                Set oParameter = .CreateParameter("@ApellidoPaterno", adVarChar, adParamInput, 40, IIf(oTabla.apellidopaterno = "", Null, oTabla.apellidopaterno)): .Parameters.Append oParameter
+                Set oParameter = .CreateParameter("@ApellidoPaterno", adVarChar, adParamInput, 40, IIf(oTabla.ApellidoPaterno = "", Null, oTabla.ApellidoPaterno)): .Parameters.Append oParameter
                 Set oParameter = .CreateParameter("@PrimerNombre", adVarChar, adParamInput, 40, IIf(oTabla.PrimerNombre = "", Null, oTabla.PrimerNombre)): .Parameters.Append oParameter
                 Set oParameter = .CreateParameter("@SegundoNombre", adVarChar, adParamInput, 40, IIf(oTabla.SegundoNombre = "", Null, oTabla.SegundoNombre)): .Parameters.Append oParameter
                 Set oParameter = .CreateParameter("@TercerNombre", adVarChar, adParamInput, 40, IIf(oTabla.TercerNombre = "", Null, oTabla.TercerNombre)): .Parameters.Append oParameter
-                Set oParameter = .CreateParameter("@FechaNacimiento", adDBTimeStamp, adParamInput, 0, IIf(oTabla.fechanacimiento = 0, Null, oTabla.fechanacimiento)): .Parameters.Append oParameter
+                Set oParameter = .CreateParameter("@FechaNacimiento", adDBTimeStamp, adParamInput, 0, IIf(oTabla.FechaNacimiento = 0, Null, oTabla.FechaNacimiento)): .Parameters.Append oParameter
                 Set oParameter = .CreateParameter("@NroDocumento", adVarChar, adParamInput, 12, IIf(oTabla.NroDocumento = "", Null, oTabla.NroDocumento)): .Parameters.Append oParameter
                 Set oParameter = .CreateParameter("@Telefono", adVarChar, adParamInput, 10, IIf(oTabla.Telefono = "", Null, oTabla.Telefono)): .Parameters.Append oParameter
                 Set oParameter = .CreateParameter("@Autogenerado", adVarChar, adParamInput, 30, IIf(oTabla.Autogenerado = "", Null, oTabla.Autogenerado)): .Parameters.Append oParameter
-                Set oParameter = .CreateParameter("@IdTipoSexo", adInteger, adParamInput, 0, IIf(oTabla.IdTipoSexo = 0, Null, oTabla.IdTipoSexo)): .Parameters.Append oParameter
+                Set oParameter = .CreateParameter("@IdTipoSexo", adInteger, adParamInput, 0, IIf(oTabla.idTipoSexo = 0, Null, oTabla.idTipoSexo)): .Parameters.Append oParameter
                 Set oParameter = .CreateParameter("@IdProcedencia", adInteger, adParamInput, 0, IIf(oTabla.IdProcedencia = 0, Null, oTabla.IdProcedencia)): .Parameters.Append oParameter
                 Set oParameter = .CreateParameter("@IdGradoInstruccion", adInteger, adParamInput, 0, IIf(oTabla.IdGradoInstruccion = 0, Null, oTabla.IdGradoInstruccion)): .Parameters.Append oParameter
                 Set oParameter = .CreateParameter("@IdEstadoCivil", adInteger, adParamInput, 0, IIf(oTabla.IdEstadoCivil = 0, Null, oTabla.IdEstadoCivil)): .Parameters.Append oParameter
@@ -321,21 +321,21 @@ End Function
 
 Sub CargaDatosDelPaciente(ByRef oTabla As DoPaciente, oRecordset As Recordset)
        oTabla.IdPaisNacimiento = IIf(IsNull(oRecordset!IdPaisNacimiento), 0, oRecordset!IdPaisNacimiento)
-       oTabla.apellidomaterno = IIf(IsNull(oRecordset!apellidomaterno), "", oRecordset!apellidomaterno)
+       oTabla.ApellidoMaterno = IIf(IsNull(oRecordset!ApellidoMaterno), "", oRecordset!ApellidoMaterno)
        oTabla.DireccionDomicilio = IIf(IsNull(oRecordset!DireccionDomicilio), "", oRecordset!DireccionDomicilio)
        oTabla.Observacion = IIf(IsNull(oRecordset!Observacion), "", oRecordset!Observacion)
        oTabla.IdTipoNumeracion = IIf(IsNull(oRecordset!IdTipoNumeracion), 0, oRecordset!IdTipoNumeracion)
        oTabla.IdPaisProcedencia = IIf(IsNull(oRecordset!IdPaisProcedencia), 0, oRecordset!IdPaisProcedencia)
        oTabla.IdPaciente = IIf(IsNull(oRecordset!IdPaciente), 0, oRecordset!IdPaciente)
-       oTabla.apellidopaterno = IIf(IsNull(oRecordset!apellidopaterno), "", oRecordset!apellidopaterno)
+       oTabla.ApellidoPaterno = IIf(IsNull(oRecordset!ApellidoPaterno), "", oRecordset!ApellidoPaterno)
        oTabla.PrimerNombre = IIf(IsNull(oRecordset!PrimerNombre), "", oRecordset!PrimerNombre)
        oTabla.SegundoNombre = IIf(IsNull(oRecordset!SegundoNombre), "", oRecordset!SegundoNombre)
        oTabla.TercerNombre = IIf(IsNull(oRecordset!TercerNombre), "", oRecordset!TercerNombre)
-       oTabla.fechanacimiento = IIf(IsNull(oRecordset!fechanacimiento), 0, oRecordset!fechanacimiento)
+       oTabla.FechaNacimiento = IIf(IsNull(oRecordset!FechaNacimiento), 0, oRecordset!FechaNacimiento)
        oTabla.NroDocumento = IIf(IsNull(oRecordset!NroDocumento), "", oRecordset!NroDocumento)
        oTabla.Telefono = IIf(IsNull(oRecordset!Telefono), "", oRecordset!Telefono)
        oTabla.Autogenerado = IIf(IsNull(oRecordset!Autogenerado), "", oRecordset!Autogenerado)
-       oTabla.IdTipoSexo = IIf(IsNull(oRecordset!IdTipoSexo), 0, oRecordset!IdTipoSexo)
+       oTabla.idTipoSexo = IIf(IsNull(oRecordset!idTipoSexo), 0, oRecordset!idTipoSexo)
        oTabla.IdProcedencia = IIf(IsNull(oRecordset!IdProcedencia), 0, oRecordset!IdProcedencia)
        oTabla.IdGradoInstruccion = IIf(IsNull(oRecordset!IdGradoInstruccion), 0, oRecordset!IdGradoInstruccion)
        oTabla.IdEstadoCivil = IIf(IsNull(oRecordset!IdEstadoCivil), 0, oRecordset!IdEstadoCivil)
@@ -424,8 +424,8 @@ Dim oParameter As ADODB.Parameter
         .CommandType = adCmdStoredProc
        .CommandText = "PacientesFiltrarTodos"
         Set oParameter = .CreateParameter("@NroHistoriaClinica", adInteger, adParamInput, 0, oTabla.NroHistoriaClinica): .Parameters.Append oParameter
-        Set oParameter = .CreateParameter("@ApellidoPaterno", adVarChar, adParamInput, 40, oTabla.apellidopaterno): .Parameters.Append oParameter
-        Set oParameter = .CreateParameter("@ApellidoMaterno", adVarChar, adParamInput, 40, oTabla.apellidomaterno): .Parameters.Append oParameter
+        Set oParameter = .CreateParameter("@ApellidoPaterno", adVarChar, adParamInput, 40, oTabla.ApellidoPaterno): .Parameters.Append oParameter
+        Set oParameter = .CreateParameter("@ApellidoMaterno", adVarChar, adParamInput, 40, oTabla.ApellidoMaterno): .Parameters.Append oParameter
         Set oParameter = .CreateParameter("@PrimerNombre", adVarChar, adParamInput, 40, oTabla.PrimerNombre): .Parameters.Append oParameter
         Set oParameter = .CreateParameter("@SegundoNombre", adVarChar, adParamInput, 40, oTabla.SegundoNombre): .Parameters.Append oParameter
         Set oParameter = .CreateParameter("@idDocIdentidad", adInteger, adParamInput, 0, oTabla.IdDocIdentidad): .Parameters.Append oParameter
@@ -469,8 +469,8 @@ Dim oParameter As ADODB.Parameter
         .CommandType = adCmdStoredProc
        .CommandText = "PacientesFiltrarConHistoriasTemporales"
         Set oParameter = .CreateParameter("@NroHistoriaClinica", adInteger, adParamInput, 0, oTabla.NroHistoriaClinica): .Parameters.Append oParameter
-        Set oParameter = .CreateParameter("@ApellidoPaterno", adVarChar, adParamInput, 40, oTabla.apellidopaterno): .Parameters.Append oParameter
-        Set oParameter = .CreateParameter("@ApellidoMaterno", adVarChar, adParamInput, 40, oTabla.apellidomaterno): .Parameters.Append oParameter
+        Set oParameter = .CreateParameter("@ApellidoPaterno", adVarChar, adParamInput, 40, oTabla.ApellidoPaterno): .Parameters.Append oParameter
+        Set oParameter = .CreateParameter("@ApellidoMaterno", adVarChar, adParamInput, 40, oTabla.ApellidoMaterno): .Parameters.Append oParameter
         Set oParameter = .CreateParameter("@PrimerNombre", adVarChar, adParamInput, 40, oTabla.PrimerNombre): .Parameters.Append oParameter
         Set oParameter = .CreateParameter("@dni", adVarChar, adParamInput, 12, oTabla.NroDocumento): .Parameters.Append oParameter
         Set oParameter = .CreateParameter("@FichaFamiliar", adVarChar, adParamInput, 20, oTabla.FichaFamiliar): .Parameters.Append oParameter
@@ -502,18 +502,18 @@ Dim oParameter As ADODB.Parameter
         .CommandType = adCmdStoredProc
        .CommandText = "PacientesFiltrarConHistoriasDefinitivas"
         Set oParameter = .CreateParameter("@NroHistoriaClinica", adInteger, adParamInput, 0, oTabla.NroHistoriaClinica): .Parameters.Append oParameter
-        Set oParameter = .CreateParameter("@ApellidoPaterno", adVarChar, adParamInput, 40, oTabla.apellidopaterno): .Parameters.Append oParameter
-        Set oParameter = .CreateParameter("@ApellidoMaterno", adVarChar, adParamInput, 40, oTabla.apellidomaterno): .Parameters.Append oParameter
+        Set oParameter = .CreateParameter("@ApellidoPaterno", adVarChar, adParamInput, 40, oTabla.ApellidoPaterno): .Parameters.Append oParameter
+        Set oParameter = .CreateParameter("@ApellidoMaterno", adVarChar, adParamInput, 40, oTabla.ApellidoMaterno): .Parameters.Append oParameter
         Set oParameter = .CreateParameter("@PrimerNombre", adVarChar, adParamInput, 40, oTabla.PrimerNombre): .Parameters.Append oParameter
         Set oParameter = .CreateParameter("@dni", adVarChar, adParamInput, 12, oTabla.NroDocumento): .Parameters.Append oParameter
         Set oParameter = .CreateParameter("@FichaFamiliar", adVarChar, adParamInput, 20, oTabla.FichaFamiliar): .Parameters.Append oParameter
         Set oRecordset = .Execute
         Set oRecordset.ActiveConnection = Nothing
         sWhere = ""
-        If oTabla.apellidopaterno = lcSinApellido Then
+        If oTabla.ApellidoPaterno = lcSinApellido Then
            sWhere = sWhere & "ApellidoPaterno='" & lcSinApellido & "' and "
         End If
-        If oTabla.apellidomaterno = lcSinApellido Then
+        If oTabla.ApellidoMaterno = lcSinApellido Then
            sWhere = sWhere & "ApellidoMaterno='" & lcSinApellido & "' and "
         End If
         If sWhere <> "" Then
@@ -544,8 +544,8 @@ Dim sSql As String, sWhere As String
         Set .ActiveConnection = mo_Conexion
         .CommandTimeout = 150
         .CommandText = "PacientesXApellidosYnombres"
-        Set oParameter = .CreateParameter("@ApellidoPaterno", adVarChar, adParamInput, 40, oTabla.apellidopaterno): .Parameters.Append oParameter
-        Set oParameter = .CreateParameter("@ApellidoMaterno", adVarChar, adParamInput, 40, oTabla.apellidomaterno): .Parameters.Append oParameter
+        Set oParameter = .CreateParameter("@ApellidoPaterno", adVarChar, adParamInput, 40, oTabla.ApellidoPaterno): .Parameters.Append oParameter
+        Set oParameter = .CreateParameter("@ApellidoMaterno", adVarChar, adParamInput, 40, oTabla.ApellidoMaterno): .Parameters.Append oParameter
         Set oParameter = .CreateParameter("@PrimerNombre", adVarChar, adParamInput, 40, oTabla.PrimerNombre): .Parameters.Append oParameter
         Set oParameter = .CreateParameter("@SegundoNombre", adVarChar, adParamInput, 40, oTabla.SegundoNombre): .Parameters.Append oParameter
         Set oRecordset = .Execute
@@ -798,8 +798,8 @@ Dim oParameter As ADODB.Parameter
         .CommandType = adCmdStoredProc
        .CommandText = "PacientesFiltrarTodosSoloHistoriasDefinitivas"
         Set oParameter = .CreateParameter("@NroHistoriaClinica", adInteger, adParamInput, 0, oTabla.NroHistoriaClinica): .Parameters.Append oParameter
-        Set oParameter = .CreateParameter("@ApellidoPaterno", adVarChar, adParamInput, 40, oTabla.apellidopaterno): .Parameters.Append oParameter
-        Set oParameter = .CreateParameter("@ApellidoMaterno", adVarChar, adParamInput, 40, oTabla.apellidomaterno): .Parameters.Append oParameter
+        Set oParameter = .CreateParameter("@ApellidoPaterno", adVarChar, adParamInput, 40, oTabla.ApellidoPaterno): .Parameters.Append oParameter
+        Set oParameter = .CreateParameter("@ApellidoMaterno", adVarChar, adParamInput, 40, oTabla.ApellidoMaterno): .Parameters.Append oParameter
         Set oParameter = .CreateParameter("@PrimerNombre", adVarChar, adParamInput, 40, oTabla.PrimerNombre): .Parameters.Append oParameter
         Set oParameter = .CreateParameter("@SegundoNombre", adVarChar, adParamInput, 40, oTabla.SegundoNombre): .Parameters.Append oParameter
         Set oParameter = .CreateParameter("@idDocIdentidad", adInteger, adParamInput, 0, oTabla.IdDocIdentidad): .Parameters.Append oParameter
@@ -808,10 +808,10 @@ Dim oParameter As ADODB.Parameter
         Set oRecordset.ActiveConnection = Nothing
      End With
      sWhere = ""
-     If lcSinApellido = oTabla.apellidopaterno Then
+     If lcSinApellido = oTabla.ApellidoPaterno Then
         sWhere = sWhere & " apellidoPaterno='" & lcSinApellido & "' and "
      End If
-     If lcSinApellido = oTabla.apellidomaterno Then
+     If lcSinApellido = oTabla.ApellidoMaterno Then
         sWhere = sWhere & " apellidoMaterno='" & lcSinApellido & "' and "
      End If
      If sWhere <> "" Then
@@ -938,13 +938,13 @@ ManejadorDeError:
 End Function
 
 Sub SetDefaults(ByVal oTabla As DoPaciente)
-   oTabla.apellidomaterno = ""
-   oTabla.apellidopaterno = ""
+   oTabla.ApellidoMaterno = ""
+   oTabla.ApellidoPaterno = ""
    oTabla.Autogenerado = ""
    oTabla.DireccionDomicilio = ""
    oTabla.Email = ""
    oTabla.FactorRh = ""
-   oTabla.fechanacimiento = 0
+   oTabla.FechaNacimiento = 0
    oTabla.FichaFamiliar = ""
    oTabla.GrupoSanguineo = ""
    oTabla.IdCentroPobladoDomicilio = 0
@@ -964,7 +964,7 @@ Sub SetDefaults(ByVal oTabla As DoPaciente)
    oTabla.IdProcedencia = 0
    oTabla.IdTipoNumeracion = 0
    oTabla.IdTipoOcupacion = 0
-   oTabla.IdTipoSexo = 0
+   oTabla.idTipoSexo = 0
    oTabla.IdUsuarioAuditoria = 0
    oTabla.madreApellidoMaterno = ""
    oTabla.madreApellidoPaterno = ""
@@ -1002,8 +1002,8 @@ Dim oParameter As ADODB.Parameter
         .CommandType = adCmdStoredProc
        .CommandText = "PacientesFiltrarTodosSoloHistoriasDefinit_rap"
         Set oParameter = .CreateParameter("@NroHistoriaClinica", adInteger, adParamInput, 0, oTabla.NroHistoriaClinica): .Parameters.Append oParameter
-        Set oParameter = .CreateParameter("@ApellidoPaterno", adVarChar, adParamInput, 40, oTabla.apellidopaterno): .Parameters.Append oParameter
-        Set oParameter = .CreateParameter("@ApellidoMaterno", adVarChar, adParamInput, 40, oTabla.apellidomaterno): .Parameters.Append oParameter
+        Set oParameter = .CreateParameter("@ApellidoPaterno", adVarChar, adParamInput, 40, oTabla.ApellidoPaterno): .Parameters.Append oParameter
+        Set oParameter = .CreateParameter("@ApellidoMaterno", adVarChar, adParamInput, 40, oTabla.ApellidoMaterno): .Parameters.Append oParameter
         Set oParameter = .CreateParameter("@PrimerNombre", adVarChar, adParamInput, 40, oTabla.PrimerNombre): .Parameters.Append oParameter
         Set oParameter = .CreateParameter("@SegundoNombre", adVarChar, adParamInput, 40, oTabla.SegundoNombre): .Parameters.Append oParameter
         Set oParameter = .CreateParameter("@idDocIdentidad", adInteger, adParamInput, 0, oTabla.IdDocIdentidad): .Parameters.Append oParameter
@@ -1012,10 +1012,10 @@ Dim oParameter As ADODB.Parameter
         Set oRecordset.ActiveConnection = Nothing
      End With
      sWhere = ""
-     If lcSinApellido = oTabla.apellidopaterno Then
+     If lcSinApellido = oTabla.ApellidoPaterno Then
         sWhere = sWhere & " apellidoPaterno='" & lcSinApellido & "' and "
      End If
-     If lcSinApellido = oTabla.apellidomaterno Then
+     If lcSinApellido = oTabla.ApellidoMaterno Then
         sWhere = sWhere & " apellidoMaterno='" & lcSinApellido & "' and "
      End If
      If sWhere <> "" Then

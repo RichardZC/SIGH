@@ -356,7 +356,8 @@ Function CajaComprobantePagoCuentaAtencionAgregarS(oDOCajaComprobantePago As DOC
           '*********************************************************************************
           '                                  PROCESAR SERVICIOS
           '*********************************************************************************
-180       If rsFacturacionProductosServ.RecordCount > 0 Then
+          'rsFacturacionProductosServ.RecordCount VERIFICA CUANTOS SERVICIOS VA A PAGAR
+180       If rsFacturacionProductosServ.RecordCount > 0 Then ''Buscar donde pasa valor rsFacturacionProductosServ
 190           rsFacturacionProductosServ.MoveFirst
 200           Do While Not rsFacturacionProductosServ.EOF
 210              lnIdOrdenPago = rsFacturacionProductosServ.Fields!IdOrden
@@ -367,11 +368,12 @@ Function CajaComprobantePagoCuentaAtencionAgregarS(oDOCajaComprobantePago As DOC
 260              oDoFactOrdenServPagos.IdEstadoFacturacion = 4  'pagado
 270              oDoFactOrdenServPagos.IdComprobantePago = oDOCajaComprobantePago.IdComprobantePago
 280              oDoFactOrdenServPagos.IdUsuarioAuditoria = oDOCajaComprobantePago.IdUsuarioAuditoria
-290              If Not oFactOrdenServicioPagos.Modificar(oDoFactOrdenServPagos) Then
+290              If Not oFactOrdenServicioPagos.Modificar(oDoFactOrdenServPagos) Then 'Si no se actualiza el pago
 300                 bProcesoOK = False: ms_MensajeError = oFactOrdenServicioPagos.MensajeError: GoTo ErrorManager
 310              End If
 320              oDoFactOrdenServ.IdOrden = oDoFactOrdenServPagos.IdOrden
-330              If Not oFactOrdenServicio.SeleccionarPorId(oDoFactOrdenServ) Then
+                    'oFactOrdenServicio.SeleccionarPorId(oDoFactOrdenServ) Cargar valores al objero oDoFactOrdenServ
+330              If Not oFactOrdenServicio.SeleccionarPorId(oDoFactOrdenServ) Then 'Si no cargó valores
 340                 bProcesoOK = False: ms_MensajeError = oFactOrdenServicio.MensajeError: GoTo ErrorManager
 350              End If
 360              oDoFactOrdenServ.IdEstadoFacturacion = 4  'pagado

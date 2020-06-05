@@ -7,8 +7,8 @@ Begin VB.Form FarmVentas
    Caption         =   "Form1"
    ClientHeight    =   9420
    ClientLeft      =   60
-   ClientTop       =   345
-   ClientWidth     =   13830
+   ClientTop       =   348
+   ClientWidth     =   13836
    BeginProperty Font 
       Name            =   "Tahoma"
       Size            =   9
@@ -21,7 +21,7 @@ Begin VB.Form FarmVentas
    Icon            =   "FarmVentas.frx":0000
    LinkTopic       =   "Form1"
    ScaleHeight     =   9420
-   ScaleWidth      =   13830
+   ScaleWidth      =   13836
    StartUpPosition =   2  'CenterScreen
    Begin VB.CommandButton CargaInventarioExcel 
       Enabled         =   0   'False
@@ -147,20 +147,20 @@ Begin VB.Form FarmVentas
       TabCaption(1)   =   "Datos complementarios de Cabecera"
       TabPicture(1)   =   "FarmVentas.frx":1128
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "cmdBuscaDx"
-      Tab(1).Control(1)=   "txtObservaciones"
-      Tab(1).Control(2)=   "txtNombreDx"
-      Tab(1).Control(3)=   "txtDx"
-      Tab(1).Control(4)=   "txtTurno"
-      Tab(1).Control(5)=   "txtVendedor"
-      Tab(1).Control(6)=   "txtCajero"
-      Tab(1).Control(7)=   "txtCaja"
-      Tab(1).Control(8)=   "Label7"
-      Tab(1).Control(9)=   "Label9"
-      Tab(1).Control(10)=   "Label20"
-      Tab(1).Control(11)=   "Label11"
-      Tab(1).Control(12)=   "Label12"
-      Tab(1).Control(13)=   "Label15"
+      Tab(1).Control(0)=   "Label15"
+      Tab(1).Control(1)=   "Label12"
+      Tab(1).Control(2)=   "Label11"
+      Tab(1).Control(3)=   "Label20"
+      Tab(1).Control(4)=   "Label9"
+      Tab(1).Control(5)=   "Label7"
+      Tab(1).Control(6)=   "txtCaja"
+      Tab(1).Control(7)=   "txtCajero"
+      Tab(1).Control(8)=   "txtVendedor"
+      Tab(1).Control(9)=   "txtTurno"
+      Tab(1).Control(10)=   "txtDx"
+      Tab(1).Control(11)=   "txtNombreDx"
+      Tab(1).Control(12)=   "txtObservaciones"
+      Tab(1).Control(13)=   "cmdBuscaDx"
       Tab(1).ControlCount=   14
       TabCaption(2)   =   "Despacho para FARMACIA UNIDOSIS"
       TabPicture(2)   =   "FarmVentas.frx":1144
@@ -318,7 +318,7 @@ Begin VB.Form FarmVentas
       End
       Begin VB.TextBox txtNhistoria 
          Alignment       =   1  'Right Justify
-         Height          =   315
+         Height          =   324
          Left            =   1065
          MaxLength       =   9
          TabIndex        =   56
@@ -344,7 +344,7 @@ Begin VB.Form FarmVentas
          Width           =   3450
       End
       Begin VB.ComboBox cmbPrescriptor 
-         Height          =   330
+         Height          =   312
          Left            =   1065
          TabIndex        =   51
          Top             =   2070
@@ -378,7 +378,7 @@ Begin VB.Form FarmVentas
       Begin VB.Frame fraTipoVenta 
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   8.25
+            Size            =   7.8
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -397,7 +397,7 @@ Begin VB.Form FarmVentas
             Top             =   180
             Width           =   2820
             _ExtentX        =   4974
-            _ExtentY        =   503
+            _ExtentY        =   508
             _Version        =   262144
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
                Name            =   "Tahoma"
@@ -417,8 +417,8 @@ Begin VB.Form FarmVentas
             TabIndex        =   45
             Top             =   180
             Width           =   2250
-            _ExtentX        =   3969
-            _ExtentY        =   503
+            _ExtentX        =   3958
+            _ExtentY        =   508
             _Version        =   262144
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
                Name            =   "Tahoma"
@@ -438,8 +438,8 @@ Begin VB.Form FarmVentas
             Top             =   180
             Visible         =   0   'False
             Width           =   2925
-            _ExtentX        =   5159
-            _ExtentY        =   503
+            _ExtentX        =   5165
+            _ExtentY        =   508
             _Version        =   262144
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
                Name            =   "Tahoma"
@@ -464,7 +464,7 @@ Begin VB.Form FarmVentas
       End
       Begin VB.TextBox txtEstado 
          Enabled         =   0   'False
-         Height          =   315
+         Height          =   324
          Left            =   8685
          MaxLength       =   30
          TabIndex        =   40
@@ -473,7 +473,7 @@ Begin VB.Form FarmVentas
       End
       Begin VB.TextBox txtHoraRegistro 
          Enabled         =   0   'False
-         Height          =   315
+         Height          =   324
          Left            =   12915
          MaxLength       =   30
          TabIndex        =   37
@@ -484,7 +484,7 @@ Begin VB.Form FarmVentas
          Enabled         =   0   'False
          BeginProperty Font 
             Name            =   "Tahoma"
-            Size            =   8.25
+            Size            =   8.4
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -508,7 +508,7 @@ Begin VB.Form FarmVentas
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Height          =   330
+         Height          =   312
          Left            =   1080
          TabIndex        =   27
          Top             =   765
@@ -517,21 +517,21 @@ Begin VB.Form FarmVentas
       Begin VB.ComboBox cmbTipoFinanciamiento 
          BeginProperty Font 
             Name            =   "Tahoma"
-            Size            =   8.25
+            Size            =   8.4
             Charset         =   0
             Weight          =   700
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Height          =   315
+         Height          =   300
          Left            =   9060
          TabIndex        =   26
          Top             =   1680
          Width           =   2580
       End
       Begin VB.ComboBox cmbTipoReceta 
-         Height          =   330
+         Height          =   312
          Left            =   11505
          TabIndex        =   25
          Top             =   1245
@@ -541,7 +541,7 @@ Begin VB.Form FarmVentas
          Enabled         =   0   'False
          BeginProperty Font 
             Name            =   "Tahoma"
-            Size            =   8.25
+            Size            =   8.4
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -555,7 +555,7 @@ Begin VB.Form FarmVentas
          Width           =   2505
       End
       Begin VB.TextBox txtNcuenta 
-         Height          =   315
+         Height          =   324
          Left            =   1065
          MaxLength       =   30
          TabIndex        =   23
@@ -584,7 +584,7 @@ Begin VB.Form FarmVentas
          Enabled         =   0   'False
          BeginProperty Font 
             Name            =   "Tahoma"
-            Size            =   8.25
+            Size            =   8.4
             Charset         =   0
             Weight          =   700
             Underline       =   0   'False
@@ -598,7 +598,7 @@ Begin VB.Form FarmVentas
          Width           =   1215
       End
       Begin VB.TextBox txtObservaciones 
-         Height          =   315
+         Height          =   324
          Left            =   -73620
          MaxLength       =   100
          TabIndex        =   14
@@ -607,14 +607,14 @@ Begin VB.Form FarmVentas
       End
       Begin VB.TextBox txtNombreDx 
          Enabled         =   0   'False
-         Height          =   315
+         Height          =   324
          Left            =   -72090
          TabIndex        =   13
          Top             =   1695
          Width           =   3465
       End
       Begin VB.TextBox txtDx 
-         Height          =   315
+         Height          =   324
          Left            =   -73605
          MaxLength       =   30
          TabIndex        =   12
@@ -632,14 +632,14 @@ Begin VB.Form FarmVentas
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Height          =   315
+         Height          =   324
          Left            =   -73605
          TabIndex        =   11
          Top             =   690
          Width           =   1785
       End
       Begin VB.TextBox txtVendedor 
-         Height          =   315
+         Height          =   324
          Left            =   -73605
          TabIndex        =   10
          Top             =   1350
@@ -655,7 +655,7 @@ Begin VB.Form FarmVentas
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Height          =   315
+         Height          =   324
          Left            =   -73605
          TabIndex        =   9
          Top             =   1020
@@ -671,7 +671,7 @@ Begin VB.Form FarmVentas
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Height          =   315
+         Height          =   324
          Left            =   -70455
          TabIndex        =   8
          Top             =   660
@@ -683,8 +683,8 @@ Begin VB.Form FarmVentas
          TabIndex        =   38
          Top             =   390
          Width           =   1350
-         _ExtentX        =   2381
-         _ExtentY        =   556
+         _ExtentX        =   2392
+         _ExtentY        =   550
          _Version        =   393216
          MaxLength       =   10
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -705,13 +705,13 @@ Begin VB.Form FarmVentas
          TabIndex        =   53
          Top             =   2085
          Width           =   1815
-         _ExtentX        =   3201
-         _ExtentY        =   556
+         _ExtentX        =   3196
+         _ExtentY        =   550
          _Version        =   393216
          MaxLength       =   16
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Tahoma"
-            Size            =   8.25
+            Size            =   8.4
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -910,13 +910,13 @@ Begin VB.Form FarmVentas
       TabIndex        =   6
       Top             =   3060
       Width           =   13785
-      _ExtentX        =   24315
-      _ExtentY        =   6112
+      _ExtentX        =   24321
+      _ExtentY        =   6117
    End
    Begin VB.Frame Frame3 
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   0
          Weight          =   400
          Underline       =   0   'False
@@ -965,7 +965,7 @@ Begin VB.Form FarmVentas
       Begin VB.Frame FraRedondeo 
          BeginProperty Font 
             Name            =   "Tahoma"
-            Size            =   8.25
+            Size            =   8.4
             Charset         =   0
             Weight          =   700
             Underline       =   0   'False
@@ -982,7 +982,7 @@ Begin VB.Form FarmVentas
             Alignment       =   1  'Right Justify
             BeginProperty Font 
                Name            =   "Tahoma"
-               Size            =   9.75
+               Size            =   9.6
                Charset         =   0
                Weight          =   700
                Underline       =   0   'False
@@ -1038,15 +1038,15 @@ Begin VB.Form FarmVentas
       Top             =   7590
       Visible         =   0   'False
       Width           =   13755
-      _ExtentX        =   24262
-      _ExtentY        =   3201
+      _ExtentX        =   24257
+      _ExtentY        =   3196
       _Version        =   131072
       GridFlags       =   17040384
       LayoutFlags     =   71303188
       BorderStyle     =   5
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "Arial Narrow"
-         Size            =   9.75
+         Size            =   9.6
          Charset         =   0
          Weight          =   400
          Underline       =   0   'False
@@ -1628,13 +1628,21 @@ Sub CargarComboBoxes()
     '
     mo_cmbAlmacenOrigen.BoundColumn = "IdAlmacen"
     mo_cmbAlmacenOrigen.ListField = "Descripcion"
-    Set mo_cmbAlmacenOrigen.RowSource = mo_ReglasFarmacia.FarmAlmacenSeleccionarSegunFiltro("idtipoLocales='F' and idTipoSuministro='01' and idEstado=1")
+    'SCCQ 03/06/2020 Cambio23 Inicio
+     If rsIdAlmacen.RecordCount > 0 Then 'Solo filtra farmacias asignadas
+      Set mo_cmbAlmacenOrigen.RowSource = mo_ReglasFarmacia.FarmAlmacenSeleccionarSegunFiltro("idtipoLocales='F' and idTipoSuministro='01' and idEstado=1 and idAlmacen in (select idLaboraSubArea from EmpleadosLugarDeTrabajo where idLaboraArea=" + CStr(sghAlmacenFarmacia) + " and idEmpleado=" + CStr(ml_idUsuario) + ")")
+     Else ' Muestra todas las farmacias como lo hacía antes
+      Set mo_cmbAlmacenOrigen.RowSource = mo_ReglasFarmacia.FarmAlmacenSeleccionarSegunFiltro("idtipoLocales='F' and idTipoSuministro='01' and idEstado=1")
+     End If
+    'SCCQ 03/06/2020 Cambio23 Fin
     ms_MensajeError = ms_MensajeError + mo_ReglasFarmacia.MensajeError
-    If rsIdAlmacen.RecordCount > 0 Then
+    'SCCQ 03/06/2020 Cambio23 Inicio
+    If rsIdAlmacen.RecordCount = 1 Then
        mo_cmbAlmacenOrigen.BoundText = rsIdAlmacen.Fields!idLaboraSubArea
-       mo_Formulario.HabilitarDeshabilitar Me.cmbAlmOrigen, False
+       'mo_Formulario.HabilitarDeshabilitar Me.cmbAlmOrigen, False
        lbLaFarmaciaEsUnidosis = mo_ReglasFarmacia.FarmaciaEsUnidosis(Val(mo_cmbAlmacenOrigen.BoundText))
     End If
+    'SCCQ 03/06/2020 Cambio23 Fin
     'UNIDOSIS
     Dim lcMensajeLicencia As String
 '    If False Then     'licencia

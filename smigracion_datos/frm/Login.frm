@@ -133,12 +133,12 @@ Private Sub cmdAceptar_Click()
     Dim oRsTmp As New ADODB.Recordset
     Dim oCrypKey As New CrypKey.Util
     'PAbreBDhbtMono "dsn=GALENHOS"
-    PAbreBDhbtMono sighentidades.CadenaConexion
+    PAbreBDhbtMono SIGHEntidades.CadenaConexion
     oRsTmp.Open "select  * from Empleados where usuario='" & txtUsuario.Text & "'", wxConexionRed, adOpenKeyset, adLockOptimistic
     If oRsTmp.RecordCount > 0 Then
        If UCase(txtClave.Text) = UCase(oCrypKey.DecryptString(oRsTmp.Fields!Clave)) Then
           'If Val(Left(Me.txtClave2.Text, 2)) = Month(Date) And Val(Right(Me.txtClave2.Text, 2)) = Day(Date) Then
-          If sighentidades.VerificaClaveMesDia(Me.txtClave2.Text) Then
+          If SIGHEntidades.VerificaClaveMesDia(Me.txtClave2.Text) Then
              'Segunda Clave=Mes+dia....incluye ceros..ej: 09/06/2011...clave2=0609
              wxVersionBDactualizada = Me.Caption
              ActualizaCorrelativoAutomatico

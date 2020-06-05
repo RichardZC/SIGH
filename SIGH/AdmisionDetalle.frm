@@ -168,9 +168,9 @@ Begin VB.Form AdmisionCEDetalle
          TabCaption(1)   =   "2.2 Citas para otros días"
          TabPicture(1)   =   "AdmisionDetalle.frx":0D1E
          Tab(1).ControlEnabled=   0   'False
-         Tab(1).Control(0)=   "UcPacientesSunasa1"
+         Tab(1).Control(0)=   "Label9"
          Tab(1).Control(1)=   "ucCitasLista11"
-         Tab(1).Control(2)=   "Label9"
+         Tab(1).Control(2)=   "UcPacientesSunasa1"
          Tab(1).ControlCount=   3
          Begin VB.Frame FraGeneraCita 
             Caption         =   "Forma que se genera la CITA"
@@ -3337,7 +3337,7 @@ Sub grdPacientesEncontradosSIS()
             lnAfiliacionSIS4 = oRecordset.Fields!idSiaSis
             lcSIScodigo = oRecordset.Fields!Codigo
             
-            lnDocumentoTipoSIS = oRecordset!DocumentoTipo
+            lnDocumentoTipoSIS = oRecordset.Fields!DocumentoTipo
             
             
             lcDniSIS = IIf(IsNull(oRecordset.Fields!DNI), "", oRecordset.Fields!DNI)

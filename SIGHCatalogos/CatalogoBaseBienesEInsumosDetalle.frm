@@ -3,17 +3,17 @@ Object = "{5A9433E9-DD7B-4529-91B6-A5E8CA054615}#2.0#0"; "IGULTR~1.OCX"
 Begin VB.Form CatalogoBaseBienesEInsumosDetalle 
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "Form1"
-   ClientHeight    =   7710
-   ClientLeft      =   45
-   ClientTop       =   330
-   ClientWidth     =   13755
+   ClientHeight    =   7704
+   ClientLeft      =   48
+   ClientTop       =   336
+   ClientWidth     =   13752
    Icon            =   "CatalogoBaseBienesEInsumosDetalle.frx":0000
    LinkTopic       =   "Form1"
    LockControls    =   -1  'True
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   7710
-   ScaleWidth      =   13755
+   ScaleHeight     =   7704
+   ScaleWidth      =   13752
    ShowInTaskbar   =   0   'False
    StartUpPosition =   2  'CenterScreen
    Begin VB.Frame Frame 
@@ -25,7 +25,7 @@ Begin VB.Form CatalogoBaseBienesEInsumosDetalle
       Begin VB.TextBox txtCodigoSunat 
          BeginProperty Font 
             Name            =   "Tahoma"
-            Size            =   8.25
+            Size            =   8.4
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -90,7 +90,7 @@ Begin VB.Form CatalogoBaseBienesEInsumosDetalle
          Caption         =   "Iguala Precios en los demás Producto/Plan"
          BeginProperty Font 
             Name            =   "Tahoma"
-            Size            =   8.25
+            Size            =   8.4
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -109,14 +109,14 @@ Begin VB.Form CatalogoBaseBienesEInsumosDetalle
          TabIndex        =   30
          Top             =   210
          Width           =   5235
-         _ExtentX        =   9234
+         _ExtentX        =   9229
          _ExtentY        =   6668
          _Version        =   131072
          GridFlags       =   17040384
          LayoutFlags     =   67108884
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Tahoma"
-            Size            =   8.25
+            Size            =   8.4
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -145,7 +145,7 @@ Begin VB.Form CatalogoBaseBienesEInsumosDetalle
       Begin VB.ComboBox cmbIdCentroCosto 
          BeginProperty Font 
             Name            =   "Tahoma"
-            Size            =   8.25
+            Size            =   8.4
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -162,7 +162,7 @@ Begin VB.Form CatalogoBaseBienesEInsumosDetalle
       Begin VB.ComboBox cmbIdPartida 
          BeginProperty Font 
             Name            =   "Tahoma"
-            Size            =   8.25
+            Size            =   8.4
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -232,7 +232,7 @@ Begin VB.Form CatalogoBaseBienesEInsumosDetalle
       Begin VB.ComboBox cmbIdGrupoFarmacologico 
          BeginProperty Font 
             Name            =   "Tahoma"
-            Size            =   8.25
+            Size            =   8.4
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -249,7 +249,7 @@ Begin VB.Form CatalogoBaseBienesEInsumosDetalle
       Begin VB.ComboBox cmbIdSubGrupoFarmacologico 
          BeginProperty Font 
             Name            =   "Tahoma"
-            Size            =   8.25
+            Size            =   8.4
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -363,7 +363,7 @@ Begin VB.Form CatalogoBaseBienesEInsumosDetalle
       Begin VB.ComboBox cmbPaisOrigen 
          BeginProperty Font 
             Name            =   "Tahoma"
-            Size            =   8.25
+            Size            =   8.4
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -380,7 +380,7 @@ Begin VB.Form CatalogoBaseBienesEInsumosDetalle
       Begin VB.TextBox txtFabricante 
          BeginProperty Font 
             Name            =   "Tahoma"
-            Size            =   8.25
+            Size            =   8.4
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -397,7 +397,7 @@ Begin VB.Form CatalogoBaseBienesEInsumosDetalle
       Begin VB.TextBox txtPresentE 
          BeginProperty Font 
             Name            =   "Tahoma"
-            Size            =   8.25
+            Size            =   8.4
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -414,7 +414,7 @@ Begin VB.Form CatalogoBaseBienesEInsumosDetalle
       Begin VB.TextBox txtMaterialE 
          BeginProperty Font 
             Name            =   "Tahoma"
-            Size            =   8.25
+            Size            =   8.4
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -431,7 +431,7 @@ Begin VB.Form CatalogoBaseBienesEInsumosDetalle
       Begin VB.TextBox txtFF 
          BeginProperty Font 
             Name            =   "Tahoma"
-            Size            =   8.25
+            Size            =   8.4
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -448,7 +448,7 @@ Begin VB.Form CatalogoBaseBienesEInsumosDetalle
       Begin VB.TextBox txtPresentacion 
          BeginProperty Font 
             Name            =   "Tahoma"
-            Size            =   8.25
+            Size            =   8.4
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -465,7 +465,7 @@ Begin VB.Form CatalogoBaseBienesEInsumosDetalle
       Begin VB.TextBox txtConcentracion 
          BeginProperty Font 
             Name            =   "Tahoma"
-            Size            =   8.25
+            Size            =   8.4
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -482,7 +482,7 @@ Begin VB.Form CatalogoBaseBienesEInsumosDetalle
       Begin VB.TextBox txtDenominacion 
          BeginProperty Font 
             Name            =   "Tahoma"
-            Size            =   8.25
+            Size            =   8.4
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -499,7 +499,7 @@ Begin VB.Form CatalogoBaseBienesEInsumosDetalle
       Begin VB.TextBox txtNombreComercial 
          BeginProperty Font 
             Name            =   "Tahoma"
-            Size            =   8.25
+            Size            =   8.4
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -516,7 +516,7 @@ Begin VB.Form CatalogoBaseBienesEInsumosDetalle
       Begin VB.TextBox txtNombre 
          BeginProperty Font 
             Name            =   "Tahoma"
-            Size            =   8.25
+            Size            =   8.4
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False

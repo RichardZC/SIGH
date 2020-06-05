@@ -320,7 +320,7 @@ Private Sub Form_Activate()
     Case "HcXmedico"
         oConexion.CommandTimeout = 300
         oConexion.CursorLocation = adUseClient
-        oConexion.Open sighentidades.CadenaConexion
+        oConexion.Open SIGHEntidades.CadenaConexion
         Set rsReporte = mo_AdminReportes.ReporteHistoriasSolicitadasCEPorMedico(ml_idUsuario, mda_FechaInicio, mda_FechaFin, mda_FechaSolicitudDesde, mda_FechaSolicitudHasta, (Val(ml_lcTipoServicio)), ml_IncluyeHistoriasQueSalieron)
         lc_TextoDelFiltro = " "
         If rsReporte.RecordCount > 0 Then
@@ -360,7 +360,7 @@ Private Sub Form_Activate()
                     mrs_Tmp.Fields!Medico = rsReporte.Fields!nMedico
                     mrs_Tmp.Fields!FechaIngreso = Format(rsReporte.Fields!FechaRequerida, "dd/mm/yyyy") & " - " & rsReporte.Fields!HoraRequerida
                     mrs_Tmp.Fields!NroHistoriaClinica = HCigualDNI_DevuelveHistoriaConCerosIzquierda(Trim(Str(rsReporte.Fields!NroHistoriaClinica)), False) & _
-                                                        IIf(Format(rsReporte!fechaCreacion, sighentidades.DevuelveFechaSoloFormato_DMY) = lcBuscaParametro.RetornaFechaServidorSQL, " (n)", "")
+                                                        IIf(Format(rsReporte!fechaCreacion, SIGHEntidades.DevuelveFechaSoloFormato_DMY) = lcBuscaParametro.RetornaFechaServidorSQL, " (n)", "")
                     mrs_Tmp.Fields!Interconsulta = rsReporte.Fields!FichaFamiliar
                     mrs_Tmp.Fields!Paciente = rsReporte.Fields!nPaciente
                     mrs_Tmp.Fields!Usuario = lcTexto3    'fuente financiamiento
@@ -376,7 +376,7 @@ Private Sub Form_Activate()
                rsReporte.MoveNext
             Loop
             mrs_Tmp.Sort = "servicio,fechaIngreso"
-            lc_TextoDelFiltro = "F. requerida: " & Format(mda_FechaInicio, sighentidades.DevuelveFechaSoloFormato_DMY_HM) & "  al " & Format(mda_FechaFin, sighentidades.DevuelveFechaSoloFormato_DMY_HM)
+            lc_TextoDelFiltro = "F. requerida: " & Format(mda_FechaInicio, SIGHEntidades.DevuelveFechaSoloFormato_DMY_HM) & "  al " & Format(mda_FechaFin, SIGHEntidades.DevuelveFechaSoloFormato_DMY_HM)
             'Reporte
             mflgContinuar = True
             Set crReport = crApp.OpenReport(App.Path & "\plantillas\HCsolicitadasXmedicoFF.rpt", 1)
@@ -418,7 +418,7 @@ Private Sub Form_Activate()
                     mrs_Tmp.Fields!Medico = rsReporte.Fields!nMedico
                     mrs_Tmp.Fields!FechaIngreso = Format(rsReporte.Fields!FechaRequerida, "dd/mm/yyyy") & " - " & rsReporte.Fields!HoraRequerida
                     mrs_Tmp.Fields!NroHistoriaClinica = HCigualDNI_DevuelveHistoriaConCerosIzquierda(Trim(Str(rsReporte.Fields!NroHistoriaClinica)), False) & _
-                                                        IIf(Format(rsReporte!fechaCreacion, sighentidades.DevuelveFechaSoloFormato_DMY) = lcBuscaParametro.RetornaFechaServidorSQL, " (n)", "")
+                                                        IIf(Format(rsReporte!fechaCreacion, SIGHEntidades.DevuelveFechaSoloFormato_DMY) = lcBuscaParametro.RetornaFechaServidorSQL, " (n)", "")
                     mrs_Tmp.Fields!Interconsulta = rsReporte.Fields!FichaFamiliar
                     mrs_Tmp.Fields!Paciente = rsReporte.Fields!nPaciente
                     mrs_Tmp.Fields!Usuario = rsReporte.Fields!NroDocumento
@@ -934,11 +934,23 @@ End If
                 End Select
                 Set mo_ReglasReportes = Nothing
              Else
+                
+                 'SCCQ 13/02/2020 Problema4 Inicio
+                 'El siguiente codigo es para verificar si la ruta existe
+                 Dim strPath As String 'Variable que contiene la ruta de la carpeta donde se generan los reportes
+                 strPath = "c:\Reportes" 'Ruta para genear reporte
+                 If Dir(strPath, vbDirectory) = "" Then 'Si el directorio no existe
+                    MkDir "C:\Reportes" 'Se crea la carpeta
+                 End If
+                 'SCCQ 13/02/2020 Problema4 Fin
+                 'Codigo que genera el archivo excel
                  crReport.ExportOptions.DestinationType = crEDTDiskFile
                  crReport.ExportOptions.FormatType = crEFTExcel70
-                 crReport.ExportOptions.DiskFileName = "c:\excel.xls"
+                 crReport.ExportOptions.DiskFileName = "c:\Reportes\excel.xls" 'SCCQ 13/02/2020 Problema4 Inicio/Fin
                  crReport.Export (False)
-                 MsgBox "Se generó el archivo c:\EXCEL.XLS"
+                 MsgBox "Se generó el archivo c:\Reportes\EXCEL.XLS" 'SCCQ 13/02/2020 Problema4 Inicio/Fin
+                 'fin del codigo que genera el archivo excel
+                
              End If
         End If
         CrvReportes.ReportSource = crReport

@@ -11,6 +11,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = True
+
 '------------------------------------------------------------------------------------
 '        Organización: Usaid - Politicas en Salud
 '        Aplicativo: SisGalenPlus v.3

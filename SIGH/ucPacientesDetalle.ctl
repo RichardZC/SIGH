@@ -1,7 +1,7 @@
 VERSION 5.00
 Object = "{0FAA9261-2AF4-11D3-9995-00A0CC3A27A9}#1.0#0"; "PVCombo.ocx"
 Object = "{C932BA88-4374-101B-A56C-00AA003668DC}#1.1#0"; "msmask32.ocx"
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "tabctl32.ocx"
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
 Begin VB.UserControl ucPacientesDetalle 
    ClientHeight    =   6420
    ClientLeft      =   0
@@ -5785,6 +5785,8 @@ Public Function CargarDatosAlObjetoDatos(oDOPaciente As doPaciente, oDOHistoria 
     End With
 
     Set CargarDatosAlObjetoDatos = oDOPaciente
+    
+    
     
 End Function
 

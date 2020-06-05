@@ -1,8 +1,8 @@
 VERSION 5.00
 Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} FormBoleta 
    Caption         =   "Boleta"
-   ClientHeight    =   10410
-   ClientLeft      =   165
+   ClientHeight    =   9375
+   ClientLeft      =   225
    ClientTop       =   555
    ClientWidth     =   19080
    StartUpPosition =   3  'Windows Default
@@ -262,7 +262,7 @@ Begin {78E93846-85FD-11D0-8487-00A0C90DC8A9} FormBoleta
          Object.Height          =   205
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Arial Narrow"
-            Size            =   9
+            Size            =   8.25
             Charset         =   0
             Weight          =   700
             Underline       =   0   'False

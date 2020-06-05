@@ -259,7 +259,7 @@ End Function
 '                                       Empleados
 '-------------------------------------------------------------------------------------
 
-Function EmpleadosAgregar(oDOEmpleado As DOEmpleado, oUsuariosRoles As Collection, oRsCargos As Recordset, oRsLaboraEn As Recordset, mo_lnIdTablaLISTBARITEMS As Long, mo_lcNombrePc As String, lcNombreEmpleado As String, lcDniEncriptado As String) As Boolean
+Function EmpleadosAgregar(oDOEmpleado As dOEmpleado, oUsuariosRoles As Collection, oRsCargos As Recordset, oRsLaboraEn As Recordset, mo_lnIdTablaLISTBARITEMS As Long, mo_lcNombrePc As String, lcNombreEmpleado As String, lcDniEncriptado As String) As Boolean
 Dim oConexion As New ADODB.Connection
 Dim oEmpleado As New Empleados
 Dim oUsuarioRol As New UsuariosRoles
@@ -416,7 +416,7 @@ ErrEmpl:
    Set mo_AdminComun = Nothing
 End Function
 
-Function EmpleadosModificar(oDOEmpleado As DOEmpleado, oUsuariosRoles As Collection, oRsCargos As Recordset, oRsLaboraEn As Recordset, mo_lnIdTablaLISTBARITEMS As Long, mo_lcNombrePc As String, lcNombreEmpleado As String, lcDniEncriptado As String) As Boolean
+Function EmpleadosModificar(oDOEmpleado As dOEmpleado, oUsuariosRoles As Collection, oRsCargos As Recordset, oRsLaboraEn As Recordset, mo_lnIdTablaLISTBARITEMS As Long, mo_lcNombrePc As String, lcNombreEmpleado As String, lcDniEncriptado As String) As Boolean
 Dim oConexion As New ADODB.Connection
 Dim oEmpleado As New Empleados
 Dim oUsuarioRol As New UsuariosRoles
@@ -605,7 +605,7 @@ ErrEmplM:
 End Function
 
 'Modificado por Yamill Palomino 07-10-13 Se cambio a Store Procedure
-Function EmpleadosEliminar(oDOEmpleado As DOEmpleado, mo_lnIdTablaLISTBARITEMS As Long, mo_lcNombrePc As String, _
+Function EmpleadosEliminar(oDOEmpleado As dOEmpleado, mo_lnIdTablaLISTBARITEMS As Long, mo_lcNombrePc As String, _
                                              lcNombreEmpleado As String) As Boolean
 Dim oConexion As New ADODB.Connection
 Dim oEmpleado As New Empleados
@@ -698,10 +698,10 @@ Dim oParameter As ADODB.Parameter
     Set oRsTmp1 = Nothing
 End Function
 
-Function EmpleadosSeleccionarPorId(idEmpleado As Long) As DOEmpleado
+Function EmpleadosSeleccionarPorId(idEmpleado As Long) As dOEmpleado
 Dim oConexion As New ADODB.Connection
 Dim oEmpleado As New Empleados
-Dim oDOEmpleado As New DOEmpleado
+Dim oDOEmpleado As New dOEmpleado
     
     Set EmpleadosSeleccionarPorId = Nothing
     
@@ -733,7 +733,7 @@ Dim oTabla As New Empleados
     Set oConexion = Nothing
     Set oTabla = Nothing
 End Function
-Function EmpleadosFiltrar(oDOEmpleado As DOEmpleado) As ADODB.Recordset
+Function EmpleadosFiltrar(oDOEmpleado As dOEmpleado) As ADODB.Recordset
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New Empleados
     
@@ -747,7 +747,7 @@ Dim oTabla As New Empleados
     Set oConexion = Nothing
     Set oTabla = Nothing
 End Function
-Function EmpleadosSeleccionarPorCodigo(Codigo As String, oDOEmpleado As DOEmpleado) As Boolean
+Function EmpleadosSeleccionarPorCodigo(Codigo As String, oDOEmpleado As dOEmpleado) As Boolean
 Dim oConexion As New ADODB.Connection
 Dim oEmpleado As New Empleados
 Dim rsMedicoEspecialidad As Recordset
@@ -769,7 +769,7 @@ Dim rsMedicoEspecialidad As Recordset
     Set oEmpleado = Nothing
 
 End Function
-Function EmpleadosObtenerConElMismoUsuario(oDOEmpleado As DOEmpleado) As ADODB.Recordset
+Function EmpleadosObtenerConElMismoUsuario(oDOEmpleado As dOEmpleado) As ADODB.Recordset
 Dim oConexion As New ADODB.Connection
 Dim oEmpleado As New Empleados
 Dim rsMedicoEspecialidad As Recordset
@@ -785,7 +785,7 @@ Dim rsMedicoEspecialidad As Recordset
     
 End Function
 
-Function EmpleadosObtenerConElMismoCodigoPlanilla(oDOEmpleado As DOEmpleado) As ADODB.Recordset
+Function EmpleadosObtenerConElMismoCodigoPlanilla(oDOEmpleado As dOEmpleado) As ADODB.Recordset
 Dim oConexion As New ADODB.Connection
 Dim oEmpleado As New Empleados
 Dim rsMedicoEspecialidad As Recordset
@@ -3231,7 +3231,9 @@ Function TiposEmpleadosSeleccionarSegunFiltro(lcWhere As String) As Recordset
             Set .ActiveConnection = oConexion
             .CommandTimeout = 150
             .CommandText = "TiposEmpleadosSeleccionarSegunFiltro"
-            Set oParameter = .CreateParameter("@Where", adVarChar, adParamInput, 50, lcWhere): .Parameters.Append oParameter
+             'SCCQ 16/04/2020 Cambio2 Inicio -->Se incrementó el tamaño del parámetro de 50 a 80
+            Set oParameter = .CreateParameter("@Where", adVarChar, adParamInput, 80, lcWhere): .Parameters.Append oParameter
+            'SCCQ 16/04/2020 Cambio2 Fin
             Set oRecordset = .Execute
             Set oRecordset.ActiveConnection = Nothing
        End With

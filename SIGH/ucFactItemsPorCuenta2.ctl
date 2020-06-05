@@ -110,7 +110,7 @@ Public Event SePresionoTeclaEspecial(KeyCode As Integer)
 Dim mo_AdminAdmision As New SIGHNegocios.ReglasAdmision
 Dim mo_ReglasFacturacion As New SIGHNegocios.ReglasFacturacion
 Dim mo_AdminCaja As New SIGHNegocios.ReglasCaja
-Dim mo_reglasComunes As New SIGHNegocios.ReglasComunes
+Dim mo_ReglasComunes As New SIGHNegocios.ReglasComunes
 Dim mo_ReglasSeguridad As New SIGHNegocios.ReglasDeSeguridad
 Dim gridInfra As New GridInfragistic
 Dim mo_PermisosFacturacion As New PermisosFacturacion
@@ -493,7 +493,7 @@ Sub CargaProductosPorIdCuentaAtencion()
     End Select
     mb_CargandoProductos = False
     Totalizar
-    Set grdProductos.DataSource = mrs_FacturacionProductos
+    Set grdProductos.DataSource = mrs_FacturacionProductos 'Carga productos de consumo en farmacia
     If mrs_FacturacionProductos.RecordCount > 0 Then
        mrs_FacturacionProductos.MoveFirst
     End If
@@ -538,7 +538,7 @@ Dim dTotalAnulado As Double
         lIdProducto = rsProductos!idProducto
         
         Select Case lIdEstadoFacturacion
-        Case 1
+        Case 1 'Pendiente por pagar
             Select Case lIdProducto
             Case 4692
                 dTotalExonerado = dTotalExonerado + dSubTotal
@@ -706,7 +706,7 @@ Sub ConfigurarProductoPorCodigo(oGrilla As SSUltraGrid)
 Dim rs As Recordset
 Dim oRow As SSRow
 Dim oConexion As New Connection
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighEntidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
      
     Set oRow = oGrilla.ActiveCell.Row
@@ -906,11 +906,11 @@ Private Sub InicializarLaGrilla(oGrilla As SSUltraGrid)
 
     oGrilla.Bands(0).Columns("FechaAutorizaPendiente").Width = 2500
     oGrilla.Bands(0).Columns("FechaAutorizaPendiente").Header.Caption = "Fecha Aut. Pend."
-    oGrilla.Bands(0).Columns("FechaAutorizaPendiente").Format = SIGHEntidades.DevuelveFechaSoloFormato_DMY_HM
+    oGrilla.Bands(0).Columns("FechaAutorizaPendiente").Format = sighEntidades.DevuelveFechaSoloFormato_DMY_HM
 
     oGrilla.Bands(0).Columns("FechaAutorizaSeguro").Width = 2500
     oGrilla.Bands(0).Columns("FechaAutorizaSeguro").Header.Caption = "Fec. Aut. Seguro."
-    oGrilla.Bands(0).Columns("FechaAutorizaSeguro").Format = SIGHEntidades.DevuelveFechaSoloFormato_DMY_HM
+    oGrilla.Bands(0).Columns("FechaAutorizaSeguro").Format = sighEntidades.DevuelveFechaSoloFormato_DMY_HM
     
     'Configura Values List
     SeteaListaEstado oGrilla, oGrilla.Bands(0).Columns("idEstadoFacturacion")
@@ -928,7 +928,7 @@ Private Sub InicializarLaGrilla(oGrilla As SSUltraGrid)
     oGrilla.Bands(0).Columns("ImporteEXO").Activation = ssActivationActivateNoEdit
     
 ConfigEstilo:
-    gridInfra.ConfigurarFilasBiColores oGrilla, SIGHEntidades.GrillaConFilasBicolor
+    gridInfra.ConfigurarFilasBiColores oGrilla, sighEntidades.GrillaConFilasBicolor
     
 End Sub
 
@@ -942,7 +942,7 @@ Dim oValueTF As SSValueList
         Set rs = mo_ReglasFacturacion.TiposFinanciamientoSeleccionarTodos
         Do While Not rs.EOF
             If rs!idTipoFinanciamiento <> 0 Then
-                oValueTF.ValueListItems.Add Val(rs!idTipoFinanciamiento), Trim(rs!Descripcion)
+                oValueTF.ValueListItems.Add Val(rs!idTipoFinanciamiento), Trim(rs!descripcion)
             End If
             rs.MoveNext
         Loop
@@ -962,10 +962,10 @@ Dim oValuePC As SSValueList
     
     If Not oGrilla.ValueLists.Exists("listaPuntosCarga") Then
         Set oValuePC = oGrilla.ValueLists.Add("listaPuntosCarga")
-        Set rs = mo_reglasComunes.SeleccionarPuntosDeCarga()
+        Set rs = mo_ReglasComunes.SeleccionarPuntosDeCarga()
         Do While Not rs.EOF
             If rs!idPuntoCarga <> 0 Then
-                oValuePC.ValueListItems.Add Val(rs!idPuntoCarga), Trim(rs!Descripcion)
+                oValuePC.ValueListItems.Add Val(rs!idPuntoCarga), Trim(rs!descripcion)
             End If
             rs.MoveNext
         Loop
@@ -987,7 +987,7 @@ Dim oValueEstado As SSValueList
         Set oValueEstado = oGrilla.ValueLists.Add("listaEstadoFacturacion")
         Set rs = mo_ReglasFacturacion.EstadosFacturacionObtenerTodos
         Do While Not rs.EOF
-            oValueEstado.ValueListItems.Add Val(rs!idestadofacturacion), Trim(rs!Descripcion)
+            oValueEstado.ValueListItems.Add Val(rs!idestadofacturacion), Trim(rs!descripcion)
             rs.MoveNext
         Loop
         rs.Close
@@ -1001,7 +1001,7 @@ End Sub
 
 Private Sub grillaBusqueda_InitializeLayout(ByVal Context As UltraGrid.Constants_Context, ByVal Layout As UltraGrid.SSLayout)
     InicializarLaGrillaBusqueda grillaBusqueda
-    gridInfra.ConfigurarFilasBiColores grillaBusqueda, SIGHEntidades.GrillaConFilasBicolor
+    gridInfra.ConfigurarFilasBiColores grillaBusqueda, sighEntidades.GrillaConFilasBicolor
 End Sub
 Private Sub InicializarLaGrillaBusqueda(oGrilla As SSUltraGrid)
     On Error GoTo errInic
@@ -1019,7 +1019,7 @@ Private Sub InicializarLaGrillaBusqueda(oGrilla As SSUltraGrid)
     oGrilla.Bands(0).Columns("Codigo").Activation = ssActivationActivateNoEdit
     oGrilla.Bands(0).Columns("Nombre").Activation = ssActivationActivateNoEdit
     
-    gridInfra.ConfigurarFilasBiColores oGrilla, SIGHEntidades.GrillaConFilasBicolor
+    gridInfra.ConfigurarFilasBiColores oGrilla, sighEntidades.GrillaConFilasBicolor
 errInic:
 End Sub
 Private Sub grillaBusqueda_DblClick()

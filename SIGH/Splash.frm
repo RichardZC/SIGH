@@ -1,10 +1,10 @@
 VERSION 5.00
 Begin VB.Form Splash 
    BorderStyle     =   0  'None
-   ClientHeight    =   6465
-   ClientLeft      =   210
-   ClientTop       =   1365
-   ClientWidth     =   6375
+   ClientHeight    =   6468
+   ClientLeft      =   216
+   ClientTop       =   1368
+   ClientWidth     =   6372
    ClipControls    =   0   'False
    ControlBox      =   0   'False
    Icon            =   "Splash.frx":0000
@@ -14,8 +14,8 @@ Begin VB.Form Splash
    MaxButton       =   0   'False
    MinButton       =   0   'False
    Picture         =   "Splash.frx":000C
-   ScaleHeight     =   6465
-   ScaleWidth      =   6375
+   ScaleHeight     =   6468
+   ScaleWidth      =   6372
    ShowInTaskbar   =   0   'False
    StartUpPosition =   2  'CenterScreen
    Begin VB.Label Label1 
@@ -24,7 +24,7 @@ Begin VB.Form Splash
       Caption         =   "SISGalenPLUS v3.28092015u73hra"
       BeginProperty Font 
          Name            =   "Tahoma"
-         Size            =   9.75
+         Size            =   9.6
          Charset         =   0
          Weight          =   700
          Underline       =   0   'False
@@ -75,6 +75,9 @@ Attribute VB_Exposed = False
 Option Explicit
 Dim mb_FormLoad  As Boolean
 Dim mb_MostrarCreditos  As Boolean
+ 'SCCQ 03/06/2020 Cambio22 Inicio
+Dim lcBuscaParametro As New SIGHDatos.Parametros
+ 'SCCQ 03/06/2020 Cambio22 Fin
 Property Let MostrarCreditos(bValue As Boolean)
     mb_MostrarCreditos = bValue
 End Property
@@ -87,7 +90,14 @@ Private Sub Form_Activate()
             'Creditos.Show 1
         End If
     End If
-
+    'SCCQ 03/06/2020 Cambio22 Inicio
+    Dim version As String
+     version = "28092015u73" 'seleccionar la verisión del aplicativo
+    If version <> lcBuscaParametro.SeleccionaFilaParametro(314) Then
+        MsgBox "Existe una versión más reciente del SIS-GalenPlus. " + lcBuscaParametro.SeleccionaFilaParametro(600), vbExclamation, Me.Caption
+        End
+    End If
+    'SCCQ 03/06/2020 Cambio22 Fin
 End Sub
 
 Private Sub Form_KeyDown(KeyCode As Integer, Shift As Integer)

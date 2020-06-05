@@ -5,10 +5,10 @@ Object = "{5A9433E9-DD7B-4529-91B6-A5E8CA054615}#2.0#0"; "IGULTR~1.OCX"
 Begin VB.Form EmpleadoDetalle 
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "Form1"
-   ClientHeight    =   8925
-   ClientLeft      =   45
-   ClientTop       =   330
-   ClientWidth     =   12015
+   ClientHeight    =   8796
+   ClientLeft      =   48
+   ClientTop       =   336
+   ClientWidth     =   12012
    BeginProperty Font 
       Name            =   "Tahoma"
       Size            =   9
@@ -21,18 +21,17 @@ Begin VB.Form EmpleadoDetalle
    Icon            =   "EmpleadoDetalle.frx":0000
    KeyPreview      =   -1  'True
    LinkTopic       =   "Form1"
-   LockControls    =   -1  'True
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   8925
-   ScaleWidth      =   12015
+   ScaleHeight     =   8796
+   ScaleWidth      =   12012
    ShowInTaskbar   =   0   'False
    StartUpPosition =   2  'CenterScreen
    Begin VB.Frame Frame6 
-      Height          =   2625
+      Height          =   2532
       Left            =   75
       TabIndex        =   43
-      Top             =   5220
+      Top             =   5160
       Width           =   5235
       Begin VB.CheckBox chkAutorizadoReniec 
          Alignment       =   1  'Right Justify
@@ -114,29 +113,29 @@ Begin VB.Form EmpleadoDetalle
    End
    Begin VB.Frame Frame5 
       Caption         =   "Labora en:"
-      Height          =   3480
-      Left            =   5370
+      Height          =   2784
+      Left            =   5385
       TabIndex        =   42
-      Top             =   4350
+      Top             =   4908
       Width           =   6585
       Begin VB.CommandButton cmdAddLabora 
          DisabledPicture =   "EmpleadoDetalle.frx":0CCA
          DownPicture     =   "EmpleadoDetalle.frx":10B3
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   8.25
+            Size            =   7.8
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Height          =   315
+         Height          =   330
          Left            =   120
          Picture         =   "EmpleadoDetalle.frx":14BF
          Style           =   1  'Graphical
          TabIndex        =   26
-         Top             =   660
+         Top             =   615
          Width           =   795
       End
       Begin VB.CommandButton cmdDelLabora 
@@ -144,56 +143,56 @@ Begin VB.Form EmpleadoDetalle
          DownPicture     =   "EmpleadoDetalle.frx":1C56
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   8.25
+            Size            =   7.8
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Height          =   315
+         Height          =   330
          Left            =   960
          Picture         =   "EmpleadoDetalle.frx":1FE9
          Style           =   1  'Graphical
          TabIndex        =   27
-         Top             =   660
+         Top             =   615
          Width           =   795
       End
       Begin VB.ComboBox cmbArea 
          BeginProperty Font 
             Name            =   "Tahoma"
-            Size            =   8.25
+            Size            =   8.4
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Height          =   315
+         Height          =   300
          ItemData        =   "EmpleadoDetalle.frx":237A
          Left            =   120
          List            =   "EmpleadoDetalle.frx":239C
          Style           =   2  'Dropdown List
          TabIndex        =   24
-         Top             =   300
+         Top             =   255
          Width           =   2865
       End
       Begin MSDataListLib.DataCombo cmbSubArea 
          Height          =   315
          Left            =   3000
          TabIndex        =   25
-         Top             =   300
+         Top             =   255
          Visible         =   0   'False
          Width           =   3525
-         _ExtentX        =   6218
-         _ExtentY        =   556
+         _ExtentX        =   6223
+         _ExtentY        =   529
          _Version        =   393216
          MatchEntry      =   -1  'True
          Style           =   2
          Text            =   "DataCombo1"
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Tahoma"
-            Size            =   8.25
+            Size            =   8.4
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -202,19 +201,19 @@ Begin VB.Form EmpleadoDetalle
          EndProperty
       End
       Begin UltraGrid.SSUltraGrid grdLaboraEn 
-         Height          =   2340
-         Left            =   120
+         Height          =   1656
+         Left            =   108
          TabIndex        =   28
-         Top             =   1050
-         Width           =   6405
-         _ExtentX        =   11298
-         _ExtentY        =   4128
+         Top             =   1020
+         Width           =   6408
+         _ExtentX        =   11303
+         _ExtentY        =   2921
          _Version        =   131072
          GridFlags       =   17040384
          LayoutFlags     =   67108884
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Tahoma"
-            Size            =   8.25
+            Size            =   8.4
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -226,17 +225,17 @@ Begin VB.Form EmpleadoDetalle
    End
    Begin VB.Frame Frame4 
       Caption         =   "Cargos"
-      Height          =   2160
+      Height          =   2388
       Left            =   5370
       TabIndex        =   40
-      Top             =   2160
+      Top             =   2364
       Width           =   6630
       Begin VB.CommandButton btnQuitaCargo 
          DisabledPicture =   "EmpleadoDetalle.frx":249E
          DownPicture     =   "EmpleadoDetalle.frx":2829
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   8.25
+            Size            =   7.8
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -256,7 +255,7 @@ Begin VB.Form EmpleadoDetalle
          DownPicture     =   "EmpleadoDetalle.frx":3336
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   8.25
+            Size            =   7.8
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -274,33 +273,33 @@ Begin VB.Form EmpleadoDetalle
       Begin VB.ComboBox cmbCargos 
          BeginProperty Font 
             Name            =   "Tahoma"
-            Size            =   8.25
+            Size            =   8.4
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Height          =   315
+         Height          =   300
          Left            =   120
          TabIndex        =   20
          Top             =   270
          Width           =   4710
       End
       Begin UltraGrid.SSUltraGrid grdCargos 
-         Height          =   1395
+         Height          =   1620
          Left            =   120
          TabIndex        =   23
          Top             =   660
-         Width           =   6405
-         _ExtentX        =   11298
-         _ExtentY        =   2461
+         Width           =   6408
+         _ExtentX        =   11303
+         _ExtentY        =   2858
          _Version        =   131072
          GridFlags       =   17040384
          LayoutFlags     =   67108884
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Tahoma"
-            Size            =   8.25
+            Size            =   8.4
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -312,7 +311,7 @@ Begin VB.Form EmpleadoDetalle
    End
    Begin VB.Frame Frame3 
       Caption         =   "Roles"
-      Height          =   2115
+      Height          =   2220
       Left            =   5355
       TabIndex        =   39
       Top             =   0
@@ -320,7 +319,7 @@ Begin VB.Form EmpleadoDetalle
       Begin VB.ComboBox cmbIdRol 
          BeginProperty Font 
             Name            =   "Tahoma"
-            Size            =   8.25
+            Size            =   8.4
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -338,7 +337,7 @@ Begin VB.Form EmpleadoDetalle
          DownPicture     =   "EmpleadoDetalle.frx":3F37
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   8.25
+            Size            =   7.8
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -358,7 +357,7 @@ Begin VB.Form EmpleadoDetalle
          DownPicture     =   "EmpleadoDetalle.frx":4ADA
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   8.25
+            Size            =   7.8
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -374,19 +373,19 @@ Begin VB.Form EmpleadoDetalle
          Width           =   825
       End
       Begin UltraGrid.SSUltraGrid grdRoles 
-         Height          =   1335
+         Height          =   1428
          Left            =   120
          TabIndex        =   19
          Top             =   660
-         Width           =   6375
-         _ExtentX        =   11245
-         _ExtentY        =   2355
+         Width           =   6372
+         _ExtentX        =   11240
+         _ExtentY        =   2519
          _Version        =   131072
          GridFlags       =   17040384
          LayoutFlags     =   67108884
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Tahoma"
-            Size            =   8.25
+            Size            =   8.4
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -399,17 +398,17 @@ Begin VB.Form EmpleadoDetalle
    Begin VB.Frame Frame2 
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   0
          Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   1065
+      Height          =   1044
       Left            =   45
       TabIndex        =   37
-      Top             =   7830
+      Top             =   7704
       Width           =   11910
       Begin VB.CommandButton btnAceptar 
          Caption         =   "Aceptar (F2)"
@@ -440,17 +439,17 @@ Begin VB.Form EmpleadoDetalle
    Begin VB.Frame Frame1 
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   0
          Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   5190
+      Height          =   5112
       Left            =   75
       TabIndex        =   31
-      Top             =   30
+      Top             =   60
       Width           =   5220
       Begin VB.ComboBox cmbIdTipoSexo 
          Height          =   330
@@ -473,7 +472,7 @@ Begin VB.Form EmpleadoDetalle
          DownPicture     =   "EmpleadoDetalle.frx":71CD
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   8.25
+            Size            =   7.8
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -493,7 +492,7 @@ Begin VB.Form EmpleadoDetalle
          DownPicture     =   "EmpleadoDetalle.frx":7D70
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   8.25
+            Size            =   7.8
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -537,7 +536,7 @@ Begin VB.Form EmpleadoDetalle
          DownPicture     =   "EmpleadoDetalle.frx":881F
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   8.25
+            Size            =   7.8
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -557,7 +556,7 @@ Begin VB.Form EmpleadoDetalle
          DownPicture     =   "EmpleadoDetalle.frx":932C
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   8.25
+            Size            =   7.8
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -640,7 +639,7 @@ Begin VB.Form EmpleadoDetalle
          Top             =   2040
          Width           =   1560
          _ExtentX        =   2752
-         _ExtentY        =   556
+         _ExtentY        =   550
          _Version        =   393216
          MaxLength       =   10
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -1235,7 +1234,6 @@ Private Sub grdRoles_InitializeLayout(ByVal Context As UltraGrid.Constants_Conte
     grdRoles.Bands(0).Columns("Nombre").Width = 5500
     
 End Sub
-
 
 
 

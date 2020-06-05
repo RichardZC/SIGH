@@ -56,12 +56,12 @@ Dim oCrypKey As New CrypKey.Util
            Set oParameter = .CreateParameter("@FechaAlta", adDBTimeStamp, adParamInput, 0, IIf(oTabla.FechaAlta = 0, Null, oTabla.FechaAlta)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@FechaIngreso", adDBTimeStamp, adParamInput, 0, IIf(oTabla.FechaIngreso = 0, Null, oTabla.FechaIngreso)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@CodigoPlanilla", adVarChar, adParamInput, 8, IIf(oTabla.CodigoPlanilla = "", Null, oTabla.CodigoPlanilla)): .Parameters.Append oParameter
-           Set oParameter = .CreateParameter("@DNI", adChar, adParamInput, 20, IIf(oTabla.dni = "", Null, oTabla.dni)): .Parameters.Append oParameter
+           Set oParameter = .CreateParameter("@DNI", adChar, adParamInput, 20, IIf(oTabla.DNI = "", Null, oTabla.DNI)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@IdTipoEmpleado", adInteger, adParamInput, 0, IIf(oTabla.IdTipoEmpleado = 0, Null, oTabla.IdTipoEmpleado)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@IdCondicionTrabajo", adInteger, adParamInput, 0, IIf(oTabla.IdCondicionTrabajo = 0, Null, oTabla.IdCondicionTrabajo)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@Nombres", adVarChar, adParamInput, 50, IIf(oTabla.Nombres = "", Null, oTabla.Nombres)): .Parameters.Append oParameter
-           Set oParameter = .CreateParameter("@ApellidoMaterno", adVarChar, adParamInput, 50, IIf(oTabla.apellidomaterno = "", Null, oTabla.apellidomaterno)): .Parameters.Append oParameter
-           Set oParameter = .CreateParameter("@ApellidoPaterno", adVarChar, adParamInput, 50, IIf(oTabla.apellidopaterno = "", Null, oTabla.apellidopaterno)): .Parameters.Append oParameter
+           Set oParameter = .CreateParameter("@ApellidoMaterno", adVarChar, adParamInput, 50, IIf(oTabla.ApellidoMaterno = "", Null, oTabla.ApellidoMaterno)): .Parameters.Append oParameter
+           Set oParameter = .CreateParameter("@ApellidoPaterno", adVarChar, adParamInput, 50, IIf(oTabla.ApellidoPaterno = "", Null, oTabla.ApellidoPaterno)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@IdEmpleado", adInteger, adParamOutput, 0): .Parameters.Append oParameter
           
        Set oParameter = .CreateParameter("@IdUsuarioAuditoria", adInteger, adParamInput, 0, oTabla.IdUsuarioAuditoria): .Parameters.Append oParameter
@@ -71,7 +71,7 @@ Dim oCrypKey As New CrypKey.Util
            
            Set oParameter = .CreateParameter("@LoginEstado", adInteger, adParamInput, 0, 0): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@LoginPC", adVarChar, adParamInput, 50, ""): .Parameters.Append oParameter
-           Set oParameter = .CreateParameter("@FechaNacimiento", adDBTimeStamp, adParamInput, 0, IIf(oTabla.fechanacimiento = 0, Null, oTabla.fechanacimiento)): .Parameters.Append oParameter
+           Set oParameter = .CreateParameter("@FechaNacimiento", adDBTimeStamp, adParamInput, 0, IIf(oTabla.FechaNacimiento = 0, Null, oTabla.FechaNacimiento)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@idDestacado", adInteger, adParamInput, 0, IIf(oTabla.idTipoDestacado = 0, Null, oTabla.idTipoDestacado)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@IdEstablecimientoExterno", adInteger, adParamInput, 0, IIf(oTabla.IdEstablecimientoExterno = 0, Null, oTabla.IdEstablecimientoExterno)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@HisCodigoDigitador", adVarChar, adParamInput, 20, IIf(oTabla.HisCodigoDigitador = "", Null, oTabla.HisCodigoDigitador)): .Parameters.Append oParameter
@@ -79,8 +79,10 @@ Dim oCrypKey As New CrypKey.Util
            Set oParameter = .CreateParameter("@idTipoDocumento", adInteger, adParamInput, 0, IIf(oTabla.IdTipoDocumento = 0, Null, oTabla.IdTipoDocumento)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@idSupervisor", adInteger, adParamInput, 0, IIf(oTabla.IdSupervisor = 0, Null, oTabla.IdSupervisor)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@EsActivo", adBoolean, adParamInput, 0, IIf(oTabla.EsActivo = True, 1, 0)): .Parameters.Append oParameter
-           Set oParameter = .CreateParameter("@idTipoSexo", adInteger, adParamInput, 0, oTabla.IdTipoSexo): .Parameters.Append oParameter
-
+           Set oParameter = .CreateParameter("@idTipoSexo", adInteger, adParamInput, 0, oTabla.idTipoSexo): .Parameters.Append oParameter
+           'SCCQ 26/03/2020 Cambio2 Inicio
+           Set oParameter = .CreateParameter("@idPais", adInteger, adParamInput, 0, IIf(oTabla.IdPais = 0, Null, oTabla.IdPais)): .Parameters.Append oParameter
+           'SCCQ 26/03/2020 Cambio2 Fin
        .Execute
            oTabla.IdEmpleado = .Parameters("@IdEmpleado")
    End With
@@ -110,8 +112,8 @@ Sub GrabaHistorico(oTabla As DOEmpleado)
 "           ,DNI,CodigoPlanilla,FechaNacimiento,fecha0)" & _
 "     Values" & _
 "           (" & oTabla.IdEmpleado & _
-"            ,'" & oTabla.apellidopaterno & "','" & oTabla.apellidomaterno & "','" & oTabla.Nombres & _
-"           ','" & oTabla.dni & "','" & oTabla.CodigoPlanilla & "','" & oTabla.fechanacimiento & "','" & Format(Date, "dd/mm/yyyy") & _
+"            ,'" & oTabla.ApellidoPaterno & "','" & oTabla.ApellidoMaterno & "','" & oTabla.Nombres & _
+"           ','" & oTabla.DNI & "','" & oTabla.CodigoPlanilla & "','" & oTabla.FechaNacimiento & "','" & Format(Date, "dd/mm/yyyy") & _
 "           ')"
    oRsMDB.Open lcSql, oConexionMDB, adOpenKeyset, adLockOptimistic
     oConexionMDB.Close
@@ -143,17 +145,17 @@ Dim oCrypKey As New CrypKey.Util
            Set oParameter = .CreateParameter("@FechaAlta", adDBTimeStamp, adParamInput, 0, IIf(oTabla.FechaAlta = 0, Null, oTabla.FechaAlta)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@FechaIngreso", adDBTimeStamp, adParamInput, 0, IIf(oTabla.FechaIngreso = 0, Null, oTabla.FechaIngreso)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@CodigoPlanilla", adVarChar, adParamInput, 8, IIf(oTabla.CodigoPlanilla = "", Null, oTabla.CodigoPlanilla)): .Parameters.Append oParameter
-           Set oParameter = .CreateParameter("@DNI", adChar, adParamInput, 20, IIf(oTabla.dni = "", Null, oTabla.dni)): .Parameters.Append oParameter
+           Set oParameter = .CreateParameter("@DNI", adChar, adParamInput, 20, IIf(oTabla.DNI = "", Null, oTabla.DNI)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@IdTipoEmpleado", adInteger, adParamInput, 0, IIf(oTabla.IdTipoEmpleado = 0, Null, oTabla.IdTipoEmpleado)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@IdCondicionTrabajo", adInteger, adParamInput, 0, IIf(oTabla.IdCondicionTrabajo = 0, Null, oTabla.IdCondicionTrabajo)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@Nombres", adVarChar, adParamInput, 50, IIf(oTabla.Nombres = "", Null, oTabla.Nombres)): .Parameters.Append oParameter
-           Set oParameter = .CreateParameter("@ApellidoMaterno", adVarChar, adParamInput, 50, IIf(oTabla.apellidomaterno = "", Null, oTabla.apellidomaterno)): .Parameters.Append oParameter
-           Set oParameter = .CreateParameter("@ApellidoPaterno", adVarChar, adParamInput, 50, IIf(oTabla.apellidopaterno = "", Null, oTabla.apellidopaterno)): .Parameters.Append oParameter
+           Set oParameter = .CreateParameter("@ApellidoMaterno", adVarChar, adParamInput, 50, IIf(oTabla.ApellidoMaterno = "", Null, oTabla.ApellidoMaterno)): .Parameters.Append oParameter
+           Set oParameter = .CreateParameter("@ApellidoPaterno", adVarChar, adParamInput, 50, IIf(oTabla.ApellidoPaterno = "", Null, oTabla.ApellidoPaterno)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@IdEmpleado", adInteger, adParamInput, 0, IIf(oTabla.IdEmpleado = 0, Null, oTabla.IdEmpleado)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@IdUsuarioAuditoria", adInteger, adParamInput, 0, oTabla.IdUsuarioAuditoria):       .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@LoginEstado", adInteger, adParamInput, 0, oTabla.LoginEstado): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@LoginPC", adVarChar, adParamInput, 50, oTabla.loginPc): .Parameters.Append oParameter
-           Set oParameter = .CreateParameter("@FechaNacimiento", adDBTimeStamp, adParamInput, 0, IIf(oTabla.fechanacimiento = 0, Null, oTabla.fechanacimiento)): .Parameters.Append oParameter
+           Set oParameter = .CreateParameter("@FechaNacimiento", adDBTimeStamp, adParamInput, 0, IIf(oTabla.FechaNacimiento = 0, Null, oTabla.FechaNacimiento)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@idDestacado", adInteger, adParamInput, 0, IIf(oTabla.idTipoDestacado = 0, Null, oTabla.idTipoDestacado)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@IdEstablecimientoExterno", adInteger, adParamInput, 0, IIf(oTabla.IdEstablecimientoExterno = 0, Null, oTabla.IdEstablecimientoExterno)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@HisCodigoDigitador", adVarChar, adParamInput, 20, IIf(oTabla.HisCodigoDigitador = "", Null, oTabla.HisCodigoDigitador)): .Parameters.Append oParameter
@@ -161,8 +163,10 @@ Dim oCrypKey As New CrypKey.Util
            Set oParameter = .CreateParameter("@idTipoDocumento", adInteger, adParamInput, 0, IIf(oTabla.IdTipoDocumento = 0, Null, oTabla.IdTipoDocumento)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@idSupervisor", adInteger, adParamInput, 0, IIf(oTabla.IdSupervisor = 0, Null, oTabla.IdSupervisor)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@EsActivo", adBoolean, adParamInput, 0, IIf(oTabla.EsActivo = True, 1, 0)): .Parameters.Append oParameter
-           Set oParameter = .CreateParameter("@idTipoSexo", adInteger, adParamInput, 0, oTabla.IdTipoSexo): .Parameters.Append oParameter
-    
+           Set oParameter = .CreateParameter("@idTipoSexo", adInteger, adParamInput, 0, oTabla.idTipoSexo): .Parameters.Append oParameter
+           'SCCQ 26/03/2020 Cambio2 Inicio
+           Set oParameter = .CreateParameter("@idPais", adInteger, adParamInput, 0, IIf(oTabla.IdPais = 0, Null, oTabla.IdPais)): .Parameters.Append oParameter
+           'SCCQ 26/03/2020 Cambio2 Fin
        .Execute
    End With
  
@@ -239,12 +243,12 @@ Dim oCrypKey As New CrypKey.Util
        oTabla.FechaAlta = IIf(IsNull(oRecordset!FechaAlta), 0, oRecordset!FechaAlta)
        oTabla.FechaIngreso = IIf(IsNull(oRecordset!FechaIngreso), 0, oRecordset!FechaIngreso)
        oTabla.CodigoPlanilla = IIf(IsNull(oRecordset!CodigoPlanilla), "", oRecordset!CodigoPlanilla)
-       oTabla.dni = IIf(IsNull(oRecordset!dni), "", oRecordset!dni)
+       oTabla.DNI = IIf(IsNull(oRecordset!DNI), "", oRecordset!DNI)
        oTabla.IdTipoEmpleado = IIf(IsNull(oRecordset!IdTipoEmpleado), 0, oRecordset!IdTipoEmpleado)
        oTabla.IdCondicionTrabajo = IIf(IsNull(oRecordset!IdCondicionTrabajo), 0, oRecordset!IdCondicionTrabajo)
        oTabla.Nombres = IIf(IsNull(oRecordset!Nombres), "", oRecordset!Nombres)
-       oTabla.apellidomaterno = IIf(IsNull(oRecordset!apellidomaterno), "", oRecordset!apellidomaterno)
-       oTabla.apellidopaterno = IIf(IsNull(oRecordset!apellidopaterno), "", oRecordset!apellidopaterno)
+       oTabla.ApellidoMaterno = IIf(IsNull(oRecordset!ApellidoMaterno), "", oRecordset!ApellidoMaterno)
+       oTabla.ApellidoPaterno = IIf(IsNull(oRecordset!ApellidoPaterno), "", oRecordset!ApellidoPaterno)
        oTabla.IdEmpleado = IIf(IsNull(oRecordset!IdEmpleado), 0, oRecordset!IdEmpleado)
        
 '***************daniel barrantes**************
@@ -252,7 +256,7 @@ Dim oCrypKey As New CrypKey.Util
 '***************
        oTabla.LoginEstado = IIf(IsNull(oRecordset!LoginEstado), 0, oRecordset!LoginEstado)
        oTabla.loginPc = IIf(IsNull(oRecordset!loginPc), "", oRecordset!loginPc)
-       oTabla.fechanacimiento = IIf(IsNull(oRecordset!fechanacimiento), 0, oRecordset!fechanacimiento)
+       oTabla.FechaNacimiento = IIf(IsNull(oRecordset!FechaNacimiento), 0, oRecordset!FechaNacimiento)
        oTabla.idTipoDestacado = IIf(IsNull(oRecordset!idTipoDestacado), 0, oRecordset!idTipoDestacado)
        oTabla.IdEstablecimientoExterno = IIf(IsNull(oRecordset!IdEstablecimientoExterno), 0, oRecordset!IdEstablecimientoExterno)
        oTabla.HisCodigoDigitador = IIf(IsNull(oRecordset!HisCodigoDigitador), "", oRecordset!HisCodigoDigitador)
@@ -260,7 +264,10 @@ Dim oCrypKey As New CrypKey.Util
        oTabla.IdTipoDocumento = IIf(IsNull(oRecordset!IdTipoDocumento), 0, oRecordset!IdTipoDocumento)
        oTabla.IdSupervisor = IIf(IsNull(oRecordset!IdSupervisor), 0, oRecordset!IdSupervisor)
        oTabla.EsActivo = IIf(IsNull(oRecordset!EsActivo), 0, oRecordset!EsActivo)
-       oTabla.IdTipoSexo = IIf(IsNull(oRecordset!IdTipoSexo), 0, oRecordset!IdTipoSexo)
+       oTabla.idTipoSexo = IIf(IsNull(oRecordset!idTipoSexo), 0, oRecordset!idTipoSexo)
+       'SCCQ 25/03/2020 Cambio2 Inicio
+       oTabla.IdPais = IIf(IsNull(oRecordset!IdPais), 0, oRecordset!IdPais)
+       'SCCQ 25/03/2020 Cambio2 Fin
    Else
        SeleccionarPorId = False
    End If
@@ -309,11 +316,11 @@ Dim oParameter As ADODB.Parameter
 Dim sSql As String, sOrder As String, sWhere As String
     sSql = ""
     sWhere = ""
-    If oDOEmpleado.apellidopaterno <> "" Then
-         sWhere = sWhere + " Empleados.ApellidoPaterno like '" + oDOEmpleado.apellidopaterno + "%' and "
+    If oDOEmpleado.ApellidoPaterno <> "" Then
+         sWhere = sWhere + " Empleados.ApellidoPaterno like '" + oDOEmpleado.ApellidoPaterno + "%' and "
     End If
-    If oDOEmpleado.apellidomaterno <> "" Then
-         sWhere = sWhere + " Empleados.ApellidoMaterno like '" + oDOEmpleado.apellidomaterno + "%' and "
+    If oDOEmpleado.ApellidoMaterno <> "" Then
+         sWhere = sWhere + " Empleados.ApellidoMaterno like '" + oDOEmpleado.ApellidoMaterno + "%' and "
     End If
     If oDOEmpleado.Nombres <> "" Then
          sWhere = sWhere + " Empleados.Nombres like '%" + oDOEmpleado.Nombres + "%' and "

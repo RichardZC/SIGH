@@ -113,8 +113,8 @@ Begin VB.UserControl ucFarmVentasLista
          TabIndex        =   2
          Top             =   450
          Width           =   1095
-         _ExtentX        =   1931
-         _ExtentY        =   450
+         _ExtentX        =   1926
+         _ExtentY        =   445
          _Version        =   262144
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Tahoma"
@@ -133,8 +133,8 @@ Begin VB.UserControl ucFarmVentasLista
          TabIndex        =   3
          Top             =   720
          Width           =   1575
-         _ExtentX        =   2778
-         _ExtentY        =   503
+         _ExtentX        =   2773
+         _ExtentY        =   508
          _Version        =   262144
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Tahoma"
@@ -154,8 +154,8 @@ Begin VB.UserControl ucFarmVentasLista
          TabIndex        =   14
          Top             =   585
          Width           =   2715
-         _ExtentX        =   4789
-         _ExtentY        =   556
+         _ExtentX        =   4784
+         _ExtentY        =   529
          _Version        =   393216
          MatchEntry      =   -1  'True
          Style           =   2
@@ -163,7 +163,7 @@ Begin VB.UserControl ucFarmVentasLista
          Text            =   "DataCombo1"
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Tahoma"
-            Size            =   8.25
+            Size            =   8.4
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -177,8 +177,8 @@ Begin VB.UserControl ucFarmVentasLista
          TabIndex        =   15
          Top             =   480
          Width           =   2925
-         _ExtentX        =   5159
-         _ExtentY        =   582
+         _ExtentX        =   5144
+         _ExtentY        =   550
          _Version        =   393216
          MatchEntry      =   -1  'True
          Style           =   2
@@ -199,13 +199,13 @@ Begin VB.UserControl ucFarmVentasLista
          TabIndex        =   16
          Top             =   480
          Width           =   1815
-         _ExtentX        =   3201
-         _ExtentY        =   556
+         _ExtentX        =   3196
+         _ExtentY        =   550
          _Version        =   393216
          MaxLength       =   16
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Tahoma"
-            Size            =   8.25
+            Size            =   8.4
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -221,13 +221,13 @@ Begin VB.UserControl ucFarmVentasLista
          TabIndex        =   17
          Top             =   480
          Width           =   1830
-         _ExtentX        =   3228
-         _ExtentY        =   556
+         _ExtentX        =   3239
+         _ExtentY        =   550
          _Version        =   393216
          MaxLength       =   16
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Tahoma"
-            Size            =   8.25
+            Size            =   8.4
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -332,14 +332,14 @@ Begin VB.UserControl ucFarmVentasLista
       TabIndex        =   6
       Top             =   1860
       Width           =   12705
-      _ExtentX        =   22410
+      _ExtentX        =   22416
       _ExtentY        =   8043
       _Version        =   131072
       GridFlags       =   17040384
       LayoutFlags     =   67108884
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "Tahoma"
-         Size            =   8.25
+         Size            =   8.4
          Charset         =   0
          Weight          =   400
          Underline       =   0   'False
@@ -382,14 +382,14 @@ Attribute VB_Exposed = False
 '
 '------------------------------------------------------------------------------------
 Option Explicit
-Dim mo_Apariencia As New sighentidades.GridInfragistic
+Dim mo_Apariencia As New sighEntidades.GridInfragistic
 Dim mo_ReglasFarmacia As New SIGHNegocios.ReglasFarmacia
-Dim mo_reglasComunes As New SIGHNegocios.ReglasComunes
+Dim mo_ReglasComunes As New SIGHNegocios.ReglasComunes
 Dim mo_ReglasCaja As New SIGHNegocios.ReglasCaja
 Dim ml_idRegistroSeleccionado As Long
 Dim ml_TipoBusqueda As sghTipoBusquedaPrestamoHistoria
 
-Dim mo_Teclado As New sighentidades.Teclado
+Dim mo_Teclado As New sighEntidades.Teclado
 Dim oRsAlmacenes As New ADODB.Recordset
 Dim oRsTipoFinanciamiento As New ADODB.Recordset
 Dim oRsBusqueda As New ADODB.Recordset
@@ -474,15 +474,15 @@ Public Sub RealizarBusqueda()
         If optPreventa.Value = False Then
             lcFilter = ""
             Set oRsBusqueda = mo_ReglasFarmacia.FarmDevuelveCabeceraDeVentasOpreventa("D", Val(cmbAlmacenV.BoundText), _
-                                    "S", CDate(Format(txtFinicio.Text & ":00", sighentidades.DevuelveFechaSoloFormato_DMY_HMS)), _
-                                    CDate(Format(txtFfinal.Text & ":59", sighentidades.DevuelveFechaSoloFormato_DMY_HMS)))
+                                    "S", CDate(Format(txtFinicio.Text & ":00", sighEntidades.DevuelveFechaSoloFormato_DMY_HMS)), _
+                                    CDate(Format(txtFfinal.Text & ":59", sighEntidades.DevuelveFechaSoloFormato_DMY_HMS)))
 '            If txtNDocumento.Text <> "" And txtNDocumento.Text <> lcSerie Then
 '               lcFilter = "dalmacen='" & Trim(txtNDocumento.Text) & "'"
 '            End If
             If mo_Teclado.TextoEsSoloNumeros(txtNcuenta.Text) Then
                lcFilter = "idCuentaAtencion=" & Val(txtNcuenta.Text)
-            ElseIf txtNDocumento.Text <> "" And txtNDocumento.Text <> lcSerie Then
-               lcFilter = "dalmacen='" & txtNDocumento.Text & "'"
+            ElseIf txtNdocumento.Text <> "" And txtNdocumento.Text <> lcSerie Then
+               lcFilter = "dalmacen='" & txtNdocumento.Text & "'"
             End If
             If chkSoloBoletas.Value = 1 Then
                If lcFilter = "" Then
@@ -522,8 +522,8 @@ Public Sub RealizarBusqueda()
             ldFechaIni = CDate(txtFinicio.Text)
             ldFechaFin = CDate(txtFfinal.Text)
             Set oRsBusqueda = mo_ReglasFarmacia.FarmDevuelveCabeceraDeVentasOpreventa("P", lnIdAlmacen, "S", ldFechaIni, ldFechaFin)
-            If mo_Teclado.TextoEsSoloNumeros(txtNDocumento.Text) Then
-               oRsBusqueda.Filter = "movNumero=" & Val(txtNDocumento.Text)
+            If mo_Teclado.TextoEsSoloNumeros(txtNdocumento.Text) Then
+               oRsBusqueda.Filter = "movNumero=" & Val(txtNdocumento.Text)
             End If
         End If
         If oRsBusqueda.RecordCount > 0 Then
@@ -540,7 +540,7 @@ Public Sub RealizarBusqueda()
        ' mo_Apariencia.ConfigurarFilasBiColores grdLista, sighentidades.GrillaConFilasBicolor
         lcSubTitulo = "Almac: " & Trim(cmbAlmacenV.Text) & "  (Fechas: " & txtFinicio.Text & " al " & txtFfinal.Text & _
                       ") (Tipo:" & IIf(optPreventa.Value = True, optPreventa.Caption, optVenta.Caption) & ") " & _
-                      IIf(txtNDocumento.Text = lcSerie, "", "(" & Label1.Caption & ": " & txtNDocumento.Text & ")") & _
+                      IIf(txtNdocumento.Text = lcSerie, "", "(" & Label1.Caption & ": " & txtNdocumento.Text & ")") & _
                       IIf(txtNcuenta.Text = "", "", "(" & lblNcuenta.Caption & ": " & txtNcuenta.Text & ")") & _
                       IIf(cmbFuenteFinanciamiento.Text = "", "", "(" & lblTfinanc.Caption & ": " & cmbFuenteFinanciamiento.Text & ")") & _
                       IIf(chkSoloBoletas.Value = 0, "", "(" & chkSoloBoletas.Caption & ")")
@@ -551,17 +551,17 @@ Private Sub btnLimpiar_Click()
     LimpiarFiltro
 End Sub
 Public Sub LimpiarFiltro()
-        txtFinicio.Text = Format(Date, sighentidades.DevuelveFechaSoloFormato_DMY) & " 00:00"
-        txtFfinal.Text = Format(Date, sighentidades.DevuelveFechaSoloFormato_DMY) & " 23:59"
+        txtFinicio.Text = Format(Date, sighEntidades.DevuelveFechaSoloFormato_DMY) & " 00:00"
+        txtFfinal.Text = Format(Date, sighEntidades.DevuelveFechaSoloFormato_DMY) & " 23:59"
         If optPreventa.Value = False Then
-           UserControl.txtNDocumento.Text = lcSerie
+           UserControl.txtNdocumento.Text = lcSerie
            txtNcuenta.Text = ""
            cmbFuenteFinanciamiento.Visible = True
            lblTfinanc.Visible = True
            chkSoloBoletas.Visible = True
            
         Else
-           UserControl.txtNDocumento.Text = ""
+           UserControl.txtNdocumento.Text = ""
            txtNcuenta.Text = ""
            cmbFuenteFinanciamiento.Visible = False
            lblTfinanc.Visible = False
@@ -675,7 +675,7 @@ End Sub
 Private Sub optPreventa_Click(Value As Integer)
    If optPreventa.Value = True Then
       ml_IdTipoVentaSeleccionada = 1
-      txtNDocumento.Text = ""
+      txtNdocumento.Text = ""
       lblNcuenta.Visible = False
       txtNcuenta.Visible = False
       cmbFuenteFinanciamiento.Visible = False
@@ -687,7 +687,7 @@ End Sub
 Private Sub optVenta_Click(Value As Integer)
     If optVenta.Value = True Then
        ml_IdTipoVentaSeleccionada = 0
-       txtNDocumento.Text = lcSerie
+       txtNdocumento.Text = lcSerie
        lblNcuenta.Visible = True
        txtNcuenta.Visible = True
        cmbFuenteFinanciamiento.Visible = True
@@ -711,7 +711,7 @@ Private Sub txtFfinal_LostFocus()
     If Not IsDate(txtFfinal.Text) Then
         MsgBox "La fecha ingresada no es válida", vbInformation, ""
         On Error Resume Next
-        txtFfinal.Text = sighentidades.FECHA_VACIA_DMY
+        txtFfinal.Text = sighEntidades.FECHA_VACIA_DMY
         Exit Sub
     End If
 End Sub
@@ -730,7 +730,7 @@ Private Sub txtFinicio_LostFocus()
     If Not IsDate(txtFinicio.Text) Then
         MsgBox "La fecha ingresada no es válida", vbInformation, ""
         On Error Resume Next
-        txtFinicio.Text = sighentidades.FECHA_VACIA_DMY
+        txtFinicio.Text = sighEntidades.FECHA_VACIA_DMY
         Exit Sub
     End If
 
@@ -752,7 +752,7 @@ Private Sub txtNDocumento_KeyDown(KeyCode As Integer, Shift As Integer)
 End Sub
 
 Private Sub txtNDocumento_KeyPress(KeyAscii As Integer)
-    If KeyAscii = 13 And txtNDocumento.Text <> "" Then
+    If KeyAscii = 13 And txtNdocumento.Text <> "" Then
        btnBuscar_Click
     End If
 End Sub
@@ -781,15 +781,22 @@ Sub CargaComboBox()
         Set oBuscaDondeLabora = Nothing
         Set oRsAlmacenes = mo_ReglasFarmacia.FarmAlmacenSeleccionarSegunFiltro("idTipoLocales='F' and idEstado=1")
         Set cmbAlmacenV.RowSource = Nothing
-        Set cmbAlmacenV.RowSource = mo_ReglasFarmacia.FarmAlmacenSeleccionarSegunFiltro("idTipoLocales='F' and idEstado=1") 'oRsAlmacenes
+        'SCCQ 02/06/2020 Cambio23  Inicio
+        If rsIdAlmacen.RecordCount > 0 Then 'Solo filtra farmacias asignadas
+         Set cmbAlmacenV.RowSource = mo_ReglasFarmacia.FarmAlmacenSeleccionarSegunFiltro("idTipoLocales='F' and idEstado=1 and idAlmacen in (select idLaboraSubArea from EmpleadosLugarDeTrabajo where idLaboraArea=" + CStr(sghAlmacenFarmacia) + " and idEmpleado=" + CStr(ml_idUsuario) + ")")
+        Else 'Muestra todas las farmacias como lo hacía antes
+            Set cmbAlmacenV.RowSource = mo_ReglasFarmacia.FarmAlmacenSeleccionarSegunFiltro("idTipoLocales='F' and idEstado=1") 'oRsAlmacenes
+        End If
+        'SCCQ 02/06/2020 Cambio23  Fin
         cmbAlmacenV.ListField = "descripcion"
         cmbAlmacenV.BoundColumn = "idAlmacen"
-        If rsIdAlmacen.RecordCount > 0 Then
+        'SCCQ 02/06/2020 Cambio23  Inicio
+        If rsIdAlmacen.RecordCount = 1 Then
            cmbAlmacenV.BoundText = rsIdAlmacen.Fields!idLaboraSubArea
-           cmbAlmacenV.Enabled = False
+           'cmbAlmacenV.Enabled = False
         End If
-        '
-        Set oRsFuentesFinanciamiento = mo_reglasComunes.FuentesFinanciamientoSeleccionarTodos
+        'SCCQ 02/06/2020 Cambio23  Fin
+        Set oRsFuentesFinanciamiento = mo_ReglasComunes.FuentesFinanciamientoSeleccionarTodos
         Set cmbFuenteFinanciamiento.RowSource = oRsFuentesFinanciamiento
         cmbFuenteFinanciamiento.ListField = "Descripcion"
         cmbFuenteFinanciamiento.BoundColumn = "idFuenteFinanciamiento"
@@ -801,14 +808,14 @@ Sub CargaComboBox()
         End If
         oRsTmp.Close
         Set oRsTmp = Nothing
-        txtNDocumento.Text = lcSerie
+        txtNdocumento.Text = lcSerie
         lbBotonBuscar = False
 ErrFarm:
 End Sub
 
 Sub SkinConfigura()
   On Error GoTo ErrSkin
-  If sighentidades.Parametro282valorInt = "1" Then
+  If sighEntidades.Parametro282valorInt = "1" Then
         btnBuscar.Picture = LoadPicture(App.Path & "\Binoculr.ico")
         btnBuscar.Caption = ""
         btnLimpiar.Picture = LoadPicture(App.Path & "\Refresh.ico")
@@ -817,16 +824,16 @@ Sub SkinConfigura()
         lblNombre.Alignment = 2
         lblNombre.BackColor = vbBlue
   Else
-        mo_Apariencia.ConfigurarFilasBiColores grdLista, sighentidades.GrillaConFilasBicolor
+        mo_Apariencia.ConfigurarFilasBiColores grdLista, sighEntidades.GrillaConFilasBicolor
   End If
 ErrSkin:
 End Sub
 
-Sub inicializar()
+Sub Inicializar()
     SkinConfigura
     CargaComboBox
-    txtFinicio.Text = Format(Date, sighentidades.DevuelveFechaSoloFormato_DMY) & " 00:00"
-    txtFfinal.Text = Format(Date, sighentidades.DevuelveFechaSoloFormato_DMY) & " 23:59"
+    txtFinicio.Text = Format(Date, sighEntidades.DevuelveFechaSoloFormato_DMY) & " 00:00"
+    txtFfinal.Text = Format(Date, sighEntidades.DevuelveFechaSoloFormato_DMY) & " 23:59"
     ml_IdTipoVentaSeleccionada = 0
     
     optVenta.Value = True

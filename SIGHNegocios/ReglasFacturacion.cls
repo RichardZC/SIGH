@@ -2049,8 +2049,8 @@ Dim oDoTabla As New DOAtencion
     oConexion.CommandTimeout = 300
     oConexion.Open sighentidades.CadenaConexion
     Set oTabla.Conexion = oConexion
+    'Carga al objeto oDoTabla valores de la tabla Atenciones
     Set oDoTabla = oTabla.SeleccionarUltimaAtencion(idPaciente, idCuentaAtencion)
-    
     Set SeleccionarUltimaAtencion = oDoTabla
     
     oConexion.Close
@@ -6150,12 +6150,13 @@ End Function
 Function RetornaTotalPagosPendientesPorNroCuentaDEBB(lnNroCuenta As Long, oConexion As Connection) As Double
    Dim lnPagosAdelantados As Double, lnConsumoServicio As Double, lnConsumoFarmacia As Double
    Dim lnPagosXdevoluciones As Double
-   'Consumo Servicios-Particular
+   'Consumo Servicios-Particular -> Retorna el total de servicios consumidos
    lnConsumoServicio = RetornaTotalPagosServiciosPendientesPorNroCuentaDEBB(lnNroCuenta, oConexion)
-   'Consumo Farmacia-Particular
+   'Consumo Farmacia-Particular -> Retorna el total de productos de farmacia consumidos
    lnConsumoFarmacia = RetornaTotalPagosFarmaciaPendientesPorNroCuentaDEBB(lnNroCuenta, oConexion)
    'Pagos a cuenta
    If lnConsumoServicio > 0 Or lnConsumoFarmacia > 0 Then
+   'Retorna el monto total de todos los pagos a cuenta (adelantos)
       lnPagosAdelantados = RetornaImporteDePagosAdelantadosPorNroCuenta(lnNroCuenta, oConexion)
       If lnPagosAdelantados > 0 Then
           lnPagosAdelantados = lnPagosAdelantados - RetornaImporteDctosEnBoletasPorCuenta(lnNroCuenta, oConexion)
@@ -6178,13 +6179,14 @@ Function RetornaTotalPagosServiciosPendientesPorNroCuentaDEBB(lnNroCuenta As Lon
         oConexion.CommandTimeout = 300
         oConexion.CursorLocation = adUseClient
         oConexion.Open sighentidades.CadenaConexion
-        Set oRsTmp = FacturacionServicioPagosPorCuenta(lnNroCuenta, oConexion)
+        Set oRsTmp = FacturacionServicioPagosPorCuenta(lnNroCuenta, oConexion) 'Carga al oRsTmp todos los servicios pendiente por pagar
     Else
         Set oRsTmp = FacturacionServicioPagosPorCuenta(lnNroCuenta, oConexion1)
     End If
     
     lnTotal = 0
-    oRsTmp.Filter = "EstadoFacOrdenServicio<>9"
+    oRsTmp.Filter = "EstadoFacOrdenServicio<>9" 'Filtra a todos los que sean diferente de estado 9: anulado
+    
     If oRsTmp.RecordCount > 0 Then
        oRsTmp.MoveFirst
        Do While Not oRsTmp.EOF
@@ -6301,6 +6303,7 @@ Function RetornaImporteDePagosAdelantadosPorNroCuenta(lnNroCuenta As Long, oCone
    Dim lnPagosAdelantados  As Double
    Dim oRsTmp1 As New Recordset
    Dim mo_AdminCaja As New SIGHNegocios.ReglasCaja
+   'Carga al oRsTmp1 el registro de pago a cuenta (adelanto)
    Set oRsTmp1 = mo_AdminCaja.CajaComprobantesPagoSeleccionarPagosACuentaPorIdCuenta(lnNroCuenta, Val(lcBuscaParametro.SeleccionaFilaParametro(245)), oConexion)
    lnPagosAdelantados = 0
    If oRsTmp1.RecordCount > 0 Then
@@ -8014,6 +8017,7 @@ Function RetornaImporteDePagosXdevolucionesPorNroCuenta(lnNroCuenta As Long, oCo
    Dim lnPagosXdevoluciones  As Double
    Dim oRsTmp1 As New Recordset
    Dim mo_AdminCaja As New SIGHNegocios.ReglasCaja
+   'Selecciona registro de devoluciones a la cuenta por ser parametro 265
    Set oRsTmp1 = mo_AdminCaja.CajaComprobantesPagoSeleccionarPagosACuentaPorIdCuenta(lnNroCuenta, Val(lcBuscaParametro.SeleccionaFilaParametro(265)), oConexion)
    lnPagosXdevoluciones = 0
    If oRsTmp1.RecordCount > 0 Then
@@ -12435,7 +12439,7 @@ Function RetornaImporteDctosEnBoletasPorCuenta(lnNroCuenta As Long, oConexion As
    Dim mo_AdminCaja As New SIGHNegocios.ReglasCaja
    lnDctosEnBoletas = 0
    Set oRsTmp1 = mo_AdminCaja.CajaComprobantesPagoXcuenta(lnNroCuenta, oConexion)
-   oRsTmp1.Filter = "idEstadoComprobante=4"
+   oRsTmp1.Filter = "idEstadoComprobante=4" 'Filtra solo los comprobantes en estado pagado
    If oRsTmp1.RecordCount > 0 Then
          oRsTmp1.MoveFirst
          Do While Not oRsTmp1.EOF

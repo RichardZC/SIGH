@@ -1025,20 +1025,22 @@ End Sub
 
 Private Sub btnAceptar_Click()
     On Error GoTo ErrCerrar
-    
+   'SCCQ: El programa se ejecUta según el valor de la variable MUESTRAGRID del archivo SETUP.INI
+   'SCCQ: wxMuestraGrid contiene el valor de la variable MUESTRAGRID del archivo SETUP.INI
    If wxMuestraGrid = "STOCKMINIMO" Then
       ListaItemsPorDebajoStockMinimo
-      Exit Sub
+      Exit Sub 'Si el valor de wxMuestraGrid = "STOCKMINIMO", lista los items por debajo del stock mínimo y sale de la ejecución de btnAceptar_Click
    End If
    If wxMuestraGrid = "SINTRIAJE" Then
        MuestraPacientesSinTriajaPliberarCupo
        Exit Sub
     End If
-    
+    'SCCQ: Si wxMuestraGrid no tiene los valores de STOCKMINIMO o SINTRIAJE, se sigue ejecutando el código siguiente:
     Dim ldFechaActual As Date
     Dim ldHoraActual As String
     ldFechaActual = Date
     ldHoraActual = Format$(Now, "h:mm")
+    
     If wxMuestraGrid = "CuposLibres" Then
         'Configura ventana al tamaño maximo
         lblTextoCabecera.Width = Screen.Width - 300
@@ -1206,7 +1208,7 @@ Private Sub btnAceptar_Click()
         
         'Exit Sub
     End If
-    
+    'SCCQ: Se sigue ejecutando el código siguiente ya que en el anterior IF no hay EXIT SUB
     
     Dim LnGrid As Integer
     Dim lbContinua As Boolean: Dim lbMuestraEnGrid As Boolean
@@ -1252,7 +1254,8 @@ Private Sub btnAceptar_Click()
     End With
     '
 
-
+'SCCQ: Se ejecuta el procedimiento almacenado AtencionesParaMDW para los demás valores que pueda tomar wxMuestraGrid
+'SCCQ: Los datos de lo ejecutado se almacenan en oRsTmp
      With oCommand
          .CommandType = adCmdStoredProc
          Set .ActiveConnection = oConexion
@@ -1265,64 +1268,66 @@ Private Sub btnAceptar_Click()
     '
 'oRsTmp.Filter = "idCuentaAtencion = 214732"
     
-    If oRsTmp.RecordCount > 0 Then
+    If oRsTmp.RecordCount > 0 Then 'SCCQ: Si la ejecución del procedimiento almacenado AtencionesParaMDW arrojó valores
         If Val(lcBuscaParametro.SeleccionaFilaParametro(208)) = 6918 Then
            lbEsHospitalTarapoto = True
            
         End If
         oRsTmp.MoveFirst
         Do While Not oRsTmp.EOF
-            lbContinua = False: lbMuestraEnGrid = False
+            lbContinua = False: lbMuestraEnGrid = False 'SCCQ: lbContinua y lbMuestraEnGrid serán usadas para validaciones
             ml_idCuentaAtencion = oRsTmp.Fields!idCuentaAtencion
-If ml_idCuentaAtencion = 214771 Then
-lnHorasEstancia1 = 0
-End If
+            If ml_idCuentaAtencion = 214771 Then
+            lnHorasEstancia1 = 0
+            End If
             lnHorasEstancia1 = 0
             If SIGHEntidades.EsHora(oRsTmp.Fields!HoraIngreso) And IsNull(oRsTmp!FechaEgreso) Then
             lnHorasEstancia1 = DateDiff("h", _
-                               CDate(Format(oRsTmp.Fields!fechaCreacion, SIGHEntidades.DevuelveFechaSoloFormato_DMY) & " " & oRsTmp.Fields!HoraIngreso), _
+                               CDate(Format(oRsTmp.Fields!FechaCreacion, SIGHEntidades.DevuelveFechaSoloFormato_DMY) & " " & oRsTmp.Fields!HoraIngreso), _
                                Now)
             End If
             If oRsTmp.Fields!EsPacienteExterno = True Then
                 '*****toma el mismo valor para Cerrar la cuenta que "CONSULTORIOS EXTERNOS"
                 If oRsTmp.Fields!idEstado = 1 Then
-                  ldFecha1 = IIf(IsNull(oRsTmp.Fields!fechaCreacion), oRsTmp.Fields!FechaIngreso, oRsTmp!fechaCreacion)
+                  ldFecha1 = IIf(IsNull(oRsTmp.Fields!FechaCreacion), oRsTmp.Fields!FechaIngreso, oRsTmp!FechaCreacion)
                   ldFecha2 = Now
                   If DateDiff("h", ldFecha1, ldFecha2) >= Val(lcHorasCE) Then
                      lbContinua = True
                   End If
                   lbMuestraEnGrid = True
-                  ldFHCierre = DateAdd("h", Val(lcHorasCE), IIf(IsNull(oRsTmp.Fields!fechaCreacion), oRsTmp.Fields!FechaIngreso, oRsTmp!fechaCreacion))
+                  ldFHCierre = DateAdd("h", Val(lcHorasCE), IIf(IsNull(oRsTmp.Fields!FechaCreacion), oRsTmp.Fields!FechaIngreso, oRsTmp!FechaCreacion))
                 End If
             Else
                 Select Case oRsTmp.Fields!IdTipoServicio
-                Case sghTipoServicio.sghConsultaExterna
-                      If oRsTmp.Fields!idEstado = sghEstadoCuenta.sghAbierto Then
-                        ldFecha1 = IIf(IsNull(oRsTmp.Fields!fechaCreacion), oRsTmp.Fields!FechaIngreso, oRsTmp!fechaCreacion)
+                Case sghTipoServicio.sghConsultaExterna 'Valor 1
+                      If oRsTmp.Fields!idEstado = sghEstadoCuenta.sghAbierto Then 'sghEstadoCuenta.sghAbierto =1, hace referencia a la clase Enumerados del proyecto SIGHEntidades
+                        ldFecha1 = IIf(IsNull(oRsTmp.Fields!FechaCreacion), oRsTmp.Fields!FechaIngreso, oRsTmp!FechaCreacion)
                         ldFecha2 = Now
-                        If DateDiff("h", ldFecha1, ldFecha2) >= Val(lcHorasCE) Then
-                          lbContinua = True
+                        'SCCQ: Calcula las horas transcurridas desde ldFecha1 hasta ldFecha2
+                        'SCCQ: Si ldFecha1 es posterior a ldFecha2, DateDiff calculará valor negativo
+                        If DateDiff("h", ldFecha1, ldFecha2) >= Val(lcHorasCE) Then 'SCCQ: lcHorasCE toma valor del del idParametro 209 de la tabla Parametro de la BD SIGH
+                          lbContinua = True 'SCCQ: Si lbContinua = True se cerrará la cuenta más adelante si wxMuestraGrid="CERRAR"
                         End If
-                        lbMuestraEnGrid = True
-                        ldFHCierre = DateAdd("h", Val(lcHorasCE), IIf(IsNull(oRsTmp.Fields!fechaCreacion), oRsTmp.Fields!FechaIngreso, oRsTmp!fechaCreacion))
+                        lbMuestraEnGrid = True 'SCCQ: Si lbMuestraEnGrid= True se mostrá datos en el Grid, dependiendo del valor de wxMuestraGrid
+                        ldFHCierre = DateAdd("h", Val(lcHorasCE), IIf(IsNull(oRsTmp.Fields!FechaCreacion), oRsTmp.Fields!FechaIngreso, oRsTmp!FechaCreacion))
                       End If
-                Case sghTipoServicio.sghHospitalizacion
+                Case sghTipoServicio.sghHospitalizacion 'SCCQ: IdTipoServicio es HOSPITALIZACIÓN
                       If oRsTmp.Fields!idEstado = sghEstadoCuenta.sghNoLlegaAlServicioHospitalizado Then
-                        ldFecha1 = IIf(IsNull(oRsTmp.Fields!fechaCreacion), oRsTmp.Fields!FechaIngreso, oRsTmp!fechaCreacion)
+                        ldFecha1 = IIf(IsNull(oRsTmp.Fields!FechaCreacion), oRsTmp.Fields!FechaIngreso, oRsTmp!FechaCreacion)
                         ldFecha2 = Now
                         If DateDiff("h", ldFecha1, ldFecha2) >= Val(lcHorasHosp) Then
                            lbContinua = True
                         End If
                         lbMuestraEnGrid = True
-                        ldFHCierre = DateAdd("h", Val(lcHorasHosp), IIf(IsNull(oRsTmp.Fields!fechaCreacion), oRsTmp.Fields!FechaIngreso, oRsTmp!fechaCreacion))
+                        ldFHCierre = DateAdd("h", Val(lcHorasHosp), IIf(IsNull(oRsTmp.Fields!FechaCreacion), oRsTmp.Fields!FechaIngreso, oRsTmp!FechaCreacion))
                       End If
                       If lbEsHospitalTarapoto = True And oRsTmp.Fields!idEstado = sghEstadoCuenta.sghConAltaMedica Then
                          lbContinua = True
                          lbMuestraEnGrid = True
                       End If
-                Case Else      'emergencia
+                Case Else      'SCCQ: IdTipoServicio es EMERGENCIA
                       If oRsTmp.Fields!idEstado = sghEstadoCuenta.sghAbierto Or oRsTmp.Fields!idEstado = sghEstadoCuenta.sghNoLlegaAlServicioHospitalizado Then
-                        ldFecha1 = IIf(IsNull(oRsTmp.Fields!fechaCreacion), oRsTmp.Fields!FechaIngreso, oRsTmp!fechaCreacion)
+                        ldFecha1 = IIf(IsNull(oRsTmp.Fields!FechaCreacion), oRsTmp.Fields!FechaIngreso, oRsTmp!FechaCreacion)
                         ldFecha2 = Now
                         If oRsTmp.Fields!HoraIngreso > "06:00" And oRsTmp.Fields!HoraIngreso <= "21:59" Then
                             If DateDiff("h", ldFecha1, ldFecha2) >= Val(lcHOrasEmergDiurno) Then
@@ -1334,13 +1339,14 @@ End If
                             End If
                         End If
                         lbMuestraEnGrid = True
-                        ldFHCierre = DateAdd("h", Val(lcHOrasEmergDiurno), IIf(IsNull(oRsTmp.Fields!fechaCreacion), oRsTmp.Fields!FechaIngreso, oRsTmp!fechaCreacion))
+                        ldFHCierre = DateAdd("h", Val(lcHOrasEmergDiurno), IIf(IsNull(oRsTmp.Fields!FechaCreacion), oRsTmp.Fields!FechaIngreso, oRsTmp!FechaCreacion))
                       End If
                       If lbEsHospitalTarapoto = True And oRsTmp.Fields!idEstado = sghEstadoCuenta.sghConAltaMedica Then
                          lbContinua = True
                          lbMuestraEnGrid = True
                       End If
                 End Select
+                'SCCQ: INICIO wxMuestraGrid = "MAXIMOMONTO"
                 If wxMuestraGrid = "MAXIMOMONTO" Then
                    lbMuestraEnGrid = False
                    If oRsTmp!idEstado = sghEstadoCuenta.sghAbierto And oRsTmp!IdTipoServicio <> sghTipoServicio.sghConsultaExterna Then
@@ -1382,11 +1388,11 @@ End If
                    End If
                    lbMuestraEnGrid = False
                 End If
-                
+                'SCCQ: FIN wxMuestraGrid = "MAXIMOMONTO"
             End If
             If lbMuestraEnGrid = True Then
                 
-            
+                'SCCQ: oRsTmp1 contendrá la información de lo que se mostrá en el GRID del formulario
                 Select Case wxMuestraGrid
                 Case "HOSPITALIZACION"
                     grdHospitalizados.Caption = "Sólo Hospitalización"
@@ -2261,14 +2267,14 @@ Sub FarmaciaRegeneraSaldos()
                            oConexion.Open SIGHEntidades.CadenaConexion
                            Set oFarmAlmacen.Conexion = oConexion
                         End If
-                        oDOfarmAlmacen.IdAlmacen = oRsAlmacenes.Fields!IdAlmacen
+                        oDOfarmAlmacen.idAlmacen = oRsAlmacenes.Fields!idAlmacen
                         If oFarmAlmacen.SeleccionarPorId(oDOfarmAlmacen) = True Then
                             oDOfarmAlmacen.regenerarEstado = ActualizaEstado("P", lnDiaSemana)   '..Procesando...
                             If oFarmAlmacen.Modificar(oDOfarmAlmacen) = True Then
                                 'Regenera
                                 oRegenerarSaldo.idUsuario = 0
                                 oRegenerarSaldo.lcNombrePc = ""
-                                oRegenerarSaldo.IdAlmacenAregenerar = oRsAlmacenes.Fields!IdAlmacen
+                                oRegenerarSaldo.IdAlmacenAregenerar = oRsAlmacenes.Fields!idAlmacen
                                 oRegenerarSaldo.RegeneraDesdeUltimoMes = True
                                 oRegenerarSaldo.FormularioUsadoDesdeOtroFrm = True
                                 oRegenerarSaldo.Show 1
@@ -2306,7 +2312,7 @@ Sub FarmaciaRegeneraSaldos()
                                   oConexion.Open SIGHEntidades.CadenaConexion
                                   Set oFarmAlmacen.Conexion = oConexion
                                End If
-                               oDOfarmAlmacen.IdAlmacen = oRsAlmacenes.Fields!IdAlmacen
+                               oDOfarmAlmacen.idAlmacen = oRsAlmacenes.Fields!idAlmacen
                                If oFarmAlmacen.SeleccionarPorId(oDOfarmAlmacen) = True Then
                                     oDOfarmAlmacen.regenerarEstado = ""
                                     If oFarmAlmacen.Modificar(oDOfarmAlmacen) = True Then
@@ -2350,7 +2356,7 @@ Sub ActualizaAdmisionCita()
     'Importa desde la WEB SOMEE
     Dim mo_Procesos As New SIGHProxies.Procesos, oRsTmp1 As New Recordset
     Dim lcMensaje As String, lbSeTerminaSistema As Boolean
-    mo_Procesos.SomeeActualizaDatos 4, lcMensaje, "", "", (Date - 1), (Date - 1), lbSeTerminaSistema, oRsTmp1
+    'mo_Procesos.SomeeActualizaDatos 4, lcMensaje, "", "", (Date - 1), (Date - 1), lbSeTerminaSistema, oRsTmp1
     Set mo_Procesos = Nothing
     Set oRsTmp1 = Nothing
     '

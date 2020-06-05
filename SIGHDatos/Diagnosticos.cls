@@ -56,7 +56,7 @@ Dim oParameter As ADODB.Parameter
            Set oParameter = .CreateParameter("@CodigoCIE9", adChar, adParamInput, 5, IIf(oTabla.CodigoCIE9 = "", Null, oTabla.CodigoCIE9)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@CodigoCIE10", adChar, adParamInput, 7, IIf(oTabla.CodigoCIE10 = "", Null, oTabla.CodigoCIE10)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@CodigoExportacion", adChar, adParamInput, 5, IIf(oTabla.CodigoExportacion = "", Null, oTabla.CodigoExportacion)): .Parameters.Append oParameter
-           Set oParameter = .CreateParameter("@IdTipoSexo", adInteger, adParamInput, 0, IIf(oTabla.IdTipoSexo = 0, Null, oTabla.IdTipoSexo)): .Parameters.Append oParameter
+           Set oParameter = .CreateParameter("@IdTipoSexo", adInteger, adParamInput, 0, IIf(oTabla.idTipoSexo = 0, Null, oTabla.idTipoSexo)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@Morbilidad", adBoolean, adParamInput, 0, IIf(oTabla.Morbilidad = 0, Null, oTabla.Morbilidad)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@IdCategoria", adInteger, adParamInput, 0, IIf(oTabla.IdCategoria = 0, Null, oTabla.IdCategoria)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@Restriccion", adBoolean, adParamInput, 0, IIf(oTabla.Restriccion = 0, Null, oTabla.Restriccion)): .Parameters.Append oParameter
@@ -106,7 +106,7 @@ Dim oParameter As ADODB.Parameter
            Set oParameter = .CreateParameter("@CodigoCIE9", adChar, adParamInput, 5, IIf(oTabla.CodigoCIE9 = "", Null, oTabla.CodigoCIE9)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@CodigoCIE10", adChar, adParamInput, 7, IIf(oTabla.CodigoCIE10 = "", Null, oTabla.CodigoCIE10)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@CodigoExportacion", adChar, adParamInput, 5, IIf(oTabla.CodigoExportacion = "", Null, oTabla.CodigoExportacion)): .Parameters.Append oParameter
-           Set oParameter = .CreateParameter("@IdTipoSexo", adInteger, adParamInput, 0, IIf(oTabla.IdTipoSexo = 0, Null, oTabla.IdTipoSexo)): .Parameters.Append oParameter
+           Set oParameter = .CreateParameter("@IdTipoSexo", adInteger, adParamInput, 0, IIf(oTabla.idTipoSexo = 0, Null, oTabla.idTipoSexo)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@Morbilidad", adBoolean, adParamInput, 0, IIf(oTabla.Morbilidad = 0, Null, oTabla.Morbilidad)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@IdCategoria", adInteger, adParamInput, 0, IIf(oTabla.IdCategoria = 0, Null, oTabla.IdCategoria)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@Restriccion", adBoolean, adParamInput, 0, IIf(oTabla.Restriccion = 0, Null, oTabla.Restriccion)): .Parameters.Append oParameter
@@ -196,7 +196,7 @@ Dim oParameter As ADODB.Parameter
        oTabla.CodigoCIE9 = IIf(IsNull(oRecordset!CodigoCIE9), "", oRecordset!CodigoCIE9)
        oTabla.CodigoCIE10 = IIf(IsNull(oRecordset!CodigoCIE10), "", oRecordset!CodigoCIE10)
        oTabla.CodigoExportacion = IIf(IsNull(oRecordset!CodigoExportacion), "", oRecordset!CodigoExportacion)
-       oTabla.IdTipoSexo = IIf(IsNull(oRecordset!IdTipoSexo), 0, oRecordset!IdTipoSexo)
+       oTabla.idTipoSexo = IIf(IsNull(oRecordset!idTipoSexo), 0, oRecordset!idTipoSexo)
        oTabla.Morbilidad = IIf(IsNull(oRecordset!Morbilidad), 0, oRecordset!Morbilidad)
        oTabla.IdCategoria = IIf(IsNull(oRecordset!IdCategoria), 0, oRecordset!IdCategoria)
        oTabla.Restriccion = IIf(IsNull(oRecordset!Restriccion), 0, oRecordset!Restriccion)
@@ -362,9 +362,11 @@ Private Function getStringWhereForFilter(oDoDiagnostico As DODiagnostico, lbSolo
        If sWhere <> "" Then
             sWhere = " Where " & Left(sWhere, Len(sWhere) - 4)
        End If
-
+'SCCQ 03/04/2020 Cambio2 Inicio
+sWhere = sWhere + " and CIEHISWEB=1"
+'SCCQ 03/04/2020 Cambio2 Fin
        sWhere = sWhere + " order by  Descripcion,CodigoCIE2004 "
-       
+
        getStringWhereForFilter = sWhere
 End Function
 

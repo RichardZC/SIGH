@@ -3,9 +3,9 @@ Begin VB.Form Login
    BorderStyle     =   1  'Fixed Single
    Caption         =   "SIS-GalenPLUS"
    ClientHeight    =   2460
-   ClientLeft      =   2835
+   ClientLeft      =   2832
    ClientTop       =   3480
-   ClientWidth     =   4785
+   ClientWidth     =   4788
    BeginProperty Font 
       Name            =   "Tahoma"
       Size            =   9
@@ -27,7 +27,7 @@ Begin VB.Form Login
    Begin VB.Frame Frame3 
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   0
          Weight          =   400
          Underline       =   0   'False
@@ -68,7 +68,7 @@ Begin VB.Form Login
    Begin VB.Frame Frame1 
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   8.25
+         Size            =   7.8
          Charset         =   0
          Weight          =   400
          Underline       =   0   'False
