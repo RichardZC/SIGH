@@ -304,14 +304,14 @@ Attribute VB_Exposed = False
 '------------------------------------------------------------------------------------
 Option Explicit
 
-Dim mo_Apariencia As New sighentidades.GridInfragistic
-Dim mo_Formulario As New sighentidades.Formulario
-Dim mo_reglasComunes As New SIGHNegocios.ReglasComunes
+Dim mo_Apariencia As New sighEntidades.GridInfragistic
+Dim mo_Formulario As New sighEntidades.Formulario
+Dim mo_ReglasComunes As New SIGHNegocios.ReglasComunes
 Dim lcBuscaParametro As New SIGHDatos.Parametros
-Dim ml_idPaciente As Long
+Dim ml_IdPaciente As Long
 Dim ml_idAtencion As Long
 Dim ml_FechaAtencion As Date
-Dim ml_IdUsuario As Long
+Dim ml_idUsuario As Long
 Dim ml_YaCargoUnaSolaVez As Boolean
 Dim oEdad As Edad
 Dim md_fechaNacimiento As Date
@@ -333,7 +333,7 @@ Property Let idAtencion(lValue As Long)
 End Property
 
 Property Let idPaciente(lValue As Long)
-   ml_idPaciente = lValue
+   ml_IdPaciente = lValue
 End Property
 
 Property Let FechaAtencion(lValue As Date)
@@ -346,15 +346,15 @@ Property Let FechaNacimiento(lValue As Date)
 '   calcularEdadPaciente
 End Property
 
-Property Let IdUsuario(lValue As Long)
-   ml_IdUsuario = lValue
+Property Let idUsuario(lValue As Long)
+   ml_idUsuario = lValue
 End Property
 
 Property Get MensajeError() As String
    MensajeError = ms_MensajeError
 End Property
 
-Public Sub inicializar()
+Public Sub Inicializar()
     If ml_YaCargoUnaSolaVez = False Then
         ml_YaCargoUnaSolaVez = True
 '        CreaTemporales
@@ -369,7 +369,7 @@ Public Sub inicializar()
     Dim sCodigoRenaes As String
     sCodigoRenaes = lcBuscaParametro.SeleccionaFilaParametro(280)
     
-    If mo_reglasComunes.EstablecimientosSeleccionarPorCodigo(sCodigoRenaes, oDoEstablecimiento) = True Then
+    If mo_ReglasComunes.EstablecimientosSeleccionarPorCodigo(sCodigoRenaes, oDoEstablecimiento) = True Then
         ml_IdEstablecimiento = oDoEstablecimiento.IdEstablecimiento
     Else
         MsgBox "Codigo RENAES " & sCodigoRenaes & " No Encontrado en la Lista de Establecimientos, revise tabla parametros(280)", vbInformation, "Modulo Niño Sano"
@@ -635,7 +635,7 @@ Private Sub mskFechaEjecucionDes_KeyDown(KeyCode As Integer, Shift As Integer)
 End Sub
 
 Private Sub mskFechaEjecucionDes_LostFocus()
-    If mskFechaEjecucionDes.Text <> sighentidades.FECHA_VACIA_DMY Then
+    If mskFechaEjecucionDes.Text <> sighEntidades.FECHA_VACIA_DMY Then
         On Error Resume Next
         If Not EsFecha(mskFechaEjecucionDes.Text, "DD/MM/AAAA") Then
             MsgBox "La fecha ingresada no es válida", vbInformation, "Datos de Desarrollo"
@@ -672,14 +672,14 @@ Public Sub cargarListaDesarrolloVencidos()
     Dim oDOAtenIntePlanIntePaciente As New DOAtenIntePlanIntePaciente
     
     oDOAtenIntePlanIntePaciente.IdAtenInteGrupo = sighGrupoEdad.Nino
-    oDOAtenIntePlanIntePaciente.idPaciente = ml_idPaciente
+    oDOAtenIntePlanIntePaciente.idPaciente = ml_IdPaciente
     oDOAtenIntePlanIntePaciente.idAtencion = ml_idAtencion
     
     Set grdPlanDesarrollo.DataSource = oReglasAtencionIntegral.ListarPlanDesarrolloPacienteVencidos(oDOAtenIntePlanIntePaciente)
     If oReglasAtencionIntegral.MensajeError <> "" Then
         MsgBox oReglasAtencionIntegral.MensajeError, vbInformation, "Error"
     End If
-    mo_Apariencia.ConfigurarFilasBiColores grdPlanDesarrollo, sighentidades.GrillaConFilasBicolor
+    mo_Apariencia.ConfigurarFilasBiColores grdPlanDesarrollo, sighEntidades.GrillaConFilasBicolor
 End Sub
 
 Public Sub cargarListaPlanDesarrolloPacienteDetalle(lIdPlanIntegralPaciente As Long, _
@@ -698,7 +698,7 @@ Public Sub cargarListaPlanDesarrolloPacienteDetalle(lIdPlanIntegralPaciente As L
 '    Else
 '        Call AsignarDatosAControlesDesarrollo(oDOAtenIntePlanIntePaciente)
     End If
-    mo_Apariencia.ConfigurarFilasBiColores grdPlanDesarrolloPendientes, sighentidades.GrillaConFilasBicolor
+    mo_Apariencia.ConfigurarFilasBiColores grdPlanDesarrolloPendientes, sighEntidades.GrillaConFilasBicolor
 End Sub
 
 
@@ -893,7 +893,7 @@ End Function
 
 Public Sub ConfigurarCombos()
        
-    Set cmbIdEstablecimiento.ListSource = mo_reglasComunes.EstablecimientosSeleccionarTodos()
+    Set cmbIdEstablecimiento.ListSource = mo_ReglasComunes.EstablecimientosSeleccionarTodos()
 End Sub
 
 Private Function validarCambiosPendientes() As Boolean
@@ -931,7 +931,7 @@ Private Function ValidarDatosIngreso() As Boolean
     
     ms_MensajeError = ""
     
-    If mskFechaEjecucionDes.Text = sighentidades.FECHA_VACIA_DMY Then
+    If mskFechaEjecucionDes.Text = sighEntidades.FECHA_VACIA_DMY Then
         ms_MensajeError = ms_MensajeError & "Ingrese fecha de Ejecución" & Chr(13)
         mskFechaEjecucionDes.SetFocus
     End If

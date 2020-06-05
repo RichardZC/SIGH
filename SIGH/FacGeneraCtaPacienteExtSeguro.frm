@@ -1049,9 +1049,9 @@ Attribute VB_Exposed = False
 Option Explicit
 
 Dim mi_Opcion As sghOpciones
-Dim mo_Formulario As New sighentidades.Formulario
-Dim mo_Teclado As New sighentidades.Teclado
-Dim mo_Apariencia As New sighentidades.GridInfragistic
+Dim mo_Formulario As New sighEntidades.Formulario
+Dim mo_Teclado As New sighEntidades.Teclado
+Dim mo_Apariencia As New sighEntidades.GridInfragistic
 '
 Dim mo_AdminAdmision As New SIGHNegocios.ReglasAdmision
 Dim mo_AdminFacturacion As New SIGHNegocios.ReglasFacturacion
@@ -1060,9 +1060,9 @@ Dim mo_AdminServiciosComunes As New SIGHNegocios.ReglasComunes
 Dim mo_ReglasFarmacia As New SIGHNegocios.ReglasFarmacia
 Dim mo_ReglasSISgalenhos As New ReglasSISgalenhos
 '
-Dim mo_cmbServicioIngreso As New sighentidades.ListaDespleglable
-Dim mo_cmbIdTipoEdad As New sighentidades.ListaDespleglable
-Dim mo_cmbIdTipoReferenciaOrigen As New sighentidades.ListaDespleglable
+Dim mo_cmbServicioIngreso As New sighEntidades.ListaDespleglable
+Dim mo_cmbIdTipoEdad As New sighEntidades.ListaDespleglable
+Dim mo_cmbIdTipoReferenciaOrigen As New sighEntidades.ListaDespleglable
 '
 Dim oRsFuentesFinanciamiento As New Recordset
 Dim oRsFormaPago As New Recordset
@@ -1209,10 +1209,10 @@ Function ValidarDatosObligatorios() As Boolean
    If txtIdMedicoIngreso.Text = "" Then
        sMensaje = sMensaje + "Ingrese el Responsable" + Chr(13)
    End If
-   If txtFechaIngreso.Text = sighentidades.FECHA_VACIA_DMY Then
+   If txtFechaIngreso.Text = sighEntidades.FECHA_VACIA_DMY Then
        sMensaje = sMensaje + "Registre la Fecha de Ingreso " + Chr(13)
    End If
-   If txtHoraIngreso.Text = sighentidades.HORA_VACIA_HM Then
+   If txtHoraIngreso.Text = sighEntidades.HORA_VACIA_HM Then
        sMensaje = sMensaje + "Registre la Hora de Ingreso" + Chr(13)
    End If
    If txtEdadEnDias.Text = "" Then
@@ -1301,7 +1301,7 @@ Sub CargaDatosAlObjetosDeDatos()
                 .TotalExonerado = 0
                 .TotalPagado = 0
                 .TotalPorPagar = 0
-                .IdEstado = sghEstadoCuenta.sghAbierto
+                .idEstado = sghEstadoCuenta.sghAbierto
                 .FechaApertura = Me.txtFechaIngreso.Text
                 .HoraApertura = Me.txtHoraIngreso.Text
                 .fechaCierre = 0
@@ -1325,17 +1325,17 @@ Sub CargaDatosAlObjetosDeDatos()
            .IdEspecialidadMedico = 0
            .IdMedicoIngreso = Val(Me.txtIdMedicoIngreso.Tag)
            .IdServicioIngreso = Val(mo_cmbServicioIngreso.BoundText)
-           .HoraIngreso = IIf(Me.txtHoraIngreso.Text = sighentidades.HORA_VACIA_HM, "", Me.txtHoraIngreso.Text)
-           .FechaIngreso = IIf(Me.txtFechaIngreso.Text = sighentidades.HORA_VACIA_HM, "", Me.txtFechaIngreso.Text)
+           .HoraIngreso = IIf(Me.txtHoraIngreso.Text = sighEntidades.HORA_VACIA_HM, "", Me.txtHoraIngreso.Text)
+           .FechaIngreso = IIf(Me.txtFechaIngreso.Text = sighEntidades.HORA_VACIA_HM, "", Me.txtFechaIngreso.Text)
            .idTipoServicio = lnIdTipoServicio
            .Edad = Me.txtEdadEnDias.Text
-           .IdTipoEdad = Val(mo_cmbIdTipoEdad.BoundText)
+           .idTipoEdad = Val(mo_cmbIdTipoEdad.BoundText)
            .idPaciente = mo_Pacientes.idPaciente
            .IdUsuarioAuditoria = ml_idUsuario
             .IdTipoCondicionALEstab = 1
             .IdTipoCondicionAlServicio = 1
             .fechaEgreso = 0
-            .HoraEgreso = sighentidades.HORA_VACIA_HM
+            .HoraEgreso = sighEntidades.HORA_VACIA_HM
             .IdCondicionAlta = 0
             .IdTipoAlta = 0
             .IdTipoGravedad = 0
@@ -1358,7 +1358,7 @@ Sub CargaDatosAlObjetosDeDatos()
        '.IdEstablecimientoNoMinsaOrigen
        '.IdEstablecimientoOrigen
        '.IdMedicoRespNacimiento
-       .idSiasis = lnAfiliacionSIS4
+       .idSiaSis = lnAfiliacionSIS4
        '.IdTipoReferenciaDestino
        '.IdTipoReferenciaOrigen
        .IdUsuarioAuditoria = mo_Pacientes.IdUsuarioAuditoria
@@ -1427,7 +1427,7 @@ Private Sub btnBuscarPaciente_Click()
     Dim oConexion As New Connection
     oConexion.CommandTimeout = 300
     oConexion.CursorLocation = adUseClient
-    oConexion.Open sighentidades.CadenaConexion
+    oConexion.Open sighEntidades.CadenaConexion
     
     Set RsHistorias = mo_AdminAdmision.PacientesFiltrarTodosSoloHistoriasDefinitivas(oDOPaciente, wxSinApellido, oConexion)
     Set grdPacientesEncontrados.DataSource = RsHistorias
@@ -1460,7 +1460,7 @@ Private Sub btnBuscarPaciente_Click()
     End If
     oConexion.Close
     Set oConexion = Nothing
-    mo_Apariencia.ConfigurarFilasBiColores Me.grdPacientesEncontrados, sighentidades.GrillaConFilasBicolor
+    mo_Apariencia.ConfigurarFilasBiColores Me.grdPacientesEncontrados, sighEntidades.GrillaConFilasBicolor
 ErrBusq:
 End Sub
 
@@ -1606,7 +1606,7 @@ Private Sub cmbFuenteFinanciamiento_Click(Area As Integer)
                                                       "", "", "", "", wxParametro323)
                    If oRsBuscaPacientesSis.RecordCount > 0 Then
                       If mo_ReglasSISgalenhos.Sis_ValidaSiEsAfiliadoActualDelSIS(oRsBuscaPacientesSis, ldFechaActualServidor, True) = True Then
-                            lnAfiliacionSIS4 = oRsBuscaPacientesSis!idSiasis
+                            lnAfiliacionSIS4 = oRsBuscaPacientesSis!idSiaSis
                             lcSIScodigo = oRsBuscaPacientesSis!Codigo
                             lcCodigoEstablecimientoAdscripcionSIS = IIf(IsNull(oRsBuscaPacientesSis!CodigoEstablAdscripcion), "", oRsBuscaPacientesSis!CodigoEstablAdscripcion)
                        Else
@@ -1690,7 +1690,7 @@ Private Sub Form_Load()
     UcPacienteDatosAloj1.HabilitaTipoHistoria True
     lnEspecialidadServicio = 0
     Me.txtFechaIngreso = Date
-    Me.txtHoraIngreso = Format(Now, sighentidades.DevuelveHoraSoloFormato_HM)
+    Me.txtHoraIngreso = Format(Now, sighEntidades.DevuelveHoraSoloFormato_HM)
     Select Case mi_Opcion
     Case sghAgregar
         Me.Caption = "Agregar Paciente Externo con Seguro"
@@ -1736,7 +1736,7 @@ Private Sub grdPacientesEncontrados_DblClick()
     Dim oConexion As New Connection
     oConexion.CommandTimeout = 300
     oConexion.CursorLocation = adUseClient
-    oConexion.Open sighentidades.CadenaConexion
+    oConexion.Open sighEntidades.CadenaConexion
     On Error Resume Next
     Set rsPaciente = Me.grdPacientesEncontrados.DataSource
     If mo_AdminAdmision.BuscaSiEstaHospitalizado(rsPaciente!idPaciente, oConexion, sghConsultaExterna) = True Then  'debb-05/12/2015
@@ -1851,11 +1851,11 @@ End Sub
 Private Sub txtFechaIngreso_LostFocus()
     If Not EsFecha(txtFechaIngreso.Text, "DD/MM/AAAA") Then
         MsgBox "La fecha ingresada no es válida", vbInformation, Me.Caption
-        txtFechaIngreso.Text = sighentidades.FECHA_VACIA_DMY_HM
+        txtFechaIngreso.Text = sighEntidades.FECHA_VACIA_DMY_HM
         Exit Sub
     ElseIf CDate(txtFechaIngreso.Text > ldFechaActualServidor) Then
         MsgBox "La fecha ingresada no puede ser mayo a la de HOY", vbInformation, Me.Caption
-        txtFechaIngreso.Text = sighentidades.FECHA_VACIA_DMY_HM
+        txtFechaIngreso.Text = sighEntidades.FECHA_VACIA_DMY_HM
         Exit Sub
     End If
     CalculaEdadEnLaAtencion
@@ -1865,7 +1865,7 @@ Sub CalculaEdadEnLaAtencion()
     On Error Resume Next
     Me.txtEdadEnDias.Text = ""
     Dim oEdad As Edad
-    oEdad = sighentidades.CalcularEdad(CDate(Me.UcPacienteDatosAloj1.FechaNacimiento), CDate(txtFechaIngreso.Text))
+    oEdad = sighEntidades.CalcularEdad(CDate(Me.UcPacienteDatosAloj1.FechaNacimiento), CDate(txtFechaIngreso.Text))
     Me.txtEdadEnDias.Text = oEdad.Edad
     mo_cmbIdTipoEdad.BoundText = oEdad.TipoEdad
 
@@ -1879,9 +1879,9 @@ Private Sub txtHoraIngreso_KeyDown(KeyCode As Integer, Shift As Integer)
 End Sub
 
 Private Sub txtHoraIngreso_LostFocus()
- If Not sighentidades.ValidaHora(txtHoraIngreso) Then
+ If Not sighEntidades.ValidaHora(txtHoraIngreso) Then
             MsgBox "La hora ingresada no es correcta", vbInformation, Me.Caption
-             txtHoraIngreso = sighentidades.HORA_VACIA_HM
+             txtHoraIngreso = sighEntidades.HORA_VACIA_HM
         End If
 End Sub
 
@@ -2005,7 +2005,7 @@ Dim oDoMedico As New DOMedico
 Dim oDOEmpleado As New dOEmpleado
 Dim oDOEspecialidades As New Collection
 Dim oConexion As New Connection
-    oConexion.Open sighentidades.CadenaConexion
+    oConexion.Open sighEntidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     oBusqueda.IdEspecialidad = lIdEspecialidad
@@ -2051,7 +2051,7 @@ Private Sub UcPacienteDatosAloj1_SePresionoTeclaEspecial(KeyCode As Integer)
     Case vbKeyReturn
          CalculaEdadEnLaAtencion
          Dim oConexion As New Connection
-         oConexion.Open sighentidades.CadenaConexion
+         oConexion.Open sighEntidades.CadenaConexion
          oConexion.CursorLocation = adUseClient
          DeudasPendientesDeAnterioresAtenciones oConexion
          oConexion.Close
@@ -2105,13 +2105,13 @@ End Function
 '------------------------------------------------------------------------------------
 Function EliminarDatos() As Boolean
     Dim oConexion As New Connection
-    oConexion.Open sighentidades.CadenaConexion
+    oConexion.Open sighEntidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     ms_MensajeError = mo_AdminAdmision.VerificaSiTieneMovimientoFarmaciaOservicio(mo_CuentasAtencion.idCuentaAtencion, mo_Atenciones.idTipoServicio, oConexion)
     oConexion.Close
     Set oConexion = Nothing
     If ms_MensajeError = "" Then
-        mo_CuentasAtencion.IdEstado = 9 'anulado
+        mo_CuentasAtencion.idEstado = 9 'anulado
         mo_Atenciones.IdEstadoAtencion = 0  'anulado
         EliminarDatos = mo_AdminAdmision.AdmisionPacienteExternoConSeguroAnular(mo_CuentasAtencion, mo_Atenciones, mo_Pacientes, mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc)
         ms_MensajeError = mo_AdminAdmision.MensajeError
@@ -2128,7 +2128,7 @@ Dim oDOEmpleado As New dOEmpleado
 Dim oRsTmp As New Recordset
 Dim oDOEspecialidades As New Collection
 Dim oConexion As New Connection
-        oConexion.Open sighentidades.CadenaConexion
+        oConexion.Open sighEntidades.CadenaConexion
         oConexion.CursorLocation = adUseClient
         fraBusqueda.Enabled = False
         '1do:   CARGAR DATOS DE LA ATENCION
@@ -2140,12 +2140,12 @@ Dim oConexion As New Connection
         With mo_Atenciones
                 mo_cmbServicioIngreso.BoundText = .IdServicioIngreso
                 Me.txtIdMedicoIngreso.Tag = .IdMedicoIngreso
-                Me.txtHoraIngreso.Text = IIf(.HoraIngreso = "", sighentidades.HORA_VACIA_HM, .HoraIngreso)
-                Me.txtFechaIngreso.Text = IIf(.FechaIngreso = 0, sighentidades.FECHA_VACIA_DMY, .FechaIngreso)
+                Me.txtHoraIngreso.Text = IIf(.HoraIngreso = "", sighEntidades.HORA_VACIA_HM, .HoraIngreso)
+                Me.txtFechaIngreso.Text = IIf(.FechaIngreso = 0, sighEntidades.FECHA_VACIA_DMY, .FechaIngreso)
                 Me.txtEdadEnDias.Text = .Edad
                 Me.txtEdadEnDias.Tag = .Edad
-                mo_cmbIdTipoEdad.BoundText = .IdTipoEdad
-                cmbIdTipoEdad.Tag = .IdTipoEdad
+                mo_cmbIdTipoEdad.BoundText = .idTipoEdad
+                cmbIdTipoEdad.Tag = .idTipoEdad
 '
                 If mo_AdminProgramacion.MedicosSeleccionarPorId(.IdMedicoIngreso, oDoMedico, oDOEmpleado, oDOEspecialidades, oConexion) Then
                     Me.txtIdMedicoIngreso = oDOEmpleado.CodigoPlanilla
@@ -2173,8 +2173,8 @@ Dim oConexion As New Connection
         End If
         '
         Set mo_CuentasAtencion = mo_AdminFacturacion.CuentasAtencionSeleccionarPorId(mo_Atenciones.idCuentaAtencion, oConexion)
-        lblEstadoCta.Caption = mo_ReglasFarmacia.DevuelveEstadoActualDeEstadoCuenta("idEstado=" & mo_CuentasAtencion.IdEstado, oConexion)
-        If mo_CuentasAtencion.IdEstado <> 1 And mo_CuentasAtencion.IdEstado <> 12 Then
+        lblEstadoCta.Caption = mo_ReglasFarmacia.DevuelveEstadoActualDeEstadoCuenta("idEstado=" & mo_CuentasAtencion.idEstado, oConexion)
+        If mo_CuentasAtencion.idEstado <> 1 And mo_CuentasAtencion.idEstado <> 12 Then
             btnAceptar.Enabled = False
         End If
         txtNroCuenta.Text = mo_CuentasAtencion.idCuentaAtencion
@@ -2201,7 +2201,7 @@ Dim oConexion As New Connection
         If Not (mo_DoAtencionDatosAdicionales Is Nothing) Then
             With mo_DoAtencionDatosAdicionales
                  .idAtencion = mo_Atenciones.idAtencion
-                 lnAfiliacionSIS4 = .idSiasis
+                 lnAfiliacionSIS4 = .idSiaSis
                  lcSIScodigo = .SisCodigo
                  '.FuaCodigoPrestacion
                 'debb-21/06/2016 (inicio)
@@ -2298,7 +2298,7 @@ Sub BusquedaDx(lcCodigoDx As String)
         If Not oDODiagnostico Is Nothing Then
             txtDxReferencia.Text = oDODiagnostico.CodigoCIE2004
             txtDxReferencia.Tag = oDODiagnostico.idDiagnostico
-            lblDxReferencia1.Text = oDODiagnostico.Descripcion
+            lblDxReferencia1.Text = oDODiagnostico.descripcion
         Else
             txtDxReferencia.Text = ""
             txtDxReferencia.Tag = ""

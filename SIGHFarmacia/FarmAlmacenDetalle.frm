@@ -352,8 +352,8 @@ Attribute VB_Exposed = False
 '------------------------------------------------------------------------------------
 Option Explicit
 
-Dim mo_Teclado As New sighentidades.Teclado
-Dim mo_Formulario As New sighentidades.Formulario
+Dim mo_Teclado As New SIGHEntidades.Teclado
+Dim mo_Formulario As New SIGHEntidades.Formulario
 Dim mo_DoFarmAlmacen As New DoFarmAlmacen
 Dim ms_MensajeError As String
 Dim mb_ExistenDatos As Boolean
@@ -363,7 +363,7 @@ Dim ml_idUsuario As Long
 Dim ml_IdAlmacen As Long
 Dim mo_lnIdTablaLISTBARITEMS As Long
 Dim mo_lcNombrePc As String
-Dim mo_cmbTipoAlmacen As New sighentidades.ListaDespleglable
+Dim mo_cmbTipoAlmacen As New SIGHEntidades.ListaDespleglable
 Dim mo_AdminComun As New ReglasComunes
 Dim lcBuscaParametro As New SIGHDatos.Parametros
 
@@ -392,10 +392,20 @@ End Property
 Sub CargarDatosAlFormulario()
      mo_Formulario.HabilitarDeshabilitar Me.txtCodigo, False
      mo_Formulario.HabilitarDeshabilitar Me.txtCodigoDigemid, False
-     If mi_Opcion <> sghAgregar Then
+     'RZC 13/02/2020 Cambio5 Inicio
+     If mi_Opcion = sghEliminar Then
         mo_Formulario.HabilitarDeshabilitar Me.txtDescripcion, False
         mo_Formulario.HabilitarDeshabilitar Me.cmbTipoAlmacen, False
      End If
+     If mi_Opcion = sghModificar Then
+        mo_Formulario.HabilitarDeshabilitar Me.txtDescripcion, True
+        mo_Formulario.HabilitarDeshabilitar Me.cmbTipoAlmacen, False
+     End If
+    '     If mi_Opcion <> sghAgregar Then
+    '        mo_Formulario.HabilitarDeshabilitar Me.txtDescripcion, False
+    '        mo_Formulario.HabilitarDeshabilitar Me.cmbTipoAlmacen, False
+    '     End If
+    'RZC 13/02/2020 Cambio5 Fin
      Select Case mi_Opcion
      Case sghAgregar
          CargaUltimoCorrelativoIdAlmacen
@@ -601,14 +611,14 @@ Sub ActualizaItemsUnidosisEnTablaFactCatalalogoBI()
         lnItem = 0
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open sighentidades.CadenaConexion
+        oConexion.Open SIGHEntidades.CadenaConexion
         Set oRsTmp1 = mo_ReglasFarmacia.farmUnidosisSeleccionarTodos(oConexion)
         If oRsTmp1.RecordCount > 0 Then
            Set oCatalogoBienesInsumos.Conexion = oConexion
            oRsTmp1.MoveFirst
            Do While Not oRsTmp1.EOF
               lnItem = lnItem + 1
-              lcCodigoConPunto = Trim(oRsTmp1!codigo) & sighentidades.Pto
+              lcCodigoConPunto = Trim(oRsTmp1!codigo) & SIGHEntidades.Pto
               lcCodigo = Trim(oRsTmp1!codigo)
               lcListaCodigos = lcListaCodigos & lcCodigoConPunto & "/"
               If lnItem > 10 Then
@@ -623,7 +633,7 @@ Sub ActualizaItemsUnidosisEnTablaFactCatalalogoBI()
                     lcMensaje = lcMensaje & "No existe el CODIGO: " & oRsTmp1!codigo & Chr(13)
                  Else
                     oDOCatalogoBienesInsumos.idProducto = oRsTmp2!idProducto
-                    oDOCatalogoBienesInsumos.IdUsuarioAuditoria = sighentidades.Usuario
+                    oDOCatalogoBienesInsumos.IdUsuarioAuditoria = SIGHEntidades.Usuario
                     If oCatalogoBienesInsumos.SeleccionarPorId(oDOCatalogoBienesInsumos) Then
                        oDOCatalogoBienesInsumos.codigo = lcCodigoConPunto
                        oDOCatalogoBienesInsumos.Nombre = Left(oRsTmp1!Descripcion, 300)
@@ -708,7 +718,7 @@ Sub CargarDatosALosControles()
             mo_cmbTipoAlmacen.BoundText = .idTipoSuministro
             txtCodigoDigemid.Text = .CodigoSismed
             Me.txtEstadoRegenerar.Text = .regenerarEstado
-            Me.txtHrInicioRegenerar.Text = IIf(.regenerarHora = "", sighentidades.HORA_VACIA_HM, .regenerarHora)
+            Me.txtHrInicioRegenerar.Text = IIf(.regenerarHora = "", SIGHEntidades.HORA_VACIA_HM, .regenerarHora)
             If InStr(.regenerarDias, "1") > 0 Then
                Me.chkDomingo.Value = 1
             End If

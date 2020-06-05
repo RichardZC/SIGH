@@ -660,6 +660,7 @@ Begin VB.Form AdmisionHospDetalle
       _ExtentY        =   12832
       _Version        =   393216
       Tabs            =   2
+      Tab             =   1
       TabsPerRow      =   2
       TabHeight       =   520
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -673,20 +674,19 @@ Begin VB.Form AdmisionHospDetalle
       EndProperty
       TabCaption(0)   =   "1. Datos del paciente (F10)"
       TabPicture(0)   =   "AdmisionHospDetalle.frx":9AAD
-      Tab(0).ControlEnabled=   -1  'True
-      Tab(0).Control(0)=   "ucMensajeParpadeando1"
-      Tab(0).Control(0).Enabled=   0   'False
-      Tab(0).Control(1)=   "ucPacientesDetalle1"
-      Tab(0).Control(1).Enabled=   0   'False
+      Tab(0).ControlEnabled=   0   'False
+      Tab(0).Control(0)=   "ucPacientesDetalle1"
+      Tab(0).Control(1)=   "ucMensajeParpadeando1"
       Tab(0).ControlCount=   2
       TabCaption(1)   =   "2. Ingreso (F11)"
       TabPicture(1)   =   "AdmisionHospDetalle.frx":9AC9
-      Tab(1).ControlEnabled=   0   'False
+      Tab(1).ControlEnabled=   -1  'True
       Tab(1).Control(0)=   "TabIngreso"
+      Tab(1).Control(0).Enabled=   0   'False
       Tab(1).ControlCount=   1
       Begin SISGalenPlus.ucPacientesDetalle ucPacientesDetalle1 
          Height          =   6465
-         Left            =   120
+         Left            =   -74880
          TabIndex        =   6
          Top             =   420
          Width           =   11835
@@ -695,7 +695,7 @@ Begin VB.Form AdmisionHospDetalle
       End
       Begin TabDlg.SSTab TabIngreso 
          Height          =   6840
-         Left            =   -74910
+         Left            =   90
          TabIndex        =   57
          Top             =   405
          Width           =   11775
@@ -2935,7 +2935,7 @@ Begin VB.Form AdmisionHospDetalle
       End
       Begin SISGalenPlus.ucMensajeParpadeando ucMensajeParpadeando1 
          Height          =   315
-         Left            =   180
+         Left            =   -74820
          TabIndex        =   100
          Top             =   6840
          Visible         =   0   'False

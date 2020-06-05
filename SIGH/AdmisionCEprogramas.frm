@@ -102,9 +102,9 @@ Attribute VB_Exposed = False
 '------------------------------------------------------------------------------------
 Option Explicit
 Dim ml_idCuentaAtencion  As Long
-Dim mo_Formulario As New sighentidades.Formulario
-Dim mo_Teclado As New sighentidades.Teclado
-Dim mo_Apariencia As New sighentidades.GridInfragistic
+Dim mo_Formulario As New sighEntidades.Formulario
+Dim mo_Teclado As New sighEntidades.Teclado
+Dim mo_Apariencia As New sighEntidades.GridInfragistic
 Dim mo_ReglasAdmision  As New SIGHNegocios.ReglasAdmision
 Dim mo_AdminServiciosComunes As New SIGHNegocios.ReglasComunes
 Dim mo_Facturacion As New SIGHNegocios.ReglasFacturacion
@@ -326,8 +326,8 @@ Private Sub grdBusqueda_AfterCellUpdate(ByVal Cell As UltraGrid.SSCell)
         Case "idTipo"
            Select Case Cell.Row.Cells("idTipo").Value
            Case "2"
-              Cell.Row.Cells("id").Value = sighentidades.Lx_LabVacio
-              Cell.Row.Cells("nombre").Value = sighentidades.Lx_LabVacio
+              Cell.Row.Cells("id").Value = sighEntidades.Lx_LabVacio
+              Cell.Row.Cells("nombre").Value = sighEntidades.Lx_LabVacio
               Cell.Row.Cells("elija").Value = True
            Case "1", "3"
               Cell.Row.Cells("elija").Value = False
@@ -351,7 +351,7 @@ Private Sub grdBusqueda_AfterCellUpdate(ByVal Cell As UltraGrid.SSCell)
               Case sghActividadesTipo.TipoDX
                 Set oRsTmp2 = mo_AdminServiciosComunes.DiagnosticosSeleccionarXCodigo(Cell.Row.Cells("id").Value)
                 If oRsTmp2.RecordCount > 0 Then
-                   Cell.Row.Cells("Nombre").Value = Left(oRsTmp2!Descripcion, 255)
+                   Cell.Row.Cells("Nombre").Value = Left(oRsTmp2!descripcion, 255)
                    Cell.Row.Cells("elija").Value = True
                 End If
                  oRsTmp2.Close
@@ -382,8 +382,8 @@ Private Sub grdBusqueda_ClickCellButton(ByVal Cell As UltraGrid.SSCell)
                 Set oFrm = Nothing
                 Set dOServ = Nothing
             Case sghActividadesTipo.TipoLAB
-                grdBusqueda.ActiveRow.Cells("id").Value = sighentidades.Lx_LabVacio
-                grdBusqueda.ActiveRow.Cells("nombre").Value = sighentidades.Lx_LabVacio
+                grdBusqueda.ActiveRow.Cells("id").Value = sighEntidades.Lx_LabVacio
+                grdBusqueda.ActiveRow.Cells("nombre").Value = sighEntidades.Lx_LabVacio
                 grdBusqueda.ActiveRow.Cells("elija").Value = True
             Case sghActividadesTipo.TipoDX
                 Dim oBusqueda As New SIGHNegocios.BuscaDiagnosticos
@@ -394,7 +394,7 @@ Private Sub grdBusqueda_ClickCellButton(ByVal Cell As UltraGrid.SSCell)
                     Set oDODiagnostico = mo_AdminServiciosComunes.DiagnosticosSeleccionarPorId(oBusqueda.idRegistroSeleccionado)
                     If Not oDODiagnostico Is Nothing Then
                         grdBusqueda.ActiveRow.Cells("id").Value = oDODiagnostico.CodigoCIE2004
-                        grdBusqueda.ActiveRow.Cells("nombre").Value = oDODiagnostico.Descripcion
+                        grdBusqueda.ActiveRow.Cells("nombre").Value = oDODiagnostico.descripcion
                         grdBusqueda.ActiveRow.Cells("elija").Value = True
                     End If
                 End If
@@ -432,7 +432,7 @@ Private Sub grdBusqueda_InitializeLayout(ByVal Context As UltraGrid.Constants_Co
        
         
     End Select
-    mo_Apariencia.ConfigurarFilasBiColores grdBusqueda, sighentidades.GrillaConFilasBicolor
+    mo_Apariencia.ConfigurarFilasBiColores grdBusqueda, sighEntidades.GrillaConFilasBicolor
 End Sub
 
 Private Sub grdBusqueda_KeyPress(KeyAscii As UltraGrid.SSReturnShort)
@@ -455,7 +455,7 @@ Property Get ItemsMasivosElegidos() As Recordset
                         oRsItemsMasivosElegidos!Grupo = oRow.Cells("Grupo").Value
                         oRsItemsMasivosElegidos!SubGrupo = oRow.Cells("SubGrupo").Value
                         oRsItemsMasivosElegidos!lab = oRow.Cells("lab").Value
-                        oRsItemsMasivosElegidos!Id = oRow.Cells("id").Value
+                        oRsItemsMasivosElegidos!ID = oRow.Cells("id").Value
                         oRsItemsMasivosElegidos!tipo = oRow.Cells("tipo").Value
                         oRsItemsMasivosElegidos!nombre = oRow.Cells("nombre").Value
                         oRsItemsMasivosElegidos!elija = oRow.Cells("elija").Value

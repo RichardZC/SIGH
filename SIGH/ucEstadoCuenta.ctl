@@ -2,7 +2,7 @@ VERSION 5.00
 Object = "{F0D2F211-CCB0-11D0-A316-00AA00688B10}#1.0#0"; "msdatlst.ocx"
 Object = "{C932BA88-4374-101B-A56C-00AA003668DC}#1.1#0"; "msmask32.ocx"
 Object = "{5A9433E9-DD7B-4529-91B6-A5E8CA054615}#2.0#0"; "IGULTR~1.OCX"
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "tabctl32.ocx"
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
 Object = "{F20E41DE-526A-423A-B746-D860D06076B4}#4.0#0"; "IGTHRE~1.OCX"
 Begin VB.UserControl ucEstadoCuenta 
    ClientHeight    =   9855
@@ -77,6 +77,7 @@ Begin VB.UserControl ucEstadoCuenta
       _ExtentY        =   9657
       _Version        =   393216
       Tabs            =   6
+      Tab             =   3
       TabsPerRow      =   6
       TabHeight       =   520
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -90,81 +91,75 @@ Begin VB.UserControl ucEstadoCuenta
       EndProperty
       TabCaption(0)   =   "Servicios"
       TabPicture(0)   =   "ucEstadoCuenta.ctx":1223
-      Tab(0).ControlEnabled=   -1  'True
+      Tab(0).ControlEnabled=   0   'False
       Tab(0).Control(0)=   "lblTotalServicios"
-      Tab(0).Control(0).Enabled=   0   'False
       Tab(0).Control(1)=   "lblTotalSeguroServicio"
-      Tab(0).Control(1).Enabled=   0   'False
       Tab(0).Control(2)=   "Label49"
-      Tab(0).Control(2).Enabled=   0   'False
       Tab(0).Control(3)=   "ucFacturacionServicios"
-      Tab(0).Control(3).Enabled=   0   'False
       Tab(0).Control(4)=   "txtTotalServicios"
-      Tab(0).Control(4).Enabled=   0   'False
       Tab(0).Control(5)=   "chkServiciosTodos"
-      Tab(0).Control(5).Enabled=   0   'False
       Tab(0).Control(6)=   "txtTotalSeguroServicio"
-      Tab(0).Control(6).Enabled=   0   'False
       Tab(0).Control(7)=   "txtPagosAdelantoS"
-      Tab(0).Control(7).Enabled=   0   'False
       Tab(0).ControlCount=   8
       TabCaption(1)   =   "Farmacia"
       TabPicture(1)   =   "ucEstadoCuenta.ctx":123F
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "txtPagosAdelantoF"
-      Tab(1).Control(1)=   "txtTotalSeguroFarmacia"
-      Tab(1).Control(2)=   "chkFarmaciaTodos"
-      Tab(1).Control(3)=   "txtTotalFarmacia"
-      Tab(1).Control(4)=   "ucFacturacionBienes"
-      Tab(1).Control(5)=   "Label50"
-      Tab(1).Control(6)=   "lblTotalSeguroFarmacia"
-      Tab(1).Control(7)=   "lblPagoFarmacia"
+      Tab(1).Control(0)=   "lblPagoFarmacia"
+      Tab(1).Control(1)=   "lblTotalSeguroFarmacia"
+      Tab(1).Control(2)=   "Label50"
+      Tab(1).Control(3)=   "ucFacturacionBienes"
+      Tab(1).Control(4)=   "txtTotalFarmacia"
+      Tab(1).Control(5)=   "chkFarmaciaTodos"
+      Tab(1).Control(6)=   "txtTotalSeguroFarmacia"
+      Tab(1).Control(7)=   "txtPagosAdelantoF"
       Tab(1).ControlCount=   8
       TabCaption(2)   =   "Consolidado"
       TabPicture(2)   =   "ucEstadoCuenta.ctx":125B
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "txtTotalApagar"
-      Tab(2).Control(1)=   "txtPagosAdelantoC"
-      Tab(2).Control(2)=   "txtTotalConsumo"
-      Tab(2).Control(3)=   "txtExoneraciones"
-      Tab(2).Control(4)=   "txtTotalSeguro"
-      Tab(2).Control(5)=   "txtDevoluciones"
-      Tab(2).Control(6)=   "grdCabecera"
-      Tab(2).Control(7)=   "grdDetalle"
-      Tab(2).Control(8)=   "Label27"
-      Tab(2).Control(9)=   "Label51"
-      Tab(2).Control(10)=   "Label52"
-      Tab(2).Control(11)=   "Label53"
-      Tab(2).Control(12)=   "Label54"
-      Tab(2).Control(13)=   "Label60"
+      Tab(2).Control(0)=   "Label60"
+      Tab(2).Control(1)=   "Label54"
+      Tab(2).Control(2)=   "Label53"
+      Tab(2).Control(3)=   "Label52"
+      Tab(2).Control(4)=   "Label51"
+      Tab(2).Control(5)=   "Label27"
+      Tab(2).Control(6)=   "grdDetalle"
+      Tab(2).Control(7)=   "grdCabecera"
+      Tab(2).Control(8)=   "txtDevoluciones"
+      Tab(2).Control(9)=   "txtTotalSeguro"
+      Tab(2).Control(10)=   "txtExoneraciones"
+      Tab(2).Control(11)=   "txtTotalConsumo"
+      Tab(2).Control(12)=   "txtPagosAdelantoC"
+      Tab(2).Control(13)=   "txtTotalApagar"
       Tab(2).ControlCount=   14
       TabCaption(3)   =   "Resumen"
       TabPicture(3)   =   "ucEstadoCuenta.ctx":1277
-      Tab(3).ControlEnabled=   0   'False
-      Tab(3).Control(0)=   "Frame6"
-      Tab(3).Control(1)=   "Frame1(0)"
+      Tab(3).ControlEnabled=   -1  'True
+      Tab(3).Control(0)=   "Frame1(0)"
+      Tab(3).Control(0).Enabled=   0   'False
+      Tab(3).Control(1)=   "Frame6"
+      Tab(3).Control(1).Enabled=   0   'False
       Tab(3).ControlCount=   2
       TabCaption(4)   =   "Reembolso"
       TabPicture(4)   =   "ucEstadoCuenta.ctx":1293
       Tab(4).ControlEnabled=   0   'False
-      Tab(4).Control(0)=   "txtPorReembolsar"
-      Tab(4).Control(1)=   "txtReembolsoT"
-      Tab(4).Control(2)=   "txtReembolsoS"
-      Tab(4).Control(3)=   "txtReembolsoF"
-      Tab(4).Control(4)=   "grdReembolsoF"
-      Tab(4).Control(5)=   "Frame4"
-      Tab(4).Control(6)=   "Frame2"
-      Tab(4).Control(7)=   "Frame5"
-      Tab(4).Control(8)=   "Frame3"
-      Tab(4).Control(9)=   "Label55"
-      Tab(4).Control(10)=   "Label57"
-      Tab(4).Control(11)=   "lblTiempoDeCargaDeCuenta"
+      Tab(4).Control(0)=   "lblTiempoDeCargaDeCuenta"
+      Tab(4).Control(1)=   "Label57"
+      Tab(4).Control(2)=   "Label55"
+      Tab(4).Control(3)=   "Frame3"
+      Tab(4).Control(4)=   "Frame5"
+      Tab(4).Control(5)=   "Frame2"
+      Tab(4).Control(6)=   "Frame4"
+      Tab(4).Control(7)=   "grdReembolsoF"
+      Tab(4).Control(8)=   "txtReembolsoF"
+      Tab(4).Control(9)=   "txtReembolsoS"
+      Tab(4).Control(10)=   "txtReembolsoT"
+      Tab(4).Control(11)=   "txtPorReembolsar"
       Tab(4).ControlCount=   12
       TabCaption(5)   =   "Farmacia-Donaciones"
       TabPicture(5)   =   "ucEstadoCuenta.ctx":12AF
       Tab(5).ControlEnabled=   0   'False
-      Tab(5).Control(0)=   "txtTotalDonaciones"
-      Tab(5).Control(1)=   "grdItemsDonaciones"
+      Tab(5).Control(0)=   "grdItemsDonaciones"
+      Tab(5).Control(1)=   "txtTotalDonaciones"
       Tab(5).ControlCount=   2
       Begin VB.TextBox txtTotalDonaciones 
          Alignment       =   1  'Right Justify
@@ -263,7 +258,7 @@ Begin VB.UserControl ucEstadoCuenta
             Strikethrough   =   0   'False
          EndProperty
          Height          =   4965
-         Left            =   -66210
+         Left            =   8790
          TabIndex        =   184
          Top             =   360
          Width           =   3705
@@ -455,7 +450,7 @@ Begin VB.UserControl ucEstadoCuenta
          EndProperty
          Height          =   4965
          Index           =   0
-         Left            =   -74880
+         Left            =   120
          TabIndex        =   171
          Top             =   360
          Width           =   8685
@@ -837,7 +832,7 @@ Begin VB.UserControl ucEstadoCuenta
             Strikethrough   =   0   'False
          EndProperty
          Height          =   360
-         Left            =   4980
+         Left            =   -70020
          TabIndex        =   104
          Text            =   "0"
          Top             =   4950
@@ -873,7 +868,7 @@ Begin VB.UserControl ucEstadoCuenta
             Strikethrough   =   0   'False
          EndProperty
          Height          =   360
-         Left            =   8070
+         Left            =   -66930
          TabIndex        =   15
          Text            =   "0"
          Top             =   4950
@@ -909,7 +904,7 @@ Begin VB.UserControl ucEstadoCuenta
             Strikethrough   =   0   'False
          EndProperty
          Height          =   240
-         Left            =   150
+         Left            =   -74850
          TabIndex        =   13
          Top             =   5040
          Visible         =   0   'False
@@ -944,14 +939,14 @@ Begin VB.UserControl ucEstadoCuenta
             Strikethrough   =   0   'False
          EndProperty
          Height          =   360
-         Left            =   11430
+         Left            =   -63570
          TabIndex        =   10
          Top             =   4950
          Width           =   1005
       End
       Begin SISGalenPlus.ucFactItemsEstadoCuenta ucFacturacionServicios 
          Height          =   4485
-         Left            =   120
+         Left            =   -74880
          TabIndex        =   120
          Top             =   390
          Width           =   12270
@@ -1784,7 +1779,7 @@ Begin VB.UserControl ucEstadoCuenta
             Strikethrough   =   0   'False
          EndProperty
          Height          =   210
-         Left            =   3645
+         Left            =   -71355
          TabIndex        =   105
          Top             =   5040
          Width           =   1275
@@ -1822,7 +1817,7 @@ Begin VB.UserControl ucEstadoCuenta
             Strikethrough   =   0   'False
          EndProperty
          Height          =   210
-         Left            =   6240
+         Left            =   -68760
          TabIndex        =   16
          Top             =   5040
          Width           =   1815
@@ -1860,7 +1855,7 @@ Begin VB.UserControl ucEstadoCuenta
             Strikethrough   =   0   'False
          EndProperty
          Height          =   210
-         Left            =   9330
+         Left            =   -65670
          TabIndex        =   9
          Top             =   5040
          Width           =   2100
@@ -1904,20 +1899,20 @@ Begin VB.UserControl ucEstadoCuenta
       TabCaption(1)   =   "Lista de Pacientes"
       TabPicture(1)   =   "ucEstadoCuenta.ctx":134F
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "cmdListaPacientes"
-      Tab(1).Control(1)=   "txtFiltroApellPat"
-      Tab(1).Control(2)=   "btnBuscar"
-      Tab(1).Control(3)=   "optHosp"
-      Tab(1).Control(4)=   "optEmerg"
-      Tab(1).Control(5)=   "optCE"
-      Tab(1).Control(6)=   "optPreVentaServ"
-      Tab(1).Control(7)=   "optExoneracionesFarmacia"
-      Tab(1).Control(8)=   "txtFechaInicio"
-      Tab(1).Control(9)=   "txtFechaFin"
-      Tab(1).Control(10)=   "optPacientesExternos"
-      Tab(1).Control(11)=   "lblFiltroApellPaterno"
-      Tab(1).Control(12)=   "Label22"
-      Tab(1).Control(13)=   "Label21"
+      Tab(1).Control(0)=   "Label21"
+      Tab(1).Control(1)=   "Label22"
+      Tab(1).Control(2)=   "lblFiltroApellPaterno"
+      Tab(1).Control(3)=   "optPacientesExternos"
+      Tab(1).Control(4)=   "txtFechaFin"
+      Tab(1).Control(5)=   "txtFechaInicio"
+      Tab(1).Control(6)=   "optExoneracionesFarmacia"
+      Tab(1).Control(7)=   "optPreVentaServ"
+      Tab(1).Control(8)=   "optCE"
+      Tab(1).Control(9)=   "optEmerg"
+      Tab(1).Control(10)=   "optHosp"
+      Tab(1).Control(11)=   "btnBuscar"
+      Tab(1).Control(12)=   "txtFiltroApellPat"
+      Tab(1).Control(13)=   "cmdListaPacientes"
       Tab(1).ControlCount=   14
       Begin VB.CommandButton cmdListaPacientes 
          Height          =   360
@@ -6804,7 +6799,26 @@ Private Sub btnRecalculaPlan_Click()
         MsgBox "Verifique el Estado de la Cuenta" & Chr(13) & "deberá estar con Estado 'Abierta' o 'Alta Médica'", vbInformation, "Resultado"
         Exit Sub
     End If
-    
+    If Val(cmbFuenteFinanciamiento.BoundText) = sghFuenteFinanciamiento.sghFFSIS Then
+'        If mo_ReglasSISgalenhos.PacienteBuscadoEnTablaGalenHosTieneAfiliacionSIS(ucPacientesDetalle1.DevuelveDNI, _
+'                                                 "", "", _
+'                                                 "", "", _
+'                                                 "", ucPacientesDetalle1.DevuelveFechaNacimiento, _
+'                                                 wxParametroJAMO, ldFechaActualServidor, lnAfiliacionSIS4, lcSIScodigo, True) = False Then
+'            cmbFuenteFinanciamiento.BoundText = ""
+'            cmbFormaPago.BoundText = ""
+'            Exit Sub
+'        End If
+'        If mo_ReglasSISgalenhos.PacienteBuscadoEnTablaGalenHosTieneAfiliacionSIS(ucPacientesDetalle1.DevuelveDNI, _
+'                                                 ucPacientesDetalle1.DevuelveApaterno, ucPacientesDetalle1.DevuelveAmaterno, _
+'                                                 ucPacientesDetalle1.DevuelvePnombre, ucPacientesDetalle1.DevuelveSnombre, _
+'                                                 ucPacientesDetalle1.DevuelveSexo, ucPacientesDetalle1.DevuelveFechaNacimiento, _
+'                                                 wxParametroJAMO, ldFechaActualServidor, lnAfiliacionSIS4, lcSIScodigo, True) = False Then
+'                            mo_cmbIdFuentesFinanciamiento.BoundText = ""
+'                            mo_cmbIdFormaPago.BoundText = ""
+'        End If
+   End If
+                    
     'debb-16/05/2016 (inicio)
     If Val(cmbFuenteFinanciamiento.BoundText) = 1 And (ml_IdTipoServicio = sghEmergenciaConsultorios Or ml_IdTipoServicio = sghHospitalizacion) Then
         MsgBox "No puede elegir PARTICULAR a una Cuenta de Hospitalización o Emergencia", vbInformation, "Resultado"

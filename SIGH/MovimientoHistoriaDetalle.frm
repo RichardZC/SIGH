@@ -1,7 +1,7 @@
 VERSION 5.00
 Object = "{C932BA88-4374-101B-A56C-00AA003668DC}#1.1#0"; "msmask32.ocx"
 Object = "{5A9433E9-DD7B-4529-91B6-A5E8CA054615}#2.0#0"; "IGULTR~1.OCX"
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "tabctl32.ocx"
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
 Begin VB.Form MovimientoHistoriaDetalle 
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "Form1"
@@ -1032,28 +1032,28 @@ Attribute VB_Exposed = False
 '
 '------------------------------------------------------------------------------------
 Option Explicit
-Dim mo_Teclado As New sighentidades.Teclado
-Dim mo_Formulario As New sighentidades.Formulario
+Dim mo_Teclado As New sighEntidades.Teclado
+Dim mo_Formulario As New sighEntidades.Formulario
 Dim mo_MovimientosHistoriaClinica As New DOMovimientoHistoriaClinica
 Dim mo_AdminAdmision As New SIGHNegocios.ReglasAdmision
 Dim mo_AdminArchivoClinico As New SIGHNegocios.ReglasArchivoClinico
 Dim mo_AdminServiciosHosp As New SIGHNegocios.ReglasServiciosHosp
 Dim mo_AdminComun As New SIGHNegocios.ReglasComunes
 Dim mo_ReglasFacturacion As New SIGHNegocios.ReglasFacturacion
-Dim ml_IdUsuario As Long
+Dim ml_idUsuario As Long
 Dim ms_MensajeError As String
 Dim mi_Opcion As sghOpciones
 Dim mb_ExistenDatos As Boolean
 Dim mrs_HistoriasPorMover As New ADODB.Recordset
 Dim mo_Movimientos As New Collection
-Dim mo_cmbIdMotivo As New sighentidades.ListaDespleglable
-Dim mo_cmbIdServicio As New sighentidades.ListaDespleglable
-Dim mo_cmbIdServiciOrigen As New sighentidades.ListaDespleglable
+Dim mo_cmbIdMotivo As New sighEntidades.ListaDespleglable
+Dim mo_cmbIdServicio As New sighEntidades.ListaDespleglable
+Dim mo_cmbIdServiciOrigen As New sighEntidades.ListaDespleglable
 Dim ml_IdMovimiento As Long
 Dim ml_IdGrupoMovimiento As Long
-Dim mo_Apariencia As New sighentidades.GridInfragistic
+Dim mo_Apariencia As New sighEntidades.GridInfragistic
 Dim mo_Movimiento As DOMovimientoHistoriaClinica
-Dim ml_idPaciente As Long
+Dim ml_IdPaciente As Long
 Dim mo_lnIdTablaLISTBARITEMS As Long
 Dim mo_lcNombrePc As String
 Dim lcHCyPaciente As String
@@ -1110,11 +1110,11 @@ End Property
 Property Get MensajeError() As String
    MensajeError = ms_MensajeError
 End Property
-Property Let IdUsuario(lValue As Long)
-   ml_IdUsuario = lValue
+Property Let idUsuario(lValue As Long)
+   ml_idUsuario = lValue
 End Property
-Property Get IdUsuario() As Long
-   IdUsuario = ml_IdUsuario
+Property Get idUsuario() As Long
+   idUsuario = ml_idUsuario
 End Property
 Property Let IdMovimiento(lValue As Long)
    ml_IdMovimiento = lValue
@@ -1167,25 +1167,25 @@ Private Sub btnBuscar_Click()
 340                 MsgBox "Debe registrar el Nro Historia Clinica", vbInformation, "Mensaje"
 350                 Exit Sub
 360              End If
-370              If ml_idPaciente = 0 Then
+370              If ml_IdPaciente = 0 Then
 380                 MsgBox "Debe registrar el Nro Historia Clinica", vbInformation, "Mensaje"
 390                 Exit Sub
 400              End If
                  Dim oDOHistoriaSolicitada As New DOHistoriaSolicitada
                  Dim oHistoriasSolicitadas As New HistoriasSolicitadas
                  Dim oConexion As New Connection
-410              oConexion.Open sighentidades.CadenaConexion
+410              oConexion.Open sighEntidades.CadenaConexion
 420              oConexion.CursorLocation = adUseClient
 430              Set oHistoriasSolicitadas.Conexion = oConexion
 440              oDOHistoriaSolicitada.FechaRequerida = Me.txtFechaDesde.Text
 450              oDOHistoriaSolicitada.FechaSolicitud = Me.txtFechaDesde.Text
-460              oDOHistoriaSolicitada.HoraRequerida = Format(Now, sighentidades.DevuelveHoraSoloFormato_HM)
-470              oDOHistoriaSolicitada.HoraSolicitud = Format(Now, sighentidades.DevuelveHoraSoloFormato_HM)
-480              oDOHistoriaSolicitada.IdEmpleadoSolicita = ml_IdUsuario
+460              oDOHistoriaSolicitada.HoraRequerida = Format(Now, sighEntidades.DevuelveHoraSoloFormato_HM)
+470              oDOHistoriaSolicitada.HoraSolicitud = Format(Now, sighEntidades.DevuelveHoraSoloFormato_HM)
+480              oDOHistoriaSolicitada.IdEmpleadoSolicita = ml_idUsuario
 490              oDOHistoriaSolicitada.idMotivo = Val(mo_cmbIdMotivo.BoundText)
-500              oDOHistoriaSolicitada.idPaciente = ml_idPaciente
+500              oDOHistoriaSolicitada.idPaciente = ml_IdPaciente
 510              oDOHistoriaSolicitada.IdServicio = Val(mo_cmbIdServicio.BoundText)
-520              oDOHistoriaSolicitada.IdUsuarioAuditoria = ml_IdUsuario
+520              oDOHistoriaSolicitada.IdUsuarioAuditoria = ml_idUsuario
 530              If Not oHistoriasSolicitadas.Insertar(oDOHistoriaSolicitada) Then
 540                 MsgBox oHistoriasSolicitadas.MensajeError: GoTo ErrBuscar
 550              End If
@@ -1211,7 +1211,7 @@ Private Sub btnBuscar_Click()
 730               mrs_HistoriasPorMover.AddNew
 740               mrs_HistoriasPorMover!seleccionar = True
 750               mrs_HistoriasPorMover!IdHistoriaSolicitada = 0
-760               mrs_HistoriasPorMover!idPaciente = ml_idPaciente
+760               mrs_HistoriasPorMover!idPaciente = ml_IdPaciente
 770               mrs_HistoriasPorMover!HistoriaClinica = Me.txtIdHistoriaClinica.Text
 780               mrs_HistoriasPorMover!Nombres = lblApellidos.Caption
 790               mrs_HistoriasPorMover!FechaSolicitud = Date
@@ -1234,17 +1234,17 @@ Private Sub btnBuscar_Click()
 950       Case Else
                  
 960               If Me.cmbCondicionFechas.ListIndex <> 0 Then
-970                   If Me.txtFechaDesde = sighentidades.FECHA_VACIA_DMY Then
+970                   If Me.txtFechaDesde = sighEntidades.FECHA_VACIA_DMY Then
 980                       MsgBox "Ingrese la Fecha Desde", vbInformation, Me.Caption
 990                   End If
 1000              End If
                   
 1010              If Me.cmbCondicionFechas.ListIndex = 4 Then
-1020                  If Me.txtFechaHasta = sighentidades.FECHA_VACIA_DMY Then
+1020                  If Me.txtFechaHasta = sighEntidades.FECHA_VACIA_DMY Then
 1030                      MsgBox "Ingrese la Fecha Hasta", vbInformation, Me.Caption
 1040                  End If
 1050              Else
-1060                  Me.txtFechaHasta = sighentidades.FECHA_VACIA_DMY
+1060                  Me.txtFechaHasta = sighEntidades.FECHA_VACIA_DMY
 1070              End If
           
           
@@ -1261,12 +1261,12 @@ Private Sub btnBuscar_Click()
           Case 9
           ' yamill
 1120          If OptDevolverporServicio.Value = False Then
-1130              Set rsSolicitudes = mo_AdminArchivoClinico.MovimientosHistoriasClinicasParaDevolverPorNroHistoria(Val(mo_cmbIdServicio.BoundText), Me.txtFechaDesde.Text, ml_IdUsuario, Val(HCigualDNI_AgregaNUEVEaLaHistoria(txtIdHistoriaClinica)), mo_AdminComun.ParametrosIdServicioArchivoClinico(), ml_idPaciente)
+1130              Set rsSolicitudes = mo_AdminArchivoClinico.MovimientosHistoriasClinicasParaDevolverPorNroHistoria(Val(mo_cmbIdServicio.BoundText), Me.txtFechaDesde.Text, ml_idUsuario, Val(HCigualDNI_AgregaNUEVEaLaHistoria(txtIdHistoriaClinica)), mo_AdminComun.ParametrosIdServicioArchivoClinico(), ml_IdPaciente)
 1140          Else
-1150              Set rsSolicitudes = mo_AdminArchivoClinico.MovimientosHistoriasClinicasParaDevolverPorServicio(Val(mo_cmbIdServicio.BoundText), Me.txtFechaDesde.Text, ml_IdUsuario, Val(txtIdHistoriaClinica), mo_AdminComun.ParametrosIdServicioArchivoClinico(), 0, cmbFecha.ListIndex, sOperador, Me.txtFechaDesde.Text, IIf(Me.txtFechaHasta = sighentidades.FECHA_VACIA_DMY, "", Me.txtFechaHasta), Me.txtFechaHasta.Visible)
+1150              Set rsSolicitudes = mo_AdminArchivoClinico.MovimientosHistoriasClinicasParaDevolverPorServicio(Val(mo_cmbIdServicio.BoundText), Me.txtFechaDesde.Text, ml_idUsuario, Val(txtIdHistoriaClinica), mo_AdminComun.ParametrosIdServicioArchivoClinico(), 0, cmbFecha.ListIndex, sOperador, Me.txtFechaDesde.Text, IIf(Me.txtFechaHasta = sighEntidades.FECHA_VACIA_DMY, "", Me.txtFechaHasta), Me.txtFechaHasta.Visible)
 1160          End If
 1170      Case Else
-1180          Set rsSolicitudes = mo_AdminArchivoClinico.HistoriasSolicitadasSeleccionarPorArchivero(ml_IdUsuario, Val(mo_cmbIdMotivo.BoundText), Val(mo_cmbIdServicio.BoundText), sOperador, Me.txtFechaDesde.Text, IIf(Me.txtFechaHasta = sighentidades.FECHA_VACIA_DMY, "", Me.txtFechaHasta), Val(HCigualDNI_AgregaNUEVEaLaHistoria(txtIdHistoriaClinica.Text)), IIf(cmbFecha.ListIndex = 1, True, False), mo_AdminComun.ParametrosIdServicioArchivoClinico())
+1180          Set rsSolicitudes = mo_AdminArchivoClinico.HistoriasSolicitadasSeleccionarPorArchivero(ml_idUsuario, Val(mo_cmbIdMotivo.BoundText), Val(mo_cmbIdServicio.BoundText), sOperador, Me.txtFechaDesde.Text, IIf(Me.txtFechaHasta = sighEntidades.FECHA_VACIA_DMY, "", Me.txtFechaHasta), Val(HCigualDNI_AgregaNUEVEaLaHistoria(txtIdHistoriaClinica.Text)), IIf(cmbFecha.ListIndex = 1, True, False), mo_AdminComun.ParametrosIdServicioArchivoClinico())
 1190          If Val(mo_cmbIdMotivo.BoundText) >= 1 And Val(mo_cmbIdMotivo.BoundText) <= 3 Then
 1200             rsSolicitudes.Filter = "idAtencion>0"
 1210          End If
@@ -1276,7 +1276,7 @@ Private Sub btnBuscar_Click()
 1240      Exit Sub
 ErrBuscar:
           MsgBox Err.Number & " " & Err.Description & _
-                sighentidades.DevuelveFuenteDeLineaDelError(Erl(), "Private Sub btnBuscar_Click", "movimientoHistoriaDetalle.frm")   'debb-02/05/2016
+                sighEntidades.DevuelveFuenteDeLineaDelError(Erl(), "Private Sub btnBuscar_Click", "movimientoHistoriaDetalle.frm")   'debb-02/05/2016
 
 
 End Sub
@@ -1306,14 +1306,14 @@ Private Sub btnBuscarPaciente_Click()
 Dim oBusqueda As New SIGHNegocios.BuscaPacientes
 Dim oDOPaciente As New doPaciente
 Dim oConexion As New Connection
-oConexion.Open sighentidades.CadenaConexion
+oConexion.Open sighEntidades.CadenaConexion
 oConexion.CursorLocation = adUseClient
     oBusqueda.TipoFiltro = sghFiltrarConHistoriasDefinitivas
     oBusqueda.MostrarFormulario
     If oBusqueda.BotonPresionado = sghAceptar Then
         Set oDOPaciente = mo_AdminAdmision.PacientesSeleccionarPorId(oBusqueda.idRegistroSeleccionado, oConexion)
         If Not oDOPaciente Is Nothing Then
-            ml_idPaciente = oDOPaciente.idPaciente
+            ml_IdPaciente = oDOPaciente.idPaciente
             Me.txtIdHistoriaClinica.Text = oDOPaciente.NroHistoriaClinica
             lblApellidos.Caption = Trim(oDOPaciente.ApellidoPaterno) + " " + Trim(oDOPaciente.ApellidoMaterno) + " " + Trim(oDOPaciente.PrimerNombre)
             btnBuscar.SetFocus
@@ -1375,11 +1375,11 @@ Private Sub cmbCondicionFechas_Click()
     If Me.cmbCondicionFechas.ListIndex = 4 Then
         Me.lblHasta.Visible = True
         Me.txtFechaHasta.Visible = True
-        Me.txtFechaHasta.Text = Format(Date, sighentidades.DevuelveFechaSoloFormato_DMY)
+        Me.txtFechaHasta.Text = Format(Date, sighEntidades.DevuelveFechaSoloFormato_DMY)
     Else
         Me.lblHasta.Visible = False
         Me.txtFechaHasta.Visible = False
-        Me.txtFechaHasta.Text = sighentidades.FECHA_VACIA_DMY
+        Me.txtFechaHasta.Text = sighEntidades.FECHA_VACIA_DMY
     End If
     '
     If Me.cmbCondicionFechas.ListIndex = 1 Or Me.cmbCondicionFechas.ListIndex = 2 Or Me.cmbCondicionFechas.ListIndex = 3 Then
@@ -1418,7 +1418,7 @@ Function ServiciosSoloConSolicitud() As Recordset
     Dim lcHoraIniX As String, lcHoraFinX As String
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open sighentidades.CadenaConexion
+    oConexion.Open sighEntidades.CadenaConexion
     
     With oRsTmp2
           .Fields.Append "IdServicio", adInteger, 4, adFldIsNullable
@@ -1489,8 +1489,8 @@ Private Sub cmbIdMotivo_Click()
     Case sghAgregar
         fraFiltro.Visible = True
         Me.cmbCondicionFechas.ListIndex = 1
-        txtFechaDesde.Text = Format(Date, sighentidades.DevuelveFechaSoloFormato_DMY)
-        txtFechaHasta.Text = Format(Date, sighentidades.DevuelveFechaSoloFormato_DMY)
+        txtFechaDesde.Text = Format(Date, sighEntidades.DevuelveFechaSoloFormato_DMY)
+        txtFechaHasta.Text = Format(Date, sighEntidades.DevuelveFechaSoloFormato_DMY)
     Case Else
         fraFiltro.Visible = False
     End Select
@@ -1607,7 +1607,7 @@ Sub LlenarGrilladeHistoriasSeleccionadas(rsSolicitudes As Recordset, idMotivoMov
               
 30            oConexion.CommandTimeout = 300
 40            oConexion.CursorLocation = adUseClient
-50            oConexion.Open sighentidades.CadenaConexion
+50            oConexion.Open sighEntidades.CadenaConexion
               
               
               
@@ -1686,13 +1686,13 @@ Sub LlenarGrilladeHistoriasSeleccionadas(rsSolicitudes As Recordset, idMotivoMov
 690                              End If
 700                              oRsPaquete.Close
 710                           End If
-720                           lcFormaPago = oRsCitaPagada!Descripcion
+720                           lcFormaPago = oRsCitaPagada!descripcion
 730                        Else
 740                           oRsCitaPagada.Close
 750                           Set oRsCitaPagada = mo_AdminArchivoClinico.HistoriasPagoCitaDescripcionTarifa(rsSolicitudes!idAtencion, mo_cmbIdMotivo.BoundText)
 760                           lcSql = " "
 770                           If oRsCitaPagada.RecordCount > 0 Then
-780                              lcFormaPago = oRsCitaPagada!Descripcion
+780                              lcFormaPago = oRsCitaPagada!descripcion
 790                              If mo_cmbIdMotivo.BoundText = "1" And oRsCitaPagada.Fields!IdFormaPago = 1 Then
                                       'mgaray201410c
 800                                   lcMotivoNoSalidaHistoria = "No pagó"
@@ -1708,8 +1708,8 @@ Sub LlenarGrilladeHistoriasSeleccionadas(rsSolicitudes As Recordset, idMotivoMov
 900                   If lblApellidos.Caption = "" And Trim(cmbTurnos.Text) <> "" And lbContinua = True Then
 910                      lcHoraIniX = Left(cmbTurnos.Text, 5)
 920                      lcHoraFinX = Mid(cmbTurnos.Text, 7, 5)
-930                      If sighentidades.EsHora(lcHoraIniX) = True And sighentidades.EsHora(lcHoraFinX) Then
-940                         lcHoraRequeridaX = Format(rsSolicitudes!FechaRequerida, sighentidades.DevuelveHoraSoloFormato_HM)
+930                      If sighEntidades.EsHora(lcHoraIniX) = True And sighEntidades.EsHora(lcHoraFinX) Then
+940                         lcHoraRequeridaX = Format(rsSolicitudes!FechaRequerida, sighEntidades.DevuelveHoraSoloFormato_HM)
 950                         If Not (lcHoraRequeridaX >= lcHoraIniX And lcHoraRequeridaX <= lcHoraFinX) Then
 960                            lbContinua = False
 970                         End If
@@ -1751,7 +1751,7 @@ Sub LlenarGrilladeHistoriasSeleccionadas(rsSolicitudes As Recordset, idMotivoMov
 1300                      mrs_HistoriasPorMover!idAtencion = IIf(IsNull(rsSolicitudes!idAtencion), 0, rsSolicitudes!idAtencion)
 1310                      mrs_HistoriasPorMover!SeDaraSalida = lbSeDaraSalida
 1320                      lcBuscaParametro.RetornaFechaServidorSQL
-1330                      If idMotivoMovimiento <> 9 And Format(rsSolicitudes!FechaRequerida, sighentidades.DevuelveFechaSoloFormato_DMY) > lcBuscaParametro.RetornaFechaServidorSQL Then
+1330                      If idMotivoMovimiento <> 9 And Format(rsSolicitudes!FechaRequerida, sighEntidades.DevuelveFechaSoloFormato_DMY) > lcBuscaParametro.RetornaFechaServidorSQL Then
 1340                          ucMensajeParpadeando1.MensajeDeTexto = "La HC: " & Trim(rsSolicitudes!NroHistoriaClinica) & " tendrá CITA para el " & rsSolicitudes!FechaRequerida
 1350                          ucMensajeParpadeando1.Visible = True
 1360                      End If
@@ -1809,7 +1809,7 @@ Sub LlenarGrilladeHistoriasSeleccionadas(rsSolicitudes As Recordset, idMotivoMov
 1800                 MsgBox ms_MensajeError, vbInformation, Me.Caption
 1810              End If
 1820          ElseIf rsSolicitudes.RecordCount = 0 Then
-1830              Set oRsCitaPagada = mo_AdminArchivoClinico.HistoriasMovimientos(ml_idPaciente)
+1830              Set oRsCitaPagada = mo_AdminArchivoClinico.HistoriasMovimientos(ml_IdPaciente)
 1840              If oRsCitaPagada.RecordCount > 0 Then
 1850                 oRsCitaPagada.MoveFirst
                      '
@@ -1859,7 +1859,7 @@ Sub LlenarGrilladeHistoriasSeleccionadas(rsSolicitudes As Recordset, idMotivoMov
 2280          Exit Sub     'debb-02/05/2016
 ErrLlenarGrilla:     'debb-02/05/2016
 2290     MsgBox Err.Number & " " & Err.Description & _
-                sighentidades.DevuelveFuenteDeLineaDelError(Erl(), "Sub LlenarGrilladeHistoriasSeleccionadas", "movimientoHistoriaDetalle.frm")   'debb-02/05/2016
+                sighEntidades.DevuelveFuenteDeLineaDelError(Erl(), "Sub LlenarGrilladeHistoriasSeleccionadas", "movimientoHistoriaDetalle.frm")   'debb-02/05/2016
            
 End Sub
 
@@ -1910,7 +1910,7 @@ Private Sub cmdAgregaPaciente_Click()
         Dim oDOPaciente As New doPaciente
         Dim mo_PacienteDetalle As New PacienteDetalle
         mo_PacienteDetalle.Opcion = sghAgregar
-        mo_PacienteDetalle.IdUsuario = ml_IdUsuario
+        mo_PacienteDetalle.idUsuario = ml_idUsuario
         mo_PacienteDetalle.TipoServicio = sghConsultaExterna
         mo_PacienteDetalle.lcNombrePc = mo_lcNombrePc
         mo_PacienteDetalle.lnIdTablaLISTBARITEMS = 101
@@ -1918,12 +1918,12 @@ Private Sub cmdAgregaPaciente_Click()
         mo_PacienteDetalle.AlPulsarClicEnACEPTARdebeSalirDeVentana = True
         mo_PacienteDetalle.Show 1
         Dim oConexion As New Connection
-        oConexion.Open sighentidades.CadenaConexion
+        oConexion.Open sighEntidades.CadenaConexion
         oConexion.CursorLocation = adUseClient
         Set oDOPaciente = mo_AdminAdmision.PacientesSeleccionarPorId(mo_PacienteDetalle.idPaciente, oConexion)
         If Not oDOPaciente Is Nothing Then
             If oDOPaciente.idPaciente > 0 Then
-                ml_idPaciente = oDOPaciente.idPaciente
+                ml_IdPaciente = oDOPaciente.idPaciente
                 Me.txtIdHistoriaClinica.Text = oDOPaciente.NroHistoriaClinica
                 lblApellidos.Caption = Trim(oDOPaciente.ApellidoPaterno) + " " + Trim(oDOPaciente.ApellidoMaterno) + " " + Trim(oDOPaciente.PrimerNombre)
                 btnBuscar.SetFocus
@@ -2010,7 +2010,7 @@ Private Sub grdHistoriasSeleccionadas_InitializeLayout(ByVal Context As UltraGri
     grdHistoriasSeleccionadas.Bands(0).Columns("observaciones").Width = 3500
     grdHistoriasSeleccionadas.Bands(0).Columns("FechaRequerida").Width = 1600
     
-    mo_Apariencia.ConfigurarFilasBiColores grdHistoriasSeleccionadas, sighentidades.GrillaConFilasBicolor
+    mo_Apariencia.ConfigurarFilasBiColores grdHistoriasSeleccionadas, sighEntidades.GrillaConFilasBicolor
     
 End Sub
 
@@ -2037,7 +2037,7 @@ Private Sub txtFechaDesde_LostFocus()
 If Not EsFecha(txtFechaDesde.Text, "DD/MM/AAAA") Then
         MsgBox "La fecha ingresada no es válida", vbInformation, ""
         On Error Resume Next
-        txtFechaDesde.Text = sighentidades.FECHA_VACIA_DMY
+        txtFechaDesde.Text = sighEntidades.FECHA_VACIA_DMY
         Exit Sub
     End If
     ServiciosCargar
@@ -2047,7 +2047,7 @@ Private Sub txtfechaHasta_LostFocus()
 If Not EsFecha(txtFechaHasta.Text, "DD/MM/AAAA") Then
         MsgBox "La fecha ingresada no es válida", vbInformation, ""
         On Error Resume Next
-        txtFechaHasta.Text = sighentidades.FECHA_VACIA_DMY
+        txtFechaHasta.Text = sighEntidades.FECHA_VACIA_DMY
         Exit Sub
     End If
 End Sub
@@ -2066,7 +2066,7 @@ Private Sub txtFichaFamiliar_LostFocus()
              Set oRsBuscar = mo_AdminAdmision.PacientesSeleccionarPorFichaFamiliar(txtFichaFamiliar.Text)
              If oRsBuscar.RecordCount > 0 Then
                 lblApellidos.Caption = Trim(oRsBuscar.Fields!ApellidoPaterno) + " " + Trim(oRsBuscar.Fields!ApellidoMaterno) + " " + Trim(oRsBuscar.Fields!PrimerNombre)
-                ml_idPaciente = oRsBuscar.Fields!idPaciente
+                ml_IdPaciente = oRsBuscar.Fields!idPaciente
                 Me.txtIdHistoriaClinica.Text = oRsBuscar.Fields!NroHistoriaClinica
                 
              End If
@@ -2094,7 +2094,7 @@ Private Sub txtIdHistoriaClinica_LostFocus()
          Set oRsBuscar = mo_AdminAdmision.PacientesSeleccionarPorNroHistoria(Val(HCigualDNI_AgregaNUEVEaLaHistoria(txtIdHistoriaClinica.Text)))
          If oRsBuscar.RecordCount > 0 Then
             lblApellidos.Caption = Trim(oRsBuscar.Fields!ApellidoPaterno) + " " + Trim(oRsBuscar.Fields!ApellidoMaterno) + " " + Trim(oRsBuscar.Fields!PrimerNombre)
-            ml_idPaciente = oRsBuscar.Fields!idPaciente
+            ml_IdPaciente = oRsBuscar.Fields!idPaciente
          End If
          oRsBuscar.Close
     End If
@@ -2191,9 +2191,9 @@ End Sub
 
 
 Private Sub txtHoraMovimiento_LostFocus()
-If Not sighentidades.ValidaHora(txtHoraMovimiento.Text) Then
+If Not sighEntidades.ValidaHora(txtHoraMovimiento.Text) Then
             MsgBox "La hora ingresada no es correcta", vbInformation, Me.Caption
-             txtHoraMovimiento.Text = sighentidades.HORA_VACIA_HM
+             txtHoraMovimiento.Text = sighEntidades.HORA_VACIA_HM
         End If
 End Sub
 
@@ -2216,7 +2216,7 @@ Private Sub txtFechaMovimiento_LostFocus()
 If Not EsFecha(txtFechaMovimiento.Text, "DD/MM/AAAA") Then
         MsgBox "La fecha ingresada no es válida", vbInformation, ""
         On Error Resume Next
-        txtFechaMovimiento.Text = sighentidades.FECHA_VACIA_DMY
+        txtFechaMovimiento.Text = sighEntidades.FECHA_VACIA_DMY
         Exit Sub
     End If
 End Sub
@@ -2304,7 +2304,7 @@ End Sub
 Sub CargarDatosAlFormulario()
 
     Dim oDOEmpleado As New dOEmpleado
-    Set oDOEmpleado = mo_AdminComun.EmpleadosSeleccionarPorId(ml_IdUsuario)
+    Set oDOEmpleado = mo_AdminComun.EmpleadosSeleccionarPorId(ml_idUsuario)
     lblArchivero = "Archivero:" + oDOEmpleado.ApellidoPaterno + " " + oDOEmpleado.ApellidoMaterno + " " + oDOEmpleado.Nombres
     txtIdEmpleadoArchivo.Tag = oDOEmpleado.IdEmpleado
     txtIdEmpleadoArchivo.Text = oDOEmpleado.CodigoPlanilla
@@ -2319,9 +2319,9 @@ Sub CargarDatosAlFormulario()
     txtNombreEmpleadoTransporte = oDOEmpleado.ApellidoPaterno + " " + oDOEmpleado.ApellidoMaterno + " " + oDOEmpleado.Nombres
     '
     If lcBuscaParametro.SeleccionaFilaParametro(279) = "S" Then
-       lnUsuarioFiltroCombo = ml_IdUsuario
+       lnUsuarioFiltroCombo = ml_idUsuario
     Else
-       lnUsuarioFiltroCombo = IIf(lcBuscaParametro.SeleccionaFilaParametro(231) = "S", 0, ml_IdUsuario)
+       lnUsuarioFiltroCombo = IIf(lcBuscaParametro.SeleccionaFilaParametro(231) = "S", 0, ml_idUsuario)
     End If
     mo_cmbIdMotivo.BoundText = "1"
     '
@@ -2343,20 +2343,20 @@ Sub CargarDatosAlFormulario()
     
     Select Case mi_Opcion
         Case sghAgregar
-            Me.txtFechaMovimiento.Text = Format(Date, sighentidades.DevuelveFechaSoloFormato_DMY)
-            Me.txtHoraMovimiento = Format(Now, sighentidades.DevuelveHoraSoloFormato_HM)
+            Me.txtFechaMovimiento.Text = Format(Date, sighEntidades.DevuelveFechaSoloFormato_DMY)
+            Me.txtHoraMovimiento = Format(Now, sighEntidades.DevuelveHoraSoloFormato_HM)
             Me.btnListarMovimientosAsoc.Visible = False
             Me.progressRpt.Visible = False
         Case sghModificar
-            Me.fraPaciente.Enabled = False
+            Me.FraPaciente.Enabled = False
             Me.txtFechaMovimiento.Enabled = False
             Me.txtHoraMovimiento.Enabled = False
         Case sghConsultar
-            Me.fraPaciente.Enabled = False
+            Me.FraPaciente.Enabled = False
             Me.fraMovimiento.Enabled = False
             Me.btnAceptar.Enabled = False
         Case sghEliminar
-            Me.fraPaciente.Enabled = False
+            Me.FraPaciente.Enabled = False
             Me.fraMovimiento.Enabled = False
     End Select
     
@@ -2511,10 +2511,10 @@ Function ValidarDatosObligatorios() As Boolean
    If mo_cmbIdMotivo.BoundText = "" Then
        sMensaje = sMensaje + "Ingrese el motivo" + Chr(13)
    End If
-   If Me.txtHoraMovimiento.Text = sighentidades.HORA_VACIA_HM Then
+   If Me.txtHoraMovimiento.Text = sighEntidades.HORA_VACIA_HM Then
        sMensaje = sMensaje + "Ingrese la hora de movimiento" + Chr(13)
    End If
-   If Me.txtFechaMovimiento.Text = sighentidades.FECHA_VACIA_DMY Then
+   If Me.txtFechaMovimiento.Text = sighEntidades.FECHA_VACIA_DMY Then
        sMensaje = sMensaje + "Ingrese la fecha de movimiento" + Chr(13)
    End If
    If Me.txtIdEmpleadoRecepcion.Text = "" Then
@@ -2594,7 +2594,7 @@ Sub CargaDatosAlObjetosDeDatos()
             With mo_Movimiento
                 .Observacion = Me.txtObservacion.Text
                 .idMotivo = mo_cmbIdMotivo.BoundText
-                .FechaMovimiento = Format(Me.txtFechaMovimiento.Text + " " + Me.txtHoraMovimiento.Text, sighentidades.DevuelveFechaSoloFormato_DMY_HM)
+                .FechaMovimiento = Format(Me.txtFechaMovimiento.Text + " " + Me.txtHoraMovimiento.Text, sighEntidades.DevuelveFechaSoloFormato_DMY_HM)
                 .IdEmpleadoRecepcion = Val(Me.txtIdEmpleadoRecepcion.Tag)
                 .IdEmpleadoTransporte = Val(Me.txtIdEmpleadoTransporte.Tag)
                 .IdEmpleadoArchivo = Val(Me.txtIdEmpleadoArchivo.Tag)
@@ -2653,11 +2653,11 @@ Function DevolverHistoria_() As Boolean
         .IdServicioOrigen = Val(Me.txtIdServicioDestino.Tag)
         .Observacion = "Devolución al archivo"
         .idMotivo = 9
-        .FechaMovimiento = Format(Now, sighentidades.DevuelveFechaSoloFormato_DMY_HM)
+        .FechaMovimiento = Format(Now, sighEntidades.DevuelveFechaSoloFormato_DMY_HM)
         .idPaciente = mrs_HistoriasPorMover!idPaciente
-        .IdEmpleadoRecepcion = ml_IdUsuario
+        .IdEmpleadoRecepcion = ml_idUsuario
         .IdEmpleadoTransporte = 0
-        .IdEmpleadoArchivo = ml_IdUsuario
+        .IdEmpleadoArchivo = ml_idUsuario
         .IdHistoriaSolicitada = IIf(IsNull(mrs_HistoriasPorMover!IdHistoriaSolicitada), 0, mrs_HistoriasPorMover!IdHistoriaSolicitada)
         .IdGrupoMovimiento = 0
     End With
@@ -2698,7 +2698,7 @@ End Function
 Sub CargarDatosAlosControles()
 Dim oDoServicio As New doServicio
 Dim oConexion As New Connection
-oConexion.Open sighentidades.CadenaConexion
+oConexion.Open sighEntidades.CadenaConexion
 oConexion.CursorLocation = adUseClient
         Set mo_MovimientosHistoriaClinica = mo_AdminArchivoClinico.MovimientosHistoriaClinicaSeleccionarPorId(Me.IdMovimiento)
         If mo_AdminArchivoClinico.MensajeError <> "" Then
@@ -2714,8 +2714,8 @@ oConexion.CursorLocation = adUseClient
                 ml_IdGrupoMovimiento = .IdGrupoMovimiento
                 Me.txtObservacion.Text = .Observacion
                 mo_cmbIdMotivo.BoundText = .idMotivo
-                Me.txtHoraMovimiento.Text = Format(.FechaMovimiento, sighentidades.DevuelveHoraSoloFormato_HM)
-                Me.txtFechaMovimiento.Text = Format(.FechaMovimiento, sighentidades.DevuelveFechaSoloFormato_DMY)
+                Me.txtHoraMovimiento.Text = Format(.FechaMovimiento, sighEntidades.DevuelveHoraSoloFormato_HM)
+                Me.txtFechaMovimiento.Text = Format(.FechaMovimiento, sighEntidades.DevuelveFechaSoloFormato_DMY)
                 
                  'Datos del paciente
                  Dim oDOPaciente As New doPaciente
@@ -2729,7 +2729,7 @@ oConexion.CursorLocation = adUseClient
                      
                     Set oDoServicio = mo_AdminServiciosHosp.ServiciosSeleccionarPorId(.IdServicioOrigen, oConexion)
                     If Not oDoServicio Is Nothing Then
-                        mrs_HistoriasPorMover.Fields!nombreServicioOrigen = oDoServicio.Codigo + " " + oDoServicio.Nombre
+                        mrs_HistoriasPorMover.Fields!nombreServicioOrigen = oDoServicio.Codigo + " " + oDoServicio.nombre
                     Else
                         mrs_HistoriasPorMover.Fields!nombreServicioOrigen = ""
                     End If
@@ -2757,7 +2757,7 @@ oConexion.CursorLocation = adUseClient
                  If Not oDoServicio Is Nothing Then
                      Me.txtIdServicioDestino.Tag = oDoServicio.IdServicio
                      Me.txtIdServicioDestino.Text = oDoServicio.Codigo
-                     Me.txtNombreServicioDestino = oDoServicio.Nombre
+                     Me.txtNombreServicioDestino = oDoServicio.nombre
                  Else
                      Me.txtIdServicioDestino.Tag = ""
                      Me.txtIdServicioDestino.Text = ""
@@ -2822,8 +2822,8 @@ Dim oDoServicio As New doServicio
              ml_IdGrupoMovimiento = mo_MovimientosHistoriaClinica.IdGrupoMovimiento
              Me.txtObservacion.Text = mo_MovimientosHistoriaClinica.Observacion
              mo_cmbIdMotivo.BoundText = mo_MovimientosHistoriaClinica.idMotivo
-             Me.txtHoraMovimiento.Text = Format(mo_MovimientosHistoriaClinica.FechaMovimiento, sighentidades.DevuelveHoraSoloFormato_HM)
-             Me.txtFechaMovimiento.Text = Format(mo_MovimientosHistoriaClinica.FechaMovimiento, sighentidades.DevuelveFechaSoloFormato_DMY)
+             Me.txtHoraMovimiento.Text = Format(mo_MovimientosHistoriaClinica.FechaMovimiento, sighEntidades.DevuelveHoraSoloFormato_HM)
+             Me.txtFechaMovimiento.Text = Format(mo_MovimientosHistoriaClinica.FechaMovimiento, sighEntidades.DevuelveFechaSoloFormato_DMY)
     
             Dim oDOEmpleado As New dOEmpleado
             
@@ -2876,7 +2876,7 @@ Dim oDoServicio As New doServicio
                     If oRsCitaPagada.Fields!idestadofacturacion = 4 Then
                        lcSql = "Si"
                     End If
-                    lcFormaPago = oRsCitaPagada!Descripcion
+                    lcFormaPago = oRsCitaPagada!descripcion
                  End If
                  oRsCitaPagada.Close
             End If
@@ -2927,8 +2927,8 @@ Sub LimpiarFormulario()
             ucMensajeParpadeando1.MensajeDeTexto = ""
             ucMensajeParpadeando1.Visible = False
             
-            Me.txtFechaMovimiento.Text = Format(Date, sighentidades.DevuelveFechaSoloFormato_DMY)
-            Me.txtHoraMovimiento.Text = Format(Now, sighentidades.DevuelveHoraSoloFormato_HM)
+            Me.txtFechaMovimiento.Text = Format(Date, sighEntidades.DevuelveFechaSoloFormato_DMY)
+            Me.txtHoraMovimiento.Text = Format(Now, sighEntidades.DevuelveHoraSoloFormato_HM)
             If mrs_HistoriasPorMover.RecordCount > 0 Then
                 mrs_HistoriasPorMover.MoveFirst
                 Do While Not mrs_HistoriasPorMover.EOF
@@ -3095,7 +3095,7 @@ Sub CompletarDatosDeServicio(txtIdServicio As TextBox, lblDescripcionServicio As
 Dim oBusqueda As New SIGHNegocios.BuscaServicioHosp
 Dim oDoServicio As New doServicio
 Dim oConexion As New Connection
-    oConexion.Open sighentidades.CadenaConexion
+    oConexion.Open sighEntidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     oBusqueda.HabilitarTipoServicio = True
@@ -3105,7 +3105,7 @@ Dim oConexion As New Connection
         If Not oDoServicio Is Nothing Then
             txtIdServicio.Text = oDoServicio.Codigo
             txtIdServicio.Tag = oDoServicio.IdServicio
-            lblDescripcionServicio = oDoServicio.Nombre
+            lblDescripcionServicio = oDoServicio.nombre
         Else
             txtIdServicio.Text = ""
             txtIdServicio.Tag = ""
@@ -3141,7 +3141,7 @@ Sub CompletarDatosDeServicioEnElLostFocus(txtIdServicio As TextBox, lblDescripci
         Set oDoServicio = mo_AdminServiciosHosp.ServiciosSeleccionarPorCodigo(txtIdServicio.Text)
         If Not oDoServicio Is Nothing Then
             txtIdServicio.Tag = oDoServicio.IdServicio
-            lblDescripcionServicio.Text = oDoServicio.Nombre
+            lblDescripcionServicio.Text = oDoServicio.nombre
         Else
             txtIdServicio.Tag = ""
             lblDescripcionServicio.Text = ""
