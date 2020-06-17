@@ -1543,7 +1543,7 @@ Private Sub Form_Load()
     CargarDatosAlFormulario
     CargaItemsDebajoDeStockMinimo
     If mi_Opcion = sghAgregar Then
-       btnAceptar.Enabled = Not True     'licencia
+       'btnAceptar.Enabled = Not True     'licencia
     End If
 End Sub
 Sub ConfigurarGrdProductos()

@@ -1,7 +1,7 @@
 Type=OleDll
 Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#C:\Windows\SysWOW64\stdole2.tlb#OLE Automation
 Reference=*\G{2A75196C-D9EB-4129-B803-931327F72D5C}#2.8#0#C:\Program Files (x86)\Common Files\System\ado\msado28.tlb#Microsoft ActiveX Data Objects 2.8 Library
-Reference=*\G{E0BF4C60-8CD1-487F-A37B-A54256B95B8D}#1.0#0#..\..\crypt\CrypKey.dll#William Castro Grijalva (Encryptación de datos)
+Reference=*\G{E0BF4C60-8CD1-487F-A37B-A54256B95B8D}#1.0#0#C:\Windows\SysWOW64\CrypKey.dll#William Castro Grijalva (Encryptación de datos)
 Reference=*\A..\SIGHComun\SIGHComun.vbp
 Reference=*\A..\SIGHDatos\SIGHDatos.vbp
 Reference=*\A..\SIGHEntidades\SIGHEntidades.vbp
