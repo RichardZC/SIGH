@@ -454,7 +454,7 @@ Option Explicit
 Dim mo_cmbAlmacen As New sighentidades.ListaDespleglable
 Dim mo_ReglasFarmacia As New SIGHNegocios.ReglasFarmacia
 Dim mo_ReglasFacturacion As New SIGHNegocios.ReglasFacturacion
-Dim mo_reglasComunes As New SIGHNegocios.ReglasComunes
+Dim mo_ReglasComunes As New SIGHNegocios.ReglasComunes
 Dim sMensaje As String
 Dim mo_Teclado As New sighentidades.Teclado
 Dim ml_TextoDelFiltro As String
@@ -738,13 +738,13 @@ Function ValidaDatosObligatorios() As Boolean
     End If
     lbSiGrabaHistorico = False
    ' If SIGHEntidades.VerificaClaveMesDia(txtClave2.Text) = True Then
-        If sighentidades.VerificaSiRangoEsDeUnMesCompleto(CDate(Me.txtFdesde.Text), CDate(txtFhasta.Text), txtCodigoItem.Text) = False Then
-           MsgBox "       No podrá GRABAR en HISTORICOS de ICI         " & Chr(13) & _
-                  "  porque el RANGO DE FECHAS no corresponde a un mes " & _
-                  "      o porque quiere ver el ICI de un ITEM         ", vbInformation, ""
-        Else
-            lbSiGrabaHistorico = True
-        End If
+''        If sighentidades.VerificaSiRangoEsDeUnMesCompleto(CDate(Me.txtFdesde.Text), CDate(txtFhasta.Text), txtCodigoItem.Text) = False Then
+''           MsgBox "       No podrá GRABAR en HISTORICOS de ICI         " & Chr(13) & _
+''                  "  porque el RANGO DE FECHAS no corresponde a un mes " & _
+''                  "      o porque quiere ver el ICI de un ITEM         ", vbInformation, ""
+''        Else
+''            lbSiGrabaHistorico = True
+''        End If
    ' End If
     
     '
@@ -968,7 +968,7 @@ Sub LimpiarVariablesDeMemoria()
     Set mo_Teclado = Nothing
     Set mo_cmbAlmacen = Nothing
     Set mo_ReglasFacturacion = Nothing
-    Set mo_reglasComunes = Nothing
+    Set mo_ReglasComunes = Nothing
     Set mo_Formulario = Nothing
 End Sub
 
