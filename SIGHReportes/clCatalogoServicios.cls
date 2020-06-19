@@ -72,7 +72,7 @@ Sub ListaServiciosEnGeneral(lnHwnd As Long)
     Dim oConexion As New Connection
     oConexion.CommandTimeout = 300
     oConexion.CursorLocation = adUseClient
-    oConexion.Open sighEntidades.CadenaConexion
+    oConexion.Open SIGHEntidades.CadenaConexion
     '
     With oRsTarifas
           .Fields.Append "id", adInteger, 4, adFldIsNullable
@@ -270,7 +270,7 @@ Sub ListaServiciosEnGeneral(lnHwnd As Long)
         Else
             oWorkSheet.PageSetup.PrintTitleRows = "$1:$5"
             If oWorkSheet.PageSetup.PrintArea <> "" Then
-                oWorkSheet.PageSetup.PrintArea = sighEntidades.DevuelveRangoExcelAimprimir(oWorkSheet.PageSetup.PrintArea, iFila)
+                oWorkSheet.PageSetup.PrintArea = SIGHEntidades.DevuelveRangoExcelAimprimir(oWorkSheet.PageSetup.PrintArea, iFila)
             End If
             oExcel.Visible = True
             oWorkSheet.PrintPreview
@@ -498,8 +498,20 @@ Sub ListaServiciosPorPuntosDeCarga(lnHwnd As Long)
         Else
             oWorkSheet.PageSetup.PrintTitleRows = "$1:$5"
                 If oWorkSheet.PageSetup.PrintArea <> "" Then
-                   oWorkSheet.PageSetup.PrintArea = sighEntidades.DevuelveRangoExcelAimprimir(oWorkSheet.PageSetup.PrintArea, iFila)
+                   oWorkSheet.PageSetup.PrintArea = SIGHEntidades.DevuelveRangoExcelAimprimir(oWorkSheet.PageSetup.PrintArea, iFila)
                 End If
+             'SCCQ 19/06/2020 Cambio24 Inicio
+                 'El siguiente codigo es para verificar si la ruta existe
+                 Dim parametro_reporte As String
+                 parametro_reporte = lcBuscaParametro.SeleccionaFilaParametro(269)
+                 Dim strPath As String 'Variable que contiene la ruta del archivo de la carpeta donde se generan los reportes
+                 Dim posicion As Integer
+                 posicion = InStrRev(parametro_reporte, "\")
+                 strPath = Mid(parametro_reporte, 1, posicion - 1) '"c:\Reportes" 'Ruta para genear reporte
+                 If Dir(strPath, vbDirectory) = "" Then 'Si el directorio no existe
+                    MkDir strPath 'Se crea la carpeta
+                 End If
+            'SCCQ 19/06/2020 Cambio24 Fin
             oWorkSheet.SaveAs lcBuscaParametro.SeleccionaFilaParametro(269)
             'oWorkBook.Close
             MsgBox "Se generó el archivo " & lcBuscaParametro.SeleccionaFilaParametro(269)

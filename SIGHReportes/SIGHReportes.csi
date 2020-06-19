@@ -1,0 +1,4 @@
+[History]
+1=#P0#=mb	#P1#=Form_Activate	#P2#=SIGHReportes/rCrystal/Form_Activate	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200619130522	#P7#=0	#P8#=683	.
+2=#P0#=mb	#P1#=ListaServiciosPorPuntosDeCarga	#P2#=SIGHReportes/clCatalogoServicios/ListaServiciosPorPuntosDeCarga	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200619130457	#P7#=0	#P8#=220	.
+3=#P0#=mb	#P1#=ListaServiciosEnGeneral	#P2#=SIGHReportes/clCatalogoServicios/ListaServiciosEnGeneral	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200619115533	#P7#=0	#P8#=256	.

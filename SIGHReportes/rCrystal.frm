@@ -1,17 +1,17 @@
 VERSION 5.00
 Object = "{C4847593-972C-11D0-9567-00A0C9273C2A}#8.0#0"; "crviewer.dll"
 Begin VB.Form rCrystal 
-   ClientHeight    =   5625
+   ClientHeight    =   5628
    ClientLeft      =   60
-   ClientTop       =   345
-   ClientWidth     =   8430
+   ClientTop       =   348
+   ClientWidth     =   8436
    Icon            =   "rCrystal.frx":0000
    KeyPreview      =   -1  'True
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   5625
-   ScaleWidth      =   8430
+   ScaleHeight     =   5628
+   ScaleWidth      =   8436
    StartUpPosition =   2  'CenterScreen
    WindowState     =   2  'Maximized
    Begin CRVIEWERLibCtl.CRViewer CrvReportes 
@@ -937,18 +937,22 @@ End If
                 
                  'SCCQ 13/02/2020 Problema4 Inicio
                  'El siguiente codigo es para verificar si la ruta existe
+                 Dim parametro_reporte As String
+                 parametro_reporte = lcBuscaParametro.SeleccionaFilaParametro(269)
                  Dim strPath As String 'Variable que contiene la ruta de la carpeta donde se generan los reportes
-                 strPath = "c:\Reportes" 'Ruta para genear reporte
+                 Dim posicion As Integer
+                 posicion = InStrRev(parametro_reporte, "\")
+                 strPath = Mid(parametro_reporte, 1, posicion - 1) '"c:\Reportes" 'Ruta para genear reporte
                  If Dir(strPath, vbDirectory) = "" Then 'Si el directorio no existe
-                    MkDir "C:\Reportes" 'Se crea la carpeta
+                    MkDir strPath 'Se crea la carpeta
                  End If
                  'SCCQ 13/02/2020 Problema4 Fin
                  'Codigo que genera el archivo excel
                  crReport.ExportOptions.DestinationType = crEDTDiskFile
                  crReport.ExportOptions.FormatType = crEFTExcel70
-                 crReport.ExportOptions.DiskFileName = "c:\Reportes\excel.xls" 'SCCQ 13/02/2020 Problema4 Inicio/Fin
+                 crReport.ExportOptions.DiskFileName = parametro_reporte '"c:\Reportes\excel.xls" 'SCCQ 13/02/2020 Problema4 Inicio/Fin
                  crReport.Export (False)
-                 MsgBox "Se generó el archivo c:\Reportes\EXCEL.XLS" 'SCCQ 13/02/2020 Problema4 Inicio/Fin
+                 MsgBox "Se generó el archivo " + parametro_reporte  'SCCQ 13/02/2020 Problema4 Inicio/Fin
                  'fin del codigo que genera el archivo excel
                 
              End If
