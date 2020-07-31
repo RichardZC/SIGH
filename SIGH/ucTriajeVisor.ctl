@@ -766,7 +766,7 @@ On Error GoTo ErrJamo
     
     oConexion.CommandTimeout = 300
     oConexion.CursorLocation = adUseClient
-    oConexion.Open sighentidades.CadenaConexion
+    oConexion.Open sighEntidades.CadenaConexion
     
     oConexionExterna.CommandTimeout = 300
     oConexionExterna.CursorLocation = adUseClient
@@ -878,9 +878,9 @@ End Function
 Private Sub btnBuscaHistoricos_Click()
     Dim oTriaje As New clTriaje
     oTriaje.idAtencion = ml_idAtencion
-    oTriaje.idUsuario = sighentidades.Usuario
+    oTriaje.idUsuario = sighEntidades.Usuario
     oTriaje.Opcion = mi_Opcion
-    oTriaje.lcNombrePc = sighentidades.RetornaNombrePC
+    oTriaje.lcNombrePc = sighEntidades.RetornaNombrePC
     Call oTriaje.MostrarFormularioDesdeAtenciones(ml_Origen, ml_idCuentaAtencion)
     Call verificarCambiosEnTriaje
 End Sub

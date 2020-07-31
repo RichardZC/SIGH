@@ -784,18 +784,18 @@ Dim mo_AdminAdmision As New SIGHNegocios.ReglasAdmision
 Dim mo_ReglasFacturacion As New SIGHNegocios.ReglasFacturacion
 Dim mo_ReglasFarmacia As New SIGHNegocios.ReglasFarmacia
 Dim mo_AdminCaja As New SIGHNegocios.ReglasCaja
-Dim mo_reglasComunes As New SIGHNegocios.ReglasComunes
+Dim mo_ReglasComunes As New SIGHNegocios.ReglasComunes
 Dim mo_ReglasSeguridad As New SIGHNegocios.ReglasDeSeguridad
 Dim mo_AdminArchivoClinico As New SIGHNegocios.ReglasArchivoClinico
 Dim mo_ReglasSISgalenhos As New SIGHSis.ReglasSISgalenhos
 Dim mo_Procesos As New SIGHProxies.Procesos
 Dim wxParametro302 As String, lnIdTipoServicio As Long
-Dim mo_Apariencia As New SIGHEntidades.GridInfragistic
-Dim mo_cmbIdEstado As New SIGHEntidades.ListaDespleglable
-Dim mo_cmbResponsable As New SIGHEntidades.ListaDespleglable
+Dim mo_Apariencia As New sighEntidades.GridInfragistic
+Dim mo_cmbIdEstado As New sighEntidades.ListaDespleglable
+Dim mo_cmbResponsable As New sighEntidades.ListaDespleglable
 Dim lcBuscaParametro As New SIGHDatos.Parametros
-Dim mo_Teclado As New SIGHEntidades.Teclado
-Dim mo_Formulario As New SIGHEntidades.Formulario
+Dim mo_Teclado As New sighEntidades.Teclado
+Dim mo_Formulario As New sighEntidades.Formulario
 Dim oRsProgramacion As New Recordset
 Dim lbPrimeraVez As Boolean
 Dim ml_IdTipoFinanciamiento As Long
@@ -814,7 +814,7 @@ Const lcConstanteMovimientoSalida As String = "S"
 Dim ml_IdTipoVentaSeleccionada As Long
 Dim mo_lcNombrePc As String
 Dim mo_lnIdTablaLISTBARITEMS As Long
-Dim lnidReceta As Long
+Dim lnIdReceta As Long
 Dim lnUltimaBusqueda As sghUltimaBusqueda
 Dim lnIdPacienteHistorico As Long
 Dim ml_SeEligioGridBoleta As Boolean
@@ -892,7 +892,7 @@ Private Sub btnAceptar_Click()
    If btnAceptar.Enabled = False Then
       Exit Sub
    End If
-   mo_reglasComunes.DevuelveCamaYdniMedico lcMedico, lcMedicoDNI, lcCama, 0, lnMedicoId, ml_IdPaciente
+   mo_ReglasComunes.DevuelveCamaYdniMedico lcMedico, lcMedicoDNI, lcCama, 0, lnMedicoId, ml_IdPaciente
    Select Case mi_Opcion
    Case sghAgregar
        If ValidarDatosObligatorios() Then
@@ -956,8 +956,12 @@ Function ValidarDatosObligatorios() As Boolean
     End If
     ms_MensajeError = ""
     UcPacienteDatos1.CargarDatosAlObjetoDatos oDOPaciente
-    If txtDatosDeCuenta.Text = "" Then
-       If oDOPaciente.ApellidoPaterno = "" Then
+    If .Text = "" Then
+       If oDOPaciente.NroDocumento = "" Then
+           ms_MensajeError = ms_MensajeError & "Tiene que registrar el N° DNI Leonel" & Chr(13)
+           lnTabError = 1
+       End If
+        If oDOPaciente.ApellidoPaterno = "" Then
            ms_MensajeError = ms_MensajeError & "Tiene que registrar el Apellido Paterno" & Chr(13)
            lnTabError = 1
        End If
@@ -1046,19 +1050,19 @@ Sub CargaDatosAlObjetosDeDatos()
                 .IdComprobantePago = ml_IdComprobantePago
              End If
              .idCuentaAtencion = Val(txtNcuenta.Text)
-             .IdEstado = sghSiCitasEstados.sghSiCitaActiva
+             .idEstado = sghSiCitasEstados.sghSiCitaActiva
              .idMedico = lnMedicoId
              '.IdMovimiento
              .idPaciente = oDOPaciente.idPaciente
              .idPuntoCarga = ml_PuntoCarga
              .idTipoSexo = oDOPaciente.idTipoSexo
-             .idUsuario = SIGHEntidades.Usuario
-             .IdUsuarioAuditoria = SIGHEntidades.Usuario
+             .idUsuario = sighEntidades.Usuario
+             .IdUsuarioAuditoria = sighEntidades.Usuario
              .Paciente = oDOPaciente.ApellidoPaterno & " " & oDOPaciente.ApellidoMaterno & " " & oDOPaciente.PrimerNombre
              .idReceta = Val(txtNreceta.Text)
              .idSala = ml_idSala
              '.Cupo
-             .Telefono = Me.txtTelefono.Text
+             .TELEFONO = Me.txtTelefono.Text
              .Direccion = Me.txtDireccion.Text
         End With
 End Sub
@@ -1168,15 +1172,15 @@ Sub CargaDatosPuntoCarga()
     If oRsTmp9.RecordCount > 0 Then
         lnCuposXdia = IIf(IsNull(oRsTmp9!NroCupos), 0, oRsTmp9!NroCupos)
         lnNroMinutos = IIf(IsNull(oRsTmp9!nroCuposMinutos), 0, oRsTmp9!nroCuposMinutos)
-        lcHoraInicioCita = IIf(IsNull(oRsTmp9!HoraInicio), SIGHEntidades.HORA_VACIA_HM, oRsTmp9!HoraInicio)
+        lcHoraInicioCita = IIf(IsNull(oRsTmp9!HoraInicio), sighEntidades.HORA_VACIA_HM, oRsTmp9!HoraInicio)
         lcHoraInicioCita = mo_AdminProgramacionMedica.CalculaHoraFinal(lcHoraInicioCita, lnNroMinutos)
     Else
         oRsTmp9.Close
-        Set oRsTmp9 = mo_reglasComunes.FactPuntosCargaSeleccionarPorId(ml_PuntoCarga)
+        Set oRsTmp9 = mo_ReglasComunes.FactPuntosCargaSeleccionarPorId(ml_PuntoCarga)
         If oRsTmp9.RecordCount > 0 Then
            lnCuposXdia = IIf(IsNull(oRsTmp9!NroCupos), 0, oRsTmp9!NroCupos)
            lnNroMinutos = IIf(IsNull(oRsTmp9!nroCuposMinutos), 0, oRsTmp9!nroCuposMinutos)
-           lcHoraInicioCita = IIf(IsNull(oRsTmp9!HoraInicioDiaCita), SIGHEntidades.HORA_VACIA_HM, oRsTmp9!HoraInicioDiaCita)
+           lcHoraInicioCita = IIf(IsNull(oRsTmp9!HoraInicioDiaCita), sighEntidades.HORA_VACIA_HM, oRsTmp9!HoraInicioDiaCita)
         End If
     End If
     oRsTmp9.Close
@@ -1206,7 +1210,7 @@ Private Sub Form_Load()
     CargaDatosPuntoCarga
     txtFregistro.Text = lcBuscaParametro.RetornaFechaServidorSQL
     txtEstado.Text = "Registrado"
-    txtFcita.Text = Format(ml_fechaCita, SIGHEntidades.DevuelveFechaSoloFormato_DMY)
+    txtFcita.Text = Format(ml_fechaCita, sighEntidades.DevuelveFechaSoloFormato_DMY)
     txtHoraCita.Text = lcHoraInicioCita
     
     CargaDataCombos
@@ -1270,9 +1274,9 @@ Sub CargarDatosAlosControles()
         Dim lbSigue As Boolean, lbSeguirConCuentaCerrada As Boolean, lnIndex As Integer
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 900
-        oConexion.Open SIGHEntidades.CadenaConexion
+        oConexion.Open sighEntidades.CadenaConexion
         Set oSiCitas.Conexion = oConexion
-        DoSiCitas.IdUsuarioAuditoria = SIGHEntidades.Usuario
+        DoSiCitas.IdUsuarioAuditoria = sighEntidades.Usuario
         DoSiCitas.idCitaSI = ml_IdMovimiento
         txtNcita.Text = ml_IdMovimiento
         If oSiCitas.SeleccionarPorId(DoSiCitas) = True Then
@@ -1289,15 +1293,15 @@ Sub CargarDatosAlosControles()
                      oRsProgramacion.MoveNext
                 Loop
                 
-                Me.txtTelefono.Text = .Telefono
+                Me.txtTelefono.Text = .TELEFONO
                 Me.txtDireccion.Text = .Direccion
                 Me.txtCupo.Text = .Cupo
                 ml_idSala = .idSala
                 txtNreceta.Text = IIf(.idReceta > 0, .idReceta, "")
-                txtFregistro.Text = Format(.fechacreacion, SIGHEntidades.DevuelveFechaSoloFormato_DMY)
-                txtFcita.Text = Format(.fecha, SIGHEntidades.DevuelveFechaSoloFormato_DMY)
+                txtFregistro.Text = Format(.fechacreacion, sighEntidades.DevuelveFechaSoloFormato_DMY)
+                txtFcita.Text = Format(.fecha, sighEntidades.DevuelveFechaSoloFormato_DMY)
                 txtHoraCita.Text = .HoraInicio
-                txtEstado.Text = IIf(.IdEstado = sghSiCitasEstados.sghSiCitaActiva, "Registrado", "Con TM")
+                txtEstado.Text = IIf(.idEstado = sghSiCitasEstados.sghSiCitaActiva, "Registrado", "Con TM")
                 ml_PuntoCarga = .idPuntoCarga
                 lnMedicoId = .idMedico
                 ml_IdPaciente = .idPaciente
@@ -1327,13 +1331,13 @@ Sub CargarDatosAlosControles()
                lbSigue = True
                If oRsTmp.RecordCount > 0 Then
                     lnMedicoId = IIf(IsNull(oRsTmp!IdMedicoIngreso), 0, oRsTmp!IdMedicoIngreso)
-                    If oRsTmp.Fields!IdEstado <> 1 Then
+                    If oRsTmp.Fields!idEstado <> 1 Then
                        If mi_Opcion <> sghConsultar Then
                           '
                           lbSeguirConCuentaCerrada = True
                           If mi_Opcion = sghModificar And oRsTmp!idTipoServicio = sghTipoServicio.sghEmergenciaConsultorios Then
-                            If mo_reglasComunes.HospitalizadoConCtaEmergNOabierta(ml_IdPaciente, _
-                               Format(oRsTmp!fechaEgreso & " " & oRsTmp!HoraEgreso, SIGHEntidades.DevuelveFechaSoloFormato_DMY_HM), _
+                            If mo_ReglasComunes.HospitalizadoConCtaEmergNOabierta(ml_IdPaciente, _
+                               Format(oRsTmp!fechaEgreso & " " & oRsTmp!HoraEgreso, sighEntidades.DevuelveFechaSoloFormato_DMY_HM), _
                                oRsTmp!IdDestinoAtencion) = True Then
                                lbSeguirConCuentaCerrada = False
                                UcPacienteDatos1.habilitar False
@@ -1362,11 +1366,11 @@ Sub CargarDatosAlosControles()
                End If
                '
                
-               Set oRsTmp = mo_reglasComunes.RecetaCabeceraFiltraXcuentaYDocumentodespacho(txtNcita.Text, Val(txtNcuenta.Text))
-               lnidReceta = 0
+               Set oRsTmp = mo_ReglasComunes.RecetaCabeceraFiltraXcuentaYDocumentodespacho(txtNcita.Text, Val(txtNcuenta.Text))
+               lnIdReceta = 0
                ucFacturacionProductos.PermiteAgregarItems = True
                If oRsTmp.RecordCount > 0 Then
-                   lnidReceta = oRsTmp.Fields!idReceta
+                   lnIdReceta = oRsTmp.Fields!idReceta
                    ucFacturacionProductos.PermiteAgregarItems = False
                End If
                UcPacienteDatos1.DeshabilitarFrames True
@@ -1378,7 +1382,7 @@ Sub CargarDatosAlosControles()
                 Dim oDOCajaComprobantesPago As New DOCajaComprobantesPago
                 Set oDOCajaComprobantesPago = mo_AdminCaja.ComprobantePagoSeleccionarPorId(DoSiCitas.IdComprobantePago, oConexion)
                 txtNserie.Text = oDOCajaComprobantesPago.nroSerie
-                txtNboleta.Text = oDOCajaComprobantesPago.nrodocumento
+                txtNboleta.Text = oDOCajaComprobantesPago.NroDocumento
                 ucFacturacionProductos.PermiteAgregarItems = False
                 UcPacienteDatos1.DeshabilitarFrames False
                 If ml_IdServicioPaciente > 0 Then
@@ -1410,7 +1414,7 @@ Private Sub cmdBuscaCuentaPorApellidos_Click()
     Dim oBusqueda As New SIGHNegocios.BuscaPacientes
     Dim oDOPaciente As New doPaciente
     Dim oConexion As New Connection
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighEntidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     oBusqueda.TipoFiltro = sghFiltrarTodos
     oBusqueda.MostrarFormulario
@@ -1454,7 +1458,7 @@ End Sub
 Private Sub txtFcita_LostFocus()
 If Not IsDate(txtFcita.Text) Then
         MsgBox "La fecha ingresada no es válida", vbInformation, ""
-        txtFcita.Text = SIGHEntidades.FECHA_VACIA_DMY_HM
+        txtFcita.Text = sighEntidades.FECHA_VACIA_DMY_HM
         Exit Sub
     End If
 End Sub
@@ -1481,7 +1485,7 @@ Private Sub txtNboleta_LostFocus()
         Dim rsBuscaBoletaEnImagenes As New Recordset
         Dim oConexion As New Connection
         oConexion.CommandTimeout = 300
-        oConexion.Open SIGHEntidades.CadenaConexion
+        oConexion.Open sighEntidades.CadenaConexion
         oConexion.CursorLocation = adUseClient
         Set rsBuscaBoleta = mo_AdminCaja.CajaComprobantePagoServiciosPorNroSerieNroDocumentoConexion(txtNserie.Text, Trim(txtNboleta.Text), oConexion)
         If rsBuscaBoleta.RecordCount > 0 Then
@@ -1492,7 +1496,7 @@ Private Sub txtNboleta_LostFocus()
                chkMuestraHistorico_Click
             End If
             '
-            If rsBuscaBoleta.Fields!IdEstadoComprobante <> sghEstadosComprobante.sighEstadosComprobantePagado Then
+            If rsBuscaBoleta.Fields!idEstadoComprobante <> sghEstadosComprobante.sighEstadosComprobantePagado Then
                 MsgBox "Esa Boleta está ANULADA", vbInformation, Me.Caption
                 txtNboleta.Text = ""
                 txtNserie.Text = ""
@@ -1528,7 +1532,7 @@ Private Sub txtNboleta_LostFocus()
                        UcPacienteDatos1.DeshabilitarFrames True
                     Else
                        'Paciente contado, EXTERNO
-                       UcPacienteDatos1.CargaAlgunosDatosDesdeBoleta (rsBuscaBoleta.Fields!RazonSocial)
+                       UcPacienteDatos1.CargaAlgunosDatosDesdeBoleta (rsBuscaBoleta.Fields!razonSocial)
                        UcPacienteDatos1.DeshabilitarFrames False
                        UcPacienteDatos1.FechaRegistro = CDate(txtFregistro.Text)
                     End If
@@ -1566,7 +1570,7 @@ Sub CargaBoletaAutomaticamente()
         Set oRsTmp1 = mo_AdminCaja.CajaComprobantesSeleccionarPorId(ml_IdMovimiento)
         If oRsTmp1.RecordCount > 0 Then
             Me.txtNserie = oRsTmp1.Fields!nroSerie
-            Me.txtNboleta = oRsTmp1.Fields!nrodocumento
+            Me.txtNboleta = oRsTmp1.Fields!NroDocumento
             txtNboleta_LostFocus
         End If
         Set oRsTmp1 = Nothing
@@ -1588,13 +1592,13 @@ Private Sub txtNcuenta_LostFocus()
        Dim oRsTmp As New Recordset
        Dim lbSigue As Boolean
        Dim oConexion As New Connection
-       oConexion.Open SIGHEntidades.CadenaConexion
+       oConexion.Open sighEntidades.CadenaConexion
        oConexion.CursorLocation = adUseClient
        Set oRsTmp = mo_ReglasFarmacia.AtencionesSelecionarPorCuenta(txtNcuenta.Text, oConexion)
        lbSigue = True
        If oRsTmp.RecordCount > 0 Then
           lnMedicoId = IIf(IsNull(oRsTmp!IdMedicoIngreso), 0, oRsTmp!IdMedicoIngreso)
-          If oRsTmp.Fields!IdEstado <> 1 Then
+          If oRsTmp.Fields!idEstado <> 1 Then
              If mi_Opcion <> sghConsultar Then
                 MsgBox "Ese estado de Cuenta no se encuentra ABIERTA", vbInformation, Me.Caption
                 If mi_Opcion = sghModificar Or mi_Opcion = sghEliminar Then
@@ -1628,7 +1632,7 @@ Private Sub txtNcuenta_LostFocus()
           End If
           If mi_Opcion = sghAgregar And _
                                     mo_AdminAdmision.LaFechaDespachoEsMenorAfechaCita(CDate(Format(oRsTmp!FechaIngreso, _
-                                    SIGHEntidades.DevuelveFechaSoloFormato_DMY) & " " & oRsTmp!HoraIngreso)) = True Then
+                                    sighEntidades.DevuelveFechaSoloFormato_DMY) & " " & oRsTmp!HoraIngreso)) = True Then
              lbSigue = False
           End If
           
@@ -1650,7 +1654,7 @@ Private Sub txtNcuenta_LostFocus()
                 UcPacienteDatos1.FechaRegistro = CDate(txtFregistro.Text)
                 UcPacienteDatos1.CargarDatosDePacienteALosControles
                 UcPacienteDatos1.DeshabilitarFrames True
-                txtTelefono.Text = UcPacienteDatos1.Telefono
+                txtTelefono.Text = UcPacienteDatos1.TELEFONO
                 Me.txtDireccion.Text = UcPacienteDatos1.Direccion
                 ucFacturacionProductos.LimpiarGrilla
                 ucFacturacionProductos.TipoProducto = sghServicio
@@ -1680,7 +1684,7 @@ Private Sub txtNcuenta_LostFocus()
                 Set oRsTmp = mo_AdminAdmision.AtencionesDiagnosticosSeleccionarTodosPorIdAtencion(oRsTmp.Fields!idAtencion)
                 If oRsTmp.RecordCount > 0 Then
                    txtDx.Text = oRsTmp.Fields!CodigoCIE2004
-                   txtNombreDx.Text = oRsTmp.Fields!Descripcion
+                   txtNombreDx.Text = oRsTmp.Fields!descripcion
                    mo_Formulario.HabilitarDeshabilitar txtDx, False
                    ml_IdDiagnostico = oRsTmp!idDiagnostico
                 End If
@@ -1723,7 +1727,7 @@ End Sub
 
 Sub CargaCupoYhoraCita()
     txtCupo.Text = ""
-    txtHoraCita.Text = SIGHEntidades.HORA_VACIA_HM
+    txtHoraCita.Text = sighEntidades.HORA_VACIA_HM
     lnNroMinutos = oRsProgramacion!TiempoPromedioAtencion
     Dim oRsTmp1 As New Recordset
     Set oRsTmp1 = mo_ReglasImagenes.siCitasXidprogramacion(oRsProgramacion!IdProgramacion)
@@ -1806,7 +1810,7 @@ Sub LimpiarVariablesDeMemoria()
     Set mo_ReglasFacturacion = Nothing
     Set mo_ReglasFarmacia = Nothing
     Set mo_AdminCaja = Nothing
-    Set mo_reglasComunes = Nothing
+    Set mo_ReglasComunes = Nothing
     Set mo_ReglasSeguridad = Nothing
     Set mo_AdminArchivoClinico = Nothing
     Set mo_Apariencia = Nothing
@@ -1824,11 +1828,11 @@ Private Sub txtNreceta_LostFocus()
        Dim oRsTmp1 As New Recordset, lnRecetaProcesada As Long, lnCuenta As Long
        lnRecetaProcesada = Val(txtNreceta.Text)
        '
-       Set oRsTmp1 = mo_reglasComunes.RecetasConCabeceraYdetalleSoloCpt(lnRecetaProcesada, sghRecetaEstados.sighRecetaRegistrada)
+       Set oRsTmp1 = mo_ReglasComunes.RecetasConCabeceraYdetalleSoloCpt(lnRecetaProcesada, sghRecetaEstados.sighRecetaRegistrada)
        If oRsTmp1.RecordCount > 0 Then
-            If oRsTmp1.Fields!IdEstado <> sghRecetaEstados.sighRecetaRegistrada Then
-                mo_reglasComunes.RecetaChequeaEstadoActual oRsTmp1.Fields!idCuentaAtencion, _
-                                                           oRsTmp1.Fields!IdEstado, _
+            If oRsTmp1.Fields!idEstado <> sghRecetaEstados.sighRecetaRegistrada Then
+                mo_ReglasComunes.RecetaChequeaEstadoActual oRsTmp1.Fields!idCuentaAtencion, _
+                                                           oRsTmp1.Fields!idEstado, _
                                                            0, oRsTmp1.Fields!DocumentoDespacho
                 txtNreceta.Text = ""
             Else
@@ -1842,7 +1846,7 @@ Private Sub txtNreceta_LostFocus()
                      ucFacturacionProductos.PermiteAgregarItems = False
                      ucFacturacionProductos.CargaProductosPorIdReceta oRsTmp1
                      
-                     lnidReceta = lnRecetaProcesada
+                     lnIdReceta = lnRecetaProcesada
                      On Error Resume Next
                      ucFacturacionProductos.SetFocus
                 End If

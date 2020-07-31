@@ -17,12 +17,12 @@ Begin VB.Form Triaje
    StartUpPosition =   2  'CenterScreen
    Begin SIGHCatalogos.ucTriaje ucTriaje1 
       Height          =   2445
-      Left            =   30
+      Left            =   45
       TabIndex        =   4
-      Top             =   1500
+      Top             =   1530
       Width           =   11055
-      _ExtentX        =   19500
-      _ExtentY        =   4313
+      _extentx        =   19500
+      _extenty        =   4313
    End
    Begin VB.Frame Frame3 
       Height          =   1065
@@ -201,7 +201,7 @@ Begin VB.Form Triaje
    End
    Begin VB.Label Label2 
       AutoSize        =   -1  'True
-      Caption         =   "* La información de color rojo define los valores NORMALES de los datos del triaje"
+      Caption         =   "*  La información de color rojo define los valores NORMALES de los datos del triaje"
       BeginProperty Font 
          Name            =   "Tahoma"
          Size            =   9
@@ -216,7 +216,7 @@ Begin VB.Form Triaje
       Left            =   150
       TabIndex        =   10
       Top             =   3960
-      Width           =   6675
+      Width           =   6735
    End
 End
 Attribute VB_Name = "Triaje"
@@ -528,6 +528,19 @@ Function ValidarDatosObligatorios() As Boolean
        MsgBox "Ingrese el N° Cuenta", vbInformation, Me.Caption
        Exit Function
    End If
+   'Validar campos de peso, talla y perimetro abdominal - 20/07/2020 - GLCC
+'   If ucTriaje.txtPerimetroCefalico.Text = "" Then
+'       MsgBox "Ingrese el Perimetros Cefalico", vbInformation, Me.Caption
+'       Exit Function
+'   End If
+'   If Me.txtNcuenta.Text = "" Or Me.txtPlan.Text = "" Then
+'       MsgBox "Ingrese el N° Cuenta", vbInformation, Me.Caption
+'       Exit Function
+'   End If
+'   If Me.txtNcuenta.Text = "" Or Me.txtPlan.Text = "" Then
+'       MsgBox "Ingrese el N° Cuenta", vbInformation, Me.Caption
+'       Exit Function
+'   End If
    'Para CUENTA DE EMERGENCIA no son obligatorios los datos
    If lcBuscaParametro.SeleccionaFilaParametro(520) <> "S" And InStr(txtProcedencia.Text, "Emergencia") > 0 Then
       ValidarDatosObligatorios = True

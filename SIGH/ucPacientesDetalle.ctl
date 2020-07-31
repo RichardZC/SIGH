@@ -3,11 +3,11 @@ Object = "{0FAA9261-2AF4-11D3-9995-00A0CC3A27A9}#1.0#0"; "PVCombo.ocx"
 Object = "{C932BA88-4374-101B-A56C-00AA003668DC}#1.1#0"; "msmask32.ocx"
 Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
 Begin VB.UserControl ucPacientesDetalle 
-   ClientHeight    =   6420
+   ClientHeight    =   6585
    ClientLeft      =   0
    ClientTop       =   0
    ClientWidth     =   11760
-   ScaleHeight     =   6420
+   ScaleHeight     =   6585
    ScaleWidth      =   11760
    Begin VB.CommandButton cmdAcreditaSIS 
       BeginProperty Font 
@@ -599,9 +599,9 @@ Begin VB.UserControl ucPacientesDetalle
          Strikethrough   =   0   'False
       EndProperty
       Height          =   975
-      Left            =   0
+      Left            =   -15
       TabIndex        =   75
-      Top             =   0
+      Top             =   15
       Width           =   9135
       Begin VB.TextBox txtGs 
          BeginProperty Font 
@@ -3090,7 +3090,8 @@ Dim mo_cmbIdProvinciaNacimiento As New sighEntidades.ListaDespleglable
 Dim mo_cmbIdDistritoNacimiento As New sighEntidades.ListaDespleglable
 Dim mo_cmbIdCentroPobladoNacimiento As New sighEntidades.ListaDespleglable
 Dim mo_cmbIdPaisNacimiento As New sighEntidades.ListaDespleglable
-'Dim mo_cmbEtnia As New sighentidades.ListaDespleglable
+'Combo Etnia-GLCC-10/07/2020
+Dim mo_cmbEtnia As New sighEntidades.ListaDespleglable
 'Dim mo_cmbIdioma As New sighentidades.ListaDespleglable
 Dim mo_cmbMadreTipoDocumento As New sighEntidades.ListaDespleglable
 Dim mo_cmbIdTipoEdad As New sighEntidades.ListaDespleglable
@@ -3338,10 +3339,6 @@ Private Sub chkNN_KeyDown(KeyCode As Integer, Shift As Integer)
     mo_Teclado.RealizarNavegacion KeyCode, chkNN
     RaiseEvent SePresionoTeclaEspecial(KeyCode)
 End Sub
-
-
-
-
 Private Sub chkSinFechaNacimiento_Click()
     Call bloquearControlEdad
 End Sub
@@ -5197,9 +5194,18 @@ Dim mb_FaltaDato As Boolean
            Case Else
        End Select
    End If
-
-   
+      
    If Not mb_PacienteNoIdentificado Then
+   'GLCC-Validad que campo DNI Tenga registros-20/07/2020
+   If Trim(txtNroDocumento.Text) = "" Then
+            sMensajeLocal = sMensajeLocal + vbCrLf + "Ingrese el N° de Documento" '+ Chr(13)
+            If mb_FaltaDato = False Then
+                UserControl.txtNroDocumento.SetFocus
+                mb_FaltaDato = True
+            End If
+            txtNroDocumento.BackColor = ml_ColorError
+        End If
+        'Termina Modificación GLCC-20-07-2020
         If Trim(txtApellidoPaterno.Text) = "" Then
             sMensajeLocal = sMensajeLocal + vbCrLf + "Ingrese el Apellido Paterno" '+ Chr(13)
             If mb_FaltaDato = False Then
@@ -5212,7 +5218,7 @@ Dim mb_FaltaDato As Boolean
             UserControl.txtApellidoPaterno.SetFocus
         End If
         If Trim(txtApellidoMaterno.Text) = "" Then
-            sMensajeLocal = sMensajeLocal + vbCrLf + "Ingrese el apellido materno" '+ Chr(13)
+            sMensajeLocal = sMensajeLocal + vbCrLf + "Ingrese el apellido Materno" '+ Chr(13)
             If mb_FaltaDato = False Then
                 UserControl.txtApellidoMaterno.SetFocus
                 mb_FaltaDato = True
@@ -5223,7 +5229,7 @@ Dim mb_FaltaDato As Boolean
             UserControl.txtApellidoMaterno.SetFocus
         End If
         If Trim(txtPrimerNombre.Text) = "" Then
-            sMensajeLocal = sMensajeLocal + vbCrLf + "Ingrese el primer nombre" '+ Chr(13)
+            sMensajeLocal = sMensajeLocal + vbCrLf + "Ingrese el Primer Nombre" '+ Chr(13)
             If mb_FaltaDato = False Then
                 UserControl.txtPrimerNombre.SetFocus
                 mb_FaltaDato = True
@@ -5255,6 +5261,17 @@ Dim mb_FaltaDato As Boolean
                 End If
             End If
             txtFechaNacimiento.BackColor = ml_ColorError
+        End If
+        'Validación de Etnia
+         'If Val(mo_cmbEtnia.BoundText) = "" Then
+         'GLCC-Validar combo que no se encuntre Vacio -- 20-07/-2020
+         If cmbEtnia.Text = "" Then
+            sMensajeLocal = sMensajeLocal + vbCrLf + "Debe registrar la Etnia" '+ Chr(13)
+            If mb_FaltaDato = False Then
+                 UserControl.cmbEtnia.SetFocus
+                mb_FaltaDato = False
+            End If
+            cmbEtnia.BackColor = ml_ColorError
         End If
         If txtHoraNacimiento.Text = sighEntidades.HORA_VACIA_HM Then
            txtHoraNacimiento.Text = "00:00"
@@ -5624,7 +5641,7 @@ Sub ActualizaTipoYnroDocumentoDelPaciente(doPacientes As doPaciente)
             
        End If
     End If
-    doPacientes.nrodocumento = txtNroDocumento.Text
+    doPacientes.NroDocumento = txtNroDocumento.Text
     doPacientes.IdDocIdentidad = Val(mo_cmbIdDocIdentidad.BoundText)
 End Sub
 
@@ -5656,7 +5673,7 @@ Public Function CargarDatosAlObjetoDatos(oDOPaciente As doPaciente, oDOHistoria 
            End If
            .FechaNacimiento = CDate(txtFechaNacimiento.Text & " " & txtHoraNacimiento.Text)
         End If
-        .nrodocumento = txtNroDocumento.Text
+        .NroDocumento = txtNroDocumento.Text
         .TELEFONO = txtTelefono.Text
         .NroHistoriaClinica = txtIdNroHistoria.Tag
         .DireccionDomicilio = txtDireccionDomicilio.Text
@@ -6530,7 +6547,7 @@ Dim lcUbigeoDistrito As String
                 If .IdDocIdentidad <> 1 Then
                    txtNroDocumento.MaxLength = 12
                 End If
-                txtNroDocumento.Text = Trim(.nrodocumento)
+                txtNroDocumento.Text = Trim(.NroDocumento)
                 '
                 'mo_cmbIdTipoOcupacion.BoundText = .idTipoOcupacion
                 If .idTipoOcupacion > 0 Then

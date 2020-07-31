@@ -307,6 +307,7 @@ Class=DoSiCitasDetalle; DoSiCitasDetalle.cls
 Class=DOSiProgramacion; DOSiProgramacion.cls
 Class=DoSunatResumenDia; DoSunatResumenDia.cls
 Class=DoFarm_FormDetL; DoFarm_FormDetL.cls
+Class=DONacionalidad; ..\DONacionalidad.cls
 Startup="(None)"
 HelpFile=""
 Title="SIGHComun"

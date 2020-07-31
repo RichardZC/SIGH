@@ -1,7 +1,7 @@
 VERSION 5.00
 Object = "{85202277-6C76-4228-BC56-7B3E69E8D5CA}#5.0#0"; "IGTOOL~1.OCX"
 Object = "{15138B51-7EB6-11D0-9BB7-0000C0F04C96}#1.0#0"; "SSLstBar.ocx"
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "mscomctl.ocx"
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCTL.OCX"
 Begin VB.Form Principal 
    AutoRedraw      =   -1  'True
    BackColor       =   &H00808080&
@@ -9,18 +9,18 @@ Begin VB.Form Principal
    ClientHeight    =   9090
    ClientLeft      =   1260
    ClientTop       =   840
-   ClientWidth     =   9840
+   ClientWidth     =   16275
    Icon            =   "Principal.frx":0000
    KeyPreview      =   -1  'True
    LinkTopic       =   "Form1"
    ScaleHeight     =   9090
-   ScaleWidth      =   9840
+   ScaleWidth      =   16275
    WindowState     =   2  'Maximized
    Begin SISGalenPlus.ucSIcitasLista ucSIlistasCitas1 
       Height          =   885
-      Left            =   2715
+      Left            =   135
       TabIndex        =   81
-      Top             =   120
+      Top             =   15
       Visible         =   0   'False
       Width           =   2430
       _ExtentX        =   4286
@@ -28,9 +28,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucCajaNotaCredito ucCajaNotaCredito1 
       Height          =   615
-      Left            =   12840
+      Left            =   10350
       TabIndex        =   80
-      Top             =   6360
+      Top             =   690
       Visible         =   0   'False
       Width           =   615
       _ExtentX        =   1085
@@ -38,9 +38,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucFarmAlmacenes ucFarmAlmacenes1 
       Height          =   495
-      Left            =   10320
+      Left            =   6150
       TabIndex        =   77
-      Top             =   6720
+      Top             =   6510
       Visible         =   0   'False
       Width           =   3255
       _ExtentX        =   5741
@@ -48,9 +48,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucImagTipoModalidadSala ucImagTipoModalidadSala1 
       Height          =   375
-      Left            =   12720
+      Left            =   6750
       TabIndex        =   76
-      Top             =   4680
+      Top             =   6165
       Visible         =   0   'False
       Width           =   855
       _ExtentX        =   1508
@@ -58,9 +58,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucImagSala ucImagSala1 
       Height          =   375
-      Left            =   12840
+      Left            =   6900
       TabIndex        =   75
-      Top             =   4080
+      Top             =   5655
       Visible         =   0   'False
       Width           =   855
       _ExtentX        =   1508
@@ -68,9 +68,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucImagCatServDuracion ucImagCatalgoServicioDuracion1 
       Height          =   735
-      Left            =   12960
+      Left            =   8790
       TabIndex        =   74
-      Top             =   2040
+      Top             =   870
       Visible         =   0   'False
       Width           =   735
       _ExtentX        =   1296
@@ -78,9 +78,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucInteoIntegracionSistema ucInteoIntegracionSistema1 
       Height          =   615
-      Left            =   12600
+      Left            =   8505
       TabIndex        =   73
-      Top             =   1080
+      Top             =   210
       Visible         =   0   'False
       Width           =   1095
       _ExtentX        =   1931
@@ -88,9 +88,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucConfiguraResLab ucConfiguraResLab2 
       Height          =   735
-      Left            =   12240
+      Left            =   10335
       TabIndex        =   72
-      Top             =   5520
+      Top             =   3345
       Visible         =   0   'False
       Width           =   1215
       _ExtentX        =   2143
@@ -98,9 +98,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.UcHISCalidad UcHISCalidad 
       Height          =   465
-      Left            =   8280
+      Left            =   4890
       TabIndex        =   71
-      Top             =   1620
+      Top             =   2460
       Visible         =   0   'False
       Width           =   2685
       _ExtentX        =   4736
@@ -108,9 +108,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.UcHISPadronNominal UcHISPadronNominal 
       Height          =   585
-      Left            =   8520
+      Left            =   4665
       TabIndex        =   70
-      Top             =   1230
+      Top             =   1965
       Visible         =   0   'False
       Width           =   3585
       _ExtentX        =   6324
@@ -118,9 +118,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucHCelectronicaLista ucHCelectronicaLista1 
       Height          =   495
-      Left            =   2340
+      Left            =   -165
       TabIndex        =   0
-      Top             =   6600
+      Top             =   7125
       Visible         =   0   'False
       Width           =   4305
       _ExtentX        =   7594
@@ -128,9 +128,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucHISEstablecimientos ucHISEstablecimientos 
       Height          =   615
-      Left            =   6840
+      Left            =   3240
       TabIndex        =   69
-      Top             =   6690
+      Top             =   5970
       Visible         =   0   'False
       Width           =   1005
       _ExtentX        =   1773
@@ -138,9 +138,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucHISListaProgramacion ucHISListaProgramacion 
       Height          =   735
-      Left            =   7860
+      Left            =   3300
       TabIndex        =   68
-      Top             =   6540
+      Top             =   6375
       Visible         =   0   'False
       Width           =   975
       _ExtentX        =   1720
@@ -148,9 +148,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucHISListaLotes ucHISListaLotes 
       Height          =   735
-      Left            =   7560
+      Left            =   3225
       TabIndex        =   67
-      Top             =   5640
+      Top             =   5445
       Visible         =   0   'False
       Width           =   1095
       _ExtentX        =   1931
@@ -158,9 +158,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucHISListaAtencion ucHISListaAtencion 
       Height          =   975
-      Left            =   5760
+      Left            =   3240
       TabIndex        =   66
-      Top             =   5640
+      Top             =   4590
       Visible         =   0   'False
       Width           =   1455
       _ExtentX        =   2566
@@ -178,9 +178,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.UcSISfuaLista UcSISfuaLista1 
       Height          =   405
-      Left            =   2520
+      Left            =   -105
       TabIndex        =   64
-      Top             =   7080
+      Top             =   7650
       Visible         =   0   'False
       Width           =   3195
       _ExtentX        =   5636
@@ -188,9 +188,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucRecetasLista ucRecetasLista1 
       Height          =   585
-      Left            =   12000
+      Left            =   8280
       TabIndex        =   63
-      Top             =   3240
+      Top             =   3360
       Visible         =   0   'False
       Width           =   1305
       _ExtentX        =   2302
@@ -209,9 +209,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucAtencionesTriaje ucAtencionesTriaje1 
       Height          =   435
-      Left            =   11190
+      Left            =   8265
       TabIndex        =   61
-      Top             =   5100
+      Top             =   4680
       Visible         =   0   'False
       Width           =   1725
       _ExtentX        =   3043
@@ -229,9 +229,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucFactPaquetesLista ucFactPaquetesLista1 
       Height          =   555
-      Left            =   10890
+      Left            =   8310
       TabIndex        =   59
-      Top             =   1800
+      Top             =   1605
       Visible         =   0   'False
       Width           =   1845
       _ExtentX        =   3254
@@ -239,9 +239,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucPacienteExternos ucPacienteExternos1 
       Height          =   525
-      Left            =   9720
+      Left            =   8145
       TabIndex        =   58
-      Top             =   2280
+      Top             =   2145
       Visible         =   0   'False
       Width           =   3045
       _ExtentX        =   5371
@@ -276,9 +276,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucContanciasDeAtencion ucContanciasAtencion 
       Height          =   735
-      Left            =   9480
+      Left            =   4695
       TabIndex        =   56
-      Top             =   3960
+      Top             =   5115
       Visible         =   0   'False
       Width           =   1335
       _ExtentX        =   2355
@@ -286,9 +286,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucMovimientoFormatoHcLista ucMovimientoFormatoHcLista1 
       Height          =   465
-      Left            =   4260
+      Left            =   3255
       TabIndex        =   55
-      Top             =   2730
+      Top             =   2340
       Visible         =   0   'False
       Width           =   1125
       _ExtentX        =   1773
@@ -296,9 +296,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucMovimientoHistoriasLista ucMovimientoHistoriasLista1 
       Height          =   585
-      Left            =   2460
+      Left            =   210
       TabIndex        =   54
-      Top             =   2670
+      Top             =   2805
       Visible         =   0   'False
       Width           =   1725
       _ExtentX        =   3043
@@ -306,9 +306,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucReembolsosLista ucReembolsosLista1 
       Height          =   705
-      Left            =   8700
+      Left            =   5625
       TabIndex        =   53
-      Top             =   2640
+      Top             =   3300
       Visible         =   0   'False
       Width           =   1455
       _ExtentX        =   2566
@@ -316,9 +316,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucFarmNiLista ucFarmNiLista1 
       Height          =   645
-      Left            =   8520
+      Left            =   8325
       TabIndex        =   52
-      Top             =   8700
+      Top             =   7830
       Visible         =   0   'False
       Width           =   1425
       _ExtentX        =   2514
@@ -326,9 +326,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucFacturacionLaboratorio ucFactOrdenesLaboratorio 
       Height          =   375
-      Left            =   11280
+      Left            =   10380
       TabIndex        =   48
-      Top             =   6240
+      Top             =   1470
       Visible         =   0   'False
       Width           =   1335
       _ExtentX        =   2355
@@ -336,9 +336,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucArchivadoresLista ucArchivadoresLista1 
       Height          =   645
-      Left            =   10380
+      Left            =   8415
       TabIndex        =   45
-      Top             =   2790
+      Top             =   2745
       Visible         =   0   'False
       Width           =   2055
       _ExtentX        =   3625
@@ -346,9 +346,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.UcImagSalidas UcImagSalidas1 
       Height          =   585
-      Left            =   10920
+      Left            =   10380
       TabIndex        =   44
-      Top             =   6540
+      Top             =   30
       Visible         =   0   'False
       Width           =   1845
       _ExtentX        =   3254
@@ -356,9 +356,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.UcImagIngresos UcImagIngresos1 
       Height          =   645
-      Left            =   10950
+      Left            =   10455
       TabIndex        =   43
-      Top             =   7260
+      Top             =   5100
       Visible         =   0   'False
       Width           =   1845
       _ExtentX        =   3254
@@ -366,9 +366,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.UcImagenesLista UcImagenesLista1 
       Height          =   585
-      Left            =   10950
+      Left            =   11295
       TabIndex        =   42
-      Top             =   8040
+      Top             =   2115
       Visible         =   0   'False
       Width           =   1845
       _ExtentX        =   3254
@@ -386,9 +386,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucFarmVentasLista ucFarmVentasLista1 
       Height          =   735
-      Left            =   11010
+      Left            =   11850
       TabIndex        =   40
-      Top             =   8760
+      Top             =   2730
       Visible         =   0   'False
       Width           =   1815
       _ExtentX        =   3201
@@ -396,9 +396,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucFarmIntervencionLista ucFarmIntervencionLista1 
       Height          =   735
-      Left            =   6270
+      Left            =   4050
       TabIndex        =   39
-      Top             =   8550
+      Top             =   7560
       Visible         =   0   'False
       Width           =   1095
       _ExtentX        =   1931
@@ -406,9 +406,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucFarmNsLista ucFarmNsLista1 
       Height          =   615
-      Left            =   9960
+      Left            =   9855
       TabIndex        =   38
-      Top             =   8670
+      Top             =   7905
       Visible         =   0   'False
       Width           =   765
       _ExtentX        =   1349
@@ -416,9 +416,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucPartidasLista ucPartidasLista1 
       Height          =   825
-      Left            =   5880
+      Left            =   2580
       TabIndex        =   37
-      Top             =   90
+      Top             =   45
       Visible         =   0   'False
       Width           =   2145
       _ExtentX        =   3784
@@ -426,9 +426,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucFarmInventarioLista ucFarmInventarioLista1 
       Height          =   795
-      Left            =   7500
+      Left            =   5355
       TabIndex        =   36
-      Top             =   8580
+      Top             =   7710
       Visible         =   0   'False
       Width           =   945
       _ExtentX        =   1667
@@ -446,9 +446,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucPacientesLista ucPacientesLista1 
       Height          =   585
-      Left            =   5640
+      Left            =   3525
       TabIndex        =   34
-      Top             =   5040
+      Top             =   4080
       Visible         =   0   'False
       Width           =   1560
       _ExtentX        =   2752
@@ -456,9 +456,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucGestionCaja ucGestionCaja1 
       Height          =   795
-      Left            =   5520
+      Left            =   3195
       TabIndex        =   33
-      Top             =   3480
+      Top             =   3255
       Visible         =   0   'False
       Width           =   2415
       _ExtentX        =   4260
@@ -466,9 +466,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucFacturacionOrdenesLista ucFacturacionGeneralLista 
       Height          =   585
-      Left            =   8940
+      Left            =   4425
       TabIndex        =   27
-      Top             =   4680
+      Top             =   5715
       Visible         =   0   'False
       Width           =   2055
       _ExtentX        =   3625
@@ -476,9 +476,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucEstadoCuenta ucEstadoCuenta1 
       Height          =   375
-      Left            =   5880
+      Left            =   3585
       TabIndex        =   26
-      Top             =   8220
+      Top             =   7515
       Visible         =   0   'False
       Width           =   3255
       _ExtentX        =   5741
@@ -486,9 +486,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucEspecialidadesLista ucEspecialidadesLista1 
       Height          =   375
-      Left            =   8910
+      Left            =   4680
       TabIndex        =   25
-      Top             =   4080
+      Top             =   4680
       Visible         =   0   'False
       Width           =   1095
       _ExtentX        =   1931
@@ -496,9 +496,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucCatalogoServiciosLista ucCatalogoServiciosLista1 
       Height          =   495
-      Left            =   2460
+      Left            =   360
       TabIndex        =   24
-      Top             =   8460
+      Top             =   8265
       Visible         =   0   'False
       Width           =   3435
       _ExtentX        =   5318
@@ -516,9 +516,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucCajeroLista ucCajeroLista1 
       Height          =   435
-      Left            =   5700
+      Left            =   2535
       TabIndex        =   22
-      Top             =   3120
+      Top             =   2805
       Visible         =   0   'False
       Width           =   2955
       _ExtentX        =   5212
@@ -526,9 +526,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucCajaLista ucCajaLista1 
       Height          =   375
-      Left            =   2520
+      Left            =   -210
       TabIndex        =   21
-      Top             =   7560
+      Top             =   8055
       Visible         =   0   'False
       Width           =   2895
       _ExtentX        =   5106
@@ -536,9 +536,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucSolicitudHistoriasLista ucSolicitudHistoriasLista1 
       Height          =   465
-      Left            =   8670
+      Left            =   5490
       TabIndex        =   20
-      Top             =   1950
+      Top             =   2880
       Visible         =   0   'False
       Width           =   1950
       _ExtentX        =   3440
@@ -550,8 +550,8 @@ Begin VB.Form Principal
       Left            =   0
       TabIndex        =   19
       Top             =   8745
-      Width           =   9840
-      _ExtentX        =   17357
+      Width           =   16275
+      _ExtentX        =   28707
       _ExtentY        =   609
       _Version        =   393216
       BeginProperty Panels {8E3867A5-8586-11D1-B16A-00C0F0283628} 
@@ -600,9 +600,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucRolesLista ucRolesLista1 
       Height          =   525
-      Left            =   8610
+      Left            =   5685
       TabIndex        =   18
-      Top             =   720
+      Top             =   1440
       Visible         =   0   'False
       Width           =   2280
       _ExtentX        =   4022
@@ -610,9 +610,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucAdmisionLista ucAdmisionCE 
       Height          =   1770
-      Left            =   8535
+      Left            =   4365
       TabIndex        =   16
-      Top             =   0
+      Top             =   75
       Visible         =   0   'False
       Width           =   3885
       _ExtentX        =   6853
@@ -620,9 +620,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucAdmisionLista ucAdmisionHospitalizacion 
       Height          =   555
-      Left            =   8850
+      Left            =   5100
       TabIndex        =   15
-      Top             =   3270
+      Top             =   4035
       Visible         =   0   'False
       Width           =   2835
       _ExtentX        =   5001
@@ -630,9 +630,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucAdmisionLista ucAdmisionObservacion 
       Height          =   585
-      Left            =   2460
+      Left            =   -105
       TabIndex        =   14
-      Top             =   6060
+      Top             =   6570
       Visible         =   0   'False
       Width           =   2865
       _ExtentX        =   5054
@@ -640,9 +640,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucCamasLista ucCamasLista1 
       Height          =   615
-      Left            =   5790
+      Left            =   3600
       TabIndex        =   13
-      Top             =   7440
+      Top             =   7035
       Visible         =   0   'False
       Width           =   2655
       _ExtentX        =   4683
@@ -650,9 +650,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucEstablecimientosNoMinsaL ucEstablecimientosNoMinsaLista1 
       Height          =   555
-      Left            =   2430
+      Left            =   -255
       TabIndex        =   12
-      Top             =   5490
+      Top             =   5985
       Visible         =   0   'False
       Width           =   3165
       _ExtentX        =   5583
@@ -660,9 +660,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucFuentesFinanLista ucFuentesFinanciamientoLista1 
       Height          =   585
-      Left            =   5640
+      Left            =   3180
       TabIndex        =   11
-      Top             =   2520
+      Top             =   1830
       Visible         =   0   'False
       Width           =   2415
       _ExtentX        =   4260
@@ -670,9 +670,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucTiposFinanciamientoLista ucTiposFinanciamientoLista1 
       Height          =   615
-      Left            =   5580
+      Left            =   2775
       TabIndex        =   10
-      Top             =   1920
+      Top             =   1365
       Visible         =   0   'False
       Width           =   2775
       _ExtentX        =   4895
@@ -680,9 +680,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucDiagnosticosLista ucDiagnosticosLista1 
       Height          =   525
-      Left            =   5700
+      Left            =   2595
       TabIndex        =   9
-      Top             =   1380
+      Top             =   915
       Visible         =   0   'False
       Width           =   2745
       _ExtentX        =   4842
@@ -690,9 +690,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucProcedimientosLista ucProcedimientosLista1 
       Height          =   495
-      Left            =   5640
+      Left            =   2580
       TabIndex        =   8
-      Top             =   810
+      Top             =   525
       Visible         =   0   'False
       Width           =   2745
       _ExtentX        =   4842
@@ -700,9 +700,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucHistoriaClinicaLista ucHistoriaClinicaLista1 
       Height          =   555
-      Left            =   2430
+      Left            =   -15
       TabIndex        =   7
-      Top             =   4890
+      Top             =   5355
       Visible         =   0   'False
       Width           =   3105
       _ExtentX        =   5477
@@ -710,9 +710,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucServiciosLista ucServiciosLista1 
       Height          =   675
-      Left            =   2400
+      Left            =   15
       TabIndex        =   6
-      Top             =   4350
+      Top             =   4620
       Visible         =   0   'False
       Width           =   3105
       _ExtentX        =   5477
@@ -720,9 +720,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucCitasLista ucCitasLista1 
       Height          =   675
-      Left            =   2430
+      Left            =   135
       TabIndex        =   5
-      Top             =   3720
+      Top             =   3975
       Visible         =   0   'False
       Width           =   3105
       _ExtentX        =   5477
@@ -730,9 +730,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucProgramacionLista ucProgramacionLista1 
       Height          =   645
-      Left            =   2520
+      Left            =   75
       TabIndex        =   4
-      Top             =   3240
+      Top             =   3420
       Visible         =   0   'False
       Width           =   3105
       _ExtentX        =   5477
@@ -740,9 +740,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucEmpleadosLista ucEmpleadosLista1 
       Height          =   585
-      Left            =   2400
+      Left            =   90
       TabIndex        =   3
-      Top             =   2040
+      Top             =   2235
       Visible         =   0   'False
       Width           =   3105
       _ExtentX        =   5477
@@ -750,9 +750,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucAdmisionLista ucAdmisionConsEmerg 
       Height          =   585
-      Left            =   2460
+      Left            =   15
       TabIndex        =   2
-      Top             =   1290
+      Top             =   1605
       Visible         =   0   'False
       Width           =   3105
       _ExtentX        =   5477
@@ -760,9 +760,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucFacturacionOrdenesLista ucFactAnatomiaPatologica 
       Height          =   525
-      Left            =   8910
+      Left            =   4380
       TabIndex        =   28
-      Top             =   5460
+      Top             =   6165
       Visible         =   0   'False
       Width           =   1635
       _ExtentX        =   2884
@@ -770,9 +770,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucFacturacionOrdenesLista ucFactPatologiaClinica 
       Height          =   525
-      Left            =   8910
+      Left            =   4470
       TabIndex        =   29
-      Top             =   6150
+      Top             =   6465
       Visible         =   0   'False
       Width           =   1395
       _ExtentX        =   2461
@@ -780,9 +780,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucFacturacionOrdenesLista ucFactImagenologia 
       Height          =   525
-      Left            =   8910
+      Left            =   10110
       TabIndex        =   30
-      Top             =   6810
+      Top             =   6180
       Visible         =   0   'False
       Width           =   1395
       _ExtentX        =   2461
@@ -790,9 +790,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucFacturacionOrdenesLista ucFactFarmacia 
       Height          =   525
-      Left            =   8910
+      Left            =   7320
       TabIndex        =   31
-      Top             =   7440
+      Top             =   7155
       Visible         =   0   'False
       Width           =   1545
       _ExtentX        =   2725
@@ -800,9 +800,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucFacturacionOrdenesLista ucFactSalaOperaciones 
       Height          =   525
-      Left            =   8880
+      Left            =   9075
       TabIndex        =   32
-      Top             =   8070
+      Top             =   7155
       Visible         =   0   'False
       Width           =   1665
       _ExtentX        =   2937
@@ -810,9 +810,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucFacturacionLaboratorio ucFacturacionBS 
       Height          =   375
-      Left            =   11280
+      Left            =   8430
       TabIndex        =   46
-      Top             =   5520
+      Top             =   5610
       Visible         =   0   'False
       Width           =   1335
       _ExtentX        =   2355
@@ -820,9 +820,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucFacturacionLaboratorio ucFacturacionOrdenesPatologia 
       Height          =   375
-      Left            =   11280
+      Left            =   10470
       TabIndex        =   47
-      Top             =   6000
+      Top             =   2820
       Visible         =   0   'False
       Width           =   1335
       _ExtentX        =   2355
@@ -830,9 +830,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.UcLabIngresos UcLabIngresos1 
       Height          =   615
-      Left            =   11160
+      Left            =   8325
       TabIndex        =   49
-      Top             =   3840
+      Top             =   4005
       Visible         =   0   'False
       Width           =   1455
       _ExtentX        =   2566
@@ -840,9 +840,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.UcLabSalidas UcLabSalidas1 
       Height          =   735
-      Left            =   11160
+      Left            =   6585
       TabIndex        =   50
-      Top             =   4320
+      Top             =   4665
       Visible         =   0   'False
       Width           =   1455
       _ExtentX        =   2566
@@ -850,9 +850,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucFacturacionLaboratorio ucFacturacionLaboratorio2 
       Height          =   375
-      Left            =   11280
+      Left            =   10185
       TabIndex        =   51
-      Top             =   5640
+      Top             =   4590
       Visible         =   0   'False
       Width           =   1335
       _ExtentX        =   2355
@@ -860,9 +860,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucMedicosLista ucMedicosLista1 
       Height          =   585
-      Left            =   2460
+      Left            =   15
       TabIndex        =   1
-      Top             =   660
+      Top             =   1035
       Visible         =   0   'False
       Width           =   3105
       _ExtentX        =   5477
@@ -1048,9 +1048,9 @@ Begin VB.Form Principal
       Width           =   10200
       Begin SISGalenPlus.ucTurnosLista ucTurnosLista1 
          Height          =   555
-         Left            =   2325
+         Left            =   75
          TabIndex        =   82
-         Top             =   240
+         Top             =   555
          Visible         =   0   'False
          Width           =   2625
          _ExtentX        =   4630
@@ -1059,9 +1059,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucGestionDevolucion ucGestionDevolucion2 
       Height          =   1215
-      Left            =   10920
+      Left            =   11490
       TabIndex        =   78
-      Top             =   7440
+      Top             =   3675
       Visible         =   0   'False
       Width           =   2775
       _ExtentX        =   4895
@@ -1069,9 +1069,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucFarmHpreciosLista ucFarmHpreciosLista1 
       Height          =   615
-      Left            =   11040
+      Left            =   6585
       TabIndex        =   79
-      Top             =   5160
+      Top             =   5505
       Visible         =   0   'False
       Width           =   3015
       _ExtentX        =   5318
@@ -1272,7 +1272,7 @@ Private Sub Form_Activate()
                oRsTmp.MoveFirst
                Do While Not oRsTmp.EOF
                   lcSql = oRsTmp.Fields!id_menuReporte
-                  Me.Toolbar.Tools.Item(lcSql).Visible = False
+                  Me.toolbar.Tools.Item(lcSql).Visible = False
                   oRsTmp.MoveNext
                Loop
             End If
@@ -1308,7 +1308,7 @@ Private Sub Form_Activate()
     If lbMuestraReportePacientesSISconMas180diasEstancia = True Then
         lbMuestraReportePacientesSISconMas180diasEstancia = False
         Dim oRptIngHosp As New SIGHProxies.clReporteIngrHosp
-        oRptIngHosp.IdTipoReporte = sighentidades.sghReporteIngresosHospitalario
+        oRptIngHosp.IdTipoReporte = sighEntidades.sghReporteIngresosHospitalario
         oRptIngHosp.mostrarReporte = True
         oRptIngHosp.EjecutaFormulario
         Set oRptIngHosp = Nothing
@@ -1566,7 +1566,7 @@ End Sub
 Private Sub Form_Load()
     ml_ToolbarHeightAdd = 0
     mb_MantenerValoresCitas = False
-    lc_NombrePc = sighentidades.RetornaNombrePC
+    lc_NombrePc = sighEntidades.RetornaNombrePC
     OcultaBotonXdelFormulario Me.hwnd
     EliminaArchivosOpenOffice
     
@@ -1621,25 +1621,25 @@ Private Sub Form_Resize()
 End Sub
 Sub ConfigurarPermisosDelItemSeleccionado(lIdUsuario As Long, lIdListItem As Long, sKey As String)
 
-    Me.Toolbar.Tools.Item("ID_Agregar").Enabled = True
-    Me.Toolbar.Tools.Item("ID_Modificar").Enabled = True
-    Me.Toolbar.Tools.Item("ID_Consultar").Enabled = True
-    Me.Toolbar.Tools.Item("ID_Eliminar").Enabled = True
+    Me.toolbar.Tools.Item("ID_Agregar").Enabled = True
+    Me.toolbar.Tools.Item("ID_Modificar").Enabled = True
+    Me.toolbar.Tools.Item("ID_Consultar").Enabled = True
+    Me.toolbar.Tools.Item("ID_Eliminar").Enabled = True
 
     Dim rsPermisos As Recordset
     Set rsPermisos = mo_AdminSeguridad.RolesItemsSeleccionarPermisosPorEmpleadoYListItem(lIdUsuario, lIdListItem)
     If Not (rsPermisos.EOF And rsPermisos.BOF) Then
         If Not IsNull(rsPermisos!Agregar) Then
-           Me.Toolbar.Tools.Item("ID_Agregar").Enabled = (rsPermisos!Agregar > 0)
+           Me.toolbar.Tools.Item("ID_Agregar").Enabled = (rsPermisos!Agregar > 0)
         End If
         If Not IsNull(rsPermisos!Modificar) Then
-           Me.Toolbar.Tools.Item("ID_Modificar").Enabled = (rsPermisos!Modificar > 0)
+           Me.toolbar.Tools.Item("ID_Modificar").Enabled = (rsPermisos!Modificar > 0)
         End If
         If Not IsNull(rsPermisos!Consultar) Then
-           Me.Toolbar.Tools.Item("ID_Consultar").Enabled = (rsPermisos!Consultar > 0)
+           Me.toolbar.Tools.Item("ID_Consultar").Enabled = (rsPermisos!Consultar > 0)
         End If
         If Not IsNull(rsPermisos!Eliminar) Then
-           Me.Toolbar.Tools.Item("ID_Eliminar").Enabled = (rsPermisos!Eliminar > 0)
+           Me.toolbar.Tools.Item("ID_Eliminar").Enabled = (rsPermisos!Eliminar > 0)
         End If
     End If
     rsPermisos.Close
@@ -1647,26 +1647,26 @@ Sub ConfigurarPermisosDelItemSeleccionado(lIdUsuario As Long, lIdListItem As Lon
     'Manejo de excepciones
     Select Case sKey
     Case "AdmisionCE"
-        Me.ucCitasLista1.MenuAgregarEnabled = Me.Toolbar.Tools.Item("ID_Agregar").Enabled
-        Me.ucCitasLista1.MenuEliminarEnabled = Me.Toolbar.Tools.Item("ID_Eliminar").Enabled
-        Me.ucCitasLista1.MenuModificarEnabled = Me.Toolbar.Tools.Item("ID_Modificar").Enabled
-        Me.ucCitasLista1.MenuConsultarEnabled = Me.Toolbar.Tools.Item("ID_Consultar").Enabled
+        Me.ucCitasLista1.MenuAgregarEnabled = Me.toolbar.Tools.Item("ID_Agregar").Enabled
+        Me.ucCitasLista1.MenuEliminarEnabled = Me.toolbar.Tools.Item("ID_Eliminar").Enabled
+        Me.ucCitasLista1.MenuModificarEnabled = Me.toolbar.Tools.Item("ID_Modificar").Enabled
+        Me.ucCitasLista1.MenuConsultarEnabled = Me.toolbar.Tools.Item("ID_Consultar").Enabled
     Case "AtencionesCE"
-        Me.Toolbar.Tools.Item("ID_Agregar").Enabled = False
+        Me.toolbar.Tools.Item("ID_Agregar").Enabled = False
     Case "Programacion"
-        Me.ucProgramacionLista1.MenuAgregarEnabled = Me.Toolbar.Tools.Item("ID_Agregar").Enabled
-        Me.ucProgramacionLista1.MenuEliminarEnabled = Me.Toolbar.Tools.Item("ID_Eliminar").Enabled
-        Me.ucProgramacionLista1.MenuModificarEnabled = Me.Toolbar.Tools.Item("ID_Modificar").Enabled
-        Me.ucProgramacionLista1.MenuConsultarEnabled = Me.Toolbar.Tools.Item("ID_Consultar").Enabled
+        Me.ucProgramacionLista1.MenuAgregarEnabled = Me.toolbar.Tools.Item("ID_Agregar").Enabled
+        Me.ucProgramacionLista1.MenuEliminarEnabled = Me.toolbar.Tools.Item("ID_Eliminar").Enabled
+        Me.ucProgramacionLista1.MenuModificarEnabled = Me.toolbar.Tools.Item("ID_Modificar").Enabled
+        Me.ucProgramacionLista1.MenuConsultarEnabled = Me.toolbar.Tools.Item("ID_Consultar").Enabled
     Case "AdmisionEmergencia"
 '        Me.toolbar.Tools.Item("ID_EmergenciaAObservacion").Enabled = Me.toolbar.Tools.Item("ID_Modificar").Enabled
 '        Me.toolbar.Tools.Item("ID_EmergenciaAHospitalizacion").Enabled = Me.toolbar.Tools.Item("ID_Modificar").Enabled
 '        Me.toolbar.Tools.Item("ID_EmergenciaAltaPaciente").Enabled = Me.toolbar.Tools.Item("ID_Modificar").Enabled
 '        Me.toolbar.Tools.Item("ID_EmergenciaTransferencias").Enabled = Me.toolbar.Tools.Item("ID_Modificar").Enabled
-        Me.Toolbar.Tools.Item("ID_EmergenciaAObservacion").Visible = False
-        Me.Toolbar.Tools.Item("ID_EmergenciaAHospitalizacion").Visible = False
-        Me.Toolbar.Tools.Item("ID_EmergenciaAltaPaciente").Visible = False
-        Me.Toolbar.Tools.Item("ID_EmergenciaTransferencias").Visible = False
+        Me.toolbar.Tools.Item("ID_EmergenciaAObservacion").Visible = False
+        Me.toolbar.Tools.Item("ID_EmergenciaAHospitalizacion").Visible = False
+        Me.toolbar.Tools.Item("ID_EmergenciaAltaPaciente").Visible = False
+        Me.toolbar.Tools.Item("ID_EmergenciaTransferencias").Visible = False
     Case "AdmisionHospitalizacion"
 '        Me.toolbar.Tools.Item("ID_HospitalizacionAlojamientoConjunto").Enabled = Me.toolbar.Tools.Item("ID_Modificar").Enabled
 '        Me.toolbar.Tools.Item("ID_HospitalizacionAltaPaciente").Enabled = Me.toolbar.Tools.Item("ID_Modificar").Enabled
@@ -1683,11 +1683,11 @@ Sub ConfigurarPermisosDelItemSeleccionado(lIdUsuario As Long, lIdListItem As Lon
 End Sub
 
 Private Sub Form_Terminate()
-  mo_AdminSeguridad.LogueaUsuario 0, sighentidades.Usuario, lc_NombrePc
+  mo_AdminSeguridad.LogueaUsuario 0, sighEntidades.Usuario, lc_NombrePc
 End Sub
 
 Private Sub Form_Unload(Cancel As Integer)
-  mo_AdminSeguridad.LogueaUsuario 0, sighentidades.Usuario, lc_NombrePc
+  mo_AdminSeguridad.LogueaUsuario 0, sighEntidades.Usuario, lc_NombrePc
 End Sub
 
 
@@ -1697,10 +1697,10 @@ Dim oControl As Control
     
     'Por defecto la barra de gestión de caja esta invisible
     'y la barra de edición esta visible
-    Toolbar.Toolbars("Edición").Visible = True
-    Toolbar.Toolbars("Gestión de Caja").Visible = False
-    Toolbar.Toolbars("Admisión Emergencia").Visible = False
-    Toolbar.Toolbars("Admisión Hospitalización").Visible = False
+    toolbar.Toolbars("Edición").Visible = True
+    toolbar.Toolbars("Gestión de Caja").Visible = False
+    toolbar.Toolbars("Admisión Emergencia").Visible = False
+    toolbar.Toolbars("Admisión Hospitalización").Visible = False
     
     mrs_ListItems.MoveFirst
     mrs_ListItems.Find "Clave = '" & ItemClicked.Key & "'"
@@ -1772,14 +1772,14 @@ Dim oControl As Control
         ucPacientesLista1.TipoFiltro = sghFiltrarTodos
         ConfigurarControl ucPacientesLista1
     Case "AdmisionConsultorioEmerg"
-        Toolbar.Toolbars("Admisión Hospitalización").Visible = True
-        Toolbar.Toolbars("Admisión Hospitalización").DockedRow = 3
-        Toolbar.Toolbars("Admisión Hospitalización").DockedColumn = 1
-        Toolbar.Toolbars("Admisión Hospitalización").Tools.Item(1).Name = "Alta Médica"
-        Toolbar.Toolbars("Admisión Hospitalización").Tools.Item(2).Name = "."
-        Toolbar.Toolbars("Admisión Hospitalización").Tools.Item(3).Name = "."
-        Toolbar.Tools("ID_HospitalizacionTransferencias").Visible = False
-        Toolbar.Tools("ID_HospitalizacionAltaPaciente").Visible = False
+        toolbar.Toolbars("Admisión Hospitalización").Visible = True
+        toolbar.Toolbars("Admisión Hospitalización").DockedRow = 3
+        toolbar.Toolbars("Admisión Hospitalización").DockedColumn = 1
+        toolbar.Toolbars("Admisión Hospitalización").Tools.Item(1).Name = "Alta Médica"
+        toolbar.Toolbars("Admisión Hospitalización").Tools.Item(2).Name = "."
+        toolbar.Toolbars("Admisión Hospitalización").Tools.Item(3).Name = "."
+        toolbar.Tools("ID_HospitalizacionTransferencias").Visible = False
+        toolbar.Tools("ID_HospitalizacionAltaPaciente").Visible = False
 '        toolbar.Tools("ID_EmergenciaAltaPaciente").Enabled = False
 '        toolbar.Tools("ID_EmergenciaAObservacion").Enabled = False
 '        toolbar.Tools("ID_EmergenciaAHospitalizacion").Enabled = False
@@ -1807,14 +1807,14 @@ Dim oControl As Control
         ucPacientesLista1.TipoFiltro = sghFiltrarTodos
         ConfigurarControl ucPacientesLista1
     Case "AdmisionHospitalizacion"
-        Toolbar.Toolbars("Admisión Hospitalización").Visible = True
-        Toolbar.Toolbars("Admisión Hospitalización").DockedRow = 3
-        Toolbar.Toolbars("Admisión Hospitalización").DockedColumn = 1
-        Toolbar.Toolbars("Admisión Hospitalización").Tools.Item(1).Name = "Alta Médica"
-        Toolbar.Toolbars("Admisión Hospitalización").Tools.Item(2).Name = "."
-        Toolbar.Toolbars("Admisión Hospitalización").Tools.Item(3).Name = "."
-        Toolbar.Tools("ID_HospitalizacionTransferencias").Visible = False
-        Toolbar.Tools("ID_HospitalizacionAltaPaciente").Visible = False
+        toolbar.Toolbars("Admisión Hospitalización").Visible = True
+        toolbar.Toolbars("Admisión Hospitalización").DockedRow = 3
+        toolbar.Toolbars("Admisión Hospitalización").DockedColumn = 1
+        toolbar.Toolbars("Admisión Hospitalización").Tools.Item(1).Name = "Alta Médica"
+        toolbar.Toolbars("Admisión Hospitalización").Tools.Item(2).Name = "."
+        toolbar.Toolbars("Admisión Hospitalización").Tools.Item(3).Name = "."
+        toolbar.Tools("ID_HospitalizacionTransferencias").Visible = False
+        toolbar.Tools("ID_HospitalizacionAltaPaciente").Visible = False
         'toolbar.Tools("ID_HospitalizacionAlojamientoConjunto").Enabled = False
         'toolbar.Tools("ID_HospitalizacionAltaPaciente").Enabled = False
         'toolbar.Tools("ID_HospitalizacionTransferencias").Enabled = False
@@ -1826,9 +1826,9 @@ Dim oControl As Control
 '        toolbar.Toolbars("Admisión Hospitalización").DockedColumn = 3
         ConfigurarControl ucAdmisionHospitalizacion
     Case "AlojadosHospitalizacion"
-        Toolbar.Tools("ID_HospitalizacionAlojamientoConjunto").Enabled = False
-        Toolbar.Tools("ID_HospitalizacionAltaPaciente").Enabled = False
-        Toolbar.Tools("ID_HospitalizacionTransferencias").Enabled = False
+        toolbar.Tools("ID_HospitalizacionAlojamientoConjunto").Enabled = False
+        toolbar.Tools("ID_HospitalizacionAltaPaciente").Enabled = False
+        toolbar.Tools("ID_HospitalizacionTransferencias").Enabled = False
         ucAdmisionHospitalizacion.Titulo = "Admisión de Alojados"
         ucAdmisionHospitalizacion.TipoFiltro = sghFiltrarHospitalizacion
         ucAdmisionHospitalizacion.idUsuario = ml_IdUsuarioAuditoria
@@ -1911,12 +1911,12 @@ Dim oControl As Control
         ucFactSalaOperaciones.Titulo = "Facturacion Sala Operaciones"
     Case "FactReembolsos"
         '18/7/11
-        Toolbar.Toolbars("Admisión Hospitalización").Visible = True
-        Toolbar.Toolbars("Admisión Hospitalización").DockedRow = 3
-        Toolbar.Toolbars("Admisión Hospitalización").DockedColumn = 1
-        Toolbar.Toolbars("Admisión Hospitalización").Tools.Item(1).Name = "Agregar Reembolso x Cuenta"
-        Toolbar.Tools("ID_HospitalizacionTransferencias").Visible = False
-        Toolbar.Tools("ID_HospitalizacionAltaPaciente").Visible = False
+        toolbar.Toolbars("Admisión Hospitalización").Visible = True
+        toolbar.Toolbars("Admisión Hospitalización").DockedRow = 3
+        toolbar.Toolbars("Admisión Hospitalización").DockedColumn = 1
+        toolbar.Toolbars("Admisión Hospitalización").Tools.Item(1).Name = "Agregar Reembolso x Cuenta"
+        toolbar.Tools("ID_HospitalizacionTransferencias").Visible = False
+        toolbar.Tools("ID_HospitalizacionAltaPaciente").Visible = False
        ' toolbar.Toolbars("Admisión Hospitalización").Tools.Item(2).Name = "."
        ' toolbar.Toolbars("Admisión Hospitalización").Tools.Item(3).Name = "."
         '18/7/11
@@ -1983,9 +1983,9 @@ Dim oControl As Control
         ConfigurarControl ucEstablecimientosNoMinsaLista1
         ucEstablecimientosNoMinsaLista1.ConfigurarEstablecimientos
     Case "DiagnosticosPDF"
-        Dim oShell As New sighentidades.Shell
-        If sighentidades.RutaAdobeReader <> "" Then
-            oShell.ejecutarComando sighentidades.RutaAdobeReader + " " + App.Path + "\archivos\" + "cie10.pdf"
+        Dim oShell As New sighEntidades.Shell
+        If sighEntidades.RutaAdobeReader <> "" Then
+            oShell.ejecutarComando sighEntidades.RutaAdobeReader + " " + App.Path + "\archivos\" + "cie10.pdf"
         Else
             MsgBox "No tiene instalado el adobe reader", vbInformation, Me.Caption
         End If
@@ -2000,19 +2000,19 @@ Dim oControl As Control
         ConfigurarControl ucCajeroLista1
     Case "AsignacionTerminales"
     Case "GestionCaja"
-        Toolbar.Toolbars("Edición").Visible = False
+        toolbar.Toolbars("Edición").Visible = False
         'toolbar.Toolbars("Gestión de Caja").Visible = True
         If (mb_abrioCaja) Then
             If mo_LastControl Is ucGestionCaja1 Then
                 mo_LastControl.Visible = True
-                Toolbar.Toolbars("Gestión de Caja").Visible = True
+                toolbar.Toolbars("Gestión de Caja").Visible = True
                 Exit Sub
             End If
             mo_LastControl.Visible = False
             ucGestionCaja1.NombreCajero = status.Panels(2).Text
             ucGestionCaja1.Visible = True
             Set mo_LastControl = ucGestionCaja1
-            Toolbar.Toolbars("Gestión de Caja").Visible = True
+            toolbar.Toolbars("Gestión de Caja").Visible = True
             Exit Sub
         End If
 
@@ -2020,7 +2020,7 @@ Dim oControl As Control
         ucGestionCaja1.NombreCajero = status.Panels(2).Text
         ucGestionCaja1.lnIdTablaLISTBARITEMS = 702
         ucGestionCaja1.lcNombrePc = lc_NombrePc
-        Toolbar.Toolbars("Gestión de Caja").Visible = True
+        toolbar.Toolbars("Gestión de Caja").Visible = True
         
         ConfigurarControl ucGestionCaja1
             
@@ -2223,13 +2223,13 @@ Private Sub toolbar_ToolClick(ByVal Tool As ActiveToolBars.SSTool)
     '   DE ACUERDO AL MODULO SELECCIONADO
     '**********************************************************************
     
-    Select Case Tool.Id
+    Select Case Tool.ID
     Case "ID_Archivo", "ID_Reportes", "ID_ProgramacionMedica", "ID_ArchivoClinico", "ID_Herramientas", "ID_Ayuda", "ID_ReportesDeFarmacia", "ID_HerrFarmacia"
         Exit Sub
     Case "ID_RptHospitalizacion", "ID_Emergencia", "ID_Economia", "ID_Seguros", "ID_Convenios", "ID_HerrConsultaExterna", "ID_Imagenologia", "ID_LaboratorioMod", "ID_ModuloHIS"
         Exit Sub
     Case "ID_Salir"
-        mo_AdminSeguridad.LogueaUsuario 0, sighentidades.Usuario, lc_NombrePc
+        mo_AdminSeguridad.LogueaUsuario 0, sighEntidades.Usuario, lc_NombrePc
         End
           
     '*****************************   REPORTES   ******************************
@@ -2261,14 +2261,14 @@ Private Sub toolbar_ToolClick(ByVal Tool As ActiveToolBars.SSTool)
         Exit Sub
     Case "ID_EgresosHospitalarios"
         Dim oRptHosp As New SIGHProxies.clReportesEgreHosp
-        oRptHosp.IdTipoReporte = sighentidades.sghReporteEgresosHospitalario
+        oRptHosp.IdTipoReporte = sighEntidades.sghReporteEgresosHospitalario
         oRptHosp.idTipoServicio = 0
         oRptHosp.EjecutaFormulario
         Set oRptHosp = Nothing
         Exit Sub
     Case "ID_IngresosHospitalarios"
         Dim oRptIngHosp As New SIGHProxies.clReporteIngrHosp
-        oRptIngHosp.IdTipoReporte = sighentidades.sghReporteIngresosHospitalario
+        oRptIngHosp.IdTipoReporte = sighEntidades.sghReporteIngresosHospitalario
         oRptIngHosp.EjecutaFormulario
         Set oRptIngHosp = Nothing
         Exit Sub
@@ -2303,7 +2303,7 @@ Private Sub toolbar_ToolClick(ByVal Tool As ActiveToolBars.SSTool)
     End Select
 
     '***************REPORTES**************
-    Select Case Tool.Id
+    Select Case Tool.ID
     'Consulta externa
     Case "ID_MorbilidadCE"
         Dim oRptMorbilidadCE As New SIGHReportes.RptHMorbCE
@@ -2519,21 +2519,21 @@ Private Sub toolbar_ToolClick(ByVal Tool As ActiveToolBars.SSTool)
         Exit Sub
     Case "ID_EgresosConsultaExterna(Epicrisis)"
         Dim oRptHosp2 As New SIGHProxies.clReportesEgreHosp
-        oRptHosp2.IdTipoReporte = sighentidades.sghReporteEgresosHospitalario
+        oRptHosp2.IdTipoReporte = sighEntidades.sghReporteEgresosHospitalario
         oRptHosp2.idTipoServicio = 2
         oRptHosp2.EjecutaFormulario
         Set oRptHosp2 = Nothing
         Exit Sub
     Case "ID_EgresosEmergencia(Epicrisis)"
         Dim oRptHosp1 As New SIGHProxies.clReportesEgreHosp
-        oRptHosp1.IdTipoReporte = sighentidades.sghReporteEgresosHospitalario
+        oRptHosp1.IdTipoReporte = sighEntidades.sghReporteEgresosHospitalario
         oRptHosp1.idTipoServicio = 1
         oRptHosp1.EjecutaFormulario
         Set oRptHosp1 = Nothing
         Exit Sub
     Case "ID_IngresosEmergencia"
         Dim oRptIngHosp1 As New SIGHProxies.clReporteIngrHosp
-        oRptIngHosp1.IdTipoReporte = sighentidades.sghReporteIngresosHospitalario
+        oRptIngHosp1.IdTipoReporte = sighEntidades.sghReporteIngresosHospitalario
         oRptIngHosp1.idTipoServicio = 1
         oRptIngHosp1.EjecutaFormulario
         Set oRptIngHosp1 = Nothing
@@ -2569,7 +2569,7 @@ Private Sub toolbar_ToolClick(ByVal Tool As ActiveToolBars.SSTool)
 '        Exit Sub
     Case "ID_FarmVtaItems"
         Dim oRptFKardex As New SighFarmacia.RepMovimientoES
-        oRptFKardex.idUsuario = sighentidades.Usuario
+        oRptFKardex.idUsuario = sighEntidades.Usuario
         oRptFKardex.EjecutaFrm
         Set oRptFKardex = Nothing
         Exit Sub
@@ -3008,7 +3008,7 @@ Private Sub toolbar_ToolClick(ByVal Tool As ActiveToolBars.SSTool)
     '**********************************************************************
     '   MANEJO DEL TOOLBAR DE GESTIÓN DE CAJA (se supone que este se activa cuando se selecciona la opción de gestión de caja
     '**********************************************************************
-    Select Case Tool.Id
+    Select Case Tool.ID
     'MODULO DE CAJA
     Case "ID_CajaApertura"
         AperturaCaja
@@ -3073,7 +3073,7 @@ Private Sub toolbar_ToolClick(ByVal Tool As ActiveToolBars.SSTool)
     '**********************************************************************
     '   MANEJO DEL TOOLBAR DE PUNTO DIGITACIÓN HIS
     '**********************************************************************
-    Select Case Tool.Id
+    Select Case Tool.ID
     Case "ID_DxOmitidos" 'HIS Digitacion - Frank08082014
         Dim oRptHisDxOmitidos2 As New SIGHReportes.clRptHisDxOmitidos
         oRptHisDxOmitidos2.EjecutaFormulario
@@ -3089,96 +3089,96 @@ Private Sub toolbar_ToolClick(ByVal Tool As ActiveToolBars.SSTool)
     Select Case ms_ModuloSeleccionado
     'MODULO AMBULATORIO CE
     Case "AdmisionCE"
-        EdicionCitas Tool.Id
+        EdicionCitas Tool.ID
     Case "PacienteCE"
-        EdicionPaciente Tool.Id, sghConsultaExterna, 101
+        EdicionPaciente Tool.ID, sghConsultaExterna, 101
     Case "AtencionesCE"
-        EdicionAdmisionCE Tool.Id, sghConsultaExterna, 103
+        EdicionAdmisionCE Tool.ID, sghConsultaExterna, 103
     Case "AtencionesTriaje"
-        EdicionTriaje Tool.Id       'debb-jamo
+        EdicionTriaje Tool.ID       'debb-jamo
     Case "RecetasCE"
-        EdicionReceta Tool.Id, 1366, sghConsultaExterna
+        EdicionReceta Tool.ID, 1366, sghConsultaExterna
     Case "idConsultorioAsignado"
-        EdicionArchiveroServicio Tool.Id
+        EdicionArchiveroServicio Tool.ID
         
     'MODULO HIS-GALENOS JVG
     Case "HisCE"
-        EdicionHisCE Tool.Id, 1346, ml_IdUsuarioAuditoria, lc_NombrePc
+        EdicionHisCE Tool.ID, 1346, ml_IdUsuarioAuditoria, lc_NombrePc
     Case "HisPMMR"
-        EdicionProgramacionHIS Tool.Id, 1347, ml_IdUsuarioAuditoria, lc_NombrePc
+        EdicionProgramacionHIS Tool.ID, 1347, ml_IdUsuarioAuditoria, lc_NombrePc
     Case "HisLoteCE"
-        EdicionHisLotesCE Tool.Id, 1348, ml_IdUsuarioAuditoria, lc_NombrePc
+        EdicionHisLotesCE Tool.ID, 1348, ml_IdUsuarioAuditoria, lc_NombrePc
     Case "HisREMR"
-        EdicionHisEstablecimientos Tool.Id, 1349, ml_IdUsuarioAuditoria, lc_NombrePc
+        EdicionHisEstablecimientos Tool.ID, 1349, ml_IdUsuarioAuditoria, lc_NombrePc
     Case "HisPN"
-        EdicionPadronNominal Tool.Id, 1353, ml_IdUsuarioAuditoria, lc_NombrePc
+        EdicionPadronNominal Tool.ID, 1353, ml_IdUsuarioAuditoria, lc_NombrePc
     Case "HisCalidad"
-        EdicionHisDobleDigitacion Tool.Id, 1354, ml_IdUsuarioAuditoria, lc_NombrePc
+        EdicionHisDobleDigitacion Tool.ID, 1354, ml_IdUsuarioAuditoria, lc_NombrePc
 '        Calidad Tool.ID, 1354, ml_IdUsuarioAuditoria, lc_NombrePc
     
     
     'MODULO CONSULTORIOS EMERGENCIA
     Case "PacienteEmerg", "PacienteObservacionEmerg"
-        EdicionPaciente Tool.Id, sghEmergenciaObservacion, 201
+        EdicionPaciente Tool.ID, sghEmergenciaObservacion, 201
     Case "AdmisionConsultorioEmerg"
-        EdicionAdmisionEmergencia Tool.Id
+        EdicionAdmisionEmergencia Tool.ID
     Case "CamasEmergencia"
-        EdicionCamas Tool.Id, True
+        EdicionCamas Tool.ID, True
 
     Case "RecetasE"
-        EdicionReceta Tool.Id, 1343, sghEmergenciaConsultorios
+        EdicionReceta Tool.ID, 1343, sghEmergenciaConsultorios
     
     'MODULO HOSPITALIZACION
     Case "PacienteHosp"
-        EdicionPaciente Tool.Id, sghHospitalizacion, 301
+        EdicionPaciente Tool.ID, sghHospitalizacion, 301
     Case "AdmisionHospitalizacion"
-        EdicionAdmisionHospitalizacion Tool.Id
+        EdicionAdmisionHospitalizacion Tool.ID
     Case "CamasHospitalizacion"
-        EdicionCamas Tool.Id, False
+        EdicionCamas Tool.ID, False
     Case "AlojadosHospitalizacion"
-        EdicionAlojados Tool.Id
+        EdicionAlojados Tool.ID
     Case "RecetasH"
-        EdicionReceta Tool.Id, 1344, sghHospitalizacion
+        EdicionReceta Tool.ID, 1344, sghHospitalizacion
     
     'MODULO DE PROGRAMACION
     Case "Programacion"
-        EdicionProgMedica Tool.Id
+        EdicionProgMedica Tool.ID
     
     Case "Turno"
-        EdicionTurno Tool.Id
+        EdicionTurno Tool.ID
     
     Case "Medico"
-        EdicionMedico Tool.Id
+        EdicionMedico Tool.ID
     
     'MODULO ARCHIVO CLINICO
     Case "HistoriaClinica"
-        EdicionHistoriaClinica Tool.Id
+        EdicionHistoriaClinica Tool.ID
     
     Case "MovimientoHistoria"
-        EdicionMovimientoHistorias Tool.Id
+        EdicionMovimientoHistorias Tool.ID
     
     Case "SolicitudHistorias"
        'EdicionSolicitudHistorias Tool.ID
     
     Case "Archivero"
-        EdicionArchiveroServicio Tool.Id
+        EdicionArchiveroServicio Tool.ID
         
     Case "MovFormatosHC"
-        EdicionMovimientoFormatoHC Tool.Id
+        EdicionMovimientoFormatoHC Tool.ID
     'MODULO FACTURACION
     Case "FacturacionGeneral"
-        EdicionOrdenesServicio Tool.Id
+        EdicionOrdenesServicio Tool.ID
     
     Case "FacturacionPatologiaClinica"
-         EdicionSiCitas Tool.Id
+         EdicionSiCitas Tool.ID
     
     Case "FacturacionAnatomiaPatologica"
        ' EdicionOrdenesServicioAnatomiaPatologia Tool.ID
     
     Case "FacturacionImagenologia"
-         EdicionSiCitas Tool.Id
+         EdicionSiCitas Tool.ID
     Case "prgImagen"
-         EdicionSiProgramacion Tool.Id
+         EdicionSiProgramacion Tool.ID
     
     Case "FacturacionSalaOperaciones"
        ' EdicionOrdenesServicioSalaOperaciones Tool.ID
@@ -3190,59 +3190,59 @@ Private Sub toolbar_ToolClick(ByVal Tool As ActiveToolBars.SSTool)
         
        ' Select Case ucCatalogoServiciosLista1.IdTipoCatalogo
         'Case 0
-            EdicionCatalogoBaseServicios Tool.Id
+            EdicionCatalogoBaseServicios Tool.ID
         'Case Else
         '    EdicionCatalogoServicios Tool.ID
         'End Select
         
     Case "FacturacionCentroCostos"
-        EdicionCentrosCosto Tool.Id
+        EdicionCentrosCosto Tool.ID
     Case "PqteServicio"
-        EdicionPaqueteServicio Tool.Id
+        EdicionPaqueteServicio Tool.ID
     Case "FactReembolsos"
-        EdicionReembolsos Tool.Id
+        EdicionReembolsos Tool.ID
     Case "PacExtConSeguro"
-        EdicionPacExtConSeguro Tool.Id
+        EdicionPacExtConSeguro Tool.ID
     Case "PacExtParticular"
         'EdicionPacExtParticular Tool.ID
     'MODULO GENERAL
     Case "Empleado"
-        EdicionEmpleado Tool.Id
+        EdicionEmpleado Tool.ID
     
     Case "Servicios"
-        EdicionServicio Tool.Id
+        EdicionServicio Tool.ID
     
     Case "Diagnosticos"
-        EdicionDiagnosticos Tool.Id
+        EdicionDiagnosticos Tool.ID
     
     Case "Procedimientos"
         'EdicionProcedimientos Tool.ID
     
     Case "TiposFinanciamiento"
-        EdicionTiposFinanciamiento Tool.Id
+        EdicionTiposFinanciamiento Tool.ID
     
     Case "FuentesFinanciamiento"
     
-        EdicionFuentesFinanciamiento Tool.Id
+        EdicionFuentesFinanciamiento Tool.ID
     Case "FacturacionPartidas"
-        EdicionPartidaPresupuestal Tool.Id
+        EdicionPartidaPresupuestal Tool.ID
     
     Case "EstablecimientosNoMinsa"
-        EdicionEstablecimientosNoMinsa Tool.Id
+        EdicionEstablecimientosNoMinsa Tool.ID
     
     Case "Especialidades"
-        EdicionEspecialidades Tool.Id
+        EdicionEspecialidades Tool.ID
     
     Case "TipoTarifa"
-        EdicionTipoTarifa Tool.Id
+        EdicionTipoTarifa Tool.ID
     
     'MODULO CAJA
     Case "Cajas"
-        EdicionCaja Tool.Id
+        EdicionCaja Tool.ID
         
     'FRANK MAYO
     Case "NotaCredito"
-        EdicionCajaNotaCredito Tool.Id
+        EdicionCajaNotaCredito Tool.ID
         
     Case "Cajeros"
         'EdicionCajero Tool.ID
@@ -3250,83 +3250,83 @@ Private Sub toolbar_ToolClick(ByVal Tool As ActiveToolBars.SSTool)
     Case "CatalogoBienes"
        ' Select Case ucCatalogoBienesInsumosLista1.IdTipoCatalogo
        ' Case 0
-            EdicionCatalogoBaseBienesInsumos Tool.Id
+            EdicionCatalogoBaseBienesInsumos Tool.ID
        ' Case Else
        '     EdicionCatalogoBienesInsumos Tool.ID
        ' End Select
         
     'MODULO SEGURIDAD
     Case "Roles"
-        EdicionRoles Tool.Id
+        EdicionRoles Tool.ID
         
     'MODULO FARMACIA
     Case "Inventario"
-        EdicionInventario Tool.Id
+        EdicionInventario Tool.ID
     Case "NS", "NSF"                                                       '**debb2014
-        EdicionNS Tool.Id, IIf(ms_ModuloSeleccionado = "NS", False, True)  '**debb2014
+        EdicionNS Tool.ID, IIf(ms_ModuloSeleccionado = "NS", False, True)  '**debb2014
     Case "NI", "NIF", "FARMADOP"                                                       '**debb2014"
-        EdicionNI Tool.Id, IIf(ms_ModuloSeleccionado = "NI", False, True)  '**debb2014
+        EdicionNI Tool.ID, IIf(ms_ModuloSeleccionado = "NI", False, True)  '**debb2014
     Case "IntervencionS"
-        EdicionIntervencionS Tool.Id
+        EdicionIntervencionS Tool.ID
     Case "Ventas"
-        EdicionVentas Tool.Id
+        EdicionVentas Tool.ID
     Case "DependenciaExt"
-        EdicionDependenciaExt Tool.Id
+        EdicionDependenciaExt Tool.ID
     Case "DespachoDonaciones"
-        EdicionDespachoDonaciones Tool.Id
+        EdicionDespachoDonaciones Tool.ID
     Case "FarmAlmacen"
-        EdicionMantenedorFarmacia Tool.Id
+        EdicionMantenedorFarmacia Tool.ID
     Case "FarmPrecios"                                     'debb2014b
-        EdicionMantenedorHistoricoPrecios Tool.Id          'debb2014b
+        EdicionMantenedorHistoricoPrecios Tool.ID          'debb2014b
         
     'MODULO IMAGENEOLOGIA
     Case "ImagRayosX"
-        EdicionRayosX Tool.Id
+        EdicionRayosX Tool.ID
     Case "ImagEcografiaG"
-        EdicionImagEcografiaGen Tool.Id
+        EdicionImagEcografiaGen Tool.ID
     Case "ImagTomografia"
-        EdicionImagTomografia Tool.Id
+        EdicionImagTomografia Tool.ID
     Case "ImagEcografiaO"
-        EdicionImagEcografiaObs Tool.Id
+        EdicionImagEcografiaObs Tool.ID
     Case "ImagIngresos"
-        EdicionImagIngresos Tool.Id
+        EdicionImagIngresos Tool.ID
     Case "ImagSalidas"
-        EdicionImagSalidas Tool.Id
+        EdicionImagSalidas Tool.ID
     'mgaray201411f
     Case "ImagTipoModalidadSala"
-        EdicionTipoModalidadSala Tool.Id
+        EdicionTipoModalidadSala Tool.ID
     Case "ImagSala"
-        EdicionSala Tool.Id
+        EdicionSala Tool.ID
     Case "ImagCatalgoServicioDuracion"
-        EdicionImagFactCatalogoServiciosDuracion Tool.Id
+        EdicionImagFactCatalogoServiciosDuracion Tool.ID
     Case "IntegracionSistema"
-        EdicionIntegracionSistema Tool.Id
+        EdicionIntegracionSistema Tool.ID
         
     'MODULO LABORATORIO
     Case "OrdenesLaboratorio"
-        EdicionLaboratorio Tool.Id
+        EdicionLaboratorio Tool.ID
     Case "OrdenesPatologia"
-        EdicionOrdenesServicioAnatomiaPatologia_ Tool.Id
+        EdicionOrdenesServicioAnatomiaPatologia_ Tool.ID
     Case "BS"
-        EdicionOrdenesBS_ Tool.Id
+        EdicionOrdenesBS_ Tool.ID
     Case "ResultadosLaboratorio"
-        EdicionResultados Tool.Id
+        EdicionResultados Tool.ID
     Case "MuestrasExamenes"
-        EdicionMuestras Tool.Id
+        EdicionMuestras Tool.ID
     Case "LabIngresos"
-        EdicionLabIngresos Tool.Id
+        EdicionLabIngresos Tool.ID
     Case "LabEgresos"
-        EdicionLabSalidas Tool.Id
+        EdicionLabSalidas Tool.ID
         
     'Constancias de Atención
     Case "Constancias"
-      EdicionConstancias Tool.Id
+      EdicionConstancias Tool.ID
     'Sis
     Case "Fua"
-      EdicionFua Tool.Id
+      EdicionFua Tool.ID
       
     Case "ConfiguracionResLab" ' modificacion samuel
-        EdicionConfiguracionResLab Tool.Id
+        EdicionConfiguracionResLab Tool.ID
         
     End Select
     
@@ -4733,8 +4733,8 @@ Dim lbUsuarioRealizaApertura As Boolean
                 mb_abrioCaja = Me.ucGestionDevolucion2.RealizarAperturaDeCaja(ml_IdUsuarioAuditoria, oApertura.IdCaja, oApertura.IdTurno, oApertura.EmiteSoloServicio)
                 '/****************************INO***************************************/
                 
-                Me.Toolbar.Tools("ID_CajaApertura").Enabled = False
-                Me.Toolbar.Tools("ID_CajaCierre").Enabled = True
+                Me.toolbar.Tools("ID_CajaApertura").Enabled = False
+                Me.toolbar.Tools("ID_CajaCierre").Enabled = True
                 'mgaray201503
                 Set moDOCajaGestion = New DOCajaGestion
                 moDOCajaGestion.IdCaja = oApertura.IdCaja
@@ -4772,24 +4772,24 @@ Dim lbUsuarioRealizaCierre As Boolean
             End If
             If MsgBox("¿Esta seguro de realizar el CIERRE DE CAJA ?", vbYesNo, Me.Caption) = vbYes Then
                 If ucGestionCaja1.RealizarCierreDeCaja() Then
-                    Me.Toolbar.Tools("ID_CajaApertura").Enabled = True
+                    Me.toolbar.Tools("ID_CajaApertura").Enabled = True
                     mb_abrioCaja = False
                 End If
                 
                 '/******************************INO*************************************
                  If ucGestionDevolucion2.RealizarCierreDeCaja() Then
-                    Me.Toolbar.Tools("ID_CajaApertura").Enabled = True
+                    Me.toolbar.Tools("ID_CajaApertura").Enabled = True
                     mb_abrioCaja = False
                 End If
                 '/******************************INO*************************************
                 
             Else
                 ucGestionCaja1.MuestraTabEmisionDocumentos (False)
-                Me.Toolbar.Tools("ID_CajaApertura").Enabled = True
+                Me.toolbar.Tools("ID_CajaApertura").Enabled = True
                 mb_abrioCaja = False
             End If
-            Me.Toolbar.Tools("ID_CajaApertura").Enabled = True
-            Me.Toolbar.Tools("ID_CajaCierre").Enabled = False
+            Me.toolbar.Tools("ID_CajaApertura").Enabled = True
+            Me.toolbar.Tools("ID_CajaCierre").Enabled = False
         Else
             MsgBox "El USUARIO no tiene permiso para realizar el  CIERRE"
         End If
@@ -4799,8 +4799,8 @@ End Sub
 Private Sub ucCajeroServicios1_HizoClickEnEscape()
     
     mo_LastControl.Visible = False
-    Toolbar.Toolbars("Edición").Visible = True
-    Toolbar.Toolbars("Gestión de Caja").Visible = False
+    toolbar.Toolbars("Edición").Visible = True
+    toolbar.Toolbars("Gestión de Caja").Visible = False
 
 End Sub
 

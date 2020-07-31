@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{C932BA88-4374-101B-A56C-00AA003668DC}#1.1#0"; "MSMASK32.OCX"
+Object = "{C932BA88-4374-101B-A56C-00AA003668DC}#1.1#0"; "msmask32.ocx"
 Begin VB.UserControl UcPacientesSunasa 
    BackColor       =   &H00C0C0C0&
    ClientHeight    =   5955
@@ -1567,7 +1567,7 @@ Dim mo_Teclado As New sighEntidades.Teclado
 Dim mo_Formulario As New sighEntidades.Formulario
 Dim ms_MensajeError As String
 Dim mi_Opcion As sghOpciones
-Dim ml_idPaciente As Long
+Dim ml_IdPaciente As Long
 Dim mo_cmbParentescoTitular As New sighEntidades.ListaDespleglable
 Dim mo_cmbDocumentoAnterior As New sighEntidades.ListaDespleglable
 Dim mo_cmbTipoOperacion As New sighEntidades.ListaDespleglable
@@ -1596,7 +1596,7 @@ Property Let Opcion(iValue As sghOpciones)
    mi_Opcion = iValue
 End Property
 Property Let idPaciente(lValue As Long)
-   ml_idPaciente = lValue
+   ml_IdPaciente = lValue
 End Property
 Property Get idSunasaPacienteHistorico() As Long
    idSunasaPacienteHistorico = ml_idSunasaPacienteHistorico
@@ -1611,7 +1611,7 @@ Property Let idUsuario(lValue As Long)
 End Property
 
 
-Sub inicializar()
+Sub Inicializar()
     'carga combos
     Set mo_cmbParentescoTitular.MiComboBox = cmbParentescoTitular
     mo_cmbParentescoTitular.BoundColumn = "IdParentesco"
@@ -1658,7 +1658,7 @@ Sub inicializar()
     mo_Formulario.HabilitarDeshabilitar txtPaciente, False
     mo_Formulario.HabilitarDeshabilitar txtSexo, False
     mo_Formulario.HabilitarDeshabilitar txtDocumento, False
-    mo_Formulario.HabilitarDeshabilitar txtNDocumento, False
+    mo_Formulario.HabilitarDeshabilitar txtNdocumento, False
     mo_Formulario.HabilitarDeshabilitar txtPais, False
     mo_Formulario.HabilitarDeshabilitar txtFnacimiento, False
     mo_Formulario.HabilitarDeshabilitar txtUbigeo, False
@@ -1832,7 +1832,7 @@ Private Sub txtFechaEnvio_KeyDown(KeyCode As Integer, Shift As Integer)
 End Sub
 
 Private Sub txtFechaEnvio_LostFocus()
-If Not esfecha(txtFechaEnvio.Text, "DD/MM/AAAA") Then
+If Not EsFecha(txtFechaEnvio.Text, "DD/MM/AAAA") Then
         MsgBox "La fecha ingresada no es válida", vbInformation, ""
         On Error Resume Next
         txtFechaEnvio.Text = sighEntidades.FECHA_VACIA_DMY
@@ -1846,7 +1846,7 @@ Private Sub txtFechaFinalAfiliacion_KeyDown(KeyCode As Integer, Shift As Integer
 End Sub
 
 Private Sub txtFechaFinalAfiliacion_LostFocus()
-If Not esfecha(txtFechaFinalAfiliacion.Text, "DD/MM/AAAA") Then
+If Not EsFecha(txtFechaFinalAfiliacion.Text, "DD/MM/AAAA") Then
         MsgBox "La fecha ingresada no es válida", vbInformation, ""
         On Error Resume Next
         txtFechaFinalAfiliacion.Text = sighEntidades.FECHA_VACIA_DMY
@@ -1862,7 +1862,7 @@ End Sub
 
 
 Private Sub txtFechaInicioAfiliacion_LostFocus()
-If Not esfecha(txtFechaInicioAfiliacion.Text, "DD/MM/AAAA") Then
+If Not EsFecha(txtFechaInicioAfiliacion.Text, "DD/MM/AAAA") Then
         MsgBox "La fecha ingresada no es válida", vbInformation, ""
         On Error Resume Next
         txtFechaInicioAfiliacion.Text = sighEntidades.FECHA_VACIA_DMY
@@ -2031,7 +2031,7 @@ Public Function CargarDatosAlObjetoDatos(oDoSunasaPacientesHistoricos As DoSunas
         End If
         .IdAfiliacion = Val(mo_cmbTipoAfiliacion.BoundText)
         .idOperacion = Val(mo_cmbTipoOperacion.BoundText)
-        .idPaciente = ml_idPaciente
+        .idPaciente = ml_IdPaciente
         .idPaisTitular = Val(mo_cmbPaisTitular.BoundText)
         .idParentesco = Val(mo_cmbParentescoTitular.BoundText)
         .idRegimen = Val(mo_cmbRegimen.BoundText)
@@ -2097,14 +2097,14 @@ Sub CargarDatos(oDoSunasaPacientesHistoricos As DoSunasaPacientesHistoricos)
                 If .EstadoDelSeguro > 0 Then
                    cmbEstadoSeguro.ListIndex = .EstadoDelSeguro - 1
                 End If
-                If sighEntidades.esfecha(CDate(Format(.FechaEnvio, "dd/mm/yyyy")), "DD/MM/AAAA") Then
+                If sighEntidades.EsFecha(CDate(Format(.FechaEnvio, "dd/mm/yyyy")), "DD/MM/AAAA") Then
                    txtFechaEnvio.Text = Format(.FechaEnvio, sighEntidades.DevuelveFechaSoloFormato_DMY)
                    UserControl.txtHoraEnvio.Text = Format(.FechaEnvio, sighEntidades.DevuelveHoraSoloFormato_HMS)
                 End If
-                If sighEntidades.esfecha(.FechaFinalAfiliacion, "DD/MM/AAAA") Then
+                If sighEntidades.EsFecha(.FechaFinalAfiliacion, "DD/MM/AAAA") Then
                    txtFechaFinalAfiliacion.Text = Format(.FechaFinalAfiliacion, sighEntidades.DevuelveFechaSoloFormato_DMY)
                 End If
-                If sighEntidades.esfecha(.FechaInicioAfiliacion, "DD/MM/AAAA") Then
+                If sighEntidades.EsFecha(.FechaInicioAfiliacion, "DD/MM/AAAA") Then
                    txtFechaInicioAfiliacion.Text = Format(.FechaInicioAfiliacion, sighEntidades.DevuelveFechaSoloFormato_DMY)
                 End If
                 mo_cmbTipoAfiliacion.BoundText = .IdAfiliacion
@@ -2131,7 +2131,7 @@ Sub CargarDatos(oDoSunasaPacientesHistoricos As DoSunasaPacientesHistoricos)
                    txtNroAfiliacion3.Text = Mid(.SisNroAfiliacion, lnPos2 + 1, 100)
                 End If
                 txtSepelioDNI.Text = .SisSepelioDni
-                If sighEntidades.esfecha(.SisSepelioFnacimiento, "DD/MM/AAAA") Then
+                If sighEntidades.EsFecha(.SisSepelioFnacimiento, "DD/MM/AAAA") Then
                    txtSepelioFnacimiento.Text = Format(.SisSepelioFnacimiento, sighEntidades.DevuelveFechaSoloFormato_DMY)
                 End If
                 txtSepelioApellidosYnombre.Text = .SisSepelioParienteEncargado
@@ -2152,7 +2152,7 @@ Public Sub CargarDatosDelUltimoSeguroDelPacienteALosControles(oConexion As Conne
 On Error GoTo ErrrCargaDatos
 Dim oDoSunasaPacientesHistoricos As New DoSunasaPacientesHistoricos
         'CARGAR DATOS DE SUNASA
-        Set oDoSunasaPacientesHistoricos = mo_AdminAdmision.SunasaPacientesHistoricosSeleccionarPorIdPaciente(ml_idPaciente, oConexion)
+        Set oDoSunasaPacientesHistoricos = mo_AdminAdmision.SunasaPacientesHistoricosSeleccionarPorIdPaciente(ml_IdPaciente, oConexion)
         If mo_AdminAdmision.MensajeError <> "" Then
              MsgBox "No se pudo obtener los datos" + Chr(13) + mo_AdminAdmision.MensajeError, vbInformation, "Datos de SUNASA"
              Exit Sub
@@ -2239,14 +2239,14 @@ End Sub
 
 Public Sub idSunasaPacienteHistorico_idPaciente_ConValorCero()
    ml_idSunasaPacienteHistorico = 0
-   ml_idPaciente = 0
+   ml_IdPaciente = 0
 End Sub
 
 Public Sub DatosDeCabecera(lcPaciente As String, lcSexo As String, lcDocumento As String, lcNdocumento As String, lcPais As String, lcFnacimiento As String, lcUbigeo As String)
     txtPaciente.Text = lcPaciente
     txtSexo.Text = lcSexo
     txtDocumento.Text = lcDocumento
-    txtNDocumento.Text = lcNdocumento
+    txtNdocumento.Text = lcNdocumento
     txtPais.Text = lcPais
     txtFnacimiento.Text = lcFnacimiento
     txtUbigeo.Text = lcUbigeo
@@ -2257,7 +2257,7 @@ Public Sub SetFocusEnApellidoCasada()
 End Sub
 
 Private Sub txtSepelioFnacimiento_LostFocus()
-If Not esfecha(txtSepelioFnacimiento.Text, "DD/MM/AAAA") Then
+If Not EsFecha(txtSepelioFnacimiento.Text, "DD/MM/AAAA") Then
         MsgBox "La fecha ingresada no es válida", vbInformation, ""
         On Error Resume Next
         txtSepelioFnacimiento.Text = sighEntidades.FECHA_VACIA_DMY

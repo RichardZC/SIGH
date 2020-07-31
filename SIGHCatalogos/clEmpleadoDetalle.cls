@@ -33,7 +33,6 @@ End Property
 Property Let lnIdTablaLISTBARITEMS(lValue As Long)
    mo_lnIdTablaLISTBARITEMS = lValue
 End Property
-
 Property Let Opcion(iValue As sghOpciones)
    mi_Opcion = iValue
 End Property

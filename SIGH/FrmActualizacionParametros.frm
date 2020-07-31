@@ -139,12 +139,12 @@ Attribute VB_Exposed = False
 '------------------------------------------------------------------------------------
 Option Explicit
 
-Dim mo_cmbGrupo As New sighentidades.ListaDespleglable
-Dim mo_reglasComunes As New ReglasComunes
+Dim mo_cmbGrupo As New sighEntidades.ListaDespleglable
+Dim mo_ReglasComunes As New ReglasComunes
 Dim mo_Param As New DOPArametro
 Dim sMensaje As String
-Dim mo_Apariencia As New sighentidades.GridInfragistic
-Dim mo_Teclado As New sighentidades.Teclado
+Dim mo_Apariencia As New sighEntidades.GridInfragistic
+Dim mo_Teclado As New sighEntidades.Teclado
 Dim ml_Grupo As String
 Dim ml_TextoDelFiltro As String
 Dim mrs_Parametros As New ADODB.Recordset
@@ -153,7 +153,7 @@ Dim oParametros As New Parametros
 
 Private Sub Ayuda_Click()
         Dim oCambClave As New LoginActualizaClave
-        oCambClave.idUsuario = sighentidades.Usuario
+        oCambClave.idUsuario = sighEntidades.Usuario
         oCambClave.Show 1
         Set oCambClave = Nothing
 
@@ -162,7 +162,7 @@ End Sub
 Private Sub cmbGrupo_Click()
     Dim orstemp1 As New Recordset
     GenerarRecordsetTemporal
-    Set orstemp1 = mo_reglasComunes.SeleccionarGrupoParametros(cmbGrupo.Text)
+    Set orstemp1 = mo_ReglasComunes.SeleccionarGrupoParametros(cmbGrupo.Text)
     If orstemp1.RecordCount > 0 Then
         orstemp1.MoveFirst
         Do While Not orstemp1.EOF
@@ -174,7 +174,7 @@ Private Sub cmbGrupo_Click()
             .Fields!ValorTexto = orstemp1!ValorTexto
             .Fields!ValorInt = orstemp1!ValorInt
             .Fields!ValorFloat = orstemp1!ValorFloat
-            .Fields!Descripcion = orstemp1!Descripcion
+            .Fields!descripcion = orstemp1!descripcion
             .Fields!Grupo = orstemp1!Grupo
             .Update
         End With
@@ -197,7 +197,7 @@ Private Sub btnAceptar_Click()
                        "para que haga efecto el cambio, debe salir del Sistema y volver a ingresar", vbInformation, Me.Caption
                 Me.Visible = False
             Else
-                MsgBox "No se pudo modificar los datos" + Chr(13) + mo_reglasComunes.MensajeError, vbExclamation, Me.Caption
+                MsgBox "No se pudo modificar los datos" + Chr(13) + mo_ReglasComunes.MensajeError, vbExclamation, Me.Caption
             End If
         End If
     End If
@@ -211,7 +211,7 @@ Private Sub Form_Load()
     Dim rsDocumentos As New Recordset
     GenerarRecordsetTemporal
     If ml_Grupo <> "" Then
-    Set rsDocumentos = mo_reglasComunes.SeleccionarGrupoParametros(ml_Grupo)
+    Set rsDocumentos = mo_ReglasComunes.SeleccionarGrupoParametros(ml_Grupo)
     Do While Not rsDocumentos.EOF
         With mrs_Parametros
             .AddNew
@@ -221,16 +221,16 @@ Private Sub Form_Load()
             .Fields!ValorTexto = rsDocumentos!ValorTexto
             .Fields!ValorInt = rsDocumentos!ValorInt
             .Fields!ValorFloat = rsDocumentos!ValorFloat
-            .Fields!Descripcion = rsDocumentos!Descripcion
+            .Fields!descripcion = rsDocumentos!descripcion
             .Fields!Grupo = rsDocumentos!Grupo
         End With
         rsDocumentos.MoveNext
     Loop
     End If
-    mo_Apariencia.ConfigurarFilasBiColores Me.grdParametros, sighentidades.GrillaConFilasBicolor
+    mo_Apariencia.ConfigurarFilasBiColores Me.grdParametros, sighEntidades.GrillaConFilasBicolor
     mo_cmbGrupo.BoundColumn = "IdParametro"
     mo_cmbGrupo.ListField = "Grupo"
-    Set mo_cmbGrupo.RowSource = mo_reglasComunes.LlenadoParametros()
+    Set mo_cmbGrupo.RowSource = mo_ReglasComunes.LlenadoParametros()
 End Sub
 
 Private Sub grdParametros_BeforeCellUpdate(ByVal Cell As UltraGrid.SSCell, NewValue As Variant, ByVal Cancel As UltraGrid.SSReturnBoolean)
@@ -267,7 +267,7 @@ Private Sub grdParametros_InitializeLayout(ByVal Context As UltraGrid.Constants_
     grdParametros.Bands(0).Columns("Grupo").Width = 1500
     grdParametros.Bands(0).Columns("Grupo").Activation = ssActivationActivateNoEdit
     
-    mo_Apariencia.ConfigurarFilasBiColores Me.grdParametros, sighentidades.GrillaConFilasBicolor
+    mo_Apariencia.ConfigurarFilasBiColores Me.grdParametros, sighEntidades.GrillaConFilasBicolor
 End Sub
 
 Sub GenerarRecordsetTemporal()
@@ -286,14 +286,14 @@ Sub GenerarRecordsetTemporal()
           .Open
     End With
     Set Me.grdParametros.DataSource = mrs_Parametros
-    mo_Apariencia.ConfigurarFilasBiColores Me.grdParametros, sighentidades.GrillaConFilasBicolor
+    mo_Apariencia.ConfigurarFilasBiColores Me.grdParametros, sighEntidades.GrillaConFilasBicolor
 End Sub
 
 Function ModificarDatos() As Boolean
 Dim oConexion As New ADODB.Connection
 oConexion.CommandTimeout = 300
 oConexion.CursorLocation = adUseClient
-oConexion.Open sighentidades.CadenaConexion
+oConexion.Open sighEntidades.CadenaConexion
 Set oParametros.Conexion = oConexion
     With mo_Param
         If mrs_Parametros.RecordCount > 0 Then
@@ -319,7 +319,7 @@ Set oParametros.Conexion = oConexion
                 Else
                     .ValorFloat = mrs_Parametros.Fields!ValorFloat
                 End If
-                .Descripcion = mrs_Parametros!Descripcion
+                .descripcion = mrs_Parametros!descripcion
                 .Grupo = mrs_Parametros.Fields!Grupo
                 
                 If Not oParametros.Modificar(mo_Param) Then

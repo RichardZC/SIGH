@@ -5,10 +5,10 @@ Object = "{5A9433E9-DD7B-4529-91B6-A5E8CA054615}#2.0#0"; "IGULTR~1.OCX"
 Begin VB.Form EmpleadoDetalle 
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "Form1"
-   ClientHeight    =   8796
-   ClientLeft      =   48
-   ClientTop       =   336
-   ClientWidth     =   12012
+   ClientHeight    =   8805
+   ClientLeft      =   45
+   ClientTop       =   330
+   ClientWidth     =   12150
    BeginProperty Font 
       Name            =   "Tahoma"
       Size            =   9
@@ -23,16 +23,16 @@ Begin VB.Form EmpleadoDetalle
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   8796
-   ScaleWidth      =   12012
+   ScaleHeight     =   8805
+   ScaleWidth      =   12150
    ShowInTaskbar   =   0   'False
    StartUpPosition =   2  'CenterScreen
    Begin VB.Frame Frame6 
       Height          =   2532
-      Left            =   75
+      Left            =   60
       TabIndex        =   43
       Top             =   5160
-      Width           =   5235
+      Width           =   6390
       Begin VB.CheckBox chkAutorizadoReniec 
          Alignment       =   1  'Right Justify
          Caption         =   "Autorizado por RENIEC "
@@ -92,7 +92,7 @@ Begin VB.Form EmpleadoDetalle
          Left            =   1980
          TabIndex        =   46
          Top             =   990
-         Width           =   3150
+         Width           =   4290
       End
       Begin VB.Label Label3 
          Caption         =   "Usuario"
@@ -114,16 +114,16 @@ Begin VB.Form EmpleadoDetalle
    Begin VB.Frame Frame5 
       Caption         =   "Labora en:"
       Height          =   2784
-      Left            =   5385
+      Left            =   6510
       TabIndex        =   42
-      Top             =   4908
-      Width           =   6585
+      Top             =   4905
+      Width           =   5550
       Begin VB.CommandButton cmdAddLabora 
          DisabledPicture =   "EmpleadoDetalle.frx":0CCA
          DownPicture     =   "EmpleadoDetalle.frx":10B3
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -143,7 +143,7 @@ Begin VB.Form EmpleadoDetalle
          DownPicture     =   "EmpleadoDetalle.frx":1C56
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -161,38 +161,38 @@ Begin VB.Form EmpleadoDetalle
       Begin VB.ComboBox cmbArea 
          BeginProperty Font 
             Name            =   "Tahoma"
-            Size            =   8.4
+            Size            =   8.25
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Height          =   300
+         Height          =   315
          ItemData        =   "EmpleadoDetalle.frx":237A
          Left            =   120
          List            =   "EmpleadoDetalle.frx":239C
          Style           =   2  'Dropdown List
          TabIndex        =   24
          Top             =   255
-         Width           =   2865
+         Width           =   2775
       End
       Begin MSDataListLib.DataCombo cmbSubArea 
          Height          =   315
-         Left            =   3000
+         Left            =   2910
          TabIndex        =   25
          Top             =   255
          Visible         =   0   'False
-         Width           =   3525
-         _ExtentX        =   6223
-         _ExtentY        =   529
+         Width           =   2565
+         _ExtentX        =   4524
+         _ExtentY        =   556
          _Version        =   393216
          MatchEntry      =   -1  'True
          Style           =   2
          Text            =   "DataCombo1"
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Tahoma"
-            Size            =   8.4
+            Size            =   8.25
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -201,19 +201,19 @@ Begin VB.Form EmpleadoDetalle
          EndProperty
       End
       Begin UltraGrid.SSUltraGrid grdLaboraEn 
-         Height          =   1656
-         Left            =   108
+         Height          =   1650
+         Left            =   75
          TabIndex        =   28
          Top             =   1020
-         Width           =   6408
-         _ExtentX        =   11303
-         _ExtentY        =   2921
+         Width           =   5400
+         _ExtentX        =   9525
+         _ExtentY        =   2910
          _Version        =   131072
          GridFlags       =   17040384
          LayoutFlags     =   67108884
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Tahoma"
-            Size            =   8.4
+            Size            =   8.25
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -226,16 +226,16 @@ Begin VB.Form EmpleadoDetalle
    Begin VB.Frame Frame4 
       Caption         =   "Cargos"
       Height          =   2388
-      Left            =   5370
+      Left            =   6510
       TabIndex        =   40
-      Top             =   2364
-      Width           =   6630
+      Top             =   2445
+      Width           =   5565
       Begin VB.CommandButton btnQuitaCargo 
          DisabledPicture =   "EmpleadoDetalle.frx":249E
          DownPicture     =   "EmpleadoDetalle.frx":2829
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -243,7 +243,7 @@ Begin VB.Form EmpleadoDetalle
             Strikethrough   =   0   'False
          EndProperty
          Height          =   315
-         Left            =   5700
+         Left            =   4635
          Picture         =   "EmpleadoDetalle.frx":2BBC
          Style           =   1  'Graphical
          TabIndex        =   22
@@ -255,7 +255,7 @@ Begin VB.Form EmpleadoDetalle
          DownPicture     =   "EmpleadoDetalle.frx":3336
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -263,43 +263,43 @@ Begin VB.Form EmpleadoDetalle
             Strikethrough   =   0   'False
          EndProperty
          Height          =   315
-         Left            =   4860
+         Left            =   3825
          Picture         =   "EmpleadoDetalle.frx":3742
          Style           =   1  'Graphical
          TabIndex        =   21
-         Top             =   255
+         Top             =   240
          Width           =   795
       End
       Begin VB.ComboBox cmbCargos 
          BeginProperty Font 
             Name            =   "Tahoma"
-            Size            =   8.4
+            Size            =   8.25
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Height          =   300
+         Height          =   315
          Left            =   120
          TabIndex        =   20
          Top             =   270
-         Width           =   4710
+         Width           =   3705
       End
       Begin UltraGrid.SSUltraGrid grdCargos 
          Height          =   1620
          Left            =   120
          TabIndex        =   23
          Top             =   660
-         Width           =   6408
-         _ExtentX        =   11303
+         Width           =   5385
+         _ExtentX        =   9499
          _ExtentY        =   2858
          _Version        =   131072
          GridFlags       =   17040384
          LayoutFlags     =   67108884
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Tahoma"
-            Size            =   8.4
+            Size            =   8.25
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -312,14 +312,14 @@ Begin VB.Form EmpleadoDetalle
    Begin VB.Frame Frame3 
       Caption         =   "Roles"
       Height          =   2220
-      Left            =   5355
+      Left            =   6510
       TabIndex        =   39
-      Top             =   0
-      Width           =   6630
+      Top             =   180
+      Width           =   5565
       Begin VB.ComboBox cmbIdRol 
          BeginProperty Font 
             Name            =   "Tahoma"
-            Size            =   8.4
+            Size            =   8.25
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -327,17 +327,17 @@ Begin VB.Form EmpleadoDetalle
             Strikethrough   =   0   'False
          EndProperty
          Height          =   315
-         Left            =   90
+         Left            =   60
          TabIndex        =   16
-         Top             =   255
-         Width           =   4680
+         Top             =   210
+         Width           =   3690
       End
       Begin VB.CommandButton btnAgregarDx 
          DisabledPicture =   "EmpleadoDetalle.frx":3B4E
          DownPicture     =   "EmpleadoDetalle.frx":3F37
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -345,11 +345,11 @@ Begin VB.Form EmpleadoDetalle
             Strikethrough   =   0   'False
          EndProperty
          Height          =   315
-         Left            =   4800
+         Left            =   3765
          Picture         =   "EmpleadoDetalle.frx":4343
          Style           =   1  'Graphical
          TabIndex        =   17
-         Top             =   255
+         Top             =   195
          Width           =   825
       End
       Begin VB.CommandButton btnQuitarDx 
@@ -357,7 +357,7 @@ Begin VB.Form EmpleadoDetalle
          DownPicture     =   "EmpleadoDetalle.frx":4ADA
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -365,27 +365,27 @@ Begin VB.Form EmpleadoDetalle
             Strikethrough   =   0   'False
          EndProperty
          Height          =   315
-         Left            =   5700
+         Left            =   4620
          Picture         =   "EmpleadoDetalle.frx":4E6D
          Style           =   1  'Graphical
          TabIndex        =   18
-         Top             =   255
+         Top             =   195
          Width           =   825
       End
       Begin UltraGrid.SSUltraGrid grdRoles 
-         Height          =   1428
-         Left            =   120
+         Height          =   1425
+         Left            =   60
          TabIndex        =   19
-         Top             =   660
-         Width           =   6372
-         _ExtentX        =   11240
-         _ExtentY        =   2519
+         Top             =   705
+         Width           =   5400
+         _ExtentX        =   9525
+         _ExtentY        =   2514
          _Version        =   131072
          GridFlags       =   17040384
          LayoutFlags     =   67108884
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Tahoma"
-            Size            =   8.4
+            Size            =   8.25
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -398,7 +398,7 @@ Begin VB.Form EmpleadoDetalle
    Begin VB.Frame Frame2 
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   0
          Weight          =   400
          Underline       =   0   'False
@@ -406,10 +406,10 @@ Begin VB.Form EmpleadoDetalle
          Strikethrough   =   0   'False
       EndProperty
       Height          =   1044
-      Left            =   45
+      Left            =   60
       TabIndex        =   37
-      Top             =   7704
-      Width           =   11910
+      Top             =   7740
+      Width           =   12030
       Begin VB.CommandButton btnAceptar 
          Caption         =   "Aceptar (F2)"
          DisabledPicture =   "EmpleadoDetalle.frx":51FE
@@ -439,24 +439,32 @@ Begin VB.Form EmpleadoDetalle
    Begin VB.Frame Frame1 
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   0
          Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   5112
-      Left            =   75
+      Height          =   5010
+      Left            =   60
       TabIndex        =   31
-      Top             =   60
-      Width           =   5220
+      Top             =   150
+      Width           =   6375
+      Begin VB.ComboBox cmbIdNacionalidad 
+         Height          =   330
+         Left            =   1665
+         Style           =   2  'Dropdown List
+         TabIndex        =   62
+         Top             =   1650
+         Width           =   4605
+      End
       Begin VB.ComboBox cmbIdTipoSexo 
          Height          =   330
          Left            =   3810
          TabIndex        =   6
          Top             =   2040
-         Width           =   1350
+         Width           =   2475
       End
       Begin VB.CheckBox chkEsActivo 
          Alignment       =   1  'Right Justify
@@ -472,7 +480,7 @@ Begin VB.Form EmpleadoDetalle
          DownPicture     =   "EmpleadoDetalle.frx":71CD
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -480,11 +488,11 @@ Begin VB.Form EmpleadoDetalle
             Strikethrough   =   0   'False
          EndProperty
          Height          =   315
-         Left            =   4260
+         Left            =   5370
          Picture         =   "EmpleadoDetalle.frx":75D9
          Style           =   1  'Graphical
          TabIndex        =   11
-         Top             =   4230
+         Top             =   4245
          Width           =   435
       End
       Begin VB.CommandButton cmdSupervisorDel 
@@ -492,7 +500,7 @@ Begin VB.Form EmpleadoDetalle
          DownPicture     =   "EmpleadoDetalle.frx":7D70
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -500,11 +508,11 @@ Begin VB.Form EmpleadoDetalle
             Strikethrough   =   0   'False
          EndProperty
          Height          =   315
-         Left            =   4710
+         Left            =   5835
          Picture         =   "EmpleadoDetalle.frx":8103
          Style           =   1  'Graphical
          TabIndex        =   58
-         Top             =   4230
+         Top             =   4245
          Width           =   435
       End
       Begin VB.TextBox txtSupervisor 
@@ -512,8 +520,8 @@ Begin VB.Form EmpleadoDetalle
          Left            =   1665
          MaxLength       =   50
          TabIndex        =   56
-         Top             =   4230
-         Width           =   2565
+         Top             =   4260
+         Width           =   3675
       End
       Begin VB.ComboBox cmbIdDocIdentidad 
          Height          =   330
@@ -529,14 +537,14 @@ Begin VB.Form EmpleadoDetalle
          MaxLength       =   50
          TabIndex        =   51
          Top             =   3570
-         Width           =   2565
+         Width           =   3675
       End
       Begin VB.CommandButton BtnDelCsPS 
          DisabledPicture =   "EmpleadoDetalle.frx":8494
          DownPicture     =   "EmpleadoDetalle.frx":881F
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -544,7 +552,7 @@ Begin VB.Form EmpleadoDetalle
             Strikethrough   =   0   'False
          EndProperty
          Height          =   315
-         Left            =   4710
+         Left            =   5835
          Picture         =   "EmpleadoDetalle.frx":8BB2
          Style           =   1  'Graphical
          TabIndex        =   50
@@ -556,7 +564,7 @@ Begin VB.Form EmpleadoDetalle
          DownPicture     =   "EmpleadoDetalle.frx":932C
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -564,11 +572,11 @@ Begin VB.Form EmpleadoDetalle
             Strikethrough   =   0   'False
          EndProperty
          Height          =   315
-         Left            =   4260
+         Left            =   5370
          Picture         =   "EmpleadoDetalle.frx":9738
          Style           =   1  'Graphical
          TabIndex        =   10
-         Top             =   3570
+         Top             =   3585
          Width           =   435
       End
       Begin VB.ComboBox cmbTipoDestacado 
@@ -576,7 +584,7 @@ Begin VB.Form EmpleadoDetalle
          Left            =   1665
          TabIndex        =   9
          Top             =   3150
-         Width           =   3495
+         Width           =   4605
       End
       Begin VB.TextBox txtDNI 
          Height          =   315
@@ -584,21 +592,21 @@ Begin VB.Form EmpleadoDetalle
          MaxLength       =   8
          TabIndex        =   1
          Top             =   600
-         Width           =   1560
+         Width           =   2730
       End
       Begin VB.ComboBox cmbIdCondicionTrabajo 
          Height          =   330
          Left            =   1665
          TabIndex        =   8
          Top             =   2760
-         Width           =   3495
+         Width           =   4620
       End
       Begin VB.ComboBox cmbIdTipoEmpleado 
          Height          =   330
          Left            =   1665
          TabIndex        =   7
          Top             =   2400
-         Width           =   3495
+         Width           =   4620
       End
       Begin VB.TextBox txtCodigoPlanilla 
          Height          =   315
@@ -618,10 +626,10 @@ Begin VB.Form EmpleadoDetalle
       End
       Begin VB.TextBox txtApellidoMaterno 
          Height          =   315
-         Left            =   1665
+         Left            =   4725
          MaxLength       =   50
          TabIndex        =   3
-         Top             =   1320
+         Top             =   915
          Width           =   1575
       End
       Begin VB.TextBox txtNombres 
@@ -629,8 +637,8 @@ Begin VB.Form EmpleadoDetalle
          Left            =   1665
          MaxLength       =   50
          TabIndex        =   4
-         Top             =   1680
-         Width           =   3480
+         Top             =   1305
+         Width           =   4620
       End
       Begin MSMask.MaskEdBox txtFechaNacimiento 
          Height          =   315
@@ -639,7 +647,7 @@ Begin VB.Form EmpleadoDetalle
          Top             =   2040
          Width           =   1560
          _ExtentX        =   2752
-         _ExtentY        =   550
+         _ExtentY        =   556
          _Version        =   393216
          MaxLength       =   10
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -653,6 +661,16 @@ Begin VB.Form EmpleadoDetalle
          EndProperty
          Mask            =   "##/##/####"
          PromptChar      =   "_"
+      End
+      Begin VB.Label lblNacionalidad 
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Caption         =   "Nacionalidad"
+         Height          =   210
+         Left            =   195
+         TabIndex        =   61
+         Top             =   1725
+         Width           =   990
       End
       Begin VB.Label Label30 
          AutoSize        =   -1  'True
@@ -677,9 +695,9 @@ Begin VB.Form EmpleadoDetalle
          Alignment       =   1  'Right Justify
          Caption         =   "...."
          Height          =   285
-         Left            =   3840
+         Left            =   5025
          TabIndex        =   54
-         Top             =   210
+         Top             =   195
          Width           =   1245
       End
       Begin VB.Label Label9 
@@ -733,9 +751,9 @@ Begin VB.Form EmpleadoDetalle
       Begin VB.Label lblApellidoMaterno 
          Caption         =   "Apellido materno"
          Height          =   315
-         Left            =   195
+         Left            =   3270
          TabIndex        =   35
-         Top             =   1365
+         Top             =   960
          Width           =   1470
       End
       Begin VB.Label lblNombres 
@@ -743,7 +761,7 @@ Begin VB.Form EmpleadoDetalle
          Height          =   315
          Left            =   195
          TabIndex        =   34
-         Top             =   1710
+         Top             =   1365
          Width           =   1500
       End
       Begin VB.Label lblIdCondicionTrabajo 
@@ -810,15 +828,15 @@ Dim mo_lnIdTablaLISTBARITEMS As Long
 Dim mo_lcNombrePc As String
 Const lnDefaultEmpleado As Long = 738
 Dim lnIdEstablecimientoExterno As Long
-
+'--GLCC Agregar objeto cmbNacionaliudad - Cambio5 Inicio
+Dim mo_cmbIdNacionalidad As New sighentidades.ListaDespleglable
+'GLCC Agregar objeto cmbNacionaliudad - Cambio 5 Fin
 Property Let lcNombrePc(lValue As String)
    mo_lcNombrePc = lValue
 End Property
 Property Let lnIdTablaLISTBARITEMS(lValue As Long)
    mo_lnIdTablaLISTBARITEMS = lValue
 End Property
-
-
 Sub CargarComboBoxes()
 Dim sSQL As String
 Dim oConexion As New ADODB.Connection
@@ -857,6 +875,12 @@ Dim oConexion As New ADODB.Connection
        Set mo_cmbIdDocIdentidad.RowSource = mo_AdminServiciosComunes.TiposDocIdentidadSeleccionarTodos()
        mo_cmbIdDocIdentidad.BoundText = "1"
        
+       'GLCC- Cargar combo nacionalidad-06/07/2020
+       mo_cmbIdNacionalidad.BoundColumn = "idPais"
+       mo_cmbIdNacionalidad.ListField = "DescripcionLarga"
+       Set mo_cmbIdNacionalidad.RowSource = mo_AdminServiciosComunes.NacionalidadSeleccionarTodos()
+       mo_cmbIdNacionalidad.BoundText = "166"
+       
 End Sub
 Property Let ExistenDatos(bValue As Boolean)
    mb_ExistenDatos = bValue
@@ -888,10 +912,6 @@ End Property
 Property Get IdEmpleado() As Long
    IdEmpleado = ml_IdEmpleado
 End Property
-
-
-
-
 Private Sub BtnAdicionarCsPs_Click()
         'Dim oBusqueda As New EstablecimientosBusqueda
         Dim oBusqueda As New SIGHNegocios.BuscaEstablecimientos
@@ -903,7 +923,6 @@ Private Sub BtnAdicionarCsPs_Click()
         End If
         Set oBusqueda = Nothing
 End Sub
-
 Private Sub btnAgreaCargo_Click()
     
     If mo_cmbCargos.BoundText = "" Then
@@ -943,11 +962,6 @@ Private Sub btnQuitaCargo_Click()
         End If
     End With
 End Sub
-
-
-
-
-
 Private Sub cmbArea_Click()
     On Error GoTo ErrCombo
     Dim lcSql As String
@@ -1034,15 +1048,9 @@ ErrCombo:
        Resume
     End If
 End Sub
-
-
-
-
-
 Private Sub cmbIdDocIdentidad_Click()
     lbHuboCambioEnDato = True
 End Sub
-
 Private Sub cmbIdDocIdentidad_LostFocus()
     If lbHuboCambioEnDato = True Then
       sighentidades.ParaAuditoriaPorCadaDato sghAudGrabaRegEdit, cmbIdDocIdentidad.Text
@@ -1060,9 +1068,6 @@ Private Sub cmbIdTipoEmpleado_KeyDown(KeyCode As Integer, Shift As Integer)
        mo_Teclado.RealizarNavegacion KeyCode, cmbIdTipoEmpleado
        AdministrarKeyPreview KeyCode
 End Sub
-
-
-
 Private Sub cmbIdTipoEmpleado_KeyPress(KeyAscii As Integer)
    If Not mo_Teclado.CodigoAsciiEsEspecial(KeyAscii) Then
        If Not mo_Teclado.CodigoAsciiEsNumero(KeyAscii) Then
@@ -1107,15 +1112,9 @@ Private Sub cmbIdRol_KeyPress(KeyAscii As Integer)
    End If
 End Sub
 
-
-
-
-
-
-
 Private Sub cmbIdTipoSexo_KeyDown(KeyCode As Integer, Shift As Integer)
-mo_Teclado.RealizarNavegacion KeyCode, cmbIdTipoSexo
-AdministrarKeyPreview KeyCode
+    mo_Teclado.RealizarNavegacion KeyCode, cmbIdTipoSexo
+    AdministrarKeyPreview KeyCode
 End Sub
 
 Private Sub cmbTipoDestacado_KeyDown(KeyCode As Integer, Shift As Integer)
@@ -1192,7 +1191,6 @@ Private Sub cmdSupervisorDel_Click()
     txtSupervisor.Tag = 0
     txtSupervisor.Text = ""
 End Sub
-
 Private Sub Form_Initialize()
     Set mo_cmbIdTipoEmpleado.MiComboBox = cmbIdTipoEmpleado
     Set mo_cmbIdCondicionTrabajo.MiComboBox = cmbIdCondicionTrabajo
@@ -1201,11 +1199,9 @@ Private Sub Form_Initialize()
     Set mo_cmbTipoDestacado.MiComboBox = cmbTipoDestacado
     Set mo_cmbIdDocIdentidad.MiComboBox = cmbIdDocIdentidad
     Set mo_CmbIdTipoSexo.MiComboBox = cmbIdTipoSexo
+    'llenar campos en cmbNacionalidad--*GLCC***07/07/2020
+    Set mo_cmbIdNacionalidad.MiComboBox = cmbIdNacionalidad
 End Sub
-
-
-
-
 Private Sub grdCargos_InitializeLayout(ByVal Context As UltraGrid.Constants_Context, ByVal Layout As UltraGrid.SSLayout)
     grdCargos.Bands(0).Columns("IdTipoCargo").Hidden = True
     
@@ -1213,7 +1209,6 @@ Private Sub grdCargos_InitializeLayout(ByVal Context As UltraGrid.Constants_Cont
     grdCargos.Bands(0).Columns("Cargo").Width = 5500
 
 End Sub
-
 Private Sub grdLaboraEn_InitializeLayout(ByVal Context As UltraGrid.Constants_Context, ByVal Layout As UltraGrid.SSLayout)
     grdLaboraEn.Bands(0).Columns("idLaboraArea").Hidden = True
     grdLaboraEn.Bands(0).Columns("idLaboraSubArea").Hidden = True
@@ -1234,13 +1229,9 @@ Private Sub grdRoles_InitializeLayout(ByVal Context As UltraGrid.Constants_Conte
     grdRoles.Bands(0).Columns("Nombre").Width = 5500
     
 End Sub
-
-
-
 Private Sub txtApellidoMaterno_Change()
 lbHuboCambioEnDato = True
 End Sub
-
 Private Sub txtApellidoPaterno_Change()
 lbHuboCambioEnDato = True
 End Sub
@@ -1249,8 +1240,6 @@ Private Sub txtClave_KeyDown(KeyCode As Integer, Shift As Integer)
     mo_Teclado.RealizarNavegacion KeyCode, txtClave
     AdministrarKeyPreview KeyCode
 End Sub
-
-
 Private Sub txtClave_LostFocus()
    mo_Formulario.MarcarComoVacio txtClave
 End Sub
@@ -1262,34 +1251,25 @@ Private Sub txtClave_KeyPress(KeyAscii As Integer)
        End If
    End If
 End Sub
-
-
-
 Private Sub txtCodigoHisDelDigitador_KeyDown(KeyCode As Integer, Shift As Integer)
     mo_Teclado.RealizarNavegacion KeyCode, txtCodigoHisDelDigitador
     AdministrarKeyPreview KeyCode
-
 End Sub
 
 Private Sub txtCodigoPlanilla_Change()
   lbHuboCambioEnDato = True
 End Sub
-
 Private Sub txtCodigoPlanilla_KeyDown(KeyCode As Integer, Shift As Integer)
    mo_Teclado.RealizarNavegacion KeyCode, txtCodigoPlanilla
 AdministrarKeyPreview KeyCode
 End Sub
-
-
 Private Sub txtCodigoPlanilla_LostFocus()
    If lbHuboCambioEnDato = True Then
       sighentidades.ParaAuditoriaPorCadaDato sghAudGrabaRegEdit, txtCodigoPlanilla.Text
       lbHuboCambioEnDato = False
    End If
    mo_Formulario.MarcarComoVacio txtCodigoPlanilla
-   
 End Sub
-
 Private Sub txtCodigoPlanilla_KeyPress(KeyAscii As Integer)
    If Not mo_Teclado.CodigoAsciiEsEspecial(KeyAscii) Then
        If Not mo_Teclado.CodigoAsciiEsNumero(KeyAscii) Then
@@ -1297,19 +1277,14 @@ Private Sub txtCodigoPlanilla_KeyPress(KeyAscii As Integer)
        End If
    End If
 End Sub
-
-
-
 Private Sub txtDNI_Change()
 lbHuboCambioEnDato = True
 End Sub
-
 Private Sub txtFechaNacimiento_KeyDown(KeyCode As Integer, Shift As Integer)
    mo_Teclado.RealizarNavegacion KeyCode, txtFechaNacimiento
 AdministrarKeyPreview KeyCode
 
 End Sub
-
 Private Sub txtFechaNacimiento_LostFocus()
     If Not EsFecha(txtFechaNacimiento.Text, "DD/MM/AAAA") Then
         MsgBox "La fecha ingresada no es válida", vbInformation, ""
@@ -1324,28 +1299,22 @@ Private Sub txtFechaNacimiento_LostFocus()
     End If
 
 End Sub
-
 Private Sub txtNombres_Change()
 lbHuboCambioEnDato = True
 End Sub
-
 Private Sub txtNombres_KeyDown(KeyCode As Integer, Shift As Integer)
    mo_Teclado.RealizarNavegacion KeyCode, txtNombres
 AdministrarKeyPreview KeyCode
 End Sub
-
-
 Private Sub txtNombres_LostFocus()
     If lbHuboCambioEnDato = True Then
       sighentidades.ParaAuditoriaPorCadaDato sghAudGrabaRegEdit, txtNombres.Text
       lbHuboCambioEnDato = False
     End If
 
-
 txtNombres.Text = mo_Teclado.CapitalizarNombres(txtNombres.Text)
    mo_Formulario.MarcarComoVacio txtNombres
 End Sub
-
 Private Sub txtNombres_KeyPress(KeyAscii As Integer)
    If Not mo_Teclado.CodigoAsciiEsEspecial(KeyAscii) Then
        If Not mo_Teclado.CodigoAsciiEsValidoParaNombre(KeyAscii) Then
@@ -1353,14 +1322,10 @@ Private Sub txtNombres_KeyPress(KeyAscii As Integer)
        End If
    End If
 End Sub
-
-
 Private Sub txtApellidoMaterno_KeyDown(KeyCode As Integer, Shift As Integer)
    mo_Teclado.RealizarNavegacion KeyCode, txtApellidoMaterno
 AdministrarKeyPreview KeyCode
 End Sub
-
-
 Private Sub txtApellidoMaterno_LostFocus()
     If lbHuboCambioEnDato = True Then
       sighentidades.ParaAuditoriaPorCadaDato sghAudGrabaRegEdit, txtApellidoMaterno.Text
@@ -1370,7 +1335,6 @@ Private Sub txtApellidoMaterno_LostFocus()
    txtApellidoMaterno.Text = mo_Teclado.CapitalizarNombres(txtApellidoMaterno.Text)
    mo_Formulario.MarcarComoVacio txtApellidoMaterno
 End Sub
-
 Private Sub txtApellidoMaterno_KeyPress(KeyAscii As Integer)
    If Not mo_Teclado.CodigoAsciiEsEspecial(KeyAscii) Then
        If Not mo_Teclado.CodigoAsciiEsValidoParaNombre(KeyAscii) Then
@@ -1378,14 +1342,10 @@ Private Sub txtApellidoMaterno_KeyPress(KeyAscii As Integer)
        End If
    End If
 End Sub
-
-
 Private Sub txtApellidoPaterno_KeyDown(KeyCode As Integer, Shift As Integer)
    mo_Teclado.RealizarNavegacion KeyCode, txtApellidoPaterno
 AdministrarKeyPreview KeyCode
 End Sub
-
-
 Private Sub txtApellidoPaterno_LostFocus()
     If lbHuboCambioEnDato = True Then
       sighentidades.ParaAuditoriaPorCadaDato sghAudGrabaRegEdit, txtApellidoPaterno.Text
@@ -1395,7 +1355,6 @@ Private Sub txtApellidoPaterno_LostFocus()
     txtApellidoPaterno.Text = mo_Teclado.CapitalizarNombres(txtApellidoPaterno.Text)
    mo_Formulario.MarcarComoVacio txtApellidoPaterno
 End Sub
-
 Private Sub txtApellidoPaterno_KeyPress(KeyAscii As Integer)
    If Not mo_Teclado.CodigoAsciiEsEspecial(KeyAscii) Then
        If Not mo_Teclado.CodigoAsciiEsValidoParaNombre(KeyAscii) Then
@@ -1409,7 +1368,6 @@ End Sub
 '   Descripción:    Seleccionar un registro unico de la tabla Empleados
 '   Parámetros:     Ninguno
 '------------------------------------------------------------------------------------
-
 Sub CargarDatosAlFormulario()
  mo_Formulario.HabilitarDeshabilitar txtEstablecimientoExterno, False
  mo_Formulario.HabilitarDeshabilitar txtSupervisor, False
@@ -1432,11 +1390,9 @@ End Sub
 '   Descripción:    Seleccionar un registro unico de la tabla Empleados
 '   Parámetros:     Ninguno
 '------------------------------------------------------------------------------------
-
 Sub Form_Load()
        sighentidades.ParaAuditoriaPorCadaDato sghAudLimpiar, ""
-
-       
+      
         GenerarRecordsetTemporal
        
        Select Case mi_Opcion
@@ -1462,7 +1418,6 @@ End Sub
 '   Descripción:    Seleccionar un registro unico de la tabla Empleados
 '   Parámetros:     Ninguno
 '------------------------------------------------------------------------------------
-
 Sub Form_Activate()
    If mi_Opcion <> sghAgregar Then
        If mi_Opcion = sghModificar Or mi_Opcion = sghEliminar Then
@@ -1487,7 +1442,6 @@ End Sub
 Private Sub Form_KeyDown(KeyCode As Integer, Shift As Integer)
    'AdministrarKeyPreview KeyCode
 End Sub
-
 Private Sub btnAceptar_Click()
    If btnAceptar.Enabled = False Then
       Exit Sub
@@ -1531,7 +1485,6 @@ Private Sub btnAceptar_Click()
            End If
    End Select
 End Sub
-
 Private Sub btnCancelar_Click()
    If sighentidades.ParaAuditoria = "" Then
       Me.Visible = False
@@ -1539,12 +1492,14 @@ Private Sub btnCancelar_Click()
       Me.Visible = False
    End If
 End Sub
-
 Function ValidarDatosObligatorios() As Boolean
 Dim sMensaje As String
-
    ValidarDatosObligatorios = False
-   
+   'Validar Nacionalidad - GLCC - 08/07/2020
+'   If mo_cmbIdNacionalidad.BoundText <> "166" Then
+'        sMensaje = sMensaje + "Ingrese un pais" + Chr(13)
+'        Exit Function
+'   End If
    If Me.txtDNI.Text = "" Then
        sMensaje = sMensaje + "Ingrese el nro de DNI" + Chr(13)
    End If
@@ -1570,7 +1525,7 @@ Dim sMensaje As String
        sMensaje = sMensaje + "Ingrese el apellido paterno" + Chr(13)
    End If
    If Me.txtFechaNacimiento.Text = sighentidades.FECHA_VACIA_DMY Then
-       sMensaje = sMensaje + "Ingrese la FECHA DE NACIMIENTO" + Chr(13)
+       sMensaje = sMensaje + "Ingrese una fecha de nacimiento Válida" + Chr(13)
    End If
    If cmbArea.ListIndex > 0 And cmbSubArea.Text = "" Then
        sMensaje = sMensaje + "Elija el Lugar donde Labora" + Chr(13)
@@ -1675,14 +1630,14 @@ Sub CargaDatosAlObjetosDeDatos()
            .idTipoDocumento = Val(mo_cmbIdDocIdentidad.BoundText)
            .IdSupervisor = Val(txtSupervisor.Tag)
            .EsActivo = IIf(Me.chkEsActivo.Value = 1, True, False)
+           'Nacionalidad Peru-GLCC-08/07/2020
+          .IdPais = Val(mo_cmbIdNacionalidad.BoundText)
            If mi_Opcion = sghAgregar Then
               .fechaingreso = Date
            End If
            .idTipoSexo = Val(mo_CmbIdTipoSexo.BoundText)
    End With
-   
    CargarRolItemsAlObjetoDatos mo_UsuarioRoles
-   
 End Sub
 
 Function EncriptaDNIsiTieneAccesoRENIEC() As String
@@ -1772,6 +1727,9 @@ Dim oDOEmpleado As dOEmpleado
                 End If
                 mo_cmbTipoDestacado.BoundText = .idTipoDestacado
                 mo_cmbIdDocIdentidad.BoundText = .idTipoDocumento
+                'cmbNacionalidad-09/07/2020
+'                mo_cmbIdNacionalidad.BoundText = .idPais
+                mo_cmbIdNacionalidad.BoundText = .IdPais
                 '
                 lnIdEstablecimientoExterno = .IdEstablecimientoExterno
                 CargaNombreEstablecimiento
@@ -1825,7 +1783,6 @@ Sub CargaNombreEstablecimiento()
     Set oRsTmp1 = Nothing
 End Sub
 
-
 '------------------------------------------------------------------------------------
 '   Llenar Datos Al Formulario
 '   Descripción:    Seleccionar un registro unico de la tabla Empleados
@@ -1840,6 +1797,8 @@ Sub LimpiarFormulario()
            mo_cmbIdCondicionTrabajo.BoundText = ""
            mo_cmbTipoDestacado.BoundText = "3"
            mo_cmbIdDocIdentidad.BoundText = "1"
+           'cmbnacionalidad - GLCC-09/07/2020
+           mo_cmbIdNacionalidad.BoundText = "1"
            Me.txtNombres.Text = ""
            Me.txtApellidoMaterno.Text = ""
            Me.txtApellidoPaterno.Text = ""
