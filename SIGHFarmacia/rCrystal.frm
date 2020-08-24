@@ -1,6 +1,6 @@
 VERSION 5.00
 Object = "{C4847593-972C-11D0-9567-00A0C9273C2A}#8.0#0"; "crviewer.dll"
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "mscomctl.ocx"
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCTL.OCX"
 Begin VB.Form rCrystal 
    ClientHeight    =   5625
    ClientLeft      =   60
@@ -815,7 +815,7 @@ Private Sub Form_Activate()
                                        rsTmp111.MoveFirst
                                        Do While Not rsTmp111.EOF
                                           If Format(rsTmp111.Fields!fechaCobranza, SIGHEntidades.DevuelveFechaSoloFormato_DMY) = Format(rsReporte!fechaCreacion, SIGHEntidades.DevuelveFechaSoloFormato_DMY) Then
-                                             lnTotalBol = rsTmp111!total
+                                             lnTotalBol = rsTmp111!Total
                                              lnTotalExo = rsTmp111!exoneraciones
                                              lnTotalAde = rsTmp111!Adelantos
                                             
@@ -1278,7 +1278,7 @@ Private Sub Form_Activate()
                 If lnDivision <= 0 Then
                    lnPagoNeto = 0
                 Else
-                   lnPagoNeto = Round(mrs_Tmp.Fields!total / lnDivision, 2)
+                   lnPagoNeto = Round(mrs_Tmp.Fields!Total / lnDivision, 2)
                 End If
                 lnSalidas = IIf(mrs_tmp1.RecordCount > 0, mrs_tmp1.Fields!saldo, 0)
                 If lnPagoNeto <= 0 Then
@@ -1374,7 +1374,7 @@ Private Sub Form_Activate()
                     If rsTmp.RecordCount > 0 Then
                        rsTmp.MoveFirst
                        Do While Not rsTmp.EOF
-                          lnTotal = lnTotal + rsTmp.Fields!total
+                          lnTotal = lnTotal + rsTmp.Fields!Total
                           rsTmp.MoveNext
                        Loop
                        lnidFuenteFinanciamiento = 0
@@ -1524,7 +1524,7 @@ End If
                                lnIdTipoFinanciamientoAtenciones = 0
                           End If
                           Do While Not rsReporte.EOF And ml_IdCuenta = rsReporte.Fields!idCuentaAtencion And lnIdFuenteFinanciamiento1 = rsReporte.Fields!idFuenteFinanciamiento
-                                lnTotal = lnTotal + rsReporte.Fields!total
+                                lnTotal = lnTotal + rsReporte.Fields!Total
                                 Me.ProgressBar1.Value = Me.ProgressBar1.Value + 1: DoEvents
                                 rsReporte.MoveNext
                                 If rsReporte.EOF Then
@@ -1582,7 +1582,7 @@ End If
                           dFinanciamiento = mrs_tmp1.Fields!Descripcion
                           lnIdTipoFinanciamientoAtenciones = mrs_tmp1.Fields!IdFormaPago
                           Do While Not mrs_tmp1.EOF And lnIdTipoFinanciamientoAtenciones = mrs_tmp1.Fields!IdFormaPago
-                             lnDevol = lnDevol + mrs_tmp1.Fields!total
+                             lnDevol = lnDevol + mrs_tmp1.Fields!Total
                              Me.ProgressBar1.Value = Me.ProgressBar1.Value + 1: DoEvents
                              mrs_tmp1.MoveNext
                              If mrs_tmp1.EOF Then
@@ -1616,7 +1616,7 @@ End If
                            lnBruto = 0
                            rsTmp.MoveFirst
                            Do While Not rsTmp.EOF
-                              lnBruto = lnBruto + rsTmp.Fields!total
+                              lnBruto = lnBruto + rsTmp.Fields!Total
                               Me.ProgressBar1.Value = Me.ProgressBar1.Value + 1: DoEvents
                               rsTmp.MoveNext
                            Loop
@@ -1699,7 +1699,7 @@ End If
                            Me.ProgressBar1.Max = lnTotalRegistros: Me.ProgressBar1.Value = 0
                            rsTmp.MoveFirst
                            Do While Not rsTmp.EOF
-                              lnTotal = lnTotal + rsTmp.Fields!total
+                              lnTotal = lnTotal + rsTmp.Fields!Total
                               Me.ProgressBar1.Value = Me.ProgressBar1.Value + 1
                               rsTmp.MoveNext
                            Loop
@@ -1915,8 +1915,14 @@ End If
                                     lnidFuenteFinanciamiento = mrs_tmp1.Fields!idFuenteFinanciamiento
                                     dFinanciamiento = mrs_tmp1.Fields!Descripcion
                                     lnIdTipoFinanciamientoAtenciones = mrs_tmp1.Fields!IdFormaPago
+                                    'SCCQ 20/08/2020 Cambio25 Inicio
+                                    If lnidFuenteFinanciamiento = 5 Then
+                                        lnidFuenteFinanciamiento = 0
+                                        dFinanciamiento = "PARTICULAR"
+                                    End If
+                                    'SCCQ 20/08/2020 Cambio25 Fin
                                     Do While Not mrs_tmp1.EOF And lnIdTipoFinanciamientoAtenciones = mrs_tmp1.Fields!IdFormaPago
-                                       lnDevol = lnDevol + mrs_tmp1.Fields!total
+                                       lnDevol = lnDevol + mrs_tmp1.Fields!Total
                                        Me.ProgressBar1.Value = Me.ProgressBar1.Value + 1
                                        mrs_tmp1.MoveNext
                                        If mrs_tmp1.EOF Then
@@ -1934,7 +1940,10 @@ End If
                                     End If
                                     If lbPrimeraVez = True Then
                                             mrs_Tmp.AddNew
-                                            mrs_Tmp.Fields!idPlan = lnIdTipoFinanciamientoAtenciones
+                                            'SCCQ 20/08/2020 Cambio25 Inicio
+                                            'Anteriormente era: mrs_Tmp.Fields!idPlan = lnIdTipoFinanciamientoAtenciones
+                                            mrs_Tmp.Fields!idPlan = lnidFuenteFinanciamiento
+                                            'SCCQ 20/08/2020 Cambio25 Fin
                                             mrs_Tmp.Fields!plan = dFinanciamiento
                                     End If
                                     mrs_Tmp.Fields!mDevoluciones = mrs_Tmp.Fields!mDevoluciones + lnDevol
@@ -1953,7 +1962,7 @@ End If
                                lnBruto = 0
                                rsTmp.MoveFirst
                                Do While Not rsTmp.EOF
-                                  lnBruto = lnBruto + rsTmp.Fields!total
+                                  lnBruto = lnBruto + rsTmp.Fields!Total
                                   Me.ProgressBar1.Value = Me.ProgressBar1.Value + 1
                                   rsTmp.MoveNext
                                Loop
@@ -2704,7 +2713,7 @@ Sub ProcesaAuditoria()
                                 mrs_Tmp.Fields!fDestino = Trim(mrs_tmp1.Fields!ApellidoPaterno) & " " & Trim(mrs_tmp1.Fields!ApellidoMaterno) & " " & Trim(mrs_tmp1.Fields!Nombres) & "   (Pc: " & Trim(mrs_tmp1.Fields!nombrePc) & ")"
                                 mrs_Tmp.Fields!Lote = lcTexto3
                                 mrs_Tmp.Fields!Estado = rsReporte.Fields!Estado
-                                mrs_Tmp.Fields!total = rsReporte.Fields!total
+                                mrs_Tmp.Fields!Total = rsReporte.Fields!Total
                                 mrs_Tmp.Update
                             End If
                         End If
@@ -2727,7 +2736,7 @@ Sub ProcesaAuditoria()
                                 mrs_Tmp.Fields!fDestino = Trim(mrs_tmp1.Fields!ApellidoPaterno) & " " & Trim(mrs_tmp1.Fields!ApellidoMaterno) & " " & Trim(mrs_tmp1.Fields!Nombres) & "   (Pc: " & Trim(mrs_tmp1.Fields!nombrePc) & ")"
                                 mrs_Tmp.Fields!Lote = lcTexto3
                                 mrs_Tmp.Fields!Estado = rsReporte.Fields!Estado
-                                mrs_Tmp.Fields!total = rsReporte.Fields!total
+                                mrs_Tmp.Fields!Total = rsReporte.Fields!Total
                                 mrs_Tmp.Update
                             End If
                         End If
@@ -2813,7 +2822,7 @@ Sub rConsumoPromAnual_ProcesaTemporal()
                         mrs_Tmp.Fields!Oct = LnOct
                         mrs_Tmp.Fields!nov = LnNov
                         mrs_Tmp.Fields!dic = LnDic
-                        mrs_Tmp.Fields!total = lnSalidas
+                        mrs_Tmp.Fields!Total = lnSalidas
                    Else
                         mrs_Tmp.Fields!ene = LnEne + mrs_Tmp.Fields!ene
                         mrs_Tmp.Fields!feb = LnFeb + mrs_Tmp.Fields!feb
@@ -2827,7 +2836,7 @@ Sub rConsumoPromAnual_ProcesaTemporal()
                         mrs_Tmp.Fields!Oct = LnOct + mrs_Tmp.Fields!Oct
                         mrs_Tmp.Fields!nov = LnNov + mrs_Tmp.Fields!nov
                         mrs_Tmp.Fields!dic = LnDic + mrs_Tmp.Fields!dic
-                        mrs_Tmp.Fields!total = lnSalidas + mrs_Tmp.Fields!total
+                        mrs_Tmp.Fields!Total = lnSalidas + mrs_Tmp.Fields!Total
                    End If
                    mrs_Tmp.Update
                 Loop
@@ -3913,7 +3922,7 @@ End If
                          oRsFox.Fields!stock_fin = lnSaldoFinal
                          oRsFox.Fields!stock_fin1 = lnSaldoFinal
                          oRsFox.Fields!req = 0
-                         oRsFox.Fields!total = TotSalidas
+                         oRsFox.Fields!Total = TotSalidas
                          If mb_EsDonaciones = False Then
                             oRsFox.Fields!fec_exp = ldFechaVencimiento
                          Else
@@ -3921,7 +3930,7 @@ End If
                             oRsFox.Fields!ingre = lnDonacionesOtrIng + lnDonacionesIng
                             oRsFox.Fields!distri = lnDonacionesSal
                             oRsFox.Fields!otras_sal = lnDonacionesOtrSal
-                            oRsFox.Fields!total = lnDonacionesSal + lnDonacionesOtrSal
+                            oRsFox.Fields!Total = lnDonacionesSal + lnDonacionesOtrSal
                             oRsFox.Fields!stock_fin = lnSaldoFinalD
                             oRsFox.Fields!stock_fin1 = lnSaldoFinalD
                             oRsFox.Fields!fec_exp = ldDonacionFechaVctoUlt
@@ -4094,7 +4103,7 @@ End If
                                 oRsFox.Fields!stock_fin = lnSaldoFinal
                                 oRsFox.Fields!stock_fin1 = lnSaldoFinal
                                 oRsFox.Fields!req = 0
-                                oRsFox.Fields!total = 0
+                                oRsFox.Fields!Total = 0
                                 If mb_EsDonaciones = False Then
                                    oRsFox.Fields!fec_exp = ldFechaVencimiento
                                 Else
@@ -4102,7 +4111,7 @@ End If
                                    oRsFox.Fields!ingre = 0
                                    oRsFox.Fields!distri = 0
                                    oRsFox.Fields!otras_sal = 0
-                                   oRsFox.Fields!total = 0
+                                   oRsFox.Fields!Total = 0
                                    oRsFox.Fields!stock_fin = lnSaldoFinalD
                                    oRsFox.Fields!stock_fin1 = lnSaldoFinalD
                                    oRsFox.Fields!fec_exp = ldDonacionFechaVctoUlt
@@ -4360,7 +4369,7 @@ Sub FuaPaquetesFarmaciaDesagregaEnMedicInsumos(ByRef oRsFoxP As Recordset, ByRef
                     oRsFoxP.Fields!stock_fin = lnSaldoFinal99
                     oRsFoxP.Fields!stock_fin1 = lnSaldoFinal99
                     oRsFoxP.Fields!req = lnTotSalidas99
-                    oRsFoxP.Fields!total = lnTotSalidas99
+                    oRsFoxP.Fields!Total = lnTotSalidas99
                     If mb_EsDonaciones = False Then
                        oRsFoxP.Fields!fec_exp = ldFechaVencimiento
                     End If
@@ -4468,7 +4477,7 @@ Sub FuaPaquetesFarmaciaDesagregaEnMedicInsumos(ByRef oRsFoxP As Recordset, ByRef
                     oRsFoxP.Fields!stock_fin = oRsFoxP.Fields!stock_fin + lnSaldoFinal99
                     oRsFoxP.Fields!stock_fin1 = oRsFoxP.Fields!stock_fin1 + lnSaldoFinal99
                     oRsFoxP.Fields!req = oRsFoxP.Fields!req + lnTotSalidas99
-                    oRsFoxP.Fields!total = oRsFoxP.Fields!total + lnTotSalidas99
+                    oRsFoxP.Fields!Total = oRsFoxP.Fields!Total + lnTotSalidas99
                     oRsFoxP.Update
                     'FormDetL
                     oRsFox1P.MoveFirst
