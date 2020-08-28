@@ -1,3 +1,8 @@
 [History]
-1=#P0#=mb	#P1#=Form_Load	#P2#=SighFarmacia/FarmVentas/Form_Load	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200617110005	#P7#=0	#P8#=22	.
-2=#P0#=mb	#P1#=CargarComboBoxes	#P2#=SighFarmacia/FarmVentas/CargarComboBoxes	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20200603105515	#P7#=0	#P8#=21	.
+1=#P0#=mb	#P1#=mostrarReporte	#P2#=SighFarmacia/rProductoPorVencer/mostrarReporte [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200828101112	#P7#=0	#P8#=0	.
+2=#P0#=mb	#P1#=idUsuario	#P2#=SighFarmacia/RepProductoPorVencer/idUsuario [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200828100543	#P7#=0	#P8#=-2	.
+3=#P0#=mb	#P1#=EjecutaFormulario	#P2#=SighFarmacia/RepProductoPorVencer/EjecutaFormulario	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20200828100507	#P7#=0	#P8#=0	.
+4=#P0#=mb	#P1#=Form_Activate	#P2#=SighFarmacia/rCrystal/Form_Activate	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200826111522	#P7#=0	#P8#=1597	.
+5=#P0#=mb	#P1#=btnAceptar_Click	#P2#=SighFarmacia/rProductoPorVencer/btnAceptar_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200826111407	#P7#=0	#P8#=1	.
+6=#P0#=mb	#P1#=Form_Load	#P2#=SighFarmacia/FarmVentas/Form_Load	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200617110005	#P7#=0	#P8#=22	.
+7=#P0#=mb	#P1#=CargarComboBoxes	#P2#=SighFarmacia/FarmVentas/CargarComboBoxes	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20200603105515	#P7#=0	#P8#=21	.

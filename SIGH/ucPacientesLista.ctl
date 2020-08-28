@@ -296,8 +296,8 @@ Option Explicit
 Dim mo_AdminAdmision As New SIGHNegocios.ReglasAdmision
 Dim ml_idRegistroSeleccionado As Long
 Dim ml_TipoFiltro As sghTipoFiltroPacientes
-Dim mo_Teclado As New sighentidades.Teclado
-Dim mo_Apariencia As New sighentidades.GridInfragistic
+Dim mo_Teclado As New sighEntidades.Teclado
+Dim mo_Apariencia As New sighEntidades.GridInfragistic
 Dim lcBuscaParametro As New SIGHDatos.Parametros
 
 
@@ -350,7 +350,7 @@ Dim oPaciente As New doPaciente
         oPaciente.ApellidoMaterno = Trim(UserControl.txtApellidoMaterno)
         oPaciente.ApellidoPaterno = Trim(UserControl.txtApellidoPaterno)
         If mo_Teclado.TextoEsSoloNumeros(UserControl.txtNroHistoria) Then
-           oPaciente.NroHistoriaClinica = Val(sighentidades.HCigualDNI_AgregaNUEVEaLaHistoria(UserControl.txtNroHistoria))
+           oPaciente.NroHistoriaClinica = Val(sighEntidades.HCigualDNI_AgregaNUEVEaLaHistoria(UserControl.txtNroHistoria))
            
         End If
         oPaciente.nrodocumento = txtDni.Text
@@ -605,7 +605,7 @@ End Sub
 
 Sub SkinConfigura()
   On Error GoTo ErrSkin
-  If sighentidades.Parametro282valorInt = "1" Then
+  If sighEntidades.Parametro282valorInt = "1" Then
         'Skin1.LoadSkin App.Path & "\" & WxSkin
         'Skin1.ApplySkin Me.hwnd
         btnBuscar.Picture = LoadPicture(App.Path & "\Binoculr.ico")
@@ -616,7 +616,7 @@ Sub SkinConfigura()
         lblNombre.Alignment = 2
         lblNombre.BackColor = vbBlue
   Else
-        mo_Apariencia.ConfigurarFilasBiColores grdPacientes, sighentidades.GrillaConFilasBicolor
+        mo_Apariencia.ConfigurarFilasBiColores grdPacientes, sighEntidades.GrillaConFilasBicolor
   End If
 ErrSkin:
 End Sub

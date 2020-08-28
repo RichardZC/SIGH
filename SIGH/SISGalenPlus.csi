@@ -1,17 +1,20 @@
 [History]
-1=#P0#=mb	#P1#=btnAceptar_Click	#P2#=SISGalenPlus/Login/btnAceptar_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200603111405	#P7#=0	#P8#=-1	.
-2=#P0#=mb	#P1#=PasswordSesionSQLServer	#P2#=SISGalenPlus/Login/PasswordSesionSQLServer [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200603111233	#P7#=0	#P8#=2	.
-3=#P0#=mb	#P1#=Form_Activate	#P2#=SISGalenPlus/Splash/Form_Activate	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200603110318	#P7#=0	#P8#=-1	.
-4=#P0#=mb	#P1#=MostrarCreditos	#P2#=SISGalenPlus/Splash/MostrarCreditos [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200603110009	#P7#=0	#P8#=2	.
-5=#P0#=mb	#P1#=CargaComboBox	#P2#=SISGalenPlus/ucFarmVentasLista/CargaComboBox	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200603105721	#P7#=0	#P8#=22	.
-6=#P0#=mb	#P1#=FuaVersionFormato	#P2#=SISGalenPlus/UcSISfuaLista/FuaVersionFormato [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200603094446	#P7#=0	#P8#=2	.
-7=#P0#=mb	#P1#=Form_Load	#P2#=SISGalenPlus/Splash/Form_Load	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200603093805	#P7#=0	#P8#=1	.
-8=#P0#=mb	#P1#=toolbar_ToolClick	#P2#=SISGalenPlus/Principal/toolbar_ToolClick	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200602164526	#P7#=0	#P8#=83	.
-9=#P0#=mb	#P1#=RealizarBusqueda	#P2#=SISGalenPlus/CajaApruebaNotaCredito/RealizarBusqueda	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20200602164455	#P7#=0	#P8#=148	.
-10=#P0#=mb	#P1#=ChequeaSiElInstaladorEsParaHospitalOcsYconfiguraUnaSolaVez	#P2#=SISGalenPlus/Login/ChequeaSiElInstaladorEsParaHospitalOcsYconfiguraUnaSolaVez	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200602163507	#P7#=0	#P8#=5	.
-11=#P0#=mb	#P1#=mnuDiarioAgregarCita_Click	#P2#=SISGalenPlus/ucCitasLista/mnuDiarioAgregarCita_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200331175058	#P7#=0	#P8#=129	.
-12=#P0#=mb	#P1#=Diario_DblClick	#P2#=SISGalenPlus/ucCitasLista/Diario_DblClick	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200331175035	#P7#=0	#P8#=2	.
-13=#P0#=mb	#P1#=mnuDiarioConsultarProgramacion_Click	#P2#=SISGalenPlus/ucSIcitasLista/mnuDiarioConsultarProgramacion_Click	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20200331174901	#P7#=0	#P8#=14	.
-14=#P0#=mb	#P1#=mnuDiarioModificarProgramacion_Click	#P2#=SISGalenPlus/ucSIcitasLista/mnuDiarioModificarProgramacion_Click	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20200331174734	#P7#=0	#P8#=36	.
-15=#P0#=mb	#P1#=CargaDataCombos	#P2#=SISGalenPlus/SiCitaDetalleIMG/CargaDataCombos	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20200331174625	#P7#=0	#P8#=2	.
-16=#P0#=mb	#P1#=UserControl_Resize	#P2#=SISGalenPlus/ucSIcitasLista/UserControl_Resize	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200331174601	#P7#=0	#P8#=16	.
+1=#P0#=mb	#P1#=Form_Activate	#P2#=SISGalenPlus/Principal/Form_Activate	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200828101705	#P7#=0	#P8#=16	.
+2=#P0#=mb	#P1#=toolbar_ToolClick	#P2#=SISGalenPlus/Principal/toolbar_ToolClick	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200828095100	#P7#=0	#P8#=0	.
+3=#P0#=mb	#P1#=RealizarBusqueda	#P2#=SISGalenPlus/ucPacientesLista/RealizarBusqueda	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200827092118	#P7#=0	#P8#=53	.
+4=#P0#=mb	#P1#=btnBuscar_Click	#P2#=SISGalenPlus/ucPacientesLista/btnBuscar_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200827092103	#P7#=0	#P8#=1	.
+5=#P0#=mb	#P1#=btnAceptar_Click	#P2#=SISGalenPlus/Login/btnAceptar_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200603111405	#P7#=0	#P8#=-1	.
+6=#P0#=mb	#P1#=PasswordSesionSQLServer	#P2#=SISGalenPlus/Login/PasswordSesionSQLServer [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200603111233	#P7#=0	#P8#=2	.
+7=#P0#=mb	#P1#=Form_Activate	#P2#=SISGalenPlus/Splash/Form_Activate	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200603110318	#P7#=0	#P8#=-1	.
+8=#P0#=mb	#P1#=MostrarCreditos	#P2#=SISGalenPlus/Splash/MostrarCreditos [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200603110009	#P7#=0	#P8#=2	.
+9=#P0#=mb	#P1#=CargaComboBox	#P2#=SISGalenPlus/ucFarmVentasLista/CargaComboBox	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200603105721	#P7#=0	#P8#=22	.
+10=#P0#=mb	#P1#=FuaVersionFormato	#P2#=SISGalenPlus/UcSISfuaLista/FuaVersionFormato [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200603094446	#P7#=0	#P8#=2	.
+11=#P0#=mb	#P1#=Form_Load	#P2#=SISGalenPlus/Splash/Form_Load	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200603093805	#P7#=0	#P8#=1	.
+12=#P0#=mb	#P1#=RealizarBusqueda	#P2#=SISGalenPlus/CajaApruebaNotaCredito/RealizarBusqueda	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20200602164455	#P7#=0	#P8#=148	.
+13=#P0#=mb	#P1#=ChequeaSiElInstaladorEsParaHospitalOcsYconfiguraUnaSolaVez	#P2#=SISGalenPlus/Login/ChequeaSiElInstaladorEsParaHospitalOcsYconfiguraUnaSolaVez	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200602163507	#P7#=0	#P8#=5	.
+14=#P0#=mb	#P1#=mnuDiarioAgregarCita_Click	#P2#=SISGalenPlus/ucCitasLista/mnuDiarioAgregarCita_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200331175058	#P7#=0	#P8#=129	.
+15=#P0#=mb	#P1#=Diario_DblClick	#P2#=SISGalenPlus/ucCitasLista/Diario_DblClick	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200331175035	#P7#=0	#P8#=2	.
+16=#P0#=mb	#P1#=mnuDiarioConsultarProgramacion_Click	#P2#=SISGalenPlus/ucSIcitasLista/mnuDiarioConsultarProgramacion_Click	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20200331174901	#P7#=0	#P8#=14	.
+17=#P0#=mb	#P1#=mnuDiarioModificarProgramacion_Click	#P2#=SISGalenPlus/ucSIcitasLista/mnuDiarioModificarProgramacion_Click	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20200331174734	#P7#=0	#P8#=36	.
+18=#P0#=mb	#P1#=CargaDataCombos	#P2#=SISGalenPlus/SiCitaDetalleIMG/CargaDataCombos	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20200331174625	#P7#=0	#P8#=2	.
+19=#P0#=mb	#P1#=UserControl_Resize	#P2#=SISGalenPlus/ucSIcitasLista/UserControl_Resize	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200331174601	#P7#=0	#P8#=16	.

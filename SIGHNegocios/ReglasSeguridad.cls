@@ -1154,3 +1154,45 @@ Dim oConexion As New ADODB.Connection
 ManejadorDeError:
     MsgBox Err.Description
 End Function
+'SCCQ 28/08/2020 Cambio27 Inicio
+Function EmpleadoVisualizaListaHCSinDevolver(lnIdUsuario As Long) As Boolean
+On Error GoTo ManejadorDeError
+Dim oRsTmp As New Recordset
+Dim oCommand As New ADODB.Command
+Dim oParameter As ADODB.Parameter
+Dim oConexion As New ADODB.Connection
+Dim ms_MensajeError  As String
+    ms_MensajeError = ""
+    oConexion.CursorLocation = adUseClient
+    oConexion.CommandTimeout = 300
+    oConexion.Open sighentidades.CadenaConexion
+    With oCommand
+        .CommandType = adCmdStoredProc
+        Set .ActiveConnection = oConexion
+        .CommandTimeout = 150
+        .CommandText = "EmpleadosLugarDeTrabajoSeleccionarPorId"
+        Set oParameter = .CreateParameter("@lnIdUsuario", adInteger, adParamInput, 0, lnIdUsuario): .Parameters.Append oParameter
+        Set oRsTmp = .Execute
+        Set oRsTmp.ActiveConnection = Nothing
+   End With
+   EmpleadoVisualizaListaHCSinDevolver = False
+   If oRsTmp.RecordCount > 0 Then
+      oRsTmp.MoveFirst
+      Do While Not oRsTmp.EOF
+         If oRsTmp.Fields!idLaboraArea = 1 Then
+            EmpleadoVisualizaListaHCSinDevolver = True
+            Exit Do
+         End If
+         oRsTmp.MoveNext
+      Loop
+   End If
+   oRsTmp.Close
+   oConexion.Close
+   Set oRsTmp = Nothing
+   Set oConexion = Nothing
+   Set oCommand = Nothing
+   Exit Function
+ManejadorDeError:
+    MsgBox Err.Description
+End Function
+'SCCQ 28/08/2020 Cambio27 Fin

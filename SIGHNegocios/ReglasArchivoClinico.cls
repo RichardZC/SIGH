@@ -4581,3 +4581,21 @@ Function farmActualizaPrecioPonderadoMenorAcero(oConexion As Connection)
     Set oParameter = Nothing
 ManejadorDeError:
 End Function
+'SCCQ 27/08/2020 Cambio27 Inicio
+Function SeleccionarHCSinDevolver(horas As Integer) As ADODB.Recordset
+Dim oConexion As New ADODB.Connection
+Dim oTabla As New MovimientosHistoriaClinica
+    
+  oConexion.CursorLocation = adUseClient
+  oConexion.CommandTimeout = 300
+  oConexion.Open sighentidades.CadenaConexion
+    
+    Set oTabla.Conexion = oConexion
+    Set SeleccionarHCSinDevolver = oTabla.SeleccionarHCSinDevolver(horas)
+    oConexion.Close
+    ms_MensajeError = oTabla.MensajeError
+    Set oConexion = Nothing
+    Set oTabla = Nothing
+
+End Function
+'SCCQ 27/08/2020 Cambio27 Fin

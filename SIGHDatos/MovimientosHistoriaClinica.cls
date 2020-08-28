@@ -66,7 +66,7 @@ Dim oParameter As ADODB.Parameter
            Set oParameter = .CreateParameter("@IdAtencion", adInteger, adParamInput, 0, IIf(oTabla.idAtencion = 0, Null, oTabla.idAtencion)): .Parameters.Append oParameter
 
        .Execute
-           oTabla.IdMovimiento = .Parameters("@IdMovimiento")
+           oTabla.idMovimiento = .Parameters("@IdMovimiento")
    End With
  
    Insertar = True
@@ -100,7 +100,7 @@ Dim oParameter As ADODB.Parameter
            Set oParameter = .CreateParameter("@IdMotivo", adInteger, adParamInput, 0, IIf(oTabla.idMotivo = 0, Null, oTabla.idMotivo)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@FechaMovimiento", adDBTimeStamp, adParamInput, 0, IIf(oTabla.FechaMovimiento = 0, Null, oTabla.FechaMovimiento)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@IdPaciente", adInteger, adParamInput, 0, IIf(oTabla.IdPaciente = 0, Null, oTabla.IdPaciente)): .Parameters.Append oParameter
-           Set oParameter = .CreateParameter("@IdMovimiento", adInteger, adParamInput, 0, IIf(oTabla.IdMovimiento = 0, Null, oTabla.IdMovimiento)): .Parameters.Append oParameter
+           Set oParameter = .CreateParameter("@IdMovimiento", adInteger, adParamInput, 0, IIf(oTabla.idMovimiento = 0, Null, oTabla.idMovimiento)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@IdEmpleadoRecepcion", adInteger, adParamInput, 0, IIf(oTabla.IdEmpleadoRecepcion = 0, Null, oTabla.IdEmpleadoRecepcion)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@IdEmpleadoTransporte", adInteger, adParamInput, 0, IIf(oTabla.IdEmpleadoTransporte = 0, Null, oTabla.IdEmpleadoTransporte)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@IdEmpleadoArchivo", adInteger, adParamInput, 0, IIf(oTabla.IdEmpleadoArchivo = 0, Null, oTabla.IdEmpleadoArchivo)): .Parameters.Append oParameter
@@ -136,7 +136,7 @@ Dim oParameter As ADODB.Parameter
        .CommandType = adCmdStoredProc
        Set .ActiveConnection = mo_Conexion
        .CommandText = "MovimientosHistoriaClinicaEliminar"
-           Set oParameter = .CreateParameter("@IdMovimiento", adInteger, adParamInput, 0, IIf(oTabla.IdMovimiento = 0, Null, oTabla.IdMovimiento)): .Parameters.Append oParameter
+           Set oParameter = .CreateParameter("@IdMovimiento", adInteger, adParamInput, 0, IIf(oTabla.idMovimiento = 0, Null, oTabla.idMovimiento)): .Parameters.Append oParameter
        Set oParameter = .CreateParameter("@IdUsuarioAuditoria", adInteger, adParamInput, 0, oTabla.IdUsuarioAuditoria)
        .Parameters.Append oParameter
        .Execute
@@ -168,7 +168,7 @@ Dim oParameter As ADODB.Parameter
      .CommandType = adCmdStoredProc
      Set .ActiveConnection = mo_Conexion
      .CommandText = "MovimientosHistoriaClinicaSeleccionarPorId"
-       Set oParameter = .CreateParameter("@IdMovimiento", adInteger, adParamInput, 0, oTabla.IdMovimiento): .Parameters.Append oParameter
+       Set oParameter = .CreateParameter("@IdMovimiento", adInteger, adParamInput, 0, oTabla.idMovimiento): .Parameters.Append oParameter
      Set oRecordset = .Execute
    End With
  
@@ -181,7 +181,7 @@ Dim oParameter As ADODB.Parameter
        oTabla.idMotivo = IIf(IsNull(oRecordset!idMotivo), 0, oRecordset!idMotivo)
        oTabla.FechaMovimiento = IIf(IsNull(oRecordset!FechaMovimiento), 0, oRecordset!FechaMovimiento)
        oTabla.IdPaciente = IIf(IsNull(oRecordset!IdPaciente), 0, oRecordset!IdPaciente)
-       oTabla.IdMovimiento = IIf(IsNull(oRecordset!IdMovimiento), 0, oRecordset!IdMovimiento)
+       oTabla.idMovimiento = IIf(IsNull(oRecordset!idMovimiento), 0, oRecordset!idMovimiento)
        oTabla.IdEmpleadoRecepcion = IIf(IsNull(oRecordset!IdEmpleadoRecepcion), 0, oRecordset!IdEmpleadoRecepcion)
        oTabla.IdEmpleadoTransporte = IIf(IsNull(oRecordset!IdEmpleadoTransporte), 0, oRecordset!IdEmpleadoTransporte)
        oTabla.IdEmpleadoArchivo = IIf(IsNull(oRecordset!IdEmpleadoArchivo), 0, oRecordset!IdEmpleadoArchivo)
@@ -229,11 +229,11 @@ Dim IdGrupoMovimiento As Long
             oMovimiento.IdServicioOrigen = IIf(IsNull(rsMovimientos!IdServicioOrigen), 0, rsMovimientos!IdServicioOrigen)
             oMovimiento.NroFolios = rsMovimientos!NroFolios
             oMovimiento.idAtencion = rsMovimientos!idAtencion
-            oMovimiento.Observacion = IIf(IsNull(rsMovimientos!observaciones), "", rsMovimientos!observaciones)  'debb-03/11/2015
+            oMovimiento.Observacion = IIf(IsNull(rsMovimientos!Observaciones), "", rsMovimientos!Observaciones)  'debb-03/11/2015
             If Not Insertar(oMovimiento) Then
                 Exit Function
             End If
-            rsMovimientos!IdMovimientoHistoria = oMovimiento.IdMovimiento
+            rsMovimientos!IdMovimientoHistoria = oMovimiento.idMovimiento
         End If
         rsMovimientos.MoveNext
     Loop
@@ -258,7 +258,7 @@ Dim oDOMovimiento As New DOMovimientoHistoriaClinica
 
     rsMovimientos.MoveFirst
     Do While Not rsMovimientos.EOF
-        oMovimiento.IdMovimiento = rsMovimientos!IdMovimientoHistoria
+        oMovimiento.idMovimiento = rsMovimientos!IdMovimientoHistoria
         oMovimiento.IdHistoriaSolicitada = IIf(IsNull(rsMovimientos!IdHistoriaSolicitada), 0, rsMovimientos!IdHistoriaSolicitada)
         oMovimiento.IdPaciente = rsMovimientos!IdPaciente
         oMovimiento.IdServicioDestino = rsMovimientos!IdServicioDestino
@@ -307,7 +307,7 @@ Dim oDOMovimiento As New DOMovimientoHistoriaClinica
    
         rsMovimientos.MoveFirst
         Do While Not rsMovimientos.EOF
-            oDOMovimiento.IdMovimiento = rsMovimientos!IdMovimientoHistoria
+            oDOMovimiento.idMovimiento = rsMovimientos!IdMovimientoHistoria
             oDOMovimiento.IdPaciente = rsMovimientos!IdPaciente
             'If Not Eliminar(oDOMovimiento) Then
             If Not MovimientosHistoriaClinicaEliminarMovIdPaciente(oDOMovimiento) Then
@@ -554,7 +554,7 @@ Dim lcBuscaParametro As New SIGHDatos.Parametros
                     Set .ActiveConnection = mo_Conexion
                     .CommandTimeout = 150
                     .CommandText = "tempMovimientosInsertar"
-                    Set oParameter = .CreateParameter("@IdMovimiento", adInteger, adParamInput, 0, rsMaxMov!IdMovimiento): .Parameters.Append oParameter
+                    Set oParameter = .CreateParameter("@IdMovimiento", adInteger, adParamInput, 0, rsMaxMov!idMovimiento): .Parameters.Append oParameter
                     Set oParameter = .CreateParameter("@lIdUsuario", adInteger, adParamInput, 0, lIdUsuario): .Parameters.Append oParameter
                     .Execute
                 End With
@@ -670,7 +670,7 @@ Dim lcBuscaParametro As New SIGHDatos.Parametros
                     Set .ActiveConnection = mo_Conexion
                     .CommandTimeout = 150
                     .CommandText = "tempMovimientosInsertar"
-                    Set oParameter = .CreateParameter("@IdMovimiento", adInteger, adParamInput, 0, rsMaxMov!IdMovimiento): .Parameters.Append oParameter
+                    Set oParameter = .CreateParameter("@IdMovimiento", adInteger, adParamInput, 0, rsMaxMov!idMovimiento): .Parameters.Append oParameter
                     Set oParameter = .CreateParameter("@lIdUsuario", adInteger, adParamInput, 0, lIdUsuario): .Parameters.Append oParameter
                     .Execute
                 End With
@@ -815,7 +815,7 @@ Dim lcBuscaParametro As New SIGHDatos.Parametros
                     Set .ActiveConnection = mo_Conexion
                     .CommandTimeout = 150
                     .CommandText = "tempMovimientosInsertar"
-                    Set oParameter = .CreateParameter("@IdMovimiento", adInteger, adParamInput, 0, rsMaxMov!IdMovimiento): .Parameters.Append oParameter
+                    Set oParameter = .CreateParameter("@IdMovimiento", adInteger, adParamInput, 0, rsMaxMov!idMovimiento): .Parameters.Append oParameter
                     Set oParameter = .CreateParameter("@lIdUsuario", adInteger, adParamInput, 0, lIdUsuario): .Parameters.Append oParameter
                     .Execute
                 End With
@@ -905,7 +905,7 @@ Dim oParameter As ADODB.Parameter
        .CommandType = adCmdStoredProc
        Set .ActiveConnection = mo_Conexion
        .CommandText = "MovimientosHistoriaClinicaEliminarMovIdPaciente"
-       Set oParameter = .CreateParameter("@IdMovimiento", adInteger, adParamInput, 0, IIf(oTabla.IdMovimiento = 0, Null, oTabla.IdMovimiento)): .Parameters.Append oParameter
+       Set oParameter = .CreateParameter("@IdMovimiento", adInteger, adParamInput, 0, IIf(oTabla.idMovimiento = 0, Null, oTabla.idMovimiento)): .Parameters.Append oParameter
        Set oParameter = .CreateParameter("@IdPaciente", adInteger, adParamInput, 0, oTabla.IdPaciente)
        .Parameters.Append oParameter
        .Execute
@@ -919,5 +919,30 @@ ManejadorDeError:
    ms_MensajeError = Err.Number & " " + Err.Description: MsgBox ms_MensajeError + Chr(13) + "Por favor contacte al personal de soporte técnico", vbInformation, "Error en la interface de acceso a datos"
 Exit Function
 End Function
-
-
+'SCCQ 26/06/2020 Cambio27 Inicio
+Function SeleccionarHCSinDevolver(horas As Integer) As ADODB.Recordset
+On Error GoTo ManejadorDeError
+Dim oRecordset As New ADODB.Recordset
+Dim oCommand As New ADODB.Command
+Dim oParameter As ADODB.Parameter
+ 
+   Set SeleccionarHCSinDevolver = Nothing
+   With oCommand
+     .CommandType = adCmdStoredProc
+     Set .ActiveConnection = mo_Conexion
+     .CommandText = "usp_HCSinDevolver"
+     Set oParameter = .CreateParameter("@horas", adInteger, adParamInput, 0, horas): .Parameters.Append oParameter
+     Set oRecordset = .Execute
+   End With
+   
+   Set oRecordset.ActiveConnection = Nothing
+   Set SeleccionarHCSinDevolver = oRecordset
+ 
+   ms_MensajeError = ""
+ 
+Exit Function
+ManejadorDeError:
+   ms_MensajeError = Err.Number & " " + Err.Description: MsgBox ms_MensajeError + Chr(13) + "Por favor contacte al personal de soporte técnico", vbInformation, "Error en la interface de acceso a datos"
+Exit Function
+End Function
+'SCCQ 26/06/2020 Cambio27 Fin
