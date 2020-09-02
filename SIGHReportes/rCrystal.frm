@@ -1,17 +1,17 @@
 VERSION 5.00
 Object = "{C4847593-972C-11D0-9567-00A0C9273C2A}#8.0#0"; "crviewer.dll"
 Begin VB.Form rCrystal 
-   ClientHeight    =   5628
+   ClientHeight    =   5625
    ClientLeft      =   60
-   ClientTop       =   348
-   ClientWidth     =   8436
+   ClientTop       =   345
+   ClientWidth     =   8430
    Icon            =   "rCrystal.frx":0000
    KeyPreview      =   -1  'True
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   5628
-   ScaleWidth      =   8436
+   ScaleHeight     =   5625
+   ScaleWidth      =   8430
    StartUpPosition =   2  'CenterScreen
    WindowState     =   2  'Maximized
    Begin CRVIEWERLibCtl.CRViewer CrvReportes 
@@ -320,7 +320,7 @@ Private Sub Form_Activate()
     Case "HcXmedico"
         oConexion.CommandTimeout = 300
         oConexion.CursorLocation = adUseClient
-        oConexion.Open SIGHEntidades.CadenaConexion
+        oConexion.Open sighEntidades.CadenaConexion
         Set rsReporte = mo_AdminReportes.ReporteHistoriasSolicitadasCEPorMedico(ml_idUsuario, mda_FechaInicio, mda_FechaFin, mda_FechaSolicitudDesde, mda_FechaSolicitudHasta, (Val(ml_lcTipoServicio)), ml_IncluyeHistoriasQueSalieron)
         lc_TextoDelFiltro = " "
         If rsReporte.RecordCount > 0 Then
@@ -360,7 +360,7 @@ Private Sub Form_Activate()
                     mrs_Tmp.Fields!Medico = rsReporte.Fields!nMedico
                     mrs_Tmp.Fields!FechaIngreso = Format(rsReporte.Fields!FechaRequerida, "dd/mm/yyyy") & " - " & rsReporte.Fields!HoraRequerida
                     mrs_Tmp.Fields!NroHistoriaClinica = HCigualDNI_DevuelveHistoriaConCerosIzquierda(Trim(Str(rsReporte.Fields!NroHistoriaClinica)), False) & _
-                                                        IIf(Format(rsReporte!fechaCreacion, SIGHEntidades.DevuelveFechaSoloFormato_DMY) = lcBuscaParametro.RetornaFechaServidorSQL, " (n)", "")
+                                                        IIf(Format(rsReporte!fechaCreacion, sighEntidades.DevuelveFechaSoloFormato_DMY) = lcBuscaParametro.RetornaFechaServidorSQL, " (n)", "")
                     mrs_Tmp.Fields!Interconsulta = rsReporte.Fields!FichaFamiliar
                     mrs_Tmp.Fields!Paciente = rsReporte.Fields!nPaciente
                     mrs_Tmp.Fields!Usuario = lcTexto3    'fuente financiamiento
@@ -376,7 +376,7 @@ Private Sub Form_Activate()
                rsReporte.MoveNext
             Loop
             mrs_Tmp.Sort = "servicio,fechaIngreso"
-            lc_TextoDelFiltro = "F. requerida: " & Format(mda_FechaInicio, SIGHEntidades.DevuelveFechaSoloFormato_DMY_HM) & "  al " & Format(mda_FechaFin, SIGHEntidades.DevuelveFechaSoloFormato_DMY_HM)
+            lc_TextoDelFiltro = "F. requerida: " & Format(mda_FechaInicio, sighEntidades.DevuelveFechaSoloFormato_DMY_HM) & "  al " & Format(mda_FechaFin, sighEntidades.DevuelveFechaSoloFormato_DMY_HM)
             'Reporte
             mflgContinuar = True
             Set crReport = crApp.OpenReport(App.Path & "\plantillas\HCsolicitadasXmedicoFF.rpt", 1)
@@ -418,7 +418,7 @@ Private Sub Form_Activate()
                     mrs_Tmp.Fields!Medico = rsReporte.Fields!nMedico
                     mrs_Tmp.Fields!FechaIngreso = Format(rsReporte.Fields!FechaRequerida, "dd/mm/yyyy") & " - " & rsReporte.Fields!HoraRequerida
                     mrs_Tmp.Fields!NroHistoriaClinica = HCigualDNI_DevuelveHistoriaConCerosIzquierda(Trim(Str(rsReporte.Fields!NroHistoriaClinica)), False) & _
-                                                        IIf(Format(rsReporte!fechaCreacion, SIGHEntidades.DevuelveFechaSoloFormato_DMY) = lcBuscaParametro.RetornaFechaServidorSQL, " (n)", "")
+                                                        IIf(Format(rsReporte!fechaCreacion, sighEntidades.DevuelveFechaSoloFormato_DMY) = lcBuscaParametro.RetornaFechaServidorSQL, " (n)", "")
                     mrs_Tmp.Fields!Interconsulta = rsReporte.Fields!FichaFamiliar
                     mrs_Tmp.Fields!Paciente = rsReporte.Fields!nPaciente
                     mrs_Tmp.Fields!Usuario = rsReporte.Fields!NroDocumento
@@ -915,6 +915,31 @@ End If
             crReport.Database.SetDataSource mrs_Tmp
         End If
         '***************** GalenHos v.3.0 (fin)*****************
+        'SCCQ 31/08/2020 Cambio27 Inicio
+            Case "AHCSinDevolver"
+                'mda_FechaFin = mda_FechaInicio + ml_Dias
+                Set rsReporte = mo_ReglasArchivoClinico.SeleccionarHCSinDevolver(72)
+                If rsReporte.RecordCount > 0 Then
+                    'Reporte
+                    mflgContinuar = True
+                    Set crReport = crApp.OpenReport(App.Path & "\plantillas\AHCSinDevolver.rpt", 1)
+                    ' Parametros del reporte
+                    Set crParamDefs = crReport.ParameterFields
+                    For Each crParamDef In crParamDefs
+                        Select Case crParamDef.ParameterFieldName
+                            Case "subTitulo"
+                                crParamDef.AddCurrentValue (lc_TextoDelFiltro)
+                           Case "lcEESS"
+                               crParamDef.AddCurrentValue (lcTitEESS)
+                           Case "lcEESSdireccion"
+                               crParamDef.AddCurrentValue (lcTitDireccion)
+                           Case "lcEESStelefono"
+                               crParamDef.AddCurrentValue (lcTitTelefono)
+                        End Select
+                    Next
+                    crReport.Database.SetDataSource rsReporte
+                End If
+        'SCCQ 31/08/2020 Cambio27 Fin
     End Select
     If mflgContinuar = True Then
        If mb_EnArchivoExcel = True Then

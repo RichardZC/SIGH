@@ -1170,7 +1170,7 @@ Dim ms_MensajeError  As String
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
         .CommandTimeout = 150
-        .CommandText = "EmpleadosLugarDeTrabajoSeleccionarPorId"
+        .CommandText = "usp_EmpleadosRolSeleccionarPorId"
         Set oParameter = .CreateParameter("@lnIdUsuario", adInteger, adParamInput, 0, lnIdUsuario): .Parameters.Append oParameter
         Set oRsTmp = .Execute
         Set oRsTmp.ActiveConnection = Nothing
@@ -1179,7 +1179,7 @@ Dim ms_MensajeError  As String
    If oRsTmp.RecordCount > 0 Then
       oRsTmp.MoveFirst
       Do While Not oRsTmp.EOF
-         If oRsTmp.Fields!idLaboraArea = 1 Then
+         If oRsTmp.Fields!IdRol = 62 Then 'IdRol=62 es para "ArchivoClinico"
             EmpleadoVisualizaListaHCSinDevolver = True
             Exit Do
          End If

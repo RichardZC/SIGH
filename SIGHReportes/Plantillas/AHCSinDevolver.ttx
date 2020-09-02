@@ -1,0 +1,7 @@
+NroHistoriaClinica	Number		
+ApellidoPaterno	String	40	
+ApellidoMaterno	String	40	
+PrimerNombre	String	40	
+SegundoNombre	String	40	
+fecha_prestada	Date		
+destino	String	50	
