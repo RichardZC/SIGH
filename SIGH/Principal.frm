@@ -898,7 +898,6 @@ Begin VB.Form Principal
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      TagVariant      =   ""
       OLEDragMode     =   1
       OLEDropMode     =   2
       IconsMaskColor  =   16777215
@@ -1314,7 +1313,7 @@ Private Sub Form_Activate()
     'SCCQ 28/08/2020 Cambio27 Inicio
     If lbVisualizaListaHCSinDevolver = True Then
         lbVisualizaListaHCSinDevolver = False
-        Dim oRptHCSinDevolver As New SighReportes.RptAHCSinDevolver
+        Dim oRptHCSinDevolver As New SIGHReportes.RptAHCSinDevolver
         oRptHCSinDevolver.mostrarReporte = True
         oRptHCSinDevolver.EjecutaFormulario
         Set oRptHCSinDevolver = Nothing
@@ -2257,19 +2256,19 @@ Private Sub toolbar_ToolClick(ByVal Tool As ActiveToolBars.SSTool)
         Set oRptCEpadronNominal = Nothing                                    'debb-2/3/2015
         Exit Sub                                                            'debb-2/3/2015
     Case "ID_RptProgMedica"
-        Dim oProgMedicaRpt As New SighReportes.clProgramMedica
+        Dim oProgMedicaRpt As New SIGHReportes.clProgramMedica
         oProgMedicaRpt.EjecutaFormulario
         Set oProgMedicaRpt = Nothing
         Exit Sub
     Case "ID_RptHistoriaSolicitadas"
-        Dim oSolicitud As New SighReportes.clSolicitudHistorias
+        Dim oSolicitud As New SIGHReportes.clSolicitudHistorias
         oSolicitud.TipoReporte = "RPT_HISTORIAS_SERVICIO"
         oSolicitud.idUsuario = ml_IdUsuarioAuditoria
         oSolicitud.EjecutaFormulario
         Set oSolicitud = Nothing
         Exit Sub
     Case "ID_RptHistoriaSolicitadasMedico"
-        Dim oSolicitudMedico As New SighReportes.clSolicitudHistorias
+        Dim oSolicitudMedico As New SIGHReportes.clSolicitudHistorias
         oSolicitudMedico.TipoReporte = "RPT_HISTORIAS_MEDICO"
         oSolicitudMedico.idUsuario = ml_IdUsuarioAuditoria
         oSolicitudMedico.EjecutaFormulario
@@ -2289,13 +2288,13 @@ Private Sub toolbar_ToolClick(ByVal Tool As ActiveToolBars.SSTool)
         Set oRptIngHosp = Nothing
         Exit Sub
     Case "ID_CensoHospitalario"
-        Dim oRptCensoHospitalario As New SighReportes.clAtencionesCenso
+        Dim oRptCensoHospitalario As New SIGHReportes.clAtencionesCenso
 '        oRptoRptCensoHospitalarioIngHosp.IdTipoReporte = sighEntidades.sghReporteIngresosHospitalario
         oRptCensoHospitalario.EjecutaFormulario
         Set oRptCensoHospitalario = Nothing
         Exit Sub
     Case "ID_CuposAsignados"
-        Dim oRptCuposAsignados As New SighReportes.clCuposAsignadosRep
+        Dim oRptCuposAsignados As New SIGHReportes.clCuposAsignadosRep
         oRptCuposAsignados.EjecutaFormulario
         Set oRptCuposAsignados = Nothing
         Exit Sub
@@ -2322,55 +2321,55 @@ Private Sub toolbar_ToolClick(ByVal Tool As ActiveToolBars.SSTool)
     Select Case Tool.ID
     'Consulta externa
     Case "ID_MorbilidadCE"
-        Dim oRptMorbilidadCE As New SighReportes.RptHMorbCE
+        Dim oRptMorbilidadCE As New SIGHReportes.RptHMorbCE
         oRptMorbilidadCE.EjecutaFormulario
         Set oRptMorbilidadCE = Nothing
         Exit Sub
     Case "Id_RepMaterno"
-        Dim oRptRepMaterno As New SighReportes.clCeMaterno
+        Dim oRptRepMaterno As New SIGHReportes.clCeMaterno
         oRptRepMaterno.EjecutaFormulario
         Set oRptRepMaterno = Nothing
         Exit Sub
     Case "Id_RepPerinatal"
-        Dim oRptRepPerinatal As New SighReportes.clCePerinatal
+        Dim oRptRepPerinatal As New SIGHReportes.clCePerinatal
         oRptRepPerinatal.EjecutaFormulario
         Set oRptRepPerinatal = Nothing
         Exit Sub
     'mgaray201411h
     Case "Id_RepPerinatalIndicadores"
-        Dim oRptRepPerinatalIndicadores As New SighReportes.clCePerinatalIndicadores
+        Dim oRptRepPerinatalIndicadores As New SIGHReportes.clCePerinatalIndicadores
         oRptRepPerinatalIndicadores.EjecutaFormulario
         Set oRptRepPerinatalIndicadores = Nothing
         Exit Sub
         
     'MODULO Reportes
     Case "ID_PacientesmenoresaNanios"
-        Dim oRptMovimientoHistorias As New SighReportes.RptAHCpacienteHastaNanio
+        Dim oRptMovimientoHistorias As New SIGHReportes.RptAHCpacienteHastaNanio
         oRptMovimientoHistorias.EjecutaFormulario
         Set oRptMovimientoHistorias = Nothing
         Exit Sub
     Case "ID_MovimientosdeHistorias"
-        Dim oRptAHCMovimEntSal As New SighReportes.RptAHCMovimEntSal
+        Dim oRptAHCMovimEntSal As New SIGHReportes.RptAHCMovimEntSal
         oRptAHCMovimEntSal.EjecutaFormulario
         Set oRptAHCMovimEntSal = Nothing
         Exit Sub
     Case "ID_MovimientodeFormatosdeHistorias"
-        Dim oRptAHCMovimFormatos As New SighReportes.RptAHCMovimFormatos
+        Dim oRptAHCMovimFormatos As New SIGHReportes.RptAHCMovimFormatos
         oRptAHCMovimFormatos.EjecutaFormulario
         Set oRptAHCMovimFormatos = Nothing
         Exit Sub
     Case "ID_MovimientoFormatosHCporMes"
-        Dim oRptAHCMovimFormatMes As New SighReportes.RptAHCMovimFormatMes
+        Dim oRptAHCMovimFormatMes As New SIGHReportes.RptAHCMovimFormatMes
         oRptAHCMovimFormatMes.EjecutaFormulario
         Set oRptAHCMovimFormatMes = Nothing
         Exit Sub
     Case "ID_HCsolicPorServ"
-        Dim oRpt219 As New SighReportes.RptAHSolicPorServ
+        Dim oRpt219 As New SIGHReportes.RptAHSolicPorServ
         oRpt219.EjecutaFormulario
         Set oRpt219 = Nothing
         Exit Sub
     Case "ID_HCsolicPorMedico"
-        Dim oRpt220 As New SighReportes.RptAHSolicPorMedico
+        Dim oRpt220 As New SIGHReportes.RptAHSolicPorMedico
         oRpt220.EjecutaFormulario
         Set oRpt220 = Nothing
         Exit Sub
@@ -2381,17 +2380,17 @@ Private Sub toolbar_ToolClick(ByVal Tool As ActiveToolBars.SSTool)
 '        Set oRpt221 = Nothing
         Exit Sub
     Case "ID_HCpaciVIH"
-        Dim oRpt222 As New SighReportes.RptAHCconVIH
+        Dim oRpt222 As New SIGHReportes.RptAHCconVIH
         oRpt222.EjecutaFormulario
         Set oRpt222 = Nothing
         Exit Sub
     Case "ID_HCpaciJudiciales"
-        Dim oRpt223 As New SighReportes.RptAHSolicPorTipo
+        Dim oRpt223 As New SIGHReportes.RptAHSolicPorTipo
         oRpt223.EjecutaFormulario
         Set oRpt223 = Nothing
         Exit Sub
     Case "ID_HCnoLlegan24hr"
-        Dim oRpt224 As New SighReportes.RptAHCEgresoMedico24
+        Dim oRpt224 As New SIGHReportes.RptAHCEgresoMedico24
         oRpt224.EjecutaFormulario
         Set oRpt224 = Nothing
         Exit Sub
@@ -2402,27 +2401,27 @@ Private Sub toolbar_ToolClick(ByVal Tool As ActiveToolBars.SSTool)
 '        Set oRpt11 = Nothing
         Exit Sub
     Case "ID_HIndicMeses"
-        Dim oRpt22 As New SighReportes.RptHIndicadorMeses
+        Dim oRpt22 As New SIGHReportes.RptHIndicadorMeses
         oRpt22.EjecutaFormulario
         Set oRpt22 = Nothing
         Exit Sub
     Case "ID_HIndicAnual1"
-        Dim oRpt13 As New SighReportes.RptHIndicadorAnual
+        Dim oRpt13 As New SIGHReportes.RptHIndicadorAnual
         oRpt13.EjecutaFormulario
         Set oRpt13 = Nothing
         Exit Sub
     Case "ID_HEgresosHosp"
-        Dim oRpt24 As New SighReportes.RptHEgresosHosp
+        Dim oRpt24 As New SIGHReportes.RptHEgresosHosp
         oRpt24.EjecutaFormulario
         Set oRpt24 = Nothing
         Exit Sub
     Case "ID_HIngresosHosp"
-        Dim oRpt25 As New SighReportes.RptHIngresosHosp
+        Dim oRpt25 As New SIGHReportes.RptHIngresosHosp
         oRpt25.EjecutaFormulario
         Set oRpt25 = Nothing
         Exit Sub
     Case "ID_HTransf"
-        Dim oRpt26 As New SighReportes.RptHTransferencia
+        Dim oRpt26 As New SIGHReportes.RptHTransferencia
         oRpt26.EjecutaFormulario
         Set oRpt26 = Nothing
         Exit Sub
@@ -2439,7 +2438,7 @@ Private Sub toolbar_ToolClick(ByVal Tool As ActiveToolBars.SSTool)
 '        Set oRpt28 = Nothing
         Exit Sub
     Case "ID_HMortalidadE"
-        Dim oRpt29 As New SighReportes.RptHMortalidad
+        Dim oRpt29 As New SIGHReportes.RptHMortalidad
         oRpt29.EjecutaFormulario
         Set oRpt29 = Nothing
         Exit Sub
@@ -2456,47 +2455,47 @@ Private Sub toolbar_ToolClick(ByVal Tool As ActiveToolBars.SSTool)
 '        Set oRpt211 = Nothing
         Exit Sub
     Case "ID_HMorbilidadE"
-        Dim oRpt212 As New SighReportes.RptHMorbilidad
+        Dim oRpt212 As New SIGHReportes.RptHMorbilidad
         oRpt212.EjecutaFormulario
         Set oRpt212 = Nothing
         Exit Sub
     Case "ID_HProcedimientos"
-        Dim oRpt213 As New SighReportes.RptHProcedimientos
+        Dim oRpt213 As New SIGHReportes.RptHProcedimientos
         oRpt213.EjecutaFormulario
         Set oRpt213 = Nothing
         Exit Sub
     Case "ID_HDiasEstancia"
-        Dim oRpt214 As New SighReportes.RptHEstanciaH
+        Dim oRpt214 As New SIGHReportes.RptHEstanciaH
         oRpt214.EjecutaFormulario
         Set oRpt214 = Nothing
         Exit Sub
     Case "ID_HIndicPrPermanencia"
-        Dim oRpt215 As New SighReportes.RptHPrPermanencia
+        Dim oRpt215 As New SIGHReportes.RptHPrPermanencia
         oRpt215.EjecutaFormulario
         Set oRpt215 = Nothing
         Exit Sub
     Case "ID_HCamasH"
-        Dim oRpt216 As New SighReportes.RptHCamas
+        Dim oRpt216 As New SIGHReportes.RptHCamas
         oRpt216.EjecutaFormulario
         Set oRpt216 = Nothing
         Exit Sub
     Case "ID_HDiasCamaH"
-        Dim oRpt217 As New SighReportes.RptHCamaDias
+        Dim oRpt217 As New SIGHReportes.RptHCamaDias
         oRpt217.EjecutaFormulario
         Set oRpt217 = Nothing
         Exit Sub
     Case "ID_HDiasPacienteH"
-        Dim oRpt218 As New SighReportes.RptHDiasPaciente
+        Dim oRpt218 As New SIGHReportes.RptHDiasPaciente
         oRpt218.EjecutaFormulario
         Set oRpt218 = Nothing
         Exit Sub
     Case "ID_EMorbilidad"
-        Dim oRpt225 As New SighReportes.RptHMorbEm
+        Dim oRpt225 As New SIGHReportes.RptHMorbEm
         oRpt225.EjecutaFormulario
         Set oRpt225 = Nothing
         Exit Sub
     Case "ID_MinsaEssalud"
-        Dim oRpt231 As New SighReportes.RptEAtencConv
+        Dim oRpt231 As New SIGHReportes.RptEAtencConv
         oRpt231.EjecutaFormulario
         Set oRpt231 = Nothing
         Exit Sub
@@ -2506,7 +2505,7 @@ Private Sub toolbar_ToolClick(ByVal Tool As ActiveToolBars.SSTool)
       '  Set oRpt232 = Nothing
       '  Exit Sub
     Case "ID_ReportedeRegistrodeInformaciónporUsuariodelSistema"
-        Dim oRpt233 As New SighReportes.RptHerrUsuarioSistema
+        Dim oRpt233 As New SIGHReportes.RptHerrUsuarioSistema
         oRpt233.EjecutaFormulario
         Set oRpt233 = Nothing
         Exit Sub
@@ -2521,12 +2520,12 @@ Private Sub toolbar_ToolClick(ByVal Tool As ActiveToolBars.SSTool)
        ' Set oRpt235 = Nothing
        ' Exit Sub
     Case "ID_FrecuenciadeDxdePacientesatendidos"
-        Dim oRpt236 As New SighReportes.RptCEdx
+        Dim oRpt236 As New SIGHReportes.RptCEdx
         oRpt236.EjecutaFormulario
         Set oRpt236 = Nothing
         Exit Sub
     Case "ID_ConsumoServiciosdePacientesAtendidos"
-        Dim oRpt237 As New SighReportes.RptCEservi
+        Dim oRpt237 As New SIGHReportes.RptCEservi
         oRpt237.EjecutaFormulario
         Set oRpt237 = Nothing
         Exit Sub
@@ -2555,17 +2554,17 @@ Private Sub toolbar_ToolClick(ByVal Tool As ActiveToolBars.SSTool)
         Set oRptIngHosp1 = Nothing
         Exit Sub
     Case "ID_IndicadordeAtencionesvsAtendidos"
-        Dim oRpt238 As New SighReportes.RptCEatenciones
+        Dim oRpt238 As New SIGHReportes.RptCEatenciones
         oRpt238.EjecutaFormulario
         Set oRpt238 = Nothing
         Exit Sub
     Case "Id_hcNOusadas"
-        Dim oRptHCnoUsadas As New SighReportes.RptAHhcNOusadas
+        Dim oRptHCnoUsadas As New SIGHReportes.RptAHhcNOusadas
         oRptHCnoUsadas.EjecutaFormulario
         Set oRptHCnoUsadas = Nothing
         Exit Sub
     Case "Id_NoLlegaAC"
-        Dim oRptHCnoLlegaAC As New SighReportes.RptAHhcNoLlegaAC
+        Dim oRptHCnoLlegaAC As New SIGHReportes.RptAHhcNoLlegaAC
         oRptHCnoLlegaAC.EjecutaFormulario
         Set oRptHCnoLlegaAC = Nothing
         Exit Sub
@@ -2625,6 +2624,13 @@ Private Sub toolbar_ToolClick(ByVal Tool As ActiveToolBars.SSTool)
         oRptProdXvencer.EjecutaFormulario
         Set oRptProdXvencer = Nothing
         Exit Sub
+    'SCCQ 02/09/2020 Cambio27 Inicio
+    Case "ID_HCNoLlegaACporTA72h"
+        Dim oRptHCSinDevolver As New SIGHReportes.RptAHCSinDevolver
+        oRptHCSinDevolver.EjecutaFormulario
+        Set oRptHCSinDevolver = Nothing
+        Exit Sub
+    'SCCQ 02/09/2020 Cambio27 Fin
     Case "ID_MovimientodeDocumentosdeEntradaySalida"
         'Dim oRptMovES As New SIGHProxies.RepMovimientoES
         Dim oRptMovES As New SighFarmacia.RepMovimientoES
@@ -2696,29 +2702,29 @@ Private Sub toolbar_ToolClick(ByVal Tool As ActiveToolBars.SSTool)
         MsgBox "...Reporte en desarrollo..."
         Exit Sub
     Case "ID_InformedeRecaudaciondeAltas"
-        Dim oRpt228 As New SighReportes.RptERecaudAltas
+        Dim oRpt228 As New SIGHReportes.RptERecaudAltas
         oRpt228.EjecutaFormulario
         Set oRpt228 = Nothing
         Exit Sub
     Case "ID_ExoneracionesGeneral"
-        Dim oRpt229 As New SighReportes.RptEExoneraciones
+        Dim oRpt229 As New SIGHReportes.RptEExoneraciones
         oRpt229.EjecutaFormulario
         Set oRpt229 = Nothing
         Exit Sub
     Case "ID_Liquidación"
-        Dim oRptLiq As New SighReportes.RptESisSoatExoConv
+        Dim oRptLiq As New SIGHReportes.RptESisSoatExoConv
         oRptLiq.idUsuario = ml_IdUsuarioAuditoria
         oRptLiq.EjecutaFormulario
         Set oRptLiq = Nothing
         Exit Sub
     Case "ID_ConsumoporPuntosdeCarga"
-        Dim oRptConsPtoCarga As New SighReportes.RptEConsumoXptoCarga
+        Dim oRptConsPtoCarga As New SIGHReportes.RptEConsumoXptoCarga
         oRptConsPtoCarga.idUsuario = ml_IdUsuarioAuditoria
         oRptConsPtoCarga.EjecutaFormulario
         Set oRptConsPtoCarga = Nothing
         Exit Sub
     Case "ID_ExoneracionesenGeneral"
-        Dim oRpt239 As New SighReportes.RptEExoGeneral
+        Dim oRpt239 As New SIGHReportes.RptEExoGeneral
         oRpt239.EjecutaFormulario
         Set oRpt239 = Nothing
         Exit Sub
@@ -2733,12 +2739,12 @@ Private Sub toolbar_ToolClick(ByVal Tool As ActiveToolBars.SSTool)
         Set oRptPartidaDetalle = Nothing
         Exit Sub
     Case "ID_RecalculoSOATaParticular"    'debb-04/04/2011
-        Dim oRptEconRecalculoSOAT As New SighReportes.RptEconRecalculoSOAT
+        Dim oRptEconRecalculoSOAT As New SIGHReportes.RptEconRecalculoSOAT
         oRptEconRecalculoSOAT.EjecutaFormulario
         Set oRptEconRecalculoSOAT = Nothing
         Exit Sub
     Case "ID_TipoTarifa"
-        Dim oRptEtipoTarifa As New SighReportes.RptEtipoTarifa
+        Dim oRptEtipoTarifa As New SIGHReportes.RptEtipoTarifa
         oRptEtipoTarifa.EjecutaFormulario
         Set oRptEtipoTarifa = Nothing
         Exit Sub
@@ -2886,7 +2892,7 @@ Private Sub toolbar_ToolClick(ByVal Tool As ActiveToolBars.SSTool)
         Set oRptAHCauditoria = Nothing
         Exit Sub
     Case "ID_AuditoriaHosp"
-        Dim oRptHauditoria As New SighReportes.RptHauditoria
+        Dim oRptHauditoria As New SIGHReportes.RptHauditoria
         oRptHauditoria.idUsuario = ml_IdUsuarioAuditoria
         oRptHauditoria.EjecutaFormulario
         Set oRptHauditoria = Nothing
@@ -3011,7 +3017,7 @@ Private Sub toolbar_ToolClick(ByVal Tool As ActiveToolBars.SSTool)
       
     '---Adams
     Case "id_mn_CantidadesMortalidad"
-      Dim oRptMN_Cantidades As New SighReportes.RptMN_Cantidades
+      Dim oRptMN_Cantidades As New SIGHReportes.RptMN_Cantidades
       'oRptMN_Cantidades.idUsuario = ml_IdUsuarioAuditoria
       oRptMN_Cantidades.EjecutaFormulario
       Set oRptMN_Cantidades = Nothing
@@ -3091,7 +3097,7 @@ Private Sub toolbar_ToolClick(ByVal Tool As ActiveToolBars.SSTool)
     '**********************************************************************
     Select Case Tool.ID
     Case "ID_DxOmitidos" 'HIS Digitacion - Frank08082014
-        Dim oRptHisDxOmitidos2 As New SighReportes.clRptHisDxOmitidos
+        Dim oRptHisDxOmitidos2 As New SIGHReportes.clRptHisDxOmitidos
         oRptHisDxOmitidos2.EjecutaFormulario
         Set oRptHisDxOmitidos2 = Nothing
         Exit Sub
