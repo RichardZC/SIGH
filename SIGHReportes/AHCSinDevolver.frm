@@ -5,7 +5,7 @@ Begin VB.Form AHCSinDevolver
    ClientHeight    =   6420
    ClientLeft      =   120
    ClientTop       =   450
-   ClientWidth     =   12915
+   ClientWidth     =   12900
    BeginProperty Font 
       Name            =   "Tahoma"
       Size            =   8.25
@@ -17,7 +17,7 @@ Begin VB.Form AHCSinDevolver
    EndProperty
    LinkTopic       =   "Form1"
    ScaleHeight     =   6420
-   ScaleWidth      =   12915
+   ScaleWidth      =   12900
    ShowInTaskbar   =   0   'False
    StartUpPosition =   2  'CenterScreen
    Begin VB.CheckBox chkExcel 
@@ -44,7 +44,7 @@ Begin VB.Form AHCSinDevolver
       Left            =   75
       TabIndex        =   1
       Top             =   5175
-      Width           =   12735
+      Width           =   12780
       Begin VB.CommandButton btnCancelar 
          Caption         =   "Cancelar (ESC)"
          DisabledPicture =   "AHCSinDevolver.frx":0312
@@ -75,8 +75,8 @@ Begin VB.Form AHCSinDevolver
       Left            =   30
       TabIndex        =   0
       Top             =   600
-      Width           =   12780
-      _ExtentX        =   22543
+      Width           =   12810
+      _ExtentX        =   22595
       _ExtentY        =   8043
       _Version        =   131072
       GridFlags       =   17040384

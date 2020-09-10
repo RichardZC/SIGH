@@ -200,11 +200,11 @@ Begin VB.Form MovimientoHistoriaDetalle
             Left            =   3120
             TabIndex        =   52
             Top             =   1605
-            Width           =   780
-            _ExtentX        =   1376
+            Width           =   1050
+            _ExtentX        =   1852
             _ExtentY        =   556
             _Version        =   393216
-            MaxLength       =   5
+            MaxLength       =   8
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
                Name            =   "Tahoma"
                Size            =   9
@@ -214,7 +214,7 @@ Begin VB.Form MovimientoHistoriaDetalle
                Italic          =   0   'False
                Strikethrough   =   0   'False
             EndProperty
-            Mask            =   "##:##"
+            Mask            =   "##:##:##"
             PromptChar      =   "_"
          End
          Begin MSMask.MaskEdBox txtFechaMovimiento 
@@ -2344,7 +2344,9 @@ Sub CargarDatosAlFormulario()
     Select Case mi_Opcion
         Case sghAgregar
             Me.txtFechaMovimiento.Text = Format(Date, sighEntidades.DevuelveFechaSoloFormato_DMY)
-            Me.txtHoraMovimiento = Format(Now, sighEntidades.DevuelveHoraSoloFormato_HM)
+            'SCCQ 09/09/2020 Cambio27 Inicio
+            Me.txtHoraMovimiento.Text = Format(Now, sighEntidades.DevuelveHoraSoloFormato_HMS) 'Antes: DevuelveHoraSoloFormato_HM
+            'SCCQ 09/09/2020 Cambio27 Fin
             Me.btnListarMovimientosAsoc.Visible = False
             Me.progressRpt.Visible = False
         Case sghModificar
@@ -2511,7 +2513,9 @@ Function ValidarDatosObligatorios() As Boolean
    If mo_cmbIdMotivo.BoundText = "" Then
        sMensaje = sMensaje + "Ingrese el motivo" + Chr(13)
    End If
-   If Me.txtHoraMovimiento.Text = sighEntidades.HORA_VACIA_HM Then
+   'SCCQ 09/09/2020 Cambio27 Inicio
+   If Me.txtHoraMovimiento.Text = sighEntidades.HORA_VACIA_HMS Then 'Antes: HORA_VACIA_HM
+   'SCCQ 09/09/2020 Cambio27 Fin
        sMensaje = sMensaje + "Ingrese la hora de movimiento" + Chr(13)
    End If
    If Me.txtFechaMovimiento.Text = sighEntidades.FECHA_VACIA_DMY Then
@@ -2594,7 +2598,9 @@ Sub CargaDatosAlObjetosDeDatos()
             With mo_Movimiento
                 .Observacion = Me.txtObservacion.Text
                 .idMotivo = mo_cmbIdMotivo.BoundText
-                .FechaMovimiento = Format(Me.txtFechaMovimiento.Text + " " + Me.txtHoraMovimiento.Text, sighEntidades.DevuelveFechaSoloFormato_DMY_HM)
+                'SCCQ 09/09/2020 Cambio27 Inicio
+                .FechaMovimiento = Format(Me.txtFechaMovimiento.Text + " " + Me.txtHoraMovimiento.Text, sighEntidades.DevuelveFechaSoloFormato_DMY_HMS) 'Antes: DevuelveFechaSoloFormato_DMY_HM
+                'SCCQ 09/09/2020 Cambio27 Fin
                 .IdEmpleadoRecepcion = Val(Me.txtIdEmpleadoRecepcion.Tag)
                 .IdEmpleadoTransporte = Val(Me.txtIdEmpleadoTransporte.Tag)
                 .IdEmpleadoArchivo = Val(Me.txtIdEmpleadoArchivo.Tag)
@@ -2714,7 +2720,9 @@ oConexion.CursorLocation = adUseClient
                 ml_IdGrupoMovimiento = .IdGrupoMovimiento
                 Me.txtObservacion.Text = .Observacion
                 mo_cmbIdMotivo.BoundText = .idMotivo
-                Me.txtHoraMovimiento.Text = Format(.FechaMovimiento, sighEntidades.DevuelveHoraSoloFormato_HM)
+                'SCCQ 09/09/2020 Cambio27 Inicio
+                Me.txtHoraMovimiento.Text = Format(.FechaMovimiento, sighEntidades.DevuelveHoraSoloFormato_HMS) 'Antes: DevuelveHoraSoloFormato_HM
+                'SCCQ 09/09/2020 Cambio27 Fin
                 Me.txtFechaMovimiento.Text = Format(.FechaMovimiento, sighEntidades.DevuelveFechaSoloFormato_DMY)
                 
                  'Datos del paciente
@@ -2822,7 +2830,9 @@ Dim oDoServicio As New doServicio
              ml_IdGrupoMovimiento = mo_MovimientosHistoriaClinica.IdGrupoMovimiento
              Me.txtObservacion.Text = mo_MovimientosHistoriaClinica.Observacion
              mo_cmbIdMotivo.BoundText = mo_MovimientosHistoriaClinica.idMotivo
-             Me.txtHoraMovimiento.Text = Format(mo_MovimientosHistoriaClinica.FechaMovimiento, sighEntidades.DevuelveHoraSoloFormato_HM)
+             'SCCQ 09/09/2020 Cambio27 Inicio
+             Me.txtHoraMovimiento.Text = Format(mo_MovimientosHistoriaClinica.FechaMovimiento, sighEntidades.DevuelveHoraSoloFormato_HMS) 'Antes: DevuelveHoraSoloFormato_HM
+             'SCCQ 09/09/2020 Cambio27 Fin
              Me.txtFechaMovimiento.Text = Format(mo_MovimientosHistoriaClinica.FechaMovimiento, sighEntidades.DevuelveFechaSoloFormato_DMY)
     
             Dim oDOEmpleado As New dOEmpleado
@@ -2928,7 +2938,9 @@ Sub LimpiarFormulario()
             ucMensajeParpadeando1.Visible = False
             
             Me.txtFechaMovimiento.Text = Format(Date, sighEntidades.DevuelveFechaSoloFormato_DMY)
-            Me.txtHoraMovimiento.Text = Format(Now, sighEntidades.DevuelveHoraSoloFormato_HM)
+            'SCCQ 09/09/2020 Cambio27 Inicio
+            Me.txtHoraMovimiento.Text = Format(Now, sighEntidades.DevuelveHoraSoloFormato_HMS) 'Antes: DevuelveHoraSoloFormato_HM
+            'SCCQ 09/09/2020 Cambio27 Fin
             If mrs_HistoriasPorMover.RecordCount > 0 Then
                 mrs_HistoriasPorMover.MoveFirst
                 Do While Not mrs_HistoriasPorMover.EOF
