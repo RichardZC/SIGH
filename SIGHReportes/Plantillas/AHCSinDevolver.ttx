@@ -5,3 +5,4 @@ PrimerNombre	String	40
 SegundoNombre	String	40	
 fecha_prestada	Date		
 destino	String	50	
+Observacion	String	100	

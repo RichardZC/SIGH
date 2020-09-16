@@ -5,7 +5,7 @@ Begin VB.Form AHCSinDevolver
    ClientHeight    =   6420
    ClientLeft      =   120
    ClientTop       =   450
-   ClientWidth     =   12900
+   ClientWidth     =   15420
    BeginProperty Font 
       Name            =   "Tahoma"
       Size            =   8.25
@@ -17,7 +17,7 @@ Begin VB.Form AHCSinDevolver
    EndProperty
    LinkTopic       =   "Form1"
    ScaleHeight     =   6420
-   ScaleWidth      =   12900
+   ScaleWidth      =   15420
    ShowInTaskbar   =   0   'False
    StartUpPosition =   2  'CenterScreen
    Begin VB.CheckBox chkExcel 
@@ -44,17 +44,17 @@ Begin VB.Form AHCSinDevolver
       Left            =   75
       TabIndex        =   1
       Top             =   5175
-      Width           =   12780
+      Width           =   14880
       Begin VB.CommandButton btnCancelar 
          Caption         =   "Cancelar (ESC)"
          DisabledPicture =   "AHCSinDevolver.frx":0312
          DownPicture     =   "AHCSinDevolver.frx":07D6
          Height          =   705
-         Left            =   6555
+         Left            =   7530
          Picture         =   "AHCSinDevolver.frx":0CC2
          Style           =   1  'Graphical
          TabIndex        =   3
-         Top             =   225
+         Top             =   240
          Width           =   1365
       End
       Begin VB.CommandButton btnAceptar 
@@ -62,11 +62,11 @@ Begin VB.Form AHCSinDevolver
          DisabledPicture =   "AHCSinDevolver.frx":11AE
          DownPicture     =   "AHCSinDevolver.frx":160E
          Height          =   705
-         Left            =   5025
+         Left            =   6000
          Picture         =   "AHCSinDevolver.frx":1A83
          Style           =   1  'Graphical
          TabIndex        =   2
-         Top             =   225
+         Top             =   240
          Width           =   1365
       End
    End
@@ -75,8 +75,8 @@ Begin VB.Form AHCSinDevolver
       Left            =   30
       TabIndex        =   0
       Top             =   600
-      Width           =   12810
-      _ExtentX        =   22595
+      Width           =   14910
+      _ExtentX        =   26300
       _ExtentY        =   8043
       _Version        =   131072
       GridFlags       =   17040384
@@ -152,6 +152,9 @@ grdHistoriasC.Bands(0).Columns("fecha_prestada").Header.Caption = "Fecha préstam
 grdHistoriasC.Bands(0).Columns("fecha_prestada").Width = 1900
 
 grdHistoriasC.Bands(0).Columns("destino").Header.Caption = "Destino"
-grdHistoriasC.Bands(0).Columns("destino").Width = 3000
+grdHistoriasC.Bands(0).Columns("destino").Width = 2500
+
+grdHistoriasC.Bands(0).Columns("Observacion").Header.Caption = "Observación"
+grdHistoriasC.Bands(0).Columns("Observacion").Width = 2500
 End Sub
 'SCCQ 08/09/2020 Cambio27 Fin
