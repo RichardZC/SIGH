@@ -2,10 +2,10 @@ VERSION 5.00
 Object = "{5A9433E9-DD7B-4529-91B6-A5E8CA054615}#2.0#0"; "IGULTR~1.OCX"
 Begin VB.Form AHCSinDevolver 
    Caption         =   "HC sin devolución por Trámites Administrativos pasadas las 72 horas"
-   ClientHeight    =   6420
+   ClientHeight    =   6750
    ClientLeft      =   120
    ClientTop       =   450
-   ClientWidth     =   15420
+   ClientWidth     =   14955
    BeginProperty Font 
       Name            =   "Tahoma"
       Size            =   8.25
@@ -16,8 +16,8 @@ Begin VB.Form AHCSinDevolver
       Strikethrough   =   0   'False
    EndProperty
    LinkTopic       =   "Form1"
-   ScaleHeight     =   6420
-   ScaleWidth      =   15420
+   ScaleHeight     =   6750
+   ScaleWidth      =   14955
    ShowInTaskbar   =   0   'False
    StartUpPosition =   2  'CenterScreen
    Begin VB.CheckBox chkExcel 
@@ -43,8 +43,8 @@ Begin VB.Form AHCSinDevolver
       Height          =   1110
       Left            =   75
       TabIndex        =   1
-      Top             =   5175
-      Width           =   14880
+      Top             =   5655
+      Width           =   14820
       Begin VB.CommandButton btnCancelar 
          Caption         =   "Cancelar (ESC)"
          DisabledPicture =   "AHCSinDevolver.frx":0312
@@ -75,8 +75,8 @@ Begin VB.Form AHCSinDevolver
       Left            =   30
       TabIndex        =   0
       Top             =   600
-      Width           =   14910
-      _ExtentX        =   26300
+      Width           =   14790
+      _ExtentX        =   26088
       _ExtentY        =   8043
       _Version        =   131072
       GridFlags       =   17040384
@@ -91,6 +91,44 @@ Begin VB.Form AHCSinDevolver
          Strikethrough   =   0   'False
       EndProperty
       Caption         =   "Lista de historias clínicas"
+   End
+   Begin VB.Label lblTotal 
+      AutoSize        =   -1  'True
+      BackStyle       =   0  'Transparent
+      Caption         =   "_"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   9
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   210
+      Left            =   720
+      TabIndex        =   6
+      Top             =   5280
+      Width           =   105
+   End
+   Begin VB.Label Label4 
+      AutoSize        =   -1  'True
+      BackStyle       =   0  'Transparent
+      Caption         =   "Total:"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   9
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   210
+      Left            =   120
+      TabIndex        =   5
+      Top             =   5280
+      Width           =   480
    End
 End
 Attribute VB_Name = "AHCSinDevolver"
@@ -121,7 +159,13 @@ Private Sub btnAceptar_Click()
    Me.MousePointer = 1
 End Sub
 Public Sub RealizarBusqueda()
-Set grdHistoriasC.DataSource = mo_ReglasAC.SeleccionarHCSinDevolver(72)
+'Set grdHistoriasC.DataSource = mo_ReglasAC.SeleccionarHCSinDevolver(72)
+Dim otabla As Recordset
+Set otabla = mo_ReglasAC.SeleccionarHCSinDevolver(72)
+Set grdHistoriasC.DataSource = otabla
+lblTotal = otabla.RecordCount()
+Set otabla = Nothing
+'Data1.Recordset.RecordCount
 End Sub
 Private Sub btnCancelar_Click()
  Me.Visible = False
