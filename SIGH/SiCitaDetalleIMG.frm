@@ -956,31 +956,31 @@ Function ValidarDatosObligatorios() As Boolean
     End If
     ms_MensajeError = ""
     UcPacienteDatos1.CargarDatosAlObjetoDatos oDOPaciente
-    If .Text = "" Then
-       If oDOPaciente.NroDocumento = "" Then
-           ms_MensajeError = ms_MensajeError & "Tiene que registrar el N° DNI Leonel" & Chr(13)
-           lnTabError = 1
-       End If
-        If oDOPaciente.ApellidoPaterno = "" Then
-           ms_MensajeError = ms_MensajeError & "Tiene que registrar el Apellido Paterno" & Chr(13)
-           lnTabError = 1
-       End If
-       If oDOPaciente.ApellidoMaterno = "" Then
-           ms_MensajeError = ms_MensajeError & "Tiene que registrar el Apellido Materno" & Chr(13)
-           lnTabError = 1
-       End If
-       If oDOPaciente.PrimerNombre = "" Then
-           ms_MensajeError = ms_MensajeError & "Tiene que registrar el Primer Nombre" & Chr(13)
-           lnTabError = 1
-       End If
-       If oDOPaciente.FechaNacimiento = 0 Then
-           ms_MensajeError = ms_MensajeError & "Tiene que registrar la FECHA DE NACIMIENTO" & Chr(13)
-       End If
-       If oDOPaciente.idTipoSexo = 0 Then
-           ms_MensajeError = ms_MensajeError & "Tiene que elegir el SEXO" & Chr(13)
-       End If
-    Else
-    End If
+'    If  .Text = "" Then
+'       If oDOPaciente.nrodocumento = "" Then
+'           ms_MensajeError = ms_MensajeError & "Tiene que registrar el N° DNI Leonel" & Chr(13)
+'           lnTabError = 1
+'       End If
+'        If oDOPaciente.ApellidoPaterno = "" Then
+'           ms_MensajeError = ms_MensajeError & "Tiene que registrar el Apellido Paterno" & Chr(13)
+'           lnTabError = 1
+'       End If
+'       If oDOPaciente.ApellidoMaterno = "" Then
+'           ms_MensajeError = ms_MensajeError & "Tiene que registrar el Apellido Materno" & Chr(13)
+'           lnTabError = 1
+'       End If
+'       If oDOPaciente.PrimerNombre = "" Then
+'           ms_MensajeError = ms_MensajeError & "Tiene que registrar el Primer Nombre" & Chr(13)
+'           lnTabError = 1
+'       End If
+'       If oDOPaciente.FechaNacimiento = 0 Then
+'           ms_MensajeError = ms_MensajeError & "Tiene que registrar la FECHA DE NACIMIENTO" & Chr(13)
+'       End If
+'       If oDOPaciente.idTipoSexo = 0 Then
+'           ms_MensajeError = ms_MensajeError & "Tiene que elegir el SEXO" & Chr(13)
+'       End If
+'    Else
+'    End If
     If cmbResponsable.Text = "" Then
        ms_MensajeError = ms_MensajeError & "Tiene que elegir el RESPONSABLE" & Chr(13)
     Else
@@ -1382,7 +1382,7 @@ Sub CargarDatosAlosControles()
                 Dim oDOCajaComprobantesPago As New DOCajaComprobantesPago
                 Set oDOCajaComprobantesPago = mo_AdminCaja.ComprobantePagoSeleccionarPorId(DoSiCitas.IdComprobantePago, oConexion)
                 txtNserie.Text = oDOCajaComprobantesPago.nroSerie
-                txtNboleta.Text = oDOCajaComprobantesPago.NroDocumento
+                txtNboleta.Text = oDOCajaComprobantesPago.nrodocumento
                 ucFacturacionProductos.PermiteAgregarItems = False
                 UcPacienteDatos1.DeshabilitarFrames False
                 If ml_IdServicioPaciente > 0 Then
@@ -1570,7 +1570,7 @@ Sub CargaBoletaAutomaticamente()
         Set oRsTmp1 = mo_AdminCaja.CajaComprobantesSeleccionarPorId(ml_IdMovimiento)
         If oRsTmp1.RecordCount > 0 Then
             Me.txtNserie = oRsTmp1.Fields!nroSerie
-            Me.txtNboleta = oRsTmp1.Fields!NroDocumento
+            Me.txtNboleta = oRsTmp1.Fields!nrodocumento
             txtNboleta_LostFocus
         End If
         Set oRsTmp1 = Nothing

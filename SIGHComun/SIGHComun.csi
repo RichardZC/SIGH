@@ -5,10 +5,6 @@
 4=#P0#=mb	#P1#=idPais	#P2#=SIGHComun/DOEmpleado/idPais [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200708110129	#P7#=0	#P8#=1	.
 5=#P0#=mb	#P1#=idPais	#P2#=SIGHComun/DOEmpleado/idPais [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200708091704	#P7#=0	#P8#=0	.
 6=#P0#=mb	#P1#=EsActivo	#P2#=SIGHComun/DOEmpleado/EsActivo [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200708090709	#P7#=0	#P8#=0	.
-7=#P0#=mb	#P1#=Descripcion	#P2#=SIGHComun/DONacionalidad/Descripcion [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200706102815	#P7#=0	#P8#=1	.
-8=#P0#=mb	#P1#=Descripcion	#P2#=SIGHComun/DONacionalidad/Descripcion [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200706102806	#P7#=0	#P8#=2	.
-9=#P0#=mb	#P1#=IdPais	#P2#=SIGHComun/DONacionalidad/IdPais [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200706094928	#P7#=0	#P8#=4	.
-10=#P0#=mb	#P1#=IdPais	#P2#=SIGHComun/DONacionalidad/IdPais [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200706094903	#P7#=0	#P8#=2	.
-11=#P0#=mb	#P1#=ProximaCita	#P2#=SIGHComun/DoAtencionDatosAdicionales/ProximaCita [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200331174255	#P7#=0	#P8#=1	.
-12=#P0#=mb	#P1#=idTipoSexo	#P2#=SIGHComun/DOEmpleado/idTipoSexo [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200325111349	#P7#=0	#P8#=0	.
-13=#P0#=mb	#P1#=idTipoSexo	#P2#=SIGHComun/DOEmpleado/idTipoSexo [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200325111324	#P7#=0	#P8#=-1	.
+7=#P0#=mb	#P1#=ProximaCita	#P2#=SIGHComun/DoAtencionDatosAdicionales/ProximaCita [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200331174255	#P7#=0	#P8#=1	.
+8=#P0#=mb	#P1#=idTipoSexo	#P2#=SIGHComun/DOEmpleado/idTipoSexo [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200325111349	#P7#=0	#P8#=0	.
+9=#P0#=mb	#P1#=idTipoSexo	#P2#=SIGHComun/DOEmpleado/idTipoSexo [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200325111324	#P7#=0	#P8#=-1	.

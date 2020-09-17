@@ -33,7 +33,7 @@ Function TiposProgramacionSeleccionarTodos() As ADODB.Recordset
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New TiposProgramacion
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -49,7 +49,7 @@ Function TiposOcupacionSeleccionarTodos() As ADODB.Recordset
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New TiposOcupacion
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -64,7 +64,7 @@ Function TiposOcupacionTodos() As ADODB.Recordset
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New TiposOcupacion
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -80,7 +80,7 @@ Function TiposDocIdentidadSeleccionarTodos() As ADODB.Recordset
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New TiposDocIdentidad
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -96,7 +96,7 @@ Function TiposEstadoCivilSeleccionarTodos() As ADODB.Recordset
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New TiposEstadoCivil
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -112,7 +112,7 @@ Function TiposEstadoCivilTodos() As ADODB.Recordset
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New TiposEstadoCivil
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -129,7 +129,7 @@ Function TiposGradosInstruccionSeleccionarTodos() As ADODB.Recordset
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New TiposGradoInstruccion
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -145,7 +145,7 @@ Function TiposGradosInstruccionTodos() As ADODB.Recordset
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New TiposGradoInstruccion
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -160,7 +160,7 @@ Function TiposProcedenciaSeleccionarTodos() As ADODB.Recordset
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New TiposProcedencia
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -175,7 +175,7 @@ Function TiposProcedenciaTodos() As ADODB.Recordset
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New TiposProcedencia
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -191,7 +191,7 @@ Function TiposSexoSeleccionarTodos() As ADODB.Recordset
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New TiposSexo
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -228,7 +228,7 @@ Function TiposEmpleadoSeleccionarTodos() As ADODB.Recordset
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New TiposEmpleado
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -244,7 +244,7 @@ Function TiposCondicionTrabajoSeleccionarTodos() As ADODB.Recordset
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New TiposCondicionTrabajo
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -259,7 +259,7 @@ End Function
 '                                       Empleados
 '-------------------------------------------------------------------------------------
 
-Function EmpleadosAgregar(oDOEmpleado As dOEmpleado, oUsuariosRoles As Collection, oRsCargos As Recordset, oRsLaboraEn As Recordset, mo_lnIdTablaLISTBARITEMS As Long, mo_lcNombrePc As String, lcNombreEmpleado As String, lcDniEncriptado As String) As Boolean
+Function EmpleadosAgregar(oDOEmpleado As DOEmpleado, oUsuariosRoles As Collection, oRsCargos As Recordset, oRsLaboraEn As Recordset, mo_lnIdTablaLISTBARITEMS As Long, mo_lcNombrePc As String, lcNombreEmpleado As String, lcDniEncriptado As String) As Boolean
 Dim oConexion As New ADODB.Connection
 Dim oEmpleado As New Empleados
 Dim oUsuarioRol As New UsuariosRoles
@@ -274,7 +274,7 @@ Dim oParameter As ADODB.Parameter
     
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     
     Set oEmpleado.Conexion = oConexion
     Set oUsuarioRol.Conexion = oConexion
@@ -416,7 +416,7 @@ ErrEmpl:
    Set mo_AdminComun = Nothing
 End Function
 
-Function EmpleadosModificar(oDOEmpleado As dOEmpleado, oUsuariosRoles As Collection, oRsCargos As Recordset, oRsLaboraEn As Recordset, mo_lnIdTablaLISTBARITEMS As Long, mo_lcNombrePc As String, lcNombreEmpleado As String, lcDniEncriptado As String) As Boolean
+Function EmpleadosModificar(oDOEmpleado As DOEmpleado, oUsuariosRoles As Collection, oRsCargos As Recordset, oRsLaboraEn As Recordset, mo_lnIdTablaLISTBARITEMS As Long, mo_lcNombrePc As String, lcNombreEmpleado As String, lcDniEncriptado As String) As Boolean
 Dim oConexion As New ADODB.Connection
 Dim oEmpleado As New Empleados
 Dim oUsuarioRol As New UsuariosRoles
@@ -429,7 +429,7 @@ Dim oParameter As ADODB.Parameter
 
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     
     On Error GoTo ErrEmplM
     
@@ -605,7 +605,7 @@ ErrEmplM:
 End Function
 
 'Modificado por Yamill Palomino 07-10-13 Se cambio a Store Procedure
-Function EmpleadosEliminar(oDOEmpleado As dOEmpleado, mo_lnIdTablaLISTBARITEMS As Long, mo_lcNombrePc As String, _
+Function EmpleadosEliminar(oDOEmpleado As DOEmpleado, mo_lnIdTablaLISTBARITEMS As Long, mo_lcNombrePc As String, _
                                              lcNombreEmpleado As String) As Boolean
 Dim oConexion As New ADODB.Connection
 Dim oEmpleado As New Empleados
@@ -617,7 +617,7 @@ Dim oCommand As New ADODB.Command
 Dim oParameter As ADODB.Parameter
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
 
     EmpleadosEliminar = False
     oConexion.BeginTrans
@@ -698,14 +698,14 @@ Dim oParameter As ADODB.Parameter
     Set oRsTmp1 = Nothing
 End Function
 
-Function EmpleadosSeleccionarPorId(idEmpleado As Long) As dOEmpleado
+Function EmpleadosSeleccionarPorId(idEmpleado As Long) As DOEmpleado
 Dim oConexion As New ADODB.Connection
 Dim oEmpleado As New Empleados
-Dim oDOEmpleado As New dOEmpleado
+Dim oDOEmpleado As New DOEmpleado
     
     Set EmpleadosSeleccionarPorId = Nothing
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oEmpleado.Conexion = oConexion
@@ -723,7 +723,7 @@ Function EmpleadosSeleccionarTodos() As ADODB.Recordset
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New Empleados
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -733,11 +733,11 @@ Dim oTabla As New Empleados
     Set oConexion = Nothing
     Set oTabla = Nothing
 End Function
-Function EmpleadosFiltrar(oDOEmpleado As dOEmpleado) As ADODB.Recordset
+Function EmpleadosFiltrar(oDOEmpleado As DOEmpleado) As ADODB.Recordset
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New Empleados
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -747,7 +747,7 @@ Dim oTabla As New Empleados
     Set oConexion = Nothing
     Set oTabla = Nothing
 End Function
-Function EmpleadosSeleccionarPorCodigo(Codigo As String, oDOEmpleado As dOEmpleado) As Boolean
+Function EmpleadosSeleccionarPorCodigo(Codigo As String, oDOEmpleado As DOEmpleado) As Boolean
 Dim oConexion As New ADODB.Connection
 Dim oEmpleado As New Empleados
 Dim rsMedicoEspecialidad As Recordset
@@ -755,7 +755,7 @@ Dim rsMedicoEspecialidad As Recordset
     
     EmpleadosSeleccionarPorCodigo = False
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oEmpleado.Conexion = oConexion
@@ -769,12 +769,12 @@ Dim rsMedicoEspecialidad As Recordset
     Set oEmpleado = Nothing
 
 End Function
-Function EmpleadosObtenerConElMismoUsuario(oDOEmpleado As dOEmpleado) As ADODB.Recordset
+Function EmpleadosObtenerConElMismoUsuario(oDOEmpleado As DOEmpleado) As ADODB.Recordset
 Dim oConexion As New ADODB.Connection
 Dim oEmpleado As New Empleados
 Dim rsMedicoEspecialidad As Recordset
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     Set oEmpleado.Conexion = oConexion
     Set EmpleadosObtenerConElMismoUsuario = oEmpleado.ObtenerConElMismoUsuario(oDOEmpleado)
@@ -784,13 +784,13 @@ Dim rsMedicoEspecialidad As Recordset
     
 End Function
 
-Function EmpleadosObtenerConElMismoCodigoPlanilla(oDOEmpleado As dOEmpleado) As ADODB.Recordset
+Function EmpleadosObtenerConElMismoCodigoPlanilla(oDOEmpleado As DOEmpleado) As ADODB.Recordset
 Dim oConexion As New ADODB.Connection
 Dim oEmpleado As New Empleados
 Dim rsMedicoEspecialidad As Recordset
 
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     Set oEmpleado.Conexion = oConexion
     Set EmpleadosObtenerConElMismoCodigoPlanilla = oEmpleado.ObtenerConElMismoCodigoPlanilla(oDOEmpleado)
@@ -817,7 +817,7 @@ Function TiposCitaSeleccionarTodos() As ADODB.Recordset
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New TiposCita
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -833,7 +833,7 @@ Function TiposConsultaSeleccionarTodos() As ADODB.Recordset
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New TiposConsulta
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -850,7 +850,7 @@ Function ParametrosComparadorFechas() As ADODB.Recordset
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New Parametros
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -866,7 +866,7 @@ Function ParametrosIdServicioArchivoClinico() As Long
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New Parametros
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -888,7 +888,7 @@ Dim oProcedimiento As New Procedimientos
     
     ProcedimientosAgregar = False
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     Set oProcedimiento.Conexion = oConexion
     If oProcedimiento.Insertar(oDOProcedimiento) Then
         ProcedimientosAgregar = True
@@ -907,7 +907,7 @@ Dim oProcedimiento As New Procedimientos
     
     ProcedimientosModificar = False
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     Set oProcedimiento.Conexion = oConexion
     If oProcedimiento.modificar(oDOProcedimiento) Then
         ProcedimientosModificar = True
@@ -926,7 +926,7 @@ Dim oProcedimiento As New Procedimientos
     
     ProcedimientosEliminar = False
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     Set oProcedimiento.Conexion = oConexion
     If oProcedimiento.Eliminar(oDOProcedimiento) Then
         ProcedimientosEliminar = True
@@ -946,7 +946,7 @@ Dim oDOProcedimiento As New doProcedimiento
     
     Set ProcedimientosSeleccionarPorId = Nothing
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oProcedimiento.Conexion = oConexion
@@ -965,7 +965,7 @@ Function ProcedimientosSeleccionarTodos() As ADODB.Recordset
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New Procedimientos
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -980,7 +980,7 @@ Function ProcedimientosFiltrar(oDOProcedimiento As doProcedimiento) As ADODB.Rec
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New Procedimientos
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -1001,11 +1001,11 @@ Dim oDiagnostico As New Diagnosticos
     
     DiagnosticosAgregar = False
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     Set oDiagnostico.Conexion = oConexion
     If oDiagnostico.Insertar(oDODiagnostico) Then
         Call mo_ReglasSeguridad.AuditoriaAgregarV(oDODiagnostico.IdUsuarioAuditoria, "A", oDODiagnostico.IdDiagnostico, _
-                                                    "Diagnostico", oConexion, 1202, Sighentidades.RetornaNombrePC, _
+                                                    "Diagnostico", oConexion, 1202, sighentidades.RetornaNombrePC, _
                                                     Trim(oDODiagnostico.CodigoCIE2004) & "-" & oDODiagnostico.Descripcion)
         DiagnosticosAgregar = True
     Else
@@ -1023,11 +1023,11 @@ Dim oDiagnostico As New Diagnosticos
     
     DiagnosticosModificar = False
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     Set oDiagnostico.Conexion = oConexion
     If oDiagnostico.modificar(oDODiagnostico) Then
         Call mo_ReglasSeguridad.AuditoriaAgregarV(oDODiagnostico.IdUsuarioAuditoria, "M", oDODiagnostico.IdDiagnostico, _
-                                                    "Diagnostico", oConexion, 1202, Sighentidades.RetornaNombrePC, _
+                                                    "Diagnostico", oConexion, 1202, sighentidades.RetornaNombrePC, _
                                                     Trim(oDODiagnostico.CodigoCIE2004) & "-" & oDODiagnostico.Descripcion)
         DiagnosticosModificar = True
     Else
@@ -1045,11 +1045,11 @@ Dim oDiagnostico As New Diagnosticos
     
     DiagnosticosEliminar = False
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     Set oDiagnostico.Conexion = oConexion
     If oDiagnostico.Eliminar(oDODiagnostico) Then
         Call mo_ReglasSeguridad.AuditoriaAgregarV(oDODiagnostico.IdUsuarioAuditoria, "E", oDODiagnostico.IdDiagnostico, _
-                                                    "Diagnostico", oConexion, 1202, Sighentidades.RetornaNombrePC, _
+                                                    "Diagnostico", oConexion, 1202, sighentidades.RetornaNombrePC, _
                                                     Trim(oDODiagnostico.CodigoCIE2004) & "-" & oDODiagnostico.Descripcion)
         DiagnosticosEliminar = True
     Else
@@ -1068,7 +1068,7 @@ Dim oDODiagnostico As New doDiagnostico
     
     Set DiagnosticosSeleccionarPorId = Nothing
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oDiagnostico.Conexion = oConexion
@@ -1087,7 +1087,7 @@ Function DiagnosticosSeleccionarTodos() As ADODB.Recordset
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New Diagnosticos
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -1103,7 +1103,7 @@ Function TiposReferenciaSeleccionarTodos() As ADODB.Recordset
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New TiposReferencia
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -1121,7 +1121,7 @@ Dim oDOEstablecimiento As New DOEstablecimiento
     
     Set EstablecimientosSeleccionarPorId = Nothing
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oEstablecimiento.Conexion = oConexion
@@ -1142,7 +1142,7 @@ Function EstablecimientosFiltrar(ByVal oEstablecimiento As DOEstablecimiento, _
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New Establecimientos
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -1165,7 +1165,7 @@ Dim rsMedicoEspecialidad As Recordset
     
     oConexion.CommandTimeout = 300
     oConexion.CursorLocation = adUseClient
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     
     
     Set oEstablecimiento.Conexion = oConexion
@@ -1187,7 +1187,7 @@ Dim EstablecimientosNoMinsa As New EstablecimientosNoMinsa
     
     EstablecimientosNoMinsaAgregar = False
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     Set EstablecimientosNoMinsa.Conexion = oConexion
     If EstablecimientosNoMinsa.Insertar(oDoEstablecimientoNoMinsa) Then
         '
@@ -1208,7 +1208,7 @@ Dim EstablecimientosNoMinsa As New EstablecimientosNoMinsa
     
     EstablecimientosNoMinsaModificar = False
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     Set EstablecimientosNoMinsa.Conexion = oConexion
     If EstablecimientosNoMinsa.modificar(oDoEstablecimientoNoMinsa) Then
         '
@@ -1229,7 +1229,7 @@ Dim EstablecimientosNoMinsa As New EstablecimientosNoMinsa
     
     EstablecimientosNoMinsaEliminar = False
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     Set EstablecimientosNoMinsa.Conexion = oConexion
     If EstablecimientosNoMinsa.Eliminar(oDoEstablecimientoNoMinsa) Then
         '
@@ -1251,7 +1251,7 @@ Dim oDoEstablecimientoNoMinsa As New DOEstablecimientoNoMinsa
     
     Set EstablecimientosNoMinsaSeleccionarPorId = Nothing
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oEstablecimientoNoMinsa.Conexion = oConexion
@@ -1270,7 +1270,7 @@ Function EstablecimientosNoMinsaSeleccionarTodos() As ADODB.Recordset
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New EstablecimientosNoMinsa
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -1285,7 +1285,7 @@ Function EstablecimientosNoMinsaFiltrar(ByVal oEstablecimiento As DOEstablecimie
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New EstablecimientosNoMinsa
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -1302,7 +1302,7 @@ Function TiposSubsectorSeleccionarTodos() As ADODB.Recordset
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New TiposSubsector
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -1318,7 +1318,7 @@ Function TiposCondicionAltaSeleccionarTodos() As ADODB.Recordset
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New TiposCondicionAlta
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -1333,7 +1333,7 @@ Function TiposAltaSeleccionarTodos() As ADODB.Recordset
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New TiposAlta
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -1347,7 +1347,7 @@ Function DiagnosticosCapitulosSeleccionarTodos() As ADODB.Recordset
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New DiagnosticosCapitulos
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -1362,7 +1362,7 @@ Function DiagnosticosGruposSeleccionarPorCapitulo(IdCapitulo As Long) As ADODB.R
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New DiagnosticosGrupos
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -1378,7 +1378,7 @@ Function DiagnosticosCategoriaSeleccionarPorGrupo(IdGrupo As Long) As ADODB.Reco
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New DiagnosticosCategorias
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -1394,7 +1394,7 @@ Dim oConexion As New ADODB.Connection
 Dim oTabla As New Diagnosticos
     oConexion.CommandTimeout = 300
     oConexion.CursorLocation = adUseClient
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     
     
     Set oTabla.Conexion = oConexion
@@ -1410,7 +1410,7 @@ Dim oConexion As New ADODB.Connection
 Dim oTabla As New Diagnosticos
     oConexion.CommandTimeout = 300
     oConexion.CursorLocation = adUseClient
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     
     
     Set oTabla.Conexion = oConexion
@@ -1425,7 +1425,7 @@ Dim oConexion As New ADODB.Connection
 Dim oTabla As New Diagnosticos
 Dim doDiagnostico As New doDiagnostico
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -1446,7 +1446,7 @@ Function SubclasificacionDiagnosticosSeleccionarDxConsultaExterna() As ADODB.Rec
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New SubclasificacionDiagnosticos
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -1460,7 +1460,7 @@ Function SubclasificacionDiagnosticosSeleccionarDxHospIngreso() As ADODB.Records
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New SubclasificacionDiagnosticos
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -1475,7 +1475,7 @@ Function SubclasificacionDiagnosticosSeleccionarDxHospEgreso() As ADODB.Recordse
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New SubclasificacionDiagnosticos
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -1490,7 +1490,7 @@ Function SubclasificacionDiagnosticosSeleccionarDxHospMortalidad() As ADODB.Reco
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New SubclasificacionDiagnosticos
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -1505,7 +1505,7 @@ Function SubclasificacionDiagnosticosSeleccionarDxHospMuerteFetal() As ADODB.Rec
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New SubclasificacionDiagnosticos
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -1520,7 +1520,7 @@ Function SubclasificacionDiagnosticosSeleccionarDxHospComplicaciones() As ADODB.
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New SubclasificacionDiagnosticos
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -1534,7 +1534,7 @@ Function SubclasificacionDiagnosticosSeleccionarDxInterconsultas() As ADODB.Reco
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New SubclasificacionDiagnosticos
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -1549,7 +1549,7 @@ Function TiposCondicionPacienteSeleccionarTodos() As ADODB.Recordset
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New TiposCondicionPaciente
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -1567,7 +1567,7 @@ Function TiposCondicionPacienteCondicionAlEstablecimiento(idPaciente As Long, Fe
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New TiposCondicionPaciente
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -1583,7 +1583,7 @@ Function TiposCondicionPacienteCondicionAlServicio(idPaciente As Long, FechaIngr
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New TiposCondicionPaciente
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -1601,7 +1601,7 @@ Dim oConexion As New ADODB.Connection
 Dim oTabla As New Procedimientos
 Dim doProcedimiento As New doProcedimiento
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -1622,7 +1622,7 @@ Function TiposCondicionRNSeleccionarTodos() As ADODB.Recordset
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New TiposCondicionRecienNacido
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -1639,7 +1639,7 @@ Function SubclasificacionDiagnosticosSeleccionarIdPorCodigoYClasificacion(sCodig
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New SubclasificacionDiagnosticos
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -1656,7 +1656,7 @@ Function TipoGravedadAtencionSeleccionarTodos() As ADODB.Recordset
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New TiposGravedadAtencion
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -1673,7 +1673,7 @@ Function TiposEdadSeleccionarTodos() As ADODB.Recordset
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New TiposEdad
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -1689,7 +1689,7 @@ Dim oConexion As New ADODB.Connection
 Dim oTabla As New TiposEdad
 Dim oDOTipoEdad As New DOTipoEdad
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -1713,7 +1713,7 @@ Function CatalogoBienesInsumosAgregar(oDOCatalogoBienesInsumos As DOCatalogoBien
 Dim oConexion As New ADODB.Connection
 Dim oCatalogoBienesInsumos As New CatalogoBienesInsumos
     CatalogoBienesInsumosAgregar = False
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.BeginTrans
     Set oCatalogoBienesInsumos.Conexion = oConexion
     If oCatalogoBienesInsumos.Insertar(oDOCatalogoBienesInsumos) Then
@@ -1734,7 +1734,7 @@ Function CatalogoBienesInsumosModificar(oDOCatalogoBienesInsumos As DOCatalogoBi
 Dim oConexion As New ADODB.Connection
 Dim oCatalogoBienesInsumos As New CatalogoBienesInsumos
     CatalogoBienesInsumosModificar = False
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.BeginTrans
     Set oCatalogoBienesInsumos.Conexion = oConexion
     If oCatalogoBienesInsumos.modificar(oDOCatalogoBienesInsumos) Then
@@ -1758,7 +1758,7 @@ Dim oCatalogoBienesInsumos As New CatalogoBienesInsumos
 
     CatalogoBienesInsumosEliminar = False
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.BeginTrans
     Set oCatalogoBienesInsumos.Conexion = oConexion
     If oCatalogoBienesInsumos.Eliminar(oDOCatalogoBienesInsumos) Then
@@ -1783,7 +1783,7 @@ Dim oDOBienesInsumos As New DOCatalogoBienesInsumos
     
     Set CatalogoBienesInsumosSeleccionarPorId = Nothing
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oProducto.Conexion = oConexion
@@ -1803,7 +1803,7 @@ Function CatalogoBienesInsumosFiltrar(doBienesInsumos As DOCatalogoBienesInsumos
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New CatalogoBienesInsumos
     
-    oConexion.Open Sighentidades.CadenaConexionShape
+    oConexion.Open sighentidades.CadenaConexionShape
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -1827,7 +1827,7 @@ Function CatalogoBienesInsumosFiltrarDEBB(doBienesInsumos As DOCatalogoBienesIns
     Dim oConexion As New ADODB.Connection
     Dim oTabla As New CatalogoBienesInsumos
     
-    oConexion.Open Sighentidades.CadenaConexionShape
+    oConexion.Open sighentidades.CadenaConexionShape
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -1853,7 +1853,7 @@ Function InsumosGrupoFarmacologicoSeleccionarTodos() As ADODB.Recordset
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New InsumosGrupoFarmacologico
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -1873,7 +1873,7 @@ Function InsumosSubGrupoFarmacologicoSeleccionarPorGrupo(lIdGrupoFarmacologico A
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New InsumosSubGrupoFarmacologico
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -1894,7 +1894,7 @@ Dim oCentrosCosto As New CentrosCosto
     
     CentrosCostoAgregar = False
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.BeginTrans
     Set oCentrosCosto.Conexion = oConexion
     If oCentrosCosto.Insertar(oDOCentrosCosto) Then
@@ -1917,7 +1917,7 @@ Dim oCentrosCosto As New CentrosCosto
     
     CentrosCostoModificar = False
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.BeginTrans
     Set oCentrosCosto.Conexion = oConexion
     If oCentrosCosto.modificar(oDOCentrosCosto) Then
@@ -1941,7 +1941,7 @@ Dim oCentrosCosto As New CentrosCosto
 
     CentrosCostoEliminar = False
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.BeginTrans
     Set oCentrosCosto.Conexion = oConexion
     If oCentrosCosto.Eliminar(oDOCentrosCosto) Then
@@ -1966,7 +1966,7 @@ Dim oDOCentrosCosto As New DOCentrosCosto
     
     Set CentrosCostoSeleccionarPorId = Nothing
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oProducto.Conexion = oConexion
@@ -1986,7 +1986,7 @@ Function CentrosCostoFiltrar(oDOCentrosCosto As DOCentrosCosto) As ADODB.Records
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New CentrosCosto
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -2011,7 +2011,7 @@ Dim oPartidasPresupuestales As New PartidasPresupuestales
     
     PartidasPresupuestalesAgregar = False
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.BeginTrans
     Set oPartidasPresupuestales.Conexion = oConexion
     If oPartidasPresupuestales.Insertar(oDOPartidasPresupuestales) Then
@@ -2034,7 +2034,7 @@ Dim oPartidasPresupuestales As New PartidasPresupuestales
     
     PartidasPresupuestalesModificar = False
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.BeginTrans
     Set oPartidasPresupuestales.Conexion = oConexion
     If oPartidasPresupuestales.modificar(oDOPartidasPresupuestales) Then
@@ -2058,7 +2058,7 @@ Dim oPartidasPresupuestales As New PartidasPresupuestales
 
     PartidasPresupuestalesEliminar = False
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.BeginTrans
     Set oPartidasPresupuestales.Conexion = oConexion
     If oPartidasPresupuestales.Eliminar(oDOPartidasPresupuestales) Then
@@ -2083,7 +2083,7 @@ Dim oDOPartidasPresupuestales As New DOPartidasPresupuestales
     
     Set PartidasPresupuestalesSeleccionarPorId = Nothing
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oProducto.Conexion = oConexion
@@ -2105,7 +2105,7 @@ Function PartidasPresupuestalesFiltrar(oDoPartidaPresupuestales As DOPartidasPre
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New PartidasPresupuestales
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -2125,7 +2125,7 @@ Dim oTabla As New CentrosCosto
     If oConexion1 Is Nothing Then
        oConexion.CommandTimeout = 300
        oConexion.CursorLocation = adUseClient
-       oConexion.Open Sighentidades.CadenaConexion
+       oConexion.Open sighentidades.CadenaConexion
        Set oTabla.Conexion = oConexion
     Else
        Set oTabla.Conexion = oConexion1
@@ -2146,7 +2146,7 @@ Function PartidasPresupuestalesSeleccionarTodos() As ADODB.Recordset
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New PartidasPresupuestales
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -2174,7 +2174,7 @@ Dim oParameter As ADODB.Parameter
     CatalogoServiciosAgregar = False
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.BeginTrans
     Set oCatalogoServicios.Conexion = oConexion
     If oCatalogoServicios.Insertar(oDOCatalogoServicio) Then
@@ -2223,7 +2223,7 @@ Dim oParameter As ADODB.Parameter
     
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     
     oConexion.BeginTrans
     Set oCatalogoServicios.Conexion = oConexion
@@ -2281,7 +2281,7 @@ Dim oCatalogoServicios As New CatalogoServicios
 Dim oFactCatalogoServiciosPtos As New Recordset
     CatalogoServiciosEliminar = False
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.BeginTrans
     Set oCatalogoServicios.Conexion = oConexion
     With oCommand
@@ -2317,7 +2317,7 @@ Dim oDOBienesInsumos As New DOCatalogoServicio
     
     Set CatalogoServiciosSeleccionarPorId = Nothing
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oProducto.Conexion = oConexion
@@ -2338,7 +2338,7 @@ Function CatalogoServiciosFiltrar(oDOCatalogoServicio As DOCatalogoServicio, ml_
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New CatalogoServicios
     
-    oConexion.Open Sighentidades.CadenaConexionShape
+    oConexion.Open sighentidades.CadenaConexionShape
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -2362,7 +2362,7 @@ Function CatalogoServiciosFiltrarDEBB(oDOCatalogoServicio As DOCatalogoServicio,
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New CatalogoServicios
     
-    oConexion.Open Sighentidades.CadenaConexionShape
+    oConexion.Open sighentidades.CadenaConexionShape
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -2387,7 +2387,7 @@ Function CatalogoServiciosGrupoSeleccionarTodos() As ADODB.Recordset
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New CatalogoServiciosGrupo
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -2403,7 +2403,7 @@ Function CatalogoServiciosSubGrupoSeleccionarPorGrupo(lIdGrupo As Long) As ADODB
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New CatalogoServiciosSubGrupo
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -2419,7 +2419,7 @@ Function CatalogoServiciosSeccionSeleccionarPorSubGrupo(lIdSubGrupo As Long) As 
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New CatalogoServiciosSeccion
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -2434,7 +2434,7 @@ Function CatalogoServiciosSubSeccionSeleccionarPorSeccion(lIdServicioSeccion As 
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New CatalogoServiciosSubSeccion
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -2451,7 +2451,7 @@ Function SeleccionarParametrosPorTipo(tipo As String) As ADODB.Recordset
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New Parametros
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -2468,7 +2468,7 @@ Dim oConexion As New ADODB.Connection
 Dim oTabla As New FactPuntosCarga
     oConexion.CommandTimeout = 300
     oConexion.CursorLocation = adUseClient
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     
     
     Set oTabla.Conexion = oConexion
@@ -2483,7 +2483,7 @@ Function SeleccionarPuntosDeCargaSegunFiltro(lcFiltro As String) As ADODB.Record
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New FactPuntosCarga
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -2501,7 +2501,7 @@ Function ParametrosSeleccionarValorIntPorTipoYCodigo(sTipo As String, sCodigo As
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New Parametros
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     Set oTabla.Conexion = oConexion
     
@@ -2527,7 +2527,7 @@ Function DevuelveSubAreaDondeLaboraElUsuarioDelSistema(lnIdAreaLaboraUsuarioSist
         Set DevuelveSubAreaDondeLaboraElUsuarioDelSistema = Nothing
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
         With oCommand
             .CommandType = adCmdStoredProc
             Set .ActiveConnection = oConexion
@@ -2554,7 +2554,7 @@ Function DevuelveNombreMedicamentoOServicioSegunId(lnIdBienOservicio As Long, ln
     Dim oDOCatalogoServicio As New DOCatalogoServicio
     Dim oCatalogoServicios As New CatalogoServicios
     Dim oConexion As New ADODB.Connection
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     DevuelveNombreMedicamentoOServicioSegunId = ""
     If lnBienOServicio = sghbien Then
@@ -2591,7 +2591,7 @@ Dim ms_MensajeError As String
     If oConexion1 Is Nothing Then
         oConexion.CommandTimeout = 300
         oConexion.CursorLocation = adUseClient
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
         
     End If
 
@@ -2622,7 +2622,7 @@ Dim oRecordset As New ADODB.Recordset
 Dim oCommand As New ADODB.Command
 Dim oParameter As ADODB.Parameter
 Dim oConexion As New ADODB.Connection
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
 
     With oCommand
@@ -2665,7 +2665,7 @@ End Function
 Public Sub DevuelveApellidosYnombresDesdeRazonSocial(lcRazonSocial As String, ByRef lcApellidoPaterno As String, ByRef lcApellidoMaterno As String, ByRef lcPrimerNombre As String)
     Dim lnLen As Integer
     Dim lnPos As Integer
-    Dim mo_Teclado As New Sighentidades.Teclado
+    Dim mo_Teclado As New sighentidades.Teclado
     lnPos = 1
     lcApellidoPaterno = ""
     lcApellidoMaterno = ""
@@ -2697,7 +2697,7 @@ End Sub
 Function DevuelveEspecialidadDelServicio(lnIdServicio As Long) As Long
       Dim oServicios As New Servicios
       Dim oConexion As New Connection
-      oConexion.Open Sighentidades.CadenaConexion
+      oConexion.Open sighentidades.CadenaConexion
       oConexion.CursorLocation = adUseClient
       Set oServicios.Conexion = oConexion
       DevuelveEspecialidadDelServicio = oServicios.DevuelveEspecialidadDelServicio(lnIdServicio)
@@ -2709,7 +2709,7 @@ End Function
 Function FuentesFinanciamientoSegunFiltro(lcFiltro As String) As Recordset
       Dim oFuentesFinanciamiento As New FuentesFinanciamiento
       Dim oConexion As New Connection
-      oConexion.Open Sighentidades.CadenaConexion
+      oConexion.Open sighentidades.CadenaConexion
       oConexion.CursorLocation = adUseClient
       Set oFuentesFinanciamiento.Conexion = oConexion
       Set FuentesFinanciamientoSegunFiltro = oFuentesFinanciamiento.FuentesFinanciamientoSegunFiltro(lcFiltro)
@@ -2731,7 +2731,7 @@ End Function
 Function TiposFinanciamientoSegunFiltro(lcFiltro As String) As Recordset
       Dim oTiposFinanciamiento As New TiposFinanciamiento
       Dim oConexion As New Connection
-      oConexion.Open Sighentidades.CadenaConexion
+      oConexion.Open sighentidades.CadenaConexion
       oConexion.CursorLocation = adUseClient
       Set oTiposFinanciamiento.Conexion = oConexion
       Set TiposFinanciamientoSegunFiltro = oTiposFinanciamiento.TiposFinanciamientoSegunFiltro(lcFiltro)
@@ -2747,7 +2747,7 @@ Sub LlenaListBoxConTablaMensajesEnVentana(ctrListBox As Object, lcVentana As Str
     Dim oConexion As New ADODB.Connection
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
 
         With oCommand
             .CommandType = adCmdStoredProc
@@ -2780,14 +2780,14 @@ End Sub
 Sub LlenaDataComboTipoSalidaBienSegunAlmacen(ctrDataCombo As Object, lnIdAlmacen As Long, _
                                               ByRef lcidTipoSuministro As String)
     Dim oRsTmp As New Recordset
-    Dim mo_Formulario As New Sighentidades.Formulario
+    Dim mo_Formulario As New sighentidades.Formulario
     
     Dim oCommand As New ADODB.Command
     Dim oParameter As ADODB.Parameter
     Dim oConexion As New ADODB.Connection
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
  
         With oCommand
             .CommandType = adCmdStoredProc
@@ -2839,7 +2839,7 @@ Function SunasaTiposAfiliacionSeleccionarTodos() As Recordset
         Set SunasaTiposAfiliacionSeleccionarTodos = Nothing
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
         With oCommand
             .CommandType = adCmdStoredProc
             Set .ActiveConnection = oConexion
@@ -2864,7 +2864,7 @@ Function SunasaTiposRegimenSeleccionarTodos() As Recordset
         Set SunasaTiposRegimenSeleccionarTodos = Nothing
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
         With oCommand
             .CommandType = adCmdStoredProc
             Set .ActiveConnection = oConexion
@@ -2889,7 +2889,7 @@ Function SunasaTiposParentescoSeleccionarTodos() As Recordset
         Set SunasaTiposParentescoSeleccionarTodos = Nothing
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
         With oCommand
             .CommandType = adCmdStoredProc
             Set .ActiveConnection = oConexion
@@ -2914,7 +2914,7 @@ Function SunasaTiposOperacionSeleccionarTodos() As Recordset
         Set SunasaTiposOperacionSeleccionarTodos = Nothing
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
         With oCommand
             .CommandType = adCmdStoredProc
             Set .ActiveConnection = oConexion
@@ -2943,7 +2943,7 @@ Sub ActualizaPreciosParaFarmacia(mrs_Precios As Recordset, lnIdProducto As Long)
         Dim oDoFinanciamientoCatalogoBien As New DoFinanciamientoCatalogoBien, oFinanciamientoCatalogoBien As New FinanciamientoCatalogoBien
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
         If mrs_Precios.RecordCount > 0 Then
            Set oFinanciamientoCatalogoBien.Conexion = oConexion
            mrs_Precios.MoveFirst
@@ -3085,7 +3085,7 @@ Dim oConexion As New ADODB.Connection
     Set PerinatalAtencionSeleccionarPorIdPaciente = Nothing
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
 
     With oCommand
         .CommandType = adCmdStoredProc
@@ -3117,7 +3117,7 @@ Function TiposDestacadosSeleccionarTodos() As Recordset
          Set TiposDestacadosSeleccionarTodos = Nothing
          oConexion.CursorLocation = adUseClient
          oConexion.CommandTimeout = 300
-         oConexion.Open Sighentidades.CadenaConexion
+         oConexion.Open sighentidades.CadenaConexion
         With oCommand
             .CommandType = adCmdStoredProc
             Set .ActiveConnection = oConexion
@@ -3142,7 +3142,7 @@ Function TiposEmpleadosSeleccionarSiSeProgramaPorId(lnIdTipoEmpleado As Long) As
      Dim oParameter As New ADODB.Parameter
          oConexion.CursorLocation = adUseClient
          oConexion.CommandTimeout = 300
-         oConexion.Open Sighentidades.CadenaConexion
+         oConexion.Open sighentidades.CadenaConexion
      TiposEmpleadosSeleccionarSiSeProgramaPorId = False
      
 
@@ -3173,7 +3173,7 @@ Function ColegiosHISseleccionarTodos() As Recordset
         Set ColegiosHISseleccionarTodos = Nothing
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
 
         With oCommand
             .CommandType = adCmdStoredProc
@@ -3197,7 +3197,7 @@ Function EtniaHISseleccionarTodos() As Recordset
         Set EtniaHISseleccionarTodos = Nothing
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
 
        With oCommand
             .CommandType = adCmdStoredProc
@@ -3223,7 +3223,7 @@ Function TiposEmpleadosSeleccionarSegunFiltro(lcWhere As String) As Recordset
          Set TiposEmpleadosSeleccionarSegunFiltro = Nothing
          oConexion.CursorLocation = adUseClient
          oConexion.CommandTimeout = 300
-         oConexion.Open Sighentidades.CadenaConexion
+         oConexion.Open sighentidades.CadenaConexion
        With oCommand
             .CommandType = adCmdStoredProc
             Set .ActiveConnection = oConexion
@@ -3251,7 +3251,7 @@ Function ConsumoCptEnLaboratorioPorIdAntencionParaParticulares(lnIdAtencion As L
         Set ConsumoCptEnLaboratorioPorIdAntencionParaParticulares = Nothing
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
 
         With oCommand
             .CommandType = adCmdStoredProc
@@ -3279,7 +3279,7 @@ Function ConsumoCptEnLaboratorioPorIdAntencionConSeguro(lnIdAtencion As Long) As
         Set ConsumoCptEnLaboratorioPorIdAntencionConSeguro = Nothing
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
 
        With oCommand
             .CommandType = adCmdStoredProc
@@ -3307,7 +3307,7 @@ Function ConsumoMedicamentosPorIdAntencionConSeguroYparticular(lnIdAtencion As L
         Set ConsumoMedicamentosPorIdAntencionConSeguroYparticular = Nothing
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
 
        With oCommand
             .CommandType = adCmdStoredProc
@@ -3334,7 +3334,7 @@ Function ConsumoCptEnImagenesPorIdAntencionParaParticulares(lnIdAtencion As Long
         Set ConsumoCptEnImagenesPorIdAntencionParaParticulares = Nothing
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
 
        With oCommand
             .CommandType = adCmdStoredProc
@@ -3361,7 +3361,7 @@ Function ConsumoCptEnImagenesPorIdAntencionConSeguro(lnIdAtencion As Long) As Re
         Set ConsumoCptEnImagenesPorIdAntencionConSeguro = Nothing
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
 
         With oCommand
             .CommandType = adCmdStoredProc
@@ -3388,7 +3388,7 @@ Function RecetasConCabeceraYdetalleSoloCpt(lnIdReceta As Long, lnIdEstado As Lon
        Dim oConexion As New ADODB.Connection
            oConexion.CursorLocation = adUseClient
            oConexion.CommandTimeout = 300
-           oConexion.Open Sighentidades.CadenaConexion
+           oConexion.Open sighentidades.CadenaConexion
         With oCommand
             .CommandType = adCmdStoredProc
             Set .ActiveConnection = oConexion
@@ -3417,7 +3417,7 @@ Function FactCatalogoServiciosPtosSeleccionar(lcFiltro As String, Optional oCone
        If oConexion1 Is Nothing Then
            oConexion.CursorLocation = adUseClient
            oConexion.CommandTimeout = 300
-           oConexion.Open Sighentidades.CadenaConexion
+           oConexion.Open sighentidades.CadenaConexion
        End If
 
        With oCommand
@@ -3455,7 +3455,7 @@ Function RecetasDevuelveDatosDelDetalle(lnIdReceta As Long, lnIdPuntoCarga As Lo
           Set RecetasDevuelveDatosDelDetalle = Nothing
           oConexion.CursorLocation = adUseClient
           oConexion.CommandTimeout = 300
-          oConexion.Open Sighentidades.CadenaConexion
+          oConexion.Open sighentidades.CadenaConexion
 
     With oCommand
         .CommandType = adCmdStoredProc
@@ -3485,7 +3485,7 @@ Function RecetaCabeceraDetalleSeleccionaPorNroReceta(lnIdReceta As Long) As Reco
            Set RecetaCabeceraDetalleSeleccionaPorNroReceta = Nothing
            oConexion.CursorLocation = adUseClient
            oConexion.CommandTimeout = 300
-           oConexion.Open Sighentidades.CadenaConexion
+           oConexion.Open sighentidades.CadenaConexion
 
     With oCommand
         .CommandType = adCmdStoredProc
@@ -3511,7 +3511,7 @@ Function DevuelveNombreEstablecimientoRenaes(lcFuaReferidoOrigenCodigoRENAES As 
       Dim oConexion As New ADODB.Connection
           oConexion.CursorLocation = adUseClient
           oConexion.CommandTimeout = 300
-          oConexion.Open Sighentidades.CadenaConexion
+          oConexion.Open sighentidades.CadenaConexion
           DevuelveNombreEstablecimientoRenaes = ""
 
         With oCommand
@@ -3543,7 +3543,7 @@ Function DiagnosticosSeleccionarPorCie10devuelveDescripcion(lcCodigoCie10 As Str
       Dim oConexion As New ADODB.Connection
           oConexion.CursorLocation = adUseClient
           oConexion.CommandTimeout = 300
-          oConexion.Open Sighentidades.CadenaConexion
+          oConexion.Open sighentidades.CadenaConexion
       DiagnosticosSeleccionarPorCie10devuelveDescripcion = ""
 
         With oCommand
@@ -3575,7 +3575,7 @@ Function MedicamentosInsumosSeleccionarPorCodigoDevuelveNombre(lcCodigoDigemid A
       Dim oConexion As New ADODB.Connection
           oConexion.CursorLocation = adUseClient
           oConexion.CommandTimeout = 300
-          oConexion.Open Sighentidades.CadenaConexion
+          oConexion.Open sighentidades.CadenaConexion
       MedicamentosInsumosSeleccionarPorCodigoDevuelveNombre = ""
 
         With oCommand
@@ -3606,7 +3606,7 @@ Function ProcedimientosSeleccionarPorCodigo(lcCodigoCpt As String, Optional oCon
       Dim oConexion As New ADODB.Connection
       Set ProcedimientosSeleccionarPorCodigo = Nothing
       If oConexion1 Is Nothing Then
-          Sighentidades.AbreConexionSIGH oConexion
+          sighentidades.AbreConexionSIGH oConexion
       End If
    With oCommand
         .CommandType = adCmdStoredProc
@@ -3644,7 +3644,7 @@ Sub TiposCondicionPacienteCondicionAlEstablecimientoYservicio(ByRef lnIdCondicio
       Dim oConexion As New ADODB.Connection
           oConexion.CursorLocation = adUseClient
           oConexion.CommandTimeout = 300
-          oConexion.Open Sighentidades.CadenaConexion
+          oConexion.Open sighentidades.CadenaConexion
 
       With oCommand
         .CommandType = adCmdStoredProc
@@ -3870,7 +3870,7 @@ Function FactCatalogoServiciosPtosSeleccionarXidProducto(lnIdProducto As Long, O
             If oConexion1 Is Nothing Then
                 oConexion.CursorLocation = adUseClient
                 oConexion.CommandTimeout = 300
-                oConexion.Open Sighentidades.CadenaConexion
+                oConexion.Open sighentidades.CadenaConexion
             End If
             With oCommand
                  .CommandType = adCmdStoredProc
@@ -3904,7 +3904,7 @@ Function FactPuntosCargaSeleccionarPorFiltro(lcFiltro As String, Optional oConex
         Dim oParameter As ADODB.Parameter
         Dim oConexion As New ADODB.Connection
         If oConexion1 Is Nothing Then
-            oConexion.Open Sighentidades.CadenaConexion
+            oConexion.Open sighentidades.CadenaConexion
             oConexion.CursorLocation = adUseClient
         End If
 
@@ -3941,7 +3941,7 @@ Function EmpleadosCargosSeleccionarPorFiltro(lcFiltro As String) As Recordset
             Set EmpleadosCargosSeleccionarPorFiltro = Nothing
             oConexion.CursorLocation = adUseClient
             oConexion.CommandTimeout = 300
-            oConexion.Open Sighentidades.CadenaConexion
+            oConexion.Open sighentidades.CadenaConexion
 
         With oCommand
             .CommandType = adCmdStoredProc
@@ -3966,7 +3966,7 @@ Function EmpleadosLugarDeTrabajoSeleccionarPorFiltro(lcFiltro As String) As Reco
             Set EmpleadosLugarDeTrabajoSeleccionarPorFiltro = Nothing
             oConexion.CursorLocation = adUseClient
             oConexion.CommandTimeout = 300
-            oConexion.Open Sighentidades.CadenaConexion
+            oConexion.Open sighentidades.CadenaConexion
 
        With oCommand
             .CommandType = adCmdStoredProc
@@ -3991,7 +3991,7 @@ Function EstablecimientosSeleccionarPorFiltro(lcFiltro As String, Optional oCone
         If oConexion1 Is Nothing Then
             oConexion.CommandTimeout = 300
             oConexion.CursorLocation = adUseClient
-            oConexion.Open Sighentidades.CadenaConexion
+            oConexion.Open sighentidades.CadenaConexion
         End If
         With oCommand
             .CommandType = adCmdStoredProc
@@ -4022,7 +4022,7 @@ Function EspecialidadesSeleccionarPorFiltro(lcFiltro As String, Optional oConexi
         If oConexion1 Is Nothing Then
             oConexion.CommandTimeout = 300
             oConexion.CursorLocation = adUseClient
-            oConexion.Open Sighentidades.CadenaConexion
+            oConexion.Open sighentidades.CadenaConexion
         End If
         
 
@@ -4058,7 +4058,7 @@ Function FactPuntosCargaSeleccionarPorIdPuntoCarga(lnIdPuntoCarga As Long) As Re
             Set FactPuntosCargaSeleccionarPorIdPuntoCarga = Nothing
             oConexion.CursorLocation = adUseClient
             oConexion.CommandTimeout = 300
-            oConexion.Open Sighentidades.CadenaConexion
+            oConexion.Open sighentidades.CadenaConexion
 
         With oCommand
              .CommandType = adCmdStoredProc
@@ -4086,7 +4086,7 @@ Function CatalogoBienesInsumosSeleccionarPorFiltro(lcFiltro As String, lnOrdenad
         If oConexion1 Is Nothing Then
             oConexion.CommandTimeout = 300
             oConexion.CursorLocation = adUseClient
-            oConexion.Open Sighentidades.CadenaConexion
+            oConexion.Open sighentidades.CadenaConexion
         End If
 
         With oCommand
@@ -4124,7 +4124,7 @@ Function CatalogoBienesInsumosResumenSeleccionarPorFiltro(lcFiltro As String, ln
             Set CatalogoBienesInsumosResumenSeleccionarPorFiltro = Nothing
             oConexion.CursorLocation = adUseClient
             oConexion.CommandTimeout = 300
-            oConexion.Open Sighentidades.CadenaConexion
+            oConexion.Open sighentidades.CadenaConexion
 
         With oCommand
             .CommandType = adCmdStoredProc
@@ -4151,7 +4151,7 @@ Function CatalogoServiciosSeleccionarSoloAdministrativos() As Recordset
             Set CatalogoServiciosSeleccionarSoloAdministrativos = Nothing
             oConexion.CursorLocation = adUseClient
             oConexion.CommandTimeout = 300
-            oConexion.Open Sighentidades.CadenaConexion
+            oConexion.Open sighentidades.CadenaConexion
 
         With oCommand
              .CommandType = adCmdStoredProc
@@ -4176,7 +4176,7 @@ Function CatalogoServiciosSeleccionarSoloConPreciosEnSIS() As Recordset
             Set CatalogoServiciosSeleccionarSoloConPreciosEnSIS = Nothing
             oConexion.CursorLocation = adUseClient
             oConexion.CommandTimeout = 300
-            oConexion.Open Sighentidades.CadenaConexion
+            oConexion.Open sighentidades.CadenaConexion
 
         With oCommand
              .CommandType = adCmdStoredProc
@@ -4201,7 +4201,7 @@ Function CatalogoBienesInsumosSeleccionarSoloConPreciosEnSIS() As Recordset
             Set CatalogoBienesInsumosSeleccionarSoloConPreciosEnSIS = Nothing
             oConexion.CursorLocation = adUseClient
             oConexion.CommandTimeout = 300
-            oConexion.Open Sighentidades.CadenaConexion
+            oConexion.Open sighentidades.CadenaConexion
 
         With oCommand
              .CommandType = adCmdStoredProc
@@ -4225,7 +4225,7 @@ Function CatalogoServiciosSeleccionarSoloConPreciosEnParticular(lnIdPuntoCarga A
         Dim oConexion As New ADODB.Connection
             oConexion.CursorLocation = adUseClient
             oConexion.CommandTimeout = 300
-            oConexion.Open Sighentidades.CadenaConexion
+            oConexion.Open sighentidades.CadenaConexion
 
     With oCommand
         .CommandType = adCmdStoredProc
@@ -4252,7 +4252,7 @@ Function EmpleadosSeleccionarPorIdEmpleado(lnIdEmpleado As Long, Optional oConex
         If oConexion1 Is Nothing Then
             oConexion.CursorLocation = adUseClient
             oConexion.CommandTimeout = 300
-            oConexion.Open Sighentidades.CadenaConexion
+            oConexion.Open sighentidades.CadenaConexion
          End If
 
          With oCommand
@@ -4287,7 +4287,7 @@ Function AtencionesSeleccionarMedicoPorCuenta(lnIdCuentaAtencion As Long) As Rec
         Set AtencionesSeleccionarMedicoPorCuenta = Nothing
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
 
         With oCommand
              .CommandType = adCmdStoredProc
@@ -4315,7 +4315,7 @@ Sub CatalogoServiciosActualizaPartidaXidProducto(lnIdPartida As Long, lnIdProduc
    
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
         
    If lbValorIdPartidaNULL = True Then
         lnValorIdPartidaNULL = 1
@@ -4346,7 +4346,7 @@ Sub CatalogoServicioActualizaNULLenIdPartida(lnIdPartida As Long)
     
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
   
     With oCommand
         .CommandType = adCmdStoredProc
@@ -4369,7 +4369,7 @@ Sub CatalogoBienesInsumosActualizaNULLenIdPartida(lnIdPartida As Long)
     
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     
 
     With oCommand
@@ -4396,7 +4396,7 @@ Function ServiciosSeleccionarEmergenciaPorEspecialidad(lnEspecialidad As Long) A
         Set ServiciosSeleccionarEmergenciaPorEspecialidad = Nothing
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
     On Error GoTo ManejadorDeError
     ms_MensajeError = ""
 
@@ -4430,7 +4430,7 @@ Function DiagnosticosSeleccionarXCodigo(lcCodigoDx As String) As Recordset
         Set DiagnosticosSeleccionarXCodigo = Nothing
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
 
         With oCommand
              .CommandType = adCmdStoredProc
@@ -4457,7 +4457,7 @@ Function RecetaDetalleSoloFarmaciaSeleccionarXidCuentaAtencion(ml_idCuentaAtenci
         Set RecetaDetalleSoloFarmaciaSeleccionarXidCuentaAtencion = Nothing
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
     With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
@@ -4485,7 +4485,7 @@ Function RecetaDetalleSoloServiciosSeleccionarXidCuentaAtencion(ml_idCuentaAtenc
         Set RecetaDetalleSoloServiciosSeleccionarXidCuentaAtencion = Nothing
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
         With oCommand
              .CommandType = adCmdStoredProc
              Set .ActiveConnection = oConexion
@@ -4514,7 +4514,7 @@ Function RecetaDetalleSeleccionarXidCuentaIdItemDocumento(ml_idCuentaAtencion As
         Set RecetaDetalleSeleccionarXidCuentaIdItemDocumento = Nothing
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
 
     With oCommand
         .CommandType = adCmdStoredProc
@@ -4544,7 +4544,7 @@ Function TiposDocIdentidadDevuelveTipoDocumentoSis(ml_idTipoDocumentoGalenhos As
     Dim oConexion As New ADODB.Connection
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
 
     With oCommand
         .CommandType = adCmdStoredProc
@@ -4572,7 +4572,7 @@ Sub CatalogoBienesInsumosActualizaPRECIOS(lnPrCompraNew As Double, lnPrDistribuc
         If oConexion1 Is Nothing Then
             oConexion.CursorLocation = adUseClient
             oConexion.CommandTimeout = 300
-            oConexion.Open Sighentidades.CadenaConexion
+            oConexion.Open sighentidades.CadenaConexion
         End If
         With oCommand
             .CommandType = adCmdStoredProc
@@ -4601,7 +4601,7 @@ Function EmpleadosDevuelveNombreUsuario(lnIdEmpleado As Long) As String
         Dim oConexion As New ADODB.Connection
             oConexion.CursorLocation = adUseClient
             oConexion.CommandTimeout = 300
-            oConexion.Open Sighentidades.CadenaConexion
+            oConexion.Open sighentidades.CadenaConexion
 
     With oCommand
         .CommandType = adCmdStoredProc
@@ -4640,7 +4640,7 @@ End Sub
 Function TiposTarifaFiltrar(oDOTiposTarifa As DOTiposTarifa) As ADODB.Recordset
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New TiposTarifa
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     Set oTabla.Conexion = oConexion
     Set TiposTarifaFiltrar = oTabla.Filtrar(oDOTiposTarifa)
@@ -4658,7 +4658,7 @@ Dim oTiposTarifa As New TiposTarifa
     
     TiposTarifaAgregar = False
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.BeginTrans
     Set oTiposTarifa.Conexion = oConexion
     If oTiposTarifa.Insertar(oDOTiposTarifa) Then
@@ -4681,7 +4681,7 @@ Dim oTiposTarifa As New TiposTarifa
     
     TiposTarifaModificar = False
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.BeginTrans
     Set oTiposTarifa.Conexion = oConexion
     If oTiposTarifa.modificar(oDOTiposTarifa) Then
@@ -4705,7 +4705,7 @@ Dim oTiposTarifa As New TiposTarifa
 
     TiposTarifaEliminar = False
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.BeginTrans
     Set oTiposTarifa.Conexion = oConexion
     If oTiposTarifa.Eliminar(oDOTiposTarifa) Then
@@ -4726,7 +4726,7 @@ Function TiposTarifaSeleccionarPorId(IdTipoTarifa As Long) As DOTiposTarifa
     Dim oProducto As New TiposTarifa
     Dim oDOTiposTarifa As New DOTiposTarifa
     Set TiposTarifaSeleccionarPorId = Nothing
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     Set oProducto.Conexion = oConexion
     oDOTiposTarifa.IdTipoTarifa = IdTipoTarifa
@@ -4746,7 +4746,7 @@ Sub TiposTarifaCptActualizar(lnIdTipoTarifa As Long, lnIdProducto As Long)
         Dim oConexion As New ADODB.Connection
             oConexion.CursorLocation = adUseClient
             oConexion.CommandTimeout = 300
-            oConexion.Open Sighentidades.CadenaConexion
+            oConexion.Open sighentidades.CadenaConexion
 
          With oCommand
              .CommandType = adCmdStoredProc
@@ -4797,7 +4797,7 @@ Sub TiposTarifaCptEliminar(lnIdProducto As Long, lnIdTipoTarifa As Long)
         
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
   
 
         With oCommand
@@ -4822,7 +4822,7 @@ Sub TiposTarifaCptEliminarPorTipoTarifa(lnIdTipoTarifa As Long)
         
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
         
         With oCommand
             .CommandType = adCmdStoredProc
@@ -4847,7 +4847,7 @@ Function TiposTarifaCptSeleccionarTodos() As Recordset
         Set TiposTarifaCptSeleccionarTodos = Nothing
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
 
     With oCommand
         .CommandType = adCmdStoredProc
@@ -4878,7 +4878,7 @@ Dim oConexion As New ADODB.Connection
             oConexion = New Connection
             oConexion.CursorLocation = adUseClient
             oConexion.CommandTimeout = 300
-            oConexion.Open Sighentidades.CadenaConexion
+            oConexion.Open sighentidades.CadenaConexion
         End If
         
 
@@ -4922,7 +4922,7 @@ On Error GoTo ManejadorDeError
 Dim oConexion As New ADODB.Connection
 Dim mo_DatosDepartamentos As New SIGHDatos.Departamentos
 
-oConexion.Open Sighentidades.CadenaConexion
+oConexion.Open sighentidades.CadenaConexion
 oConexion.CursorLocation = adUseClient
     
 Set mo_DatosDepartamentos.Conexion = oConexion
@@ -4944,7 +4944,7 @@ On Error GoTo ManejadorDeError
 Dim oConexion As New ADODB.Connection
 Dim mo_DatosProvincias As New SIGHDatos.Provincias
 
-oConexion.Open Sighentidades.CadenaConexion
+oConexion.Open sighentidades.CadenaConexion
 oConexion.CursorLocation = adUseClient
     
 Set mo_DatosProvincias.Conexion = oConexion
@@ -4967,7 +4967,7 @@ Dim oConexion As New ADODB.Connection
 Dim mo_DatosDistritos As New SIGHDatos.Distritos
 oConexion.CommandTimeout = 300
 oConexion.CursorLocation = adUseClient
-oConexion.Open Sighentidades.CadenaConexion
+oConexion.Open sighentidades.CadenaConexion
 
     
 Set mo_DatosDistritos.Conexion = oConexion
@@ -4984,7 +4984,7 @@ Dim oConexion As New ADODB.Connection
 Dim mo_DatosDistritos As New SIGHDatos.Distritos
 oConexion.CommandTimeout = 300
 oConexion.CursorLocation = adUseClient
-oConexion.Open Sighentidades.CadenaConexion
+oConexion.Open sighentidades.CadenaConexion
 
     
 Set mo_DatosDistritos.Conexion = oConexion
@@ -5005,7 +5005,7 @@ Function FuentesFinanciamientoSeleccionarTodos() As Recordset
         Set FuentesFinanciamientoSeleccionarTodos = Nothing
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
 
     With oCommand
         .CommandType = adCmdStoredProc
@@ -5032,7 +5032,7 @@ Function MedicamentosInsumosSeleccionarPorCodigo(lcCodigoDigemid As String) As R
           Set MedicamentosInsumosSeleccionarPorCodigo = Nothing
           oConexion.CursorLocation = adUseClient
           oConexion.CommandTimeout = 300
-          oConexion.Open Sighentidades.CadenaConexion
+          oConexion.Open sighentidades.CadenaConexion
           
     With oCommand
         .CommandType = adCmdStoredProc
@@ -5059,7 +5059,7 @@ Function EstablecimientosDevuelveCodigo(IdEstablecimiento As Long) As String
       Dim oConexion As New ADODB.Connection
           oConexion.CursorLocation = adUseClient
           oConexion.CommandTimeout = 300
-          oConexion.Open Sighentidades.CadenaConexion
+          oConexion.Open sighentidades.CadenaConexion
 
          With oCommand
              .CommandType = adCmdStoredProc
@@ -5090,7 +5090,7 @@ Function TiposIdiomasSeleccionarTodos() As Recordset
         Set TiposIdiomasSeleccionarTodos = Nothing
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
 
     With oCommand
         .CommandType = adCmdStoredProc
@@ -5116,7 +5116,7 @@ Function EstablecimientosNoMinsaSeleccionarPorCodigo(lcCodigo As String, Optiona
     If oConexion1 Is Nothing Then
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
     End If
     With oCommand
         .CommandType = adCmdStoredProc
@@ -5151,7 +5151,7 @@ Function DiagnosticosSeleccionarXcodigoCIEsinPto(lcCodigoCIEsinPto As String, Op
     Dim oConexion As New ADODB.Connection
         Set DiagnosticosSeleccionarXcodigoCIEsinPto = Nothing
         If oConexion1 Is Nothing Then
-           Sighentidades.AbreConexionSIGH oConexion
+           sighentidades.AbreConexionSIGH oConexion
         End If
     With oCommand
         .CommandType = adCmdStoredProc
@@ -5188,7 +5188,7 @@ Function DiagnosticosSeleccionarXcodigoCIEsinPtoDevuelveDescripcion(lcCodigoCIEs
       Dim oConexion As New ADODB.Connection
           oConexion.CursorLocation = adUseClient
           oConexion.CommandTimeout = 300
-          oConexion.Open Sighentidades.CadenaConexion
+          oConexion.Open sighentidades.CadenaConexion
       DiagnosticosSeleccionarXcodigoCIEsinPtoDevuelveDescripcion = ""
           With oCommand
              .CommandType = adCmdStoredProc
@@ -5219,7 +5219,7 @@ Function EmpleadosDevuelveNombre(lnIdEmpleado As Long, Optional oConexion1 As Co
     If oConexion1 Is Nothing Then
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
     End If
     With oCommand
         .CommandType = adCmdStoredProc
@@ -5254,7 +5254,7 @@ Function TiposEmpleadosSeleccionarIdMedico(lnIdMedico As Long) As String
     Dim oConexion As New ADODB.Connection
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
 
         With oCommand
         .CommandType = adCmdStoredProc
@@ -5285,7 +5285,7 @@ Function FactPuntosCargaSeleccionarPorIdServicio(lnIdServicio As Long) As Record
    Dim oConexion As New Connection
    oConexion.CommandTimeout = 300
    oConexion.CursorLocation = adUseClient
-   oConexion.Open Sighentidades.CadenaConexion
+   oConexion.Open sighentidades.CadenaConexion
    Set oFactPuntosCarga.Conexion = oConexion
    Set FactPuntosCargaSeleccionarPorIdServicio = oFactPuntosCarga.SeleccionarPorIdServicio(lnIdServicio)
    Exit Function
@@ -5299,7 +5299,7 @@ Sub CatalogoBienesInsumosHospActualizaPrecioSegunIdProducto(lnIdProducto As Long
     Dim oConexion As New Connection
     oConexion.CommandTimeout = 300
     oConexion.CursorLocation = adUseClient
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     Set oCatalogoBienesInsumos.Conexion = oConexion
     oCatalogoBienesInsumos.ActualizaPrecioSegunIdProducto lnIdProducto, lnPrecioNuevo
 End Sub
@@ -5317,7 +5317,7 @@ Sub FactPuntosCargaActualiza1(lnIdServicio As Long, lnTipoServicio As Long, chkP
     
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     Set oFactPuntosCarga.Conexion = oConexion
 
     With oCommand
@@ -5390,7 +5390,7 @@ Sub AtencionesActualizaCreditoHospitalario(lnIdCuentaAtencion As Long)
   
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
         With oCommand
             .CommandType = adCmdStoredProc
             Set .ActiveConnection = oConexion
@@ -5415,7 +5415,7 @@ Function CatalogoBienesInsumosFiltrarDonacionesXcodigo(lcCodigo As String) As Re
             
             oConexion.CursorLocation = adUseClient
             oConexion.CommandTimeout = 300
-            oConexion.Open Sighentidades.CadenaConexion
+            oConexion.Open sighentidades.CadenaConexion
 
     With oCommand
         .CommandType = adCmdStoredProc
@@ -5443,7 +5443,7 @@ Function RecetaCabeceraFiltraXcuentaYDocumentodespacho(lcDocumentoDespacho As St
     Dim oConexion As New ADODB.Connection
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
 
     With oCommand
         .CommandType = adCmdStoredProc
@@ -5472,7 +5472,7 @@ Function CentrosCostosSeleccionarXidentificador(lnIdCentroCosto As Long, Optiona
     If oConexion1 Is Nothing Then
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
     End If
 
 
@@ -5509,7 +5509,7 @@ Function CatalogoServiciosSeleccionarXidentificador(lnIdProducto As Long, Option
         If oConexion1 Is Nothing Then
                 oConexion.CursorLocation = adUseClient
                 oConexion.CommandTimeout = 300
-                oConexion.Open Sighentidades.CadenaConexion
+                oConexion.Open sighentidades.CadenaConexion
         End If
                 
          With oCommand
@@ -5543,7 +5543,7 @@ Function FactPartidasPresupuestalesXidentificador(lnIdPartidaPresupuestal As Lon
         If oConexion1 Is Nothing Then
                 oConexion.CursorLocation = adUseClient
                 oConexion.CommandTimeout = 300
-                oConexion.Open Sighentidades.CadenaConexion
+                oConexion.Open sighentidades.CadenaConexion
         End If
     
 
@@ -5590,7 +5590,7 @@ Function ServiciosSeleccionarXidentificador(lnIdServicio As Long, Optional oCone
         If oConexion1 Is Nothing Then
                 oConexion.CursorLocation = adUseClient
                 oConexion.CommandTimeout = 300
-                oConexion.Open Sighentidades.CadenaConexion
+                oConexion.Open sighentidades.CadenaConexion
         End If
     
 
@@ -5621,7 +5621,7 @@ Function EstablecimientosNoMinsaXidentificador(lnidEstablecimientoNoMinsa As Lon
         If oConexion1 Is Nothing Then
                 oConexion.CursorLocation = adUseClient
                 oConexion.CommandTimeout = 300
-                oConexion.Open Sighentidades.CadenaConexion
+                oConexion.Open sighentidades.CadenaConexion
         End If
     
 
@@ -5660,7 +5660,7 @@ Function AtencionesSeleccionarXidentificador(lnIdAtencion As Long, Optional oCon
         If oConexion1 Is Nothing Then
                 oConexion.CursorLocation = adUseClient
                 oConexion.CommandTimeout = 300
-                oConexion.Open Sighentidades.CadenaConexion
+                oConexion.Open sighentidades.CadenaConexion
         End If
     
         With oCommand
@@ -5695,7 +5695,7 @@ Dim oParameter As ADODB.Parameter
     Set BuscaDx = Nothing
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
 
      With oCommand
          .CommandType = adCmdStoredProc
@@ -5727,7 +5727,7 @@ Function EstadosCuentaDevuelveTodos() As Recordset
         Set EstadosCuentaDevuelveTodos = Nothing
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
         
 
     With oCommand
@@ -5753,7 +5753,7 @@ Function FactPuntosCargaDevuelveTodos() As Recordset
         Set FactPuntosCargaDevuelveTodos = Nothing
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
     
         With oCommand
              .CommandType = adCmdStoredProc
@@ -5778,7 +5778,7 @@ Function DevuelveHIS_SITUACIOporDescripcion() As ADODB.Recordset
         Set DevuelveHIS_SITUACIOporDescripcion = Nothing
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
 
         With oCommand
              .CommandType = adCmdStoredProc
@@ -5824,7 +5824,7 @@ Function RecetaCabeceraXidCuentaAtencion(ml_idCuentaAtencion As Long, Optional o
        If oConexion1 Is Nothing Then
             oConexion.CursorLocation = adUseClient
             oConexion.CommandTimeout = 300
-            oConexion.Open Sighentidades.CadenaConexion
+            oConexion.Open sighentidades.CadenaConexion
       End If
         
 
@@ -5857,7 +5857,7 @@ Function DescripcionOcupacion(idTipoOcupacion As Long) As String
   Dim oConexion As New ADODB.Connection
   oConexion.CommandTimeout = 300
   oConexion.CursorLocation = adUseClient
-  oConexion.Open Sighentidades.CadenaConexion
+  oConexion.Open sighentidades.CadenaConexion
 
     With oCommand
         .CommandType = adCmdStoredProc
@@ -5897,7 +5897,7 @@ Function FactCatalogoServiciosPtosXidProducto(lnIdProducto As Long) As Recordset
         
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
     With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
@@ -6001,7 +6001,7 @@ Function CatalogoServiciosSeleccionarTodos(Optional oConexion1 As Connection) As
         If oConexion1 Is Nothing Then
             oConexion.CommandTimeout = 300
             oConexion.CursorLocation = adUseClient
-            oConexion.Open Sighentidades.CadenaConexion
+            oConexion.Open sighentidades.CadenaConexion
         End If
 
 
@@ -6031,7 +6031,7 @@ Dim oConexion As New ADODB.Connection
 Dim ms_MensajeError  As String
     FactPuntosCargaSeleccionarPorIdDevDescripcion = ""
     ms_MensajeError = ""
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     With oCommand
         .CommandType = adCmdStoredProc
@@ -6057,7 +6057,7 @@ Function DevuelveEstadoReceta(lnIdEstadoReceta As Long) As String
       Dim oConexion As New ADODB.Connection
           oConexion.CursorLocation = adUseClient
           oConexion.CommandTimeout = 300
-          oConexion.Open Sighentidades.CadenaConexion
+          oConexion.Open sighentidades.CadenaConexion
       
 
     With oCommand
@@ -6088,7 +6088,7 @@ Function FactCatalogoBienesInsumosHospXfiltro(lcFiltro As String, Optional oCone
     If oConexion1 Is Nothing Then
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
     End If
     With oCommand
         .CommandType = adCmdStoredProc
@@ -6124,7 +6124,7 @@ Function FactCatalogoServiciosHospXfiltro(lcFiltro As String, Optional oConexion
     If oConexion1 Is Nothing Then
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
     End If
     With oCommand
         .CommandType = adCmdStoredProc
@@ -6159,7 +6159,7 @@ Function DistritosSeleccionarXfiltro(lcFiltro As String) As Recordset
        
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
         
 
         With oCommand
@@ -6331,7 +6331,7 @@ Sub ActualizaIdPacienteEnTodasLasTablasSegunNroCuenta(ml_IdPacienteNew As Long, 
         
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
         
         oConexion.BeginTrans
         
@@ -6366,7 +6366,7 @@ Sub AuditoriaInsertaDesdeReniec(lcDniAbuscar As String, lcObservaciones As Strin
         
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
         
         With oCommand
             .CommandType = adCmdStoredProc
@@ -6375,8 +6375,8 @@ Sub AuditoriaInsertaDesdeReniec(lcDniAbuscar As String, lcObservaciones As Strin
             .CommandText = "AuditoriaInsertaDesdeReniec"
             Set oParameter = .CreateParameter("@FechaServidor", adDBTimeStamp, adParamInput, 0, Format(lcFechaServidor, "dd/mm/yyyy")): .Parameters.Append oParameter
             Set oParameter = .CreateParameter("@DniAbuscar", adInteger, adParamInput, 0, CLng(lcDniAbuscar)): .Parameters.Append oParameter
-            Set oParameter = .CreateParameter("@IdEmpleado", adInteger, adParamInput, 0, Sighentidades.Usuario): .Parameters.Append oParameter
-            Set oParameter = .CreateParameter("@NombrePC", adVarChar, adParamInput, 30, Sighentidades.RetornaNombrePC): .Parameters.Append oParameter
+            Set oParameter = .CreateParameter("@IdEmpleado", adInteger, adParamInput, 0, sighentidades.Usuario): .Parameters.Append oParameter
+            Set oParameter = .CreateParameter("@NombrePC", adVarChar, adParamInput, 30, sighentidades.RetornaNombrePC): .Parameters.Append oParameter
             Set oParameter = .CreateParameter("@Observaciones", adVarChar, adParamInput, 100, lcObservaciones): .Parameters.Append oParameter
             .Execute
         End With
@@ -6424,7 +6424,7 @@ Function FactCatalogoServiciosHospXidProductoOrdenadoXtipofinanciamiento(lnIdPro
 
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
 
     With oCommand
         .CommandType = adCmdStoredProc
@@ -6454,7 +6454,7 @@ Function FactCatalogoServiciosPtosOrdenasXcpt() As Recordset
 
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
@@ -6482,7 +6482,7 @@ Function FactCatalogoServiciosHospXidProducto(lnIdProducto As Long) As Recordset
 
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
 
     With oCommand
         .CommandType = adCmdStoredProc
@@ -6528,7 +6528,7 @@ Function CatalogoServiciosSeleccionarTodosOrdenadoXnombre() As Recordset
 
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
   
 
     With oCommand
@@ -6575,7 +6575,7 @@ Function UPServiciosSeleccionarTodos() As Recordset
 
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
   
     With oCommand
         .CommandType = adCmdStoredProc
@@ -6616,7 +6616,7 @@ Sub ParametrosActualizaValorTextoXid(lnIdParametro As Long, lcValorTexto As Stri
     Dim oConexion As New ADODB.Connection
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
@@ -6657,7 +6657,7 @@ Function RecetaCabeceraPorRangoFechas(ldFechaInicio As Date, ldFechaFin As Date,
     Dim oConexion As New ADODB.Connection
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
@@ -6684,7 +6684,7 @@ Function ConsumoMedicamentosPorIdCuentaConSeguroYparticular(lnIdCuentaAtencion A
         Set ConsumoMedicamentosPorIdCuentaConSeguroYparticular = Nothing
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
 
        With oCommand
             .CommandType = adCmdStoredProc
@@ -7076,7 +7076,7 @@ Function ProgramaControlesAgregar(oDoProCabecera As DoProCabecera, oRsDatosProCa
     
     oConexion.CommandTimeout = 300
     oConexion.CursorLocation = adUseClient
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     '
     oConexion.BeginTrans
     '
@@ -7312,7 +7312,7 @@ Function ProgramaControlesModificar(oDoProCabecera As DoProCabecera, oRsDatosPro
     
     oConexion.CommandTimeout = 300
     oConexion.CursorLocation = adUseClient
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     '
     oConexion.BeginTrans
     '
@@ -7601,7 +7601,7 @@ Function ProgramaControlesEliminar(oDOProControles As DOProControles, lnIdAtenci
     
     oConexion.CommandTimeout = 300
     oConexion.CursorLocation = adUseClient
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     '
     oConexion.BeginTrans
     '
@@ -7705,7 +7705,7 @@ Dim oConexion As New ADODB.Connection
 Dim oTabla As New Parametros
     oConexion.CommandTimeout = 300
     oConexion.CursorLocation = adUseClient
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
    
     
     Set oTabla.Conexion = oConexion
@@ -7728,7 +7728,7 @@ Set LlenadoParametros = Nothing
         
   oConexion.CursorLocation = adUseClient
   oConexion.CommandTimeout = 300
-  oConexion.Open Sighentidades.CadenaConexion
+  oConexion.Open sighentidades.CadenaConexion
         
 
         With oCommand
@@ -7760,7 +7760,7 @@ Dim ms_MensajeError  As String
 Dim oConexion As New ADODB.Connection
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
         With oCommand
            .CommandType = adCmdStoredProc
            Set .ActiveConnection = oConexion
@@ -7870,7 +7870,7 @@ Function RecetaDosisSelecionarTodos() As Recordset
     Dim oConexion As New ADODB.Connection
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
@@ -7912,7 +7912,7 @@ Function FarmAlmacenesTipoSuministroSeleccionarTodos() As Recordset
         
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
         
         With oCommand
             .CommandType = adCmdStoredProc
@@ -8011,7 +8011,7 @@ Function EmpleadosSeleccionarPorDNI(lcDNI As String) As Recordset
     Set EmpleadosSeleccionarPorDNI = Nothing
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
@@ -8054,7 +8054,7 @@ On Error GoTo miError
     diagnosticoValidarEliminar = False
     oConexion.CommandTimeout = 300
     oConexion.CursorLocation = adUseClient
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     Set oDiagnostico.Conexion = oConexion
     
     ms_MensajeError = DiagnosticoParseMessageError(oDiagnostico.validarEliminar(oDODiagnostico))
@@ -8115,7 +8115,7 @@ Function RecetaCabeceraPorIdReceta(lnIdReceta As Long) As Recordset
     Dim oConexion As New ADODB.Connection
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
@@ -8138,7 +8138,7 @@ Function RecetaDetallePorIdReceta(lnIdReceta As Long) As Recordset
     Dim oConexion As New ADODB.Connection
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
@@ -8161,7 +8161,7 @@ Function RecetaDetalleServicioPorIdReceta(lnIdReceta As Long) As Recordset
     Dim oConexion As New ADODB.Connection
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
@@ -8184,7 +8184,7 @@ Function RecetasListadoViasAdministracion() As Recordset
     Dim oConexion As New ADODB.Connection
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     
     Set RecetasListadoViasAdministracion = Nothing
     With oCommand
@@ -8212,7 +8212,7 @@ Function RecetaDiagnosticosPorIdAtencion(idAtencion As Long) As ADODB.Recordset
     
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     
     With oCommand
         .CommandType = adCmdStoredProc
@@ -8243,7 +8243,7 @@ Function TiposEmpleadosSeleccionarId(lnIdTipoEmpleado As Long) As Integer
     Dim oConexion As New ADODB.Connection
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
 
         With oCommand
         .CommandType = adCmdStoredProc
@@ -8278,7 +8278,7 @@ Function EstablecimientosSeleccionarTodos() As Recordset
     Set EstablecimientosSeleccionarTodos = Nothing
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     
     Set oEstablecimientos.Conexion = oConexion
     Set oRsTmp1 = oEstablecimientos.SeleccionarTodos
@@ -8300,7 +8300,7 @@ On Error GoTo miError
     
     Set PaisSeleccionarPorId = Nothing
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oPais.Conexion = oConexion
@@ -8328,7 +8328,7 @@ On Error GoTo miError
     
     Set DistritoSeleccionarPorId = Nothing
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oDistrito.Conexion = oConexion
@@ -8427,7 +8427,7 @@ Dim oDOBienesInsumos As New DOCatalogoServicio
     
     CatalogoServiciosSeleccionarEsParaReceta = False
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oProducto.Conexion = oConexion
@@ -8470,7 +8470,7 @@ On Error GoTo miError
     Dim oConexion As New ADODB.Connection
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
@@ -8494,7 +8494,7 @@ Function TiposDocIdentidadSeleccionarTodosIncSinTipoDoc() As ADODB.Recordset
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New TiposDocIdentidad
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oTabla.Conexion = oConexion
@@ -8505,21 +8505,21 @@ Dim oTabla As New TiposDocIdentidad
     Set oConexion = Nothing
 
 End Function
-'Mostrar todos los paises - GLCC
-Function NacionalidadSeleccionarTodos() As ADODB.Recordset
-Dim oConexion As New ADODB.Connection
-Dim oTabla As New Nacionalidad
-
-    oConexion.Open Sighentidades.CadenaConexion
-    oConexion.CursorLocation = adUseClient
-    
-    Set oTabla.Conexion = oConexion
-    Set NacionalidadSeleccionarTodos = oTabla.NacionalidadSeleccionarTodos
-    oConexion.Close
-    ms_MensajeError = oTabla.MensajeError
-    Set oTabla = Nothing
-    Set oConexion = Nothing
-End Function
+'''Mostrar todos los paises - GLCC
+''Function NacionalidadSeleccionarTodos() As ADODB.Recordset
+''Dim oConexion As New ADODB.Connection
+''Dim oTabla As New Nacionalidad
+''
+''    oConexion.Open sighentidades.CadenaConexion
+''    oConexion.CursorLocation = adUseClient
+''
+''    Set oTabla.Conexion = oConexion
+''    Set NacionalidadSeleccionarTodos = oTabla.NacionalidadSeleccionarTodos
+''    oConexion.Close
+''    ms_MensajeError = oTabla.MensajeError
+''    Set oTabla = Nothing
+''    Set oConexion = Nothing
+''End Function
 'debb2014b
 Function CatalogoBienesInsumosSeleccionarXid(lnIdProducto As Long, Optional oConexion1 As Connection) As Recordset
 Dim oRecordset As New ADODB.Recordset
@@ -8529,7 +8529,7 @@ Dim oConexion As New ADODB.Connection
    If oConexion1 Is Nothing Then
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
    End If
    With oCommand
      .CommandType = adCmdStoredProc
@@ -8554,7 +8554,7 @@ Dim oDoAtencionHospCenso As New DoAtencionHospCenso
     
     Set AtenHospCensoSeleccionarPorId = Nothing
     
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Set oAtenHospCenso.Conexion = oConexion
@@ -8584,7 +8584,7 @@ Function AtenHospCensoSeleccionarModificar(oDoAtencionHospCenso1 As DoAtencionHo
     
     oConexion.CommandTimeout = 300
     oConexion.CursorLocation = adUseClient
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     '
     oConexion.BeginTrans
     '
@@ -8696,9 +8696,9 @@ Sub grabaTablaAuditoria(lcNombreReporte As String)
     Dim oConexion As New Connection
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open Sighentidades.CadenaConexion
-    Call mo_ReglasSeguridad.AuditoriaAgregarV(Sighentidades.Usuario, "C", 999, "Reportes", oConexion, _
-                             999999, Sighentidades.RetornaNombrePC, Left(lcNombreReporte, 100))    'ListBarItems.idListItem
+    oConexion.Open sighentidades.CadenaConexion
+    Call mo_ReglasSeguridad.AuditoriaAgregarV(sighentidades.Usuario, "C", 999, "Reportes", oConexion, _
+                             999999, sighentidades.RetornaNombrePC, Left(lcNombreReporte, 100))    'ListBarItems.idListItem
     oConexion.Close
     Set oConexion = Nothing
 errGTA:
@@ -8729,7 +8729,7 @@ Function RecetaDetalleUltimaViaAdministracion(lnIdProductoFarmacia As Long) As L
     Dim oConexion As New ADODB.Connection
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
@@ -8758,7 +8758,7 @@ Function SuSalud_upsSeleccionarTodos() As Recordset
 
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
   
     With oCommand
         .CommandType = adCmdStoredProc
@@ -8820,7 +8820,7 @@ Function novafis_edadesSeleccionarTodos() As Recordset
 
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
   
     With oCommand
         .CommandType = adCmdStoredProc
@@ -8922,7 +8922,7 @@ Function RecetaDetalleItemPorIdReceta(lnIdReceta As Long) As Recordset
     Dim oConexion As New ADODB.Connection
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
@@ -8942,12 +8942,12 @@ Sub WaitSeconds(nSecs As Integer)
         ' Esperar los segundos indicados
         ' Añadirle la diferencia a la hora actual
         Dim t1 As Date
-        t1 = Format(DateAdd("s", nSecs, Now), Sighentidades.DevuelveHoraSoloFormato_HMS)
+        t1 = Format(DateAdd("s", nSecs, Now), sighentidades.DevuelveHoraSoloFormato_HMS)
         
         ' Esta asignación solo es necesaria
         ' si la comprobación se hace al principio del bucle
         Dim t2 As Date
-        t2 = Format(Now, Sighentidades.DevuelveHoraSoloFormato_HMS)
+        t2 = Format(Now, sighentidades.DevuelveHoraSoloFormato_HMS)
 
         ' Mientras no haya pasado el tiempo indicado
         Do While t2 < t1
@@ -8955,7 +8955,7 @@ Sub WaitSeconds(nSecs As Integer)
             'System.Windows.Forms.Application.DoEvents()
             DoEvents
             ' Asignar la hora actual
-            t2 = Format(Now, Sighentidades.DevuelveHoraSoloFormato_HMS)
+            t2 = Format(Now, sighentidades.DevuelveHoraSoloFormato_HMS)
         Loop
 End Sub
 'debb-21/06/2016
@@ -8982,7 +8982,7 @@ Function AtencionesSeleccionarMedicoEgresoPorCuenta(lnIdCuentaAtencion As Long) 
         Set AtencionesSeleccionarMedicoEgresoPorCuenta = Nothing
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
 
         With oCommand
              .CommandType = adCmdStoredProc
@@ -9028,12 +9028,12 @@ Function DevuelveFUMenUltimaAtencion(lnIdPaciente As Long, ldFechaAtencion As Da
     Dim lbEncontro As Boolean
     Dim oRsTmp1432 As New Recordset
     Dim lnEg As Integer
-    DevuelveFUMenUltimaAtencion = Sighentidades.FECHA_VACIA_DMY
+    DevuelveFUMenUltimaAtencion = sighentidades.FECHA_VACIA_DMY
     lbEncontro = False
     Set oRsTmp1432 = mo_ReglasLaboratorio.LabMovimientoLaboratorioSeleccionarPorIdPaciente(lnIdPaciente, oConexion)
     oRsTmp1432.Filter = "eo_fum<>null"
     If oRsTmp1432.RecordCount > 0 Then
-       DevuelveFUMenUltimaAtencion = Format(oRsTmp1432!eo_fum, Sighentidades.DevuelveFechaSoloFormato_DMY)
+       DevuelveFUMenUltimaAtencion = Format(oRsTmp1432!eo_fum, sighentidades.DevuelveFechaSoloFormato_DMY)
        lbEncontro = True
     End If
     oRsTmp1432.Close
@@ -9041,18 +9041,18 @@ Function DevuelveFUMenUltimaAtencion(lnIdPaciente As Long, ldFechaAtencion As Da
     oRsTmp1432.Filter = "eo_fum<>null"
     If oRsTmp1432.RecordCount > 0 Then
        If lbEncontro = True Then
-          If DevuelveFUMenUltimaAtencion < Format(oRsTmp1432!eo_fum, Sighentidades.DevuelveFechaSoloFormato_DMY) Then
-             DevuelveFUMenUltimaAtencion = Format(oRsTmp1432!eo_fum, Sighentidades.DevuelveFechaSoloFormato_DMY)
+          If DevuelveFUMenUltimaAtencion < Format(oRsTmp1432!eo_fum, sighentidades.DevuelveFechaSoloFormato_DMY) Then
+             DevuelveFUMenUltimaAtencion = Format(oRsTmp1432!eo_fum, sighentidades.DevuelveFechaSoloFormato_DMY)
           End If
        Else
-          DevuelveFUMenUltimaAtencion = Format(oRsTmp1432!eo_fum, Sighentidades.DevuelveFechaSoloFormato_DMY)
+          DevuelveFUMenUltimaAtencion = Format(oRsTmp1432!eo_fum, sighentidades.DevuelveFechaSoloFormato_DMY)
           lbEncontro = True
        End If
     End If
     If IsDate(DevuelveFUMenUltimaAtencion) Then
-       lnEg = Sighentidades.DevuelveEdadGestacional(CDate(DevuelveFUMenUltimaAtencion), ldFechaAtencion)
+       lnEg = sighentidades.DevuelveEdadGestacional(CDate(DevuelveFUMenUltimaAtencion), ldFechaAtencion)
        If lnEg = 0 Then
-          DevuelveFUMenUltimaAtencion = Sighentidades.FECHA_VACIA_DMY
+          DevuelveFUMenUltimaAtencion = sighentidades.FECHA_VACIA_DMY
        End If
     End If
     oRsTmp1432.Close
@@ -9068,7 +9068,7 @@ Function PerinatalAtencionCredSeleccionarControles(lnIdPaciente As Long) As Reco
     Dim oConexion As New ADODB.Connection
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
 
         With oCommand
              .CommandType = adCmdStoredProc
@@ -9099,7 +9099,7 @@ Function HospitalizadoConCtaEmergNOabierta(lnIdPaciente As Long, ldFechaAltaEmer
             If oRsTmp86.RecordCount > 0 Then
                oRsTmp86.MoveLast
                If oRsTmp86!IdEstadoAtencion = 1 And _
-                  CDate(Format(oRsTmp86!FechaIngreso & " " & oRsTmp86!HoraIngreso, Sighentidades.DevuelveFechaSoloFormato_DMY_HM)) > ldFechaAltaEmergencia Then
+                  CDate(Format(oRsTmp86!FechaIngreso & " " & oRsTmp86!HoraIngreso, sighentidades.DevuelveFechaSoloFormato_DMY_HM)) > ldFechaAltaEmergencia Then
                     HospitalizadoConCtaEmergNOabierta = True
                End If
             End If
@@ -9130,7 +9130,7 @@ Function CalculaNUMEROREFERENCIA(lbEsContraReferencia As Boolean) As String
        End If
        oConexion.CommandTimeout = 900
        oConexion.CursorLocation = adUseClient
-       oConexion.Open Sighentidades.CadenaConexion
+       oConexion.Open sighentidades.CadenaConexion
 '       Set oRsTmp = mo_AdminAdmision.atencionesDatosAdicionalesXfiltro(" NOT (dbo.AtencionesDatosAdicionales.NroReferenciaDestino IS NULL) " & _
 '                      " and dbo.atenciones.idEstadoAtencion<>0 and dbo.atenciones.idDestinoAtencion in (" & lcDestinos & ")" & _
 '                      " order by cast(dbo.AtencionesDatosAdicionales.NroReferenciaDestino as int) desc", _
@@ -9173,7 +9173,7 @@ Function BuscarSiExisteNUMEROREFERENCIA(lcReferenciaDestino As String, lnIdAtenc
         BuscarSiExisteNUMEROREFERENCIA = False
         oConexion.CommandTimeout = 300
         oConexion.CursorLocation = adUseClient
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
         Set oRsTmp1 = mo_AdminAdmision.atencionesDatosAdicionalesXfiltro(" dbo.AtencionesDatosAdicionales.NroReferenciaDestino='" & _
                      lcReferenciaDestino & "' and dbo.atenciones.idEstadoAtencion<>0 and dbo.atenciones.idDestinoAtencion in (" & _
                      lcDestinos & ")", oConexion)
@@ -9216,7 +9216,7 @@ Function DevuelveCuentaEmergenciaOceDelPacienteHospitalizado(lnIdPaciente As Lon
         oRsTmp86.Filter = "IdEstadoAtencion<>0 and fechaEgreso<>null"
         If oRsTmp86.RecordCount > 0 Then
            oRsTmp86.MoveLast
-           If ldFechaIngresoHosp >= CDate(Format(oRsTmp86!fechaEgreso, Sighentidades.DevuelveFechaSoloFormato_DMY_HM)) Then
+           If ldFechaIngresoHosp >= CDate(Format(oRsTmp86!fechaEgreso, sighentidades.DevuelveFechaSoloFormato_DMY_HM)) Then
                       DevuelveCuentaEmergenciaOceDelPacienteHospitalizado = oRsTmp86!idCuentaAtencion
                       lnIdAtencionEmergencia = oRsTmp86!idAtencion
            End If
@@ -9249,7 +9249,7 @@ Function EsUnaClinicaNOminsa() As Boolean
         EsUnaClinicaNOminsa = False
         lcSql = "select * from establecimientos  where codigo='" & lcEESS & "'"
         If oRsTmp1.State = 1 Then oRsTmp1.Close
-        oRsTmp1.Open lcSql, Sighentidades.CadenaConexion, adOpenKeyset, adLockOptimistic
+        oRsTmp1.Open lcSql, sighentidades.CadenaConexion, adOpenKeyset, adLockOptimistic
         If oRsTmp1.RecordCount = 0 Then        'Es una Clinica
            EsUnaClinicaNOminsa = True
         End If
@@ -9273,7 +9273,7 @@ Dim ms_MensajeError As String
     ms_MensajeError = ""
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
@@ -9304,7 +9304,7 @@ Function CatalogoServiciosSeleccionarSoloPtoCargaYtipoFinanciamiento(lnIdPuntoCa
         Dim oConexion As New ADODB.Connection
             oConexion.CursorLocation = adUseClient
             oConexion.CommandTimeout = 300
-            oConexion.Open Sighentidades.CadenaConexion
+            oConexion.Open sighentidades.CadenaConexion
 
     With oCommand
         .CommandType = adCmdStoredProc
@@ -9388,7 +9388,7 @@ Function TiposActividadesSeleccionarTodos() As Recordset
     Dim oConexion As New ADODB.Connection
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
@@ -9413,7 +9413,7 @@ Function EmpleadosChequeaNoTengaMovimientos(lnIdEmpleado As Integer) As String
     Dim lcMensaje As String
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 900
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
@@ -9545,7 +9545,7 @@ Sub ServiciosGrabaYdevueveCorrelativoEmergencia(lbSoloDevuelveCorrelativo As Boo
     Set oServicios.Conexion = oConexion
     lcNuevoCorrelativo = Trim(Str(Year(Date))) & "00001"
     oDOServicio.IdServicio = lnIdServicio
-    oDOServicio.IdUsuarioAuditoria = Sighentidades.Usuario
+    oDOServicio.IdUsuarioAuditoria = sighentidades.Usuario
     If oServicios.SeleccionarPorId(oDOServicio) = True Then
        If oDOServicio.emergenciaCorrelativo <> "" Then
           lcNuevoCorrelativo = Trim(Str(Val(oDOServicio.emergenciaCorrelativo) + 1))
@@ -9572,7 +9572,7 @@ Dim ms_MensajeError  As String
     ms_MensajeError = ""
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
@@ -9606,7 +9606,7 @@ Dim ms_MensajeError  As String
     ms_MensajeError = ""
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
@@ -9637,7 +9637,7 @@ Dim ms_MensajeError  As String
     ms_MensajeError = ""
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
@@ -9768,7 +9768,7 @@ Dim oConexion As New Connection
 Dim lcBuscaParametro As New SIGHDatos.Parametros
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     Set ImagMovimientoSeleccionarIdOrden = Nothing
     ms_MensajeError = ""
     With oCommand
@@ -9830,7 +9830,7 @@ Dim oParameter As ADODB.Parameter
 Dim oConexion As New ADODB.Connection
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
 
     With oCommand
         .CommandType = adCmdStoredProc
@@ -9872,7 +9872,7 @@ Function CuentaDeEmergenciaCerrada(lnIdCuenta As Long, lnIdPuntoCarga As sghPunt
     Dim mo_ReglasFacturacion As New SIGHNegocios.ReglasFacturacion
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     Set oRsTmp2 = oReglasFarmacia.AtencionesSelecionarPorCuenta(lnIdCuenta, oConexion)
     If oRsTmp2.RecordCount > 0 Then
        If (oRsTmp2!IdEstado <> 1) Then
@@ -9909,7 +9909,7 @@ Dim ms_MensajeError As String
     ms_MensajeError = ""
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
@@ -9975,7 +9975,7 @@ Function RecetaCabeceraFiltrar(lcFiltro As String) As Recordset
     Set RecetaCabeceraFiltrar = Nothing
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
@@ -10000,7 +10000,7 @@ Function RetornaNombrePuntoCargaRecetaConsumoEnServicio(lnIdReceta As Long) As S
     RetornaNombrePuntoCargaRecetaConsumoEnServicio = ""
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
@@ -10028,7 +10028,7 @@ Function RecetaCabeceraFiltraXpuntoCargaYDocumentodespacho(lcDocumentoDespacho A
     Dim oConexion As New ADODB.Connection
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
 
     With oCommand
         .CommandType = adCmdStoredProc
@@ -10055,7 +10055,7 @@ Function RecetaDetalleItemFiltraXidComprobantePagoYpuntoCarga(lnIdComprobantePag
     Dim oConexion As New ADODB.Connection
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open Sighentidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
 
     With oCommand
         .CommandType = adCmdStoredProc
@@ -10083,7 +10083,7 @@ Dim oParameter As ADODB.Parameter
 Dim oConexion As New Connection
     oConexion.CommandTimeout = 900
     oConexion.CursorLocation = adUseClient
-    oConexion.Open Sighentidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion

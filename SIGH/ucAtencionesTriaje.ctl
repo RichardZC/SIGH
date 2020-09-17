@@ -315,17 +315,17 @@ Public Sub RealizarBusqueda()
         End If
         oPaciente.IdDocIdentidad = 1
         oPaciente.nrodocumento = UserControl.txtDni.Text
-        If (UserControl.txtApellidoPaterno = "" And UserControl.txtApellidoMaterno = "" And _
-            UserControl.txtNroHistoria = "" And UserControl.txtDni = "" And UserControl.txtNcuenta = "") Then
-            lcFechaTriaje = IIf(cmbFecha.Text = "Todas", Date, cmbFecha.Text)
-        Else
-            lcFechaTriaje = ""
-        End If
-        Set grdPacientes.DataSource = mo_ReglasAdmision.AtencionesCEFiltrarPorPaciente(oPaciente, _
-                                           Val(UserControl.txtNcuenta.Text), lcFechaTriaje, oConexionExterna, _
-                                           IIf(txtApellidoMaterno.Text = wxSinApellido, True, False), _
-                                           IIf(txtApellidoPaterno.Text = wxSinApellido, True, False), _
-                                           wxSinApellido)
+'        If (UserControl.txtApellidoPaterno = "" And UserControl.txtApellidoMaterno = "" And _
+'            UserControl.txtNroHistoria = "" And UserControl.txtDni = "" And UserControl.txtNcuenta = "") Then
+'            lcFechaTriaje = IIf(cmbFecha.Text = "Todas", Date, cmbFecha.Text)
+'        Else
+'            lcFechaTriaje = ""
+'        End If
+'        Set grdPacientes.DataSource = mo_ReglasAdmision.AtencionesCEFiltrarPorPaciente(oPaciente, _
+'                                           Val(UserControl.txtNcuenta.Text), lcFechaTriaje, oConexionExterna, _
+'                                           IIf(txtApellidoMaterno.Text = wxSinApellido, True, False), _
+'                                           IIf(txtApellidoPaterno.Text = wxSinApellido, True, False), _
+'                                           wxSinApellido)
 
         '
         oConexionExterna.Close

@@ -876,10 +876,10 @@ Dim oConexion As New ADODB.Connection
        mo_cmbIdDocIdentidad.BoundText = "1"
        
        'GLCC- Cargar combo nacionalidad-06/07/2020
-       mo_cmbIdNacionalidad.BoundColumn = "idPais"
-       mo_cmbIdNacionalidad.ListField = "DescripcionLarga"
-       Set mo_cmbIdNacionalidad.RowSource = mo_AdminServiciosComunes.NacionalidadSeleccionarTodos()
-       mo_cmbIdNacionalidad.BoundText = "166"
+'       mo_cmbIdNacionalidad.BoundColumn = "idPais"
+'       mo_cmbIdNacionalidad.ListField = "DescripcionLarga"
+'       Set mo_cmbIdNacionalidad.RowSource = mo_AdminServiciosComunes.NacionalidadSeleccionarTodos()
+'       mo_cmbIdNacionalidad.BoundText = "166"
        
 End Sub
 Property Let ExistenDatos(bValue As Boolean)
@@ -1798,7 +1798,7 @@ Sub LimpiarFormulario()
            mo_cmbTipoDestacado.BoundText = "3"
            mo_cmbIdDocIdentidad.BoundText = "1"
            'cmbnacionalidad - GLCC-09/07/2020
-           mo_cmbIdNacionalidad.BoundText = "1"
+          mo_cmbIdNacionalidad.BoundText = "1"
            Me.txtNombres.Text = ""
            Me.txtApellidoMaterno.Text = ""
            Me.txtApellidoPaterno.Text = ""

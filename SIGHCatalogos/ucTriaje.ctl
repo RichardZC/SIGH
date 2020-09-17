@@ -1574,8 +1574,8 @@ Public Function mapearMensageError(numberError As Integer)
             Case sighTriajeVariable.Temperatura:
                 message = Label2.Caption & limitMessage
                 'GLCC-Validar Perímetro Cefálico-21/07/2020
-'             Case sighTriajeVariable.PerimCefalico:
-'                message = "Perimetro Cefálicos" & limitMessage
+             Case sighTriajeVariable.PerimCefalico:
+                message = "Perimetro Cefálicos" & limitMessage
                 
             Case sighTriajeVariable.PresArtDiastolica:
                 message = "Pres. Art. Diastólicagegeggagdleonel" & limitMessage
@@ -1758,9 +1758,9 @@ Public Function ValidarReglas() As Boolean
           ValidarReglas = False
        End If
        'Validar que el campo talla tenga un registro - GLCC-21/07/2020 - Inicio
-'        If Val(txtTalla.Text) = " " Then
-'        MsgBox "El Paciente debe tener una TALLA leonel", vbInformation, "Reglas"
-'       End If
+        If Val(txtTalla.Text) = " " Then
+        MsgBox "El Paciente debe tener una TALLA leonel", vbInformation, "Reglas"
+       End If
        End If
 End Function
 Private Sub txtPeso_LostFocus()
@@ -1770,9 +1770,9 @@ Private Sub txtPeso_LostFocus()
     End If
     CalculaIMC
 '    'Validar que el campo talla tenga un registro - GLCC-21/07/2020 - Inicio
-'        If Val(txtPeso.Text) = " " Then
-'        MsgBox "El Paciente debe tener un PESO", vbInformation, "Reglas"
-'       End If
+        If Val(txtPeso.Text) = " " Then
+        MsgBox "El Paciente debe tener un PESO", vbInformation, "Reglas"
+       End If
 End Sub
 
 Sub CalculaIMC()

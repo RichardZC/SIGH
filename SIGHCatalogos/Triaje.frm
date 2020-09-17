@@ -21,8 +21,8 @@ Begin VB.Form Triaje
       TabIndex        =   4
       Top             =   1530
       Width           =   11055
-      _extentx        =   19500
-      _extenty        =   4313
+      _ExtentX        =   19500
+      _ExtentY        =   4313
    End
    Begin VB.Frame Frame3 
       Height          =   1065
@@ -533,14 +533,14 @@ Function ValidarDatosObligatorios() As Boolean
 '       MsgBox "Ingrese el Perimetros Cefalico", vbInformation, Me.Caption
 '       Exit Function
 '   End If
-'   If Me.txtNcuenta.Text = "" Or Me.txtPlan.Text = "" Then
-'       MsgBox "Ingrese el N° Cuenta", vbInformation, Me.Caption
-'       Exit Function
-'   End If
-'   If Me.txtNcuenta.Text = "" Or Me.txtPlan.Text = "" Then
-'       MsgBox "Ingrese el N° Cuenta", vbInformation, Me.Caption
-'       Exit Function
-'   End If
+   If Me.txtNcuenta.Text = "" Or Me.txtPlan.Text = "" Then
+       MsgBox "Ingrese el N° Cuenta", vbInformation, Me.Caption
+       Exit Function
+   End If
+   If Me.txtNcuenta.Text = "" Or Me.txtPlan.Text = "" Then
+       MsgBox "Ingrese el N° Cuenta", vbInformation, Me.Caption
+       Exit Function
+   End If
    'Para CUENTA DE EMERGENCIA no son obligatorios los datos
    If lcBuscaParametro.SeleccionaFilaParametro(520) <> "S" And InStr(txtProcedencia.Text, "Emergencia") > 0 Then
       ValidarDatosObligatorios = True
