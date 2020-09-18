@@ -1,6 +1,6 @@
 [History]
-1=#P0#=mb	#P1#=LogueaUsuario	#P2#=SIGHNegocios/ReglasDeSeguridad/LogueaUsuario	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200917103717	#P7#=0	#P8#=1	.
-2=#P0#=mb	#P1#=EmpleadosAutenticar	#P2#=SIGHNegocios/ReglasDeSeguridad/EmpleadosAutenticar	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200917105504	#P7#=0	#P8#=16	.
+1=#P0#=mb	#P1#=EmpleadosAutenticar	#P2#=SIGHNegocios/ReglasDeSeguridad/EmpleadosAutenticar	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200917105504	#P7#=0	#P8#=16	.
+2=#P0#=mb	#P1#=LogueaUsuario	#P2#=SIGHNegocios/ReglasDeSeguridad/LogueaUsuario	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200917103717	#P7#=0	#P8#=1	.
 3=#P0#=mb	#P1#=AbreTablaFox	#P2#=SIGHNegocios/ReglasComunes/AbreTablaFox	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200724090827	#P7#=0	#P8#=6	.
 4=#P0#=mb	#P1#=TiposDocIdentidadSeleccionarTodosIncSinTipoDoc	#P2#=SIGHNegocios/ReglasComunes/TiposDocIdentidadSeleccionarTodosIncSinTipoDoc	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200707122712	#P7#=0	#P8#=12	.
 5=#P0#=mb	#P1#=CatalogoBienesInsumosSeleccionarXid	#P2#=SIGHNegocios/ReglasComunes/CatalogoBienesInsumosSeleccionarXid	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200707094756	#P7#=0	#P8#=-12	.
