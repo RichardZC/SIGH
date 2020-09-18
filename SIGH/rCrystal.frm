@@ -4,12 +4,12 @@ Begin VB.Form rCrystal
    ClientHeight    =   5625
    ClientLeft      =   60
    ClientTop       =   345
-   ClientWidth     =   8430
+   ClientWidth     =   8895
    Icon            =   "rCrystal.frx":0000
    KeyPreview      =   -1  'True
    LinkTopic       =   "Form1"
    ScaleHeight     =   5625
-   ScaleWidth      =   8430
+   ScaleWidth      =   8895
    StartUpPosition =   2  'CenterScreen
    WindowState     =   2  'Maximized
    Begin CRVIEWERLibCtl.CRViewer CrvReportes 
@@ -17,10 +17,10 @@ Begin VB.Form rCrystal
       Left            =   0
       TabIndex        =   0
       Top             =   0
-      Width           =   8415
+      Width           =   8895
       lastProp        =   500
-      _cx             =   5080
-      _cy             =   5080
+      _cx             =   15690
+      _cy             =   9869
       DisplayGroupTree=   -1  'True
       DisplayToolbar  =   -1  'True
       EnableGroupTree =   0   'False
@@ -72,7 +72,7 @@ Dim mo_ReglasCaja As New SIGHNegocios.ReglasCaja
 Dim mo_ReglasFarmacia As New SIGHNegocios.ReglasFarmacia
 Dim mo_AdminReportes As New SIGHNegocios.ReglasReportes
 Dim mo_ReglasFacturacion As New SIGHNegocios.ReglasFacturacion
-Dim mo_reglasComunes As New SIGHNegocios.ReglasComunes
+Dim mo_ReglasComunes As New SIGHNegocios.ReglasComunes
 Dim mo_ReglasAdmision As New SIGHNegocios.ReglasAdmision
 Dim lcBuscaParametro As New SIGHDatos.Parametros
 Dim mo_ReporteUtil As New ReporteUtil
@@ -89,7 +89,7 @@ Dim ml_HoraFin As String
 Dim mb_ConsiderarSinMovimientos As Boolean
 Dim mb_SeMuestraLotes As Boolean
 Dim mb_StockMinimoMayorAcantidad As Boolean
-Dim ml_IdUsuario As Long
+Dim ml_idUsuario As Long
 Dim ml_IdProducto  As Long
 Dim lnIdPuntoCargaOrigen As Long
 Dim lnIdPuntoCargaDestino As Long
@@ -149,7 +149,7 @@ Property Let ConProrrateoColExoneracion(lValue As Boolean)
     mb_ConProrrateoColExoneracion = lValue
 End Property
 
-Property Set ProgressRpt1(oValue As XP_ProgressBar)
+Property Set progressRpt1(oValue As XP_ProgressBar)
     Set mo_ProgressRpt1 = oValue
 End Property
 Property Set progressRpt(oValue As XP_ProgressBar)
@@ -256,8 +256,8 @@ End Property
 Property Let idProducto(lValue As Long)
     ml_IdProducto = lValue
 End Property
-Property Let IdUsuario(lValue As Long)
-   ml_IdUsuario = lValue
+Property Let idUsuario(lValue As Long)
+   ml_idUsuario = lValue
 End Property
 Property Let StockMinimoMayorAcantidad(lValue As Boolean)
     mb_StockMinimoMayorAcantidad = lValue
@@ -378,7 +378,7 @@ Private Sub Form_Load()
             mrs_Tmp.AddNew
             mrs_Tmp.Fields!FechaIngreso = "Fecha: " & rsreporte.Fields!FechaIngreso & "     Hora: " & rsreporte.Fields!HoraIngreso
             mrs_Tmp.Fields!Paciente = "Paciente: " & Trim(rsreporte.Fields!ApellidoPaterno) & " " & Trim(rsreporte.Fields!ApellidoMaterno) & " " & Trim(rsreporte.Fields!PrimerNombre) & " " & mo_ReporteUtil.NullToVacio(rsreporte!SegundoNombre)
-            mrs_Tmp.Fields!Usuario = "Usuario: " & mo_ReglasCaja.SeleccionaDatosCajero(ml_IdUsuario, sghUsuario) & "     No Cuenta: " & ml_LcIdCuentaAtencion
+            mrs_Tmp.Fields!Usuario = "Usuario: " & mo_ReglasCaja.SeleccionaDatosCajero(ml_idUsuario, sghUsuario) & "     No Cuenta: " & ml_LcIdCuentaAtencion
             mrs_Tmp.Fields!NroHistoriaClinica = "No Historia: " & HCigualDNI_DevuelveHistoriaConCerosIzquierda(Trim(Str(rsreporte.Fields!NroHistoriaClinica)), False)
             mrs_Tmp.Fields!Servicio = "Servicio: " & mo_ReporteUtil.NullToVacio(rsreporte!Servicio)
             mrs_Tmp.Fields!Medico = "Médico: " & mo_ReporteUtil.ArmarNombreDeMedico(mo_ReporteUtil.NullToVacio(rsreporte!ApellidoPaternoMedico), mo_ReporteUtil.NullToVacio(rsreporte!ApellidoMaternoMedico), mo_ReporteUtil.NullToVacio(rsreporte!NombresMedico))
@@ -414,7 +414,7 @@ Private Sub Form_Load()
     Case "ResumenCCosto"
         moConexion.CursorLocation = adUseClient
         moConexion.CommandTimeout = 300
-        moConexion.Open SIGHEntidades.CadenaConexion
+        moConexion.Open sighEntidades.CadenaConexion
         
         If mb_ConProrrateoColExoneracion = False Then
            ResumenXcentroCosto mrs_Tmp
@@ -431,7 +431,7 @@ Private Sub Form_Load()
             GenerarRecordsetTemporal lc_TipoReporte
             lcTexto3 = "..llena Temporal..."
             'Llena Temporal con Centro de Costos
-            Set rsTmp = mo_reglasComunes.CentrosCostoSeleccionarTodos(moConexion)
+            Set rsTmp = mo_ReglasComunes.CentrosCostoSeleccionarTodos(moConexion)
             If rsTmp.RecordCount = 0 Then
                MsgBox "Llene tabla CENTRO DE COSTOS"
                Exit Sub
@@ -440,7 +440,7 @@ Private Sub Form_Load()
             Do While Not rsTmp.EOF
                mrs_Tmp.AddNew
                mrs_Tmp.Fields!IdCentroCosto = rsTmp.Fields!IdCentroCosto
-               mrs_Tmp.Fields!CentroCosto = rsTmp.Fields!Descripcion
+               mrs_Tmp.Fields!CentroCosto = rsTmp.Fields!descripcion
                mrs_Tmp.Update
                rsTmp.MoveNext
             Loop
@@ -462,7 +462,7 @@ Private Sub Form_Load()
                   LcTexto2 = rsreporte.Fields!nroSerie + rsreporte.Fields!nrodocumento
                   lnPagoCta = rsreporte.Fields!Adelantos
                   lnExoneracion = rsreporte.Fields!exoneraciones
-                  If rsreporte.Fields!IdEstadoComprobante = 9 Then
+                  If rsreporte.Fields!idEstadoComprobante = 9 Then
                      lnAnulado = rsreporte.Fields!TotalPagado
                      lnImptotal = 0
                   Else
@@ -493,7 +493,7 @@ Private Sub Form_Load()
                                 lcTexto3 = "..comienza: Consulta Externa (menos Medicina Fisica y Rehabilitacion)..."
                                 Set rsTmp = mo_ReglasCaja.FactOrdenServicioXidOrden(rsreporte.Fields!IdOrden, moConexion)
                                 If rsTmp.RecordCount > 0 Then
-                                    If rsTmp.Fields!idPuntoCarga = 6 And rsTmp.Fields!IdServicioPaciente <> 68 Then
+                                    If rsTmp.Fields!idPuntoCarga = 6 And rsTmp.Fields!idServicioPaciente <> 68 Then
                                        lnIdCentroCosto = 1003
                                        lbEncontroDato = True
                                     End If
@@ -505,7 +505,7 @@ Private Sub Form_Load()
                                 lcTexto3 = "..comienza: Consulta Externa (solo Medicina Fisica y Rehabilitacion)..."
                                 Set rsTmp = mo_ReglasCaja.FactOrdenServicioXidOrden(rsreporte.Fields!IdOrden, moConexion)
                                 If rsTmp.RecordCount > 0 Then
-                                    If rsTmp.Fields!idPuntoCarga = 6 And rsTmp.Fields!IdServicioPaciente = 68 Then
+                                    If rsTmp.Fields!idPuntoCarga = 6 And rsTmp.Fields!idServicioPaciente = 68 Then
                                        lnIdCentroCosto = 1004
                                        lbEncontroDato = True
                                     End If
@@ -565,7 +565,7 @@ Private Sub Form_Load()
                                      lnCama = lnCama + (rsreporte.Fields!TotalPagado - (lnCama + lnSoloSOP + lnResto))
                               End If
                               '
-                              If rsreporte.Fields!IdEstadoComprobante <> 9 Then
+                              If rsreporte.Fields!idEstadoComprobante <> 9 Then
                                     If rsreporte.Fields!exoneraciones > 0 Then
                                         lnAnuladoCama = 0
                                         lnExoneracionCama = (rsreporte.Fields!exoneraciones / 3)
@@ -699,7 +699,7 @@ Private Sub Form_Load()
                               ElseIf (lnCama + lnSoloSOP + lnResto) < rsreporte.Fields!TotalPagado Then
                                    lnConsulta = lnConsulta + (rsreporte.Fields!TotalPagado - (lnConsulta + lnResto))
                               End If
-                              If rsreporte.Fields!IdEstadoComprobante <> 9 Then
+                              If rsreporte.Fields!idEstadoComprobante <> 9 Then
                                     If rsreporte.Fields!exoneraciones > 0 Then
                                         lnAnuladoConsulta = 0
                                         lnExoneracionConsulta = (rsreporte.Fields!exoneraciones / 2)
@@ -828,7 +828,7 @@ Private Sub Form_Load()
                            '*****Laboratorio
                            If lbEncontroDato = False Then
                                 lcTexto3 = "..comienza: Laboratorio..."
-                                Set rsTmp = mo_reglasComunes.FactCatalogoServiciosPtosSeleccionar(" where idProducto=" & rsreporte.Fields!idProducto, moConexion)
+                                Set rsTmp = mo_ReglasComunes.FactCatalogoServiciosPtosSeleccionar(" where idProducto=" & rsreporte.Fields!idProducto, moConexion)
                                 If rsTmp.RecordCount > 0 Then
                                 If rsTmp.Fields!idPuntoCarga = 2 Or rsTmp.Fields!idPuntoCarga = 3 Then
                                    lnIdCentroCosto = 1001
@@ -840,7 +840,7 @@ Private Sub Form_Load()
                            '*****Imagenes
                            If lbEncontroDato = False Then
                                 lcTexto3 = "..comienza: Imagenes..."
-                                Set rsTmp = mo_reglasComunes.FactCatalogoServiciosPtosSeleccionar(" where idProducto=" & rsreporte.Fields!idProducto, moConexion)
+                                Set rsTmp = mo_ReglasComunes.FactCatalogoServiciosPtosSeleccionar(" where idProducto=" & rsreporte.Fields!idProducto, moConexion)
                                 If rsTmp.RecordCount > 0 Then
                                 If rsTmp.Fields!idPuntoCarga >= 20 And rsTmp.Fields!idPuntoCarga <= 23 Then
                                    lnIdCentroCosto = 1002
@@ -898,7 +898,7 @@ Private Sub Form_Load()
                Do While Not rsreporte.EOF
                   LcTexto2 = rsreporte.Fields!nroSerie + rsreporte.Fields!nrodocumento
                   lnExoneracion = lnExoneracion + rsreporte.Fields!exoneraciones
-                  If rsreporte.Fields!IdEstadoComprobante = 9 Then
+                  If rsreporte.Fields!idEstadoComprobante = 9 Then
                      lnAnulado = lnAnulado + rsreporte.Fields!TotalPagado
                   Else
                      lnImptotal = lnImptotal + rsreporte.Fields!TotalPagado
@@ -945,9 +945,9 @@ Private Sub Form_Load()
                 Case "hora"
                   crParamDef.AddCurrentValue ("Hora Impresión: " & lcBuscaParametro.RetornaHoraServidorSQL1)
                 Case "pc"
-                    crParamDef.AddCurrentValue ("PC: " & SIGHEntidades.RetornaNombrePC)
+                    crParamDef.AddCurrentValue ("PC: " & sighEntidades.RetornaNombrePC)
                 Case "user"
-                    crParamDef.AddCurrentValue ("Usuario: " & lcBuscaParametro.RetornaLoginUsuario(SIGHEntidades.Usuario))
+                    crParamDef.AddCurrentValue ("Usuario: " & lcBuscaParametro.RetornaLoginUsuario(sighEntidades.Usuario))
                 Case "lcEESS"
                     crParamDef.AddCurrentValue (lcTitEESS)
                 Case "lcEESSdireccion"
@@ -960,7 +960,7 @@ Private Sub Form_Load()
         End If
         moConexion.Close
     Case "DetalleCentroCosto"
-        moConexion.Open SIGHEntidades.CadenaConexion
+        moConexion.Open sighEntidades.CadenaConexion
         moConexion.CursorLocation = adUseClient
         ResumenXcentroCosto mrs_Tmp
         
@@ -1017,7 +1017,7 @@ Private Sub Form_Load()
             MsgBox "Se generó el archivo " & lcParametro269
        End Select
  '
-       mo_reglasComunes.grabaTablaAuditoria (crReport.Database.Tables.Item(1).Name & " " & _
+       mo_ReglasComunes.grabaTablaAuditoria (crReport.Database.Tables.Item(1).Name & " " & _
                              Mid(lc_TextoDelFiltro, IIf(InStr(lc_TextoDelFiltro, "FILTROS: ") > 0, 10, 1)))   'debb-27/05/2015
           
     End If
@@ -1159,14 +1159,14 @@ Sub ResumenXcentroCosto(mrs_Tmp As Recordset)
         Set rsTmp3 = mo_ReglasCaja.CajaCajaSegunFiltro("")
         '
         lnIdProductoEmergencia = mo_ReglasFacturacion.ObtenerCodigoDeConsultaDeEmergencia()
-        mo_reglasComunes.ActualizaCentroCostosParaItems IIf(mb_ConOtrosSaludDesagregado = True, True, False), moConexion
+        mo_ReglasComunes.ActualizaCentroCostosParaItems IIf(mb_ConOtrosSaludDesagregado = True, True, False), moConexion
         '
         lcTexto3 = "..comienza a generar Temporal..."
         GenerarRecordsetTemporal lc_TipoReporte
         lcTexto3 = "..llena Temporal..."
         If lc_TipoReporte <> "DetalleCentroCosto" Then
             'Llena Temporal con Centro de Costos
-            Set rsTmp = mo_reglasComunes.CentrosCostoSeleccionarTodos(moConexion)
+            Set rsTmp = mo_ReglasComunes.CentrosCostoSeleccionarTodos(moConexion)
             If rsTmp.RecordCount = 0 Then
                MsgBox "Llene tabla CENTRO DE COSTOS"
                Exit Sub
@@ -1175,7 +1175,7 @@ Sub ResumenXcentroCosto(mrs_Tmp As Recordset)
             Do While Not rsTmp.EOF
                mrs_Tmp.AddNew
                mrs_Tmp.Fields!IdCentroCosto = rsTmp.Fields!IdCentroCosto
-               mrs_Tmp.Fields!CentroCosto = rsTmp.Fields!Descripcion
+               mrs_Tmp.Fields!CentroCosto = rsTmp.Fields!descripcion
                mrs_Tmp.Update
                rsTmp.MoveNext
             Loop
@@ -1205,8 +1205,8 @@ End If
               LcTexto2 = rsreporte.Fields!nroSerie + rsreporte.Fields!nrodocumento
               lnPagoCta = rsreporte.Fields!Adelantos
               lnExoneracion = rsreporte.Fields!exoneraciones
-              lnIdEstadoComprobante = rsreporte.Fields!IdEstadoComprobante
-              If rsreporte.Fields!IdEstadoComprobante = 9 Then
+              lnIdEstadoComprobante = rsreporte.Fields!idEstadoComprobante
+              If rsreporte.Fields!idEstadoComprobante = 9 Then
                  lnAnulado = rsreporte.Fields!TotalPagado
                  lnImptotal = 0
               Else
@@ -1244,7 +1244,7 @@ End If
                             lcTexto3 = "..comienza: Consulta Externa (menos Medicina Fisica y Rehabilitacion)..."
                             Set rsTmp = mo_ReglasFacturacion.FactOrdenServicioPoridOrdenConexion(rsreporte.Fields!IdOrden, moConexion)
                             If rsTmp.RecordCount > 0 Then
-                                If rsTmp.Fields!idPuntoCarga = 6 And rsTmp.Fields!IdServicioPaciente <> 68 Then
+                                If rsTmp.Fields!idPuntoCarga = 6 And rsTmp.Fields!idServicioPaciente <> 68 Then
                                    lcServicioPaciente = rsTmp.Fields!dServicioPaciente
                                    lnIdCentroCosto = 1003
                                    lbEncontroDato = True
@@ -1257,7 +1257,7 @@ End If
                             lcTexto3 = "..comienza: Consulta Externa (solo Medicina Fisica y Rehabilitacion)..."
                             Set rsTmp = mo_ReglasFacturacion.FactOrdenServicioPoridOrdenConexion(rsreporte.Fields!IdOrden, moConexion)
                             If rsTmp.RecordCount > 0 Then
-                                If rsTmp.Fields!idPuntoCarga = 6 And rsTmp.Fields!IdServicioPaciente = 68 Then
+                                If rsTmp.Fields!idPuntoCarga = 6 And rsTmp.Fields!idServicioPaciente = 68 Then
                                    lcServicioPaciente = rsTmp.Fields!dServicioPaciente
                                    lnIdCentroCosto = 1004
                                    lbEncontroDato = True
@@ -1310,7 +1310,7 @@ End If
                                             Else
                                                lnExoneracionCanDetall = 0: lnExoneracionImpDetall = 0
                                             End If
-                                            Select Case rsreporte.Fields!IdEstadoComprobante
+                                            Select Case rsreporte.Fields!idEstadoComprobante
                                             Case 6      '***Devolucion
                                                lnImptotalDetall = -(lnImporteNeto): lnCanTotalDetall = rsTmp999.Fields!Cantidad
                                                lnAnuladoImpDetall = 0: lnAnuladoCanDetall = 0
@@ -1322,7 +1322,7 @@ End If
                                                lnAnuladoImpDetall = 0: lnAnuladoCanDetall = 0
                                             End Select
                                             lnIdProductoDetall = rsTmp999.Fields!idProducto: lnCodigoDetall = rsTmp999.Fields!Codigo
-                                            lnDescripcionDetall = rsTmp999.Fields!NombreProducto: lnPrecioDetall = rsTmp999.Fields!Precio
+                                            lnDescripcionDetall = rsTmp999.Fields!NombreProducto: lnPrecioDetall = rsTmp999.Fields!precio
                                             GrabaDetalleEnTmp 1005, mrs_Tmp, lnExoneracionImpDetall, lnExoneracionCanDetall, _
                                                               lnAnuladoImpDetall, lnAnuladoCanDetall, lnImptotalDetall, _
                                                               lnCanTotalDetall, lnIdProductoDetall, lnCodigoDetall, _
@@ -1346,7 +1346,7 @@ End If
                                             Else
                                                lnExoneracionCanDetall = 0: lnExoneracionImpDetall = 0
                                             End If
-                                            Select Case rsreporte.Fields!IdEstadoComprobante
+                                            Select Case rsreporte.Fields!idEstadoComprobante
                                             Case 6      '***Devolucion
                                                lnImptotalDetall = -(lnImporteNeto): lnCanTotalDetall = rsTmp999.Fields!Cantidad
                                                lnAnuladoImpDetall = 0: lnAnuladoCanDetall = 0
@@ -1358,7 +1358,7 @@ End If
                                                lnAnuladoImpDetall = 0: lnAnuladoCanDetall = 0
                                             End Select
                                             lnIdProductoDetall = rsTmp999.Fields!idProducto: lnCodigoDetall = rsTmp999.Fields!Codigo
-                                            lnDescripcionDetall = rsTmp999.Fields!NombreProducto: lnPrecioDetall = rsTmp999.Fields!Precio
+                                            lnDescripcionDetall = rsTmp999.Fields!NombreProducto: lnPrecioDetall = rsTmp999.Fields!precio
                                             GrabaDetalleEnTmp 1001, mrs_Tmp, lnExoneracionImpDetall, lnExoneracionCanDetall, lnAnuladoImpDetall, lnAnuladoCanDetall, lnImptotalDetall, lnCanTotalDetall, lnIdProductoDetall, lnCodigoDetall, lnDescripcionDetall, lnPrecioDetall, rsTmp999.Fields!Cantidad, rsTmp999.Fields!Total
                                         End If
                                    End If
@@ -1378,7 +1378,7 @@ End If
                                             Else
                                                lnExoneracionCanDetall = 0: lnExoneracionImpDetall = 0
                                             End If
-                                            Select Case rsreporte.Fields!IdEstadoComprobante
+                                            Select Case rsreporte.Fields!idEstadoComprobante
                                             Case 6      '***Devolucion
                                                lnImptotalDetall = -(lnImporteNeto): lnCanTotalDetall = rsTmp999.Fields!Cantidad
                                                lnAnuladoImpDetall = 0: lnAnuladoCanDetall = 0
@@ -1390,13 +1390,13 @@ End If
                                                lnAnuladoImpDetall = 0: lnAnuladoCanDetall = 0
                                             End Select
                                             lnIdProductoDetall = rsTmp999.Fields!idProducto: lnCodigoDetall = rsTmp999.Fields!Codigo
-                                            lnDescripcionDetall = rsTmp999.Fields!NombreProducto: lnPrecioDetall = rsTmp999.Fields!Precio
+                                            lnDescripcionDetall = rsTmp999.Fields!NombreProducto: lnPrecioDetall = rsTmp999.Fields!precio
                                             GrabaDetalleEnTmp 1002, mrs_Tmp, lnExoneracionImpDetall, lnExoneracionCanDetall, lnAnuladoImpDetall, lnAnuladoCanDetall, lnImptotalDetall, lnCanTotalDetall, lnIdProductoDetall, lnCodigoDetall, lnDescripcionDetall, lnPrecioDetall, rsTmp999.Fields!Cantidad, rsTmp999.Fields!Total
                                         End If
                                    End If
                                 End If
                                 If lbHallo = False And rsTmp1.RecordCount > 0 Then
-                                    If rsTmp1.Fields!IdServicioPaciente = 73 Then
+                                    If rsTmp1.Fields!idServicioPaciente = 73 Then
                                         lbHallo = True
                                         'Sala de Operaciones (Centro Quirurgico)
                                         lnImporteNeto = rsTmp999.Fields!Importe - lnExoneracionItemSP
@@ -1411,7 +1411,7 @@ End If
                                             Else
                                                lnExoneracionCanDetall = 0: lnExoneracionImpDetall = 0
                                             End If
-                                            Select Case rsreporte.Fields!IdEstadoComprobante
+                                            Select Case rsreporte.Fields!idEstadoComprobante
                                             Case 6      '***Devolucion
                                                lnImptotalDetall = -(lnImporteNeto): lnCanTotalDetall = rsTmp999.Fields!Cantidad
                                                lnAnuladoImpDetall = 0: lnAnuladoCanDetall = 0
@@ -1423,7 +1423,7 @@ End If
                                                lnAnuladoImpDetall = 0: lnAnuladoCanDetall = 0
                                             End Select
                                             lnIdProductoDetall = rsTmp999.Fields!idProducto: lnCodigoDetall = rsTmp999.Fields!Codigo
-                                            lnDescripcionDetall = rsTmp999.Fields!NombreProducto: lnPrecioDetall = rsTmp999.Fields!Precio
+                                            lnDescripcionDetall = rsTmp999.Fields!NombreProducto: lnPrecioDetall = rsTmp999.Fields!precio
                                             GrabaDetalleEnTmp 1006, mrs_Tmp, lnExoneracionImpDetall, lnExoneracionCanDetall, lnAnuladoImpDetall, lnAnuladoCanDetall, lnImptotalDetall, lnCanTotalDetall, lnIdProductoDetall, lnCodigoDetall, lnDescripcionDetall, lnPrecioDetall, rsTmp999.Fields!Cantidad, rsTmp999.Fields!Total
                                             
                                         End If
@@ -1442,7 +1442,7 @@ End If
                                         Else
                                            lnExoneracionCanDetall = 0: lnExoneracionImpDetall = 0
                                         End If
-                                        Select Case rsreporte.Fields!IdEstadoComprobante
+                                        Select Case rsreporte.Fields!idEstadoComprobante
                                         Case 6      '***Devolucion
                                            lnImptotalDetall = -(lnImporteNeto): lnCanTotalDetall = rsTmp999.Fields!Cantidad
                                            lnAnuladoImpDetall = 0: lnAnuladoCanDetall = 0
@@ -1454,7 +1454,7 @@ End If
                                            lnAnuladoImpDetall = 0: lnAnuladoCanDetall = 0
                                         End Select
                                         lnIdProductoDetall = rsTmp999.Fields!idProducto: lnCodigoDetall = rsTmp999.Fields!Codigo
-                                        lnDescripcionDetall = rsTmp999.Fields!NombreProducto: lnPrecioDetall = rsTmp999.Fields!Precio
+                                        lnDescripcionDetall = rsTmp999.Fields!NombreProducto: lnPrecioDetall = rsTmp999.Fields!precio
                                         GrabaDetalleEnTmp 1008, mrs_Tmp, lnExoneracionImpDetall, lnExoneracionCanDetall, lnAnuladoImpDetall, lnAnuladoCanDetall, lnImptotalDetall, lnCanTotalDetall, lnIdProductoDetall, lnCodigoDetall, lnDescripcionDetall, lnPrecioDetall, rsTmp999.Fields!Cantidad, rsTmp999.Fields!Total
                                     End If
                                 End If
@@ -1478,7 +1478,7 @@ End If
                              lnCama = lnCama + (rsreporte.Fields!TotalPagado - lnTotal100)
                           End If
                           '
-                          Select Case rsreporte.Fields!IdEstadoComprobante
+                          Select Case rsreporte.Fields!idEstadoComprobante
                           Case 6     '*****Devolucion
                                 lnAnuladoCama = 0
                                 lnImptotalCama = -lnCama
@@ -1667,7 +1667,7 @@ End If
                                         Else
                                            lnExoneracionCanDetall = 0: lnExoneracionImpDetall = 0
                                         End If
-                                        Select Case rsreporte.Fields!IdEstadoComprobante
+                                        Select Case rsreporte.Fields!idEstadoComprobante
                                         Case 6      '***Devolucion
                                            lnImptotalDetall = -(lnImporteNeto): lnCanTotalDetall = rsTmp999.Fields!Cantidad
                                            lnAnuladoImpDetall = 0: lnAnuladoCanDetall = 0
@@ -1683,7 +1683,7 @@ End If
 '                                           End If
                                         End Select
                                         lnIdProductoDetall = rsTmp999.Fields!idProducto: lnCodigoDetall = rsTmp999.Fields!Codigo
-                                        lnDescripcionDetall = rsTmp999.Fields!NombreProducto: lnPrecioDetall = rsTmp999.Fields!Precio
+                                        lnDescripcionDetall = rsTmp999.Fields!NombreProducto: lnPrecioDetall = rsTmp999.Fields!precio
                                         GrabaDetalleEnTmp 1013, mrs_Tmp, lnExoneracionImpDetall, lnExoneracionCanDetall, lnAnuladoImpDetall, lnAnuladoCanDetall, lnImptotalDetall, lnCanTotalDetall, lnIdProductoDetall, lnCodigoDetall, lnDescripcionDetall, lnPrecioDetall, rsTmp999.Fields!Cantidad, rsTmp999.Fields!Total
                                         
                                     End If
@@ -1704,7 +1704,7 @@ End If
                                              Else
                                                 lnExoneracionCanDetall = 0: lnExoneracionImpDetall = 0
                                              End If
-                                             Select Case rsreporte.Fields!IdEstadoComprobante
+                                             Select Case rsreporte.Fields!idEstadoComprobante
                                              Case 6      '***Devolucion
                                                 lnImptotalDetall = -(lnImporteNeto): lnCanTotalDetall = rsTmp999.Fields!Cantidad
                                                 lnAnuladoImpDetall = 0: lnAnuladoCanDetall = 0
@@ -1716,7 +1716,7 @@ End If
                                                 lnAnuladoImpDetall = 0: lnAnuladoCanDetall = 0
                                              End Select
                                              lnIdProductoDetall = rsTmp999.Fields!idProducto: lnCodigoDetall = rsTmp999.Fields!Codigo
-                                             lnDescripcionDetall = rsTmp999.Fields!NombreProducto: lnPrecioDetall = rsTmp999.Fields!Precio
+                                             lnDescripcionDetall = rsTmp999.Fields!NombreProducto: lnPrecioDetall = rsTmp999.Fields!precio
                                              GrabaDetalleEnTmp 1001, mrs_Tmp, lnExoneracionImpDetall, lnExoneracionCanDetall, lnAnuladoImpDetall, lnAnuladoCanDetall, lnImptotalDetall, lnCanTotalDetall, lnIdProductoDetall, lnCodigoDetall, lnDescripcionDetall, lnPrecioDetall, rsTmp999.Fields!Cantidad, rsTmp999.Fields!Total
                                          End If
                                     End If
@@ -1736,7 +1736,7 @@ End If
                                              Else
                                                 lnExoneracionCanDetall = 0: lnExoneracionImpDetall = 0
                                              End If
-                                             Select Case rsreporte.Fields!IdEstadoComprobante
+                                             Select Case rsreporte.Fields!idEstadoComprobante
                                              Case 6      '***Devolucion
                                                 lnImptotalDetall = -(lnImporteNeto): lnCanTotalDetall = rsTmp999.Fields!Cantidad
                                                 lnAnuladoImpDetall = 0: lnAnuladoCanDetall = 0
@@ -1748,7 +1748,7 @@ End If
                                                 lnAnuladoImpDetall = 0: lnAnuladoCanDetall = 0
                                              End Select
                                              lnIdProductoDetall = rsTmp999.Fields!idProducto: lnCodigoDetall = rsTmp999.Fields!Codigo
-                                             lnDescripcionDetall = rsTmp999.Fields!NombreProducto: lnPrecioDetall = rsTmp999.Fields!Precio
+                                             lnDescripcionDetall = rsTmp999.Fields!NombreProducto: lnPrecioDetall = rsTmp999.Fields!precio
                                              GrabaDetalleEnTmp 1002, mrs_Tmp, lnExoneracionImpDetall, lnExoneracionCanDetall, lnAnuladoImpDetall, lnAnuladoCanDetall, lnImptotalDetall, lnCanTotalDetall, lnIdProductoDetall, lnCodigoDetall, lnDescripcionDetall, lnPrecioDetall, rsTmp999.Fields!Cantidad, rsTmp999.Fields!Total
                                          End If
                                     End If
@@ -1766,7 +1766,7 @@ End If
                                         Else
                                            lnExoneracionCanDetall = 0: lnExoneracionImpDetall = 0
                                         End If
-                                        Select Case rsreporte.Fields!IdEstadoComprobante
+                                        Select Case rsreporte.Fields!idEstadoComprobante
                                         Case 6      '***Devolucion
                                            lnImptotalDetall = -(lnImporteNeto): lnCanTotalDetall = rsTmp999.Fields!Cantidad
                                            lnAnuladoImpDetall = 0: lnAnuladoCanDetall = 0
@@ -1778,7 +1778,7 @@ End If
                                            lnAnuladoImpDetall = 0: lnAnuladoCanDetall = 0
                                         End Select
                                         lnIdProductoDetall = rsTmp999.Fields!idProducto: lnCodigoDetall = rsTmp999.Fields!Codigo
-                                        lnDescripcionDetall = rsTmp999.Fields!NombreProducto: lnPrecioDetall = rsTmp999.Fields!Precio
+                                        lnDescripcionDetall = rsTmp999.Fields!NombreProducto: lnPrecioDetall = rsTmp999.Fields!precio
                                         GrabaDetalleEnTmp 1010, mrs_Tmp, lnExoneracionImpDetall, lnExoneracionCanDetall, lnAnuladoImpDetall, lnAnuladoCanDetall, lnImptotalDetall, lnCanTotalDetall, lnIdProductoDetall, lnCodigoDetall, lnDescripcionDetall, lnPrecioDetall, rsTmp999.Fields!Cantidad, rsTmp999.Fields!Total
                                     End If
                                 End If
@@ -1801,7 +1801,7 @@ End If
                           ElseIf lnTotal100 < rsreporte.Fields!TotalPagado Then
                                lnResto = lnResto + (rsreporte.Fields!TotalPagado - lnTotal100)
                           End If
-                          Select Case rsreporte.Fields!IdEstadoComprobante
+                          Select Case rsreporte.Fields!idEstadoComprobante
                           Case 6      '***Devoluciones
                                 lnAnuladoConsulta = 0
                                 lnImptotalConsulta = -lnConsulta
@@ -1933,7 +1933,7 @@ End If
                                         '*****Farmacia
                                         If lnResto > 0 Then
                                             lnExoneracionConsulta = 0
-                                            Select Case rsreporte.Fields!IdEstadoComprobante
+                                            Select Case rsreporte.Fields!idEstadoComprobante
                                             Case 6    '**devolucion
                                                     lnImptotalConsulta = -lnResto
                                                     lnAnuladoConsulta = 0
@@ -1981,7 +1981,7 @@ End If
                                                                     ElseIf oRsTmpReemb1.Fields!idPuntoCarga >= sghPuntosCargaBasicos.sghPtoCargaEcogGeneral And oRsTmpReemb1.Fields!idPuntoCarga <= sghPuntosCargaBasicos.sghPtoCargaEcogObstetrica Then
                                                                        'Imagenes
                                                                        lnIdCentroCosto = 1002
-                                                                    ElseIf oRsTmpReemb1.Fields!idTipoServicio = sghTipoServicio.sghConsultaExterna And oRsTmpReemb1.Fields!idPuntoCarga = sghPuntosCargaBasicos.sghPtoCargaAdmisionCE And oRsTmpReemb1.Fields!IdServicioPaciente <> 68 Then
+                                                                    ElseIf oRsTmpReemb1.Fields!idTipoServicio = sghTipoServicio.sghConsultaExterna And oRsTmpReemb1.Fields!idPuntoCarga = sghPuntosCargaBasicos.sghPtoCargaAdmisionCE And oRsTmpReemb1.Fields!idServicioPaciente <> 68 Then
                                                                        'Consulta Externa
                                                                        lnIdCentroCosto = 1003
                                                                     ElseIf oRsTmpReemb1.Fields!idTipoServicio = sghTipoServicio.sghHospitalizacion Then
@@ -1989,7 +1989,7 @@ End If
                                                                         If oRsTmpReemb1.Fields!idPuntoCarga = sghPuntosCargaBasicos.sghPtoCargaAdmisionHospitalizacion Then
                                                                            'Hospitalizacion-CAMA
                                                                            lnIdCentroCosto = 1005
-                                                                        ElseIf oRsTmpReemb1.Fields!IdServicioPaciente = 73 Then
+                                                                        ElseIf oRsTmpReemb1.Fields!idServicioPaciente = 73 Then
                                                                            'Hospitalizacion-SALA OPERACIONES
                                                                            lnIdCentroCosto = 1006
                                                                         Else
@@ -2016,7 +2016,7 @@ End If
                                                                     lnImporteXitem = ProrratearCuentaReembolsada(rsTmp.Fields!ReembolsoPagadoServicio, lnImporteXcuenta, oRsTmpReemb1.Fields!TotalFinanciado)
                                                                     lnTotalGrabado = lnTotalGrabado + lnImporteXitem
                                                                     lnExoneracionConsulta = 0
-                                                                    Select Case rsreporte.Fields!IdEstadoComprobante
+                                                                    Select Case rsreporte.Fields!idEstadoComprobante
                                                                      Case 6    '**devolucion
                                                                              lnImptotalConsulta = -lnImporteXitem
                                                                              lnAnuladoConsulta = 0
@@ -2051,7 +2051,7 @@ End If
                                                           '
                                                           lnTotalGrabado = lnTotalGrabado + lnImporteXitem
                                                           lnExoneracionConsulta = 0
-                                                          Select Case rsreporte.Fields!IdEstadoComprobante
+                                                          Select Case rsreporte.Fields!idEstadoComprobante
                                                           Case 6    '**devolucion
                                                                   lnImptotalConsulta = -lnImporteXitem
                                                                   lnAnuladoConsulta = 0
@@ -2082,7 +2082,7 @@ End If
                                                 'Se descuadro por DECIMAS
                                                 lnImporteXitem = lnResto - lnTotalGrabado
                                                 lnExoneracionConsulta = 0
-                                                Select Case rsreporte.Fields!IdEstadoComprobante
+                                                Select Case rsreporte.Fields!idEstadoComprobante
                                                   Case 6    '**devolucion
                                                           lnImptotalConsulta = -lnImporteXitem
                                                           lnAnuladoConsulta = 0
@@ -2114,7 +2114,7 @@ End If
                                      If lc_TipoReporte = "DetalleCentroCosto" Then
                                         'Reembolso Farmacia
                                         lnExoneracionImpDetall = 0: lnExoneracionCanDetall = 0
-                                        Select Case rsreporte.Fields!IdEstadoComprobante
+                                        Select Case rsreporte.Fields!idEstadoComprobante
                                         Case 6      '***Devolucion
                                            lnAnuladoImpDetall = 0: lnAnuladoCanDetall = 0
                                            lnImptotalDetall = -lnResto: lnCanTotalDetall = 1
@@ -2126,7 +2126,7 @@ End If
                                            lnImptotalDetall = lnResto: lnCanTotalDetall = 1
                                         End Select
                                         lnIdProductoDetall = lcParametro252
-                                        Set rsTmp2 = mo_reglasComunes.CatalogoServiciosSeleccionarXidentificador(lnIdProductoDetall, moConexion)
+                                        Set rsTmp2 = mo_ReglasComunes.CatalogoServiciosSeleccionarXidentificador(lnIdProductoDetall, moConexion)
                                         If rsTmp2.RecordCount > 0 Then
                                            lnCodigoDetall = rsTmp2.Fields!Codigo: lnDescripcionDetall = rsTmp2.Fields!NombreMINSA
                                         Else
@@ -2139,7 +2139,7 @@ End If
                                         lnResto = rsreporte.Fields!TotalPagado - lnResto
                                         If lnResto <> 0 Then
                                             lnExoneracionImpDetall = 0: lnExoneracionCanDetall = 0
-                                            Select Case rsreporte.Fields!IdEstadoComprobante
+                                            Select Case rsreporte.Fields!idEstadoComprobante
                                             Case 6      '***Devolucion
                                                lnAnuladoImpDetall = 0: lnAnuladoCanDetall = 0
                                                lnImptotalDetall = -lnResto: lnCanTotalDetall = 1
@@ -2151,7 +2151,7 @@ End If
                                                lnImptotalDetall = lnResto: lnCanTotalDetall = 1
                                             End Select
                                             lnIdProductoDetall = lcParametro251
-                                            Set rsTmp2 = mo_reglasComunes.CatalogoServiciosSeleccionarXidentificador(lnIdProductoDetall, moConexion)
+                                            Set rsTmp2 = mo_ReglasComunes.CatalogoServiciosSeleccionarXidentificador(lnIdProductoDetall, moConexion)
                                             If rsTmp2.RecordCount > 0 Then
                                                lnCodigoDetall = rsTmp2.Fields!Codigo: lnDescripcionDetall = rsTmp2.Fields!NombreMINSA
                                             Else
@@ -2169,7 +2169,7 @@ End If
                        '*****Laboratorio
                        If lbEncontroDato = False Then
                             lcTexto3 = "..comienza: Laboratorio..."
-                            Set rsTmp = mo_reglasComunes.FactCatalogoServiciosPtosSeleccionar(" where idProducto=" & rsreporte.Fields!idProducto, moConexion)
+                            Set rsTmp = mo_ReglasComunes.FactCatalogoServiciosPtosSeleccionar(" where idProducto=" & rsreporte.Fields!idProducto, moConexion)
                             If rsTmp.RecordCount > 0 Then
                                 If mb_ConOtrosSaludDesagregado = True Then
                                     rsTmp.MoveFirst
@@ -2193,7 +2193,7 @@ End If
                        '*****Imagenes
                        If lbEncontroDato = False Then
                             lcTexto3 = "..comienza: Imagenes..."
-                            Set rsTmp = mo_reglasComunes.FactCatalogoServiciosPtosSeleccionar(" where idProducto=" & rsreporte.Fields!idProducto, moConexion)
+                            Set rsTmp = mo_ReglasComunes.FactCatalogoServiciosPtosSeleccionar(" where idProducto=" & rsreporte.Fields!idProducto, moConexion)
                             If rsTmp.RecordCount > 0 Then
                                 If mb_ConOtrosSaludDesagregado = True Then
                                    rsTmp.MoveFirst
@@ -2261,7 +2261,7 @@ End If
                                   Else
                                      lnIdCentroCosto = lnIdCentroCosto1
                                      If lnIdCentroCosto1 = 999 Then
-                                        Set rsTmp2 = mo_reglasComunes.FactCatalogoServiciosPtosSeleccionar(" where idProducto=" & rsTmp.Fields!idProducto, moConexion)
+                                        Set rsTmp2 = mo_ReglasComunes.FactCatalogoServiciosPtosSeleccionar(" where idProducto=" & rsTmp.Fields!idProducto, moConexion)
                                         If rsTmp2.RecordCount > 0 Then
                                            Select Case rsTmp2.Fields!idPuntoCarga
                                            Case sghPuntosCargaBasicos.sghPtoCargaAdmisionCE
@@ -2285,7 +2285,7 @@ End If
                                   '
                                   lnExoneracionConsulta = 0: lnExoneracionCanDetall = 0: lnExoneracionImpDetall = 0
                                   If lnExoneracion > 0 Then
-                                     If rsreporte.Fields!IdEstadoComprobante = 9 Then
+                                     If rsreporte.Fields!idEstadoComprobante = 9 Then
                                         lnExoneracionConsulta = ProrratearCuentaReembolsada(lnExoneracion, lnAnulado + lnExoneracion, rsTmp.Fields!Total)
                                      Else
                                         lnExoneracionConsulta = ProrratearCuentaReembolsada(lnExoneracion, lnImptotal + lnExoneracion, rsTmp.Fields!Total)
@@ -2294,7 +2294,7 @@ End If
                                      lnImporteXitem = lnImporteXitem - lnExoneracionImpDetall
                                   End If
                                   '
-                                  Select Case rsreporte.Fields!IdEstadoComprobante
+                                  Select Case rsreporte.Fields!idEstadoComprobante
                                   Case 6    '**devolucion
                                           lnImptotalConsulta = -lnImporteXitem: lnAnuladoConsulta = 0
                                           '
@@ -2316,7 +2316,7 @@ End If
                                      GrabaDetalleEnTmp lnIdCentroCosto, mrs_Tmp, lnExoneracionImpDetall, lnExoneracionCanDetall, _
                                                        lnAnuladoImpDetall, lnAnuladoCanDetall, lnImptotalDetall, lnCanTotalDetall, _
                                                        rsTmp.Fields!idProducto, rsTmp.Fields!Codigo, _
-                                                       rsTmp.Fields!Nombre, rsTmp.Fields!Precio, _
+                                                       rsTmp.Fields!nombre, rsTmp.Fields!precio, _
                                                        rsTmp.Fields!Cantidad, rsTmp.Fields!Total
                                   Else
                                      mrs_Tmp.MoveFirst
@@ -2356,7 +2356,7 @@ End If
                             '
                             lnAnuladoImpDetall = 0: lnAnuladoCanDetall = 0
                             lnImptotalDetall = 0: lnCanTotalDetall = 0
-                            Select Case rsreporte.Fields!IdEstadoComprobante
+                            Select Case rsreporte.Fields!idEstadoComprobante
                             Case 6      '***Devolucion
                                lnImptotalDetall = -(rsreporte.Fields!Total - lnExoneracionImpDetall)
                                lnCanTotalDetall = rsreporte.Fields!Cantidad
@@ -2375,7 +2375,7 @@ End If
                             GrabaDetalleEnTmp lnIdCentroCosto, mrs_Tmp, lnExoneracionImpDetall, lnExoneracionCanDetall, _
                                               lnAnuladoImpDetall, lnAnuladoCanDetall, lnImptotalDetall, lnCanTotalDetall, _
                                               rsreporte.Fields!idProducto, rsreporte.Fields!Codigo, rsreporte.Fields!NombreMINSA, _
-                                              rsreporte.Fields!Precio, rsreporte.Fields!Cantidad, rsreporte.Fields!Total
+                                              rsreporte.Fields!precio, rsreporte.Fields!Cantidad, rsreporte.Fields!Total
                             
                         End If
                     End If
@@ -2431,7 +2431,7 @@ End If
               LcTexto2 = rsreporte.Fields!nroSerie + rsreporte.Fields!nrodocumento
               lnExoneracion = lnExoneracion + rsreporte.Fields!exoneraciones
               lnPagoCta = rsreporte.Fields!Adelantos
-              If rsreporte.Fields!IdEstadoComprobante = 9 Then
+              If rsreporte.Fields!idEstadoComprobante = 9 Then
                  lnAnulado = lnAnulado + rsreporte.Fields!TotalPagado
               Else
                  lnImptotal = lnImptotal + rsreporte.Fields!TotalPagado
@@ -2462,7 +2462,7 @@ End If
                             '
                             lnAnuladoImpDetall = 0: lnAnuladoCanDetall = 0
                             lnImptotalDetall = 0: lnCanTotalDetall = 0
-                            If rsreporte.Fields!IdEstadoComprobante = 9 Then
+                            If rsreporte.Fields!idEstadoComprobante = 9 Then
                                lnAnuladoImpDetall = rsreporte.Fields!TotalPagar - lnExoneracionImpDetall
                                lnAnuladoCanDetall = rsreporte.Fields!CantidadPagar
                             Else
@@ -2541,7 +2541,7 @@ Sub GrabaDetalleEnTmp(lnIdCentroCosto As Long, mrs_Tmp As Recordset, lnExoneraci
                   mrs_Tmp.Fields!idProducto = lnIdProducto1
                   mrs_Tmp.Fields!Producto = lcDescripcion1
                   mrs_Tmp.Fields!Codigo = lcCodigo1
-                  mrs_Tmp.Fields!Precio = lnPrecio1
+                  mrs_Tmp.Fields!precio = lnPrecio1
             End If
             mrs_Tmp.Fields!Subtotal = mrs_Tmp.Fields!Subtotal + lnTotal1
             mrs_Tmp.Fields!canSubtotal = mrs_Tmp.Fields!canSubtotal + lnCantidad1
