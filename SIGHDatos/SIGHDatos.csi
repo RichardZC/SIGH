@@ -1,5 +1,5 @@
 [History]
-1=#P0#=mb	#P1#=SeleccionarHCSinDevolver	#P2#=SIGHDatos/MovimientosHistoriaClinica/SeleccionarHCSinDevolver	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20200909083446	#P7#=0	#P8#=15	.
+1=#P0#=mb	#P1#=SeleccionarHCSinDevolver	#P2#=SIGHDatos/MovimientosHistoriaClinica/SeleccionarHCSinDevolver	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20200921102645	#P7#=0	#P8#=2	.
 2=#P0#=mb	#P1#=SeleccionarPorId	#P2#=SIGHDatos/CajaCajero/SeleccionarPorId	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200828082455	#P7#=0	#P8#=11	.
 3=#P0#=mb	#P1#=MovimientosHistoriaClinicaEliminarMovIdPaciente	#P2#=SIGHDatos/MovimientosHistoriaClinica/MovimientosHistoriaClinicaEliminarMovIdPaciente	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200826113448	#P7#=0	#P8#=18	.
 4=#P0#=mb	#P1#=SeleccionarTodos	#P2#=SIGHDatos/Empleados/SeleccionarTodos	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200826113351	#P7#=0	#P8#=0	.

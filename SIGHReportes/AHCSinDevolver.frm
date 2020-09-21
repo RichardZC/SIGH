@@ -1,10 +1,11 @@
 VERSION 5.00
 Object = "{5A9433E9-DD7B-4529-91B6-A5E8CA054615}#2.0#0"; "IGULTR~1.OCX"
 Begin VB.Form AHCSinDevolver 
-   Caption         =   "HC sin devolución por Trámites Administrativos pasadas las 72 horas"
+   BorderStyle     =   3  'Fixed Dialog
+   Caption         =   "HC sin devolución por trámites administrativos pasadas las 72 horas"
    ClientHeight    =   6750
-   ClientLeft      =   120
-   ClientTop       =   450
+   ClientLeft      =   45
+   ClientTop       =   375
    ClientWidth     =   14955
    BeginProperty Font 
       Name            =   "Tahoma"
@@ -16,6 +17,8 @@ Begin VB.Form AHCSinDevolver
       Strikethrough   =   0   'False
    EndProperty
    LinkTopic       =   "Form1"
+   MaxButton       =   0   'False
+   MinButton       =   0   'False
    ScaleHeight     =   6750
    ScaleWidth      =   14955
    ShowInTaskbar   =   0   'False
@@ -90,7 +93,7 @@ Begin VB.Form AHCSinDevolver
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Caption         =   "Lista de historias clínicas"
+      Caption         =   "Lista de historias clínicas sin devolución por trámites administrativos pasadas las 72 horas"
    End
    Begin VB.Label lblTotal 
       AutoSize        =   -1  'True

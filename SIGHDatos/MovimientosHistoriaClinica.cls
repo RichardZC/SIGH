@@ -919,7 +919,7 @@ ManejadorDeError:
    ms_MensajeError = Err.Number & " " + Err.Description: MsgBox ms_MensajeError + Chr(13) + "Por favor contacte al personal de soporte técnico", vbInformation, "Error en la interface de acceso a datos"
 Exit Function
 End Function
-'SCCQ 26/07/2020 Cambio27 Inicio
+'SCCQ 26/08/2020 Cambio27 Inicio
 Function SeleccionarHCSinDevolver(horas As Integer) As ADODB.Recordset
 On Error GoTo ManejadorDeError
 Dim oRecordset As New ADODB.Recordset
@@ -945,4 +945,4 @@ ManejadorDeError:
    ms_MensajeError = Err.Number & " " + Err.Description: MsgBox ms_MensajeError + Chr(13) + "Por favor contacte al personal de soporte técnico", vbInformation, "Error en la interface de acceso a datos"
 Exit Function
 End Function
-'SCCQ 26/07/2020 Cambio27 Fin
+'SCCQ 26/08/2020 Cambio27 Fin
