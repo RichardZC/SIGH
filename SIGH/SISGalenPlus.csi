@@ -1,85 +1,86 @@
 [History]
-1=#P0#=mb	#P1#=ValidarDatosObligatorios	#P2#=SISGalenPlus/SiCitaDetalleIMG/ValidarDatosObligatorios	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20200917101909	#P7#=0	#P8#=34	.
-2=#P0#=mb	#P1#=RealizarBusqueda	#P2#=SISGalenPlus/ucAtencionesTriaje/RealizarBusqueda	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200917101844	#P7#=0	#P8#=28	.
-3=#P0#=mb	#P1#=ValidarReglas	#P2#=SISGalenPlus/ucPacientesDetalle/ValidarReglas	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200729114741	#P7#=0	#P8#=16	.
-4=#P0#=mb	#P1#=ucPacientesDetalle1_SePresionoTeclaEspecial	#P2#=SISGalenPlus/PacienteDetalle/ucPacientesDetalle1_SePresionoTeclaEspecial	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200729114727	#P7#=0	#P8#=1	.
-5=#P0#=mb	#P1#=cmbIdDocIdentidad_LostFocus	#P2#=SISGalenPlus/ucPacientesDetalle/cmbIdDocIdentidad_LostFocus	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200729105017	#P7#=0	#P8#=9	.
-6=#P0#=mb	#P1#=txtMadreDocumento_KeyDown	#P2#=SISGalenPlus/ucPacientesDetalle/txtMadreDocumento_KeyDown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200729104438	#P7#=0	#P8#=3	.
-7=#P0#=mb	#P1#=cmbIdDepartamentoProcedencia_Click	#P2#=SISGalenPlus/ucPacientesDetalle/cmbIdDepartamentoProcedencia_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200729104309	#P7#=0	#P8#=9	.
-8=#P0#=mb	#P1#=BuscaEmpleadoYllenaDatosDelSectorista	#P2#=SISGalenPlus/ucPacientesDetalle/BuscaEmpleadoYllenaDatosDelSectorista	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200729103815	#P7#=0	#P8#=4	.
-9=#P0#=mb	#P1#=cmdCambiaHC_Click	#P2#=SISGalenPlus/ucPacientesDetalle/cmdCambiaHC_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200729103649	#P7#=0	#P8#=5	.
-10=#P0#=mb	#P1#=cmbMadreTipoDocumento_LostFocus	#P2#=SISGalenPlus/ucPacientesDetalle/cmbMadreTipoDocumento_LostFocus	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200729103619	#P7#=0	#P8#=4	.
-11=#P0#=mb	#P1#=cmbIdPaisProcedencia_LostFocus	#P2#=SISGalenPlus/ucPacientesDetalle/cmbIdPaisProcedencia_LostFocus	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200729103119	#P7#=0	#P8#=0	.
-12=#P0#=mb	#P1#=cmbIdPaisProcedencia_KeyPress	#P2#=SISGalenPlus/ucPacientesDetalle/cmbIdPaisProcedencia_KeyPress	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200729103107	#P7#=0	#P8#=0	.
-13=#P0#=mb	#P1#=cmbIdPaisProcedencia_KeyDown	#P2#=SISGalenPlus/ucPacientesDetalle/cmbIdPaisProcedencia_KeyDown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200729103105	#P7#=0	#P8#=0	.
-14=#P0#=mb	#P1#=cmbIdPaisProcedencia_Click	#P2#=SISGalenPlus/ucPacientesDetalle/cmbIdPaisProcedencia_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200729103059	#P7#=0	#P8#=0	.
-15=#P0#=mb	#P1#=cmbIdPaisNacimiento_LostFocus	#P2#=SISGalenPlus/ucPacientesDetalle/cmbIdPaisNacimiento_LostFocus	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200729103057	#P7#=0	#P8#=0	.
-16=#P0#=mb	#P1#=cmbIdPaisNacimiento_KeyDown	#P2#=SISGalenPlus/ucPacientesDetalle/cmbIdPaisNacimiento_KeyDown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200729103050	#P7#=0	#P8#=-5	.
-17=#P0#=mb	#P1#=cmbIdPaisNacimiento_Click	#P2#=SISGalenPlus/ucPacientesDetalle/cmbIdPaisNacimiento_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200729103041	#P7#=0	#P8#=0	.
-18=#P0#=mb	#P1#=cmbIdPaisDomicilio_Click	#P2#=SISGalenPlus/ucPacientesDetalle/cmbIdPaisDomicilio_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200729103030	#P7#=0	#P8#=14	.
-19=#P0#=mb	#P1#=cmbIdioma_KeyDown	#P2#=SISGalenPlus/ucPacientesDetalle/cmbIdioma_KeyDown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200729103028	#P7#=0	#P8#=2	.
-20=#P0#=mb	#P1#=cmbIdDocIdentidad_Click	#P2#=SISGalenPlus/ucPacientesDetalle/cmbIdDocIdentidad_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200729103021	#P7#=0	#P8#=0	.
-21=#P0#=mb	#P1#=cmbIdCentroPobladoNacimiento_KeyPress	#P2#=SISGalenPlus/ucPacientesDetalle/cmbIdCentroPobladoNacimiento_KeyPress	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200729103016	#P7#=0	#P8#=0	.
-22=#P0#=mb	#P1#=cmbIdCentroPobladoNacimiento_KeyDown	#P2#=SISGalenPlus/ucPacientesDetalle/cmbIdCentroPobladoNacimiento_KeyDown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200729103013	#P7#=0	#P8#=2	.
-23=#P0#=mb	#P1#=cmbEtnia_KeyDown	#P2#=SISGalenPlus/ucPacientesDetalle/cmbEtnia_KeyDown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200729103008	#P7#=0	#P8#=0	.
-24=#P0#=mb	#P1#=chkSinFechaNacimiento_KeyDown	#P2#=SISGalenPlus/ucPacientesDetalle/chkSinFechaNacimiento_KeyDown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200729103006	#P7#=0	#P8#=0	.
-25=#P0#=mb	#P1#=chkNN_KeyDown	#P2#=SISGalenPlus/ucPacientesDetalle/chkNN_KeyDown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200729103004	#P7#=0	#P8#=0	.
-26=#P0#=mb	#P1#=cboTipoEdadPaciente_LostFocus	#P2#=SISGalenPlus/ucPacientesDetalle/cboTipoEdadPaciente_LostFocus	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200729102930	#P7#=0	#P8#=-1	.
-27=#P0#=mb	#P1#=chkPacienteNuevo_Click	#P2#=SISGalenPlus/AdmisionHospDetalle/chkPacienteNuevo_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200729094014	#P7#=0	#P8#=12	.
-28=#P0#=mb	#P1#=btnBuscarPaciente_Click	#P2#=SISGalenPlus/AdmisionHospDetalle/btnBuscarPaciente_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200729093701	#P7#=0	#P8#=103	.
-29=#P0#=mb	#P1#=BuscarPacientesSISSegunFiltro	#P2#=SISGalenPlus/AdmisionHospDetalle/BuscarPacientesSISSegunFiltro	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200729093608	#P7#=0	#P8#=82	.
-30=#P0#=mb	#P1#=CargarComboBoxes	#P2#=SISGalenPlus/AdmisionHospDetalle/CargarComboBoxes	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200729093514	#P7#=0	#P8#=14	.
-31=#P0#=mb	#P1#=txtNroDocumento_LostFocus	#P2#=SISGalenPlus/ucPacientesDetalle/txtNroDocumento_LostFocus	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200729092437	#P7#=0	#P8#=6	.
-32=#P0#=mb	#P1#=btnAceptar_Click	#P2#=SISGalenPlus/AdmisionCEatenciones/btnAceptar_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200722095947	#P7#=0	#P8#=21	.
-33=#P0#=mb	#P1#=Form_Activate	#P2#=SISGalenPlus/AdmisionCEatenciones/Form_Activate	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200722095857	#P7#=0	#P8#=8	.
-34=#P0#=mb	#P1#=cmdMuestraActividades_Click	#P2#=SISGalenPlus/AdmisionCEatenciones/cmdMuestraActividades_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200722095519	#P7#=0	#P8#=111	.
-35=#P0#=mb	#P1#=CargarComboBoxes	#P2#=SISGalenPlus/AdmisionCEatenciones/CargarComboBoxes	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200722095345	#P7#=0	#P8#=4	.
-36=#P0#=mb	#P1#=cmbFecha_LostFocus	#P2#=SISGalenPlus/ucAtencionesTriaje/cmbFecha_LostFocus	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200721120630	#P7#=0	#P8#=-1	.
-37=#P0#=mb	#P1#=AsignarIdAtencionYLlenarControles	#P2#=SISGalenPlus/ucTriajeVisor/AsignarIdAtencionYLlenarControles	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200720130420	#P7#=0	#P8#=33	.
-38=#P0#=mb	#P1#=NoPasoPorTriaje	#P2#=SISGalenPlus/ucAdmisionLista/NoPasoPorTriaje [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200720125818	#P7#=0	#P8#=1	.
-39=#P0#=mb	#P1#=ucTriajeVisorCE_changeDataControl	#P2#=SISGalenPlus/AdmisionCEatenciones/ucTriajeVisorCE_changeDataControl	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200720125758	#P7#=0	#P8#=25	.
-40=#P0#=mb	#P1#=ValidarDatosObligatorios	#P2#=SISGalenPlus/ucPacientesDetalle/ValidarDatosObligatorios	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20200720122315	#P7#=0	#P8#=23	.
-41=#P0#=mb	#P1#=btnAgreaIMG_Click	#P2#=SISGalenPlus/ucPacientesDetalle/btnAgreaIMG_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200717124158	#P7#=0	#P8#=1	.
-42=#P0#=mb	#P1#=VerificaSiExistePaciente	#P2#=SISGalenPlus/ucPacientesDetalle/VerificaSiExistePaciente	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200717124009	#P7#=0	#P8#=0	.
-43=#P0#=mb	#P1#=CargaDatosBasicosPacienteNuevo	#P2#=SISGalenPlus/ucPacientesDetalle/CargaDatosBasicosPacienteNuevo	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200717123844	#P7#=0	#P8#=33	.
-44=#P0#=mb	#P1#=UserControl_KeyDown	#P2#=SISGalenPlus/ucPacientesDetalle/UserControl_KeyDown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200717123810	#P7#=0	#P8#=1	.
-45=#P0#=mb	#P1#=Inicializar	#P2#=SISGalenPlus/ucPacientesDetalle/Inicializar	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200717122417	#P7#=0	#P8#=13	.
-46=#P0#=mb	#P1#=ValidarReglas	#P2#=SISGalenPlus/PacienteDetalle/ValidarReglas	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200717122325	#P7#=0	#P8#=8	.
-47=#P0#=mb	#P1#=GrabaParametro8	#P2#=SISGalenPlus/PacienteDetalle/GrabaParametro8	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200717122211	#P7#=0	#P8#=1	.
-48=#P0#=mb	#P1#=MensajeError	#P2#=SISGalenPlus/PacienteDetalle/MensajeError [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200717122101	#P7#=0	#P8#=1	.
-49=#P0#=mb	#P1#=idUsuario	#P2#=SISGalenPlus/PacienteDetalle/idUsuario [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200717122033	#P7#=0	#P8#=1	.
-50=#P0#=mb	#P1#=Form_Load	#P2#=SISGalenPlus/PacienteDetalle/Form_Load	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200717121947	#P7#=0	#P8#=10	.
-51=#P0#=mb	#P1#=AdministrarKeyPreview	#P2#=SISGalenPlus/PacienteDetalle/AdministrarKeyPreview	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200717121927	#P7#=0	#P8#=0	.
-52=#P0#=mb	#P1#=CargarDatosAlFormulario	#P2#=SISGalenPlus/PacienteDetalle/CargarDatosAlFormulario	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200717121856	#P7#=0	#P8#=-6	.
-53=#P0#=mb	#P1#=ValidarDatosObligatorios	#P2#=SISGalenPlus/PacienteDetalle/ValidarDatosObligatorios	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200717121830	#P7#=0	#P8#=1	.
-54=#P0#=mb	#P1#=btnAceptar_Click	#P2#=SISGalenPlus/PacienteDetalle/btnAceptar_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200717121602	#P7#=0	#P8#=14	.
-55=#P0#=mb	#P1#=chkSinFechaNacimiento_Click	#P2#=SISGalenPlus/ucPacientesDetalle/chkSinFechaNacimiento_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200717121300	#P7#=0	#P8#=0	.
-56=#P0#=mb	#P1#=chkNN_Click	#P2#=SISGalenPlus/ucPacientesDetalle/chkNN_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200717121247	#P7#=0	#P8#=36	.
-57=#P0#=mb	#P1#=CargaDatosPersonales	#P2#=SISGalenPlus/ucPacientesDetalle/CargaDatosPersonales	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20200717115713	#P7#=0	#P8#=5	.
-58=#P0#=mb	#P1#=DevuelveSexo	#P2#=SISGalenPlus/ucPacientesDetalle/DevuelveSexo	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200717115033	#P7#=0	#P8#=1	.
-59=#P0#=mb	#P1#=ValidarNumeroDeHistoriaClinica	#P2#=SISGalenPlus/ucPacientesDetalle/ValidarNumeroDeHistoriaClinica	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200717112809	#P7#=0	#P8#=13	.
-60=#P0#=mb	#P1#=CargarDatosAlObjetoDatos	#P2#=SISGalenPlus/ucPacientesDetalle/CargarDatosAlObjetoDatos	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20200717112446	#P7#=0	#P8#=103	.
-61=#P0#=mb	#P1#=TipoServicio	#P2#=SISGalenPlus/PacienteDetalle/TipoServicio [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200717081448	#P7#=0	#P8#=1	.
-62=#P0#=mb	#P1#=cmdActualizaNroAutomatico_Click	#P2#=SISGalenPlus/PacienteDetalle/cmdActualizaNroAutomatico_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200717081349	#P7#=0	#P8#=1	.
-63=#P0#=mb	#P1#=InicializarParametros	#P2#=SISGalenPlus/PacienteDetalle/InicializarParametros	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200717081044	#P7#=0	#P8#=0	.
-64=#P0#=mb	#P1#=lcNombrePc	#P2#=SISGalenPlus/PacienteDetalle/lcNombrePc [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200717080903	#P7#=0	#P8#=1	.
-65=#P0#=mb	#P1#=ModificarDatos	#P2#=SISGalenPlus/PacienteDetalle/ModificarDatos	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200717080820	#P7#=0	#P8#=0	.
-66=#P0#=mb	#P1#=AgregarDatos	#P2#=SISGalenPlus/PacienteDetalle/AgregarDatos	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200717080808	#P7#=0	#P8#=0	.
-67=#P0#=mb	#P1#=Form_Activate	#P2#=SISGalenPlus/PacienteDetalle/Form_Activate	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200710115444	#P7#=0	#P8#=-6	.
-68=#P0#=mb	#P1#=Inicializar	#P2#=SISGalenPlus/UcPacientesSunasa/Inicializar	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20200707093825	#P7#=0	#P8#=30	.
-69=#P0#=mb	#P1#=btnAceptar_Click	#P2#=SISGalenPlus/Login/btnAceptar_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200603111405	#P7#=0	#P8#=-1	.
-70=#P0#=mb	#P1#=PasswordSesionSQLServer	#P2#=SISGalenPlus/Login/PasswordSesionSQLServer [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200603111233	#P7#=0	#P8#=2	.
-71=#P0#=mb	#P1#=Form_Activate	#P2#=SISGalenPlus/Splash/Form_Activate	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200603110318	#P7#=0	#P8#=-1	.
-72=#P0#=mb	#P1#=MostrarCreditos	#P2#=SISGalenPlus/Splash/MostrarCreditos [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200603110009	#P7#=0	#P8#=2	.
-73=#P0#=mb	#P1#=CargaComboBox	#P2#=SISGalenPlus/ucFarmVentasLista/CargaComboBox	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200603105721	#P7#=0	#P8#=22	.
-74=#P0#=mb	#P1#=FuaVersionFormato	#P2#=SISGalenPlus/UcSISfuaLista/FuaVersionFormato [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200603094446	#P7#=0	#P8#=2	.
-75=#P0#=mb	#P1#=Form_Load	#P2#=SISGalenPlus/Splash/Form_Load	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200603093805	#P7#=0	#P8#=1	.
-76=#P0#=mb	#P1#=toolbar_ToolClick	#P2#=SISGalenPlus/Principal/toolbar_ToolClick	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200602164526	#P7#=0	#P8#=264	.
-77=#P0#=mb	#P1#=RealizarBusqueda	#P2#=SISGalenPlus/CajaApruebaNotaCredito/RealizarBusqueda	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20200602164455	#P7#=0	#P8#=148	.
-78=#P0#=mb	#P1#=ChequeaSiElInstaladorEsParaHospitalOcsYconfiguraUnaSolaVez	#P2#=SISGalenPlus/Login/ChequeaSiElInstaladorEsParaHospitalOcsYconfiguraUnaSolaVez	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200602163507	#P7#=0	#P8#=5	.
-79=#P0#=mb	#P1#=mnuDiarioAgregarCita_Click	#P2#=SISGalenPlus/ucCitasLista/mnuDiarioAgregarCita_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200331175058	#P7#=0	#P8#=129	.
-80=#P0#=mb	#P1#=Diario_DblClick	#P2#=SISGalenPlus/ucCitasLista/Diario_DblClick	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200331175035	#P7#=0	#P8#=2	.
-81=#P0#=mb	#P1#=mnuDiarioConsultarProgramacion_Click	#P2#=SISGalenPlus/ucSIcitasLista/mnuDiarioConsultarProgramacion_Click	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20200331174901	#P7#=0	#P8#=14	.
-82=#P0#=mb	#P1#=mnuDiarioModificarProgramacion_Click	#P2#=SISGalenPlus/ucSIcitasLista/mnuDiarioModificarProgramacion_Click	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20200331174734	#P7#=0	#P8#=36	.
-83=#P0#=mb	#P1#=CargaDataCombos	#P2#=SISGalenPlus/SiCitaDetalleIMG/CargaDataCombos	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20200331174625	#P7#=0	#P8#=2	.
-84=#P0#=mb	#P1#=UserControl_Resize	#P2#=SISGalenPlus/ucSIcitasLista/UserControl_Resize	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200331174601	#P7#=0	#P8#=16	.
+1=#P0#=mb	#P1#=cmbIdTipoGenHistoriaClinica_click	#P2#=SISGalenPlus/ucPacientesDetalle/cmbIdTipoGenHistoriaClinica_click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200922091136	#P7#=0	#P8#=2	.
+2=#P0#=mb	#P1#=ValidarDatosObligatorios	#P2#=SISGalenPlus/SiCitaDetalleIMG/ValidarDatosObligatorios	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20200917101909	#P7#=0	#P8#=34	.
+3=#P0#=mb	#P1#=RealizarBusqueda	#P2#=SISGalenPlus/ucAtencionesTriaje/RealizarBusqueda	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200917101844	#P7#=0	#P8#=28	.
+4=#P0#=mb	#P1#=ValidarReglas	#P2#=SISGalenPlus/ucPacientesDetalle/ValidarReglas	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200729114741	#P7#=0	#P8#=16	.
+5=#P0#=mb	#P1#=ucPacientesDetalle1_SePresionoTeclaEspecial	#P2#=SISGalenPlus/PacienteDetalle/ucPacientesDetalle1_SePresionoTeclaEspecial	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200729114727	#P7#=0	#P8#=1	.
+6=#P0#=mb	#P1#=cmbIdDocIdentidad_LostFocus	#P2#=SISGalenPlus/ucPacientesDetalle/cmbIdDocIdentidad_LostFocus	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200729105017	#P7#=0	#P8#=9	.
+7=#P0#=mb	#P1#=txtMadreDocumento_KeyDown	#P2#=SISGalenPlus/ucPacientesDetalle/txtMadreDocumento_KeyDown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200729104438	#P7#=0	#P8#=3	.
+8=#P0#=mb	#P1#=cmbIdDepartamentoProcedencia_Click	#P2#=SISGalenPlus/ucPacientesDetalle/cmbIdDepartamentoProcedencia_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200729104309	#P7#=0	#P8#=9	.
+9=#P0#=mb	#P1#=BuscaEmpleadoYllenaDatosDelSectorista	#P2#=SISGalenPlus/ucPacientesDetalle/BuscaEmpleadoYllenaDatosDelSectorista	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200729103815	#P7#=0	#P8#=4	.
+10=#P0#=mb	#P1#=cmdCambiaHC_Click	#P2#=SISGalenPlus/ucPacientesDetalle/cmdCambiaHC_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200729103649	#P7#=0	#P8#=5	.
+11=#P0#=mb	#P1#=cmbMadreTipoDocumento_LostFocus	#P2#=SISGalenPlus/ucPacientesDetalle/cmbMadreTipoDocumento_LostFocus	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200729103619	#P7#=0	#P8#=4	.
+12=#P0#=mb	#P1#=cmbIdPaisProcedencia_LostFocus	#P2#=SISGalenPlus/ucPacientesDetalle/cmbIdPaisProcedencia_LostFocus	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200729103119	#P7#=0	#P8#=0	.
+13=#P0#=mb	#P1#=cmbIdPaisProcedencia_KeyPress	#P2#=SISGalenPlus/ucPacientesDetalle/cmbIdPaisProcedencia_KeyPress	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200729103107	#P7#=0	#P8#=0	.
+14=#P0#=mb	#P1#=cmbIdPaisProcedencia_KeyDown	#P2#=SISGalenPlus/ucPacientesDetalle/cmbIdPaisProcedencia_KeyDown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200729103105	#P7#=0	#P8#=0	.
+15=#P0#=mb	#P1#=cmbIdPaisProcedencia_Click	#P2#=SISGalenPlus/ucPacientesDetalle/cmbIdPaisProcedencia_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200729103059	#P7#=0	#P8#=0	.
+16=#P0#=mb	#P1#=cmbIdPaisNacimiento_LostFocus	#P2#=SISGalenPlus/ucPacientesDetalle/cmbIdPaisNacimiento_LostFocus	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200729103057	#P7#=0	#P8#=0	.
+17=#P0#=mb	#P1#=cmbIdPaisNacimiento_KeyDown	#P2#=SISGalenPlus/ucPacientesDetalle/cmbIdPaisNacimiento_KeyDown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200729103050	#P7#=0	#P8#=-5	.
+18=#P0#=mb	#P1#=cmbIdPaisNacimiento_Click	#P2#=SISGalenPlus/ucPacientesDetalle/cmbIdPaisNacimiento_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200729103041	#P7#=0	#P8#=0	.
+19=#P0#=mb	#P1#=cmbIdPaisDomicilio_Click	#P2#=SISGalenPlus/ucPacientesDetalle/cmbIdPaisDomicilio_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200729103030	#P7#=0	#P8#=14	.
+20=#P0#=mb	#P1#=cmbIdioma_KeyDown	#P2#=SISGalenPlus/ucPacientesDetalle/cmbIdioma_KeyDown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200729103028	#P7#=0	#P8#=2	.
+21=#P0#=mb	#P1#=cmbIdDocIdentidad_Click	#P2#=SISGalenPlus/ucPacientesDetalle/cmbIdDocIdentidad_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200729103021	#P7#=0	#P8#=0	.
+22=#P0#=mb	#P1#=cmbIdCentroPobladoNacimiento_KeyPress	#P2#=SISGalenPlus/ucPacientesDetalle/cmbIdCentroPobladoNacimiento_KeyPress	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200729103016	#P7#=0	#P8#=0	.
+23=#P0#=mb	#P1#=cmbIdCentroPobladoNacimiento_KeyDown	#P2#=SISGalenPlus/ucPacientesDetalle/cmbIdCentroPobladoNacimiento_KeyDown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200729103013	#P7#=0	#P8#=2	.
+24=#P0#=mb	#P1#=cmbEtnia_KeyDown	#P2#=SISGalenPlus/ucPacientesDetalle/cmbEtnia_KeyDown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200729103008	#P7#=0	#P8#=0	.
+25=#P0#=mb	#P1#=chkSinFechaNacimiento_KeyDown	#P2#=SISGalenPlus/ucPacientesDetalle/chkSinFechaNacimiento_KeyDown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200729103006	#P7#=0	#P8#=0	.
+26=#P0#=mb	#P1#=chkNN_KeyDown	#P2#=SISGalenPlus/ucPacientesDetalle/chkNN_KeyDown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200729103004	#P7#=0	#P8#=0	.
+27=#P0#=mb	#P1#=cboTipoEdadPaciente_LostFocus	#P2#=SISGalenPlus/ucPacientesDetalle/cboTipoEdadPaciente_LostFocus	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200729102930	#P7#=0	#P8#=-1	.
+28=#P0#=mb	#P1#=chkPacienteNuevo_Click	#P2#=SISGalenPlus/AdmisionHospDetalle/chkPacienteNuevo_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200729094014	#P7#=0	#P8#=12	.
+29=#P0#=mb	#P1#=btnBuscarPaciente_Click	#P2#=SISGalenPlus/AdmisionHospDetalle/btnBuscarPaciente_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200729093701	#P7#=0	#P8#=103	.
+30=#P0#=mb	#P1#=BuscarPacientesSISSegunFiltro	#P2#=SISGalenPlus/AdmisionHospDetalle/BuscarPacientesSISSegunFiltro	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200729093608	#P7#=0	#P8#=82	.
+31=#P0#=mb	#P1#=CargarComboBoxes	#P2#=SISGalenPlus/AdmisionHospDetalle/CargarComboBoxes	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200729093514	#P7#=0	#P8#=14	.
+32=#P0#=mb	#P1#=txtNroDocumento_LostFocus	#P2#=SISGalenPlus/ucPacientesDetalle/txtNroDocumento_LostFocus	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200729092437	#P7#=0	#P8#=6	.
+33=#P0#=mb	#P1#=btnAceptar_Click	#P2#=SISGalenPlus/AdmisionCEatenciones/btnAceptar_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200722095947	#P7#=0	#P8#=21	.
+34=#P0#=mb	#P1#=Form_Activate	#P2#=SISGalenPlus/AdmisionCEatenciones/Form_Activate	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200722095857	#P7#=0	#P8#=8	.
+35=#P0#=mb	#P1#=cmdMuestraActividades_Click	#P2#=SISGalenPlus/AdmisionCEatenciones/cmdMuestraActividades_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200722095519	#P7#=0	#P8#=111	.
+36=#P0#=mb	#P1#=CargarComboBoxes	#P2#=SISGalenPlus/AdmisionCEatenciones/CargarComboBoxes	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200722095345	#P7#=0	#P8#=4	.
+37=#P0#=mb	#P1#=cmbFecha_LostFocus	#P2#=SISGalenPlus/ucAtencionesTriaje/cmbFecha_LostFocus	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200721120630	#P7#=0	#P8#=-1	.
+38=#P0#=mb	#P1#=AsignarIdAtencionYLlenarControles	#P2#=SISGalenPlus/ucTriajeVisor/AsignarIdAtencionYLlenarControles	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200720130420	#P7#=0	#P8#=33	.
+39=#P0#=mb	#P1#=NoPasoPorTriaje	#P2#=SISGalenPlus/ucAdmisionLista/NoPasoPorTriaje [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200720125818	#P7#=0	#P8#=1	.
+40=#P0#=mb	#P1#=ucTriajeVisorCE_changeDataControl	#P2#=SISGalenPlus/AdmisionCEatenciones/ucTriajeVisorCE_changeDataControl	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200720125758	#P7#=0	#P8#=25	.
+41=#P0#=mb	#P1#=ValidarDatosObligatorios	#P2#=SISGalenPlus/ucPacientesDetalle/ValidarDatosObligatorios	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20200720122315	#P7#=0	#P8#=23	.
+42=#P0#=mb	#P1#=btnAgreaIMG_Click	#P2#=SISGalenPlus/ucPacientesDetalle/btnAgreaIMG_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200717124158	#P7#=0	#P8#=1	.
+43=#P0#=mb	#P1#=VerificaSiExistePaciente	#P2#=SISGalenPlus/ucPacientesDetalle/VerificaSiExistePaciente	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200717124009	#P7#=0	#P8#=0	.
+44=#P0#=mb	#P1#=CargaDatosBasicosPacienteNuevo	#P2#=SISGalenPlus/ucPacientesDetalle/CargaDatosBasicosPacienteNuevo	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200717123844	#P7#=0	#P8#=33	.
+45=#P0#=mb	#P1#=UserControl_KeyDown	#P2#=SISGalenPlus/ucPacientesDetalle/UserControl_KeyDown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200717123810	#P7#=0	#P8#=1	.
+46=#P0#=mb	#P1#=Inicializar	#P2#=SISGalenPlus/ucPacientesDetalle/Inicializar	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200717122417	#P7#=0	#P8#=13	.
+47=#P0#=mb	#P1#=ValidarReglas	#P2#=SISGalenPlus/PacienteDetalle/ValidarReglas	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200717122325	#P7#=0	#P8#=8	.
+48=#P0#=mb	#P1#=GrabaParametro8	#P2#=SISGalenPlus/PacienteDetalle/GrabaParametro8	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200717122211	#P7#=0	#P8#=1	.
+49=#P0#=mb	#P1#=MensajeError	#P2#=SISGalenPlus/PacienteDetalle/MensajeError [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200717122101	#P7#=0	#P8#=1	.
+50=#P0#=mb	#P1#=idUsuario	#P2#=SISGalenPlus/PacienteDetalle/idUsuario [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200717122033	#P7#=0	#P8#=1	.
+51=#P0#=mb	#P1#=Form_Load	#P2#=SISGalenPlus/PacienteDetalle/Form_Load	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200717121947	#P7#=0	#P8#=10	.
+52=#P0#=mb	#P1#=AdministrarKeyPreview	#P2#=SISGalenPlus/PacienteDetalle/AdministrarKeyPreview	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200717121927	#P7#=0	#P8#=0	.
+53=#P0#=mb	#P1#=CargarDatosAlFormulario	#P2#=SISGalenPlus/PacienteDetalle/CargarDatosAlFormulario	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200717121856	#P7#=0	#P8#=-6	.
+54=#P0#=mb	#P1#=ValidarDatosObligatorios	#P2#=SISGalenPlus/PacienteDetalle/ValidarDatosObligatorios	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200717121830	#P7#=0	#P8#=1	.
+55=#P0#=mb	#P1#=btnAceptar_Click	#P2#=SISGalenPlus/PacienteDetalle/btnAceptar_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200717121602	#P7#=0	#P8#=14	.
+56=#P0#=mb	#P1#=chkSinFechaNacimiento_Click	#P2#=SISGalenPlus/ucPacientesDetalle/chkSinFechaNacimiento_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200717121300	#P7#=0	#P8#=0	.
+57=#P0#=mb	#P1#=chkNN_Click	#P2#=SISGalenPlus/ucPacientesDetalle/chkNN_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200717121247	#P7#=0	#P8#=36	.
+58=#P0#=mb	#P1#=CargaDatosPersonales	#P2#=SISGalenPlus/ucPacientesDetalle/CargaDatosPersonales	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20200717115713	#P7#=0	#P8#=5	.
+59=#P0#=mb	#P1#=DevuelveSexo	#P2#=SISGalenPlus/ucPacientesDetalle/DevuelveSexo	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200717115033	#P7#=0	#P8#=1	.
+60=#P0#=mb	#P1#=ValidarNumeroDeHistoriaClinica	#P2#=SISGalenPlus/ucPacientesDetalle/ValidarNumeroDeHistoriaClinica	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200717112809	#P7#=0	#P8#=13	.
+61=#P0#=mb	#P1#=CargarDatosAlObjetoDatos	#P2#=SISGalenPlus/ucPacientesDetalle/CargarDatosAlObjetoDatos	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20200717112446	#P7#=0	#P8#=103	.
+62=#P0#=mb	#P1#=TipoServicio	#P2#=SISGalenPlus/PacienteDetalle/TipoServicio [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200717081448	#P7#=0	#P8#=1	.
+63=#P0#=mb	#P1#=cmdActualizaNroAutomatico_Click	#P2#=SISGalenPlus/PacienteDetalle/cmdActualizaNroAutomatico_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200717081349	#P7#=0	#P8#=1	.
+64=#P0#=mb	#P1#=InicializarParametros	#P2#=SISGalenPlus/PacienteDetalle/InicializarParametros	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200717081044	#P7#=0	#P8#=0	.
+65=#P0#=mb	#P1#=lcNombrePc	#P2#=SISGalenPlus/PacienteDetalle/lcNombrePc [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200717080903	#P7#=0	#P8#=1	.
+66=#P0#=mb	#P1#=ModificarDatos	#P2#=SISGalenPlus/PacienteDetalle/ModificarDatos	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200717080820	#P7#=0	#P8#=0	.
+67=#P0#=mb	#P1#=AgregarDatos	#P2#=SISGalenPlus/PacienteDetalle/AgregarDatos	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200717080808	#P7#=0	#P8#=0	.
+68=#P0#=mb	#P1#=Form_Activate	#P2#=SISGalenPlus/PacienteDetalle/Form_Activate	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200710115444	#P7#=0	#P8#=-6	.
+69=#P0#=mb	#P1#=Inicializar	#P2#=SISGalenPlus/UcPacientesSunasa/Inicializar	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20200707093825	#P7#=0	#P8#=30	.
+70=#P0#=mb	#P1#=btnAceptar_Click	#P2#=SISGalenPlus/Login/btnAceptar_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200603111405	#P7#=0	#P8#=-1	.
+71=#P0#=mb	#P1#=PasswordSesionSQLServer	#P2#=SISGalenPlus/Login/PasswordSesionSQLServer [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200603111233	#P7#=0	#P8#=2	.
+72=#P0#=mb	#P1#=Form_Activate	#P2#=SISGalenPlus/Splash/Form_Activate	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200603110318	#P7#=0	#P8#=-1	.
+73=#P0#=mb	#P1#=MostrarCreditos	#P2#=SISGalenPlus/Splash/MostrarCreditos [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200603110009	#P7#=0	#P8#=2	.
+74=#P0#=mb	#P1#=CargaComboBox	#P2#=SISGalenPlus/ucFarmVentasLista/CargaComboBox	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200603105721	#P7#=0	#P8#=22	.
+75=#P0#=mb	#P1#=FuaVersionFormato	#P2#=SISGalenPlus/UcSISfuaLista/FuaVersionFormato [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200603094446	#P7#=0	#P8#=2	.
+76=#P0#=mb	#P1#=Form_Load	#P2#=SISGalenPlus/Splash/Form_Load	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200603093805	#P7#=0	#P8#=1	.
+77=#P0#=mb	#P1#=toolbar_ToolClick	#P2#=SISGalenPlus/Principal/toolbar_ToolClick	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200602164526	#P7#=0	#P8#=264	.
+78=#P0#=mb	#P1#=RealizarBusqueda	#P2#=SISGalenPlus/CajaApruebaNotaCredito/RealizarBusqueda	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20200602164455	#P7#=0	#P8#=148	.
+79=#P0#=mb	#P1#=ChequeaSiElInstaladorEsParaHospitalOcsYconfiguraUnaSolaVez	#P2#=SISGalenPlus/Login/ChequeaSiElInstaladorEsParaHospitalOcsYconfiguraUnaSolaVez	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200602163507	#P7#=0	#P8#=5	.
+80=#P0#=mb	#P1#=mnuDiarioAgregarCita_Click	#P2#=SISGalenPlus/ucCitasLista/mnuDiarioAgregarCita_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200331175058	#P7#=0	#P8#=129	.
+81=#P0#=mb	#P1#=Diario_DblClick	#P2#=SISGalenPlus/ucCitasLista/Diario_DblClick	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200331175035	#P7#=0	#P8#=2	.
+82=#P0#=mb	#P1#=mnuDiarioConsultarProgramacion_Click	#P2#=SISGalenPlus/ucSIcitasLista/mnuDiarioConsultarProgramacion_Click	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20200331174901	#P7#=0	#P8#=14	.
+83=#P0#=mb	#P1#=mnuDiarioModificarProgramacion_Click	#P2#=SISGalenPlus/ucSIcitasLista/mnuDiarioModificarProgramacion_Click	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20200331174734	#P7#=0	#P8#=36	.
+84=#P0#=mb	#P1#=CargaDataCombos	#P2#=SISGalenPlus/SiCitaDetalleIMG/CargaDataCombos	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20200331174625	#P7#=0	#P8#=2	.
+85=#P0#=mb	#P1#=UserControl_Resize	#P2#=SISGalenPlus/ucSIcitasLista/UserControl_Resize	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200331174601	#P7#=0	#P8#=16	.

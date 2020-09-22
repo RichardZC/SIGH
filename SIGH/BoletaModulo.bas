@@ -154,8 +154,10 @@ Public WxDEFAULT_BUSQ_PACIENTE As Integer, WxDEFAULT_BUSQ_CE As Integer
 Public WxDEFAULT_BUSQ_EMERGENCIA As Integer, WxDEFAULT_BUSQ_HOSPITALIZ As Integer
 Public wxParametro351 As String, wxParametro354 As String, wxParametro545 As String, wxParametro554 As String
 Public wxparametro563 As String, wxparametro564 As String, wxparametro565 As String, wxparametro566 As String
-Public Const wxNueve = "9"
-
+'GLCC-22/09/2020 CAMBIO 1 -INICIO
+'YA NO GUARDA EL NUMERO 9
+'Public Const wxNueve = "9"
+'GLCC-22/09/2020 CAMBIO 1 -FIN
 'mgaray variables de pagina
 Public WxLnNombreHoja As String
 Public WxLnTipoReporteador As Integer

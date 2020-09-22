@@ -46,9 +46,18 @@ Begin VB.Form PacienteDetalle
       TabCaption(1)   =   "1.2) SUNASA"
       TabPicture(1)   =   "PacienteDetalle.frx":0CE6
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "UcPacientesSunasa1"
-      Tab(1).Control(1)=   "cmdActualizaNroAutomatico"
+      Tab(1).Control(0)=   "cmdActualizaNroAutomatico"
+      Tab(1).Control(1)=   "UcPacientesSunasa1"
       Tab(1).ControlCount=   2
+      Begin SISGalenPlus.ucPacientesDetalle ucPacientesDetalle1 
+         Height          =   6465
+         Left            =   60
+         TabIndex        =   4
+         Top             =   360
+         Width           =   11775
+         _ExtentX        =   20770
+         _ExtentY        =   11404
+      End
       Begin VB.CommandButton cmdActualizaNroAutomatico 
          Caption         =   "..."
          Height          =   255
@@ -66,15 +75,6 @@ Begin VB.Form PacienteDetalle
          Width           =   11505
          _ExtentX        =   20294
          _ExtentY        =   10451
-      End
-      Begin SISGalenPlus.ucPacientesDetalle ucPacientesDetalle1 
-         Height          =   6465
-         Left            =   60
-         TabIndex        =   4
-         Top             =   360
-         Width           =   11775
-         _ExtentX        =   20770
-         _ExtentY        =   11404
       End
    End
    Begin VB.Frame Frame2 

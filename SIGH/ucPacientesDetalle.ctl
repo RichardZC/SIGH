@@ -3029,7 +3029,6 @@ Attribute VB_Exposed = False
 '        Programa: Control para registrar los datos personales del Paciente
 '        Programado por: Barrantes D
 '        Fecha: Agosto 2009
-'
 '------------------------------------------------------------------------------------
 Option Explicit
 
@@ -4874,7 +4873,11 @@ Private Sub txtNroDocumento_LostFocus()
       If Val(txtNroDocumento.Text) > 0 Then
         Dim lnHC11 As Long
         lnHC11 = Val(txtNroDocumento.Text)
-        txtIdNroHistoria.Tag = wxNueve & Trim(Str(lnHC11))
+        'GLCC -22/09/2020 - cambio 01 - Inicio
+        'Quita el wxNueve &
+        'txtIdNroHistoria.Tag = wxNueve & Trim(Str(lnHC11))
+        txtIdNroHistoria.Tag = Trim$(Str(lnHC11))
+        'GLCC -22/09/2020 - cambio 01 - Fin
         txtIdNroHistoria.Text = Trim(Str(lnHC11))
       End If
    End If
@@ -5641,7 +5644,7 @@ Sub ActualizaTipoYnroDocumentoDelPaciente(doPacientes As doPaciente)
             
        End If
     End If
-    doPacientes.NroDocumento = txtNroDocumento.Text
+    doPacientes.nrodocumento = txtNroDocumento.Text
     doPacientes.IdDocIdentidad = Val(mo_cmbIdDocIdentidad.BoundText)
 End Sub
 
@@ -5673,7 +5676,7 @@ Public Function CargarDatosAlObjetoDatos(oDOPaciente As doPaciente, oDOHistoria 
            End If
            .FechaNacimiento = CDate(txtFechaNacimiento.Text & " " & txtHoraNacimiento.Text)
         End If
-        .NroDocumento = txtNroDocumento.Text
+        .nrodocumento = txtNroDocumento.Text
         .TELEFONO = txtTelefono.Text
         .NroHistoriaClinica = txtIdNroHistoria.Tag
         .DireccionDomicilio = txtDireccionDomicilio.Text
@@ -6547,7 +6550,7 @@ Dim lcUbigeoDistrito As String
                 If .IdDocIdentidad <> 1 Then
                    txtNroDocumento.MaxLength = 12
                 End If
-                txtNroDocumento.Text = Trim(.NroDocumento)
+                txtNroDocumento.Text = Trim(.nrodocumento)
                 '
                 'mo_cmbIdTipoOcupacion.BoundText = .idTipoOcupacion
                 If .idTipoOcupacion > 0 Then
