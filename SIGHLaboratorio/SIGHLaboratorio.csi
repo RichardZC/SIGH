@@ -1,2 +1,3 @@
 [History]
-1=#P0#=mb	#P1#=ValidarDatosObligatorios	#P2#=SIGHLaboratorio/UcPacienteDatos/ValidarDatosObligatorios	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20200710120936	#P7#=0	#P8#=17	.
+1=#P0#=mb	#P1#=NroHistoriaClinica	#P2#=SIGHLaboratorio/UcPacienteDatos1/NroHistoriaClinica [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200922102451	#P7#=0	#P8#=0	.
+2=#P0#=mb	#P1#=ValidarDatosObligatorios	#P2#=SIGHLaboratorio/UcPacienteDatos/ValidarDatosObligatorios	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20200710120936	#P7#=0	#P8#=17	.

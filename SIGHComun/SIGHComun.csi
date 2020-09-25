@@ -1,10 +1,11 @@
 [History]
-1=#P0#=mb	#P1#=Temperatura	#P2#=SIGHComun/DOAtencionTriaje/Temperatura [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200722063525	#P7#=0	#P8#=-6	.
-2=#P0#=mb	#P1#=Presion	#P2#=SIGHComun/DOAtencionTriaje/Presion [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200722062937	#P7#=0	#P8#=1	.
-3=#P0#=mb	#P1#=Presion	#P2#=SIGHComun/DOAtencionTriaje/Presion [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200722062702	#P7#=0	#P8#=2	.
-4=#P0#=mb	#P1#=idPais	#P2#=SIGHComun/DOEmpleado/idPais [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200708110129	#P7#=0	#P8#=1	.
-5=#P0#=mb	#P1#=idPais	#P2#=SIGHComun/DOEmpleado/idPais [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200708091704	#P7#=0	#P8#=0	.
-6=#P0#=mb	#P1#=EsActivo	#P2#=SIGHComun/DOEmpleado/EsActivo [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200708090709	#P7#=0	#P8#=0	.
-7=#P0#=mb	#P1#=ProximaCita	#P2#=SIGHComun/DoAtencionDatosAdicionales/ProximaCita [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200331174255	#P7#=0	#P8#=1	.
-8=#P0#=mb	#P1#=idTipoSexo	#P2#=SIGHComun/DOEmpleado/idTipoSexo [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200325111349	#P7#=0	#P8#=0	.
-9=#P0#=mb	#P1#=idTipoSexo	#P2#=SIGHComun/DOEmpleado/idTipoSexo [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200325111324	#P7#=0	#P8#=-1	.
+1=#P0#=mb	#P1#=NroHistoriaClinica	#P2#=SIGHComun/DOPaciente/NroHistoriaClinica [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200922114022	#P7#=0	#P8#=0	.
+2=#P0#=mb	#P1#=Temperatura	#P2#=SIGHComun/DOAtencionTriaje/Temperatura [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200722063525	#P7#=0	#P8#=-6	.
+3=#P0#=mb	#P1#=Presion	#P2#=SIGHComun/DOAtencionTriaje/Presion [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200722062937	#P7#=0	#P8#=1	.
+4=#P0#=mb	#P1#=Presion	#P2#=SIGHComun/DOAtencionTriaje/Presion [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200722062702	#P7#=0	#P8#=2	.
+5=#P0#=mb	#P1#=idPais	#P2#=SIGHComun/DOEmpleado/idPais [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200708110129	#P7#=0	#P8#=1	.
+6=#P0#=mb	#P1#=idPais	#P2#=SIGHComun/DOEmpleado/idPais [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200708091704	#P7#=0	#P8#=0	.
+7=#P0#=mb	#P1#=EsActivo	#P2#=SIGHComun/DOEmpleado/EsActivo [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200708090709	#P7#=0	#P8#=0	.
+8=#P0#=mb	#P1#=ProximaCita	#P2#=SIGHComun/DoAtencionDatosAdicionales/ProximaCita [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200331174255	#P7#=0	#P8#=1	.
+9=#P0#=mb	#P1#=idTipoSexo	#P2#=SIGHComun/DOEmpleado/idTipoSexo [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200325111349	#P7#=0	#P8#=0	.
+10=#P0#=mb	#P1#=idTipoSexo	#P2#=SIGHComun/DOEmpleado/idTipoSexo [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200325111324	#P7#=0	#P8#=-1	.

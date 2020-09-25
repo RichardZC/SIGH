@@ -351,7 +351,7 @@ Begin VB.UserControl ucTriaje
       End
       Begin VB.Label Label13 
          AutoSize        =   -1  'True
-         Caption         =   "Pulso------leonelelelellleee"
+         Caption         =   "Pulso"
          BeginProperty Font 
             Name            =   "Tahoma"
             Size            =   9
@@ -365,7 +365,7 @@ Begin VB.UserControl ucTriaje
          Left            =   150
          TabIndex        =   27
          Top             =   225
-         Width           =   2040
+         Width           =   420
       End
       Begin VB.Label Label12 
          AutoSize        =   -1  'True
