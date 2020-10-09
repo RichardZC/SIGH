@@ -1,6 +1,6 @@
 Type=OleDll
 Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#..\..\..\Windows\SysWOW64\stdole2.tlb#OLE Automation
-Reference=*\G{6B263850-900B-11D0-9484-00A0C91110ED}#1.0#0#..\..\..\Windows\SysWow64\MSSTDFMT.DLL#Microsoft Data Formatting Object Library 6.0 (SP4)
+Reference=*\G{6B263850-900B-11D0-9484-00A0C91110ED}#1.0#0#..\..\..\Windows\SysWOW64\MSSTDFMT.DLL#Microsoft Data Formatting Object Library 6.0 (SP4)
 Reference=*\A..\SIGHNegocios\SIGHNegocios.vbp
 Reference=*\A..\SIGHDatos\SIGHDatos.vbp
 Reference=*\A..\SIGHComun\SIGHComun.vbp
@@ -14,7 +14,7 @@ Object={5A9433E9-DD7B-4529-91B6-A5E8CA054615}#2.0#0; IGULTR~1.OCX
 Object={F20E41DE-526A-423A-B746-D860D06076B4}#4.0#0; IGTHRE~1.OCX
 Object={C932BA88-4374-101B-A56C-00AA003668DC}#1.1#0; msmask32.ocx
 Object={22ACD161-99EB-11D2-9BB3-00400561D975}#1.0#0; PVCALE~1.OCX
-Object={831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0; MSCOMCTL.OCX
+Object={831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0; MSCOMCTL.OCX
 Form=frmDetalleCodigosLAB.frm
 Form=frmCodigoActividad.frm
 Form=frmDetalleProgramacion.frm

@@ -131,25 +131,13 @@ Begin VB.Form FarmNotaSalida
       TabIndex        =   19
       Top             =   7770
       Width           =   15120
-      Begin VB.CommandButton btnAceptar 
-         Caption         =   "Aceptar (F2)"
-         DisabledPicture =   "farmNotaSalida.frx":2CFB
-         DownPicture     =   "farmNotaSalida.frx":315B
-         Height          =   700
-         Left            =   6173
-         Picture         =   "farmNotaSalida.frx":35D0
-         Style           =   1  'Graphical
-         TabIndex        =   22
-         Top             =   225
-         Width           =   1365
-      End
       Begin VB.CommandButton btnCancelar 
          Caption         =   "Cancelar (ESC)"
-         DisabledPicture =   "farmNotaSalida.frx":3A45
-         DownPicture     =   "farmNotaSalida.frx":3F09
+         DisabledPicture =   "farmNotaSalida.frx":2CFB
+         DownPicture     =   "farmNotaSalida.frx":31BF
          Height          =   700
          Left            =   7703
-         Picture         =   "farmNotaSalida.frx":43F5
+         Picture         =   "farmNotaSalida.frx":36AB
          Style           =   1  'Graphical
          TabIndex        =   21
          Top             =   225
@@ -159,11 +147,23 @@ Begin VB.Form FarmNotaSalida
          Caption         =   "Imprime"
          Height          =   700
          Left            =   120
-         Picture         =   "farmNotaSalida.frx":48E1
+         Picture         =   "farmNotaSalida.frx":3B97
          Style           =   1  'Graphical
          TabIndex        =   20
          Top             =   225
          Visible         =   0   'False
+         Width           =   1365
+      End
+      Begin VB.CommandButton btnAceptar 
+         Caption         =   "Aceptar (F2)"
+         DisabledPicture =   "farmNotaSalida.frx":4070
+         DownPicture     =   "farmNotaSalida.frx":44D0
+         Height          =   700
+         Left            =   6173
+         Picture         =   "farmNotaSalida.frx":4945
+         Style           =   1  'Graphical
+         TabIndex        =   22
+         Top             =   225
          Width           =   1365
       End
    End
@@ -238,6 +238,7 @@ Begin VB.Form FarmNotaSalida
          Width           =   1395
       End
       Begin VB.TextBox txtNdocum 
+         Enabled         =   0   'False
          Height          =   315
          Left            =   8910
          MaxLength       =   20
@@ -764,7 +765,6 @@ Private Sub cmbConcepto_Click()
     oRsConceptos.MoveFirst
     oRsConceptos.Find "idTipoConcepto=" & mo_cmbConceptos.BoundText
     mo_cmbTipoDocum.BoundText = oRsConceptos.Fields!DocumentoId
-    
     mo_cmbAlmacenDestino.BoundColumn = "IdAlmacen"
     mo_cmbAlmacenDestino.ListField = "Descripcion"
     If mo_lbElEstablecimentoEsCS = True Then
@@ -782,7 +782,9 @@ Private Sub cmbConcepto_Click()
     '
     lbDocumentoEsAutomatico = IIf(oRsConceptos.Fields!DocumentoEsAutomatico = "S", True, False)
     If lbDocumentoEsAutomatico = True Then
-       txtNdocum.Text = Val(oRsConceptos.Fields!DocumentoUltimoNumero) + 1
+       'SCCQ 09/10/2020 Cambio28 Inicio
+       'txtNdocum.Text = Val(oRsConceptos.Fields!DocumentoUltimoNumero) + 1
+       'SCCQ 09/10/2020 Cambio28 Fin
     Else
        txtNdocum.Text = ""
     End If
@@ -1028,10 +1030,16 @@ Private Sub btnAceptar_Click()
    End If
    Select Case mi_Opcion
    Case sghAgregar
-       If ValidarDatosObligatorios() Then
+        'SCCQ 09/10/2020 Cambio28 Inicio
+        'Antes:  If ValidarDatosObligatorios() Then
+        If ValidarDatosObligatorios("A") Then
+        'SCCQ 09/10/2020 Cambio28 Fin
             CargaDatosAlObjetosDeDatos
             If AgregarDatos() Then
-                If MsgBox("Se agregó correctamente la Nota de Salida N° " + txtNotaSalida.Text + Chr(13) + Chr(13) + "Desea Imprimir el Documento ?", vbQuestion + vbYesNo, "") = vbYes Then
+            'SCCQ 09/10/2020 Cambio28 Inicio
+            'If MsgBox("Se agregó correctamente la Nota de Salida N° " + txtNotaSalida.Text + Chr(13) + Chr(13) + "Desea Imprimir el Documento ?", vbQuestion + vbYesNo, "") = vbYes Then
+                If MsgBox("Se agregó correctamente la NOTA DE SALIDA N° " + txtNotaSalida.Text + Chr(13) + "Con " + Trim(cmbTipoDocum.Text) + " N° " + mo_farmMovimiento.DocumentoNumero + Chr(13) + Chr(13) + " Desea Imprimir el Documento ?", vbQuestion + vbYesNo, "") = vbYes Then
+            'SCCQ 09/10/2020 Cambio28 Fin
                    ml_idUsuarioCreo = ml_idUsuario
                    ImprimeDocumento
                 End If
@@ -1042,7 +1050,10 @@ Private Sub btnAceptar_Click()
             End If
        End If
    Case sghModificar
-       If ValidarDatosObligatorios() Then
+       'SCCQ 09/10/2020 Cambio28 Inicio
+        'Antes:  If ValidarDatosObligatorios() Then
+        If ValidarDatosObligatorios("M") Then
+        'SCCQ 09/10/2020 Cambio28 Fin
             CargaDatosAlObjetosDeDatos
             If ModificarDatos() Then
                 If MsgBox("Se Modificó correctamente la Nota de Salida N° " + txtNotaSalida.Text + Chr(13) + Chr(13) + "Desea Imprimir el Documento ?", vbQuestion + vbYesNo, "") = vbYes Then
@@ -1068,8 +1079,10 @@ Private Sub btnAceptar_Click()
         End If
    End Select
 End Sub
-
-Function ValidarDatosObligatorios() As Boolean
+'SCCQ 09/10/2020 Cambio28 Inicio
+'Antes:  Function ValidarDatosObligatorios() As Boolean
+Function ValidarDatosObligatorios(modo As String) As Boolean
+'SCCQ 09/10/2020 Cambio28 Fin
    ValidarDatosObligatorios = False
    ms_MensajeError = ""
    If cmbAlmOrigen.Text = "" Then
@@ -1083,21 +1096,30 @@ Function ValidarDatosObligatorios() As Boolean
    ElseIf mo_cmbAlmacenOrigen.BoundText = mo_cmbAlmacenDestino.BoundText Then
        ms_MensajeError = ms_MensajeError + "El Almacén Origen y Destino deben ser DIFERENTES" + Chr(13)
    ElseIf cmbTipoDocum.Text <> "" Then
-       If txtNdocum.Text = "" Then
+   'SCCQ Cambio28 Inicio
+        If modo = "M" Then 'Modifica
+    
+         If txtNdocum.Text = "" Then
           ms_MensajeError = ms_MensajeError + "Por favor ingrese el N° Documento" + Chr(13)
           txtNdocum.SetFocus
-       End If
+         End If
+    
+        End If
+    'SCCQ Cambio28 Fin
+      
    End If
-   If mi_Opcion = sghAgregar And txtNdocum.Text <> "" Then
-      Dim oRsTmp As New ADODB.Recordset
-      Set oRsTmp = mo_ReglasFarmacia.farmMovimientoSeleccionarPorTipoYnumeroDocumento(txtNdocum.Text, Val(mo_cmbTipoDocum.BoundText))
-      oRsTmp.Filter = "idEstadoMovimiento=1"
-      If oRsTmp.RecordCount > 0 Then
-         ms_MensajeError = ms_MensajeError + "El Número de Documento: " & txtNdocum.Text & "   EXISTE en NS: " & Trim(oRsTmp.Fields!movNumero) & "     Fecha: " & oRsTmp.Fields!fechaCreacion & Chr(13)
-      End If
-      oRsTmp.Close
-      Set oRsTmp = Nothing
-   End If
+'SCCQ 08/10/2020 Cambio28 Inicio
+'   If mi_Opcion = sghAgregar And txtNdocum.Text <> "" Then
+'      Dim oRsTmp As New ADODB.Recordset
+'      Set oRsTmp = mo_ReglasFarmacia.farmMovimientoSeleccionarPorTipoYnumeroDocumento(txtNdocum.Text, Val(mo_cmbTipoDocum.BoundText))
+'      oRsTmp.Filter = "idEstadoMovimiento=1"
+'      If oRsTmp.RecordCount > 0 Then
+'         ms_MensajeError = ms_MensajeError + "El Número de Documento: " & txtNdocum.Text & "   EXISTE en NS: " & Trim(oRsTmp.Fields!movNumero) & "     Fecha: " & oRsTmp.Fields!fechaCreacion & Chr(13)
+'      End If
+'      oRsTmp.Close
+'      Set oRsTmp = Nothing
+'   End If
+'SCCQ 08/10/2020 Cambio28 Fin
    lnTotalDocumento = grdProductos.DevuelveTotal
    Set mRs_Productos = grdProductos.DevuelveProductos
    If mRs_Productos.RecordCount = 0 Then
@@ -1169,7 +1191,9 @@ Sub CargaDatosAlObjetosDeDatos()
     Case sghAgregar
         With mo_farmMovimiento
             .DocumentoIdtipo = Val(mo_cmbTipoDocum.BoundText)                   '10
-            .DocumentoNumero = txtNdocum.Text                                   'inven-2014
+            'SCCQ 08/10/2020 Cambio28 Inicio
+            '.DocumentoNumero = txtNdocum.Text
+             'SCCQ 08/10/2020 Cambio28 Fin
             .fechaCreacion = lcBuscaParametro.RetornaFechaHoraServidorSQL       'igual
             .IdAlmacenDestino = Val(mo_cmbAlmacenDestino.BoundText)             '0
             .IdAlmacenOrigen = Val(mo_cmbAlmacenOrigen.BoundText)               '8
@@ -1179,7 +1203,7 @@ Sub CargaDatosAlObjetosDeDatos()
             .IdUsuarioAuditoria = ml_idUsuario
             .MovTipo = lcConstanteMovimientoSalida
             .Observaciones = txtObservaciones.Text
-            .total = lnTotalDocumento
+            .Total = lnTotalDocumento
             
         End With
    Case sghModificar
@@ -1187,7 +1211,7 @@ Sub CargaDatosAlObjetosDeDatos()
             .DocumentoNumero = txtNdocum.Text
             .Observaciones = txtObservaciones.Text
             .IdUsuarioAuditoria = ml_idUsuario
-            .total = lnTotalDocumento
+            .Total = lnTotalDocumento
             '.FechaCreacion = txtFregistro.Text
         End With
    Case sghEliminar
@@ -1201,20 +1225,28 @@ End Sub
 Function AgregarDatos() As Boolean
     Dim lbAgregarDatos As Boolean
     '*********  graba tabla RELMOD  ***************
-    If lbDocumentoEsAutomatico = True Then
-       Dim oRsTmp As New ADODB.Recordset
-       Dim lcFiltro As String
-       lcFiltro = "tipoAlmacen='" & oRsAlmacenOrigen.Fields!idTipoLocales & "' and tipoMov='S' and tipoSuministro='" & oRsAlmacenOrigen.Fields!idTipoSuministro & "' and DocumentoId=" & mo_cmbTipoDocum.BoundText
-       Set oRsTmp = mo_ReglasFarmacia.FarmRelModDevuelveSegunFiltro(lcFiltro)
-       If oRsTmp.RecordCount = 0 Then
-          AgregarDatos = False
-       Else
-          mo_ReglasFarmacia.FarmRelModActualizaSegunFiltro lcFiltro, txtNdocum.Text
-       End If
-       oRsTmp.Close
-       Set oRsTmp = Nothing
-    End If
-    '
+    'SCCQ 09/10/2020 Cambio28 Inicio
+'    If lbDocumentoEsAutomatico = True Then
+'       Dim oRsTmp As New ADODB.Recordset
+'       Dim lcFiltro As String
+'       lcFiltro = "tipoAlmacen='" & oRsAlmacenOrigen.Fields!idTipoLocales & "' and tipoMov='S' and tipoSuministro='" & oRsAlmacenOrigen.Fields!idTipoSuministro & "' and DocumentoId=" & mo_cmbTipoDocum.BoundText
+'       Set oRsTmp = mo_ReglasFarmacia.FarmRelModDevuelveSegunFiltro(lcFiltro)
+'       If oRsTmp.RecordCount = 0 Then
+'          AgregarDatos = False
+'       Else
+'          mo_ReglasFarmacia.FarmRelModActualizaSegunFiltro lcFiltro, txtNdocum.Text
+'       End If
+'       oRsTmp.Close
+'       Set oRsTmp = Nothing
+'    End If
+     'SCCQ 09/10/2020 Cambio28 Fin
+     'SCCQ 08/10/2020 Cambio28 Inicio
+      Dim oReglasFarmacia As New ReglasFarmacia
+      mo_farmMovimiento.DocumentoNumero = oReglasFarmacia.DevuelveYactualizaCorrelativosDisponibles("S", oRsAlmacenOrigen.Fields!idTipoLocales, oRsAlmacenOrigen.Fields!idTipoSuministro, CLng(mo_cmbTipoDocum.BoundText))
+      txtNdocum.Text = mo_farmMovimiento.DocumentoNumero
+      Set oReglasFarmacia = Nothing
+      'SCCQ 08/10/2020 Cambio28 Fin
+     
     lbAgregarDatos = mo_ReglasFarmacia.AgregaDatosDeNotaSalida(mo_farmMovimiento, mRs_Productos, mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc)
     txtNotaSalida.Text = mo_farmMovimiento.movNumero
     If GeneraNIenFormaAutomatica(lbAgregarDatos) Then
@@ -1257,7 +1289,7 @@ Function ModificarDatos() As Boolean
             Set oMovimiento.Conexion = oConexion
             Set oMovimientoNotaIngreso.Conexion = oConexion
             '
-            lnTotal = mo_farmMovimiento.total
+            lnTotal = mo_farmMovimiento.Total
             Set oRsTmp = mo_ReglasFarmacia.farmMovimientoSeleccionarPorTipoYnumeroDocumento(mo_farmMovimiento.DocumentoNumero, mo_farmMovimiento.DocumentoIdtipo)
             oRsTmp.Filter = "movTipo='E' and idAlmacenDestino=" & mo_farmMovimiento.IdAlmacenDestino
             If oRsTmp.RecordCount > 0 Then
@@ -1271,7 +1303,7 @@ Function ModificarDatos() As Boolean
                    MsgBox "Fallo en Nota de Ingreso automática" & Chr(13) & oMovimiento.MensajeError
                    Exit Function
                 End If
-                mo_farmMovimiento.total = lnTotal
+                mo_farmMovimiento.Total = lnTotal
                 '
                 With mo_farmMovimientoNotaIngreso
                     .MovTipo = lcConstanteMovimientoEntrada
@@ -1477,7 +1509,7 @@ Sub CreaNIaFarmaciaUNIDOSIS(oRsProductosConLotes1 As Recordset)
                         oRsProductosConLotes1!codigo = lcCodigoConPunto
                         oRsProductosConLotes1!Cantidad = oRsProductosConLotes1!Cantidad * lnConvertir
                         oRsProductosConLotes1!Precio = rs!PrecioUnitario
-                        oRsProductosConLotes1!total = lnImporte
+                        oRsProductosConLotes1!Total = lnImporte
                         oRsProductosConLotes1.Update
                         lnTotalUnidosis = lnTotalUnidosis + lnImporte
                     End If
@@ -1497,7 +1529,7 @@ Sub CreaNIaFarmaciaUNIDOSIS(oRsProductosConLotes1 As Recordset)
                mo_farmMovimientoNotaIngreso1.IdUsuarioAuditoria = mo_farmMovimiento1.IdUsuarioAuditoria
                If mo_FarmMovimientoNotaIngreso2.SeleccionarPorId(mo_farmMovimientoNotaIngreso1) Then
                     If mi_Opcion = sghModificar Then
-                        mo_farmMovimiento1.total = lnTotalUnidosis
+                        mo_farmMovimiento1.Total = lnTotalUnidosis
                         ActualizarDatos1 = mo_ReglasFarmacia.ModificaDatosDeNotaIngreso(mo_farmMovimiento1, _
                                       mo_farmMovimientoNotaIngreso1, oDoProveedores1, oRsProductosConLotes1, _
                                       mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc)
@@ -1525,7 +1557,7 @@ Sub CreaNIaFarmaciaUNIDOSIS(oRsProductosConLotes1 As Recordset)
                 .idTipoConcepto = 4   'distribucion
                 .DocumentoIdtipo = 3  'guía remisión
                 .DocumentoNumero = txtNdocum.Text 'format(Now, SIGHEntidades.DevuelveFechaSoloFormato_DMYHMS)
-                .total = lnTotalUnidosis
+                .Total = lnTotalUnidosis
                 .fechaCreacion = mo_farmMovimiento.fechaCreacion
                 .IdUsuarioAuditoria = mo_farmMovimiento.IdUsuarioAuditoria
                 .idUsuario = mo_farmMovimiento.IdUsuarioAuditoria

@@ -81,7 +81,7 @@ With oCommand
    .Parameters.Append oParameter
    Set oParameter = .CreateParameter("@Observaciones", adVarChar, adParamInput, 100, IIf(oTabla.Observaciones = "", Null, oTabla.Observaciones))
    .Parameters.Append oParameter
-   Set oParameter = .CreateParameter("@Total", adDouble, adParamInput, 0, oTabla.TOTAL)
+   Set oParameter = .CreateParameter("@Total", adDouble, adParamInput, 0, oTabla.Total)
    .Parameters.Append oParameter
    Set oParameter = .CreateParameter("@idMotivoAnulacion", adInteger, adParamInput, 0, IIf(oTabla.idMotivoAnulacion = 0, Null, oTabla.idMotivoAnulacion))
    .Parameters.Append oParameter
@@ -141,7 +141,7 @@ With oCommand
    .Parameters.Append oParameter
    Set oParameter = .CreateParameter("@Observaciones", adVarChar, adParamInput, 100, IIf(oTabla.Observaciones = "", Null, oTabla.Observaciones))
    .Parameters.Append oParameter
-   Set oParameter = .CreateParameter("@Total", adDouble, adParamInput, 0, oTabla.TOTAL)
+   Set oParameter = .CreateParameter("@Total", adDouble, adParamInput, 0, oTabla.Total)
    .Parameters.Append oParameter
    Set oParameter = .CreateParameter("@idMotivoAnulacion", adInteger, adParamInput, 0, IIf(oTabla.idMotivoAnulacion = 0, Null, oTabla.idMotivoAnulacion))
    .Parameters.Append oParameter
@@ -234,7 +234,7 @@ Dim oParameter As ADODB.Parameter
        oTabla.DocumentoIdtipo = IIf(IsNull(oRecordset!DocumentoIdtipo), 0, oRecordset!DocumentoIdtipo)
        oTabla.DocumentoNumero = IIf(IsNull(oRecordset!DocumentoNumero), "", oRecordset!DocumentoNumero)
        oTabla.Observaciones = IIf(IsNull(oRecordset!Observaciones), "", oRecordset!Observaciones)
-       oTabla.TOTAL = oRecordset!TOTAL
+       oTabla.Total = oRecordset!Total
        oTabla.idMotivoAnulacion = IIf(IsNull(oRecordset!idMotivoAnulacion), 0, oRecordset!idMotivoAnulacion)
        oTabla.fechaAnulacion = IIf(IsNull(oRecordset!fechaAnulacion), 0, oRecordset!fechaAnulacion)
        oTabla.idUsuarioAnulacion = IIf(IsNull(oRecordset!idUsuarioAnulacion), 0, oRecordset!idUsuarioAnulacion)
@@ -260,7 +260,7 @@ Sub SetDefaults(ByVal oTabla As DOfarmMovimiento)
    oTabla.DocumentoIdtipo = 0
    oTabla.DocumentoNumero = ""
    oTabla.Observaciones = ""
-   oTabla.TOTAL = 0
+   oTabla.Total = 0
    oTabla.idMotivoAnulacion = 0
    oTabla.fechaAnulacion = Now
    oTabla.idUsuarioAnulacion = 0
@@ -297,3 +297,29 @@ ManejadorDeError:
        ms_MensajeError = Err.Number & " " + Err.Description
 
 End Function
+'SCCQ 08/10/2020 Cambio 28 Inicio
+Function DevuelveYactualizaCorrelativosDisponibles(lnMovTipo As String, lnIdTipoLocales As String, lnIdTipoSuministro As String, lnDocumentoIdtipo As Long) As String
+    On Error GoTo ManejadorDeError
+    Dim oCommand As New ADODB.Command
+    Dim oParameter As ADODB.Parameter
+    Dim lcNewCorrelativo As String
+    DevuelveYactualizaCorrelativosDisponibles = ""
+    With oCommand
+       .CommandType = adCmdStoredProc
+       Set .ActiveConnection = mo_Conexion
+       .CommandText = "usp_FarmDevuelveYactualizaCorrelativosDisponibles"
+       Set oParameter = .CreateParameter("@MovTipo", adChar, adParamInput, 1, lnMovTipo): .Parameters.Append oParameter
+       Set oParameter = .CreateParameter("@idTipoLocales", adChar, adParamInput, 1, lnIdTipoLocales): .Parameters.Append oParameter
+       Set oParameter = .CreateParameter("@idTipoSuministro", adChar, adParamInput, 2, lnIdTipoSuministro): .Parameters.Append oParameter
+       Set oParameter = .CreateParameter("@DocumentoIdtipo", adInteger, adParamInput, 0, lnDocumentoIdtipo): .Parameters.Append oParameter
+       Set oParameter = .CreateParameter("@NewCorrelativo", adInteger, adParamOutput, 0): .Parameters.Append oParameter
+       .Execute
+       lcNewCorrelativo = Trim(Str(.Parameters("@NewCorrelativo")))
+    End With
+       DevuelveYactualizaCorrelativosDisponibles = lcNewCorrelativo
+    ms_MensajeError = ""
+    Exit Function
+ManejadorDeError:
+       ms_MensajeError = Err.Number & " " + Err.Description
+End Function
+'SCCQ 08/10/2020 Cambio 28 Fin
