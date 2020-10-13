@@ -220,6 +220,7 @@ Begin VB.Form FarmNotaIngreso
          Width           =   1395
       End
       Begin VB.TextBox txtNdocum 
+         Enabled         =   0   'False
          BeginProperty Font 
             Name            =   "Tahoma"
             Size            =   8.25
@@ -1655,7 +1656,10 @@ Private Sub btnAceptar_Click()
    End If
    Select Case mi_Opcion
    Case sghAgregar
-       If ValidarDatosObligatorios() Then
+   'SCCQ 12/10/2020 Cambio28 Inicio
+    'Antes: If ValidarDatosObligatorios() Then
+       If ValidarDatosObligatorios("A") Then
+   'SCCQ 12/10/2020 Cambio28 Fin
            CargaDatosAlObjetosDeDatos
             If AgregarDatos() Then
                ml_idUsuarioCreo = ml_idUsuario
@@ -1668,7 +1672,10 @@ Private Sub btnAceptar_Click()
             End If
        End If
    Case sghModificar
-       If ValidarDatosObligatorios() Then
+   'SCCQ 12/10/2020 Cambio28 Inicio
+    'Antes: If ValidarDatosObligatorios() Then
+       If ValidarDatosObligatorios("M") Then
+   'SCCQ 12/10/2020 Cambio28 Fin
             CargaDatosAlObjetosDeDatos
             If ModificarDatos() Then
                ml_idUsuarioCreo = ml_idUsuario
@@ -1693,8 +1700,10 @@ Private Sub btnAceptar_Click()
         End If
    End Select
 End Sub
-
-Function ValidarDatosObligatorios() As Boolean
+'SCCQ 12/10/2020 Cambio28 Inicio
+    'Antes: Function ValidarDatosObligatorios() As Boolean
+Function ValidarDatosObligatorios(modo As String) As Boolean
+'SCCQ 12/10/2020 Cambio28 Fin
    Dim lbSigue As Boolean
    Dim lnCantProducto As Long
    ValidarDatosObligatorios = False
@@ -1708,8 +1717,14 @@ Function ValidarDatosObligatorios() As Boolean
        ms_MensajeError = ms_MensajeError + "Por favor elija el Almacén Origen" + Chr(13)
        cmbAlmOrigen.SetFocus
    ElseIf txtNdocum.Locked = False And txtNdocum.Text = "" Then
+   'SCCQ 12/10/2020 Cambio28 Inicio
+    If modo = "M" Then 'Modifica
+    'SCCQ 12/10/2020 Cambio28 Fin
           ms_MensajeError = ms_MensajeError + "Por favor ingrese el N° Documento" + Chr(13)
-          txtNdocum.SetFocus
+          'txtNdocum.SetFocus -->'Se comentó la línea de código
+    'SCCQ 12/10/2020 Cambio28 Inicio
+    End If
+    'SCCQ 12/10/2020 Cambio28 Fin
    ElseIf txtFrecepcion.Enabled = True And txtFrecepcion.Text = SIGHEntidades.FECHA_VACIA_DMY Then
           ms_MensajeError = ms_MensajeError + "Por favor ingrese la Fecha de Recepción" + Chr(13)
           txtFrecepcion.SetFocus
@@ -2141,6 +2156,16 @@ Sub CreaNSaFarmaciaUNIDOSIS()
 End Sub
 
 Function AgregarDatos() As Boolean
+    'SCCQ 13/10/2020 Cambio28 Inicio
+    oRsConceptos.MoveFirst
+    oRsConceptos.Find "idTipoConcepto=" & mo_cmbConceptos.BoundText
+    If oRsConceptos.Fields!DocumentoEsAutomatico = "S" Then 'Verificamos si el número de documento se genera de forma AUTOMATICA
+      Dim oReglasFarmacia As New ReglasFarmacia
+      mo_farmMovimiento.DocumentoNumero = oReglasFarmacia.DevuelveYactualizaCorrelativosDisponibles("E", oRsAlmacenDestino.Fields!idTipoLocales, oRsAlmacenDestino.Fields!idTipoSuministro, CLng(mo_cmbTipoDocum.BoundText))
+      txtNdocum.Text = mo_farmMovimiento.DocumentoNumero
+      Set oReglasFarmacia = Nothing
+    End If
+      'SCCQ 13/10/2020 Cambio28 Fin
     AgregarDatos = mo_ReglasFarmacia.AgregaDatosDeNotaIngreso(mo_farmMovimiento, mo_farmMovimientoNotaIngreso, oDoProveedores, mRs_Productos, ml_IdTipoFinanciamiento, mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc)
     txtNotaIngreso.Text = mo_farmMovimiento.movNumero
     ms_MensajeError = mo_ReglasFarmacia.MensajeError

@@ -1096,16 +1096,16 @@ Function ValidarDatosObligatorios(modo As String) As Boolean
    ElseIf mo_cmbAlmacenOrigen.BoundText = mo_cmbAlmacenDestino.BoundText Then
        ms_MensajeError = ms_MensajeError + "El Almacén Origen y Destino deben ser DIFERENTES" + Chr(13)
    ElseIf cmbTipoDocum.Text <> "" Then
-   'SCCQ Cambio28 Inicio
+   'SCCQ 09/10/2020 Cambio28 Inicio
         If modo = "M" Then 'Modifica
-    
+   'SCCQ 09/10/2020 Cambio28 Fin
          If txtNdocum.Text = "" Then
           ms_MensajeError = ms_MensajeError + "Por favor ingrese el N° Documento" + Chr(13)
           txtNdocum.SetFocus
          End If
-    
+    'SCCQ 09/10/2020 Cambio28 Inicio
         End If
-    'SCCQ Cambio28 Fin
+   'SCCQ 09/10/2020 Cambio28 Fin
       
    End If
 'SCCQ 08/10/2020 Cambio28 Inicio
@@ -1191,9 +1191,7 @@ Sub CargaDatosAlObjetosDeDatos()
     Case sghAgregar
         With mo_farmMovimiento
             .DocumentoIdtipo = Val(mo_cmbTipoDocum.BoundText)                   '10
-            'SCCQ 08/10/2020 Cambio28 Inicio
-            '.DocumentoNumero = txtNdocum.Text
-             'SCCQ 08/10/2020 Cambio28 Fin
+            .DocumentoNumero = txtNdocum.Text
             .fechaCreacion = lcBuscaParametro.RetornaFechaHoraServidorSQL       'igual
             .IdAlmacenDestino = Val(mo_cmbAlmacenDestino.BoundText)             '0
             .IdAlmacenOrigen = Val(mo_cmbAlmacenOrigen.BoundText)               '8
