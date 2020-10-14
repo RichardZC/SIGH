@@ -138,6 +138,7 @@ Begin VB.Form FarmPaquetes
       Begin VB.TextBox txtNdocum 
          Height          =   315
          Left            =   8910
+         Locked          =   -1  'True
          MaxLength       =   20
          TabIndex        =   2
          Top             =   1560
@@ -467,7 +468,9 @@ Private Sub cmbConcepto_Click()
     '
     lbDocumentoEsAutomatico = IIf(oRsConceptos.Fields!DocumentoEsAutomatico = "S", True, False)
     If lbDocumentoEsAutomatico = True Then
-       txtNdocum.Text = Val(oRsConceptos.Fields!DocumentoUltimoNumero) + 1
+      'SCCQ 09/10/2020 Cambio28 Inicio
+       'txtNdocum.Text = Val(oRsConceptos.Fields!DocumentoUltimoNumero) + 1
+       'SCCQ 09/10/2020 Cambio28 Fin
     Else
        txtNdocum.Text = ""
     End If
@@ -562,6 +565,9 @@ Sub CargarComboBoxes()
     End If
 End Sub
 Sub CargarDatosAlFormulario()
+'SCCQ 14/10/2020 Cambio28 Inicio
+mo_Formulario.HabilitarDeshabilitar txtNdocum, False
+'SCCQ 14/10/2020 Cambio28 Fin
     mo_Formulario.HabilitarDeshabilitar Me.txtNotaSalida, False
     mo_Formulario.HabilitarDeshabilitar Me.txtFregistro, False
     mo_Formulario.HabilitarDeshabilitar Me.txtHoraRegistro, False
@@ -678,7 +684,10 @@ Private Sub btnAceptar_Click()
    End If
    Select Case mi_Opcion
    Case sghAgregar
-       If ValidarDatosObligatorios() Then
+        'SCCQ 14/10/2020 Cambio28 Inicio
+        'Antes:  If ValidarDatosObligatorios() Then
+        If ValidarDatosObligatorios("A") Then
+        'SCCQ 14/10/2020 Cambio28 Fin
             CargaDatosAlObjetosDeDatos
             If AgregarDatos() Then
 '                If MsgBox("Se agregó correctamente la Nota de Salida N° " + txtNotaSalida.Text + Chr(13) + Chr(13) + "Desea Imprimir el Documento ?", vbQuestion + vbYesNo, "") = vbYes Then
@@ -690,12 +699,14 @@ Private Sub btnAceptar_Click()
             Else
                 MsgBox "No se pudo agregar los datos " + Chr(13) + ms_MensajeError, vbExclamation, Me.Caption
             End If
-       End If
+        End If
    Case sghModificar
         MsgBox "Hay problemas al MODIFICAR,        debe ANULAR y luego AGREGAR", vbInformation, Me.Caption
         Exit Sub
-   
-       If ValidarDatosObligatorios() Then
+        'SCCQ 14/10/2020 Cambio28 Inicio
+        'Antes:  If ValidarDatosObligatorios() Then
+        If ValidarDatosObligatorios("M") Then
+        'SCCQ 14/10/2020 Cambio28 Fin
             CargaDatosAlObjetosDeDatos
             If ModificarDatos() Then
                 If MsgBox("Se Modificó correctamente la Nota de Salida N° " + txtNotaSalida.Text + Chr(13) + Chr(13) + "Desea Imprimir el Documento ?", vbQuestion + vbYesNo, "") = vbYes Then
@@ -721,8 +732,10 @@ Private Sub btnAceptar_Click()
         End If
    End Select
 End Sub
-
-Function ValidarDatosObligatorios() As Boolean
+'SCCQ 14/10/2020 Cambio28 Inicio
+'Antes:  Function ValidarDatosObligatorios() As Boolean
+Function ValidarDatosObligatorios(modo As String) As Boolean
+'SCCQ 14/10/2020 Cambio28 Fin
    ValidarDatosObligatorios = False
    ms_MensajeError = ""
    If cmbAlmOrigen.Text = "" Then
@@ -736,21 +749,29 @@ Function ValidarDatosObligatorios() As Boolean
    ElseIf mo_cmbAlmacenOrigen.BoundText = mo_cmbAlmacenDestino.BoundText Then
        ms_MensajeError = ms_MensajeError + "El Almacén Origen y Destino deben ser DIFERENTES" + Chr(13)
    ElseIf cmbTipoDocum.Text <> "" Then
-       If txtNdocum.Text = "" Then
-          ms_MensajeError = ms_MensajeError + "Por favor ingrese el N° Documento" + Chr(13)
-          txtNdocum.SetFocus
-       End If
+   'SCCQ 14/10/2020 Cambio28 Inicio
+        If modo = "M" Then 'Modifica
+   'SCCQ 14/10/2020 Cambio28 Fin
+            If txtNdocum.Text = "" Then
+              ' ms_MensajeError = ms_MensajeError + "Por favor ingrese el N° Documento" + Chr(13)
+               'txtNdocum.SetFocus
+            End If
+   'SCCQ 14/10/2020 Cambio28 Inicio
+        End If
+   'SCCQ 14/10/2020 Cambio28 Fin
    End If
-   If mi_Opcion = sghAgregar And txtNdocum.Text <> "" Then
-      Dim oRsTmp As New ADODB.Recordset
-      Set oRsTmp = mo_ReglasFarmacia.farmMovimientoSeleccionarPorTipoYnumeroDocumento(txtNdocum.Text, Val(mo_cmbTipoDocum.BoundText))
-      oRsTmp.Filter = "idEstadoMovimiento=1"
-      If oRsTmp.RecordCount > 0 Then
-         ms_MensajeError = ms_MensajeError + "El Número de Documento: " & txtNdocum.Text & "   EXISTE en NS: " & Trim(oRsTmp.Fields!movNumero) & "     Fecha: " & oRsTmp.Fields!fechaCreacion & Chr(13)
-      End If
-      oRsTmp.Close
-      Set oRsTmp = Nothing
-   End If
+   'SCCQ 14/10/2020 Cambio28 Inicio
+'   If mi_Opcion = sghAgregar And txtNdocum.Text <> "" Then
+'      Dim oRsTmp As New ADODB.Recordset
+'      Set oRsTmp = mo_ReglasFarmacia.farmMovimientoSeleccionarPorTipoYnumeroDocumento(txtNdocum.Text, Val(mo_cmbTipoDocum.BoundText))
+'      oRsTmp.Filter = "idEstadoMovimiento=1"
+'      If oRsTmp.RecordCount > 0 Then
+'         ms_MensajeError = ms_MensajeError + "El Número de Documento: " & txtNdocum.Text & "   EXISTE en NS: " & Trim(oRsTmp.Fields!movNumero) & "     Fecha: " & oRsTmp.Fields!fechaCreacion & Chr(13)
+'      End If
+'      oRsTmp.Close
+'      Set oRsTmp = Nothing
+'   End If
+   'SCCQ 14/10/2020 Cambio28 Fin
    lnTotalDocumento = grdProductos.DevuelveTotal
    Set mRs_Productos = grdProductos.DevuelveProductos
    Set mRs_ProductosLotes = grdProductos.DevuelveProductosLotes
@@ -826,7 +847,7 @@ Sub CargaDatosAlObjetosDeDatos()
             .IdUsuarioAuditoria = ml_idUsuario
             .MovTipo = lcConstanteMovimientoSalida
             .Observaciones = txtObservaciones.Text
-            .total = lnTotalDocumento
+            .Total = lnTotalDocumento
             
         End With
    Case sghModificar
@@ -834,7 +855,7 @@ Sub CargaDatosAlObjetosDeDatos()
             .DocumentoNumero = txtNdocum.Text
             .Observaciones = txtObservaciones.Text
             .IdUsuarioAuditoria = ml_idUsuario
-            .total = lnTotalDocumento
+            .Total = lnTotalDocumento
             '.FechaCreacion = txtFregistro.Text
         End With
    Case sghEliminar
@@ -862,6 +883,14 @@ Function AgregarDatos() As Boolean
 '       Set oRsTmp = Nothing
    ' End If
     '
+    'SCCQ 08/10/2020 Cambio28 Inicio
+     If lbDocumentoEsAutomatico = True Then
+        Dim oReglasFarmacia As New ReglasFarmacia
+        mo_farmMovimiento.DocumentoNumero = oReglasFarmacia.DevuelveYactualizaCorrelativosDisponibles(lcConstanteMovimientoSalida, oRsAlmacenOrigen.Fields!idTipoLocales, oRsAlmacenOrigen.Fields!idTipoSuministro, CLng(mo_cmbTipoDocum.BoundText))
+         txtNdocum.Text = mo_farmMovimiento.DocumentoNumero
+         Set oReglasFarmacia = Nothing
+     End If
+    'SCCQ 08/10/2020 Cambio28 Fin
     lbAgregarDatos = mo_ReglasFarmacia.AgregaDatosDeNotaSalida(mo_farmMovimiento, mRs_ProductosLotes, mo_lnIdTablaLISTBARITEMS, _
                                                                mo_lcNombrePc)
     txtNotaSalida.Text = mo_farmMovimiento.movNumero
@@ -905,7 +934,7 @@ Function ModificarDatos() As Boolean
         Set oMovimiento.Conexion = oConexion
         Set oMovimientoNotaIngreso.Conexion = oConexion
         '
-        lnTotal = mo_farmMovimiento.total
+        lnTotal = mo_farmMovimiento.Total
         Set oRsTmp = mo_ReglasFarmacia.farmMovimientoSeleccionarPorTipoYnumeroDocumento(mo_farmMovimiento.DocumentoNumero, mo_farmMovimiento.DocumentoIdtipo)
         oRsTmp.Filter = "movTipo='E' and idAlmacenDestino=" & mo_farmMovimiento.IdAlmacenDestino
         If oRsTmp.RecordCount > 0 Then
@@ -919,7 +948,7 @@ Function ModificarDatos() As Boolean
                MsgBox "Fallo en Nota de Ingreso automática" & Chr(13) & oMovimiento.MensajeError
                Exit Function
             End If
-            mo_farmMovimiento.total = lnTotal
+            mo_farmMovimiento.Total = lnTotal
             '
             With mo_farmMovimientoNotaIngreso
                 .MovTipo = lcConstanteMovimientoEntrada

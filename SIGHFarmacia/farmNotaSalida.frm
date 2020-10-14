@@ -1104,7 +1104,7 @@ Function ValidarDatosObligatorios(modo As String) As Boolean
    'SCCQ 09/10/2020 Cambio28 Fin
          If txtNdocum.Text = "" Then
           ms_MensajeError = ms_MensajeError + "Por favor ingrese el N° Documento" + Chr(13)
-          txtNdocum.SetFocus
+          'txtNdocum.SetFocus
          End If
     'SCCQ 09/10/2020 Cambio28 Inicio
         End If
@@ -1247,8 +1247,8 @@ Function AgregarDatos() As Boolean
         mo_farmMovimiento.DocumentoNumero = oReglasFarmacia.DevuelveYactualizaCorrelativosDisponibles("S", oRsAlmacenOrigen.Fields!idTipoLocales, oRsAlmacenOrigen.Fields!idTipoSuministro, CLng(mo_cmbTipoDocum.BoundText))
          txtNdocum.Text = mo_farmMovimiento.DocumentoNumero
          Set oReglasFarmacia = Nothing
-         'SCCQ 08/10/2020 Cambio28 Fin
      End If
+    'SCCQ 08/10/2020 Cambio28 Fin
     lbAgregarDatos = mo_ReglasFarmacia.AgregaDatosDeNotaSalida(mo_farmMovimiento, mRs_Productos, mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc)
     txtNotaSalida.Text = mo_farmMovimiento.movNumero
     If GeneraNIenFormaAutomatica(lbAgregarDatos) Then
