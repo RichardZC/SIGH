@@ -1017,7 +1017,9 @@ Private Sub cmbConcepto_Click()
        mo_Formulario.HabilitarDeshabilitar txtNdocum, False
        mo_Formulario.HabilitarDeshabilitar txtFrecepcion, False
     Else
-       mo_Formulario.HabilitarDeshabilitar txtNdocum, True
+    'SCCQ 13/10/2020 Cambio28 Inicio
+       'mo_Formulario.HabilitarDeshabilitar txtNdocum, True
+    'SCCQ 13/10/2020 Cambio28 Fin
        mo_Formulario.HabilitarDeshabilitar txtFrecepcion, True
     End If
     '
@@ -1291,6 +1293,7 @@ Private Sub Form_Activate()
 End Sub
 
 Private Sub Form_Initialize()
+
     Set mo_cmbConceptos.MiComboBox = cmbConcepto
     Set mo_cmbAlmacenOrigen.MiComboBox = cmbAlmOrigen
     Set mo_cmbAlmacenDestino.MiComboBox = cmbAlmDestino
@@ -1401,6 +1404,9 @@ Sub BlanquedaVariablesUnidosis()
 End Sub
 
 Sub CargarDatosAlFormulario()
+'SCCQ 13/10/2020 Cambio28 Inicio
+mo_Formulario.HabilitarDeshabilitar txtNdocum, False
+'SCCQ 13/10/2020 Cambio28 Fin
     mo_Formulario.HabilitarDeshabilitar Me.txtNotaIngreso, False
     mo_Formulario.HabilitarDeshabilitar Me.txtFregistro, False
     mo_Formulario.HabilitarDeshabilitar Me.txtHoraRegistro, False
