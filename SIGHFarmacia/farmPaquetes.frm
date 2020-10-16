@@ -690,6 +690,13 @@ Private Sub btnAceptar_Click()
         'SCCQ 14/10/2020 Cambio28 Fin
             CargaDatosAlObjetosDeDatos
             If AgregarDatos() Then
+                'SCCQ 15/10/2020 Cambio28 Inicio
+                If lbDocumentoEsAutomatico = True Then ' Actualiza correlativo
+                    Dim lcFiltro As String
+                    lcFiltro = "tipoAlmacen='" & oRsAlmacenOrigen.Fields!idTipoLocales & "' and tipoMov='S' and tipoSuministro='" & oRsAlmacenOrigen.Fields!idTipoSuministro & "' and DocumentoId=" & mo_cmbTipoDocum.BoundText
+                    mo_ReglasFarmacia.FarmRelModActualizaSegunFiltro lcFiltro, txtNdocum.Text
+                End If
+                'SCCQ 15/10/2020 Cambio28 Fin
 '                If MsgBox("Se agregó correctamente la Nota de Salida N° " + txtNotaSalida.Text + Chr(13) + Chr(13) + "Desea Imprimir el Documento ?", vbQuestion + vbYesNo, "") = vbYes Then
 '                   ml_idUsuarioCreo = ml_idUsuario
 '                   ImprimeDocumento
@@ -883,14 +890,14 @@ Function AgregarDatos() As Boolean
 '       Set oRsTmp = Nothing
    ' End If
     '
-    'SCCQ 08/10/2020 Cambio28 Inicio
+    'SCCQ 14/10/2020 Cambio28 Inicio
      If lbDocumentoEsAutomatico = True Then
         Dim oReglasFarmacia As New ReglasFarmacia
-        mo_farmMovimiento.DocumentoNumero = oReglasFarmacia.DevuelveYactualizaCorrelativosDisponibles(lcConstanteMovimientoSalida, oRsAlmacenOrigen.Fields!idTipoLocales, oRsAlmacenOrigen.Fields!idTipoSuministro, CLng(mo_cmbTipoDocum.BoundText))
+        mo_farmMovimiento.DocumentoNumero = oReglasFarmacia.DevuelveCorrelativoDisponible(lcConstanteMovimientoSalida, oRsAlmacenOrigen.Fields!idTipoLocales, oRsAlmacenOrigen.Fields!idTipoSuministro, CLng(mo_cmbTipoDocum.BoundText))
          txtNdocum.Text = mo_farmMovimiento.DocumentoNumero
          Set oReglasFarmacia = Nothing
      End If
-    'SCCQ 08/10/2020 Cambio28 Fin
+    'SCCQ 14/10/2020 Cambio28 Fin
     lbAgregarDatos = mo_ReglasFarmacia.AgregaDatosDeNotaSalida(mo_farmMovimiento, mRs_ProductosLotes, mo_lnIdTablaLISTBARITEMS, _
                                                                mo_lcNombrePc)
     txtNotaSalida.Text = mo_farmMovimiento.movNumero

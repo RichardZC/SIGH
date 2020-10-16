@@ -10210,17 +10210,17 @@ ManejadorDeError:
 Exit Function
 End Function
 
-'SCCQ 08/10/2020 Cambio28 Inicio
-Function DevuelveYactualizaCorrelativosDisponibles(lnMovTipo As String, lnIdTipoLocales As String, lnIdTipoSuministro As String, lnDocumentoIdtipo As Long) As String
+'SCCQ 14/10/2020 Cambio28 Inicio
+Function DevuelveCorrelativoDisponible(lnMovTipo As String, lnIdTipoLocales As String, lnIdTipoSuministro As String, lnDocumentoIdtipo As Long) As String
     On Error GoTo ManejadorDeError
     Dim lcNewCorrelativo As String
     Dim oConexion As New ADODB.Connection
     Dim oMovimiento As New farmMovimiento
     oConexion.Open sighentidades.CadenaConexion
     Set oMovimiento.Conexion = oConexion
-    DevuelveYactualizaCorrelativosDisponibles = ""
-    lcNewCorrelativo = oMovimiento.DevuelveYactualizaCorrelativosDisponibles(lnMovTipo, lnIdTipoLocales, lnIdTipoSuministro, lnDocumentoIdtipo)
-    DevuelveYactualizaCorrelativosDisponibles = lcNewCorrelativo
+    DevuelveCorrelativoDisponible = ""
+    lcNewCorrelativo = oMovimiento.DevuelveCorrelativoDisponible(lnMovTipo, lnIdTipoLocales, lnIdTipoSuministro, lnDocumentoIdtipo)
+    DevuelveCorrelativoDisponible = lcNewCorrelativo
     ms_MensajeError = ""
     Set oConexion = Nothing
     Set oMovimiento = Nothing
@@ -10230,4 +10230,4 @@ ManejadorDeError:
 
 End Function
 
-'SCCQ 08/10/2020 Cambio28 Fin
+'SCCQ 14/10/2020 Cambio28 Fin
