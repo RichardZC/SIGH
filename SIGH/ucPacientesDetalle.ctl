@@ -2217,7 +2217,7 @@ Begin VB.UserControl ucPacientesDetalle
       _ExtentY        =   2593
       _Version        =   393216
       Tabs            =   4
-      Tab             =   3
+      Tab             =   1
       TabsPerRow      =   4
       TabHeight       =   520
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -2236,8 +2236,9 @@ Begin VB.UserControl ucPacientesDetalle
       Tab(0).ControlCount=   1
       TabCaption(1)   =   "1.2. Datos de procedencia (F8)"
       TabPicture(1)   =   "ucPacientesDetalle.ctx":487A
-      Tab(1).ControlEnabled=   0   'False
+      Tab(1).ControlEnabled=   -1  'True
       Tab(1).Control(0)=   "fraProcedencia"
+      Tab(1).Control(0).Enabled=   0   'False
       Tab(1).ControlCount=   1
       TabCaption(2)   =   "1.3 Datos de nacimiento (F9)"
       TabPicture(2)   =   "ucPacientesDetalle.ctx":4896
@@ -2246,13 +2247,12 @@ Begin VB.UserControl ucPacientesDetalle
       Tab(2).ControlCount=   1
       TabCaption(3)   =   "1.4 Datos PDF/JGP"
       TabPicture(3)   =   "ucPacientesDetalle.ctx":48B2
-      Tab(3).ControlEnabled=   -1  'True
+      Tab(3).ControlEnabled=   0   'False
       Tab(3).Control(0)=   "ucPacientesPDF1"
-      Tab(3).Control(0).Enabled=   0   'False
       Tab(3).ControlCount=   1
       Begin SISGalenPlus.ucPacientesPDF ucPacientesPDF1 
          Height          =   1005
-         Left            =   30
+         Left            =   -74970
          TabIndex        =   135
          Top             =   345
          Width           =   11610
@@ -2271,7 +2271,7 @@ Begin VB.UserControl ucPacientesDetalle
          EndProperty
          ForeColor       =   &H00000000&
          Height          =   945
-         Left            =   -74880
+         Left            =   120
          TabIndex        =   74
          Top             =   360
          Width           =   11415
@@ -3052,7 +3052,16 @@ Dim mo_AdminProgramacion As New SIGHNegocios.ReglasDeProgMedica
 Dim ml_TipoServicio As sghTipoServicio
 Dim mo_AdminReportes As New SIGHNegocios.ReglasReportes
 Dim mo_AdminHoteleria As New SIGHNegocios.ReglasHoteleria
-Dim mo_Reniec As New ReniecGalenhos
+
+'<(Inicio)Comentado Por: WABG el: 16/10/2020-10:29:40 a.m. en el Equipo: SISGALENPLUS-PC>
+''Dim mo_Reniec As New ReniecGalenhos
+'</(Fin)Comentado por: WABG el: 16/10/2020-10:29:40 a.m. en el Equipo: SISGALENPLUS-PC>
+
+'<(Inicio) Añadido Por: WABG el: 16/10/2020-10:53:29 a.m.en el Equipo: SISGALENPLUS-PC>
+Dim mo_Reniec As New ReniecGalenhosNegocios
+Dim lcIdDistrito As String
+'</(Fin) Añadido Por: WABG el: 16/10/2020-10:53:29 a.m. en el Equipo: SISGALENPLUS-PC>
+
 Dim mrs_Diagnosticos As New ADODB.Recordset
 Dim mo_Apariencia As New sighEntidades.GridInfragistic
 Dim ml_TipoVistaForm As sghTipoVistaFormAtenciones
@@ -3293,6 +3302,209 @@ Private Sub chkIgualUQueDomicilioNac_KeyDown(KeyCode As Integer, Shift As Intege
     mo_Teclado.RealizarNavegacion KeyCode, chkIgualUQueDomicilioNac
     RaiseEvent SePresionoTeclaEspecial(KeyCode)
 End Sub
+'<(Inicio) Añadido Por: WABG el: 16/10/2020-10:56:50 a.m.en el Equipo: SISGALENPLUS-PC>
+ Sub deshabilitarControlesDeTextoRENIEC()
+                    txtApellidoPaterno.Enabled = False
+                     txtApellidoMaterno.Enabled = False
+                     txtPrimerNombre.Enabled = False
+                     txtSegundoNombre.Enabled = False
+                     txtTercerNombre.Enabled = False
+                     txtFechaNacimiento.Enabled = False
+                     cmbIdTipoSexo.Enabled = False
+                     
+                      If txtDireccionDomicilio.Text = "" Then
+                            txtDireccionDomicilio.Enabled = True
+                      Else
+                            txtDireccionDomicilio.Enabled = False
+                     End If
+
+                     If Len(Trim(cmbIdDepartamentoDomicilio.Text)) > 0 Then
+                            cmbIdDepartamentoDomicilio.Enabled = False
+                     Else
+                            cmbIdDepartamentoDomicilio.Enabled = True
+                     End If
+
+                     If Len(Trim(cmbIdProvinciaDomicilio.Text)) > 0 Then
+                            cmbIdProvinciaDomicilio.Enabled = False
+                     Else
+                            cmbIdProvinciaDomicilio.Enabled = True
+                     End If
+
+                     If Len(Trim(cmbIdDistritoDomicilio.Text)) > 0 Then
+                            cmbIdDistritoDomicilio.Enabled = False
+                     Else
+                            cmbIdDistritoDomicilio.Enabled = True
+                     End If
+
+                     If Len(Trim(cmbIdCentroPobladoDomicilio.Text)) > 0 Then
+                            cmbIdCentroPobladoDomicilio.Enabled = False
+                     Else
+                            cmbIdCentroPobladoDomicilio.Enabled = True
+                     End If
+
+                      If Len(Trim(cmbIdPaisDomicilio.Text)) > 0 Then
+                            cmbIdPaisDomicilio.Enabled = False
+                    Else
+                            cmbIdPaisDomicilio.Enabled = True
+                     End If
+  
+End Sub
+
+'CARGAR CONTROLES DE TEXTO DESDE RENIEC
+Sub CargarDatosDesdeRENIEC(DNI As String)
+                  
+                  'LIMPIAR TODOS LOS CONTROLES, METODO ENCONTRADO EN EL CODIGO
+                      Call LimpiarDatosDePaciente(0, Format(ldHoy, sighEntidades.DevuelveFechaSoloFormato_DMY))
+                      
+                  mo_Reniec.Inicializar
+                  mo_Reniec.ConsultarDNIenReniec Trim(DNI)
+
+                  If mo_Reniec.ApellidoPaterno <> "" Then
+                  If Trim(txtNroDocumento.Text) <> DNI Then
+                  txtNroDocumento.Text = DNI
+                  'txtNroDocumento.Enabled = False
+                  End If
+                  txtIdNroHistoria.Text = DNI
+                  cmbIdTipoGenHistoriaClinica.ListIndex = 1
+                  txtIdNroHistoria.Locked = False
+                  txtIdNroHistoria.Enabled = True
+                  txtIdNroHistoria.SetFocus
+                  
+                  txtApellidoPaterno.Text = mo_Reniec.ApellidoPaterno
+                  txtApellidoMaterno.Text = mo_Reniec.ApellidoMaterno
+                  txtPrimerNombre.Text = mo_Reniec.PrimerNombre
+                  txtSegundoNombre.Text = mo_Reniec.SegundoNombre
+                  txtTercerNombre.Text = mo_Reniec.TercerNombre
+                  txtFechaNacimiento.Text = mo_Reniec.FechaNacimiento
+                  mo_CmbIdTipoSexo.BoundText = mo_Reniec.idTipoSexo
+                  txtDireccionDomicilio.Text = mo_Reniec.DireccionDomicilio
+                  
+                  'llenando los combobox  etnia e idioma por defecto
+                  
+                  'Idioma español = 38 en el combobox
+                  cmbIdioma.ListIndex = 38
+                  
+                  'Etnia mestizo = 43 en el combobox
+                  cmbEtnia.ListIndex = 43
+                  
+                  
+                  
+                  If mo_Reniec.IdDistritoDomicilio > 0 Then
+                     lcIdDistrito = Right("0" & Trim(Str(mo_Reniec.IdDistritoDomicilio)), 6)
+                     mo_cmbIdDepartamentoDomicilio.BoundText = Left(lcIdDistrito, 2)
+                     mo_cmbIdProvinciaDomicilio.BoundText = Left(lcIdDistrito, 4)
+                     mo_cmbIdDistritoDomicilio.BoundText = lcIdDistrito
+'                    mo_cmbIdPaisDomicilio.BoundText = 166   'Peru
+'                    mo_cmbIdPaisNacimiento.BoundText = 166   'Peru
+'                    mo_cmbIdPaisProcedencia.BoundText = 166   'Peru'
+                  End If
+                     UserControl.TabPaciente.Tab = 0
+                     MsgBox "Los Datos del Paciente con  DNI : " & DNI & "  Fueron cargados desde la RENIEC", vbInformation, ""
+                    
+                    'DESHABILITAR CONTROLES IMPLICADOS EN DATOS DE RENIEC
+                     deshabilitarControlesDeTextoRENIEC
+                    
+                    
+                     
+            Else
+            
+                     MsgBox "El Numero de DNI : " & DNI & " no fue encontrado en la RENIEC", vbInformation, "Error"
+                    
+                     
+                     'LIMPIAR TODOS LOS CONTROLES, METODO ENCONTRADO EN EL CODIGO
+                      Call LimpiarDatosDePaciente(0, Format(ldHoy, sighEntidades.DevuelveFechaSoloFormato_DMY))
+
+                     'HABILITAR CONTROLES IMPLICADOS EN DATOS DE RENIEC
+                     HabilitarControlesDeTextoRENIEC
+'
+            End If
+            
+End Sub
+'CARGAR DATOS DEL TUTOR DESDE RENIEC
+Sub CargarDatosTutorDesdeRENIEC(DNITUTOR As String)
+    mo_Reniec.Inicializar
+    mo_Reniec.ConsultarDNIenReniec Trim(DNITUTOR)
+    If Len(txtMadreDocumento.Text) = 8 And Val(mo_cmbMadreTipoDocumento.BoundText) = 1 Then
+
+        If mo_Reniec.ApellidoPaterno <> "" Then
+            txtMadreApellidoP.Text = mo_Reniec.ApellidoPaterno
+            txtMadreApellidoM.Text = mo_Reniec.ApellidoMaterno
+            txtNombreMadre.Text = mo_Reniec.PrimerNombre
+            txtMadreSnombre.Text = mo_Reniec.SegundoNombre
+            txtMadreApellidoP.Enabled = False
+            txtMadreApellidoM.Enabled = False
+            txtNombreMadre.Enabled = False
+            txtMadreSnombre.Enabled = False
+            
+            MsgBox "Los Datos del Tutor con  DNI : " & DNITUTOR & "  Fueron cargados desde la RENIEC", vbInformation, ""
+        Else
+            MsgBox "El Numero de DNI : " & DNITUTOR & " no fue encontrado en la RENIEC", vbInformation, "Error"
+            txtMadreApellidoP.Text = ""
+            txtMadreApellidoM.Text = ""
+            txtNombreMadre.Text = ""
+            txtMadreSnombre.Text = ""
+            txtMadreApellidoP.Enabled = True
+            txtMadreApellidoM.Enabled = True
+            txtNombreMadre.Enabled = True
+            txtMadreSnombre.Enabled = True
+            txtMadreDocumento.Text = ""
+            mo_cmbMadreTipoDocumento.BoundText = 1
+            txtMadreDocumento.SetFocus
+     End If
+
+    Else
+           MsgBox "Ingreso Incorrecto", vbInformation, "Error"
+  End If
+End Sub
+'BUSCAR EN BD EXISTENCIA DE HISTORIAS CLINICAS
+ Sub VerificarExistenciaHistoriaClinica(NroHistoriaClinica As String)
+   On Error Resume Next
+    If mo_Teclado.TextoEsSoloNumeros(NroHistoriaClinica) Then
+        Dim lbContinua000 As Boolean
+        
+        lbContinua000 = True
+        If Len(NroHistoriaClinica) = 8 And wxParametro351 = "S" Then
+           If NroHistoriaClinica = txtNroDocumento.Text Then
+              lbContinua000 = False
+           End If
+        End If
+        If lbContinua000 = True Then
+            NroHistoriaClinica = mo_Teclado.CapitalizarNombres(NroHistoriaClinica)
+            txtIdNroHistoria.Tag = NroHistoriaClinica
+        End If
+        mo_Formulario.MarcarComoVacio txtIdNroHistoria
+        If txtIdNroHistoria.Locked = True Then Exit Sub
+        If Trim(NroHistoriaClinica) = "" Then txtIdNroHistoria.SetFocus: Exit Sub
+        ms_MensajeError = mo_AdminAdmision.ExisteNroHistoria(Trim(Str(txtIdNroHistoria.Tag)))
+        If ms_MensajeError <> "" Then
+           MsgBox "Existe un paciente con el mismo número de historia clínica: " + Chr(13) + ms_MensajeError
+           txtIdNroHistoria.Text = ""
+           txtIdNroHistoria.Enabled = True
+           txtIdNroHistoria.SetFocus
+        End If
+    End If
+End Sub
+Sub HabilitarControlesDeTextoRENIEC()
+                     txtNroDocumento.Enabled = True
+                     txtApellidoPaterno.Enabled = True
+                     txtApellidoMaterno.Enabled = True
+                     txtPrimerNombre.Enabled = True
+                     txtSegundoNombre.Enabled = True
+                     txtTercerNombre.Enabled = True
+                     txtIdNroHistoria.Enabled = True
+                     txtIdNroHistoria.Locked = False
+                     txtFechaNacimiento.Enabled = True
+                     cmbIdTipoSexo.Enabled = True
+                     txtDireccionDomicilio.Enabled = True
+                     cmbIdDepartamentoDomicilio.Enabled = True
+                     cmbIdProvinciaDomicilio.Enabled = True
+                     cmbIdDistritoDomicilio.Enabled = True
+                     cmbIdCentroPobladoDomicilio.Enabled = True
+                     cmbIdPaisDomicilio.Enabled = True
+                     UserControl.TabPaciente.Tab = 0
+                     txtNroDocumento.SetFocus
+End Sub
+'</(Fin) Añadido Por: WABG el: 16/10/2020-10:56:50 a.m. en el Equipo: SISGALENPLUS-PC>
 
 Private Sub chkNN_Click()
     
@@ -4222,34 +4434,43 @@ Private Sub txtMadreDocumento_LostFocus()
                 txtNombreMadre.Text = rspacientes.Fields!PrimerNombre
                 txtMadreSnombre.Text = IIf(IsNull(rspacientes.Fields!SegundoNombre), "", rspacientes.Fields!SegundoNombre)
              'End If
+             
+             '<(Inicio) Añadido Por: WABG el: 16/10/2020-12:10:08 p.m.en el Equipo: SISGALENPLUS-PC>
+             Else
+                CargarDatosTutorDesdeRENIEC (Trim(txtMadreDocumento.Text))
+             '</(Fin) Añadido Por: WABG el: 16/10/2020-12:10:08 p.m. en el Equipo: SISGALENPLUS-PC>
+                
           End If
           rspacientes.Close
           Set rspacientes = Nothing
+          
           '****buscar a la madre en la RENIEC
-          If lbBuscaDNIenReniec = True And Len(txtMadreDocumento.Text) = 8 And Val(mo_cmbMadreTipoDocumento.BoundText) = 1 Then
-               Dim lbContinuar As Boolean
-               lbContinuar = True
-               If mi_Opcion <> sghAgregar Then
-                  If txtMadreApellidoP.Text <> "" Then
-                     lbContinuar = False
-                  End If
-               Else
-                  If mb_MarcoCheckPacienteNuevo = False Then
-                     lbContinuar = False
-                  End If
-               End If
-               If lbContinuar = True Then
-                     mo_Reniec.ConsultarDNIenReniec txtMadreDocumento.Text
-                     If mo_Reniec.ApellidoPaterno <> "" Then
-                           txtMadreApellidoP.Text = mo_Reniec.ApellidoPaterno
-                           txtMadreApellidoM.Text = mo_Reniec.ApellidoMaterno
-                           txtNombreMadre.Text = mo_Reniec.PrimerNombre
-                           txtMadreSnombre.Text = mo_Reniec.SegundoNombre
-'                           mb_UsoWebReniec = True
-'                           MuestraQueUsoWebReniec
-                     End If
-               End If
-          End If
+'          <(Inicio)Comentado Por: WABG el: 16/10/2020-12:13:01 p.m. en el Equipo: SISGALENPLUS-PC>
+'          If lbBuscaDNIenReniec = True And Len(txtMadreDocumento.Text) = 8 And Val(mo_cmbMadreTipoDocumento.BoundText) = 1 Then
+'               Dim lbContinuar As Boolean
+'               lbContinuar = True
+'               If mi_Opcion <> sghAgregar Then
+'                  If txtMadreApellidoP.Text <> "" Then
+'                     lbContinuar = False
+'                  End If
+'               Else
+'                  If mb_MarcoCheckPacienteNuevo = False Then
+'                     lbContinuar = False
+'                  End If
+'               End If
+'               If lbContinuar = True Then
+'                     mo_Reniec.ConsultarDNIenReniec txtMadreDocumento.Text
+'                     If mo_Reniec.ApellidoPaterno <> "" Then
+'                           txtMadreApellidoP.Text = mo_Reniec.ApellidoPaterno
+'                           txtMadreApellidoM.Text = mo_Reniec.ApellidoMaterno
+'                           txtNombreMadre.Text = mo_Reniec.PrimerNombre
+'                           txtMadreSnombre.Text = mo_Reniec.SegundoNombre
+''                           mb_UsoWebReniec = True
+''                           MuestraQueUsoWebReniec
+'                     End If
+'               End If
+'          End If
+'          </(Fin)Comentado por: WABG el: 16/10/2020-12:13:01 p.m. en el Equipo: SISGALENPLUS-PC>
         End If
 End Sub
 
@@ -4827,6 +5048,13 @@ Private Sub txtNroDocumento_LostFocus()
                   rspacientes.MoveNext
                Loop
          End If
+'<(Inicio) Añadido Por: WABG el: 16/10/2020-11:46:19 a.m.en el Equipo: SISGALENPLUS-PC>
+         Else
+    
+    'CARGAR CONTROLES DE TEXTO DESDE RENIEC
+    CargarDatosDesdeRENIEC ((Trim(txtNroDocumento.Text)))
+    
+'</(Fin) Añadido Por: WABG el: 16/10/2020-11:46:19 a.m. en el Equipo: SISGALENPLUS-PC>
    End If
    rspacientes.Close
    '
@@ -4846,7 +5074,9 @@ Private Sub txtNroDocumento_LostFocus()
       If lbContinuar = True Then
             mo_Reniec.ConsultarDNIenReniec txtNroDocumento.Text
             If mo_Reniec.ApellidoPaterno <> "" Then
-                  Dim lcIdDistrito As String
+'                  <(Inicio)Comentado Por: WABG el: 16/10/2020-12:19:18 p.m. en el Equipo: SISGALENPLUS-PC>
+'                  Dim lcIdDistrito As String
+'                  </(Fin)Comentado por: WABG el: 16/10/2020-12:19:18 p.m. en el Equipo: SISGALENPLUS-PC>
                   txtApellidoPaterno.Text = mo_Reniec.ApellidoPaterno
                   txtApellidoMaterno.Text = mo_Reniec.ApellidoMaterno
                   txtPrimerNombre.Text = mo_Reniec.PrimerNombre
@@ -6227,28 +6457,36 @@ End Sub
 
 
 Private Sub txtIdNroHistoria_LostFocus()
-    On Error Resume Next
-    If mo_Teclado.TextoEsSoloNumeros(txtIdNroHistoria.Text) Then
-        Dim lbContinua000 As Boolean
-        
-        lbContinua000 = True
-        If Len(txtNroDocumento.Text) = 8 And wxParametro351 = "S" Then
-           If txtIdNroHistoria.Text = txtNroDocumento.Text Then
-              lbContinua000 = False
-           End If
-        End If
-        If lbContinua000 = True Then
-            txtIdNroHistoria.Text = mo_Teclado.CapitalizarNombres(txtIdNroHistoria.Text)
-            txtIdNroHistoria.Tag = txtIdNroHistoria.Text
-        End If
-        mo_Formulario.MarcarComoVacio txtIdNroHistoria
-        If txtIdNroHistoria.Locked = True Then Exit Sub
-        If Trim(txtIdNroHistoria.Text) = "" Then txtIdNroHistoria.SetFocus: Exit Sub
-        ms_MensajeError = mo_AdminAdmision.ExisteNroHistoria(Trim(Str(txtIdNroHistoria.Tag)))
-        If ms_MensajeError <> "" Then
-           MsgBox "Existe un paciente con el mismo número de historia clínica: " + Chr(13) + ms_MensajeError
-        End If
-    End If
+
+'<(Inicio) Añadido Por: WABG el: 16/10/2020-12:02:05 p.m.en el Equipo: SISGALENPLUS-PC>
+VerificarExistenciaHistoriaClinica (txtIdNroHistoria.Text)
+'</(Fin) Añadido Por: WABG el: 16/10/2020-12:02:05 p.m. en el Equipo: SISGALENPLUS-PC>
+
+
+'<(Inicio)Comentado Por: WABG el: 16/10/2020-12:02:23 p.m. en el Equipo: SISGALENPLUS-PC>
+'    On Error Resume Next
+'    If mo_Teclado.TextoEsSoloNumeros(txtIdNroHistoria.Text) Then
+'        Dim lbContinua000 As Boolean
+'
+'        lbContinua000 = True
+'        If Len(txtNroDocumento.Text) = 8 And wxParametro351 = "S" Then
+'           If txtIdNroHistoria.Text = txtNroDocumento.Text Then
+'              lbContinua000 = False
+'           End If
+'        End If
+'        If lbContinua000 = True Then
+'            txtIdNroHistoria.Text = mo_Teclado.CapitalizarNombres(txtIdNroHistoria.Text)
+'            txtIdNroHistoria.Tag = txtIdNroHistoria.Text
+'        End If
+'        mo_Formulario.MarcarComoVacio txtIdNroHistoria
+'        If txtIdNroHistoria.Locked = True Then Exit Sub
+'        If Trim(txtIdNroHistoria.Text) = "" Then txtIdNroHistoria.SetFocus: Exit Sub
+'        ms_MensajeError = mo_AdminAdmision.ExisteNroHistoria(Trim(Str(txtIdNroHistoria.Tag)))
+'        If ms_MensajeError <> "" Then
+'           MsgBox "Existe un paciente con el mismo número de historia clínica: " + Chr(13) + ms_MensajeError
+'        End If
+'    End If
+'</(Fin)Comentado por: WABG el: 16/10/2020-12:02:23 p.m. en el Equipo: SISGALENPLUS-PC>
 End Sub
 
 Private Sub txtIdNroHistoria_KeyPress(KeyAscii As Integer)

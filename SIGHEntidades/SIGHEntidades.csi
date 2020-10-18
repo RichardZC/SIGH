@@ -1,18 +1,20 @@
 [History]
-1=#P0#=mb	#P1#=CadenaConexion	#P2#=SIGHEntidades/Configuracion/CadenaConexion [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200707111017	#P7#=0	#P8#=1	.
-2=#P0#=mb	#P1#=CargarComboBoxDesdeRecordset	#P2#=SIGHEntidades/ListaDespleglable/CargarComboBoxDesdeRecordset	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200706123903	#P7#=0	#P8#=-1	.
-3=#P0#=mb	#P1#=UbicarItemDeComboBoxPorId	#P2#=SIGHEntidades/ListaDespleglable/UbicarItemDeComboBoxPorId	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200706123808	#P7#=0	#P8#=0	.
-4=#P0#=mb	#P1#=ListField	#P2#=SIGHEntidades/ListaDespleglable/ListField [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200706123534	#P7#=0	#P8#=2	.
-5=#P0#=mb	#P1#=MiComboBox	#P2#=SIGHEntidades/ListaDespleglable/MiComboBox [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200706123118	#P7#=0	#P8#=1	.
-6=#P0#=mb	#P1#=RowSourceSinClear	#P2#=SIGHEntidades/ListaDespleglable/RowSourceSinClear [Set]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200706122829	#P7#=0	#P8#=2	.
-7=#P0#=mb	#P1#=CargarComboBoxDesdeRecordsetTextCompuesto	#P2#=SIGHEntidades/ListaDespleglable/CargarComboBoxDesdeRecordsetTextCompuesto	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200706122754	#P7#=0	#P8#=-2	.
-8=#P0#=mb	#P1#=MiComboBox	#P2#=SIGHEntidades/ListaDespleglable/MiComboBox [Set]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200706122652	#P7#=0	#P8#=1	.
-9=#P0#=mb	#P1#=RowSourceTextCompuesto	#P2#=SIGHEntidades/ListaDespleglable/RowSourceTextCompuesto [Set]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200706113012	#P7#=0	#P8#=0	.
-10=#P0#=mb	#P1#=BoundText	#P2#=SIGHEntidades/ListaDespleglable/BoundText [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200706083710	#P7#=0	#P8#=2	.
-11=#P0#=mb	#P1#=DevuelveValorTextoCompuesto	#P2#=SIGHEntidades/ListaDespleglable/DevuelveValorTextoCompuesto	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200706083605	#P7#=0	#P8#=16	.
-12=#P0#=mb	#P1#=PrimerFechaDDMMYYDelMesAnterior	#P2#=SIGHEntidades/FechaHora/PrimerFechaDDMMYYDelMesAnterior	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200703082556	#P7#=0	#P8#=1	.
-13=#P0#=mb	#P1#=PrimerFechaDDMMYYDelMesActual	#P2#=SIGHEntidades/FechaHora/PrimerFechaDDMMYYDelMesActual	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200703082509	#P7#=0	#P8#=0	.
-14=#P0#=mb	#P1#=EsFecha	#P2#=SIGHEntidades/FechaHora/EsFecha	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200703082330	#P7#=0	#P8#=34	.
-15=#P0#=mb	#P1#=EsHora	#P2#=SIGHEntidades/FechaHora/EsHora	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200703082313	#P7#=0	#P8#=9	.
-16=#P0#=mb	#P1#=DMA2AMD	#P2#=SIGHEntidades/FechaHora/DMA2AMD	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200703082303	#P7#=0	#P8#=0	.
-17=#P0#=mb	#P1#=FECHA_VACIA_DMY_HMS	#P2#=SIGHEntidades/FechaHora/FECHA_VACIA_DMY_HMS [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200703082248	#P7#=0	#P8#=0	.
+1=#P0#=mb	#P1#=HCigualDNI_DevuelveRsConHistoriaOCHOdigitos	#P2#=SIGHEntidades/TiposDeDato/HCigualDNI_DevuelveRsConHistoriaOCHOdigitos	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201016091131	#P7#=0	#P8#=15	.
+2=#P0#=mb	#P1#=HCigualDNI_DevuelveHistoriaConCerosIzquierda	#P2#=SIGHEntidades/Configuracion/HCigualDNI_DevuelveHistoriaConCerosIzquierda	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201016091115	#P7#=0	#P8#=8	.
+3=#P0#=mb	#P1#=CadenaConexion	#P2#=SIGHEntidades/Configuracion/CadenaConexion [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200707111017	#P7#=0	#P8#=1	.
+4=#P0#=mb	#P1#=CargarComboBoxDesdeRecordset	#P2#=SIGHEntidades/ListaDespleglable/CargarComboBoxDesdeRecordset	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200706123903	#P7#=0	#P8#=-1	.
+5=#P0#=mb	#P1#=UbicarItemDeComboBoxPorId	#P2#=SIGHEntidades/ListaDespleglable/UbicarItemDeComboBoxPorId	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200706123808	#P7#=0	#P8#=0	.
+6=#P0#=mb	#P1#=ListField	#P2#=SIGHEntidades/ListaDespleglable/ListField [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200706123534	#P7#=0	#P8#=2	.
+7=#P0#=mb	#P1#=MiComboBox	#P2#=SIGHEntidades/ListaDespleglable/MiComboBox [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200706123118	#P7#=0	#P8#=1	.
+8=#P0#=mb	#P1#=RowSourceSinClear	#P2#=SIGHEntidades/ListaDespleglable/RowSourceSinClear [Set]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200706122829	#P7#=0	#P8#=2	.
+9=#P0#=mb	#P1#=CargarComboBoxDesdeRecordsetTextCompuesto	#P2#=SIGHEntidades/ListaDespleglable/CargarComboBoxDesdeRecordsetTextCompuesto	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200706122754	#P7#=0	#P8#=-2	.
+10=#P0#=mb	#P1#=MiComboBox	#P2#=SIGHEntidades/ListaDespleglable/MiComboBox [Set]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200706122652	#P7#=0	#P8#=1	.
+11=#P0#=mb	#P1#=RowSourceTextCompuesto	#P2#=SIGHEntidades/ListaDespleglable/RowSourceTextCompuesto [Set]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200706113012	#P7#=0	#P8#=0	.
+12=#P0#=mb	#P1#=BoundText	#P2#=SIGHEntidades/ListaDespleglable/BoundText [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200706083710	#P7#=0	#P8#=2	.
+13=#P0#=mb	#P1#=DevuelveValorTextoCompuesto	#P2#=SIGHEntidades/ListaDespleglable/DevuelveValorTextoCompuesto	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200706083605	#P7#=0	#P8#=16	.
+14=#P0#=mb	#P1#=PrimerFechaDDMMYYDelMesAnterior	#P2#=SIGHEntidades/FechaHora/PrimerFechaDDMMYYDelMesAnterior	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200703082556	#P7#=0	#P8#=1	.
+15=#P0#=mb	#P1#=PrimerFechaDDMMYYDelMesActual	#P2#=SIGHEntidades/FechaHora/PrimerFechaDDMMYYDelMesActual	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200703082509	#P7#=0	#P8#=0	.
+16=#P0#=mb	#P1#=EsFecha	#P2#=SIGHEntidades/FechaHora/EsFecha	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200703082330	#P7#=0	#P8#=34	.
+17=#P0#=mb	#P1#=EsHora	#P2#=SIGHEntidades/FechaHora/EsHora	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200703082313	#P7#=0	#P8#=9	.
+18=#P0#=mb	#P1#=DMA2AMD	#P2#=SIGHEntidades/FechaHora/DMA2AMD	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200703082303	#P7#=0	#P8#=0	.
+19=#P0#=mb	#P1#=FECHA_VACIA_DMY_HMS	#P2#=SIGHEntidades/FechaHora/FECHA_VACIA_DMY_HMS [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200703082248	#P7#=0	#P8#=0	.

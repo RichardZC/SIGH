@@ -168,9 +168,9 @@ Begin VB.Form AdmisionCEDetalle
          TabCaption(1)   =   "2.2 Citas para otros días"
          TabPicture(1)   =   "AdmisionDetalle.frx":0D1E
          Tab(1).ControlEnabled=   0   'False
-         Tab(1).Control(0)=   "UcPacientesSunasa1"
+         Tab(1).Control(0)=   "Label9"
          Tab(1).Control(1)=   "ucCitasLista11"
-         Tab(1).Control(2)=   "Label9"
+         Tab(1).Control(2)=   "UcPacientesSunasa1"
          Tab(1).ControlCount=   3
          Begin VB.Frame FraGeneraCita 
             Caption         =   "Forma que se genera la CITA"
@@ -2870,7 +2870,10 @@ Private Sub btnBuscarPaciente_Click()
     lcSnombreSIS = ""
     lcSnombreReniec = "": ldFnacimientoReniec = 0: lnIdSexoReniec = 0: lcDireccionReniec = "": mb_UsoWebReniec = False
     If mo_Teclado.TextoEsSoloNumeros(Me.txtNroHistoriaBusqueda.Text) Then
-       oDOPaciente.NroHistoriaClinica = Val(HCigualDNI_AgregaNUEVEaLaHistoria(Me.txtNroHistoriaBusqueda.Text))
+'<(Inicio) Modificado Por: WABG el 16/10/2020-12:32:21 p.m. en el Equipo: SISGALENPLUS-PC>
+'      oDOPaciente.NroHistoriaClinica = Val(HCigualDNI_AgregaNUEVEaLaHistoria(Me.txtNroHistoriaBusqueda.Text))
+       oDOPaciente.NroHistoriaClinica = Val(Me.txtNroHistoriaBusqueda.Text)
+'</(Fin) Modificado Por: Project Administrator el 16/10/2020-12:32:21 p.m. en el Equipo: SISGALENPLUS-PC>
     End If
     oDOPaciente.ApellidoPaterno = Me.txtApellidoPaternoBusqueda
     oDOPaciente.ApellidoMaterno = Me.txtApellidoMaternoBusqueda
@@ -2950,7 +2953,7 @@ Private Sub btnBuscarPaciente_Click()
         lcApP = txtApellidoPaternoBusqueda
         lcApM = txtApellidoMaternoBusqueda
         lcPnom = txtPrimerNombreBusqueda
-        
+
         LimpiarFormulario
         Me.grdPacientesEncontrados.Visible = False
         txtNroHistoriaBusqueda.Text = ""
