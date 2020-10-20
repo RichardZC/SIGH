@@ -954,7 +954,7 @@ Sub CargaDatosAlObjetosDeDatos()
             .IdUsuarioAuditoria = ml_idUsuario
             .MovTipo = lcConstanteMovimientoSalida
             .Observaciones = txtObservaciones.Text
-            .total = lnTotalDocumento
+            .Total = lnTotalDocumento
         End With
         With mo_DoFarmMovimientoProgramas
              .idComponente = Val(mo_cmbComponente.BoundText)
@@ -971,7 +971,7 @@ Sub CargaDatosAlObjetosDeDatos()
         With mo_DoFarmMovimiento
             .Observaciones = txtObservaciones.Text
             .IdUsuarioAuditoria = ml_idUsuario
-            .total = lnTotalDocumento
+            .Total = lnTotalDocumento
         End With
         With mo_DoFarmMovimientoProgramas
              .idComponente = Val(mo_cmbComponente.BoundText)

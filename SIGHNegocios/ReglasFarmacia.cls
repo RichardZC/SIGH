@@ -2382,6 +2382,197 @@ TerminarNI:
     Set oFacturacionBienesDevol = Nothing
     Set oDoFacturacionBienesDevol = Nothing
 End Function
+'SCCQ 19/10/2020 Cambio28 Inicio
+'Se copió el código de la Función AgregaDatosDeNotaIngreso y se agregó lo necesario para generar y actualizar correlativo disponible de número de documento.
+Function AgregaDatosDeNotaIngresoAutomatico(lnIdTipoLocales As String, lnIdTipoSuministro As String, lnDocumentoIdtipo As Long, oDoMovimiento As DoFarmMovimiento, oDoMovimientoNotaIngreso As DOfarmMovimientoNotaIngreso, oDoProveedores As DoProveedores, oRsDetalleProductos As ADODB.Recordset, lnIdtipoFinanciamiento As Long, mo_lnIdTablaLISTBARITEMS As Long, mo_lcNombrePc As String) As Boolean
+    Dim oConexion As New ADODB.Connection
+    Dim ml_ReglasFacturacion As New SIGHNegocios.ReglasFacturacion
+    Dim oMovimiento As New farmMovimiento
+    Dim oMovimientoNotaIngreso As New FarmMovimientoNotaIngreso
+    Dim oMovimientoDetalle As New FarmMovimientoDetalle
+    Dim oDoMovimientoDetalle As New DoFarmMovimientoDetalle
+    Dim oDOCatalogoBienes As New DOCatalogoBienesInsumos
+    Dim oCatalogoBienes As New CatalogoBienesInsumos
+    Dim oProveedores As New Proveedores
+    Dim oDoFacturacionBienesDevol As New DoFacturacionBienesDevol
+    Dim oFacturacionBienesDevol As New FacturacionBienesDevol
+    Dim oFacturacionBienesPagos As New FacturacionBienesPagos
+    Dim oDoFacturacionBienesPagos As New DoFacturacionBienesPagos
+    Dim oFacturacionBienesFinan As New FacturacionBienesFinanciam
+    Dim oDoFacturacionBienesFinan As New DoFacturacionBienesFinanciam
+    Dim oRsDevoluciones As New Recordset
+    Dim lcCorrelativo As String, lcSql As String
+    'SCCQ 19/10/2020 Cambio28 Inicio
+    Dim lcCorrelativoDocumN As String
+    'SCCQ 19/10/2020 Cambio28 Fin
+    Dim lnItem As Long, lnCantidadPagar As Long, lnIdOrden As Long
+    Dim lnTotalPagar As Double
+    Dim bProcesoOK As Boolean
+    oConexion.CommandTimeout = 900
+    oConexion.CursorLocation = adUseClient
+    oConexion.Open sighentidades.CadenaConexion
+    oConexion.BeginTrans
+    bProcesoOK = True
+    ms_MensajeError = ""
+    Set oMovimiento.Conexion = oConexion
+    Set oProveedores.Conexion = oConexion
+    Set oMovimientoNotaIngreso.Conexion = oConexion
+    Set oMovimientoDetalle.Conexion = oConexion
+    Set oCatalogoBienes.Conexion = oConexion
+    Set oFacturacionBienesDevol.Conexion = oConexion
+    Set oFacturacionBienesPagos.Conexion = oConexion
+    Set oFacturacionBienesFinan.Conexion = oConexion
+    
+    '*********  graba tabla correlativos farmTipoDocumentos  ***************
+    lcCorrelativo = oMovimiento.DevuelveYactualizaCorrelativosDeDocumentosES(1)
+    '*********  graba tabla Movimientos  ***************
+    With oDoMovimiento
+       .movNumero = lcCorrelativo
+    End With
+    'SCCQ 19/10/2020 Cambio28 Inicio
+    lcCorrelativoDocumN = oMovimiento.DevuelveYactualizaCorrelativoDisponible("E", lnIdTipoLocales, lnIdTipoSuministro, lnDocumentoIdtipo) 'GENERA Y ACTUALIZA CORRELATIVO
+    oDoMovimiento.DocumentoNumero = lcCorrelativoDocumN
+    'SCCQ 19/10/2020 Cambio28 Fin
+    If Not oMovimiento.Insertar(oDoMovimiento) Then
+            bProcesoOK = False: ms_MensajeError = oMovimiento.MensajeError: GoTo TerminarNI
+    End If
+    '
+    Call mo_ReglasSeguridad.AuditoriaAgregarV(oDoMovimiento.IdUsuarioAuditoria, "A", 0, "FarmMovimiento/" & oDoMovimiento.MovTipo & "/" & oDoMovimiento.movNumero, oConexion, mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc, "")            'ListBarItems.idListItem
+    '************** Graba nuevo proveedor
+    If oDoProveedores.RazonSocial <> "" Then
+        
+        If Not oProveedores.Insertar(oDoProveedores) Then
+           bProcesoOK = False: ms_MensajeError = oProveedores.MensajeError: GoTo TerminarNI
+        End If
+        oDoMovimientoNotaIngreso.idProveedor = oDoProveedores.idProveedor
+    End If
+    '*********  graba tabla MovimientosNotaIngreso  ***************
+    With oDoMovimientoNotaIngreso
+       .movNumero = lcCorrelativo
+    End With
+    
+    If Not oMovimientoNotaIngreso.Insertar(oDoMovimientoNotaIngreso) Then
+            bProcesoOK = False: ms_MensajeError = oMovimientoNotaIngreso.MensajeError: GoTo TerminarNI
+    End If
+    
+    '*********  graba tabla farmMovimientosDetalle,farmSaldo,farmSaldoDetalle, actualiza Precio de Ultima Compra  ***************
+    oDoMovimientoDetalle.IdUsuarioAuditoria = oDoMovimiento.IdUsuarioAuditoria
+    oDoMovimientoDetalle.movNumero = oDoMovimiento.movNumero
+    oDoMovimientoDetalle.MovTipo = oDoMovimiento.MovTipo
+    lnItem = 1
+    If oRsDetalleProductos.RecordCount = 0 Then
+       bProcesoOK = False: ms_MensajeError = "No existe productos": GoTo TerminarNI
+    End If
+    oRsDetalleProductos.MoveFirst
+    Do While Not oRsDetalleProductos.EOF
+       oDoMovimientoDetalle.cantidad = oRsDetalleProductos.Fields!cantidad
+       oDoMovimientoDetalle.FechaVencimiento = oRsDetalleProductos.Fields!FechaVencimiento
+       oDoMovimientoDetalle.idProducto = oRsDetalleProductos.Fields!idProducto
+       oDoMovimientoDetalle.Item = lnItem
+       oDoMovimientoDetalle.Lote = oRsDetalleProductos.Fields!Lote
+       oDoMovimientoDetalle.Precio = oRsDetalleProductos.Fields!Precio
+       oDoMovimientoDetalle.RegistroSanitario = IIf(IsNull(oRsDetalleProductos.Fields!RegistroSanitario), "", oRsDetalleProductos.Fields!RegistroSanitario)
+       oDoMovimientoDetalle.total = oRsDetalleProductos.Fields!total
+       oDoMovimientoDetalle.idTipoSalidaBienInsumo = oRsDetalleProductos.Fields!idTipoSalidaBienInsumo
+       oDoMovimientoDetalle.DocumentoNumero = IIf(IsNull(oRsDetalleProductos.Fields!NumeroDocumento), "", Trim(oRsDetalleProductos.Fields!NumeroDocumento))
+       If Not oMovimientoDetalle.Insertar(oDoMovimientoDetalle) Then
+                bProcesoOK = False: ms_MensajeError = oMovimientoDetalle.MensajeError: GoTo TerminarNI
+       End If
+       If Not oMovimientoDetalle.ActualizaSaldosPorProducto(lcConstanteMovimientoEntrada, oDoMovimiento.idAlmacenDestino, oRsDetalleProductos.Fields!idProducto, oRsDetalleProductos.Fields!Lote, oRsDetalleProductos.Fields!FechaVencimiento, oRsDetalleProductos.Fields!idTipoSalidaBienInsumo, oRsDetalleProductos.Fields!cantidad, oRsDetalleProductos.Fields!Precio, oDoMovimiento.FechaCreacion) Then
+                bProcesoOK = False: ms_MensajeError = oMovimientoDetalle.MensajeError: GoTo TerminarNI
+       End If
+       '*********  graba Devoluciones  de Pacientes***************
+       If oDoMovimiento.idTipoConcepto = 21 And oDoMovimientoNotaIngreso.idCuentaAtencion > 0 Then
+            With oDoFacturacionBienesDevol
+                .cantidadAdevolver = oRsDetalleProductos.Fields!cantidad
+                .FechaAutoriza = oDoMovimiento.FechaCreacion
+                .IdComprobantePago = 0
+                .idEstadoDevolucion = 2  'devuelto
+                .idProducto = oRsDetalleProductos.Fields!idProducto
+                .IdUsuarioAuditoria = oDoMovimiento.idUsuario
+                .IdUsuarioAutoriza = oDoMovimiento.idUsuario
+                .movNumero = oRsDetalleProductos.Fields!movNumeroS
+                .MovTipo = "S"
+                .MovNumeroE = oDoMovimiento.movNumero
+                .MovTipoE = oDoMovimiento.MovTipo
+            End With
+            If Not oFacturacionBienesDevol.Insertar(oDoFacturacionBienesDevol) Then
+                     bProcesoOK = False: ms_MensajeError = oFacturacionBienesDevol.MensajeError: GoTo TerminarNI
+            End If
+            If ml_ReglasFacturacion.TiposFinanciamientoGeneraReciboPago(lnIdtipoFinanciamiento, oConexion) = True Then
+                    oDoFacturacionBienesPagos.CantidadPagar = oRsDetalleProductos.Fields!CantidadS
+                    oDoFacturacionBienesPagos.IdOrden = oRsDetalleProductos.Fields!IdOrdenS
+                    oDoFacturacionBienesPagos.idProducto = oRsDetalleProductos.Fields!idProducto
+                    oDoFacturacionBienesPagos.IdUsuarioAuditoria = oDoFacturacionBienesDevol.IdUsuarioAuditoria
+                    oDoFacturacionBienesPagos.PrecioVenta = oRsDetalleProductos.Fields!PrecioS
+                    lnCantidadPagar = oDoFacturacionBienesPagos.CantidadPagar - oRsDetalleProductos.Fields!cantidad
+                    lnTotalPagar = Round(lnCantidadPagar * oDoFacturacionBienesPagos.PrecioVenta, 2)
+                    oDoFacturacionBienesPagos.CantidadPagar = lnCantidadPagar
+                    oDoFacturacionBienesPagos.TotalPagar = lnTotalPagar
+                    If Not oFacturacionBienesPagos.ModificarXidOrdenIdProducto(oDoFacturacionBienesPagos) Then
+                       bProcesoOK = False: ms_MensajeError = oFacturacionBienesPagos.MensajeError: GoTo TerminarNI
+                    End If
+            Else
+                    lnCantidadPagar = oRsDetalleProductos.Fields!CantidadS - oRsDetalleProductos.Fields!cantidad
+                    lnTotalPagar = Round(lnCantidadPagar * oRsDetalleProductos.Fields!PrecioS, 2)
+                    oDoFacturacionBienesFinan.movNumero = oDoFacturacionBienesDevol.movNumero
+                    oDoFacturacionBienesFinan.MovTipo = oDoFacturacionBienesDevol.MovTipo
+                    oDoFacturacionBienesFinan.idProducto = oDoFacturacionBienesDevol.idProducto
+                    oDoFacturacionBienesFinan.IdTipoFinanciamiento = oRsDetalleProductos.Fields!IdTipoFinanciamientoS
+                    oDoFacturacionBienesFinan.idFuenteFinanciamiento = oRsDetalleProductos.Fields!IdFuenteFinanciamientoS
+                    oDoFacturacionBienesFinan.FechaAutoriza = oRsDetalleProductos.Fields!FechaS
+                    oDoFacturacionBienesFinan.IdUsuarioAuditoria = oDoMovimiento.IdUsuarioAuditoria
+                    oDoFacturacionBienesFinan.IdUsuarioAutoriza = oRsDetalleProductos.Fields!usuarioS
+                    oDoFacturacionBienesFinan.PrecioFinanciado = oRsDetalleProductos.Fields!PrecioS
+                    oDoFacturacionBienesFinan.TotalFinanciado = lnTotalPagar
+                    oDoFacturacionBienesFinan.CantidadFinanciada = lnCantidadPagar
+                    oDoFacturacionBienesFinan.IdEstadoFacturacion = 1
+                    If Not oFacturacionBienesFinan.modificar(oDoFacturacionBienesFinan) Then
+                       bProcesoOK = False: ms_MensajeError = oFacturacionBienesFinan.MensajeError: GoTo TerminarNI
+                    End If
+                End If
+       End If
+       If oDoMovimiento.idTipoConcepto = 1 Or oDoMovimiento.idTipoConcepto = 2 Then
+            '********* solo actualiza PRECIO ULTIMA COMPRA para CONCEPTOS=Compra/Encargo
+            oDOCatalogoBienes.idProducto = oRsDetalleProductos.Fields!idProducto
+            If Not oCatalogoBienes.SeleccionarPorId(oDOCatalogoBienes) Then
+               bProcesoOK = False: ms_MensajeError = oCatalogoBienes.MensajeError: GoTo TerminarNI
+            End If
+            oDOCatalogoBienes.PrecioUltCompra = oRsDetalleProductos.Fields!Precio
+            If Not oCatalogoBienes.modificar(oDOCatalogoBienes) Then
+               bProcesoOK = False: ms_MensajeError = oCatalogoBienes.MensajeError: GoTo TerminarNI
+            End If
+       End If
+       lnItem = lnItem + 1
+       oRsDetalleProductos.MoveNext
+    Loop
+    
+TerminarNI:
+    If bProcesoOK Then
+        AgregaDatosDeNotaIngresoAutomatico = True
+        oConexion.CommitTrans
+    Else
+        AgregaDatosDeNotaIngresoAutomatico = False
+        ms_MensajeError = ms_MensajeError + IIf(oMovimiento.MensajeError <> "", oMovimiento.MensajeError + Chr(13), "")
+        ms_MensajeError = ms_MensajeError + IIf(oMovimientoNotaIngreso.MensajeError <> "", oMovimientoNotaIngreso.MensajeError + Chr(13), "")
+        ms_MensajeError = ms_MensajeError + IIf(oMovimientoDetalle.MensajeError <> "", oMovimientoDetalle.MensajeError + Chr(13), "")
+        ms_MensajeError = ms_MensajeError + IIf(oFacturacionBienesDevol.MensajeError <> "", oFacturacionBienesDevol.MensajeError + Chr(13), "")
+        ms_MensajeError = ms_MensajeError + IIf(oFacturacionBienesFinan.MensajeError <> "", oFacturacionBienesFinan.MensajeError + Chr(13), "")
+        ms_MensajeError = ms_MensajeError + IIf(oFacturacionBienesPagos.MensajeError <> "", oFacturacionBienesPagos.MensajeError + Chr(13), "")
+        oConexion.RollbackTrans
+    End If
+    oConexion.Close
+    Set oConexion = Nothing
+    Set oMovimiento = Nothing
+    Set oMovimientoNotaIngreso = Nothing
+    Set oMovimientoDetalle = Nothing
+    Set oDoMovimientoDetalle = Nothing
+    Set oDOCatalogoBienes = Nothing
+    Set oProveedores = Nothing
+    Set oFacturacionBienesDevol = Nothing
+    Set oDoFacturacionBienesDevol = Nothing
+End Function
+'SCCQ 19/10/2020 Cambio28 Fin
 Function FarmMovimientoNotaIngresoSeleccionarPorId(ByVal oDoMovimientoNotaIngreso As DOfarmMovimientoNotaIngreso) As Boolean
     Dim oConexion As New ADODB.Connection
     Dim oMovimiento As New FarmMovimientoNotaIngreso
@@ -10211,16 +10402,16 @@ Exit Function
 End Function
 
 'SCCQ 14/10/2020 Cambio28 Inicio
-Function DevuelveCorrelativoDisponible(lnMovTipo As String, lnIdTipoLocales As String, lnIdTipoSuministro As String, lnDocumentoIdtipo As Long) As String
+Function DevuelveYactualizaCorrelativoDisponible(lnMovTipo As String, lnIdTipoLocales As String, lnIdTipoSuministro As String, lnDocumentoIdtipo As Long) As String
     On Error GoTo ManejadorDeError
     Dim lcNewCorrelativo As String
     Dim oConexion As New ADODB.Connection
     Dim oMovimiento As New farmMovimiento
     oConexion.Open sighentidades.CadenaConexion
     Set oMovimiento.Conexion = oConexion
-    DevuelveCorrelativoDisponible = ""
-    lcNewCorrelativo = oMovimiento.DevuelveCorrelativoDisponible(lnMovTipo, lnIdTipoLocales, lnIdTipoSuministro, lnDocumentoIdtipo)
-    DevuelveCorrelativoDisponible = lcNewCorrelativo
+    DevuelveYactualizaCorrelativoDisponible = ""
+    lcNewCorrelativo = oMovimiento.DevuelveYactualizaCorrelativoDisponible(lnMovTipo, lnIdTipoLocales, lnIdTipoSuministro, lnDocumentoIdtipo)
+    DevuelveYactualizaCorrelativoDisponible = lcNewCorrelativo
     ms_MensajeError = ""
     Set oConexion = Nothing
     Set oMovimiento = Nothing

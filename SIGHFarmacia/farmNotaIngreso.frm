@@ -1668,13 +1668,6 @@ Private Sub btnAceptar_Click()
    'SCCQ 12/10/2020 Cambio28 Fin
            CargaDatosAlObjetosDeDatos
             If AgregarDatos() Then
-                'SCCQ 15/10/2020 Cambio28 Inicio
-                If oRsConceptos.Fields!DocumentoEsAutomatico = "S" Then ' Actualiza correlativo
-                    Dim lcFiltro As String
-                    lcFiltro = "tipoAlmacen='" & oRsAlmacenDestino.Fields!idTipoLocales & "' and tipoMov='E' and tipoSuministro='" & oRsAlmacenDestino.Fields!idTipoSuministro & "' and DocumentoId=" & mo_cmbTipoDocum.BoundText
-                    mo_ReglasFarmacia.FarmRelModActualizaSegunFiltro lcFiltro, txtNdocum.Text
-                End If
-                'SCCQ 15/10/2020 Cambio28 Fin
                ml_idUsuarioCreo = ml_idUsuario
                'MsgBox "Se agregó correctamente la Nota de Ingreso N° " + txtNotaIngreso.Text, vbExclamation, Me.Caption
                 ImprimeDocumento
@@ -2169,17 +2162,18 @@ Sub CreaNSaFarmaciaUNIDOSIS()
 End Sub
 
 Function AgregarDatos() As Boolean
-    'SCCQ 13/10/2020 Cambio28 Inicio
+    'SCCQ 19/10/2020 Cambio28 Inicio
     oRsConceptos.MoveFirst
     oRsConceptos.Find "idTipoConcepto=" & mo_cmbConceptos.BoundText
     If oRsConceptos.Fields!DocumentoEsAutomatico = "S" Then 'Verificamos si el número de documento se genera de forma AUTOMATICA
-      Dim oReglasFarmacia As New ReglasFarmacia
-      mo_farmMovimiento.DocumentoNumero = oReglasFarmacia.DevuelveCorrelativoDisponible("E", oRsAlmacenDestino.Fields!idTipoLocales, oRsAlmacenDestino.Fields!idTipoSuministro, CLng(mo_cmbTipoDocum.BoundText))
-      txtNdocum.Text = mo_farmMovimiento.DocumentoNumero
-      Set oReglasFarmacia = Nothing
+        AgregarDatos = mo_ReglasFarmacia.AgregaDatosDeNotaIngresoAutomatico(oRsAlmacenDestino.Fields!idTipoLocales, oRsAlmacenDestino.Fields!idTipoSuministro, CLng(mo_cmbTipoDocum.BoundText), mo_farmMovimiento, mo_farmMovimientoNotaIngreso, oDoProveedores, mRs_Productos, ml_IdTipoFinanciamiento, mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc)
+        txtNdocum.Text = mo_farmMovimiento.DocumentoNumero
+    Else
+    'SCCQ 19/10/2020 Cambio28 Fin
+        AgregarDatos = mo_ReglasFarmacia.AgregaDatosDeNotaIngreso(mo_farmMovimiento, mo_farmMovimientoNotaIngreso, oDoProveedores, mRs_Productos, ml_IdTipoFinanciamiento, mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc)
+    'SCCQ 19/10/2020 Cambio28 Inicio
     End If
-      'SCCQ 13/10/2020 Cambio28 Fin
-    AgregarDatos = mo_ReglasFarmacia.AgregaDatosDeNotaIngreso(mo_farmMovimiento, mo_farmMovimientoNotaIngreso, oDoProveedores, mRs_Productos, ml_IdTipoFinanciamiento, mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc)
+    'SCCQ 19/10/2020 Cambio28 Fin
     txtNotaIngreso.Text = mo_farmMovimiento.movNumero
     ms_MensajeError = mo_ReglasFarmacia.MensajeError
     If Val(Me.txtNcuenta.Text) > 0 Then
