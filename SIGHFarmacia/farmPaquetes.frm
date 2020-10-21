@@ -883,16 +883,17 @@ Function AgregarDatos() As Boolean
 '       Set oRsTmp = Nothing
    ' End If
     '
-    'SCCQ 14/10/2020 Cambio28 Inicio
+    'SCCQ 21/10/2020 Cambio28 Inicio
      If lbDocumentoEsAutomatico = True Then
-        Dim oReglasFarmacia As New ReglasFarmacia
-        mo_farmMovimiento.DocumentoNumero = oReglasFarmacia.DevuelveYactualizaCorrelativoDisponible(lcConstanteMovimientoSalida, oRsAlmacenOrigen.Fields!idTipoLocales, oRsAlmacenOrigen.Fields!idTipoSuministro, CLng(mo_cmbTipoDocum.BoundText))
-         txtNdocum.Text = mo_farmMovimiento.DocumentoNumero
-         Set oReglasFarmacia = Nothing
-     End If
-    'SCCQ 14/10/2020 Cambio28 Fin
-    lbAgregarDatos = mo_ReglasFarmacia.AgregaDatosDeNotaSalida(mo_farmMovimiento, mRs_ProductosLotes, mo_lnIdTablaLISTBARITEMS, _
+        lbAgregarDatos = mo_ReglasFarmacia.AgregaDatosDeNotaSalida_NumDocAutomatico(oRsAlmacenOrigen.Fields!idTipoLocales, oRsAlmacenOrigen.Fields!idTipoSuministro, CLng(mo_cmbTipoDocum.BoundText), mo_farmMovimiento, mRs_Productos, mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc)
+        txtNdocum.Text = mo_farmMovimiento.DocumentoNumero
+     Else
+    'SCCQ 21/10/2020 Cambio28 Fin
+     lbAgregarDatos = mo_ReglasFarmacia.AgregaDatosDeNotaSalida(mo_farmMovimiento, mRs_ProductosLotes, mo_lnIdTablaLISTBARITEMS, _
                                                                mo_lcNombrePc)
+     'SCCQ 21/10/2020 Cambio28 Inicio
+     End If
+     'SCCQ 21/10/2020 Cambio28 Fin
     txtNotaSalida.Text = mo_farmMovimiento.movNumero
     If lbAgregarDatos = True Then
     'If GeneraNIenFormaAutomatica(lbAgregarDatos) Then

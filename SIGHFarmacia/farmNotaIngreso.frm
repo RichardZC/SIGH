@@ -2166,7 +2166,7 @@ Function AgregarDatos() As Boolean
     oRsConceptos.MoveFirst
     oRsConceptos.Find "idTipoConcepto=" & mo_cmbConceptos.BoundText
     If oRsConceptos.Fields!DocumentoEsAutomatico = "S" Then 'Verificamos si el número de documento se genera de forma AUTOMATICA
-        AgregarDatos = mo_ReglasFarmacia.AgregaDatosDeNotaIngresoAutomatico(oRsAlmacenDestino.Fields!idTipoLocales, oRsAlmacenDestino.Fields!idTipoSuministro, CLng(mo_cmbTipoDocum.BoundText), mo_farmMovimiento, mo_farmMovimientoNotaIngreso, oDoProveedores, mRs_Productos, ml_IdTipoFinanciamiento, mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc)
+        AgregarDatos = mo_ReglasFarmacia.AgregaDatosDeNotaIngreso_NumDocAutomatico(oRsAlmacenDestino.Fields!idTipoLocales, oRsAlmacenDestino.Fields!idTipoSuministro, CLng(mo_cmbTipoDocum.BoundText), mo_farmMovimiento, mo_farmMovimientoNotaIngreso, oDoProveedores, mRs_Productos, ml_IdTipoFinanciamiento, mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc)
         txtNdocum.Text = mo_farmMovimiento.DocumentoNumero
     Else
     'SCCQ 19/10/2020 Cambio28 Fin

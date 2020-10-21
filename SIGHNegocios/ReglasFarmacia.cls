@@ -2384,7 +2384,7 @@ TerminarNI:
 End Function
 'SCCQ 19/10/2020 Cambio28 Inicio
 'Se copió el código de la Función AgregaDatosDeNotaIngreso y se agregó lo necesario para generar y actualizar correlativo disponible de número de documento.
-Function AgregaDatosDeNotaIngresoAutomatico(lnIdTipoLocales As String, lnIdTipoSuministro As String, lnDocumentoIdtipo As Long, oDoMovimiento As DoFarmMovimiento, oDoMovimientoNotaIngreso As DOfarmMovimientoNotaIngreso, oDoProveedores As DoProveedores, oRsDetalleProductos As ADODB.Recordset, lnIdtipoFinanciamiento As Long, mo_lnIdTablaLISTBARITEMS As Long, mo_lcNombrePc As String) As Boolean
+Function AgregaDatosDeNotaIngreso_NumDocAutomatico(lnIdTipoLocales As String, lnIdTipoSuministro As String, lnDocumentoIdtipo As Long, oDoMovimiento As DoFarmMovimiento, oDoMovimientoNotaIngreso As DOfarmMovimientoNotaIngreso, oDoProveedores As DoProveedores, oRsDetalleProductos As ADODB.Recordset, lnIdtipoFinanciamiento As Long, mo_lnIdTablaLISTBARITEMS As Long, mo_lcNombrePc As String) As Boolean
     Dim oConexion As New ADODB.Connection
     Dim ml_ReglasFacturacion As New SIGHNegocios.ReglasFacturacion
     Dim oMovimiento As New farmMovimiento
@@ -2549,10 +2549,10 @@ Function AgregaDatosDeNotaIngresoAutomatico(lnIdTipoLocales As String, lnIdTipoS
     
 TerminarNI:
     If bProcesoOK Then
-        AgregaDatosDeNotaIngresoAutomatico = True
+        AgregaDatosDeNotaIngreso_NumDocAutomatico = True
         oConexion.CommitTrans
     Else
-        AgregaDatosDeNotaIngresoAutomatico = False
+        AgregaDatosDeNotaIngreso_NumDocAutomatico = False
         ms_MensajeError = ms_MensajeError + IIf(oMovimiento.MensajeError <> "", oMovimiento.MensajeError + Chr(13), "")
         ms_MensajeError = ms_MensajeError + IIf(oMovimientoNotaIngreso.MensajeError <> "", oMovimientoNotaIngreso.MensajeError + Chr(13), "")
         ms_MensajeError = ms_MensajeError + IIf(oMovimientoDetalle.MensajeError <> "", oMovimientoDetalle.MensajeError + Chr(13), "")
@@ -2940,6 +2940,92 @@ TerminarNS:
     Set oMovimientoDetalle = Nothing
     Set oDoMovimientoDetalle = Nothing
 End Function
+'SCCQ 20/10/2020 Cambio28 Inicio
+'Se copió el código de la Función AgregaDatosDeNotaSalida y se agregó lo necesario para generar y actualizar correlativo disponible de número de documento.
+Function AgregaDatosDeNotaSalida_NumDocAutomatico(lnIdTipoLocales As String, lnIdTipoSuministro As String, lnDocumentoIdtipo As Long, oDoMovimiento As DoFarmMovimiento, oRsDetalleProductos As ADODB.Recordset, mo_lnIdTablaLISTBARITEMS As Long, mo_lcNombrePc As String) As Boolean
+    Dim oConexion As New ADODB.Connection
+    Dim oMovimiento As New farmMovimiento
+    Dim oMovimientoDetalle As New FarmMovimientoDetalle
+    Dim oDoMovimientoDetalle As New DoFarmMovimientoDetalle
+    Dim lcCorrelativo As String
+    'SCCQ 20/10/2020 Cambio28 Inicio
+    Dim lcCorrelativoDocumN As String
+    'SCCQ 20/10/2020 Cambio28 Fin
+    Dim lnItem As Long
+    Dim bProcesoOK As Boolean
+    oConexion.CommandTimeout = 900
+    oConexion.CursorLocation = adUseClient
+    oConexion.Open sighentidades.CadenaConexion
+    oConexion.BeginTrans
+    bProcesoOK = True
+    ms_MensajeError = ""
+    Set oMovimiento.Conexion = oConexion
+    Set oMovimientoDetalle.Conexion = oConexion
+    '*********  graba tabla correlativos farmTipoDocumentos  ***************
+    lcCorrelativo = oMovimiento.DevuelveYactualizaCorrelativosDeDocumentosES(2)
+    '*********  graba tabla Movimientos  ***************
+    With oDoMovimiento
+       .movNumero = lcCorrelativo
+    End With
+    'SCCQ 20/10/2020 Cambio28 Inicio
+    lcCorrelativoDocumN = oMovimiento.DevuelveYactualizaCorrelativoDisponible("S", lnIdTipoLocales, lnIdTipoSuministro, lnDocumentoIdtipo)
+    oDoMovimiento.DocumentoNumero = lcCorrelativoDocumN
+    'SCCQ 20/10/2020 Cambio28 Fin
+    If Not oMovimiento.Insertar(oDoMovimiento) Then
+            bProcesoOK = False: GoTo TerminarNS
+    End If
+    '
+    Call mo_ReglasSeguridad.AuditoriaAgregarV(oDoMovimiento.IdUsuarioAuditoria, "A", 0, "FarmMovimiento/" & oDoMovimiento.MovTipo & "/" & oDoMovimiento.movNumero, oConexion, mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc, "")            'ListBarItems.idListItem
+    '*********  graba tabla farmMovimientosDetalle,farmSaldo,farmSaldoDetalle  ***************
+    
+    oDoMovimientoDetalle.IdUsuarioAuditoria = oDoMovimiento.IdUsuarioAuditoria
+    oDoMovimientoDetalle.movNumero = oDoMovimiento.movNumero
+    oDoMovimientoDetalle.MovTipo = oDoMovimiento.MovTipo
+    lnItem = 1
+    If oRsDetalleProductos.RecordCount = 0 Then
+       bProcesoOK = False: ms_MensajeError = "No existe items": GoTo TerminarNS
+    End If
+    oRsDetalleProductos.MoveFirst
+    Do While Not oRsDetalleProductos.EOF
+       oDoMovimientoDetalle.cantidad = oRsDetalleProductos.Fields!cantidad
+       oDoMovimientoDetalle.FechaVencimiento = oRsDetalleProductos.Fields!FechaVencimiento
+       oDoMovimientoDetalle.idProducto = oRsDetalleProductos.Fields!idProducto
+       oDoMovimientoDetalle.Item = lnItem
+       oDoMovimientoDetalle.Lote = oRsDetalleProductos.Fields!Lote
+       oDoMovimientoDetalle.Precio = oRsDetalleProductos.Fields!Precio
+       oDoMovimientoDetalle.RegistroSanitario = ""
+       oDoMovimientoDetalle.total = oRsDetalleProductos.Fields!total
+       oDoMovimientoDetalle.idTipoSalidaBienInsumo = oRsDetalleProductos.Fields!idTipoSalidaBienInsumo
+       If Not ChequeaQueSaldosConLotesSeaPositivo(oConexion, oDoMovimiento.idAlmacenOrigen, oRsDetalleProductos.Fields!idProducto, oRsDetalleProductos.Fields!Lote, oRsDetalleProductos.Fields!FechaVencimiento, oRsDetalleProductos.Fields!idTipoSalidaBienInsumo, oRsDetalleProductos.Fields!cantidad) Then
+             ms_MensajeError = ms_MensajeError + "Ya no hay Saldos para el Producto: " + Trim(oRsDetalleProductos.Fields!Codigo) + " " + Trim(oRsDetalleProductos.Fields!nombreProducto)
+             bProcesoOK = False: GoTo TerminarNS
+       End If
+       If Not oMovimientoDetalle.Insertar(oDoMovimientoDetalle) Then
+                bProcesoOK = False: GoTo TerminarNS
+       End If
+       If Not oMovimientoDetalle.ActualizaSaldosPorProducto(lcConstanteMovimientoSalida, oDoMovimiento.idAlmacenOrigen, oRsDetalleProductos.Fields!idProducto, oRsDetalleProductos.Fields!Lote, oRsDetalleProductos.Fields!FechaVencimiento, oRsDetalleProductos.Fields!idTipoSalidaBienInsumo, oRsDetalleProductos.Fields!cantidad, oRsDetalleProductos.Fields!Precio, oDoMovimiento.FechaCreacion) Then
+                bProcesoOK = False: GoTo TerminarNS
+       End If
+       lnItem = lnItem + 1
+       oRsDetalleProductos.MoveNext
+    Loop
+TerminarNS:
+    If bProcesoOK Then
+        AgregaDatosDeNotaSalida_NumDocAutomatico = True
+        oConexion.CommitTrans
+    Else
+        AgregaDatosDeNotaSalida_NumDocAutomatico = False
+        ms_MensajeError = ms_MensajeError + IIf(oMovimiento.MensajeError <> "", oMovimiento.MensajeError + Chr(13), "")
+        ms_MensajeError = ms_MensajeError + IIf(oMovimientoDetalle.MensajeError <> "", oMovimientoDetalle.MensajeError + Chr(13), "")
+        oConexion.RollbackTrans
+    End If
+    oConexion.Close
+    Set oConexion = Nothing
+    Set oMovimiento = Nothing
+    Set oMovimientoDetalle = Nothing
+    Set oDoMovimientoDetalle = Nothing
+End Function
+'SCCQ 20/10/2020 Cambio28 Fin
 Function ModificaDatosDeNotaSalida(oDoMovimiento As DoFarmMovimiento, oRsDetalleProductos As ADODB.Recordset, mo_lnIdTablaLISTBARITEMS As Long, mo_lcNombrePc As String) As Boolean
     Dim oConexion As New ADODB.Connection
     Dim oMovimiento As New farmMovimiento
@@ -10400,25 +10486,3 @@ ManejadorDeError:
    ms_MensajeError = Err.Number & " " + Err.Description: MsgBox ms_MensajeError + Chr(13) + "Por favor contacte al personal de soporte técnico", vbInformation, "Error en la interface de acceso a datos"
 Exit Function
 End Function
-
-'SCCQ 14/10/2020 Cambio28 Inicio
-Function DevuelveYactualizaCorrelativoDisponible(lnMovTipo As String, lnIdTipoLocales As String, lnIdTipoSuministro As String, lnDocumentoIdtipo As Long) As String
-    On Error GoTo ManejadorDeError
-    Dim lcNewCorrelativo As String
-    Dim oConexion As New ADODB.Connection
-    Dim oMovimiento As New farmMovimiento
-    oConexion.Open sighentidades.CadenaConexion
-    Set oMovimiento.Conexion = oConexion
-    DevuelveYactualizaCorrelativoDisponible = ""
-    lcNewCorrelativo = oMovimiento.DevuelveYactualizaCorrelativoDisponible(lnMovTipo, lnIdTipoLocales, lnIdTipoSuministro, lnDocumentoIdtipo)
-    DevuelveYactualizaCorrelativoDisponible = lcNewCorrelativo
-    ms_MensajeError = ""
-    Set oConexion = Nothing
-    Set oMovimiento = Nothing
-    Exit Function
-ManejadorDeError:
-       ms_MensajeError = Err.Number & " " + Err.Description
-
-End Function
-
-'SCCQ 14/10/2020 Cambio28 Fin
