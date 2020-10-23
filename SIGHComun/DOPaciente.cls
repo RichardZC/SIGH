@@ -28,7 +28,7 @@ Dim ms_DireccionDomicilio As String
 Dim ms_Observacion As String
 Dim ml_IdTipoNumeracion As Long
 Dim ml_IdPaisProcedencia As Long
-Dim ml_IdPaciente As Long
+Dim ml_idPaciente As Long
 Dim ms_ApellidoPaterno As String
 Dim ms_PrimerNombre As String
 Dim ms_SegundoNombre As String
@@ -58,6 +58,11 @@ Dim ms_IdEtnia As String
 Dim ms_GrupoSanguineo As String
 Dim ms_FactorRh As String
 Dim mb_UsoWebReniec As Boolean
+
+'<(Inicio) Añadido Por: WABG el: 22/10/2020-10:40:28 p.m.en el Equipo: SISGALENPLUS-PC>
+Dim mb_validacionReniec As Boolean
+'</(Fin) Añadido Por: WABG el: 22/10/2020-10:40:28 p.m. en el Equipo: SISGALENPLUS-PC>
+
 Dim ml_IdIdioma As Long
 Dim ms_Email As String
 Dim ms_madreDocumento As String
@@ -156,6 +161,14 @@ End Property
 Property Get UsoWebReniec() As Boolean
    UsoWebReniec = mb_UsoWebReniec
 End Property
+'<(Inicio) Añadido Por: WABG el: 22/10/2020-10:42:56 p.m.en el Equipo: SISGALENPLUS-PC>
+Property Let validacionReniec(vValue As Boolean)
+   mb_validacionReniec = vValue
+End Property
+Property Get validacionReniec() As Boolean
+   validacionReniec = mb_validacionReniec
+End Property
+'</(Fin) Añadido Por: WABG el: 22/10/2020-10:42:56 p.m. en el Equipo: SISGALENPLUS-PC>
 
 Property Let FactorRh(sValue As String)
    ms_FactorRh = sValue
@@ -335,11 +348,11 @@ End Property
 Property Get ApellidoPaterno() As String
    ApellidoPaterno = ms_ApellidoPaterno
 End Property
-Property Let IdPaciente(lValue As Long)
-   ml_IdPaciente = lValue
+Property Let idPaciente(lValue As Long)
+   ml_idPaciente = lValue
 End Property
-Property Get IdPaciente() As Long
-   IdPaciente = ml_IdPaciente
+Property Get idPaciente() As Long
+   idPaciente = ml_idPaciente
 End Property
 Property Let IdTipoNumeracion(lValue As Long)
    ml_IdTipoNumeracion = lValue
