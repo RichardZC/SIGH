@@ -297,17 +297,17 @@ ManejadorDeError:
        ms_MensajeError = Err.Number & " " + Err.Description
 
 End Function
-'SCCQ 14/10/2020 Cambio 28 Inicio
-Function DevuelveYactualizaCorrelativoDisponible(lnMovTipo As String, lnIdTipoLocales As String, lnIdTipoSuministro As String, lnDocumentoIdtipo As Long) As String
+'SCCQ 14/10/2020 Cambio28 Inicio
+Function DevuelveYactualizaCorrelativoDisponibleFarmRelMod(lnMovTipo As String, lnIdTipoLocales As String, lnIdTipoSuministro As String, lnDocumentoIdtipo As Long) As String
     On Error GoTo ManejadorDeError
     Dim oCommand As New ADODB.Command
     Dim oParameter As ADODB.Parameter
     Dim lcNewCorrelativo As String
-    DevuelveYactualizaCorrelativoDisponible = ""
+    DevuelveYactualizaCorrelativoDisponibleFarmRelMod = ""
     With oCommand
        .CommandType = adCmdStoredProc
        Set .ActiveConnection = mo_Conexion
-       .CommandText = "usp_FarmDevuelveYactualizaCorrelativoDisponible"
+       .CommandText = "usp_FarmDevuelveYactualizaCorrelativoDisponibleFarmRelMod"
        Set oParameter = .CreateParameter("@MovTipo", adChar, adParamInput, 1, lnMovTipo): .Parameters.Append oParameter
        Set oParameter = .CreateParameter("@idTipoLocales", adChar, adParamInput, 1, lnIdTipoLocales): .Parameters.Append oParameter
        Set oParameter = .CreateParameter("@idTipoSuministro", adChar, adParamInput, 2, lnIdTipoSuministro): .Parameters.Append oParameter
@@ -316,10 +316,40 @@ Function DevuelveYactualizaCorrelativoDisponible(lnMovTipo As String, lnIdTipoLo
        .Execute
        lcNewCorrelativo = Trim(Str(.Parameters("@NewCorrelativo")))
     End With
-       DevuelveYactualizaCorrelativoDisponible = lcNewCorrelativo
+       DevuelveYactualizaCorrelativoDisponibleFarmRelMod = lcNewCorrelativo
     ms_MensajeError = ""
     Exit Function
 ManejadorDeError:
        ms_MensajeError = Err.Number & " " + Err.Description
+       End Function
+'SCCQ 14/10/2020 Cambio28 Fin
+
+'SCCQ 22/10/2020 Cambio28 Inicio
+Function DevuelveYactualizaCorrelativosDisponibleFarmTipoDocumentos(lnIdTipoDocumento As Long) As String
+    On Error GoTo ManejadorDeError
+    Dim oCommand As New ADODB.Command
+    Dim oParameter As ADODB.Parameter
+    Dim lcNewCorrelativo As String
+    Dim lcBuscaParametro As New SIGHDatos.Parametros
+    DevuelveYactualizaCorrelativosDisponibleFarmTipoDocumentos = ""
+    With oCommand
+       .CommandType = adCmdStoredProc
+       Set .ActiveConnection = mo_Conexion
+       .CommandText = "usp_FarmDevuelveYactualizaCorrelativosDisponibleFarmTipoDocumentos"
+       Set oParameter = .CreateParameter("@IdTipoDocumento", adInteger, adParamInput, 0, lnIdTipoDocumento): .Parameters.Append oParameter
+       Set oParameter = .CreateParameter("@NewCorrelativo", adInteger, adParamOutput, 0): .Parameters.Append oParameter
+       .Execute
+       lcNewCorrelativo = Trim(Str(.Parameters("@NewCorrelativo")))
+    End With
+    If lnIdTipoDocumento = 1 Or lnIdTipoDocumento = 2 Then
+        DevuelveYactualizaCorrelativosDisponibleFarmTipoDocumentos = Right(lcBuscaParametro.RetornaFechaServidorSQL, 2) + Right("0000000" + lcNewCorrelativo, 7)
+    Else
+       DevuelveYactualizaCorrelativosDisponibleFarmTipoDocumentos = lcNewCorrelativo
+    End If
+    ms_MensajeError = ""
+    Exit Function
+ManejadorDeError:
+       ms_MensajeError = Err.Number & " " + Err.Description
+
 End Function
-'SCCQ 14/10/2020 Cambio 28 Fin
+'SCCQ 22/10/2020 Cambio28 Fin

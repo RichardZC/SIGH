@@ -1951,7 +1951,10 @@ Function AgregaDatosDeIntervencion(ByVal oDoMovimiento As DoFarmMovimiento, _
     
     '*********  graba tabla correlativos farmTipoDocumentos  ***************
     lcCorrelativo = oMovimiento.DevuelveYactualizaCorrelativosDeDocumentosES(2)
-    lcCorrelativoPrograma = oMovimiento.DevuelveYactualizaCorrelativosDeDocumentosES(23)   'Guia Interna de Salida
+    'SCCQ 22/10/2020 Cambio28 Inicio
+    'Antes:lcCorrelativoPrograma = oMovimiento.DevuelveYactualizaCorrelativosDeDocumentosES(23)   'Guia Interna de Salida
+    lcCorrelativoPrograma = oMovimiento.DevuelveYactualizaCorrelativosDisponibleFarmTipoDocumentos(23)   'Guia Interna de Salida
+    'SCCQ 22/10/2020 Cambio28 Fin
     '*********  graba tabla Movimientos  ***************
     With oDoMovimiento
        .movNumero = lcCorrelativo
@@ -2430,7 +2433,7 @@ Function AgregaDatosDeNotaIngreso_NumDocAutomatico(lnIdTipoLocales As String, ln
        .movNumero = lcCorrelativo
     End With
     'SCCQ 19/10/2020 Cambio28 Inicio
-    lcCorrelativoDocumN = oMovimiento.DevuelveYactualizaCorrelativoDisponible("E", lnIdTipoLocales, lnIdTipoSuministro, lnDocumentoIdtipo) 'GENERA Y ACTUALIZA CORRELATIVO
+    lcCorrelativoDocumN = oMovimiento.DevuelveYactualizaCorrelativoDisponibleFarmRelMod("E", lnIdTipoLocales, lnIdTipoSuministro, lnDocumentoIdtipo) 'GENERA Y ACTUALIZA CORRELATIVO
     oDoMovimiento.DocumentoNumero = lcCorrelativoDocumN
     'SCCQ 19/10/2020 Cambio28 Fin
     If Not oMovimiento.Insertar(oDoMovimiento) Then
@@ -2968,7 +2971,7 @@ Function AgregaDatosDeNotaSalida_NumDocAutomatico(lnIdTipoLocales As String, lnI
        .movNumero = lcCorrelativo
     End With
     'SCCQ 20/10/2020 Cambio28 Inicio
-    lcCorrelativoDocumN = oMovimiento.DevuelveYactualizaCorrelativoDisponible("S", lnIdTipoLocales, lnIdTipoSuministro, lnDocumentoIdtipo)
+    lcCorrelativoDocumN = oMovimiento.DevuelveYactualizaCorrelativoDisponibleFarmRelMod("S", lnIdTipoLocales, lnIdTipoSuministro, lnDocumentoIdtipo)
     oDoMovimiento.DocumentoNumero = lcCorrelativoDocumN
     'SCCQ 20/10/2020 Cambio28 Fin
     If Not oMovimiento.Insertar(oDoMovimiento) Then
@@ -6546,7 +6549,10 @@ Function AgregaDatosDeDespachoDonaciones(ByVal oDoMovimiento As DoFarmMovimiento
     
     '*********  graba tabla correlativos farmTipoDocumentos  ***************
     lcCorrelativo = oMovimiento.DevuelveYactualizaCorrelativosDeDocumentosES(2)
-    lcCorrelativoPrograma = oMovimiento.DevuelveYactualizaCorrelativosDeDocumentosES(23)   'Guia Interna de Salida
+    'SCCQ 23/10/2020 Cambio28 Inicio
+    'Antes:lcCorrelativoPrograma = oMovimiento.DevuelveYactualizaCorrelativosDeDocumentosES(23)   'Guia Interna de Salida
+    lcCorrelativoPrograma = oMovimiento.DevuelveYactualizaCorrelativosDisponibleFarmTipoDocumentos(23)   'Guia Interna de Salida
+    'SCCQ 23/10/2020 Cambio28 Fin
     '*********  graba tabla Movimientos  ***************
     With oDoMovimiento
        .movNumero = lcCorrelativo
