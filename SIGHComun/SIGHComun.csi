@@ -1,6 +1,10 @@
 [History]
-1=#P0#=mb	#P1#=ProximaCita	#P2#=SIGHComun/DoAtencionDatosAdicionales/ProximaCita [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200331174255	#P7#=0	#P8#=1	.
-2=#P0#=mb	#P1#=idPais	#P2#=SIGHComun/DOEmpleado/idPais [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200325111403	#P7#=0	#P8#=1	.
-3=#P0#=mb	#P1#=idTipoSexo	#P2#=SIGHComun/DOEmpleado/idTipoSexo [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200325111349	#P7#=0	#P8#=0	.
-4=#P0#=mb	#P1#=idPais	#P2#=SIGHComun/DOEmpleado/idPais [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200325111344	#P7#=0	#P8#=1	.
-5=#P0#=mb	#P1#=idTipoSexo	#P2#=SIGHComun/DOEmpleado/idTipoSexo [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200325111324	#P7#=0	#P8#=0	.
+1=#P0#=mb	#P1#=FechaCreacion	#P2#=SIGHComun/DoFarmMovimiento/FechaCreacion [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201015123436	#P7#=0	#P8#=2	.
+2=#P0#=mb	#P1#=FechaCreacion	#P2#=SIGHComun/DoFarmMovimiento/FechaCreacion [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201014091003	#P7#=0	#P8#=0	.
+3=#P0#=mb	#P1#=TOTAL	#P2#=SIGHComun/DoFarmMovimiento/TOTAL [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201014090929	#P7#=0	#P8#=1	.
+4=#P0#=mb	#P1#=Observaciones	#P2#=SIGHComun/DoFarmMovimiento/Observaciones [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201013135646	#P7#=0	#P8#=0	.
+5=#P0#=mb	#P1#=ProximaCita	#P2#=SIGHComun/DoAtencionDatosAdicionales/ProximaCita [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200331174255	#P7#=0	#P8#=1	.
+6=#P0#=mb	#P1#=idPais	#P2#=SIGHComun/DOEmpleado/idPais [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200325111403	#P7#=0	#P8#=1	.
+7=#P0#=mb	#P1#=idTipoSexo	#P2#=SIGHComun/DOEmpleado/idTipoSexo [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200325111349	#P7#=0	#P8#=0	.
+8=#P0#=mb	#P1#=idPais	#P2#=SIGHComun/DOEmpleado/idPais [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200325111344	#P7#=0	#P8#=1	.
+9=#P0#=mb	#P1#=idTipoSexo	#P2#=SIGHComun/DOEmpleado/idTipoSexo [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200325111324	#P7#=0	#P8#=0	.

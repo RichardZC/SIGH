@@ -1,8 +1,8 @@
 VERSION 5.00
 Object = "{C932BA88-4374-101B-A56C-00AA003668DC}#1.1#0"; "msmask32.ocx"
 Object = "{5A9433E9-DD7B-4529-91B6-A5E8CA054615}#2.0#0"; "IGULTR~1.OCX"
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "mscomctl.ocx"
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "tabctl32.ocx"
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0"; "MSCOMCTL.OCX"
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
 Begin VB.Form rMovimientoES 
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "Movimientos de Entrada y Salida"
@@ -44,11 +44,11 @@ Begin VB.Form rMovimientoES
       TabCaption(0)   =   "Tab 0"
       TabPicture(0)   =   "rMovimientoES.frx":0CCA
       Tab(0).ControlEnabled=   0   'False
-      Tab(0).Control(0)=   "Label18"
-      Tab(0).Control(1)=   "ProgressBar1"
+      Tab(0).Control(0)=   "fraDatosHistoria"
+      Tab(0).Control(1)=   "optIngrSalidas"
       Tab(0).Control(2)=   "grdMovimientos"
-      Tab(0).Control(3)=   "optIngrSalidas"
-      Tab(0).Control(4)=   "fraDatosHistoria"
+      Tab(0).Control(3)=   "ProgressBar1"
+      Tab(0).Control(4)=   "Label18"
       Tab(0).ControlCount=   5
       TabCaption(1)   =   "Otros Reportes"
       TabPicture(1)   =   "rMovimientoES.frx":0CE6
@@ -764,7 +764,7 @@ Private Sub btnAceptar_Click()
                           orsTmp123.MoveFirst
                           Do While Not orsTmp123.EOF
                                 mrs_tmp1.AddNew
-                                mrs_tmp1!fechaCreacion = mrs_Tmp!fechaCreacion
+                                mrs_tmp1!FechaCreacion = mrs_Tmp!FechaCreacion
                                 mrs_tmp1!HoraCreacion = mrs_Tmp!HoraCreacion
                                 mrs_tmp1!MovTipo = mrs_Tmp!MovTipo
                                 mrs_tmp1!movNumero = mrs_Tmp!movNumero
@@ -779,7 +779,7 @@ Private Sub btnAceptar_Click()
                                 mrs_tmp1!FechaVencimiento = mrs_Tmp!FechaVencimiento
                                 mrs_tmp1!fDestino = mrs_Tmp!fDestino
                                 mrs_tmp1!Estado = mrs_Tmp!Estado
-                                mrs_tmp1!total = mrs_Tmp!total
+                                mrs_tmp1!Total = mrs_Tmp!Total
                                 mrs_tmp1!Item = Trim(orsTmp123!Nombre) & " (" & Trim(orsTmp123!codigo) & ")"
                                 mrs_tmp1!Precio = orsTmp123!Precio
                                 mrs_tmp1!Cantidad = orsTmp123!Cantidad
@@ -962,8 +962,8 @@ Private Sub FiltrarDatosMovimientos(lnIdAlmacen As Long, ml_MovTipo1 As String, 
                         '
                         
                         mrs_Tmp.AddNew
-                        mrs_Tmp.Fields!fechaCreacion = Format(rsReporte.Fields!fechaCreacion, SIGHEntidades.DevuelveFechaSoloFormato_DMY)
-                        mrs_Tmp.Fields!HoraCreacion = Format(rsReporte.Fields!fechaCreacion, SIGHEntidades.DevuelveHoraSoloFormato_HM)
+                        mrs_Tmp.Fields!FechaCreacion = Format(rsReporte.Fields!FechaCreacion, SIGHEntidades.DevuelveFechaSoloFormato_DMY)
+                        mrs_Tmp.Fields!HoraCreacion = Format(rsReporte.Fields!FechaCreacion, SIGHEntidades.DevuelveHoraSoloFormato_HM)
                         mrs_Tmp.Fields!MovTipo = rsReporte.Fields!MovTipo
                         mrs_Tmp.Fields!movNumero = rsReporte.Fields!movNumero
                         mrs_Tmp.Fields!Abreviatura = rsReporte.Fields!Abreviatura
@@ -972,7 +972,7 @@ Private Sub FiltrarDatosMovimientos(lnIdAlmacen As Long, ml_MovTipo1 As String, 
                         mrs_Tmp.Fields!fOrigen = Left(rsReporte.Fields!fOrigen & lcTexto3, 100)
                         mrs_Tmp.Fields!fDestino = Trim(rsReporte.Fields!fDestino) & lcTexto1
                         mrs_Tmp.Fields!Estado = rsReporte.Fields!Estado
-                        mrs_Tmp.Fields!total = rsReporte.Fields!total
+                        mrs_Tmp.Fields!Total = rsReporte.Fields!Total
                         mrs_Tmp.Update
                     End If
                     rsReporte.MoveNext

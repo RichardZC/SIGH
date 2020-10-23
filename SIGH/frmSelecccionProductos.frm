@@ -77,8 +77,8 @@ Begin VB.Form SelecccionProductos
       TabCaption(1)   =   "Bienes e Insumos"
       TabPicture(1)   =   "frmSelecccionProductos.frx":1C02
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "grillaBusqueda"
-      Tab(1).Control(1)=   "grdBienes"
+      Tab(1).Control(0)=   "grdBienes"
+      Tab(1).Control(1)=   "grillaBusqueda"
       Tab(1).ControlCount=   2
       Begin UltraGrid.SSUltraGrid grillaBusqueda 
          Height          =   2655
@@ -189,7 +189,7 @@ Property Get Acepta() As Boolean
    Acepta = mb_Acepta
 End Property
 
-Public Function inicializar()
+Public Function Inicializar()
     Set grdBienes.DataSource = Nothing
     Set grdServicios.DataSource = Nothing
    ConfiguraGrilla ("Servicios")

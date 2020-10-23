@@ -826,7 +826,7 @@ Sub CargaDatosAlObjetosDeDatos()
             .IdUsuarioAuditoria = ml_idUsuario
             .MovTipo = lcConstanteMovimientoSalida
             .Observaciones = txtObservaciones.Text
-            .total = lnTotalDocumento
+            .Total = lnTotalDocumento
             
         End With
    Case sghModificar
@@ -834,7 +834,7 @@ Sub CargaDatosAlObjetosDeDatos()
             .DocumentoNumero = txtNdocum.Text
             .Observaciones = txtObservaciones.Text
             .IdUsuarioAuditoria = ml_idUsuario
-            .total = lnTotalDocumento
+            .Total = lnTotalDocumento
             '.FechaCreacion = txtFregistro.Text
         End With
    Case sghEliminar
@@ -905,7 +905,7 @@ Function ModificarDatos() As Boolean
         Set oMovimiento.Conexion = oConexion
         Set oMovimientoNotaIngreso.Conexion = oConexion
         '
-        lnTotal = mo_farmMovimiento.total
+        lnTotal = mo_farmMovimiento.Total
         Set oRsTmp = mo_ReglasFarmacia.farmMovimientoSeleccionarPorTipoYnumeroDocumento(mo_farmMovimiento.DocumentoNumero, mo_farmMovimiento.DocumentoIdtipo)
         oRsTmp.Filter = "movTipo='E' and idAlmacenDestino=" & mo_farmMovimiento.IdAlmacenDestino
         If oRsTmp.RecordCount > 0 Then
@@ -919,7 +919,7 @@ Function ModificarDatos() As Boolean
                MsgBox "Fallo en Nota de Ingreso automática" & Chr(13) & oMovimiento.MensajeError
                Exit Function
             End If
-            mo_farmMovimiento.total = lnTotal
+            mo_farmMovimiento.Total = lnTotal
             '
             With mo_farmMovimientoNotaIngreso
                 .MovTipo = lcConstanteMovimientoEntrada

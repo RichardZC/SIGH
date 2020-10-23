@@ -463,7 +463,7 @@ Sub AgregaRegistro()
 '        .Fields!fechaVencimiento=null
         .Fields!Cantidad = 0
         .Fields!Precio = 0
-        .Fields!total = 0
+        .Fields!Total = 0
         .Fields!saldo = 0
     End With
 errAR:
@@ -507,7 +507,7 @@ Sub CargarItemsALaGrilla(rs As Recordset)
         mRs_Productos!FechaVencimiento = rs!FechaVencimiento
         mRs_Productos!Cantidad = rs!Cantidad
         mRs_Productos!Precio = rs!Precio
-        mRs_Productos!total = rs!total
+        mRs_Productos!Total = rs!Total
         mRs_Productos!saldo = lnSaldoDe + rs!Cantidad
         mRs_Productos.Fields("idTipoSalidaBienInsumo").Value = rs!idTipoSalidaBienInsumo
         oRsTmp.Close
@@ -528,9 +528,9 @@ Sub Totalizar()
         If Not (rsProductos.EOF And rsProductos.BOF) Then
             rsProductos.MoveFirst
             Do While Not rsProductos.EOF
-                rsProductos.Fields!total = Round(rsProductos.Fields!Cantidad * rsProductos.Fields!Precio, 2)
+                rsProductos.Fields!Total = Round(rsProductos.Fields!Cantidad * rsProductos.Fields!Precio, 2)
                 rsProductos.Update
-                dTotalIngresado = dTotalIngresado + rsProductos!total
+                dTotalIngresado = dTotalIngresado + rsProductos!Total
                 rsProductos.Update
                 rsProductos.MoveNext
             Loop

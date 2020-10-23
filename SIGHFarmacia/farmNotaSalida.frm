@@ -26,6 +26,7 @@ Begin VB.Form FarmNotaSalida
    ScaleWidth      =   15195
    ShowInTaskbar   =   0   'False
    StartUpPosition =   2  'CenterScreen
+   Visible         =   0   'False
    Begin VB.CommandButton CargaInventarioExcel 
       Enabled         =   0   'False
       Height          =   315
@@ -136,7 +137,7 @@ Begin VB.Form FarmNotaSalida
          DisabledPicture =   "farmNotaSalida.frx":2CFB
          DownPicture     =   "farmNotaSalida.frx":315B
          Height          =   700
-         Left            =   6173
+         Left            =   6240
          Picture         =   "farmNotaSalida.frx":35D0
          Style           =   1  'Graphical
          TabIndex        =   22
@@ -497,13 +498,6 @@ End Property
 Property Let Opcion(lValue As sghOpciones)
    mi_Opcion = lValue
 End Property
-
-
-
-
-
-
-
 Private Sub ImprimeDocumento()
     Dim oRptClase As New rCrystal
     Dim oDOfarmAlmacen As New DoFarmAlmacen
@@ -820,11 +814,21 @@ Private Sub cmdStockMinimo_Click()
 End Sub
 
 Private Sub Form_Activate()
-   If mo_ReglasFarmacia.LaFarmaciaEstaRegenerandoSaldos(mo_farmMovimiento.IdAlmacenOrigen) = True Then
+Select Case mi_Opcion
+    Case sghAgregar
+    If mo_ReglasFarmacia.LaFarmaciaEstaRegenerandoSaldos(mo_farmMovimiento.IdAlmacenOrigen) = True Then
         btnCancelar_Click
         Exit Sub
-   End If
-
+    End If
+ Case sghModificar
+    validaFecha1
+    'If validaFecha <> True Then
+        'Me.Caption = "Modificar Nota Salida"
+        'Me.Visible = False
+    'Else
+        'Exit Sub
+    'End If
+ End Select
 End Sub
 
 Private Sub Form_Initialize()
@@ -844,7 +848,12 @@ Private Sub Form_Load()
     Case sghAgregar
         Me.Caption = "Agregar Nota Salida"
     Case sghModificar
-        Me.Caption = "Modificar Nota Salida"
+        If validaFecha <> True Then
+            Me.Caption = "Modificar Nota Salida"
+        Else
+            Exit Sub
+        End If
+        'Me.Caption = "Modificar Nota Salida"
     Case sghConsultar
         Me.Caption = "Consultar Nota Salida"
         btnImprimir.Visible = True
@@ -927,7 +936,6 @@ Sub CargarDatosAlFormulario()
         grdProductos.LimpiarGrilla
         grdProductos.CargaProductosPorMovNumero
         grdProductos.AgregaRegistro
-        
      Case sghModificar
         DeshabilitaCabecera
         CargarDatosALosControles
@@ -1042,6 +1050,8 @@ Private Sub btnAceptar_Click()
             End If
        End If
    Case sghModificar
+    'MsgBox ("Punto de corte") 'josopacu
+    If txtFregistro.Text = Date Then 'josopacu
        If ValidarDatosObligatorios() Then
             CargaDatosAlObjetosDeDatos
             If ModificarDatos() Then
@@ -1052,9 +1062,12 @@ Private Sub btnAceptar_Click()
                 Me.Visible = False
                 LimpiarVariablesDeMemoria
             Else
-                MsgBox "No se pudo modificar los datos" + Chr(13) + ms_MensajeError, vbExclamation, Me.Caption
+                MsgBox "No se puede modificar los datos" + Chr(13) + ms_MensajeError, vbExclamation, Me.Caption
             End If
        End If
+    Else 'josopacu
+    MsgBox "No tiene ACCESO a Modificar una Nota de salida" & Chr(13) & " de una Fecha Registro diferente a la actual", vbExclamation, Me.Caption 'josopacu
+    End If 'josopacu
    Case sghEliminar
         If MsgBox("Esta seguro de Anular ?", vbQuestion + vbYesNo, "") = vbYes Then
             CargaDatosAlObjetosDeDatos
@@ -1179,7 +1192,7 @@ Sub CargaDatosAlObjetosDeDatos()
             .IdUsuarioAuditoria = ml_idUsuario
             .MovTipo = lcConstanteMovimientoSalida
             .Observaciones = txtObservaciones.Text
-            .total = lnTotalDocumento
+            .Total = lnTotalDocumento
             
         End With
    Case sghModificar
@@ -1187,8 +1200,8 @@ Sub CargaDatosAlObjetosDeDatos()
             .DocumentoNumero = txtNdocum.Text
             .Observaciones = txtObservaciones.Text
             .IdUsuarioAuditoria = ml_idUsuario
-            .total = lnTotalDocumento
-            '.FechaCreacion = txtFregistro.Text
+            .Total = lnTotalDocumento
+            .fechaCreacion = txtFregistro.Text
         End With
    Case sghEliminar
         With mo_farmMovimiento
@@ -1257,7 +1270,7 @@ Function ModificarDatos() As Boolean
             Set oMovimiento.Conexion = oConexion
             Set oMovimientoNotaIngreso.Conexion = oConexion
             '
-            lnTotal = mo_farmMovimiento.total
+            lnTotal = mo_farmMovimiento.Total
             Set oRsTmp = mo_ReglasFarmacia.farmMovimientoSeleccionarPorTipoYnumeroDocumento(mo_farmMovimiento.DocumentoNumero, mo_farmMovimiento.DocumentoIdtipo)
             oRsTmp.Filter = "movTipo='E' and idAlmacenDestino=" & mo_farmMovimiento.IdAlmacenDestino
             If oRsTmp.RecordCount > 0 Then
@@ -1271,7 +1284,7 @@ Function ModificarDatos() As Boolean
                    MsgBox "Fallo en Nota de Ingreso automática" & Chr(13) & oMovimiento.MensajeError
                    Exit Function
                 End If
-                mo_farmMovimiento.total = lnTotal
+                mo_farmMovimiento.Total = lnTotal
                 '
                 With mo_farmMovimientoNotaIngreso
                     .MovTipo = lcConstanteMovimientoEntrada
@@ -1352,11 +1365,6 @@ Function AnularNS() As Boolean
     End If
 End Function
 
-
-
-
-
-
 Private Sub Form_Unload(Cancel As Integer)
    If SIGHEntidades.ParaAuditoria = "" Then
       LimpiarVariablesDeMemoria
@@ -1387,6 +1395,7 @@ Private Sub grdExcel_InitializeLayout(ByVal Context As UltraGrid.Constants_Conte
 
 End Sub
 
+
 Private Sub txtNdocum_KeyDown(KeyCode As Integer, Shift As Integer)
     mo_Teclado.RealizarNavegacion KeyCode, txtNdocum
 
@@ -1398,7 +1407,6 @@ Private Sub txtNdocum_KeyPress(KeyAscii As Integer)
     End If
 
 End Sub
-
 Private Sub txtObservaciones_KeyDown(KeyCode As Integer, Shift As Integer)
     mo_Teclado.RealizarNavegacion KeyCode, txtObservaciones
 
@@ -1477,7 +1485,7 @@ Sub CreaNIaFarmaciaUNIDOSIS(oRsProductosConLotes1 As Recordset)
                         oRsProductosConLotes1!codigo = lcCodigoConPunto
                         oRsProductosConLotes1!Cantidad = oRsProductosConLotes1!Cantidad * lnConvertir
                         oRsProductosConLotes1!Precio = rs!PrecioUnitario
-                        oRsProductosConLotes1!total = lnImporte
+                        oRsProductosConLotes1!Total = lnImporte
                         oRsProductosConLotes1.Update
                         lnTotalUnidosis = lnTotalUnidosis + lnImporte
                     End If
@@ -1497,7 +1505,7 @@ Sub CreaNIaFarmaciaUNIDOSIS(oRsProductosConLotes1 As Recordset)
                mo_farmMovimientoNotaIngreso1.IdUsuarioAuditoria = mo_farmMovimiento1.IdUsuarioAuditoria
                If mo_FarmMovimientoNotaIngreso2.SeleccionarPorId(mo_farmMovimientoNotaIngreso1) Then
                     If mi_Opcion = sghModificar Then
-                        mo_farmMovimiento1.total = lnTotalUnidosis
+                        mo_farmMovimiento1.Total = lnTotalUnidosis
                         ActualizarDatos1 = mo_ReglasFarmacia.ModificaDatosDeNotaIngreso(mo_farmMovimiento1, _
                                       mo_farmMovimientoNotaIngreso1, oDoProveedores1, oRsProductosConLotes1, _
                                       mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc)
@@ -1525,7 +1533,7 @@ Sub CreaNIaFarmaciaUNIDOSIS(oRsProductosConLotes1 As Recordset)
                 .idTipoConcepto = 4   'distribucion
                 .DocumentoIdtipo = 3  'guía remisión
                 .DocumentoNumero = txtNdocum.Text 'format(Now, SIGHEntidades.DevuelveFechaSoloFormato_DMYHMS)
-                .total = lnTotalUnidosis
+                .Total = lnTotalUnidosis
                 .fechaCreacion = mo_farmMovimiento.fechaCreacion
                 .IdUsuarioAuditoria = mo_farmMovimiento.IdUsuarioAuditoria
                 .idUsuario = mo_farmMovimiento.IdUsuarioAuditoria
@@ -1559,8 +1567,6 @@ Sub CreaNIaFarmaciaUNIDOSIS(oRsProductosConLotes1 As Recordset)
         Set rs = Nothing
 End Sub
 
-
-
 Sub CargaItemsDebajoDeStockMinimo()
  Dim oRsTmp As New Recordset
  CargaInventarioExcel.Enabled = True
@@ -1572,4 +1578,40 @@ Sub CargaItemsDebajoDeStockMinimo()
  End If
  Set grdHistorico.DataSource = oRsTmp
 End Sub
-
+ 
+Function validaFecha() As Boolean
+   validaFecha = False
+   Dim retornafechaActual As Date
+   retornafechaActual = lcBuscaParametro.RetornaFechaServidorSQL
+   mo_farmMovimiento.movNumero = ml_movNumero
+   mo_farmMovimiento.MovTipo = lcConstanteMovimientoSalida
+   If Not mo_ReglasFarmacia.FarmMovimientoSeleccionarPorId(mo_farmMovimiento) Then
+      MsgBox mo_ReglasFarmacia.MensajeError
+      Exit Function
+   End If
+   txtFregistro.Text = Format(mo_farmMovimiento.fechaCreacion, SIGHEntidades.DevuelveFechaSoloFormato_DMY)
+   If retornafechaActual <> CDate(txtFregistro.Text) Then
+         MsgBox "No tiene ACCESO a Modificar/Anular una NS" & Chr(13) & " de una Fecha Registro diferente a la actual", vbExclamation, Me.Caption
+         validaFecha = True
+   End If
+ 
+End Function
+'JSPC 23/10/2020 Cambio28 inicio
+Function validaFecha1() As Boolean
+   validaFecha1 = False
+   Dim retornafechaActual1 As Date
+   retornafechaActual1 = lcBuscaParametro.RetornaFechaServidorSQL
+   mo_farmMovimiento.movNumero = ml_movNumero
+   mo_farmMovimiento.MovTipo = lcConstanteMovimientoSalida
+   If Not mo_ReglasFarmacia.FarmMovimientoSeleccionarPorId(mo_farmMovimiento) Then
+      MsgBox mo_ReglasFarmacia.MensajeError
+      Exit Function
+   End If
+   txtFregistro.Text = Format(mo_farmMovimiento.fechaCreacion, SIGHEntidades.DevuelveFechaSoloFormato_DMY)
+   If retornafechaActual1 <> CDate(txtFregistro.Text) Then
+         Me.Visible = False
+         validaFecha1 = True
+   End If
+ 
+End Function
+'JSPC 23/10/2020 Cambio28 fin

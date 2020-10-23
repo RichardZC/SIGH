@@ -1,7 +1,7 @@
 VERSION 5.00
 Object = "{85202277-6C76-4228-BC56-7B3E69E8D5CA}#5.0#0"; "IGTOOL~1.OCX"
 Object = "{15138B51-7EB6-11D0-9BB7-0000C0F04C96}#1.0#0"; "SSLstBar.ocx"
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "mscomctl.ocx"
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0"; "MSCOMCTL.OCX"
 Begin VB.Form Principal 
    AutoRedraw      =   -1  'True
    BackColor       =   &H00808080&
@@ -23,8 +23,8 @@ Begin VB.Form Principal
       Top             =   120
       Visible         =   0   'False
       Width           =   2430
-      _ExtentX        =   4286
-      _ExtentY        =   1561
+      _extentx        =   4286
+      _extenty        =   1561
    End
    Begin SISGalenPlus.ucCajaNotaCredito ucCajaNotaCredito1 
       Height          =   615
@@ -411,8 +411,8 @@ Begin VB.Form Principal
       Top             =   8670
       Visible         =   0   'False
       Width           =   765
-      _ExtentX        =   1349
-      _ExtentY        =   1085
+      _extentx        =   1349
+      _extenty        =   1085
    End
    Begin SISGalenPlus.ucPartidasLista ucPartidasLista1 
       Height          =   825
@@ -461,8 +461,8 @@ Begin VB.Form Principal
       Top             =   3480
       Visible         =   0   'False
       Width           =   2415
-      _ExtentX        =   4260
-      _ExtentY        =   1402
+      _extentx        =   4260
+      _extenty        =   1402
    End
    Begin SISGalenPlus.ucFacturacionOrdenesLista ucFacturacionGeneralLista 
       Height          =   585
@@ -481,8 +481,8 @@ Begin VB.Form Principal
       Top             =   8220
       Visible         =   0   'False
       Width           =   3255
-      _ExtentX        =   5741
-      _ExtentY        =   661
+      _extentx        =   5741
+      _extenty        =   661
    End
    Begin SISGalenPlus.ucEspecialidadesLista ucEspecialidadesLista1 
       Height          =   375
@@ -511,8 +511,8 @@ Begin VB.Form Principal
       Top             =   7980
       Visible         =   0   'False
       Width           =   5625
-      _ExtentX        =   9922
-      _ExtentY        =   714
+      _extentx        =   9922
+      _extenty        =   714
    End
    Begin SISGalenPlus.ucCajeroLista ucCajeroLista1 
       Height          =   435
@@ -725,8 +725,8 @@ Begin VB.Form Principal
       Top             =   3720
       Visible         =   0   'False
       Width           =   3105
-      _ExtentX        =   5477
-      _ExtentY        =   1191
+      _extentx        =   5477
+      _extenty        =   1191
    End
    Begin SISGalenPlus.ucProgramacionLista ucProgramacionLista1 
       Height          =   645
@@ -1064,8 +1064,8 @@ Begin VB.Form Principal
       Top             =   7440
       Visible         =   0   'False
       Width           =   2775
-      _ExtentX        =   4895
-      _ExtentY        =   2143
+      _extentx        =   4895
+      _extenty        =   2143
    End
    Begin SISGalenPlus.ucFarmHpreciosLista ucFarmHpreciosLista1 
       Height          =   615
@@ -1272,7 +1272,7 @@ Private Sub Form_Activate()
                oRsTmp.MoveFirst
                Do While Not oRsTmp.EOF
                   lcSql = oRsTmp.Fields!id_menuReporte
-                  Me.Toolbar.Tools.Item(lcSql).Visible = False
+                  Me.toolbar.Tools.Item(lcSql).Visible = False
                   oRsTmp.MoveNext
                Loop
             End If
@@ -1308,7 +1308,7 @@ Private Sub Form_Activate()
     If lbMuestraReportePacientesSISconMas180diasEstancia = True Then
         lbMuestraReportePacientesSISconMas180diasEstancia = False
         Dim oRptIngHosp As New SIGHProxies.clReporteIngrHosp
-        oRptIngHosp.IdTipoReporte = sighentidades.sghReporteIngresosHospitalario
+        oRptIngHosp.IdTipoReporte = sighEntidades.sghReporteIngresosHospitalario
         oRptIngHosp.mostrarReporte = True
         oRptIngHosp.EjecutaFormulario
         Set oRptIngHosp = Nothing
@@ -1566,7 +1566,7 @@ End Sub
 Private Sub Form_Load()
     ml_ToolbarHeightAdd = 0
     mb_MantenerValoresCitas = False
-    lc_NombrePc = sighentidades.RetornaNombrePC
+    lc_NombrePc = sighEntidades.RetornaNombrePC
     OcultaBotonXdelFormulario Me.hwnd
     EliminaArchivosOpenOffice
     
@@ -1621,25 +1621,25 @@ Private Sub Form_Resize()
 End Sub
 Sub ConfigurarPermisosDelItemSeleccionado(lIdUsuario As Long, lIdListItem As Long, sKey As String)
 
-    Me.Toolbar.Tools.Item("ID_Agregar").Enabled = True
-    Me.Toolbar.Tools.Item("ID_Modificar").Enabled = True
-    Me.Toolbar.Tools.Item("ID_Consultar").Enabled = True
-    Me.Toolbar.Tools.Item("ID_Eliminar").Enabled = True
+    Me.toolbar.Tools.Item("ID_Agregar").Enabled = True
+    Me.toolbar.Tools.Item("ID_Modificar").Enabled = True
+    Me.toolbar.Tools.Item("ID_Consultar").Enabled = True
+    Me.toolbar.Tools.Item("ID_Eliminar").Enabled = True
 
     Dim rsPermisos As Recordset
     Set rsPermisos = mo_AdminSeguridad.RolesItemsSeleccionarPermisosPorEmpleadoYListItem(lIdUsuario, lIdListItem)
     If Not (rsPermisos.EOF And rsPermisos.BOF) Then
         If Not IsNull(rsPermisos!Agregar) Then
-           Me.Toolbar.Tools.Item("ID_Agregar").Enabled = (rsPermisos!Agregar > 0)
+           Me.toolbar.Tools.Item("ID_Agregar").Enabled = (rsPermisos!Agregar > 0)
         End If
         If Not IsNull(rsPermisos!Modificar) Then
-           Me.Toolbar.Tools.Item("ID_Modificar").Enabled = (rsPermisos!Modificar > 0)
+           Me.toolbar.Tools.Item("ID_Modificar").Enabled = (rsPermisos!Modificar > 0)
         End If
         If Not IsNull(rsPermisos!Consultar) Then
-           Me.Toolbar.Tools.Item("ID_Consultar").Enabled = (rsPermisos!Consultar > 0)
+           Me.toolbar.Tools.Item("ID_Consultar").Enabled = (rsPermisos!Consultar > 0)
         End If
         If Not IsNull(rsPermisos!Eliminar) Then
-           Me.Toolbar.Tools.Item("ID_Eliminar").Enabled = (rsPermisos!Eliminar > 0)
+           Me.toolbar.Tools.Item("ID_Eliminar").Enabled = (rsPermisos!Eliminar > 0)
         End If
     End If
     rsPermisos.Close
@@ -1647,26 +1647,26 @@ Sub ConfigurarPermisosDelItemSeleccionado(lIdUsuario As Long, lIdListItem As Lon
     'Manejo de excepciones
     Select Case sKey
     Case "AdmisionCE"
-        Me.ucCitasLista1.MenuAgregarEnabled = Me.Toolbar.Tools.Item("ID_Agregar").Enabled
-        Me.ucCitasLista1.MenuEliminarEnabled = Me.Toolbar.Tools.Item("ID_Eliminar").Enabled
-        Me.ucCitasLista1.MenuModificarEnabled = Me.Toolbar.Tools.Item("ID_Modificar").Enabled
-        Me.ucCitasLista1.MenuConsultarEnabled = Me.Toolbar.Tools.Item("ID_Consultar").Enabled
+        Me.ucCitasLista1.MenuAgregarEnabled = Me.toolbar.Tools.Item("ID_Agregar").Enabled
+        Me.ucCitasLista1.MenuEliminarEnabled = Me.toolbar.Tools.Item("ID_Eliminar").Enabled
+        Me.ucCitasLista1.MenuModificarEnabled = Me.toolbar.Tools.Item("ID_Modificar").Enabled
+        Me.ucCitasLista1.MenuConsultarEnabled = Me.toolbar.Tools.Item("ID_Consultar").Enabled
     Case "AtencionesCE"
-        Me.Toolbar.Tools.Item("ID_Agregar").Enabled = False
+        Me.toolbar.Tools.Item("ID_Agregar").Enabled = False
     Case "Programacion"
-        Me.ucProgramacionLista1.MenuAgregarEnabled = Me.Toolbar.Tools.Item("ID_Agregar").Enabled
-        Me.ucProgramacionLista1.MenuEliminarEnabled = Me.Toolbar.Tools.Item("ID_Eliminar").Enabled
-        Me.ucProgramacionLista1.MenuModificarEnabled = Me.Toolbar.Tools.Item("ID_Modificar").Enabled
-        Me.ucProgramacionLista1.MenuConsultarEnabled = Me.Toolbar.Tools.Item("ID_Consultar").Enabled
+        Me.ucProgramacionLista1.MenuAgregarEnabled = Me.toolbar.Tools.Item("ID_Agregar").Enabled
+        Me.ucProgramacionLista1.MenuEliminarEnabled = Me.toolbar.Tools.Item("ID_Eliminar").Enabled
+        Me.ucProgramacionLista1.MenuModificarEnabled = Me.toolbar.Tools.Item("ID_Modificar").Enabled
+        Me.ucProgramacionLista1.MenuConsultarEnabled = Me.toolbar.Tools.Item("ID_Consultar").Enabled
     Case "AdmisionEmergencia"
 '        Me.toolbar.Tools.Item("ID_EmergenciaAObservacion").Enabled = Me.toolbar.Tools.Item("ID_Modificar").Enabled
 '        Me.toolbar.Tools.Item("ID_EmergenciaAHospitalizacion").Enabled = Me.toolbar.Tools.Item("ID_Modificar").Enabled
 '        Me.toolbar.Tools.Item("ID_EmergenciaAltaPaciente").Enabled = Me.toolbar.Tools.Item("ID_Modificar").Enabled
 '        Me.toolbar.Tools.Item("ID_EmergenciaTransferencias").Enabled = Me.toolbar.Tools.Item("ID_Modificar").Enabled
-        Me.Toolbar.Tools.Item("ID_EmergenciaAObservacion").Visible = False
-        Me.Toolbar.Tools.Item("ID_EmergenciaAHospitalizacion").Visible = False
-        Me.Toolbar.Tools.Item("ID_EmergenciaAltaPaciente").Visible = False
-        Me.Toolbar.Tools.Item("ID_EmergenciaTransferencias").Visible = False
+        Me.toolbar.Tools.Item("ID_EmergenciaAObservacion").Visible = False
+        Me.toolbar.Tools.Item("ID_EmergenciaAHospitalizacion").Visible = False
+        Me.toolbar.Tools.Item("ID_EmergenciaAltaPaciente").Visible = False
+        Me.toolbar.Tools.Item("ID_EmergenciaTransferencias").Visible = False
     Case "AdmisionHospitalizacion"
 '        Me.toolbar.Tools.Item("ID_HospitalizacionAlojamientoConjunto").Enabled = Me.toolbar.Tools.Item("ID_Modificar").Enabled
 '        Me.toolbar.Tools.Item("ID_HospitalizacionAltaPaciente").Enabled = Me.toolbar.Tools.Item("ID_Modificar").Enabled
@@ -1683,11 +1683,11 @@ Sub ConfigurarPermisosDelItemSeleccionado(lIdUsuario As Long, lIdListItem As Lon
 End Sub
 
 Private Sub Form_Terminate()
-  mo_AdminSeguridad.LogueaUsuario 0, sighentidades.Usuario, lc_NombrePc
+  mo_AdminSeguridad.LogueaUsuario 0, sighEntidades.Usuario, lc_NombrePc
 End Sub
 
 Private Sub Form_Unload(Cancel As Integer)
-  mo_AdminSeguridad.LogueaUsuario 0, sighentidades.Usuario, lc_NombrePc
+  mo_AdminSeguridad.LogueaUsuario 0, sighEntidades.Usuario, lc_NombrePc
 End Sub
 
 
@@ -1697,10 +1697,10 @@ Dim oControl As Control
     
     'Por defecto la barra de gestión de caja esta invisible
     'y la barra de edición esta visible
-    Toolbar.Toolbars("Edición").Visible = True
-    Toolbar.Toolbars("Gestión de Caja").Visible = False
-    Toolbar.Toolbars("Admisión Emergencia").Visible = False
-    Toolbar.Toolbars("Admisión Hospitalización").Visible = False
+    toolbar.Toolbars("Edición").Visible = True
+    toolbar.Toolbars("Gestión de Caja").Visible = False
+    toolbar.Toolbars("Admisión Emergencia").Visible = False
+    toolbar.Toolbars("Admisión Hospitalización").Visible = False
     
     mrs_ListItems.MoveFirst
     mrs_ListItems.Find "Clave = '" & ItemClicked.Key & "'"
@@ -1772,14 +1772,14 @@ Dim oControl As Control
         ucPacientesLista1.TipoFiltro = sghFiltrarTodos
         ConfigurarControl ucPacientesLista1
     Case "AdmisionConsultorioEmerg"
-        Toolbar.Toolbars("Admisión Hospitalización").Visible = True
-        Toolbar.Toolbars("Admisión Hospitalización").DockedRow = 3
-        Toolbar.Toolbars("Admisión Hospitalización").DockedColumn = 1
-        Toolbar.Toolbars("Admisión Hospitalización").Tools.Item(1).Name = "Alta Médica"
-        Toolbar.Toolbars("Admisión Hospitalización").Tools.Item(2).Name = "."
-        Toolbar.Toolbars("Admisión Hospitalización").Tools.Item(3).Name = "."
-        Toolbar.Tools("ID_HospitalizacionTransferencias").Visible = False
-        Toolbar.Tools("ID_HospitalizacionAltaPaciente").Visible = False
+        toolbar.Toolbars("Admisión Hospitalización").Visible = True
+        toolbar.Toolbars("Admisión Hospitalización").DockedRow = 3
+        toolbar.Toolbars("Admisión Hospitalización").DockedColumn = 1
+        toolbar.Toolbars("Admisión Hospitalización").Tools.Item(1).Name = "Alta Médica"
+        toolbar.Toolbars("Admisión Hospitalización").Tools.Item(2).Name = "."
+        toolbar.Toolbars("Admisión Hospitalización").Tools.Item(3).Name = "."
+        toolbar.Tools("ID_HospitalizacionTransferencias").Visible = False
+        toolbar.Tools("ID_HospitalizacionAltaPaciente").Visible = False
 '        toolbar.Tools("ID_EmergenciaAltaPaciente").Enabled = False
 '        toolbar.Tools("ID_EmergenciaAObservacion").Enabled = False
 '        toolbar.Tools("ID_EmergenciaAHospitalizacion").Enabled = False
@@ -1807,14 +1807,14 @@ Dim oControl As Control
         ucPacientesLista1.TipoFiltro = sghFiltrarTodos
         ConfigurarControl ucPacientesLista1
     Case "AdmisionHospitalizacion"
-        Toolbar.Toolbars("Admisión Hospitalización").Visible = True
-        Toolbar.Toolbars("Admisión Hospitalización").DockedRow = 3
-        Toolbar.Toolbars("Admisión Hospitalización").DockedColumn = 1
-        Toolbar.Toolbars("Admisión Hospitalización").Tools.Item(1).Name = "Alta Médica"
-        Toolbar.Toolbars("Admisión Hospitalización").Tools.Item(2).Name = "."
-        Toolbar.Toolbars("Admisión Hospitalización").Tools.Item(3).Name = "."
-        Toolbar.Tools("ID_HospitalizacionTransferencias").Visible = False
-        Toolbar.Tools("ID_HospitalizacionAltaPaciente").Visible = False
+        toolbar.Toolbars("Admisión Hospitalización").Visible = True
+        toolbar.Toolbars("Admisión Hospitalización").DockedRow = 3
+        toolbar.Toolbars("Admisión Hospitalización").DockedColumn = 1
+        toolbar.Toolbars("Admisión Hospitalización").Tools.Item(1).Name = "Alta Médica"
+        toolbar.Toolbars("Admisión Hospitalización").Tools.Item(2).Name = "."
+        toolbar.Toolbars("Admisión Hospitalización").Tools.Item(3).Name = "."
+        toolbar.Tools("ID_HospitalizacionTransferencias").Visible = False
+        toolbar.Tools("ID_HospitalizacionAltaPaciente").Visible = False
         'toolbar.Tools("ID_HospitalizacionAlojamientoConjunto").Enabled = False
         'toolbar.Tools("ID_HospitalizacionAltaPaciente").Enabled = False
         'toolbar.Tools("ID_HospitalizacionTransferencias").Enabled = False
@@ -1826,9 +1826,9 @@ Dim oControl As Control
 '        toolbar.Toolbars("Admisión Hospitalización").DockedColumn = 3
         ConfigurarControl ucAdmisionHospitalizacion
     Case "AlojadosHospitalizacion"
-        Toolbar.Tools("ID_HospitalizacionAlojamientoConjunto").Enabled = False
-        Toolbar.Tools("ID_HospitalizacionAltaPaciente").Enabled = False
-        Toolbar.Tools("ID_HospitalizacionTransferencias").Enabled = False
+        toolbar.Tools("ID_HospitalizacionAlojamientoConjunto").Enabled = False
+        toolbar.Tools("ID_HospitalizacionAltaPaciente").Enabled = False
+        toolbar.Tools("ID_HospitalizacionTransferencias").Enabled = False
         ucAdmisionHospitalizacion.Titulo = "Admisión de Alojados"
         ucAdmisionHospitalizacion.TipoFiltro = sghFiltrarHospitalizacion
         ucAdmisionHospitalizacion.idUsuario = ml_IdUsuarioAuditoria
@@ -1911,12 +1911,12 @@ Dim oControl As Control
         ucFactSalaOperaciones.Titulo = "Facturacion Sala Operaciones"
     Case "FactReembolsos"
         '18/7/11
-        Toolbar.Toolbars("Admisión Hospitalización").Visible = True
-        Toolbar.Toolbars("Admisión Hospitalización").DockedRow = 3
-        Toolbar.Toolbars("Admisión Hospitalización").DockedColumn = 1
-        Toolbar.Toolbars("Admisión Hospitalización").Tools.Item(1).Name = "Agregar Reembolso x Cuenta"
-        Toolbar.Tools("ID_HospitalizacionTransferencias").Visible = False
-        Toolbar.Tools("ID_HospitalizacionAltaPaciente").Visible = False
+        toolbar.Toolbars("Admisión Hospitalización").Visible = True
+        toolbar.Toolbars("Admisión Hospitalización").DockedRow = 3
+        toolbar.Toolbars("Admisión Hospitalización").DockedColumn = 1
+        toolbar.Toolbars("Admisión Hospitalización").Tools.Item(1).Name = "Agregar Reembolso x Cuenta"
+        toolbar.Tools("ID_HospitalizacionTransferencias").Visible = False
+        toolbar.Tools("ID_HospitalizacionAltaPaciente").Visible = False
        ' toolbar.Toolbars("Admisión Hospitalización").Tools.Item(2).Name = "."
        ' toolbar.Toolbars("Admisión Hospitalización").Tools.Item(3).Name = "."
         '18/7/11
@@ -1983,9 +1983,9 @@ Dim oControl As Control
         ConfigurarControl ucEstablecimientosNoMinsaLista1
         ucEstablecimientosNoMinsaLista1.ConfigurarEstablecimientos
     Case "DiagnosticosPDF"
-        Dim oShell As New sighentidades.Shell
-        If sighentidades.RutaAdobeReader <> "" Then
-            oShell.ejecutarComando sighentidades.RutaAdobeReader + " " + App.Path + "\archivos\" + "cie10.pdf"
+        Dim oShell As New sighEntidades.Shell
+        If sighEntidades.RutaAdobeReader <> "" Then
+            oShell.ejecutarComando sighEntidades.RutaAdobeReader + " " + App.Path + "\archivos\" + "cie10.pdf"
         Else
             MsgBox "No tiene instalado el adobe reader", vbInformation, Me.Caption
         End If
@@ -2000,19 +2000,19 @@ Dim oControl As Control
         ConfigurarControl ucCajeroLista1
     Case "AsignacionTerminales"
     Case "GestionCaja"
-        Toolbar.Toolbars("Edición").Visible = False
+        toolbar.Toolbars("Edición").Visible = False
         'toolbar.Toolbars("Gestión de Caja").Visible = True
         If (mb_abrioCaja) Then
             If mo_LastControl Is ucGestionCaja1 Then
                 mo_LastControl.Visible = True
-                Toolbar.Toolbars("Gestión de Caja").Visible = True
+                toolbar.Toolbars("Gestión de Caja").Visible = True
                 Exit Sub
             End If
             mo_LastControl.Visible = False
             ucGestionCaja1.NombreCajero = status.Panels(2).Text
             ucGestionCaja1.Visible = True
             Set mo_LastControl = ucGestionCaja1
-            Toolbar.Toolbars("Gestión de Caja").Visible = True
+            toolbar.Toolbars("Gestión de Caja").Visible = True
             Exit Sub
         End If
 
@@ -2020,7 +2020,7 @@ Dim oControl As Control
         ucGestionCaja1.NombreCajero = status.Panels(2).Text
         ucGestionCaja1.lnIdTablaLISTBARITEMS = 702
         ucGestionCaja1.lcNombrePc = lc_NombrePc
-        Toolbar.Toolbars("Gestión de Caja").Visible = True
+        toolbar.Toolbars("Gestión de Caja").Visible = True
         
         ConfigurarControl ucGestionCaja1
             
@@ -2223,13 +2223,13 @@ Private Sub toolbar_ToolClick(ByVal Tool As ActiveToolBars.SSTool)
     '   DE ACUERDO AL MODULO SELECCIONADO
     '**********************************************************************
     
-    Select Case Tool.Id
+    Select Case Tool.ID
     Case "ID_Archivo", "ID_Reportes", "ID_ProgramacionMedica", "ID_ArchivoClinico", "ID_Herramientas", "ID_Ayuda", "ID_ReportesDeFarmacia", "ID_HerrFarmacia"
         Exit Sub
     Case "ID_RptHospitalizacion", "ID_Emergencia", "ID_Economia", "ID_Seguros", "ID_Convenios", "ID_HerrConsultaExterna", "ID_Imagenologia", "ID_LaboratorioMod", "ID_ModuloHIS"
         Exit Sub
     Case "ID_Salir"
-        mo_AdminSeguridad.LogueaUsuario 0, sighentidades.Usuario, lc_NombrePc
+        mo_AdminSeguridad.LogueaUsuario 0, sighEntidades.Usuario, lc_NombrePc
         End
           
     '*****************************   REPORTES   ******************************
@@ -2261,14 +2261,14 @@ Private Sub toolbar_ToolClick(ByVal Tool As ActiveToolBars.SSTool)
         Exit Sub
     Case "ID_EgresosHospitalarios"
         Dim oRptHosp As New SIGHProxies.clReportesEgreHosp
-        oRptHosp.IdTipoReporte = sighentidades.sghReporteEgresosHospitalario
+        oRptHosp.IdTipoReporte = sighEntidades.sghReporteEgresosHospitalario
         oRptHosp.idTipoServicio = 0
         oRptHosp.EjecutaFormulario
         Set oRptHosp = Nothing
         Exit Sub
     Case "ID_IngresosHospitalarios"
         Dim oRptIngHosp As New SIGHProxies.clReporteIngrHosp
-        oRptIngHosp.IdTipoReporte = sighentidades.sghReporteIngresosHospitalario
+        oRptIngHosp.IdTipoReporte = sighEntidades.sghReporteIngresosHospitalario
         oRptIngHosp.EjecutaFormulario
         Set oRptIngHosp = Nothing
         Exit Sub
@@ -2303,7 +2303,7 @@ Private Sub toolbar_ToolClick(ByVal Tool As ActiveToolBars.SSTool)
     End Select
 
     '***************REPORTES**************
-    Select Case Tool.Id
+    Select Case Tool.ID
     'Consulta externa
     Case "ID_MorbilidadCE"
         Dim oRptMorbilidadCE As New SIGHReportes.RptHMorbCE
@@ -2519,21 +2519,21 @@ Private Sub toolbar_ToolClick(ByVal Tool As ActiveToolBars.SSTool)
         Exit Sub
     Case "ID_EgresosConsultaExterna(Epicrisis)"
         Dim oRptHosp2 As New SIGHProxies.clReportesEgreHosp
-        oRptHosp2.IdTipoReporte = sighentidades.sghReporteEgresosHospitalario
+        oRptHosp2.IdTipoReporte = sighEntidades.sghReporteEgresosHospitalario
         oRptHosp2.idTipoServicio = 2
         oRptHosp2.EjecutaFormulario
         Set oRptHosp2 = Nothing
         Exit Sub
     Case "ID_EgresosEmergencia(Epicrisis)"
         Dim oRptHosp1 As New SIGHProxies.clReportesEgreHosp
-        oRptHosp1.IdTipoReporte = sighentidades.sghReporteEgresosHospitalario
+        oRptHosp1.IdTipoReporte = sighEntidades.sghReporteEgresosHospitalario
         oRptHosp1.idTipoServicio = 1
         oRptHosp1.EjecutaFormulario
         Set oRptHosp1 = Nothing
         Exit Sub
     Case "ID_IngresosEmergencia"
         Dim oRptIngHosp1 As New SIGHProxies.clReporteIngrHosp
-        oRptIngHosp1.IdTipoReporte = sighentidades.sghReporteIngresosHospitalario
+        oRptIngHosp1.IdTipoReporte = sighEntidades.sghReporteIngresosHospitalario
         oRptIngHosp1.idTipoServicio = 1
         oRptIngHosp1.EjecutaFormulario
         Set oRptIngHosp1 = Nothing
@@ -2569,7 +2569,7 @@ Private Sub toolbar_ToolClick(ByVal Tool As ActiveToolBars.SSTool)
 '        Exit Sub
     Case "ID_FarmVtaItems"
         Dim oRptFKardex As New SighFarmacia.RepMovimientoES
-        oRptFKardex.idUsuario = sighentidades.Usuario
+        oRptFKardex.idUsuario = sighEntidades.Usuario
         oRptFKardex.EjecutaFrm
         Set oRptFKardex = Nothing
         Exit Sub
@@ -3008,7 +3008,7 @@ Private Sub toolbar_ToolClick(ByVal Tool As ActiveToolBars.SSTool)
     '**********************************************************************
     '   MANEJO DEL TOOLBAR DE GESTIÓN DE CAJA (se supone que este se activa cuando se selecciona la opción de gestión de caja
     '**********************************************************************
-    Select Case Tool.Id
+    Select Case Tool.ID
     'MODULO DE CAJA
     Case "ID_CajaApertura"
         AperturaCaja
@@ -3073,7 +3073,7 @@ Private Sub toolbar_ToolClick(ByVal Tool As ActiveToolBars.SSTool)
     '**********************************************************************
     '   MANEJO DEL TOOLBAR DE PUNTO DIGITACIÓN HIS
     '**********************************************************************
-    Select Case Tool.Id
+    Select Case Tool.ID
     Case "ID_DxOmitidos" 'HIS Digitacion - Frank08082014
         Dim oRptHisDxOmitidos2 As New SIGHReportes.clRptHisDxOmitidos
         oRptHisDxOmitidos2.EjecutaFormulario
@@ -3089,96 +3089,96 @@ Private Sub toolbar_ToolClick(ByVal Tool As ActiveToolBars.SSTool)
     Select Case ms_ModuloSeleccionado
     'MODULO AMBULATORIO CE
     Case "AdmisionCE"
-        EdicionCitas Tool.Id
+        EdicionCitas Tool.ID
     Case "PacienteCE"
-        EdicionPaciente Tool.Id, sghConsultaExterna, 101
+        EdicionPaciente Tool.ID, sghConsultaExterna, 101
     Case "AtencionesCE"
-        EdicionAdmisionCE Tool.Id, sghConsultaExterna, 103
+        EdicionAdmisionCE Tool.ID, sghConsultaExterna, 103
     Case "AtencionesTriaje"
-        EdicionTriaje Tool.Id       'debb-jamo
+        EdicionTriaje Tool.ID       'debb-jamo
     Case "RecetasCE"
-        EdicionReceta Tool.Id, 1366, sghConsultaExterna
+        EdicionReceta Tool.ID, 1366, sghConsultaExterna
     Case "idConsultorioAsignado"
-        EdicionArchiveroServicio Tool.Id
+        EdicionArchiveroServicio Tool.ID
         
     'MODULO HIS-GALENOS JVG
     Case "HisCE"
-        EdicionHisCE Tool.Id, 1346, ml_IdUsuarioAuditoria, lc_NombrePc
+        EdicionHisCE Tool.ID, 1346, ml_IdUsuarioAuditoria, lc_NombrePc
     Case "HisPMMR"
-        EdicionProgramacionHIS Tool.Id, 1347, ml_IdUsuarioAuditoria, lc_NombrePc
+        EdicionProgramacionHIS Tool.ID, 1347, ml_IdUsuarioAuditoria, lc_NombrePc
     Case "HisLoteCE"
-        EdicionHisLotesCE Tool.Id, 1348, ml_IdUsuarioAuditoria, lc_NombrePc
+        EdicionHisLotesCE Tool.ID, 1348, ml_IdUsuarioAuditoria, lc_NombrePc
     Case "HisREMR"
-        EdicionHisEstablecimientos Tool.Id, 1349, ml_IdUsuarioAuditoria, lc_NombrePc
+        EdicionHisEstablecimientos Tool.ID, 1349, ml_IdUsuarioAuditoria, lc_NombrePc
     Case "HisPN"
-        EdicionPadronNominal Tool.Id, 1353, ml_IdUsuarioAuditoria, lc_NombrePc
+        EdicionPadronNominal Tool.ID, 1353, ml_IdUsuarioAuditoria, lc_NombrePc
     Case "HisCalidad"
-        EdicionHisDobleDigitacion Tool.Id, 1354, ml_IdUsuarioAuditoria, lc_NombrePc
+        EdicionHisDobleDigitacion Tool.ID, 1354, ml_IdUsuarioAuditoria, lc_NombrePc
 '        Calidad Tool.ID, 1354, ml_IdUsuarioAuditoria, lc_NombrePc
     
     
     'MODULO CONSULTORIOS EMERGENCIA
     Case "PacienteEmerg", "PacienteObservacionEmerg"
-        EdicionPaciente Tool.Id, sghEmergenciaObservacion, 201
+        EdicionPaciente Tool.ID, sghEmergenciaObservacion, 201
     Case "AdmisionConsultorioEmerg"
-        EdicionAdmisionEmergencia Tool.Id
+        EdicionAdmisionEmergencia Tool.ID
     Case "CamasEmergencia"
-        EdicionCamas Tool.Id, True
+        EdicionCamas Tool.ID, True
 
     Case "RecetasE"
-        EdicionReceta Tool.Id, 1343, sghEmergenciaConsultorios
+        EdicionReceta Tool.ID, 1343, sghEmergenciaConsultorios
     
     'MODULO HOSPITALIZACION
     Case "PacienteHosp"
-        EdicionPaciente Tool.Id, sghHospitalizacion, 301
+        EdicionPaciente Tool.ID, sghHospitalizacion, 301
     Case "AdmisionHospitalizacion"
-        EdicionAdmisionHospitalizacion Tool.Id
+        EdicionAdmisionHospitalizacion Tool.ID
     Case "CamasHospitalizacion"
-        EdicionCamas Tool.Id, False
+        EdicionCamas Tool.ID, False
     Case "AlojadosHospitalizacion"
-        EdicionAlojados Tool.Id
+        EdicionAlojados Tool.ID
     Case "RecetasH"
-        EdicionReceta Tool.Id, 1344, sghHospitalizacion
+        EdicionReceta Tool.ID, 1344, sghHospitalizacion
     
     'MODULO DE PROGRAMACION
     Case "Programacion"
-        EdicionProgMedica Tool.Id
+        EdicionProgMedica Tool.ID
     
     Case "Turno"
-        EdicionTurno Tool.Id
+        EdicionTurno Tool.ID
     
     Case "Medico"
-        EdicionMedico Tool.Id
+        EdicionMedico Tool.ID
     
     'MODULO ARCHIVO CLINICO
     Case "HistoriaClinica"
-        EdicionHistoriaClinica Tool.Id
+        EdicionHistoriaClinica Tool.ID
     
     Case "MovimientoHistoria"
-        EdicionMovimientoHistorias Tool.Id
+        EdicionMovimientoHistorias Tool.ID
     
     Case "SolicitudHistorias"
        'EdicionSolicitudHistorias Tool.ID
     
     Case "Archivero"
-        EdicionArchiveroServicio Tool.Id
+        EdicionArchiveroServicio Tool.ID
         
     Case "MovFormatosHC"
-        EdicionMovimientoFormatoHC Tool.Id
+        EdicionMovimientoFormatoHC Tool.ID
     'MODULO FACTURACION
     Case "FacturacionGeneral"
-        EdicionOrdenesServicio Tool.Id
+        EdicionOrdenesServicio Tool.ID
     
     Case "FacturacionPatologiaClinica"
-         EdicionSiCitas Tool.Id
+         EdicionSiCitas Tool.ID
     
     Case "FacturacionAnatomiaPatologica"
        ' EdicionOrdenesServicioAnatomiaPatologia Tool.ID
     
     Case "FacturacionImagenologia"
-         EdicionSiCitas Tool.Id
+         EdicionSiCitas Tool.ID
     Case "prgImagen"
-         EdicionSiProgramacion Tool.Id
+         EdicionSiProgramacion Tool.ID
     
     Case "FacturacionSalaOperaciones"
        ' EdicionOrdenesServicioSalaOperaciones Tool.ID
@@ -3190,59 +3190,59 @@ Private Sub toolbar_ToolClick(ByVal Tool As ActiveToolBars.SSTool)
         
        ' Select Case ucCatalogoServiciosLista1.IdTipoCatalogo
         'Case 0
-            EdicionCatalogoBaseServicios Tool.Id
+            EdicionCatalogoBaseServicios Tool.ID
         'Case Else
         '    EdicionCatalogoServicios Tool.ID
         'End Select
         
     Case "FacturacionCentroCostos"
-        EdicionCentrosCosto Tool.Id
+        EdicionCentrosCosto Tool.ID
     Case "PqteServicio"
-        EdicionPaqueteServicio Tool.Id
+        EdicionPaqueteServicio Tool.ID
     Case "FactReembolsos"
-        EdicionReembolsos Tool.Id
+        EdicionReembolsos Tool.ID
     Case "PacExtConSeguro"
-        EdicionPacExtConSeguro Tool.Id
+        EdicionPacExtConSeguro Tool.ID
     Case "PacExtParticular"
         'EdicionPacExtParticular Tool.ID
     'MODULO GENERAL
     Case "Empleado"
-        EdicionEmpleado Tool.Id
+        EdicionEmpleado Tool.ID
     
     Case "Servicios"
-        EdicionServicio Tool.Id
+        EdicionServicio Tool.ID
     
     Case "Diagnosticos"
-        EdicionDiagnosticos Tool.Id
+        EdicionDiagnosticos Tool.ID
     
     Case "Procedimientos"
         'EdicionProcedimientos Tool.ID
     
     Case "TiposFinanciamiento"
-        EdicionTiposFinanciamiento Tool.Id
+        EdicionTiposFinanciamiento Tool.ID
     
     Case "FuentesFinanciamiento"
     
-        EdicionFuentesFinanciamiento Tool.Id
+        EdicionFuentesFinanciamiento Tool.ID
     Case "FacturacionPartidas"
-        EdicionPartidaPresupuestal Tool.Id
+        EdicionPartidaPresupuestal Tool.ID
     
     Case "EstablecimientosNoMinsa"
-        EdicionEstablecimientosNoMinsa Tool.Id
+        EdicionEstablecimientosNoMinsa Tool.ID
     
     Case "Especialidades"
-        EdicionEspecialidades Tool.Id
+        EdicionEspecialidades Tool.ID
     
     Case "TipoTarifa"
-        EdicionTipoTarifa Tool.Id
+        EdicionTipoTarifa Tool.ID
     
     'MODULO CAJA
     Case "Cajas"
-        EdicionCaja Tool.Id
+        EdicionCaja Tool.ID
         
     'FRANK MAYO
     Case "NotaCredito"
-        EdicionCajaNotaCredito Tool.Id
+        EdicionCajaNotaCredito Tool.ID
         
     Case "Cajeros"
         'EdicionCajero Tool.ID
@@ -3250,83 +3250,83 @@ Private Sub toolbar_ToolClick(ByVal Tool As ActiveToolBars.SSTool)
     Case "CatalogoBienes"
        ' Select Case ucCatalogoBienesInsumosLista1.IdTipoCatalogo
        ' Case 0
-            EdicionCatalogoBaseBienesInsumos Tool.Id
+            EdicionCatalogoBaseBienesInsumos Tool.ID
        ' Case Else
        '     EdicionCatalogoBienesInsumos Tool.ID
        ' End Select
         
     'MODULO SEGURIDAD
     Case "Roles"
-        EdicionRoles Tool.Id
+        EdicionRoles Tool.ID
         
     'MODULO FARMACIA
     Case "Inventario"
-        EdicionInventario Tool.Id
+        EdicionInventario Tool.ID
     Case "NS", "NSF"                                                       '**debb2014
-        EdicionNS Tool.Id, IIf(ms_ModuloSeleccionado = "NS", False, True)  '**debb2014
+        EdicionNS Tool.ID, IIf(ms_ModuloSeleccionado = "NS", False, True)  '**debb2014
     Case "NI", "NIF", "FARMADOP"                                                       '**debb2014"
-        EdicionNI Tool.Id, IIf(ms_ModuloSeleccionado = "NI", False, True)  '**debb2014
+        EdicionNI Tool.ID, IIf(ms_ModuloSeleccionado = "NI", False, True)  '**debb2014
     Case "IntervencionS"
-        EdicionIntervencionS Tool.Id
+        EdicionIntervencionS Tool.ID
     Case "Ventas"
-        EdicionVentas Tool.Id
+        EdicionVentas Tool.ID
     Case "DependenciaExt"
-        EdicionDependenciaExt Tool.Id
+        EdicionDependenciaExt Tool.ID
     Case "DespachoDonaciones"
-        EdicionDespachoDonaciones Tool.Id
+        EdicionDespachoDonaciones Tool.ID
     Case "FarmAlmacen"
-        EdicionMantenedorFarmacia Tool.Id
+        EdicionMantenedorFarmacia Tool.ID
     Case "FarmPrecios"                                     'debb2014b
-        EdicionMantenedorHistoricoPrecios Tool.Id          'debb2014b
+        EdicionMantenedorHistoricoPrecios Tool.ID          'debb2014b
         
     'MODULO IMAGENEOLOGIA
     Case "ImagRayosX"
-        EdicionRayosX Tool.Id
+        EdicionRayosX Tool.ID
     Case "ImagEcografiaG"
-        EdicionImagEcografiaGen Tool.Id
+        EdicionImagEcografiaGen Tool.ID
     Case "ImagTomografia"
-        EdicionImagTomografia Tool.Id
+        EdicionImagTomografia Tool.ID
     Case "ImagEcografiaO"
-        EdicionImagEcografiaObs Tool.Id
+        EdicionImagEcografiaObs Tool.ID
     Case "ImagIngresos"
-        EdicionImagIngresos Tool.Id
+        EdicionImagIngresos Tool.ID
     Case "ImagSalidas"
-        EdicionImagSalidas Tool.Id
+        EdicionImagSalidas Tool.ID
     'mgaray201411f
     Case "ImagTipoModalidadSala"
-        EdicionTipoModalidadSala Tool.Id
+        EdicionTipoModalidadSala Tool.ID
     Case "ImagSala"
-        EdicionSala Tool.Id
+        EdicionSala Tool.ID
     Case "ImagCatalgoServicioDuracion"
-        EdicionImagFactCatalogoServiciosDuracion Tool.Id
+        EdicionImagFactCatalogoServiciosDuracion Tool.ID
     Case "IntegracionSistema"
-        EdicionIntegracionSistema Tool.Id
+        EdicionIntegracionSistema Tool.ID
         
     'MODULO LABORATORIO
     Case "OrdenesLaboratorio"
-        EdicionLaboratorio Tool.Id
+        EdicionLaboratorio Tool.ID
     Case "OrdenesPatologia"
-        EdicionOrdenesServicioAnatomiaPatologia_ Tool.Id
+        EdicionOrdenesServicioAnatomiaPatologia_ Tool.ID
     Case "BS"
-        EdicionOrdenesBS_ Tool.Id
+        EdicionOrdenesBS_ Tool.ID
     Case "ResultadosLaboratorio"
-        EdicionResultados Tool.Id
+        EdicionResultados Tool.ID
     Case "MuestrasExamenes"
-        EdicionMuestras Tool.Id
+        EdicionMuestras Tool.ID
     Case "LabIngresos"
-        EdicionLabIngresos Tool.Id
+        EdicionLabIngresos Tool.ID
     Case "LabEgresos"
-        EdicionLabSalidas Tool.Id
+        EdicionLabSalidas Tool.ID
         
     'Constancias de Atención
     Case "Constancias"
-      EdicionConstancias Tool.Id
+      EdicionConstancias Tool.ID
     'Sis
     Case "Fua"
-      EdicionFua Tool.Id
+      EdicionFua Tool.ID
       
     Case "ConfiguracionResLab" ' modificacion samuel
-        EdicionConfiguracionResLab Tool.Id
+        EdicionConfiguracionResLab Tool.ID
         
     End Select
     
@@ -4733,8 +4733,8 @@ Dim lbUsuarioRealizaApertura As Boolean
                 mb_abrioCaja = Me.ucGestionDevolucion2.RealizarAperturaDeCaja(ml_IdUsuarioAuditoria, oApertura.IdCaja, oApertura.IdTurno, oApertura.EmiteSoloServicio)
                 '/****************************INO***************************************/
                 
-                Me.Toolbar.Tools("ID_CajaApertura").Enabled = False
-                Me.Toolbar.Tools("ID_CajaCierre").Enabled = True
+                Me.toolbar.Tools("ID_CajaApertura").Enabled = False
+                Me.toolbar.Tools("ID_CajaCierre").Enabled = True
                 'mgaray201503
                 Set moDOCajaGestion = New DOCajaGestion
                 moDOCajaGestion.IdCaja = oApertura.IdCaja
@@ -4772,24 +4772,24 @@ Dim lbUsuarioRealizaCierre As Boolean
             End If
             If MsgBox("¿Esta seguro de realizar el CIERRE DE CAJA ?", vbYesNo, Me.Caption) = vbYes Then
                 If ucGestionCaja1.RealizarCierreDeCaja() Then
-                    Me.Toolbar.Tools("ID_CajaApertura").Enabled = True
+                    Me.toolbar.Tools("ID_CajaApertura").Enabled = True
                     mb_abrioCaja = False
                 End If
                 
                 '/******************************INO*************************************
                  If ucGestionDevolucion2.RealizarCierreDeCaja() Then
-                    Me.Toolbar.Tools("ID_CajaApertura").Enabled = True
+                    Me.toolbar.Tools("ID_CajaApertura").Enabled = True
                     mb_abrioCaja = False
                 End If
                 '/******************************INO*************************************
                 
             Else
                 ucGestionCaja1.MuestraTabEmisionDocumentos (False)
-                Me.Toolbar.Tools("ID_CajaApertura").Enabled = True
+                Me.toolbar.Tools("ID_CajaApertura").Enabled = True
                 mb_abrioCaja = False
             End If
-            Me.Toolbar.Tools("ID_CajaApertura").Enabled = True
-            Me.Toolbar.Tools("ID_CajaCierre").Enabled = False
+            Me.toolbar.Tools("ID_CajaApertura").Enabled = True
+            Me.toolbar.Tools("ID_CajaCierre").Enabled = False
         Else
             MsgBox "El USUARIO no tiene permiso para realizar el  CIERRE"
         End If
@@ -4799,8 +4799,8 @@ End Sub
 Private Sub ucCajeroServicios1_HizoClickEnEscape()
     
     mo_LastControl.Visible = False
-    Toolbar.Toolbars("Edición").Visible = True
-    Toolbar.Toolbars("Gestión de Caja").Visible = False
+    toolbar.Toolbars("Edición").Visible = True
+    toolbar.Toolbars("Gestión de Caja").Visible = False
 
 End Sub
 

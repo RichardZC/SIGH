@@ -1,6 +1,6 @@
 [History]
 1=#P0#=mb	#P1#=RetornaVersionServidorSQLserver	#P2#=SIGHDatos/Parametros/RetornaVersionServidorSQLserver	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20200603093902	#P7#=0	#P8#=13	.
-2=#P0#=mb	#P1#=SeleccionaFilaParametro	#P2#=SIGHDatos/Parametros/SeleccionaFilaParametro	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200602163727	#P7#=0	#P8#=26	.
+2=#P0#=mb	#P1#=SeleccionaFilaParametro	#P2#=SIGHDatos/Parametros/SeleccionaFilaParametro	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200602163727	#P7#=0	#P8#=36	.
 3=#P0#=mb	#P1#=SeleccionarPorId	#P2#=SIGHDatos/Empleados/SeleccionarPorId	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20200416165319	#P7#=0	#P8#=51	.
 4=#P0#=mb	#P1#=Insertar	#P2#=SIGHDatos/Empleados/Insertar	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20200416165215	#P7#=0	#P8#=40	.
 5=#P0#=mb	#P1#=Modificar	#P2#=SIGHDatos/Empleados/Modificar	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20200416165210	#P7#=0	#P8#=35	.

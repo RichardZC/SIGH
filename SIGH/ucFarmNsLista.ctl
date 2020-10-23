@@ -129,7 +129,7 @@ Begin VB.UserControl ucFarmNsLista
    End
    Begin UltraGrid.SSUltraGrid grdLista 
       Height          =   4860
-      Left            =   90
+      Left            =   120
       TabIndex        =   5
       Top             =   1560
       Width           =   10995
@@ -183,11 +183,11 @@ Attribute VB_Exposed = False
 '
 '------------------------------------------------------------------------------------
 Option Explicit
-Dim mo_Apariencia As New sighentidades.GridInfragistic
+Dim mo_Apariencia As New sighEntidades.GridInfragistic
 Dim mo_ReglasFarmacia As New SIGHNegocios.ReglasFarmacia
 Dim ml_idRegistroSeleccionado As Long
 Dim ml_TipoBusqueda As sghTipoBusquedaPrestamoHistoria
-Dim mo_Teclado As New sighentidades.Teclado
+Dim mo_Teclado As New sighEntidades.Teclado
 Dim oRsAlmacenes As New ADODB.Recordset
 Dim oRsBusqueda As New ADODB.Recordset
 Dim ml_idUsuario As Long
@@ -245,7 +245,7 @@ Public Sub RealizarBusqueda()
            MsgBox "Por favor elija el Almacén", vbInformation, "Busqueda"
            Exit Sub
         End If
-        Set oRsBusqueda = mo_ReglasFarmacia.FarmDevuelveMovimientos(Val(cmbAlmacen.BoundText), "S", CDate(Format(txtFinicio.Text & " 00:01", sighentidades.DevuelveFechaSoloFormato_DMY_HM)), CDate(Format(txtFfinal.Text & " 23:59", sighentidades.DevuelveFechaSoloFormato_DMY_HM)))
+        Set oRsBusqueda = mo_ReglasFarmacia.FarmDevuelveMovimientos(Val(cmbAlmacen.BoundText), "S", CDate(Format(txtFinicio.Text & " 00:01", sighEntidades.DevuelveFechaSoloFormato_DMY_HM)), CDate(Format(txtFfinal.Text & " 23:59", sighEntidades.DevuelveFechaSoloFormato_DMY_HM)))
         oRsBusqueda.Filter = "IdTipoConcepto<>10 and IdTipoConcepto<>13  and IdTipoConcepto<>14 and IdTipoConcepto<>15  and IdTipoConcepto<>16 and IdTipoConcepto<>17  and IdTipoConcepto<>25 and IdTipoConcepto<>23"
         Set grdLista.DataSource = oRsBusqueda
         'mo_Apariencia.ConfigurarFilasBiColores grdLista, sighentidades.GrillaConFilasBicolor
@@ -256,7 +256,7 @@ Private Sub btnLimpiar_Click()
 End Sub
 Public Sub LimpiarFiltro()
         UserControl.cmbAlmacen.Text = ""
-        UserControl.txtFinicio.Text = sighentidades.PrimerFechaDDMMYYDelMesActual
+        UserControl.txtFinicio.Text = sighEntidades.PrimerFechaDDMMYYDelMesActual
         UserControl.txtFfinal.Text = Date
 End Sub
 
@@ -274,7 +274,7 @@ Dim rsRecordset As ADODB.Recordset
     Set rsRecordset = grdLista.DataSource
     On Error Resume Next
     ml_idRegistroSeleccionado = Val(rsRecordset("MovNumero"))
-    
+   
 End Sub
 
 Private Sub grdLista_Click()
@@ -284,7 +284,6 @@ Dim rsRecordset As ADODB.Recordset
     Set rsRecordset = grdLista.DataSource
     On Error Resume Next
     ml_idRegistroSeleccionado = Val(rsRecordset("MovNumero"))
-    
 End Sub
 
 
@@ -336,7 +335,7 @@ End Sub
 Private Sub txtFfinal_LostFocus()
     If Not EsFecha(txtFfinal.Text, "DD/MM/AAAA") Then
         MsgBox "La fecha ingresada no es válida", vbInformation, ""
-        txtFfinal.Text = sighentidades.FECHA_VACIA_DMY
+        txtFfinal.Text = sighEntidades.FECHA_VACIA_DMY
         Exit Sub
     End If
 End Sub
@@ -349,7 +348,7 @@ End Sub
 Private Sub txtFinicio_LostFocus()
 If Not EsFecha(txtFinicio.Text, "DD/MM/AAAA") Then
         MsgBox "La fecha ingresada no es válida", vbInformation, ""
-        txtFinicio.Text = sighentidades.FECHA_VACIA_DMY
+        txtFinicio.Text = sighEntidades.FECHA_VACIA_DMY
         Exit Sub
     End If
 End Sub
@@ -376,7 +375,7 @@ Sub CargaComboBox()
         Set oBuscaDondeLabora = Nothing
         oConexion.CommandTimeout = 300
         oConexion.CursorLocation = adUseClient
-        oConexion.Open sighentidades.CadenaConexion
+        oConexion.Open sighEntidades.CadenaConexion
         '***debb2014
         If lbNSsoloParaFarmacia = True Then
            Set oRsAlmacenes = mo_ReglasFarmacia.FarmAlmacenSeleccionarSegunFiltro("idTipoLocales='F' and idEstado=1", oConexion)
@@ -396,7 +395,7 @@ End Sub
 
 Sub SkinConfigura()
   On Error GoTo ErrSkin
-  If sighentidades.Parametro282valorInt = "1" Then
+  If sighEntidades.Parametro282valorInt = "1" Then
         btnBuscar.Picture = LoadPicture(App.Path & "\Binoculr.ico")
         btnBuscar.Caption = ""
         btnLimpiar.Picture = LoadPicture(App.Path & "\Refresh.ico")
@@ -405,14 +404,14 @@ Sub SkinConfigura()
         lblNombre.Alignment = 2
         lblNombre.BackColor = vbBlue
   Else
-        mo_Apariencia.ConfigurarFilasBiColores grdLista, sighentidades.GrillaConFilasBicolor
+        mo_Apariencia.ConfigurarFilasBiColores grdLista, sighEntidades.GrillaConFilasBicolor
   End If
 ErrSkin:
 End Sub
-Sub inicializar()
+Sub Inicializar()
     SkinConfigura
     CargaComboBox
-    txtFinicio.Text = sighentidades.PrimerFechaDDMMYYDelMesActual
+    txtFinicio.Text = sighEntidades.PrimerFechaDDMMYYDelMesActual
     txtFfinal.Text = Date
     lblNombre.Caption = "Nota de Salida " & IIf(lbNSsoloParaFarmacia = True, " de Farmacia", "del Almacén")
 End Sub
