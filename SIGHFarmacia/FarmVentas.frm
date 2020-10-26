@@ -1515,6 +1515,12 @@ Private Sub Form_Activate()
             Me.Visible = False
             MsgBox "No tiene ACCESO a Modificar/Anular una NS" & Chr(13) & " de una Fecha Registro diferente a la actual", vbExclamation, Me.Caption
         End If
+    Case sghEliminar
+        If mo_ReglasFarmacia.validaFecha2(fecha_Actual, fecha_Registro, ml_movNumero) = True Then
+            Me.Visible = False
+            MsgBox "No tiene ACCESO a Modificar/Anular una NS" & Chr(13) & " de una Fecha Registro diferente a la actual", vbExclamation, Me.Caption
+        End If
+        
     End Select
     'JSPC 23/10/2020 Cambio29 fin
 End Sub
@@ -1558,6 +1564,11 @@ Private Sub Form_Load()
         Me.Caption = "Consultar Ventas"
         
     Case sghEliminar
+     'JSPC 23/10/2020 Cambio29 inicio
+            If mo_ReglasFarmacia.validaFecha2(fecha_Actual, fecha_Registro, ml_movNumero) = True Then
+                Exit Sub
+            End If
+        'JSPC 23/10/2020 Cambio29 fin
         Me.Caption = "Anular Ventas"
     End Select
     CargarDatosAlFormulario
