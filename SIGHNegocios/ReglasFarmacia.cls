@@ -50,7 +50,7 @@ Dim oParameter As ADODB.Parameter
 Dim oConexion As New ADODB.Connection
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
 
     With oCommand
         .CommandType = adCmdStoredProc
@@ -195,7 +195,7 @@ Function DevuelveDetalleProductosConLotes(oConexion As ADODB.Connection, lnIdAlm
              End If
              oRsSaldosEnEsteMomento.Close
              If lbProductoConLoteOK = False Then
-                 ms_MensajeError = ms_MensajeError & "(F.Mínima despacho: " & Format(LdFechaMinimaDespacho, SIGHEntidades.DevuelveFechaSoloFormato_DMY) & ") " & Trim(oRsConsolidado.Fields!Codigo) & " " & oRsConsolidado.Fields!nombreProducto & Chr(13)
+                 ms_MensajeError = ms_MensajeError & "(F.Mínima despacho: " & Format(LdFechaMinimaDespacho, sighentidades.DevuelveFechaSoloFormato_DMY) & ") " & Trim(oRsConsolidado.Fields!Codigo) & " " & oRsConsolidado.Fields!nombreProducto & Chr(13)
                  Exit Function
              End If
              oRsConsolidado.MoveNext
@@ -542,7 +542,7 @@ Dim oParameter As ADODB.Parameter
     ' Modificado por Yamill Palomino
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.BeginTrans
     Set oFactOrdenesBienes.Conexion = oConexion
     Set oCajaComprobantePago.Conexion = oConexion
@@ -625,7 +625,7 @@ Dim oParameter As ADODB.Parameter
                     oMovimientoDetalle.IdUsuarioAuditoria = oDOCajaComprobantePago.IdUsuarioAuditoria
                     rs.MoveFirst
                     Do While Not rs.EOF
-                        If Not oMovimientoDetalle.ActualizaSaldosPorProducto(lcConstanteMovimientoEntrada, oDoMovimiento.idAlmacenOrigen, rs.Fields!idProducto, rs.Fields!Lote, rs.Fields!FechaVencimiento, rs.Fields!idTipoSalidaBienInsumo, rs.Fields!cantidad, rs.Fields!Precio, oDoMovimiento.fechaCreacion) Then
+                        If Not oMovimientoDetalle.ActualizaSaldosPorProducto(lcConstanteMovimientoEntrada, oDoMovimiento.idAlmacenOrigen, rs.Fields!idProducto, rs.Fields!Lote, rs.Fields!FechaVencimiento, rs.Fields!idTipoSalidaBienInsumo, rs.Fields!cantidad, rs.Fields!Precio, oDoMovimiento.FechaCreacion) Then
                            bProcesoOK = False: GoTo ErrorManager1El
                         End If
                         rs.MoveNext
@@ -633,7 +633,7 @@ Dim oParameter As ADODB.Parameter
                End If
                rs.Close
                '*********  agrega CABECERA de pagos ***************
-               oDOFactOrdenBien.fechaCreacion = oDoFarmPreVenta.fechaCreacion
+               oDOFactOrdenBien.FechaCreacion = oDoFarmPreVenta.FechaCreacion
                oDOFactOrdenBien.idCuentaAtencion = oDoFarmPreVenta.idCuentaAtencion
                oDOFactOrdenBien.IdEstadoFacturacion = 1 'registrado
                oDOFactOrdenBien.idPaciente = oDoFarmPreVenta.idPaciente
@@ -799,7 +799,7 @@ Function AgregaDatosDeVentaDirecta(ByVal oDoMovimiento As DoFarmMovimiento, oDoF
     
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.BeginTrans
     
     bProcesoOK = True
@@ -838,7 +838,7 @@ Function AgregaDatosDeVentaDirecta(ByVal oDoMovimiento As DoFarmMovimiento, oDoF
     Call mo_ReglasSeguridad.AuditoriaAgregarV(oDoMovimiento.IdUsuarioAuditoria, "A", 0, "FarmMovimiento/" & oDoMovimiento.MovTipo & "/" & oDoMovimiento.movNumero, oConexion, mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc, "")            'ListBarItems.idListItem
     '*********** revisa nuevamente los saldos *************
     If Not DevuelveDetalleProductosConLotes(oConexion, oDoMovimiento.idAlmacenOrigen, oRsDetalleProductos, _
-                                            oDoMovimiento.fechaCreacion, sghTipoSalidaItemFarmacia.sghSoloVenta, "") Then
+                                            oDoMovimiento.FechaCreacion, sghTipoSalidaItemFarmacia.sghSoloVenta, "") Then
         ms_MensajeError = ms_MensajeError + "Hubo problemas al Devolver Saldos con Lotes/FechasVencimiento "
         bProcesoOK = False: GoTo TerminarIVDTA
     End If
@@ -859,8 +859,8 @@ Function AgregaDatosDeVentaDirecta(ByVal oDoMovimiento As DoFarmMovimiento, oDoF
        .movNumero = lcCorrelativo
        If .idCuentaAtencion > 0 Then
           .IdServicioPaciente = DevuelveServicioDondeSeEncuentraElPacienteSegunFechaHora(.idCuentaAtencion, _
-                      Format(oDoMovimiento.fechaCreacion, SIGHEntidades.DevuelveFechaSoloFormato_DMY), _
-                      Format(oDoMovimiento.fechaCreacion, "hh:mm"), oConexion)
+                      Format(oDoMovimiento.FechaCreacion, sighentidades.DevuelveFechaSoloFormato_DMY), _
+                      Format(oDoMovimiento.FechaCreacion, "hh:mm"), oConexion)
        Else
           .IdServicioPaciente = 0
        End If
@@ -888,7 +888,7 @@ Function AgregaDatosDeVentaDirecta(ByVal oDoMovimiento As DoFarmMovimiento, oDoF
        If Not oMovimientoDetalle.Insertar(oDoMovimientoDetalle) Then
                 bProcesoOK = False: ms_MensajeError = ms_MensajeError + "Problemas con tabla MOVIMIENTODETALLE": GoTo TerminarIVDTA
        End If
-       If Not oMovimientoDetalle.ActualizaSaldosPorProducto(lcConstanteMovimientoSalida, oDoMovimiento.idAlmacenOrigen, oRsDetalleProductosConLotes.Fields!idProducto, oRsDetalleProductosConLotes.Fields!Lote, oRsDetalleProductosConLotes.Fields!FechaVencimiento, oRsDetalleProductosConLotes.Fields!idTipoSalidaBienInsumo, oRsDetalleProductosConLotes.Fields!cantidad, oRsDetalleProductosConLotes.Fields!Precio, oDoMovimiento.fechaCreacion) Then
+       If Not oMovimientoDetalle.ActualizaSaldosPorProducto(lcConstanteMovimientoSalida, oDoMovimiento.idAlmacenOrigen, oRsDetalleProductosConLotes.Fields!idProducto, oRsDetalleProductosConLotes.Fields!Lote, oRsDetalleProductosConLotes.Fields!FechaVencimiento, oRsDetalleProductosConLotes.Fields!idTipoSalidaBienInsumo, oRsDetalleProductosConLotes.Fields!cantidad, oRsDetalleProductosConLotes.Fields!Precio, oDoMovimiento.FechaCreacion) Then
                 bProcesoOK = False: ms_MensajeError = ms_MensajeError + "Problemas con ACTUALIZARSALDOSPORPRODUCTO: GoTo TerminarIVDTA"
        End If
        lnItem = lnItem + 1
@@ -923,7 +923,7 @@ Function AgregaDatosDeVentaDirecta(ByVal oDoMovimiento As DoFarmMovimiento, oDoF
     '
     lnImporteTotal = 0
     If lbGeneraPago = True Then
-        oDoFactOrdenesBienes.fechaCreacion = oDoMovimiento.fechaCreacion
+        oDoFactOrdenesBienes.FechaCreacion = oDoMovimiento.FechaCreacion
         oDoFactOrdenesBienes.idCuentaAtencion = oDoFarmMovimientoVentas.idCuentaAtencion
         oDoFactOrdenesBienes.IdEstadoFacturacion = 1 'registrado
         oDoFactOrdenesBienes.idPaciente = oDoFarmMovimientoVentas.idPaciente
@@ -943,7 +943,7 @@ Function AgregaDatosDeVentaDirecta(ByVal oDoMovimiento As DoFarmMovimiento, oDoF
     oDoMovimientoVentasDetalle.MovTipo = lcConstanteMovimientoSalida
     '
     oDoFacturacionBienesFinanciam.IdTipoFinanciamiento = oDoFarmMovimientoVentas.IdTipoFinanciamiento
-    oDoFacturacionBienesFinanciam.FechaAutoriza = oDoMovimiento.fechaCreacion
+    oDoFacturacionBienesFinanciam.FechaAutoriza = oDoMovimiento.FechaCreacion
     oDoFacturacionBienesFinanciam.IdUsuarioAuditoria = oDoMovimiento.idUsuario
     oDoFacturacionBienesFinanciam.IdUsuarioAutoriza = oDoMovimiento.idUsuario
     oDoFacturacionBienesFinanciam.movNumero = oDoMovimiento.movNumero
@@ -1024,7 +1024,7 @@ Function AgregaDatosDeVentaDirecta(ByVal oDoMovimiento As DoFarmMovimiento, oDoF
     End If
     '
     AsignaPorcentajeEPS oConexion, oDoFarmMovimientoVentas.idCuentaAtencion, lnEpsPorcentaje, mo_lnIdTablaLISTBARITEMS, _
-                         sghAgregar, oDoMovimiento.fechaCreacion, _
+                         sghAgregar, oDoMovimiento.FechaCreacion, _
                          oDoFarmMovimientoVentas.IdServicioPaciente, oDoFarmMovimientoVentas.idPaciente, _
                          oDoFarmMovimientoVentas.IdUsuarioAuditoria, oDoFarmMovimientoVentas.movNumero, lnImporteTotal, _
                          sghPuntosCargaBasicos.sghPtoCargaFarmacia, oDoFarmMovimientoVentas.MovTipo, 0
@@ -1157,7 +1157,7 @@ Function EPScrearOrdenPago(oConexion As Connection, ldFechaCreacion As Date, lnI
             End If
       End If
       With oDoFactOrdenServ
-        .fechaCreacion = ldFechaCreacion
+        .FechaCreacion = ldFechaCreacion
         .idCuentaAtencion = lnIdCuenta
         .IdServicioPaciente = lnIdServicioIngreso
         .IdEstadoFacturacion = 1               'Registrado
@@ -1167,7 +1167,7 @@ Function EPScrearOrdenPago(oConexion As Connection, ldFechaCreacion As Date, lnI
         .idFuenteFinanciamiento = sghFuenteFinanciamiento.sghFFPaciente
         .idUsuario = lnIdUsuario
         .IdUsuarioAuditoria = lnIdUsuario
-        .fechaDespacho = .fechaCreacion
+        .fechaDespacho = .FechaCreacion
         .IdUsuarioDespacho = lnIdUsuario
       End With
       If oFactOrdenesServicio.Insertar(oDoFactOrdenServ) = True Then
@@ -1182,7 +1182,7 @@ Function EPScrearOrdenPago(oConexion As Connection, ldFechaCreacion As Date, lnI
        If oFacturacionServicioDespacho.Insertar(oDoFacturacionServicioDesp) Then
           With oDOFactOrdenServicioPagos
               .idOrdenPago = 0
-              .fechaCreacion = oDoFactOrdenServ.fechaCreacion
+              .FechaCreacion = oDoFactOrdenServ.FechaCreacion
               .IdEstadoFacturacion = 1   'Registrado
               .IdOrden = oDoFactOrdenServ.IdOrden
               .idUsuario = lnIdUsuario
@@ -1253,7 +1253,7 @@ Function ModificaDatosVentaDirecta(oDoMovimiento As DoFarmMovimiento, oDoFarmMov
     'Modificado por Yamill Palomino
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.BeginTrans
     bProcesoOK = True
     ms_MensajeError = ""
@@ -1274,14 +1274,14 @@ Function ModificaDatosVentaDirecta(oDoMovimiento As DoFarmMovimiento, oDoFarmMov
     Call mo_ReglasSeguridad.AuditoriaAgregarV(oDoMovimiento.IdUsuarioAuditoria, "M", 0, "FarmMovimiento/" & oDoMovimiento.MovTipo & "/" & oDoMovimiento.movNumero, oConexion, mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc, "")            'ListBarItems.idListItem
     '*************vuelve a chequear saldos ****************
     If Not DevuelveDetalleProductosConLotes(oConexion, oDoMovimiento.idAlmacenOrigen, oRsDetalleProductos, _
-                                            oDoMovimiento.fechaCreacion, sghTipoSalidaItemFarmacia.sghSoloVenta, "") Then
+                                            oDoMovimiento.FechaCreacion, sghTipoSalidaItemFarmacia.sghSoloVenta, "") Then
         ms_MensajeError = ms_MensajeError + "Hubo problemas al Devolver Saldos con Lotes/FechasVencimiento "
         bProcesoOK = False: GoTo TerminarMVTDTA
     End If
     
     '*********  graba tabla MovimientosVentas  ***************
     If oDoFarmMovimientoVentas.idCuentaAtencion > 0 Then
-       oDoFarmMovimientoVentas.IdServicioPaciente = DevuelveServicioDondeSeEncuentraElPacienteSegunFechaHora(oDoFarmMovimientoVentas.idCuentaAtencion, Format(oDoMovimiento.fechaCreacion, SIGHEntidades.DevuelveFechaSoloFormato_DMY), Format(oDoMovimiento.fechaCreacion, "hh:mm"))
+       oDoFarmMovimientoVentas.IdServicioPaciente = DevuelveServicioDondeSeEncuentraElPacienteSegunFechaHora(oDoFarmMovimientoVentas.idCuentaAtencion, Format(oDoMovimiento.FechaCreacion, sighentidades.DevuelveFechaSoloFormato_DMY), Format(oDoMovimiento.FechaCreacion, "hh:mm"))
     Else
        oDoFarmMovimientoVentas.IdServicioPaciente = 0
     End If
@@ -1303,7 +1303,7 @@ Function ModificaDatosVentaDirecta(oDoMovimiento As DoFarmMovimiento, oDoFarmMov
            If Not FarmMovimientoDetalleEliminar(oConexion, oDoMovimientoDetalle) Then
               bProcesoOK = False: GoTo TerminarMVTDTA
            End If
-           If Not oMovimientoDetalle.ActualizaSaldosPorProducto(lcConstanteMovimientoEntrada, oDoMovimiento.idAlmacenOrigen, rs.Fields!idProducto, rs.Fields!Lote, rs.Fields!FechaVencimiento, rs.Fields!idTipoSalidaBienInsumo, rs.Fields!cantidad, rs.Fields!Precio, oDoMovimiento.fechaCreacion) Then
+           If Not oMovimientoDetalle.ActualizaSaldosPorProducto(lcConstanteMovimientoEntrada, oDoMovimiento.idAlmacenOrigen, rs.Fields!idProducto, rs.Fields!Lote, rs.Fields!FechaVencimiento, rs.Fields!idTipoSalidaBienInsumo, rs.Fields!cantidad, rs.Fields!Precio, oDoMovimiento.FechaCreacion) Then
               bProcesoOK = False: GoTo TerminarMVTDTA
            End If
            rs.MoveNext
@@ -1328,7 +1328,7 @@ Function ModificaDatosVentaDirecta(oDoMovimiento As DoFarmMovimiento, oDoFarmMov
        If Not oMovimientoDetalle.Insertar(oDoMovimientoDetalle) Then
                 bProcesoOK = False: GoTo TerminarMVTDTA
        End If
-       If Not oMovimientoDetalle.ActualizaSaldosPorProducto(lcConstanteMovimientoSalida, oDoMovimiento.idAlmacenOrigen, oRsDetalleProductosConLotes.Fields!idProducto, oRsDetalleProductosConLotes.Fields!Lote, oRsDetalleProductosConLotes.Fields!FechaVencimiento, oRsDetalleProductosConLotes.Fields!idTipoSalidaBienInsumo, oRsDetalleProductosConLotes.Fields!cantidad, oRsDetalleProductosConLotes.Fields!Precio, oDoMovimiento.fechaCreacion) Then
+       If Not oMovimientoDetalle.ActualizaSaldosPorProducto(lcConstanteMovimientoSalida, oDoMovimiento.idAlmacenOrigen, oRsDetalleProductosConLotes.Fields!idProducto, oRsDetalleProductosConLotes.Fields!Lote, oRsDetalleProductosConLotes.Fields!FechaVencimiento, oRsDetalleProductosConLotes.Fields!idTipoSalidaBienInsumo, oRsDetalleProductosConLotes.Fields!cantidad, oRsDetalleProductosConLotes.Fields!Precio, oDoMovimiento.FechaCreacion) Then
                 bProcesoOK = False: GoTo TerminarMVTDTA
        End If
        lnItem = lnItem + 1
@@ -1386,7 +1386,7 @@ Function ModificaDatosVentaDirecta(oDoMovimiento As DoFarmMovimiento, oDoFarmMov
        bProcesoOK = False: GoTo TerminarMVTDTA
     End If
     oDoFacturacionBienesFinanciam.IdTipoFinanciamiento = oDoFarmMovimientoVentas.IdTipoFinanciamiento
-    oDoFacturacionBienesFinanciam.FechaAutoriza = oDoMovimiento.fechaCreacion
+    oDoFacturacionBienesFinanciam.FechaAutoriza = oDoMovimiento.FechaCreacion
     oDoFacturacionBienesFinanciam.IdUsuarioAuditoria = oDoMovimiento.idUsuario
     oDoFacturacionBienesFinanciam.IdUsuarioAutoriza = oDoMovimiento.idUsuario
     oDoFacturacionBienesFinanciam.idFuenteFinanciamiento = oDoFarmMovimientoVentas.idFuenteFinanciamiento
@@ -1467,7 +1467,7 @@ Function ModificaDatosVentaDirecta(oDoMovimiento As DoFarmMovimiento, oDoFarmMov
     Set oRsTmp1 = Nothing
     '
     AsignaPorcentajeEPS oConexion, oDoFarmMovimientoVentas.idCuentaAtencion, lnEpsPorcentaje, mo_lnIdTablaLISTBARITEMS, _
-                         sghAgregar, oDoMovimiento.fechaCreacion, _
+                         sghAgregar, oDoMovimiento.FechaCreacion, _
                          oDoFarmMovimientoVentas.IdServicioPaciente, oDoFarmMovimientoVentas.idPaciente, _
                          oDoFarmMovimientoVentas.IdUsuarioAuditoria, oDoFarmMovimientoVentas.movNumero, lnImporteTotal, _
                          sghPuntosCargaBasicos.sghPtoCargaFarmacia, oDoFarmMovimientoVentas.MovTipo, lnIdOrdenPago
@@ -1516,7 +1516,7 @@ Function farmMovimientoVentasSeleccionarPorId(ByVal oDoMovimientoVentas As DoFar
     Dim oConexion As New ADODB.Connection
     Dim oMovimientoVtas As New farmMovimientoVentas
     
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     If oConexion1 Is Nothing Then
        Set oMovimientoVtas.Conexion = oConexion
     Else
@@ -1553,7 +1553,7 @@ Function AgregaDatosDePreVenta(ByVal oDoPreventa As DoFarmPreVenta, oRsDetallePr
     
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     
     oConexion.BeginTrans
     
@@ -1564,7 +1564,7 @@ Function AgregaDatosDePreVenta(ByVal oDoPreventa As DoFarmPreVenta, oRsDetallePr
     Set oFacturacionBienesPagos.Conexion = oConexion
     Set oPreVentaDetalle.Conexion = oConexion
     '*********** revisa nuevamente los saldos *************
-    If Not DevuelveDetalleProductosConLotes(oConexion, oDoPreventa.IdAlmacen, oRsDetalleProductos, oDoPreventa.fechaCreacion, _
+    If Not DevuelveDetalleProductosConLotes(oConexion, oDoPreventa.IdAlmacen, oRsDetalleProductos, oDoPreventa.FechaCreacion, _
                                       sghTipoSalidaItemFarmacia.sghSoloVenta, "") Then
         ms_MensajeError = ms_MensajeError + "Hubo problemas al Devolver Saldos con Lotes/FechasVencimiento "
         bProcesoOK = False: GoTo TerminarIPV
@@ -1590,7 +1590,7 @@ Function AgregaDatosDePreVenta(ByVal oDoPreventa As DoFarmPreVenta, oRsDetallePr
     '
     Call mo_ReglasSeguridad.AuditoriaAgregarV(oDoPreventa.IdUsuarioAuditoria, "A", oDoPreventa.idPreVenta, "FarmPreVenta", oConexion, mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc, "")              'ListBarItems.idListItem
     '*********  graba tabla FactOrdenesBienes  ***************
-    oDoFactOrdenesBienes.fechaCreacion = oDoPreventa.fechaCreacion
+    oDoFactOrdenesBienes.FechaCreacion = oDoPreventa.FechaCreacion
     oDoFactOrdenesBienes.idCuentaAtencion = oDoPreventa.idCuentaAtencion
     oDoFactOrdenesBienes.IdEstadoFacturacion = 1 'registrado
     oDoFactOrdenesBienes.idPaciente = oDoPreventa.idPaciente
@@ -1707,7 +1707,7 @@ Function ModificaDatosDePreVenta(ByVal oDoPreventa As DoFarmPreVenta, oRsDetalle
     
     oConexion.CommandTimeout = 900
     oConexion.CursorLocation = adUseClient
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.BeginTrans
     bProcesoOK = True
     ms_MensajeError = ""
@@ -1716,7 +1716,7 @@ Function ModificaDatosDePreVenta(ByVal oDoPreventa As DoFarmPreVenta, oRsDetalle
     Set oFacturacionBienesPagos.Conexion = oConexion
     Set oPreVentaDetalle.Conexion = oConexion
     '*********** revisa nuevamente los saldos *************
-    If Not DevuelveDetalleProductosConLotes(oConexion, oDoPreventa.IdAlmacen, oRsDetalleProductos, oDoPreventa.fechaCreacion, _
+    If Not DevuelveDetalleProductosConLotes(oConexion, oDoPreventa.IdAlmacen, oRsDetalleProductos, oDoPreventa.FechaCreacion, _
                                             sghTipoSalidaItemFarmacia.sghSoloVenta, "") Then
         ms_MensajeError = ms_MensajeError + "Hubo problemas al Devolver Saldos con Lotes/FechasVencimiento "
         bProcesoOK = False: GoTo TerminarMPTA
@@ -1828,7 +1828,7 @@ Function AnulaPreVenta(oDoPreventa As DoFarmPreVenta, mo_lnIdTablaLISTBARITEMS A
     
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
   
     oConexion.BeginTrans
     bProcesoOK = True
@@ -1882,7 +1882,7 @@ End Function
 Function FarmPreventasSeleccionarPorId(ByVal oDoFarmPreVenta As DoFarmPreVenta) As Boolean
     Dim oConexion As New ADODB.Connection
     Dim oPreVenta As New FarmPreVenta
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     Set oPreVenta.Conexion = oConexion
     If oPreVenta.SeleccionarPorId(oDoFarmPreVenta) Then
         FarmPreventasSeleccionarPorId = True
@@ -1897,7 +1897,7 @@ End Function
 Function FarmPreVentaDetalleDevuelveTodosItems(lnIdPreventa As Long) As ADODB.Recordset
     Dim oConexion As New ADODB.Connection
     Dim oTabla As New FarmPreVentaDetalle
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     Set oTabla.Conexion = oConexion
     Set FarmPreVentaDetalleDevuelveTodosItems = oTabla.DevuelveTodosItems(lnIdPreventa)
@@ -1909,7 +1909,7 @@ End Function
 Function FarmPreVentaEliminaTodosItems(oDoPreventaDetalle As DoFarmPreVentaDetalle) As Boolean
     Dim oConexion As New ADODB.Connection
     Dim oTabla As New FarmPreVentaDetalle
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     Set oTabla.Conexion = oConexion
     FarmPreVentaEliminaTodosItems = oTabla.Eliminar(oDoPreventaDetalle)
@@ -1939,7 +1939,7 @@ Function AgregaDatosDeIntervencion(ByVal oDoMovimiento As DoFarmMovimiento, _
     
     oConexion.CommandTimeout = 900
     oConexion.CursorLocation = adUseClient
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.BeginTrans
     
     bProcesoOK = True
@@ -1965,7 +1965,7 @@ Function AgregaDatosDeIntervencion(ByVal oDoMovimiento As DoFarmMovimiento, _
     Call mo_ReglasSeguridad.AuditoriaAgregarV(oDoMovimiento.IdUsuarioAuditoria, "A", 0, "FarmMovimiento/" & oDoMovimiento.MovTipo & "/" & oDoMovimiento.movNumero, oConexion, mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc, "")            'ListBarItems.idListItem
     '*************vuelve a chequear saldos ****************
     If Not DevuelveDetalleProductosConLotes(oConexion, oDoMovimiento.idAlmacenOrigen, oRsDetalleProductos, _
-                                            oDoMovimiento.fechaCreacion, sghTipoSalidaItemFarmacia.sghSoloEstrategico, _
+                                            oDoMovimiento.FechaCreacion, sghTipoSalidaItemFarmacia.sghSoloEstrategico, _
                                             wxParametro347) Then
         ms_MensajeError = ms_MensajeError + "Hubo problemas al Devolver Saldos con Lotes/FechasVencimiento "
         bProcesoOK = False: GoTo TerminarIS
@@ -2020,7 +2020,7 @@ Function AgregaDatosDeIntervencion(ByVal oDoMovimiento As DoFarmMovimiento, _
                                                             oRsDetalleProductosConLotes.Fields!idTipoSalidaBienInsumo, _
                                                             oRsDetalleProductosConLotes.Fields!cantidad, _
                                                             oRsDetalleProductosConLotes.Fields!Precio, _
-                                                            oDoMovimiento.fechaCreacion) Then
+                                                            oDoMovimiento.FechaCreacion) Then
                 bProcesoOK = False: GoTo TerminarIS
        End If
        lnItem = lnItem + 1
@@ -2061,7 +2061,7 @@ Function ModificaDatosDeIntervencion(oDoMovimiento As DoFarmMovimiento, oDoMovim
     
     oConexion.CommandTimeout = 900
     oConexion.CursorLocation = adUseClient
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.BeginTrans
     bProcesoOK = True
     ms_MensajeError = ""
@@ -2076,7 +2076,7 @@ Function ModificaDatosDeIntervencion(oDoMovimiento As DoFarmMovimiento, oDoMovim
     Call mo_ReglasSeguridad.AuditoriaAgregarV(oDoMovimiento.IdUsuarioAuditoria, "M", 0, "FarmMovimiento/" & oDoMovimiento.MovTipo & "/" & oDoMovimiento.movNumero, oConexion, mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc, "")            'ListBarItems.idListItem
     '*************vuelve a chequear saldos ****************
     If Not DevuelveDetalleProductosConLotes(oConexion, oDoMovimiento.idAlmacenOrigen, oRsDetalleProductos, _
-                                            oDoMovimiento.fechaCreacion, sghTipoSalidaItemFarmacia.sghSoloEstrategico, _
+                                            oDoMovimiento.FechaCreacion, sghTipoSalidaItemFarmacia.sghSoloEstrategico, _
                                             wxParametro347) Then
         ms_MensajeError = ms_MensajeError + "Hubo problemas al Devolver Saldos con Lotes/FechasVencimiento "
         bProcesoOK = False: GoTo TerminarMIS
@@ -2120,7 +2120,7 @@ Function ModificaDatosDeIntervencion(oDoMovimiento As DoFarmMovimiento, oDoMovim
            If Not oMovimientoDetalle.ActualizaSaldosPorProducto(lcConstanteMovimientoEntrada, oDoMovimiento.idAlmacenOrigen, _
                                                                 rs.Fields!idProducto, rs.Fields!Lote, _
                                                                 rs.Fields!FechaVencimiento, rs.Fields!idTipoSalidaBienInsumo, _
-                                                                rs.Fields!cantidad, rs.Fields!Precio, oDoMovimiento.fechaCreacion) Then
+                                                                rs.Fields!cantidad, rs.Fields!Precio, oDoMovimiento.FechaCreacion) Then
               bProcesoOK = False: GoTo TerminarMIS
            End If
            rs.MoveNext
@@ -2153,7 +2153,7 @@ Function ModificaDatosDeIntervencion(oDoMovimiento As DoFarmMovimiento, oDoMovim
                                                             oRsDetalleProductosConLotes.Fields!idTipoSalidaBienInsumo, _
                                                             oRsDetalleProductosConLotes.Fields!cantidad, _
                                                             oRsDetalleProductosConLotes.Fields!Precio, _
-                                                            oDoMovimiento.fechaCreacion) Then
+                                                            oDoMovimiento.FechaCreacion) Then
                 bProcesoOK = False: GoTo TerminarMIS
        End If
        lnItem = lnItem + 1
@@ -2181,7 +2181,7 @@ End Function
 Function FarmMovimientoProgramaSeleccionarPorId(ByVal oDoMovimientoPrograma As DOfarmMovimientoProgramas) As Boolean
     Dim oConexion As New ADODB.Connection
     Dim oMovimientoProg As New farmMovimientoProgramas
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     Set oMovimientoProg.Conexion = oConexion
     If oMovimientoProg.SeleccionarPorId(oDoMovimientoPrograma) Then
         FarmMovimientoProgramaSeleccionarPorId = True
@@ -2224,7 +2224,7 @@ Function AgregaDatosDeNotaIngreso(oDoMovimiento As DoFarmMovimiento, oDoMovimien
     Dim bProcesoOK As Boolean
     oConexion.CommandTimeout = 900
     oConexion.CursorLocation = adUseClient
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.BeginTrans
     bProcesoOK = True
     ms_MensajeError = ""
@@ -2288,14 +2288,14 @@ Function AgregaDatosDeNotaIngreso(oDoMovimiento As DoFarmMovimiento, oDoMovimien
        If Not oMovimientoDetalle.Insertar(oDoMovimientoDetalle) Then
                 bProcesoOK = False: ms_MensajeError = oMovimientoDetalle.MensajeError: GoTo TerminarNI
        End If
-       If Not oMovimientoDetalle.ActualizaSaldosPorProducto(lcConstanteMovimientoEntrada, oDoMovimiento.idAlmacenDestino, oRsDetalleProductos.Fields!idProducto, oRsDetalleProductos.Fields!Lote, oRsDetalleProductos.Fields!FechaVencimiento, oRsDetalleProductos.Fields!idTipoSalidaBienInsumo, oRsDetalleProductos.Fields!cantidad, oRsDetalleProductos.Fields!Precio, oDoMovimiento.fechaCreacion) Then
+       If Not oMovimientoDetalle.ActualizaSaldosPorProducto(lcConstanteMovimientoEntrada, oDoMovimiento.idAlmacenDestino, oRsDetalleProductos.Fields!idProducto, oRsDetalleProductos.Fields!Lote, oRsDetalleProductos.Fields!FechaVencimiento, oRsDetalleProductos.Fields!idTipoSalidaBienInsumo, oRsDetalleProductos.Fields!cantidad, oRsDetalleProductos.Fields!Precio, oDoMovimiento.FechaCreacion) Then
                 bProcesoOK = False: ms_MensajeError = oMovimientoDetalle.MensajeError: GoTo TerminarNI
        End If
        '*********  graba Devoluciones  de Pacientes***************
        If oDoMovimiento.idTipoConcepto = 21 And oDoMovimientoNotaIngreso.idCuentaAtencion > 0 Then
             With oDoFacturacionBienesDevol
                 .cantidadAdevolver = oRsDetalleProductos.Fields!cantidad
-                .FechaAutoriza = oDoMovimiento.fechaCreacion
+                .FechaAutoriza = oDoMovimiento.FechaCreacion
                 .IdComprobantePago = 0
                 .idEstadoDevolucion = 2  'devuelto
                 .idProducto = oRsDetalleProductos.Fields!idProducto
@@ -2385,7 +2385,7 @@ End Function
 Function FarmMovimientoNotaIngresoSeleccionarPorId(ByVal oDoMovimientoNotaIngreso As DOfarmMovimientoNotaIngreso) As Boolean
     Dim oConexion As New ADODB.Connection
     Dim oMovimiento As New FarmMovimientoNotaIngreso
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     Set oMovimiento.Conexion = oConexion
     If oMovimiento.SeleccionarPorId(oDoMovimientoNotaIngreso) Then
         FarmMovimientoNotaIngresoSeleccionarPorId = True
@@ -2415,7 +2415,7 @@ Function ModificaDatosDeNotaIngreso(oDoMovimiento As DoFarmMovimiento, oDoMovimi
     
     oConexion.CommandTimeout = 900
     oConexion.CursorLocation = adUseClient
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.BeginTrans
     bProcesoOK = True
     ms_MensajeError = ""
@@ -2469,7 +2469,7 @@ Function ModificaDatosDeNotaIngreso(oDoMovimiento As DoFarmMovimiento, oDoMovimi
        If Not FarmMovimientoDetalleEliminar(oConexion, oDoMovimientoDetalle) Then
           bProcesoOK = False: GoTo TerminarMNI
        End If
-       If Not oMovimientoDetalle.ActualizaSaldosPorProducto(lcConstanteMovimientoSalida, oDoMovimiento.idAlmacenDestino, rs.Fields!idProducto, rs.Fields!Lote, rs.Fields!FechaVencimiento, rs.Fields!idTipoSalidaBienInsumo, rs.Fields!cantidad, rs.Fields!Precio, oDoMovimiento.fechaCreacion) Then
+       If Not oMovimientoDetalle.ActualizaSaldosPorProducto(lcConstanteMovimientoSalida, oDoMovimiento.idAlmacenDestino, rs.Fields!idProducto, rs.Fields!Lote, rs.Fields!FechaVencimiento, rs.Fields!idTipoSalidaBienInsumo, rs.Fields!cantidad, rs.Fields!Precio, oDoMovimiento.FechaCreacion) Then
           bProcesoOK = False: GoTo TerminarMNI
        End If
        rs.MoveNext
@@ -2498,14 +2498,14 @@ Function ModificaDatosDeNotaIngreso(oDoMovimiento As DoFarmMovimiento, oDoMovimi
        If Not oMovimientoDetalle.Insertar(oDoMovimientoDetalle) Then
                 bProcesoOK = False: GoTo TerminarMNI
        End If
-       If Not oMovimientoDetalle.ActualizaSaldosPorProducto(lcConstanteMovimientoEntrada, oDoMovimiento.idAlmacenDestino, oRsDetalleProductos.Fields!idProducto, oRsDetalleProductos.Fields!Lote, oRsDetalleProductos.Fields!FechaVencimiento, oRsDetalleProductos.Fields!idTipoSalidaBienInsumo, oRsDetalleProductos.Fields!cantidad, oRsDetalleProductos.Fields!Precio, oDoMovimiento.fechaCreacion) Then
+       If Not oMovimientoDetalle.ActualizaSaldosPorProducto(lcConstanteMovimientoEntrada, oDoMovimiento.idAlmacenDestino, oRsDetalleProductos.Fields!idProducto, oRsDetalleProductos.Fields!Lote, oRsDetalleProductos.Fields!FechaVencimiento, oRsDetalleProductos.Fields!idTipoSalidaBienInsumo, oRsDetalleProductos.Fields!cantidad, oRsDetalleProductos.Fields!Precio, oDoMovimiento.FechaCreacion) Then
                 bProcesoOK = False: GoTo TerminarMNI
        End If
        '*********  graba Devoluciones  de Pacientes***************
        If oDoMovimiento.idTipoConcepto = 21 And oDoMovimientoNotaIngreso.idCuentaAtencion > 0 Then
             With oDoFacturacionBienesDevol
                 .cantidadAdevolver = oRsDetalleProductos.Fields!cantidad
-                .FechaAutoriza = oDoMovimiento.fechaCreacion
+                .FechaAutoriza = oDoMovimiento.FechaCreacion
                 '.IdComprobantePago
                 .idEstadoDevolucion = 2  'devuelto
                 .idProducto = oRsDetalleProductos.Fields!idProducto
@@ -2578,7 +2578,7 @@ Function AnulaNotaIngreso(oDoMovimiento As DoFarmMovimiento, oDOfarmMovimientoNo
     
     oConexion.CommandTimeout = 900
     oConexion.CursorLocation = adUseClient
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.BeginTrans
     bProcesoOK = True
     ms_MensajeError = ""
@@ -2645,7 +2645,7 @@ Function AnulaNotaIngreso(oDoMovimiento As DoFarmMovimiento, oDOfarmMovimientoNo
     Set rs = FarmMovimientosDetalleDevuelveTodosItems(oConexion, oDoMovimiento.MovTipo, oDoMovimiento.movNumero)
     rs.MoveFirst
     Do While Not rs.EOF
-       If Not oMovimientoDetalle.ActualizaSaldosPorProducto(lcConstanteMovimientoSalida, oDoMovimiento.idAlmacenDestino, rs.Fields!idProducto, rs.Fields!Lote, rs.Fields!FechaVencimiento, rs.Fields!idTipoSalidaBienInsumo, rs.Fields!cantidad, rs.Fields!Precio, oDoMovimiento.fechaCreacion) Then
+       If Not oMovimientoDetalle.ActualizaSaldosPorProducto(lcConstanteMovimientoSalida, oDoMovimiento.idAlmacenDestino, rs.Fields!idProducto, rs.Fields!Lote, rs.Fields!FechaVencimiento, rs.Fields!idTipoSalidaBienInsumo, rs.Fields!cantidad, rs.Fields!Precio, oDoMovimiento.FechaCreacion) Then
           bProcesoOK = False: GoTo TerminarANI
        End If
        rs.MoveNext
@@ -2682,7 +2682,7 @@ Function AgregaDatosDeNotaSalida(oDoMovimiento As DoFarmMovimiento, oRsDetallePr
     Dim bProcesoOK As Boolean
     oConexion.CommandTimeout = 900
     oConexion.CursorLocation = adUseClient
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.BeginTrans
     bProcesoOK = True
     ms_MensajeError = ""
@@ -2727,7 +2727,7 @@ Function AgregaDatosDeNotaSalida(oDoMovimiento As DoFarmMovimiento, oRsDetallePr
        If Not oMovimientoDetalle.Insertar(oDoMovimientoDetalle) Then
                 bProcesoOK = False: GoTo TerminarNS
        End If
-       If Not oMovimientoDetalle.ActualizaSaldosPorProducto(lcConstanteMovimientoSalida, oDoMovimiento.idAlmacenOrigen, oRsDetalleProductos.Fields!idProducto, oRsDetalleProductos.Fields!Lote, oRsDetalleProductos.Fields!FechaVencimiento, oRsDetalleProductos.Fields!idTipoSalidaBienInsumo, oRsDetalleProductos.Fields!cantidad, oRsDetalleProductos.Fields!Precio, oDoMovimiento.fechaCreacion) Then
+       If Not oMovimientoDetalle.ActualizaSaldosPorProducto(lcConstanteMovimientoSalida, oDoMovimiento.idAlmacenOrigen, oRsDetalleProductos.Fields!idProducto, oRsDetalleProductos.Fields!Lote, oRsDetalleProductos.Fields!FechaVencimiento, oRsDetalleProductos.Fields!idTipoSalidaBienInsumo, oRsDetalleProductos.Fields!cantidad, oRsDetalleProductos.Fields!Precio, oDoMovimiento.FechaCreacion) Then
                 bProcesoOK = False: GoTo TerminarNS
        End If
        lnItem = lnItem + 1
@@ -2761,7 +2761,7 @@ Function ModificaDatosDeNotaSalida(oDoMovimiento As DoFarmMovimiento, oRsDetalle
     
     oConexion.CommandTimeout = 900
     oConexion.CursorLocation = adUseClient
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.BeginTrans
     bProcesoOK = True
     ms_MensajeError = ""
@@ -2796,7 +2796,7 @@ Function ModificaDatosDeNotaSalida(oDoMovimiento As DoFarmMovimiento, oRsDetalle
        If Not FarmMovimientoDetalleEliminar(oConexion, oDoMovimientoDetalle) Then
           bProcesoOK = False: GoTo TerminarMNS
        End If
-       If Not oMovimientoDetalle.ActualizaSaldosPorProducto(lcConstanteMovimientoEntrada, oDoMovimiento.idAlmacenOrigen, rs.Fields!idProducto, rs.Fields!Lote, rs.Fields!FechaVencimiento, rs.Fields!idTipoSalidaBienInsumo, rs.Fields!cantidad, rs.Fields!Precio, oDoMovimiento.fechaCreacion) Then
+       If Not oMovimientoDetalle.ActualizaSaldosPorProducto(lcConstanteMovimientoEntrada, oDoMovimiento.idAlmacenOrigen, rs.Fields!idProducto, rs.Fields!Lote, rs.Fields!FechaVencimiento, rs.Fields!idTipoSalidaBienInsumo, rs.Fields!cantidad, rs.Fields!Precio, oDoMovimiento.FechaCreacion) Then
           bProcesoOK = False: GoTo TerminarMNS
        End If
        rs.MoveNext
@@ -2824,7 +2824,7 @@ Function ModificaDatosDeNotaSalida(oDoMovimiento As DoFarmMovimiento, oRsDetalle
        If Not oMovimientoDetalle.Insertar(oDoMovimientoDetalle) Then
                 bProcesoOK = False: GoTo TerminarMNS
        End If
-       If Not oMovimientoDetalle.ActualizaSaldosPorProducto(lcConstanteMovimientoSalida, oDoMovimiento.idAlmacenOrigen, oRsDetalleProductos.Fields!idProducto, oRsDetalleProductos.Fields!Lote, oRsDetalleProductos.Fields!FechaVencimiento, oRsDetalleProductos.Fields!idTipoSalidaBienInsumo, oRsDetalleProductos.Fields!cantidad, oRsDetalleProductos.Fields!Precio, oDoMovimiento.fechaCreacion) Then
+       If Not oMovimientoDetalle.ActualizaSaldosPorProducto(lcConstanteMovimientoSalida, oDoMovimiento.idAlmacenOrigen, oRsDetalleProductos.Fields!idProducto, oRsDetalleProductos.Fields!Lote, oRsDetalleProductos.Fields!FechaVencimiento, oRsDetalleProductos.Fields!idTipoSalidaBienInsumo, oRsDetalleProductos.Fields!cantidad, oRsDetalleProductos.Fields!Precio, oDoMovimiento.FechaCreacion) Then
                 bProcesoOK = False: GoTo TerminarMNS
        End If
        lnItem = lnItem + 1
@@ -2870,7 +2870,7 @@ Function AnulaNotaSalida(oDoMovimiento As DoFarmMovimiento, mo_lnIdTablaLISTBARI
     
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
   
     oConexion.BeginTrans
     bProcesoOK = True
@@ -2906,7 +2906,7 @@ Function AnulaNotaSalida(oDoMovimiento As DoFarmMovimiento, mo_lnIdTablaLISTBARI
     If rs.RecordCount > 0 Then
         rs.MoveFirst
         Do While Not rs.EOF
-           If Not oMovimientoDetalle.ActualizaSaldosPorProducto(lcConstanteMovimientoEntrada, oDoMovimiento.idAlmacenOrigen, rs.Fields!idProducto, rs.Fields!Lote, rs.Fields!FechaVencimiento, rs.Fields!idTipoSalidaBienInsumo, rs.Fields!cantidad, rs.Fields!Precio, oDoMovimiento.fechaCreacion) Then
+           If Not oMovimientoDetalle.ActualizaSaldosPorProducto(lcConstanteMovimientoEntrada, oDoMovimiento.idAlmacenOrigen, rs.Fields!idProducto, rs.Fields!Lote, rs.Fields!FechaVencimiento, rs.Fields!idTipoSalidaBienInsumo, rs.Fields!cantidad, rs.Fields!Precio, oDoMovimiento.FechaCreacion) Then
               bProcesoOK = False: GoTo TerminarANS
            End If
            rs.MoveNext
@@ -2952,7 +2952,7 @@ End Function
 Function FarmMovimientoSeleccionarPorId(ByVal oDoMovimiento As DoFarmMovimiento) As Boolean
     Dim oConexion As New ADODB.Connection
     Dim oMovimiento As New farmMovimiento
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     Set oMovimiento.Conexion = oConexion
     If oMovimiento.SeleccionarPorId(oDoMovimiento) Then
         FarmMovimientoSeleccionarPorId = True
@@ -2993,7 +2993,7 @@ Function FarmTipoDocumentosDevuelveTodos() As ADODB.Recordset
     Dim oConexion As New ADODB.Connection
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     Set FarmTipoDocumentosDevuelveTodos = Nothing
 
     With oCommand
@@ -3027,7 +3027,7 @@ Function FarmTipoCompraDevuelveSegunFiltro(lcFiltro As String) As ADODB.Recordse
     Dim oConexion As New ADODB.Connection
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     Dim oParameter As ADODB.Parameter
 
     Set FarmTipoCompraDevuelveSegunFiltro = Nothing
@@ -3063,7 +3063,7 @@ Function FarmTipoProcesoDevuelveSegunFiltro(lcFiltro As String) As ADODB.Records
     Dim oParameter As ADODB.Parameter
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     Set FarmTipoProcesoDevuelveSegunFiltro = Nothing
      
        With oCommand
@@ -3099,7 +3099,7 @@ Function FarmTipoConceptosDevuelveParaRegistroDeNiNs(lcTipoAlmacen As String, lc
     Dim oParameter As ADODB.Parameter
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     Set FarmTipoConceptosDevuelveParaRegistroDeNiNs = Nothing
 
     With oCommand
@@ -3132,7 +3132,7 @@ Function FarmTipoConceptosDevuelveTodos() As ADODB.Recordset
     Dim oConexion As New ADODB.Connection
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     Set FarmTipoConceptosDevuelveTodos = Nothing
 
   
@@ -3162,7 +3162,7 @@ End Function
 Function FarmAlmacenSeleccionarTodosMenosExternos() As ADODB.Recordset
     Dim oConexion As New ADODB.Connection
     Dim oTabla As New farmAlmacen
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     Set oTabla.Conexion = oConexion
     Set FarmAlmacenSeleccionarTodosMenosExternos = oTabla.SeleccionarTodosMenosExternos
@@ -3177,7 +3177,7 @@ Function FarmAlmacenSeleccionarSegunFiltro(lcFiltro As String, Optional oConexio
     If oConexion1 Is Nothing Then
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open SIGHEntidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
        Set oTabla.Conexion = oConexion
     Else
        Set oTabla.Conexion = oConexion1
@@ -3204,7 +3204,7 @@ End Function
 Function FarmInventarioCabeceraDevuelveProductosPorId(lnIdInventario As Long) As ADODB.Recordset
     Dim oConexion As New ADODB.Connection
     Dim oTabla As New FarmInventarioCabecera
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     Set oTabla.Conexion = oConexion
     Set FarmInventarioCabeceraDevuelveProductosPorId = oTabla.DevuelveProductosPorId(lnIdInventario)
@@ -3217,7 +3217,7 @@ End Function
 Function FarmInventarioDetalleDevuelveProductosLotesPorId(lnIdInventario As Long) As ADODB.Recordset
     Dim oConexion As New ADODB.Connection
     Dim oTabla As New farmInventarioDetalle
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     Set oTabla.Conexion = oConexion
     Set FarmInventarioDetalleDevuelveProductosLotesPorId = oTabla.DevuelveProductosLotesPorId(lnIdInventario)
@@ -3231,7 +3231,7 @@ End Function
 Function FarmInventarioSeleccionarPorId(ByVal oDoInventario As DOfarmInventario) As Boolean
     Dim oConexion As New ADODB.Connection
     Dim oInventario As New farmInventario
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     Set oInventario.Conexion = oConexion
     If oInventario.SeleccionarPorId(oDoInventario) Then
         FarmInventarioSeleccionarPorId = True
@@ -3247,7 +3247,7 @@ End Function
 Function FarmInventarioDevuelveLista() As ADODB.Recordset
     Dim oConexion As New ADODB.Connection
     Dim oTabla As New farmInventario
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     Set oTabla.Conexion = oConexion
     Set FarmInventarioDevuelveLista = oTabla.DevuelveListaInventarios
@@ -3279,7 +3279,7 @@ Dim oConexion As New ADODB.Connection
 Dim ms_MensajeError As String
     Set FarmDevuelveSaldosSegunAlmacen = Nothing
     ms_MensajeError = ""
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     With oCommand
         .CommandType = adCmdStoredProc
@@ -3310,7 +3310,7 @@ Function FarmDevuelveMovimientos(lnIdAlmacen As Long, lcTipoMov As String, ldFec
     Dim ms_MensajeError As String
     Set FarmDevuelveMovimientos = Nothing
     ms_MensajeError = ""
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     With oCommand
         .CommandType = adCmdStoredProc
@@ -3345,7 +3345,7 @@ Function FarmDevuelveCabeceraDeVentasOpreventa(lcTipoVenta As String, lnIdAlmace
     ms_MensajeError = ""
     oConexion.CommandTimeout = 300
     oConexion.CursorLocation = adUseClient
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     
     With oCommand
         .CommandType = adCmdStoredProc
@@ -3379,7 +3379,7 @@ Dim oConexion As New ADODB.Connection
 Dim ms_MensajeError As String
     Set FarmDevuelveSaldosSinLotesSegunAlmacen = Nothing
     ms_MensajeError = ""
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     With oCommand
         .CommandType = adCmdStoredProc
@@ -3418,7 +3418,7 @@ Dim ms_MensajeError As String
     If oConexion1 Is Nothing Then
         oConexion.CommandTimeout = 300
         oConexion.CursorLocation = adUseClient
-        oConexion.Open SIGHEntidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
     End If
     With oCommand
         .CommandType = adCmdStoredProc
@@ -3457,7 +3457,7 @@ Function TiposCargoSeleccionarTodos() As ADODB.Recordset
     Dim oConexion As New ADODB.Connection
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     Set TiposCargoSeleccionarTodos = Nothing
 
    With oCommand
@@ -3486,7 +3486,7 @@ Function EmpleadosDevuelvePrescriptores() As ADODB.Recordset
     Dim oConexion As New ADODB.Connection
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     Set EmpleadosDevuelvePrescriptores = Nothing
      
      With oCommand
@@ -3517,7 +3517,7 @@ Function EmpleadosDevuelveCoordinadores() As ADODB.Recordset
     Dim oConexion As New ADODB.Connection
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     Set EmpleadosDevuelveCoordinadores = Nothing
     With oCommand
         .CommandType = adCmdStoredProc
@@ -3548,7 +3548,7 @@ Function EmpleadosDeImagen(lcFiltro As String) As ADODB.Recordset
     Dim oParameter As ADODB.Parameter
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     Set EmpleadosDeImagen = Nothing
 
     With oCommand
@@ -3583,7 +3583,7 @@ Function FarmComponenteDevuelveTodos() As ADODB.Recordset
     Dim oConexion As New ADODB.Connection
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     Set FarmComponenteDevuelveTodos = Nothing
     With oCommand
         .CommandType = adCmdStoredProc
@@ -3614,7 +3614,7 @@ Function FarmTipoRecetaDevuelveTodos() As ADODB.Recordset
     Dim oConexion As New ADODB.Connection
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     Set FarmTipoRecetaDevuelveTodos = Nothing
     With oCommand
         .CommandType = adCmdStoredProc
@@ -3645,7 +3645,7 @@ Function FarmComponenteSubDevuelveTodosSegunComponente(lnIdComponente As Long) A
     Dim sSQL1 As String: Dim sSQL2 As String
     Dim oConexion As New ADODB.Connection
     Dim oParameter As ADODB.Parameter
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     Set FarmComponenteSubDevuelveTodosSegunComponente = Nothing
 
@@ -3676,7 +3676,7 @@ Function farmTipoSalidaBienInsumoDevuelveTodos() As ADODB.Recordset
     Dim oCommand As New ADODB.Command
     Dim sSQL1 As String: Dim sSQL2 As String
     Dim oConexion As New ADODB.Connection
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
    
    With oCommand
@@ -3707,7 +3707,7 @@ Dim oConexion As New ADODB.Connection
 Dim ms_MensajeError As String
     Set farmRegeneraSaldos = Nothing
     ms_MensajeError = ""
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     With oCommand
         .CommandType = adCmdStoredProc
@@ -3737,7 +3737,7 @@ Function TipoFinanciamientosDevuelveSoloFarmacia(lcFiltro As String) As ADODB.Re
     Dim oParameter As ADODB.Parameter
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     Set TipoFinanciamientosDevuelveSoloFarmacia = Nothing
      
    With oCommand
@@ -3770,7 +3770,7 @@ Function TipoFinanciamientosDevuelveSoloPlanes(lcFiltro As String) As ADODB.Reco
     Dim oParameter As ADODB.Parameter
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     Set TipoFinanciamientosDevuelveSoloPlanes = Nothing
 
     With oCommand
@@ -3801,7 +3801,7 @@ Function TipoFinanciamientosParaCatalogoBienes() As ADODB.Recordset
     Dim oConexion As New ADODB.Connection
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     
      With oCommand
         .CommandType = adCmdStoredProc
@@ -3826,7 +3826,7 @@ Function DevuelveEstadoDocumento1(lcSql As String) As String
     Dim oRecordset As New ADODB.Recordset
     Dim oCommand As New ADODB.Command
     Dim oConexion As New ADODB.Connection
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     DevuelveEstadoDocumento1 = ""
     With oCommand
@@ -3856,7 +3856,7 @@ Function DevuelveEstadoActualDeFacturacion(lcFiltro As String) As String
     Dim oParameter As ADODB.Parameter
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     DevuelveEstadoActualDeFacturacion = ""
 
     With oCommand
@@ -3914,7 +3914,7 @@ Function DevuelveEstadoActualDeLaboratorio(lcFiltro As String) As String
     Dim oParameter As ADODB.Parameter
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     DevuelveEstadoActualDeLaboratorio = ""
    With oCommand
         .CommandType = adCmdStoredProc
@@ -3946,7 +3946,7 @@ Function DevuelveEstadoActualDeImagen(lcFiltro As String) As String
     Dim oParameter As ADODB.Parameter
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     DevuelveEstadoActualDeImagen = ""
 
    With oCommand
@@ -3978,7 +3978,7 @@ Function DevuelveEstadoActualDePreventa(lcFiltro As String) As String
     Dim oParameter As ADODB.Parameter
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     DevuelveEstadoActualDePreventa = ""
 
    With oCommand
@@ -4011,7 +4011,7 @@ Function DevuelveEstadoActualDelMovimiento(lcFiltro As String) As String
     Dim oParameter As ADODB.Parameter
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     DevuelveEstadoActualDelMovimiento = ""
    With oCommand
         .CommandType = adCmdStoredProc
@@ -4044,7 +4044,7 @@ Function DevuelveEstadoActualDelInventario(lcFiltro As String) As String
     Dim oParameter As ADODB.Parameter
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     DevuelveEstadoActualDelInventario = ""
      
    With oCommand
@@ -4077,7 +4077,7 @@ Function FarmAlmacenesDevuelveListaDependenciasExternas() As ADODB.Recordset
     Dim oCommand As New ADODB.Command
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     Set FarmAlmacenesDevuelveListaDependenciasExternas = Nothing
 
     
@@ -4100,7 +4100,7 @@ Function FarmAlmacenAgregar(oDOFarmAlmacen As DoFarmAlmacen, mo_lnIdTablaLISTBAR
 Dim oConexion As New ADODB.Connection
 Dim oFarmAlmacen As New farmAlmacen
     FarmAlmacenAgregar = False
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     Set oFarmAlmacen.Conexion = oConexion
     If oFarmAlmacen.Insertar(oDOFarmAlmacen) Then
         '
@@ -4119,7 +4119,7 @@ Function FarmAlmacenModificar(oDOFarmAlmacen As DoFarmAlmacen, mo_lnIdTablaLISTB
 Dim oConexion As New ADODB.Connection
 Dim oFarmAlmacen As New farmAlmacen
     FarmAlmacenModificar = False
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     Set oFarmAlmacen.Conexion = oConexion
     If oFarmAlmacen.modificar(oDOFarmAlmacen) Then
         '
@@ -4139,7 +4139,7 @@ Function FarmAlmacenEliminar(oDOFarmAlmacen As DoFarmAlmacen, mo_lnIdTablaLISTBA
     Dim oConexion As New ADODB.Connection
     Dim oFarmAlmacen As New farmAlmacen
     FarmAlmacenEliminar = False
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     Set oFarmAlmacen.Conexion = oConexion
     If oFarmAlmacen.Eliminar(oDOFarmAlmacen) Then
         '
@@ -4159,7 +4159,7 @@ Function FarmAlmacenSeleccionarPorId(IdAlmacen As Long) As DoFarmAlmacen
     Dim oFarmAlmacen As New farmAlmacen
     Dim oDOFarmAlmacen As New DoFarmAlmacen
     Set FarmAlmacenSeleccionarPorId = Nothing
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     Set oFarmAlmacen.Conexion = oConexion
     oDOFarmAlmacen.IdAlmacen = IdAlmacen
@@ -4183,7 +4183,7 @@ Dim oConexion As New ADODB.Connection
 Dim ms_MensajeError As String
     Set FarmMovimientoVentasSeleccionarPorIdPreventa = Nothing
     ms_MensajeError = ""
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     With oCommand
         .CommandType = adCmdStoredProc
@@ -4217,7 +4217,7 @@ Function DevuelvePrecioSegunTipoConcepto(lnIdProducto As Long, lnIdTipoPrecioPar
     Dim oConexion As New ADODB.Connection
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     lnPrecio = 0
     
       
@@ -4268,7 +4268,7 @@ Function DevuelvePrecioSegunTipoFinanciamiento(lnIdProducto As Long, lnIdtipoFin
     Dim oConexion As New ADODB.Connection
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     
     With oCommand
         .CommandType = adCmdStoredProc
@@ -4300,7 +4300,7 @@ Dim oConexion As New ADODB.Connection
 Dim ms_MensajeError As String
     Set farmMovimientoSeleccionarPorTipoYnumeroDocumento = Nothing
     ms_MensajeError = ""
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     With oCommand
         .CommandType = adCmdStoredProc
@@ -4359,7 +4359,7 @@ Dim oConexion As New ADODB.Connection
 Dim ms_MensajeError As String
     Set FarmMovimientoVentasDetalleSeleccionarPorFechas = Nothing
     ms_MensajeError = ""
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     With oCommand
         .CommandType = adCmdStoredProc
@@ -4389,7 +4389,7 @@ Dim oConexion As New ADODB.Connection
 Dim ms_MensajeError As String
     Set FarmMovimientoNotaIngresoSeleccionarPorCuenta = Nothing
     ms_MensajeError = ""
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     With oCommand
         .CommandType = adCmdStoredProc
@@ -4420,7 +4420,7 @@ Dim oConexion As New ADODB.Connection
 Dim ms_MensajeError As String
     Set FactOrdenesBienesSeleccionarPorIdComprobantePago = Nothing
     ms_MensajeError = ""
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     With oCommand
         .CommandType = adCmdStoredProc
@@ -4453,7 +4453,7 @@ Dim ms_MensajeError As String
     If oConexion1 Is Nothing Then
         oConexion.CommandTimeout = 300
         oConexion.CursorLocation = adUseClient
-        oConexion.Open SIGHEntidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
         
     Else
         Set oConexion = oConexion1
@@ -4490,7 +4490,7 @@ Dim oConexion As New ADODB.Connection
 Dim ms_MensajeError As String
     Set FacturacionBienesPagosSeleccionarPorId = Nothing
     ms_MensajeError = ""
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     With oCommand
         .CommandType = adCmdStoredProc
@@ -4523,7 +4523,7 @@ Dim ms_MensajeError As String
     If oConexion1 Is Nothing Then
         oConexion.CommandTimeout = 900
         oConexion.CursorLocation = adUseClient
-        oConexion.Open SIGHEntidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
     End If
     With oCommand
         .CommandType = adCmdStoredProc
@@ -4564,7 +4564,7 @@ Dim oConexion As New ADODB.Connection
 Dim ms_MensajeError As String
     Set FarmMovimientoNotaIngresoFiltraFuentesFinanciamiento = Nothing
     ms_MensajeError = ""
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     With oCommand
         .CommandType = adCmdStoredProc
@@ -4598,7 +4598,7 @@ Function FarmMovimientoProgramasSeleccionarPorFechas(lnIdAlmacen As Long, ldFech
     Dim ms_MensajeError As String
     Set FarmMovimientoProgramasSeleccionarPorFechas = Nothing
     ms_MensajeError = ""
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     With oCommand
         .CommandType = adCmdStoredProc
@@ -4630,7 +4630,7 @@ Function DevuelveListaDeUsuariosDelSistema() As ADODB.Recordset
     Dim oCommand As New ADODB.Command
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     Set DevuelveListaDeUsuariosDelSistema = Nothing
     
 
@@ -4661,7 +4661,7 @@ Dim oConexion As New ADODB.Connection
 Dim ms_MensajeError As String
     Set FarmMovimientoVentasFiltraTipoServicioHosp = Nothing
     ms_MensajeError = ""
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     With oCommand
         .CommandType = adCmdStoredProc
@@ -4697,7 +4697,7 @@ Function FacturacionBienesPagosSeleccionarPorMovnumero(lcMovTipo As String, lcMo
     Dim ms_MensajeError As String
     Set FacturacionBienesPagosSeleccionarPorMovnumero = Nothing
     ms_MensajeError = ""
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     With oCommand
         .CommandType = adCmdStoredProc
@@ -4730,7 +4730,7 @@ Dim oConexion As New ADODB.Connection
 Dim ms_MensajeError As String
     Set FarmDevuelveSaldosConSinLotesPorAlmacen = Nothing
     ms_MensajeError = ""
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     With oCommand
         .CommandType = adCmdStoredProc
@@ -4766,7 +4766,7 @@ Dim oConexion As New ADODB.Connection
 Dim oParameter As ADODB.Parameter
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     Set BuscaProductosPorVencer = Nothing
 
      With oCommand
@@ -4810,7 +4810,7 @@ End Function
 Function FarmDevuelveSaldosConLotesSegunAlmacen(lnIdAlmacen As Long, lnOrden As Long, lcFiltro As String) As Recordset
 Dim oFarmMovimientoDetalle As New FarmMovimientoDetalle
 Dim oConexion As New ADODB.Connection
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     Set oFarmMovimientoDetalle.Conexion = oConexion
     Set FarmDevuelveSaldosConLotesSegunAlmacen = oFarmMovimientoDetalle.FarmDevuelveSaldosConLotesSegunAlmacen(lnIdAlmacen, lnOrden, lcFiltro, oConexion)
@@ -4827,7 +4827,7 @@ Dim oConexion As New ADODB.Connection
 Dim ms_MensajeError As String
     Set AuditoriaPorFechasUsuario = Nothing
     ms_MensajeError = ""
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     With oCommand
         .CommandType = adCmdStoredProc
@@ -4862,7 +4862,7 @@ Function FarmMovimientoFiltraPorMovNumeroTipo(lcMovNumero As String, lcMovTipo A
     ms_MensajeError = ""
     oConexion.CursorLocation = adUseClient
     oConexion.CursorLocation = adUseClient
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     
     With oCommand
         .CommandType = adCmdStoredProc
@@ -4897,7 +4897,7 @@ Dim oConexion As New ADODB.Connection
 Dim ms_MensajeError As String
     Set FarmPreVentaFiltraPorIdPreVenta = Nothing
     ms_MensajeError = ""
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     With oCommand
         .CommandType = adCmdStoredProc
@@ -4944,7 +4944,7 @@ Dim ms_MensajeError As String
         .CommandText = "FacturacionCuentasAtencionSeleccionarPorIdPaciente"
         Set oParameter = .CreateParameter("@idPaciente", adInteger, adParamInput, 0, lidPaciente): .Parameters.Append oParameter
         Set oRecordset = .Execute
-        If lbMuestraVentanaDeVariasCuentasAbiertas = True And SIGHEntidades.Parametro556 = "S" Then
+        If lbMuestraVentanaDeVariasCuentasAbiertas = True And sighentidades.Parametro556 = "S" Then
            oRecordset.Filter = "idEstado=" & sghEstadoCuenta.sghAbierto
            If oRecordset.RecordCount > 1 Then
                 Dim mo_AdminAdmision As New SIGHNegocios.ReglasAdmision
@@ -4989,7 +4989,7 @@ Dim ms_MensajeError As String
 Dim lnIdServicioDelPaciente As Long
     ms_MensajeError = ""
     If oConexion1 Is Nothing Then
-        oConexion.Open SIGHEntidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
         oConexion.CursorLocation = adUseClient
     End If
     With oCommand
@@ -5086,7 +5086,7 @@ Dim oConexion As New ADODB.Connection
 Dim ms_MensajeError As String
     Set farmMovimientoVentasSeleccionarPorIdCuentaAtencion = Nothing
     ms_MensajeError = ""
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     With oCommand
         .CommandType = adCmdStoredProc
@@ -5117,7 +5117,7 @@ Dim oConexion As New ADODB.Connection
 Dim ms_MensajeError As String
     Set farmMovimientoVentasSeleccionarPorIdComprobantePago = Nothing
     ms_MensajeError = ""
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     With oCommand
         .CommandType = adCmdStoredProc
@@ -5148,7 +5148,7 @@ Dim oConexion As New ADODB.Connection
 Dim ms_MensajeError As String
     Set FacturacionBienesDevolucionesSeleccionarPorMovNumeroE = Nothing
     ms_MensajeError = ""
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     With oCommand
         .CommandType = adCmdStoredProc
@@ -5182,7 +5182,7 @@ Dim oConexion As New ADODB.Connection
 Dim ms_MensajeError As String
     Set farmMovimientoSeleccionarPorMovNumero = Nothing
     ms_MensajeError = ""
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     With oCommand
         .CommandType = adCmdStoredProc
@@ -5218,7 +5218,7 @@ Function ServiciosDondeEstuvoElPaciente(idPaciente As Long, idAtencion As Long) 
   Dim lnIdServicioDelPaciente As Long
   
   ms_MensajeError = ""
-  oConexion.Open SIGHEntidades.CadenaConexion
+  oConexion.Open sighentidades.CadenaConexion
   oConexion.CursorLocation = adUseClient
   With oCommand
     .CommandType = adCmdStoredProc
@@ -5254,7 +5254,7 @@ Function AtencionesQueTuvoElPaciente(idPaciente As Long) As ADODB.Recordset
   Dim lnIdServicioDelPaciente As Long
   
   ms_MensajeError = ""
-  oConexion.Open SIGHEntidades.CadenaConexion
+  oConexion.Open sighentidades.CadenaConexion
   oConexion.CursorLocation = adUseClient
   With oCommand
     .CommandType = adCmdStoredProc
@@ -5289,7 +5289,7 @@ Function DiagnosticosSeleccionarPorIdAtencion(idAtencion As Long) As ADODB.Recor
   Dim lnIdServicioDelPaciente As Long
   
   ms_MensajeError = ""
-  oConexion.Open SIGHEntidades.CadenaConexion
+  oConexion.Open sighentidades.CadenaConexion
   oConexion.CursorLocation = adUseClient
   With oCommand
     .CommandType = adCmdStoredProc
@@ -5323,7 +5323,7 @@ Function SeleccionaFarmaciaPorCuentaYServicio(idAtencion As Long, IdServicio As 
   Dim ms_MensajeError As String
   
   ms_MensajeError = ""
-  oConexion.Open SIGHEntidades.CadenaConexion
+  oConexion.Open sighentidades.CadenaConexion
   oConexion.CursorLocation = adUseClient
   With oCommand
     .CommandType = adCmdStoredProc
@@ -5358,7 +5358,7 @@ Function SeleccionaImagenologiaPorCuentaYServicio(idAtencion As Long, IdServicio
   Dim ms_MensajeError As String
   
   ms_MensajeError = ""
-  oConexion.Open SIGHEntidades.CadenaConexion
+  oConexion.Open sighentidades.CadenaConexion
   oConexion.CursorLocation = adUseClient
   With oCommand
     .CommandType = adCmdStoredProc
@@ -5393,7 +5393,7 @@ Function SeleccionaInsumosPorCuentaYServicio(idAtencion As Long, IdServicio As L
   Dim ms_MensajeError As String
   
   ms_MensajeError = ""
-  oConexion.Open SIGHEntidades.CadenaConexion
+  oConexion.Open sighentidades.CadenaConexion
   oConexion.CursorLocation = adUseClient
   With oCommand
     .CommandType = adCmdStoredProc
@@ -5428,7 +5428,7 @@ Function SeleccionaLaboratorioPorCuentaYServicio(idAtencion As Long, IdServicio 
   Dim ms_MensajeError As String
   
   ms_MensajeError = ""
-  oConexion.Open SIGHEntidades.CadenaConexion
+  oConexion.Open sighentidades.CadenaConexion
   oConexion.CursorLocation = adUseClient
   With oCommand
     .CommandType = adCmdStoredProc
@@ -5463,7 +5463,7 @@ Function SeleccionaProcedimientosPorCuentaYServicio(idAtencion As Long, IdServic
   Dim ms_MensajeError As String
   
   ms_MensajeError = ""
-  oConexion.Open SIGHEntidades.CadenaConexion
+  oConexion.Open sighentidades.CadenaConexion
   oConexion.CursorLocation = adUseClient
   With oCommand
     .CommandType = adCmdStoredProc
@@ -5496,7 +5496,7 @@ Dim ms_MensajeError As String
 Dim lnTotal As Double
     '
     ms_MensajeError = ""
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     With oCommand
         .CommandType = adCmdStoredProc
@@ -5538,7 +5538,7 @@ Function farmMovimientoVentasExoneracionesEnFarmacia(ldFechaIni As Date, ldFecha
   Dim ms_MensajeError As String
   
   ms_MensajeError = ""
-  oConexion.Open SIGHEntidades.CadenaConexion
+  oConexion.Open sighentidades.CadenaConexion
   oConexion.CursorLocation = adUseClient
   With oCommand
     .CommandType = adCmdStoredProc
@@ -5570,7 +5570,7 @@ Function farmMovimientoVentasSeleccionarPorNroDocumentoTipoFinanciamiento(lcNroD
   Dim ms_MensajeError As String
   
   ms_MensajeError = ""
-  oConexion.Open SIGHEntidades.CadenaConexion
+  oConexion.Open sighentidades.CadenaConexion
   oConexion.CursorLocation = adUseClient
   With oCommand
     .CommandType = adCmdStoredProc
@@ -5601,7 +5601,7 @@ Function farmMovimientoVentasDetalleSeleccionarPorId(lcMovNumero As String, lcMo
     Dim oParameter As ADODB.Parameter
     Dim ms_MensajeError As String
     Dim oConexion As New ADODB.Connection
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     Set farmMovimientoVentasDetalleSeleccionarPorId = Nothing
     ms_MensajeError = ""
@@ -5635,7 +5635,7 @@ Function FarmMovimientoVentasFiltraPorFechas(ldFechaIni As Date, ldFechaFin As D
   Dim ms_MensajeError As String
   
   ms_MensajeError = ""
-  oConexion.Open SIGHEntidades.CadenaConexion
+  oConexion.Open sighentidades.CadenaConexion
   oConexion.CursorLocation = adUseClient
   With oCommand
     .CommandType = adCmdStoredProc
@@ -5668,7 +5668,7 @@ Function FarmMovimientoFiltraPorFechasYtipoConcepto(ldFechaIni As Date, ldFechaF
   Dim ms_MensajeError As String
   
   ms_MensajeError = ""
-  oConexion.Open SIGHEntidades.CadenaConexion
+  oConexion.Open sighentidades.CadenaConexion
   oConexion.CursorLocation = adUseClient
   With oCommand
     .CommandType = adCmdStoredProc
@@ -5702,7 +5702,7 @@ Function FarmMovimientoVentasFiltraPorFechasAlmacen(ldFechaIni As Date, ldFechaF
   Dim ms_MensajeError As String
   
   ms_MensajeError = ""
-  oConexion.Open SIGHEntidades.CadenaConexion
+  oConexion.Open sighentidades.CadenaConexion
   oConexion.CursorLocation = adUseClient
   With oCommand
     .CommandType = adCmdStoredProc
@@ -5737,7 +5737,7 @@ Dim oConexion As New ADODB.Connection
 Dim ms_MensajeError As String
     Set FarmMovimientoDetalleSeleccionaPorFechasTipoConceptoAlmacen = Nothing
     ms_MensajeError = ""
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     With oCommand
         .CommandType = adCmdStoredProc
@@ -5775,7 +5775,7 @@ Dim oConexion As New ADODB.Connection
 Dim ms_MensajeError As String
     Set FacturacionBienesFinanciamientosFiltraCuentaMovimientos = Nothing
     ms_MensajeError = ""
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     With oCommand
         .CommandType = adCmdStoredProc
@@ -5809,7 +5809,7 @@ Dim oConexion As New ADODB.Connection
 Dim ms_MensajeError As String
     Set farmMovimientoDetalleSeleccionarDevolucionesPorTipoConceptoAlmacen = Nothing
     ms_MensajeError = ""
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     With oCommand
         .CommandType = adCmdStoredProc
@@ -5843,7 +5843,7 @@ Dim oConexion As New ADODB.Connection
 Dim ms_MensajeError As String
     Set FarmMovimientoDetalleSeleccionaPorFechasTipoConceptoAlmOrigen = Nothing
     ms_MensajeError = ""
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     With oCommand
         .CommandType = adCmdStoredProc
@@ -5875,7 +5875,7 @@ On Error GoTo ManejadorDeError
 Dim oCommand As New ADODB.Command
 Dim oParameter As ADODB.Parameter
 Dim oConexion As New ADODB.Connection
-   oConexion.Open SIGHEntidades.CadenaConexion
+   oConexion.Open sighentidades.CadenaConexion
    oConexion.CursorLocation = adUseClient
    With oCommand
        .CommandType = adCmdStoredProc
@@ -6053,7 +6053,7 @@ Dim oConexion As New ADODB.Connection
 Dim ms_MensajeError As String
     Set FarmMovimientoVentasDetalleSeleccionarPorAlmacenFechas = Nothing
     ms_MensajeError = ""
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     With oCommand
         .CommandType = adCmdStoredProc
@@ -6086,7 +6086,7 @@ Dim oConexion As New ADODB.Connection
 Dim ms_MensajeError As String
     Set farmMovimientoDetalleSeleccionarDevolucionPorTipoConceptoAlmacen = Nothing
     ms_MensajeError = ""
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     With oCommand
         .CommandType = adCmdStoredProc
@@ -6121,7 +6121,7 @@ Dim oConexion As New ADODB.Connection
 Dim oParameter As ADODB.Parameter
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
         Set DevuelveMovimientosDeNotaIngresos = Nothing
     With oCommand
         .CommandType = adCmdStoredProc
@@ -6158,7 +6158,7 @@ Dim ms_MensajeError As String
     ms_MensajeError = ""
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
@@ -6191,7 +6191,7 @@ Dim ms_MensajeError As String
     ms_MensajeError = ""
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
@@ -6224,7 +6224,7 @@ Dim ms_MensajeError As String
     ms_MensajeError = ""
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
@@ -6257,7 +6257,7 @@ Function AgregaDatosDeDespachoDonaciones(ByVal oDoMovimiento As DoFarmMovimiento
     Dim bProcesoOK As Boolean
     Dim oRsLookTablas As New ADODB.Recordset
     
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.BeginTrans
     
     bProcesoOK = True
@@ -6283,7 +6283,7 @@ Function AgregaDatosDeDespachoDonaciones(ByVal oDoMovimiento As DoFarmMovimiento
     Call mo_ReglasSeguridad.AuditoriaAgregarV(oDoMovimiento.IdUsuarioAuditoria, "A", 0, "FarmMovimiento/" & oDoMovimiento.MovTipo & "/" & oDoMovimiento.movNumero, oConexion, mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc, "")            'ListBarItems.idListItem
     '*************vuelve a chequear saldos ****************
     If Not DevuelveDetalleProductosConLotes(oConexion, oDoMovimiento.idAlmacenOrigen, oRsDetalleProductos, _
-                                            oDoMovimiento.fechaCreacion, sghTipoSalidaItemFarmacia.sghDonaciones, "") Then
+                                            oDoMovimiento.FechaCreacion, sghTipoSalidaItemFarmacia.sghDonaciones, "") Then
         ms_MensajeError = ms_MensajeError + "Hubo problemas al Devolver Saldos con Lotes/FechasVencimiento "
         bProcesoOK = False: GoTo TerminarIS
     End If
@@ -6325,7 +6325,7 @@ Function AgregaDatosDeDespachoDonaciones(ByVal oDoMovimiento As DoFarmMovimiento
        If Not oMovimientoDetalle.Insertar(oDoMovimientoDetalle) Then
                 bProcesoOK = False: GoTo TerminarIS
        End If
-       If Not oMovimientoDetalle.ActualizaSaldosPorProducto(lcConstanteMovimientoSalida, oDoMovimiento.idAlmacenOrigen, oRsDetalleProductosConLotes.Fields!idProducto, oRsDetalleProductosConLotes.Fields!Lote, oRsDetalleProductosConLotes.Fields!FechaVencimiento, oRsDetalleProductosConLotes.Fields!idTipoSalidaBienInsumo, oRsDetalleProductosConLotes.Fields!cantidad, oRsDetalleProductosConLotes.Fields!Precio, oDoMovimiento.fechaCreacion) Then
+       If Not oMovimientoDetalle.ActualizaSaldosPorProducto(lcConstanteMovimientoSalida, oDoMovimiento.idAlmacenOrigen, oRsDetalleProductosConLotes.Fields!idProducto, oRsDetalleProductosConLotes.Fields!Lote, oRsDetalleProductosConLotes.Fields!FechaVencimiento, oRsDetalleProductosConLotes.Fields!idTipoSalidaBienInsumo, oRsDetalleProductosConLotes.Fields!cantidad, oRsDetalleProductosConLotes.Fields!Precio, oDoMovimiento.FechaCreacion) Then
                 bProcesoOK = False: GoTo TerminarIS
        End If
        lnItem = lnItem + 1
@@ -6362,7 +6362,7 @@ Function ModificaDatosDeDespachoDonaciones(oDoMovimiento As DoFarmMovimiento, oD
     Dim rs As Recordset
     Dim oRsLookTablas As New ADODB.Recordset
     
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.BeginTrans
     bProcesoOK = True
     ms_MensajeError = ""
@@ -6377,7 +6377,7 @@ Function ModificaDatosDeDespachoDonaciones(oDoMovimiento As DoFarmMovimiento, oD
     Call mo_ReglasSeguridad.AuditoriaAgregarV(oDoMovimiento.IdUsuarioAuditoria, "M", 0, "FarmMovimiento/" & oDoMovimiento.MovTipo & "/" & oDoMovimiento.movNumero, oConexion, mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc, "")            'ListBarItems.idListItem
     '*************vuelve a chequear saldos ****************
     If Not DevuelveDetalleProductosConLotes(oConexion, oDoMovimiento.idAlmacenOrigen, oRsDetalleProductos, _
-                                            oDoMovimiento.fechaCreacion, sghTipoSalidaItemFarmacia.sghDonaciones, "") Then
+                                            oDoMovimiento.FechaCreacion, sghTipoSalidaItemFarmacia.sghDonaciones, "") Then
         ms_MensajeError = ms_MensajeError + "Hubo problemas al Devolver Saldos con Lotes/FechasVencimiento "
         bProcesoOK = False: GoTo TerminarMIS
     End If
@@ -6412,7 +6412,7 @@ Function ModificaDatosDeDespachoDonaciones(oDoMovimiento As DoFarmMovimiento, oD
            If Not oMovimientoDetalle.Eliminar(oDoMovimientoDetalle) Then
               bProcesoOK = False: GoTo TerminarMIS
            End If
-           If Not oMovimientoDetalle.ActualizaSaldosPorProducto(lcConstanteMovimientoEntrada, oDoMovimiento.idAlmacenOrigen, rs.Fields!idProducto, rs.Fields!Lote, rs.Fields!FechaVencimiento, rs.Fields!idTipoSalidaBienInsumo, rs.Fields!cantidad, rs.Fields!Precio, oDoMovimiento.fechaCreacion) Then
+           If Not oMovimientoDetalle.ActualizaSaldosPorProducto(lcConstanteMovimientoEntrada, oDoMovimiento.idAlmacenOrigen, rs.Fields!idProducto, rs.Fields!Lote, rs.Fields!FechaVencimiento, rs.Fields!idTipoSalidaBienInsumo, rs.Fields!cantidad, rs.Fields!Precio, oDoMovimiento.FechaCreacion) Then
               bProcesoOK = False: GoTo TerminarMIS
            End If
            rs.MoveNext
@@ -6438,7 +6438,7 @@ Function ModificaDatosDeDespachoDonaciones(oDoMovimiento As DoFarmMovimiento, oD
        If Not oMovimientoDetalle.Insertar(oDoMovimientoDetalle) Then
                 bProcesoOK = False: GoTo TerminarMIS
        End If
-       If Not oMovimientoDetalle.ActualizaSaldosPorProducto(lcConstanteMovimientoSalida, oDoMovimiento.idAlmacenOrigen, oRsDetalleProductosConLotes.Fields!idProducto, oRsDetalleProductosConLotes.Fields!Lote, oRsDetalleProductosConLotes.Fields!FechaVencimiento, oRsDetalleProductosConLotes.Fields!idTipoSalidaBienInsumo, oRsDetalleProductosConLotes.Fields!cantidad, oRsDetalleProductosConLotes.Fields!Precio, oDoMovimiento.fechaCreacion) Then
+       If Not oMovimientoDetalle.ActualizaSaldosPorProducto(lcConstanteMovimientoSalida, oDoMovimiento.idAlmacenOrigen, oRsDetalleProductosConLotes.Fields!idProducto, oRsDetalleProductosConLotes.Fields!Lote, oRsDetalleProductosConLotes.Fields!FechaVencimiento, oRsDetalleProductosConLotes.Fields!idTipoSalidaBienInsumo, oRsDetalleProductosConLotes.Fields!cantidad, oRsDetalleProductosConLotes.Fields!Precio, oDoMovimiento.FechaCreacion) Then
                 bProcesoOK = False: GoTo TerminarMIS
        End If
        lnItem = lnItem + 1
@@ -6466,7 +6466,7 @@ End Function
 Function FarmMovimientoDespachoDonacionesSeleccionarPorId(ByVal oDoFarmMovimientoDespachoDonaciones As DoFarmMovimientoDonaciones) As Boolean
     Dim oConexion As New ADODB.Connection
     Dim oMovimientoDespachoDonaciones As New FarmMovimientoDonaciones
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     Set oMovimientoDespachoDonaciones.Conexion = oConexion
     If oMovimientoDespachoDonaciones.SeleccionarPorId(oDoFarmMovimientoDespachoDonaciones) Then
         FarmMovimientoDespachoDonacionesSeleccionarPorId = True
@@ -6489,7 +6489,7 @@ Function EmpleadosDevuelveSoloServicioSocial() As ADODB.Recordset
     Dim oConexion As New ADODB.Connection
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     Set EmpleadosDevuelveSoloServicioSocial = Nothing
 
      
@@ -6522,7 +6522,7 @@ Function FarmMovimientoDonacionesSeleccionarPorFechas(lnIdAlmacen As Long, ldFec
     Dim ms_MensajeError As String
     Set FarmMovimientoDonacionesSeleccionarPorFechas = Nothing
     ms_MensajeError = ""
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     With oCommand
         .CommandType = adCmdStoredProc
@@ -6549,7 +6549,7 @@ End Function
 Function CargaUltimoCorrelativoIdAlmacen() As Long
     Dim oFarmAlmacen  As New farmAlmacen
     Dim oConexion As New Connection
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     Set oFarmAlmacen.Conexion = oConexion
     CargaUltimoCorrelativoIdAlmacen = oFarmAlmacen.CargaUltimoCorrelativoIdAlmacen
@@ -6565,7 +6565,7 @@ Function DevuelveDiagnosticoSegunSubComponente(lnIdSubComponente As Long, ByRef 
         Dim oConexion As New ADODB.Connection
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open SIGHEntidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
         
         DevuelveDiagnosticoSegunSubComponente = ""
         lcTipoSOPORTE = ""
@@ -6608,7 +6608,7 @@ Function DevuelveSiElInventarioYaExiste(lcNroInventario As String) As Long
         Dim oConexion As New ADODB.Connection
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open SIGHEntidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
         
 
     With oCommand
@@ -6637,7 +6637,7 @@ Sub FiltraSaldoParaElAjuste(lcDctoAjuste As String, lnIdAlmacenA As Long, ByRef 
     Dim oConexion As New ADODB.Connection
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     
 
     With oCommand
@@ -6711,7 +6711,7 @@ Dim oConexion As New ADODB.Connection
     Set FarmRelModDevuelveSegunFiltro = Nothing
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
@@ -6737,7 +6737,7 @@ Dim oParameter As ADODB.Parameter
 Dim oConexion As New ADODB.Connection
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
@@ -6768,7 +6768,7 @@ Dim ms_MensajeError As String
     If oConexion1 Is Nothing Then
         oConexion.CommandTimeout = 900
         oConexion.CursorLocation = adUseClient
-        oConexion.Open SIGHEntidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
     End If
     With oCommand
         .CommandType = adCmdStoredProc
@@ -6809,7 +6809,7 @@ Sub ActualizaCorrelativosPorAnio(lcAnio As String)
         Dim oParameter As ADODB.Parameter
         
         oConexion.CommandTimeout = 300
-        oConexion.Open SIGHEntidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
         oConexion.BeginTrans
         With oCommand
              .CommandType = adCmdStoredProc
@@ -6886,7 +6886,7 @@ Function FarmMovimientoSeleccionarPorFechasCabecera(lcFechaInicial As String, lc
     Dim oConexion As New ADODB.Connection
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     Set FarmMovimientoSeleccionarPorFechasCabecera = Nothing
     
     With oCommand
@@ -6922,7 +6922,7 @@ Dim oConexion As New ADODB.Connection
     Set SaldoTotalDelEstablecimiento = Nothing
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
@@ -6951,7 +6951,7 @@ Dim oConexion As New ADODB.Connection
     Set SaldoDetalladoPorItemSeleccionarPorCodigo = Nothing
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
@@ -6980,7 +6980,7 @@ Dim oConexion As New ADODB.Connection
     Set FarmMovimientoVentasSeleccionarPorCuenta = Nothing
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
@@ -7054,7 +7054,7 @@ Dim oConexion As New ADODB.Connection
     Set farmMovimientoVentasDetalleSeleccionarXidCuenta = Nothing
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
@@ -7154,7 +7154,7 @@ Sub FarmaciaActualizaFechaDeVencimiento(ldfechaVencimientoNueva As Date, lnIdPro
     
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     
     
     With oCommand
@@ -7162,8 +7162,8 @@ Sub FarmaciaActualizaFechaDeVencimiento(ldfechaVencimientoNueva As Date, lnIdPro
                 Set .ActiveConnection = oConexion
                 .CommandTimeout = 150
                 .CommandText = "FarmaciaActualizaFechaDeVencimiento"
-                Set oParameter = .CreateParameter("@fechaVencimientoNueva", adDBTimeStamp, adParamInput, 0, Format(ldfechaVencimientoNueva, SIGHEntidades.DevuelveFechaSoloFormato_DMY)): .Parameters.Append oParameter
-                Set oParameter = .CreateParameter("@FechaVencimientoActual", adDBTimeStamp, adParamInput, 0, Format(lcFechaVencimientoActual, SIGHEntidades.DevuelveFechaSoloFormato_DMY)): .Parameters.Append oParameter
+                Set oParameter = .CreateParameter("@fechaVencimientoNueva", adDBTimeStamp, adParamInput, 0, Format(ldfechaVencimientoNueva, sighentidades.DevuelveFechaSoloFormato_DMY)): .Parameters.Append oParameter
+                Set oParameter = .CreateParameter("@FechaVencimientoActual", adDBTimeStamp, adParamInput, 0, Format(lcFechaVencimientoActual, sighentidades.DevuelveFechaSoloFormato_DMY)): .Parameters.Append oParameter
                 Set oParameter = .CreateParameter("@Lote", adVarChar, adParamInput, 15, lcLote): .Parameters.Append oParameter
                 Set oParameter = .CreateParameter("@IdProducto", adInteger, adParamInput, 0, lnIdProducto): .Parameters.Append oParameter
                 .Execute
@@ -7186,7 +7186,7 @@ Dim oConexion As New ADODB.Connection
     Set FarmaciaMuestraSaldosPorCodigo = Nothing
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
@@ -7213,7 +7213,7 @@ Dim oConexion As New ADODB.Connection
     
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
@@ -7242,7 +7242,7 @@ Dim oConexion As New ADODB.Connection
     
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
@@ -7273,7 +7273,7 @@ Dim oConexion As New ADODB.Connection
     If oConexion1 Is Nothing Then
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open SIGHEntidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
     End If
     With oCommand
         .CommandType = adCmdStoredProc
@@ -7310,7 +7310,7 @@ Dim oConexion As New ADODB.Connection
     Set farmMovimientoVentasFiltrarMovnumero = Nothing
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
@@ -7339,7 +7339,7 @@ Function FarmMovimientoVentasFiltrarFechasAlmacIdTipoServ1(mda_FechaInicio As Da
     Dim oConexion As New ADODB.Connection
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
 
     On Error GoTo errFMV
     With oCommand
@@ -7375,7 +7375,7 @@ Dim oConexion As New ADODB.Connection
     Set FarmInventarioSeleccionarXdocumento = Nothing
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
@@ -7406,15 +7406,15 @@ Sub ActualizaImporteDeCabeceraMovimientos(mda_FechaInicio As Date, mda_FechaFin 
     Dim oParameter As ADODB.Parameter
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
 
    With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
         .CommandTimeout = 150
         .CommandText = "ActualizaImporteDeCabeceraMovimientos"
-        Set oParameter = .CreateParameter("@FechaInicio", adDBTimeStamp, adParamInput, 0, Format(mda_FechaInicio, SIGHEntidades.DevuelveFechaSoloFormato_DMY_HMS)): .Parameters.Append oParameter
-        Set oParameter = .CreateParameter("@FechaFin", adDBTimeStamp, adParamInput, 0, Format(mda_FechaFin, SIGHEntidades.DevuelveFechaSoloFormato_DMY_HMS)): .Parameters.Append oParameter
+        Set oParameter = .CreateParameter("@FechaInicio", adDBTimeStamp, adParamInput, 0, Format(mda_FechaInicio, sighentidades.DevuelveFechaSoloFormato_DMY_HMS)): .Parameters.Append oParameter
+        Set oParameter = .CreateParameter("@FechaFin", adDBTimeStamp, adParamInput, 0, Format(mda_FechaFin, sighentidades.DevuelveFechaSoloFormato_DMY_HMS)): .Parameters.Append oParameter
         Set oRsAct1 = .Execute
         Set oRsAct1.ActiveConnection = Nothing
    End With
@@ -7428,7 +7428,7 @@ Sub ActualizaImporteDeCabeceraMovimientos(mda_FechaInicio As Date, mda_FechaFin 
           lnidtipoConcepto = oRsAct1.Fields!idTipoConcepto
           LcTexto1 = oRsAct1.Fields!MovTipo
           lcTexto2 = oRsAct1.Fields!movNumero
-          lcNombre = Format(oRsAct1.Fields!fechaCreacion, SIGHEntidades.DevuelveFechaSoloFormato_DMY) & " - " & IIf(IsNull(oRsAct1.Fields!DocumentoNumero), "", oRsAct1.Fields!DocumentoNumero)
+          lcNombre = Format(oRsAct1.Fields!FechaCreacion, sighentidades.DevuelveFechaSoloFormato_DMY) & " - " & IIf(IsNull(oRsAct1.Fields!DocumentoNumero), "", oRsAct1.Fields!DocumentoNumero)
           lnPrecio = oRsAct1.Fields!totalMovimiento
           ml_Importe = 0
           Do While Not oRsAct1.EOF And LcTexto1 = oRsAct1.Fields!MovTipo And lcTexto2 = oRsAct1.Fields!movNumero
@@ -7547,7 +7547,7 @@ Dim oConexion As New ADODB.Connection
     Set farmSaldoMensualFiltrarFechaYalmacen = Nothing
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
@@ -7579,7 +7579,7 @@ Dim oConexion As New ADODB.Connection
     
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
@@ -7592,11 +7592,11 @@ Dim oConexion As New ADODB.Connection
    lcSql = ""
    If lcWhere = "" Then
       'Todas las farmacias
-      lcSql = "saldoFecha='" & Format(ldFechaHistoricoXmes, SIGHEntidades.DevuelveFechaSoloFormato_DMY_HMS) & "'" & _
+      lcSql = "saldoFecha='" & Format(ldFechaHistoricoXmes, sighentidades.DevuelveFechaSoloFormato_DMY_HMS) & "'" & _
               " and idAlmacen<>2"
    Else
       'Una farmacia
-      lcSql = "saldoFecha='" & Format(ldFechaHistoricoXmes, SIGHEntidades.DevuelveFechaSoloFormato_DMY_HMS) & "'"
+      lcSql = "saldoFecha='" & Format(ldFechaHistoricoXmes, sighentidades.DevuelveFechaSoloFormato_DMY_HMS) & "'"
    End If
    oRs.Filter = lcSql
    
@@ -7676,7 +7676,7 @@ Dim oConexion As New ADODB.Connection
     Set farmMovimientoDetalleSeleccionarSalidasXitem = Nothing
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
@@ -7706,7 +7706,7 @@ Dim oConexion As New ADODB.Connection
     Set SaldosNegativos = Nothing
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
@@ -7779,7 +7779,7 @@ Dim oConexion As New ADODB.Connection
     Set FacturacionCuentasAtencionXidCuenta = Nothing
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
@@ -7809,7 +7809,7 @@ Dim oConexion As New ADODB.Connection
     Set farmMovimientoVentasDetalleXcuenta = Nothing
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
@@ -7907,7 +7907,7 @@ Function farmPreVentaXidComprobantePago(lnIdComprobantePago As Long, Optional oC
     If oConexion1 Is Nothing Then
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open SIGHEntidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
     End If
     With oCommand
         .CommandType = adCmdStoredProc
@@ -7944,7 +7944,7 @@ Function farmSaldoSoloFarmaciasSismed(lnIdProducto As Long, Optional oConexion1 
     If oConexion1 Is Nothing Then
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open SIGHEntidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
     End If
     With oCommand
         .CommandType = adCmdStoredProc
@@ -7983,7 +7983,7 @@ Dim oConexion As New ADODB.Connection
     Set farmSaldoTotalesSoloMayoresAcero = Nothing
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
@@ -8028,7 +8028,7 @@ Function FarmAlmacenConsultaXtipoFarmacia() As ADODB.Recordset
     
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
   
      With oCommand
         .CommandType = adCmdStoredProc
@@ -8056,7 +8056,7 @@ Function FarmAlmacenObtieneCodigoSismed(lcidTipoSuministro As String) As ADODB.R
     
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
   
      With oCommand
         .CommandType = adCmdStoredProc
@@ -8139,7 +8139,7 @@ Function farmTipoProductosSismedDevuelveTodos() As ADODB.Recordset
     Dim oCommand As New ADODB.Command
     Dim sSQL1 As String: Dim sSQL2 As String
     Dim oConexion As New ADODB.Connection
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
    
    With oCommand
@@ -8173,7 +8173,7 @@ Dim ms_MensajeError As String
     ms_MensajeError = ""
     oConexion.CommandTimeout = 300
     oConexion.CursorLocation = adUseClient
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     
     With oCommand
         .CommandType = adCmdStoredProc
@@ -8275,7 +8275,7 @@ Dim ms_MensajeError As String
     ms_MensajeError = ""
     oConexion.CommandTimeout = 300
     oConexion.CursorLocation = adUseClient
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     
     With oCommand
         .CommandType = adCmdStoredProc
@@ -8308,7 +8308,7 @@ Dim ms_MensajeError As String
     ms_MensajeError = ""
     oConexion.CommandTimeout = 300
     oConexion.CursorLocation = adUseClient
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     
     With oCommand
         .CommandType = adCmdStoredProc
@@ -8340,7 +8340,7 @@ Dim ms_MensajeError As String
     ms_MensajeError = ""
     oConexion.CommandTimeout = 300
     oConexion.CursorLocation = adUseClient
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     
     With oCommand
         .CommandType = adCmdStoredProc
@@ -8372,7 +8372,7 @@ Function farmTipoInventarioSeleccionarTodos() As ADODB.Recordset
     Dim oConexion As New ADODB.Connection
     oConexion.CommandTimeout = 300
     oConexion.CursorLocation = adUseClient
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
    
    With oCommand
         .CommandType = adCmdStoredProc
@@ -8403,7 +8403,7 @@ Dim ms_MensajeError As String
     ms_MensajeError = ""
     oConexion.CommandTimeout = 300
     oConexion.CursorLocation = adUseClient
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     
     With oCommand
         .CommandType = adCmdStoredProc
@@ -8452,7 +8452,7 @@ Dim ms_MensajeError As String
     ms_MensajeError = ""
     oConexion.CommandTimeout = 300
     oConexion.CursorLocation = adUseClient
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     
     With oCommand
         .CommandType = adCmdStoredProc
@@ -8486,7 +8486,7 @@ Dim ms_MensajeError As String
     ms_MensajeError = ""
     oConexion.CommandTimeout = 300
     oConexion.CursorLocation = adUseClient
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     
     With oCommand
         .CommandType = adCmdStoredProc
@@ -8514,7 +8514,7 @@ Function farmHistPrecioSeleccionarPorId(lnIdHistPrecio As Long) As DoFarmHistPre
     Dim oDoFarmHistPrecio As New DoFarmHistPrecio
     Set farmHistPrecioSeleccionarPorId = Nothing
     oConexion.CursorLocation = adUseClient
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     Set oFarmHistPrecio.Conexion = oConexion
     oDoFarmHistPrecio.idHistPrecio = lnIdHistPrecio
     If oFarmHistPrecio.SeleccionarPorId(oDoFarmHistPrecio) Then
@@ -8533,7 +8533,7 @@ Function FarmHistPrecioAgregar(oDoFarmHistPrecio As DoFarmHistPrecio, mo_lnIdTab
     Dim oDOCatalogoBienesInsumos As New DOCatalogoBienesInsumos, oCatalogoBienesInsumos As New CatalogoBienesInsumos
     On Error GoTo ErrAdd
     FarmHistPrecioAgregar = False
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.BeginTrans
     Set oFarmHistPrecio.Conexion = oConexion
     Set oCatalogoBienesInsumos.Conexion = oConexion
@@ -8577,7 +8577,7 @@ Function FarmHistPrecioModificar(oDoFarmHistPrecio As DoFarmHistPrecio, mo_lnIdT
     Dim oDOCatalogoBienesInsumos As New DOCatalogoBienesInsumos, oCatalogoBienesInsumos As New CatalogoBienesInsumos
     On Error GoTo ErrMod
     FarmHistPrecioModificar = False
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     Set oFarmHistPrecio.Conexion = oConexion
     Set oCatalogoBienesInsumos.Conexion = oConexion
     If oFarmHistPrecio.modificar(oDoFarmHistPrecio) = True Then
@@ -8619,7 +8619,7 @@ Function FarmHistPrecioEliminar(oDoFarmHistPrecio As DoFarmHistPrecio, mo_lnIdTa
     Dim oFarmHistPrecio As New FarmHistPrecio
     On Error GoTo ErrElim
     FarmHistPrecioEliminar = False
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     Set oFarmHistPrecio.Conexion = oConexion
     If oFarmHistPrecio.Eliminar(oDoFarmHistPrecio) Then
         '
@@ -8717,7 +8717,7 @@ Function FactCatalogoBienesInsumosSeleccionarXDescripYcodigo(lcCodigo As String,
     Dim oConexion As New ADODB.Connection
     oConexion.CommandTimeout = 300
     oConexion.CursorLocation = adUseClient
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
      With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
@@ -8825,7 +8825,7 @@ Function FarmProveedorSeleccionarSegunFiltro(lcFiltro As String, Optional oConex
     If oConexion1 Is Nothing Then
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open SIGHEntidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
        Set oTabla.Conexion = oConexion
     Else
        Set oTabla.Conexion = oConexion1
@@ -8876,7 +8876,7 @@ Function AgregaDatosDeInventario(oDoInventario As DOfarmInventario, mo_rsInventa
     Dim oDoInventarioDetalle As New DoFarmInventarioDetalle
     Dim oReglasCaja As New ReglasCaja
     Dim bProcesoOK As Boolean
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.BeginTrans
     bProcesoOK = True
     'Bloqueo
@@ -8893,7 +8893,7 @@ Function AgregaDatosDeInventario(oDoInventario As DOfarmInventario, mo_rsInventa
         If lcInventarioTemporal <> "" Then
            oDoInventario.numeroInventario = lcInventarioTemporal
         Else
-           oDoInventario.numeroInventario = Right(Trim(Str(Year(oDoInventario.fechaCreacion))), 2) & Right("0" & oDoInventario.idInventario, 2)
+           oDoInventario.numeroInventario = Right(Trim(Str(Year(oDoInventario.FechaCreacion))), 2) & Right("0" & oDoInventario.idInventario, 2)
         End If
         If Not oInventario.modificar(oDoInventario) Then
            bProcesoOK = False: GoTo TerminarADI
@@ -8973,7 +8973,7 @@ Function ModificaDatosDeInventario(oDoInventario As DOfarmInventario, mo_rsInven
     Dim oDoInventarioCabecera As New DoFarmInventarioCabecera
     Dim oDoInventarioDetalle As New DoFarmInventarioDetalle
     Dim bProcesoOK As Boolean
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.BeginTrans
     bProcesoOK = True
     Set oInventario.Conexion = oConexion
@@ -9064,7 +9064,7 @@ Function AnulaInventario(oDoInventario As DOfarmInventario, mo_lnIdTablaLISTBARI
     Dim oConexion As New ADODB.Connection
     Dim oInventario As New farmInventario
     AnulaInventario = False
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     Set oInventario.Conexion = oConexion
     If oInventario.modificar(oDoInventario) Then
         '
@@ -9094,7 +9094,7 @@ Function CierraInventario(oDoInventario As DOfarmInventario, lnTotalInventario A
     Dim bProcesoOK As Boolean
     oConexion.CommandTimeout = 300
     oConexion.CursorLocation = adUseClient
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.BeginTrans
     bProcesoOK = True
     ms_MensajeError = ""
@@ -9116,7 +9116,7 @@ Function CierraInventario(oDoInventario As DOfarmInventario, lnTotalInventario A
        .movNumero = lcCorrelativo
        .MovTipo = lcConstanteMovimientoEntrada
        .total = lnTotalInventario
-       .fechaCreacion = oDoInventario.FechaCierre
+       .FechaCreacion = oDoInventario.FechaCierre
     End With
     If Not oMovimiento.Insertar(oDoMovimiento) Then
             bProcesoOK = False: GoTo TerminarCI
@@ -9148,7 +9148,7 @@ Function CierraInventario(oDoInventario As DOfarmInventario, lnTotalInventario A
        If Not oMovimientoDetalle.Insertar(oDoMovimientoDetalle) Then
                 bProcesoOK = False: GoTo TerminarCI
        End If
-       If Not oMovimientoDetalle.ActualizaSaldosPorProducto(lcConstanteMovimientoEntrada, oDoInventario.IdAlmacen, oRsInventarioDetalle.Fields!idProducto, oRsInventarioDetalle.Fields!Lote, oRsInventarioDetalle.Fields!FechaVencimiento, oRsInventarioDetalle.Fields!idTipoSalidaBienInsumo, oRsInventarioDetalle.Fields!cantidad, oRsInventarioDetalle.Fields!Precio, oDoMovimiento.fechaCreacion) Then
+       If Not oMovimientoDetalle.ActualizaSaldosPorProducto(lcConstanteMovimientoEntrada, oDoInventario.IdAlmacen, oRsInventarioDetalle.Fields!idProducto, oRsInventarioDetalle.Fields!Lote, oRsInventarioDetalle.Fields!FechaVencimiento, oRsInventarioDetalle.Fields!idTipoSalidaBienInsumo, oRsInventarioDetalle.Fields!cantidad, oRsInventarioDetalle.Fields!Precio, oDoMovimiento.FechaCreacion) Then
                 bProcesoOK = False: GoTo TerminarCI
        End If
        lnItem = lnItem + 1
@@ -9239,7 +9239,7 @@ Const lcInsumo As String = "Insumo": Const lcMedicamento As String = "Medicament
     If oConexion1 Is Nothing Then
         oConexion.CommandTimeout = 300
         oConexion.CursorLocation = adUseClient
-        oConexion.Open SIGHEntidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
         Set oRecordset = mo_reglasComunes.CatalogoBienesInsumosSeleccionarXid(lnIdProducto, oConexion)
         DevuelveTipoProducto = IIf(oRecordset!TipoProducto = 1, lcInsumo, lcMedicamento)
         oRecordset.Close
@@ -9282,7 +9282,7 @@ Dim oConexion As New ADODB.Connection
 Dim ms_MensajeError As String
     Set FacturacionBienesFinanciamientosXfechasExoneracion = Nothing
     ms_MensajeError = ""
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     With oCommand
         .CommandType = adCmdStoredProc
@@ -9317,7 +9317,7 @@ Dim ms_MensajeError As String
     ms_MensajeError = ""
     oConexion.CommandTimeout = 900
     oConexion.CursorLocation = adUseClient
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     
     With oCommand
         .CommandType = adCmdStoredProc
@@ -9352,7 +9352,7 @@ Dim ms_MensajeError As String
     ms_MensajeError = ""
     oConexion.CommandTimeout = 900
     oConexion.CursorLocation = adUseClient
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
@@ -9420,7 +9420,7 @@ Function CatalogoDIGEMIDdevuelveITEMS(lcCodigoPaquete As String) As Recordset
         ms_MensajeError = ""
         oConexion.CommandTimeout = 900
         oConexion.CursorLocation = adUseClient
-        oConexion.Open SIGHEntidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
         With oCommand
             .CommandType = adCmdStoredProc
             Set .ActiveConnection = oConexion
@@ -9452,7 +9452,7 @@ Function LaNIoNSesUnARMADO_PAQUETE(lnIdFarmacia As Long, lcIdTipoConcepto As Lon
         Dim lbExisteItemFueraDelPaquete As Boolean
         oConexion.CommandTimeout = 900
         oConexion.CursorLocation = adUseClient
-        oConexion.Open SIGHEntidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
         If lbSeBuscaDesdeNotaIngreso = True Then
            Set oRsTmp1 = FarmaciaFiltraTodosMovimientos("and dbo.farmMovimiento.idTipoConcepto=20 and " & _
                                                         "dbo.farmMovimiento.documentoNumero='" & lcNroDocumento & "' and " & _
@@ -9560,7 +9560,7 @@ Sub Farm_formDetActualizar(oRsFormDet As Recordset, lcAnioMes As String, lcAlmac
         oDofarm_formDet.CODIGO_PRE = oRsFormDet!CODIGO_PRE
         oDofarm_formDet.TIPSUM = oRsFormDet!TIPSUM
         oDofarm_formDet.ANNOMES = lcAnioMes
-        oDofarm_formDet.IdUsuarioAuditoria = SIGHEntidades.Usuario
+        oDofarm_formDet.IdUsuarioAuditoria = sighentidades.Usuario
         If Farm_FormDet.Eliminar(oDofarm_formDet) Then
            Do While Not oRsFormDet.EOF
 If Val(oRsFormDet!CODIGO_MED) = 808 Then
@@ -9619,7 +9619,7 @@ End If
            oDoFarm_FormDetL.CODIGO_PRE = oRsFormDetL!CODIGO_PRE
            oDoFarm_FormDetL.TIPSUM = oRsFormDetL!TIPSUM
            oDoFarm_FormDetL.ANNOMES = lcAnioMes
-           oDoFarm_FormDetL.IdUsuarioAuditoria = SIGHEntidades.Usuario
+           oDoFarm_FormDetL.IdUsuarioAuditoria = sighentidades.Usuario
            If oFarm_FormDetL.Eliminar(oDoFarm_FormDetL) Then
                
                oRsFormDetL.MoveFirst
@@ -9657,7 +9657,7 @@ Function farm_formDetXrangoMeses(lcAnioMesInicial As String, lcAnioMesFinal As S
         ms_MensajeError = ""
         oConexion.CommandTimeout = 900
         oConexion.CursorLocation = adUseClient
-        oConexion.Open SIGHEntidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
         With oCommand
             .CommandType = adCmdStoredProc
             Set .ActiveConnection = oConexion
@@ -9667,7 +9667,7 @@ Function farm_formDetXrangoMeses(lcAnioMesInicial As String, lcAnioMesFinal As S
             Set oParameter = .CreateParameter("@AnioMes2", adVarChar, adParamInput, 6, lcAnioMesFinal): .Parameters.Append oParameter
             Set oParameter = .CreateParameter("@Almacen", adVarChar, adParamInput, 11, lcAlmacen): .Parameters.Append oParameter
             Set oRecordset = .Execute
-SIGHEntidades.ParaAuditoria = "paso farm_formdetxrangomeses"
+sighentidades.ParaAuditoria = "paso farm_formdetxrangomeses"
             Set oRecordset.ActiveConnection = Nothing
        End With
        Set farm_formDetXrangoMeses = oRecordset
@@ -9694,7 +9694,7 @@ Function farm_formDetSeleccionaSoloGrabados(lcAnioMesInicial As String, lcAnioMe
         ms_MensajeError = ""
         oConexion.CommandTimeout = 900
         oConexion.CursorLocation = adUseClient
-        oConexion.Open SIGHEntidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
         With oCommand
             .CommandType = adCmdStoredProc
             Set .ActiveConnection = oConexion
@@ -9743,7 +9743,7 @@ Function farm_formDetChequeaICIqueFaltanGrabar(lcAnioMesInicial As String, lcAni
                   lcMes1 = Left(lcMes1, 4) + Right("0" & Trim(Str(Val(Right(lcMes1, 2)) + 1)), 2)
                End If
                'ldDia2 = CDate("01/" & Right(oRecordset!annomes, 2) & "/" & Left(oRecordset!annomes, 4))
-               ldDia2 = CDate(SIGHEntidades.UltimaFechaDDMMYYDelMesActual1(CDate("01/" & Right(oRecordset!ANNOMES, 2) & "/" & Left(oRecordset!ANNOMES, 4))))
+               ldDia2 = CDate(sighentidades.UltimaFechaDDMMYYDelMesActual1(CDate("01/" & Right(oRecordset!ANNOMES, 2) & "/" & Left(oRecordset!ANNOMES, 4))))
                oRecordset.MoveNext
             Loop
             If ms_MensajeError <> "" Then
@@ -9768,7 +9768,7 @@ Function farmSaldoSoloAlmacenSismed(lnIdProducto As Long, Optional oConexion1 As
     If oConexion1 Is Nothing Then
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open SIGHEntidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
     End If
     With oCommand
         .CommandType = adCmdStoredProc
@@ -9803,7 +9803,7 @@ Dim oConexion As New ADODB.Connection
     Set FarmSaldoDetalladoPorIdProductoIdAlmacen = Nothing
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
@@ -9830,7 +9830,7 @@ Dim oConexion As New ADODB.Connection
     Set SaldoTotalPorAlmacen = Nothing
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
@@ -9855,7 +9855,7 @@ Dim oConexion As New ADODB.Connection
     Set FarmPreventaFiltrar = Nothing
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
@@ -9899,7 +9899,7 @@ Dim oConexion As New ADODB.Connection
     Set farmInventarioParaExportar = Nothing
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
@@ -9924,7 +9924,7 @@ Function farmInventarioDetallePorFiltro(lcFiltro As String) As ADODB.Recordset
     Dim oConexion As New ADODB.Connection
     oConexion.CursorLocation = adUseClient
     oConexion.CommandTimeout = 300
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     Dim oParameter As ADODB.Parameter
 
     Set farmInventarioDetallePorFiltro = Nothing
@@ -9972,7 +9972,7 @@ Function farmUnidosisSeleccionarTodos(Optional oConexion1 As Connection) As Reco
     If oConexion1 Is Nothing Then
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
-        oConexion.Open SIGHEntidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
     End If
     Set farmUnidosisSeleccionarTodos = Nothing
 
@@ -10065,7 +10065,7 @@ Function farm_formDetLXmes(lcAnioMes As String, lcCodigoEje As String, lcTipSum 
         ms_MensajeError = ""
         oConexion.CommandTimeout = 900
         oConexion.CursorLocation = adUseClient
-        oConexion.Open SIGHEntidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
         With oCommand
             .CommandType = adCmdStoredProc
             Set .ActiveConnection = oConexion
@@ -10101,7 +10101,7 @@ Dim oConexion As New ADODB.Connection
 Dim ms_MensajeError As String
     Set farmMovimientoVentasSeleccionarXId = Nothing
     ms_MensajeError = ""
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighentidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     With oCommand
         .CommandType = adCmdStoredProc
@@ -10134,7 +10134,7 @@ Dim oConexion As New ADODB.Connection
 Dim ms_MensajeError As String
     Set farm_psicotropicosSeleccionarTodos = Nothing
     ms_MensajeError = ""
-    SIGHEntidades.AbreConexionSIGH oConexion
+    sighentidades.AbreConexionSIGH oConexion
     With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
@@ -10163,7 +10163,7 @@ Dim oConexion As New ADODB.Connection
 Dim ms_MensajeError As String
     Set farm_psicotropTipoSeleccionarTodos = Nothing
     ms_MensajeError = ""
-    SIGHEntidades.AbreConexionSIGH oConexion
+    sighentidades.AbreConexionSIGH oConexion
     With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
@@ -10191,7 +10191,7 @@ Dim oConexion As New ADODB.Connection
 Dim ms_MensajeError As String
     Set FarmaciaItemsPorDebajoStockMinimo = Nothing
     ms_MensajeError = ""
-    SIGHEntidades.AbreConexionSIGH oConexion
+    sighentidades.AbreConexionSIGH oConexion
     With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
@@ -10212,7 +10212,7 @@ End Function
 
  'JSPC 23/10/2020 Cambio29 inicio
 Function validaFecha2(retornafechaActual2 As Date, retornafechaRegistro As Date, movNumero As String) As Boolean
-   Dim mo_farmMovimiento As New sighComun.DoFarmMovimiento
+   Dim mo_farmMovimiento As New SIGHcomun.DoFarmMovimiento
    Dim mo_ReglasFarmacia As New SIGHNegocios.ReglasFarmacia
    validaFecha2 = False
    retornafechaActual2 = lcBuscaParametro.RetornaFechaServidorSQL
@@ -10222,9 +10222,27 @@ Function validaFecha2(retornafechaActual2 As Date, retornafechaRegistro As Date,
       MsgBox mo_ReglasFarmacia.MensajeError
       Exit Function
    End If
-   retornafechaRegistro = Format(mo_farmMovimiento.fechaCreacion, SIGHEntidades.DevuelveFechaSoloFormato_DMY)
+   retornafechaRegistro = Format(mo_farmMovimiento.FechaCreacion, sighentidades.DevuelveFechaSoloFormato_DMY)
    If retornafechaActual2 <> CDate(retornafechaRegistro) Then
          validaFecha2 = True
+   End If
+End Function
+'JSPC 23/10/2020 Cambio29 fin
+'JSPC 23/10/2020 Cambio29 inicio
+Function validaFecha(retornafechaActual As Date, retornafechaRegistro As Date, movNumero As String) As Boolean
+   Dim mo_farmMovimiento As New SIGHcomun.DoFarmMovimiento
+   Dim mo_ReglasFarmacia As New SIGHNegocios.ReglasFarmacia
+   validaFecha = False
+   retornafechaActual = lcBuscaParametro.RetornaFechaServidorSQL
+   mo_farmMovimiento.movNumero = movNumero
+   mo_farmMovimiento.MovTipo = lcConstanteMovimientoEntrada
+   If Not mo_ReglasFarmacia.FarmMovimientoSeleccionarPorId(mo_farmMovimiento) Then
+      MsgBox mo_ReglasFarmacia.MensajeError
+      Exit Function
+   End If
+   retornafechaRegistro = Format(mo_farmMovimiento.FechaCreacion, sighentidades.DevuelveFechaSoloFormato_DMY)
+   If retornafechaActual <> CDate(retornafechaRegistro) Then
+         validaFecha = True
    End If
 End Function
 'JSPC 23/10/2020 Cambio29 fin

@@ -1284,9 +1284,21 @@ ErrBuscarZIP:
 End Sub
 
 Private Sub Form_Activate()
-   If mo_ReglasFarmacia.LaFarmaciaEstaRegenerandoSaldos(Val(mo_cmbAlmacenDestino.BoundText)) = True Then
+'JSPC 23/10/2020 Cambio29 fin
+    Select Case mi_Opcion
+    Case sghAgregar
+        If mo_ReglasFarmacia.LaFarmaciaEstaRegenerandoSaldos(Val(mo_cmbAlmacenDestino.BoundText)) = True Then
         btnCancelar_Click
-   End If
+        End If
+    Case sghModificar
+        Dim fecha_Actual As Date
+        Dim fecha_Registro As Date
+            If mo_ReglasFarmacia.validaFecha(fecha_Actual, fecha_Registro, ml_movNumero) = True Then
+            Me.Visible = False
+            MsgBox "No tiene ACCESO a Modificar/Anular una NS" & Chr(13) & " de una Fecha Registro diferente a la actual", vbExclamation, Me.Caption
+        End If
+    End Select
+'JSPC 23/10/2020 Cambio29 fin
 End Sub
 
 Private Sub Form_Initialize()
@@ -1310,6 +1322,13 @@ Private Sub Form_Load()
         Case sghAgregar
             Me.Caption = "Agregar Nota Ingreso"
         Case sghModificar
+            'JSPC 23/10/2020 Cambio29 inicio
+            Dim fecha_Actual As Date
+            Dim fecha_Registro As Date
+            If mo_ReglasFarmacia.validaFecha(fecha_Actual, fecha_Registro, ml_movNumero) = True Then
+                Exit Sub
+            End If
+            'JSPC 23/10/2020 Cambio29 fin
             Me.Caption = "Modificar Nota Ingreso"
         Case sghConsultar
             Me.Caption = "Consultar Nota Ingreso"

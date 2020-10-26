@@ -819,16 +819,16 @@ Select Case mi_Opcion
     Case sghAgregar
 'JSPC 23/10/2020 Cambio29 fin
 'JSPC 23/10/2020 Cambio29 inicio codigo anterior
-    If mo_ReglasFarmacia.LaFarmaciaEstaRegenerandoSaldos(mo_farmMovimiento.IdAlmacenOrigen) = True Then
-        btnCancelar_Click
-        Exit Sub
-    End If
+        If mo_ReglasFarmacia.LaFarmaciaEstaRegenerandoSaldos(mo_farmMovimiento.IdAlmacenOrigen) = True Then
+            btnCancelar_Click
+            Exit Sub
+        End If
 'JSPC 23/10/2020 Cambio29 fin codigo anterior
 'JSPC 23/10/2020 Cambio29 inicio
     Case sghModificar
-    Dim fecha_Actual As Date
-    Dim fecha_Registro As Date
-    If mo_ReglasFarmacia.validaFecha2(fecha_Actual, fecha_Registro, ml_movNumero) = True Then
+        Dim fecha_Actual As Date
+        Dim fecha_Registro As Date
+        If mo_ReglasFarmacia.validaFecha2(fecha_Actual, fecha_Registro, ml_movNumero) = True Then
             Me.Visible = False
             MsgBox "No tiene ACCESO a Modificar/Anular una NS" & Chr(13) & " de una Fecha Registro diferente a la actual", vbExclamation, Me.Caption
         End If
