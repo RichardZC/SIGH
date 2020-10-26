@@ -814,21 +814,26 @@ Private Sub cmdStockMinimo_Click()
 End Sub
 
 Private Sub Form_Activate()
+'JSPC 23/10/2020 Cambio29 inicio
 Select Case mi_Opcion
     Case sghAgregar
+'JSPC 23/10/2020 Cambio29 fin
+'JSPC 23/10/2020 Cambio29 inicio codigo anterior
     If mo_ReglasFarmacia.LaFarmaciaEstaRegenerandoSaldos(mo_farmMovimiento.IdAlmacenOrigen) = True Then
         btnCancelar_Click
         Exit Sub
     End If
- Case sghModificar
-    validaFecha1
-    'If validaFecha <> True Then
-        'Me.Caption = "Modificar Nota Salida"
-        'Me.Visible = False
-    'Else
-        'Exit Sub
-    'End If
- End Select
+'JSPC 23/10/2020 Cambio29 fin codigo anterior
+'JSPC 23/10/2020 Cambio29 inicio
+    Case sghModificar
+    Dim fecha_Actual As Date
+    Dim fecha_Registro As Date
+    If mo_ReglasFarmacia.validaFecha2(fecha_Actual, fecha_Registro, ml_movNumero) = True Then
+            Me.Visible = False
+            MsgBox "No tiene ACCESO a Modificar/Anular una NS" & Chr(13) & " de una Fecha Registro diferente a la actual", vbExclamation, Me.Caption
+        End If
+    End Select
+'JSPC 23/10/2020 Cambio29 fin
 End Sub
 
 Private Sub Form_Initialize()
@@ -848,12 +853,14 @@ Private Sub Form_Load()
     Case sghAgregar
         Me.Caption = "Agregar Nota Salida"
     Case sghModificar
-        If validaFecha <> True Then
-            Me.Caption = "Modificar Nota Salida"
-        Else
+    Dim fecha_Actual As Date
+    Dim fecha_Registro As Date
+    'JSPC 23/10/2020 Cambio29 inicio
+        If mo_ReglasFarmacia.validaFecha2(fecha_Actual, fecha_Registro, ml_movNumero) = True Then
             Exit Sub
         End If
-        'Me.Caption = "Modificar Nota Salida"
+    'JSPC 23/10/2020 Cambio29 fin
+        Me.Caption = "Modificar Nota Salida"
     Case sghConsultar
         Me.Caption = "Consultar Nota Salida"
         btnImprimir.Visible = True
@@ -1578,40 +1585,4 @@ Sub CargaItemsDebajoDeStockMinimo()
  End If
  Set grdHistorico.DataSource = oRsTmp
 End Sub
- 
-Function validaFecha() As Boolean
-   validaFecha = False
-   Dim retornafechaActual As Date
-   retornafechaActual = lcBuscaParametro.RetornaFechaServidorSQL
-   mo_farmMovimiento.movNumero = ml_movNumero
-   mo_farmMovimiento.MovTipo = lcConstanteMovimientoSalida
-   If Not mo_ReglasFarmacia.FarmMovimientoSeleccionarPorId(mo_farmMovimiento) Then
-      MsgBox mo_ReglasFarmacia.MensajeError
-      Exit Function
-   End If
-   txtFregistro.Text = Format(mo_farmMovimiento.fechaCreacion, SIGHEntidades.DevuelveFechaSoloFormato_DMY)
-   If retornafechaActual <> CDate(txtFregistro.Text) Then
-         MsgBox "No tiene ACCESO a Modificar/Anular una NS" & Chr(13) & " de una Fecha Registro diferente a la actual", vbExclamation, Me.Caption
-         validaFecha = True
-   End If
- 
-End Function
-'JSPC 23/10/2020 Cambio28 inicio
-Function validaFecha1() As Boolean
-   validaFecha1 = False
-   Dim retornafechaActual1 As Date
-   retornafechaActual1 = lcBuscaParametro.RetornaFechaServidorSQL
-   mo_farmMovimiento.movNumero = ml_movNumero
-   mo_farmMovimiento.MovTipo = lcConstanteMovimientoSalida
-   If Not mo_ReglasFarmacia.FarmMovimientoSeleccionarPorId(mo_farmMovimiento) Then
-      MsgBox mo_ReglasFarmacia.MensajeError
-      Exit Function
-   End If
-   txtFregistro.Text = Format(mo_farmMovimiento.fechaCreacion, SIGHEntidades.DevuelveFechaSoloFormato_DMY)
-   If retornafechaActual1 <> CDate(txtFregistro.Text) Then
-         Me.Visible = False
-         validaFecha1 = True
-   End If
- 
-End Function
-'JSPC 23/10/2020 Cambio28 fin
+
