@@ -578,7 +578,7 @@ Dim oParameter As ADODB.Parameter
             If IsNull(oRsListaOrdenes.Fields!idPreVenta) Or oRsListaOrdenes.Fields!idPreVenta = 0 Then
                'es una Cuenta pagada, no debe mostrar pagos en VENTANA=ESTADO CUENTA, para que  vuelva a pagar
                oDOFactOrdenBien.movNumero = ""
-               oDOFactOrdenBien.MovTipo = ""
+               oDOFactOrdenBien.movTipo = ""
             End If
             oDOFactOrdenBien.IdUsuarioAuditoria = oDOCajaComprobantePago.IdUsuarioAuditoria
             If Not oFactOrdenesBienes.modificar(oDOFactOrdenBien) Then
@@ -599,7 +599,7 @@ Dim oParameter As ADODB.Parameter
                End If
                '************ FarmMovimiento
                oDoMovimiento.movNumero = oRsListaOrdenes.Fields!movNumero
-               oDoMovimiento.MovTipo = oRsListaOrdenes.Fields!MovTipo
+               oDoMovimiento.movTipo = oRsListaOrdenes.Fields!movTipo
                If Not oMovimiento.SeleccionarPorId(oDoMovimiento) Then
                     bProcesoOK = False: GoTo ErrorManager1El
                End If
@@ -610,7 +610,7 @@ Dim oParameter As ADODB.Parameter
                End If
                '************FarmMovimientoVenta
                oDoFarmMovimientoVentas.movNumero = oRsListaOrdenes.Fields!movNumero
-               oDoFarmMovimientoVentas.MovTipo = oRsListaOrdenes.Fields!MovTipo
+               oDoFarmMovimientoVentas.movTipo = oRsListaOrdenes.Fields!movTipo
                If Not oFarmMovimientoVentas.SeleccionarPorId(oDoFarmMovimientoVentas) Then
                   bProcesoOK = False: GoTo ErrorManager1El
                End If
@@ -620,7 +620,7 @@ Dim oParameter As ADODB.Parameter
                   bProcesoOK = False: GoTo ErrorManager1El
                End If
                '*********  devuelve saldos de farmSaldo,farmSaldoDetalle  ***************
-               Set rs = FarmMovimientosDetalleDevuelveTodosItems(oConexion, oDoMovimiento.MovTipo, oDoMovimiento.movNumero)
+               Set rs = FarmMovimientosDetalleDevuelveTodosItems(oConexion, oDoMovimiento.movTipo, oDoMovimiento.movNumero)
                If rs.RecordCount > 0 Then
                     oMovimientoDetalle.IdUsuarioAuditoria = oDOCajaComprobantePago.IdUsuarioAuditoria
                     rs.MoveFirst
@@ -648,7 +648,7 @@ Dim oParameter As ADODB.Parameter
                'Agrega Detalle de PAGOS
                oDoFacturacionPagos.IdOrden = oDOFactOrdenBien.IdOrden
                oDoFacturacionPagos.IdUsuarioAuditoria = oDOCajaComprobantePago.IdUsuarioAuditoria
-               Set rs = farmMovimientoVentasDetalleSeleccionarPorId(oDoMovimiento.movNumero, oDoMovimiento.MovTipo)
+               Set rs = farmMovimientoVentasDetalleSeleccionarPorId(oDoMovimiento.movNumero, oDoMovimiento.movTipo)
                If rs.RecordCount > 0 Then
                     rs.MoveFirst
                     Do While Not rs.EOF
@@ -669,7 +669,7 @@ Dim oParameter As ADODB.Parameter
             If oDOFactOrdenBien.idCuentaAtencion > 0 And (IsNull(oRsListaOrdenes.Fields!idPreVenta) Or oRsListaOrdenes.Fields!idPreVenta = 0) Then
                'agregar Cabecera Pendiente de Pago
                oDOFactOrdenBien.movNumero = oRsListaOrdenes.Fields!movNumero
-               oDOFactOrdenBien.MovTipo = oRsListaOrdenes.Fields!MovTipo
+               oDOFactOrdenBien.movTipo = oRsListaOrdenes.Fields!movTipo
                oDOFactOrdenBien.IdUsuarioAuditoria = oDOCajaComprobantePago.IdUsuarioAuditoria
                oDOFactOrdenBien.IdEstadoFacturacion = 1    'registrada
                oDOFactOrdenBien.IdComprobantePago = 0
@@ -835,7 +835,7 @@ Function AgregaDatosDeVentaDirecta(ByVal oDoMovimiento As DoFarmMovimiento, oDoF
             bProcesoOK = False: ms_MensajeError = ms_MensajeError + "Problemas con tabla MOVIMIENTO": GoTo TerminarIVDTA
     End If
     '
-    Call mo_ReglasSeguridad.AuditoriaAgregarV(oDoMovimiento.IdUsuarioAuditoria, "A", 0, "FarmMovimiento/" & oDoMovimiento.MovTipo & "/" & oDoMovimiento.movNumero, oConexion, mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc, "")            'ListBarItems.idListItem
+    Call mo_ReglasSeguridad.AuditoriaAgregarV(oDoMovimiento.IdUsuarioAuditoria, "A", 0, "FarmMovimiento/" & oDoMovimiento.movTipo & "/" & oDoMovimiento.movNumero, oConexion, mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc, "")            'ListBarItems.idListItem
     '*********** revisa nuevamente los saldos *************
     If Not DevuelveDetalleProductosConLotes(oConexion, oDoMovimiento.idAlmacenOrigen, oRsDetalleProductos, _
                                             oDoMovimiento.FechaCreacion, sghTipoSalidaItemFarmacia.sghSoloVenta, "") Then
@@ -872,7 +872,7 @@ Function AgregaDatosDeVentaDirecta(ByVal oDoMovimiento As DoFarmMovimiento, oDoF
     
     oDoMovimientoDetalle.IdUsuarioAuditoria = oDoMovimiento.IdUsuarioAuditoria
     oDoMovimientoDetalle.movNumero = oDoMovimiento.movNumero
-    oDoMovimientoDetalle.MovTipo = oDoMovimiento.MovTipo
+    oDoMovimientoDetalle.movTipo = oDoMovimiento.movTipo
     lnItem = 1
     oRsDetalleProductosConLotes.MoveFirst
     Do While Not oRsDetalleProductosConLotes.EOF
@@ -932,7 +932,7 @@ Function AgregaDatosDeVentaDirecta(ByVal oDoMovimiento As DoFarmMovimiento, oDoF
         oDoFactOrdenesBienes.idUsuario = oDoFarmMovimientoVentas.IdUsuarioAuditoria
         oDoFactOrdenesBienes.IdUsuarioAuditoria = oDoFarmMovimientoVentas.IdUsuarioAuditoria
         oDoFactOrdenesBienes.movNumero = oDoMovimiento.movNumero
-        oDoFactOrdenesBienes.MovTipo = oDoMovimiento.MovTipo
+        oDoFactOrdenesBienes.movTipo = oDoMovimiento.movTipo
         If Not oFactOrdenesBienes.Insertar(oDoFactOrdenesBienes) Then
                 bProcesoOK = False: ms_MensajeError = ms_MensajeError + "Problemas con tabla FactOrdenesBienes": GoTo TerminarIVDTA
         End If
@@ -940,14 +940,14 @@ Function AgregaDatosDeVentaDirecta(ByVal oDoMovimiento As DoFarmMovimiento, oDoF
     '*********  graba tabla farmMovimientosVentasDetalle, FacturacionBienesFinanciamientos ***************
     oDoMovimientoVentasDetalle.IdUsuarioAuditoria = oDoMovimiento.IdUsuarioAuditoria
     oDoMovimientoVentasDetalle.movNumero = lcCorrelativo
-    oDoMovimientoVentasDetalle.MovTipo = lcConstanteMovimientoSalida
+    oDoMovimientoVentasDetalle.movTipo = lcConstanteMovimientoSalida
     '
     oDoFacturacionBienesFinanciam.IdTipoFinanciamiento = oDoFarmMovimientoVentas.IdTipoFinanciamiento
     oDoFacturacionBienesFinanciam.FechaAutoriza = oDoMovimiento.FechaCreacion
     oDoFacturacionBienesFinanciam.IdUsuarioAuditoria = oDoMovimiento.idUsuario
     oDoFacturacionBienesFinanciam.IdUsuarioAutoriza = oDoMovimiento.idUsuario
     oDoFacturacionBienesFinanciam.movNumero = oDoMovimiento.movNumero
-    oDoFacturacionBienesFinanciam.MovTipo = oDoMovimiento.MovTipo
+    oDoFacturacionBienesFinanciam.movTipo = oDoMovimiento.movTipo
     oDoFacturacionBienesFinanciam.idFuenteFinanciamiento = oDoFarmMovimientoVentas.idFuenteFinanciamiento
     oRsDetalleProductos.MoveFirst
     Do While Not oRsDetalleProductos.EOF
@@ -1027,7 +1027,7 @@ Function AgregaDatosDeVentaDirecta(ByVal oDoMovimiento As DoFarmMovimiento, oDoF
                          sghAgregar, oDoMovimiento.FechaCreacion, _
                          oDoFarmMovimientoVentas.IdServicioPaciente, oDoFarmMovimientoVentas.idPaciente, _
                          oDoFarmMovimientoVentas.IdUsuarioAuditoria, oDoFarmMovimientoVentas.movNumero, lnImporteTotal, _
-                         sghPuntosCargaBasicos.sghPtoCargaFarmacia, oDoFarmMovimientoVentas.MovTipo, 0
+                         sghPuntosCargaBasicos.sghPtoCargaFarmacia, oDoFarmMovimientoVentas.movTipo, 0
     
 TerminarIVDTA:
     If bProcesoOK Then
@@ -1271,7 +1271,7 @@ Function ModificaDatosVentaDirecta(oDoMovimiento As DoFarmMovimiento, oDoFarmMov
             bProcesoOK = False: GoTo TerminarMVTDTA
     End If
     '
-    Call mo_ReglasSeguridad.AuditoriaAgregarV(oDoMovimiento.IdUsuarioAuditoria, "M", 0, "FarmMovimiento/" & oDoMovimiento.MovTipo & "/" & oDoMovimiento.movNumero, oConexion, mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc, "")            'ListBarItems.idListItem
+    Call mo_ReglasSeguridad.AuditoriaAgregarV(oDoMovimiento.IdUsuarioAuditoria, "M", 0, "FarmMovimiento/" & oDoMovimiento.movTipo & "/" & oDoMovimiento.movNumero, oConexion, mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc, "")            'ListBarItems.idListItem
     '*************vuelve a chequear saldos ****************
     If Not DevuelveDetalleProductosConLotes(oConexion, oDoMovimiento.idAlmacenOrigen, oRsDetalleProductos, _
                                             oDoMovimiento.FechaCreacion, sghTipoSalidaItemFarmacia.sghSoloVenta, "") Then
@@ -1289,12 +1289,12 @@ Function ModificaDatosVentaDirecta(oDoMovimiento As DoFarmMovimiento, oDoFarmMov
             bProcesoOK = False: GoTo TerminarMVTDTA
     End If
     '*********  Elimina tabla farmMovimientosDetalle y devuelve saldos de farmSaldo,farmSaldoDetalle  ***************
-    Set rs = FarmMovimientosDetalleDevuelveTodosItems(oConexion, oDoMovimiento.MovTipo, oDoMovimiento.movNumero)
+    Set rs = FarmMovimientosDetalleDevuelveTodosItems(oConexion, oDoMovimiento.movTipo, oDoMovimiento.movNumero)
     If rs.RecordCount > 0 Then
         rs.MoveFirst
         Do While Not rs.EOF
            oDoMovimientoDetalle.movNumero = oDoMovimiento.movNumero
-           oDoMovimientoDetalle.MovTipo = oDoMovimiento.MovTipo
+           oDoMovimientoDetalle.movTipo = oDoMovimiento.movTipo
            oDoMovimientoDetalle.idProducto = rs.Fields!idProducto
            oDoMovimientoDetalle.Lote = rs.Fields!Lote
            oDoMovimientoDetalle.FechaVencimiento = rs.Fields!FechaVencimiento
@@ -1312,7 +1312,7 @@ Function ModificaDatosVentaDirecta(oDoMovimiento As DoFarmMovimiento, oDoFarmMov
     '*********  graba tabla farmMovimientosDetalle,farmSaldo,farmSaldoDetalle  ***************
     oDoMovimientoDetalle.IdUsuarioAuditoria = oDoMovimiento.IdUsuarioAuditoria
     oDoMovimientoDetalle.movNumero = oDoMovimiento.movNumero
-    oDoMovimientoDetalle.MovTipo = oDoMovimiento.MovTipo
+    oDoMovimientoDetalle.movTipo = oDoMovimiento.movTipo
     lnItem = 1
     oRsDetalleProductosConLotes.MoveFirst
     Do While Not oRsDetalleProductosConLotes.EOF
@@ -1367,7 +1367,7 @@ Function ModificaDatosVentaDirecta(oDoMovimiento As DoFarmMovimiento, oDoFarmMov
     '*********  elimina los productos de tabla FacturacionBienesPagos, ***************
     If lbEsPlanAtencion = True Then
         oDoFactOrdenesBienes.movNumero = oDoMovimiento.movNumero
-        oDoFactOrdenesBienes.MovTipo = oDoMovimiento.MovTipo
+        oDoFactOrdenesBienes.movTipo = oDoMovimiento.movTipo
         If Not oFactOrdenesBienes.SeleccionarPorMovNumero(oDoFactOrdenesBienes) Then
                 bProcesoOK = False: GoTo TerminarMVTDTA
         End If
@@ -1381,7 +1381,7 @@ Function ModificaDatosVentaDirecta(oDoMovimiento As DoFarmMovimiento, oDoFarmMov
     lnImporteTotal = 0
     '*********  graba tabla farmMovimientosVentasDetalle, FacturacionBienesFinanciamientos ***************
     oDoFacturacionBienesFinanciam.movNumero = oDoMovimiento.movNumero
-    oDoFacturacionBienesFinanciam.MovTipo = oDoMovimiento.MovTipo
+    oDoFacturacionBienesFinanciam.movTipo = oDoMovimiento.movTipo
     If Not oFacturacionBienesFinanciam.Eliminar(oDoFacturacionBienesFinanciam) Then
        bProcesoOK = False: GoTo TerminarMVTDTA
     End If
@@ -1391,7 +1391,7 @@ Function ModificaDatosVentaDirecta(oDoMovimiento As DoFarmMovimiento, oDoFarmMov
     oDoFacturacionBienesFinanciam.IdUsuarioAutoriza = oDoMovimiento.idUsuario
     oDoFacturacionBienesFinanciam.idFuenteFinanciamiento = oDoFarmMovimientoVentas.idFuenteFinanciamiento
     oDoMovimientoVentasDetalle.movNumero = oDoMovimiento.movNumero
-    oDoMovimientoVentasDetalle.MovTipo = oDoMovimiento.MovTipo
+    oDoMovimientoVentasDetalle.movTipo = oDoMovimiento.movTipo
     oDoMovimientoVentasDetalle.IdUsuarioAuditoria = oDoMovimiento.IdUsuarioAuditoria
     If Not oMovimientoVentasDetalle.Eliminar(oDoMovimientoVentasDetalle) Then
        bProcesoOK = False: GoTo TerminarMVTDTA
@@ -1470,7 +1470,7 @@ Function ModificaDatosVentaDirecta(oDoMovimiento As DoFarmMovimiento, oDoFarmMov
                          sghAgregar, oDoMovimiento.FechaCreacion, _
                          oDoFarmMovimientoVentas.IdServicioPaciente, oDoFarmMovimientoVentas.idPaciente, _
                          oDoFarmMovimientoVentas.IdUsuarioAuditoria, oDoFarmMovimientoVentas.movNumero, lnImporteTotal, _
-                         sghPuntosCargaBasicos.sghPtoCargaFarmacia, oDoFarmMovimientoVentas.MovTipo, lnIdOrdenPago
+                         sghPuntosCargaBasicos.sghPtoCargaFarmacia, oDoFarmMovimientoVentas.movTipo, lnIdOrdenPago
     
 TerminarMVTDTA:
     If bProcesoOK Then
@@ -1962,7 +1962,7 @@ Function AgregaDatosDeIntervencion(ByVal oDoMovimiento As DoFarmMovimiento, _
             bProcesoOK = False: GoTo TerminarIS
     End If
     '
-    Call mo_ReglasSeguridad.AuditoriaAgregarV(oDoMovimiento.IdUsuarioAuditoria, "A", 0, "FarmMovimiento/" & oDoMovimiento.MovTipo & "/" & oDoMovimiento.movNumero, oConexion, mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc, "")            'ListBarItems.idListItem
+    Call mo_ReglasSeguridad.AuditoriaAgregarV(oDoMovimiento.IdUsuarioAuditoria, "A", 0, "FarmMovimiento/" & oDoMovimiento.movTipo & "/" & oDoMovimiento.movNumero, oConexion, mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc, "")            'ListBarItems.idListItem
     '*************vuelve a chequear saldos ****************
     If Not DevuelveDetalleProductosConLotes(oConexion, oDoMovimiento.idAlmacenOrigen, oRsDetalleProductos, _
                                             oDoMovimiento.FechaCreacion, sghTipoSalidaItemFarmacia.sghSoloEstrategico, _
@@ -1997,7 +1997,7 @@ Function AgregaDatosDeIntervencion(ByVal oDoMovimiento As DoFarmMovimiento, _
     '*********  graba tabla farmMovimientosDetalle,farmSaldo,farmSaldoDetalle  ***************
     oDoMovimientoDetalle.IdUsuarioAuditoria = oDoMovimiento.IdUsuarioAuditoria
     oDoMovimientoDetalle.movNumero = oDoMovimiento.movNumero
-    oDoMovimientoDetalle.MovTipo = oDoMovimiento.MovTipo
+    oDoMovimientoDetalle.movTipo = oDoMovimiento.movTipo
     lnItem = 1
     oRsDetalleProductosConLotes.MoveFirst
     Do While Not oRsDetalleProductosConLotes.EOF
@@ -2073,7 +2073,7 @@ Function ModificaDatosDeIntervencion(oDoMovimiento As DoFarmMovimiento, oDoMovim
             bProcesoOK = False: GoTo TerminarMIS
     End If
     '
-    Call mo_ReglasSeguridad.AuditoriaAgregarV(oDoMovimiento.IdUsuarioAuditoria, "M", 0, "FarmMovimiento/" & oDoMovimiento.MovTipo & "/" & oDoMovimiento.movNumero, oConexion, mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc, "")            'ListBarItems.idListItem
+    Call mo_ReglasSeguridad.AuditoriaAgregarV(oDoMovimiento.IdUsuarioAuditoria, "M", 0, "FarmMovimiento/" & oDoMovimiento.movTipo & "/" & oDoMovimiento.movNumero, oConexion, mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc, "")            'ListBarItems.idListItem
     '*************vuelve a chequear saldos ****************
     If Not DevuelveDetalleProductosConLotes(oConexion, oDoMovimiento.idAlmacenOrigen, oRsDetalleProductos, _
                                             oDoMovimiento.FechaCreacion, sghTipoSalidaItemFarmacia.sghSoloEstrategico, _
@@ -2103,12 +2103,12 @@ Function ModificaDatosDeIntervencion(oDoMovimiento As DoFarmMovimiento, oDoMovim
             bProcesoOK = False: GoTo TerminarMIS
     End If
     '*********  Elimina tabla farmMovimientosDetalle y devuelve saldos de farmSaldo,farmSaldoDetalle  ***************
-    Set rs = FarmMovimientosDetalleDevuelveTodosItems(oConexion, oDoMovimiento.MovTipo, oDoMovimiento.movNumero)
+    Set rs = FarmMovimientosDetalleDevuelveTodosItems(oConexion, oDoMovimiento.movTipo, oDoMovimiento.movNumero)
     If rs.RecordCount > 0 Then
         rs.MoveFirst
         Do While Not rs.EOF
            oDoMovimientoDetalle.movNumero = oDoMovimiento.movNumero
-           oDoMovimientoDetalle.MovTipo = oDoMovimiento.MovTipo
+           oDoMovimientoDetalle.movTipo = oDoMovimiento.movTipo
            oDoMovimientoDetalle.idProducto = rs.Fields!idProducto
            oDoMovimientoDetalle.Lote = rs.Fields!Lote
            oDoMovimientoDetalle.FechaVencimiento = rs.Fields!FechaVencimiento
@@ -2130,7 +2130,7 @@ Function ModificaDatosDeIntervencion(oDoMovimiento As DoFarmMovimiento, oDoMovim
     
     oDoMovimientoDetalle.IdUsuarioAuditoria = oDoMovimiento.IdUsuarioAuditoria
     oDoMovimientoDetalle.movNumero = oDoMovimiento.movNumero
-    oDoMovimientoDetalle.MovTipo = oDoMovimiento.MovTipo
+    oDoMovimientoDetalle.movTipo = oDoMovimiento.movTipo
     lnItem = 1
     oRsDetalleProductosConLotes.MoveFirst
     Do While Not oRsDetalleProductosConLotes.EOF
@@ -2247,7 +2247,7 @@ Function AgregaDatosDeNotaIngreso(oDoMovimiento As DoFarmMovimiento, oDoMovimien
             bProcesoOK = False: ms_MensajeError = oMovimiento.MensajeError: GoTo TerminarNI
     End If
     '
-    Call mo_ReglasSeguridad.AuditoriaAgregarV(oDoMovimiento.IdUsuarioAuditoria, "A", 0, "FarmMovimiento/" & oDoMovimiento.MovTipo & "/" & oDoMovimiento.movNumero, oConexion, mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc, "")            'ListBarItems.idListItem
+    Call mo_ReglasSeguridad.AuditoriaAgregarV(oDoMovimiento.IdUsuarioAuditoria, "A", 0, "FarmMovimiento/" & oDoMovimiento.movTipo & "/" & oDoMovimiento.movNumero, oConexion, mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc, "")            'ListBarItems.idListItem
     '************** Graba nuevo proveedor
     If oDoProveedores.RazonSocial <> "" Then
         
@@ -2268,7 +2268,7 @@ Function AgregaDatosDeNotaIngreso(oDoMovimiento As DoFarmMovimiento, oDoMovimien
     '*********  graba tabla farmMovimientosDetalle,farmSaldo,farmSaldoDetalle, actualiza Precio de Ultima Compra  ***************
     oDoMovimientoDetalle.IdUsuarioAuditoria = oDoMovimiento.IdUsuarioAuditoria
     oDoMovimientoDetalle.movNumero = oDoMovimiento.movNumero
-    oDoMovimientoDetalle.MovTipo = oDoMovimiento.MovTipo
+    oDoMovimientoDetalle.movTipo = oDoMovimiento.movTipo
     lnItem = 1
     If oRsDetalleProductos.RecordCount = 0 Then
        bProcesoOK = False: ms_MensajeError = "No existe productos": GoTo TerminarNI
@@ -2302,9 +2302,9 @@ Function AgregaDatosDeNotaIngreso(oDoMovimiento As DoFarmMovimiento, oDoMovimien
                 .IdUsuarioAuditoria = oDoMovimiento.idUsuario
                 .IdUsuarioAutoriza = oDoMovimiento.idUsuario
                 .movNumero = oRsDetalleProductos.Fields!movNumeroS
-                .MovTipo = "S"
+                .movTipo = "S"
                 .MovNumeroE = oDoMovimiento.movNumero
-                .MovTipoE = oDoMovimiento.MovTipo
+                .MovTipoE = oDoMovimiento.movTipo
             End With
             If Not oFacturacionBienesDevol.Insertar(oDoFacturacionBienesDevol) Then
                      bProcesoOK = False: ms_MensajeError = oFacturacionBienesDevol.MensajeError: GoTo TerminarNI
@@ -2326,7 +2326,7 @@ Function AgregaDatosDeNotaIngreso(oDoMovimiento As DoFarmMovimiento, oDoMovimien
                     lnCantidadPagar = oRsDetalleProductos.Fields!CantidadS - oRsDetalleProductos.Fields!cantidad
                     lnTotalPagar = Round(lnCantidadPagar * oRsDetalleProductos.Fields!PrecioS, 2)
                     oDoFacturacionBienesFinan.movNumero = oDoFacturacionBienesDevol.movNumero
-                    oDoFacturacionBienesFinan.MovTipo = oDoFacturacionBienesDevol.MovTipo
+                    oDoFacturacionBienesFinan.movTipo = oDoFacturacionBienesDevol.movTipo
                     oDoFacturacionBienesFinan.idProducto = oDoFacturacionBienesDevol.idProducto
                     oDoFacturacionBienesFinan.IdTipoFinanciamiento = oRsDetalleProductos.Fields!IdTipoFinanciamientoS
                     oDoFacturacionBienesFinan.idFuenteFinanciamiento = oRsDetalleProductos.Fields!IdFuenteFinanciamientoS
@@ -2430,7 +2430,7 @@ Function ModificaDatosDeNotaIngreso(oDoMovimiento As DoFarmMovimiento, oDoMovimi
             bProcesoOK = False: GoTo TerminarMNI
     End If
     '
-    Call mo_ReglasSeguridad.AuditoriaAgregarV(oDoMovimiento.IdUsuarioAuditoria, "M", 0, "FarmMovimiento/" & oDoMovimiento.MovTipo & "/" & oDoMovimiento.movNumero, oConexion, mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc, "")            'ListBarItems.idListItem
+    Call mo_ReglasSeguridad.AuditoriaAgregarV(oDoMovimiento.IdUsuarioAuditoria, "M", 0, "FarmMovimiento/" & oDoMovimiento.movTipo & "/" & oDoMovimiento.movNumero, oConexion, mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc, "")            'ListBarItems.idListItem
     '************** Graba nuevo proveedor
     If Trim(oDoProveedores.RazonSocial) <> "" Then
         If oDoProveedores.idProveedor = 0 Then
@@ -2450,17 +2450,17 @@ Function ModificaDatosDeNotaIngreso(oDoMovimiento As DoFarmMovimiento, oDoMovimi
     With oDoFacturacionBienesDevol
          .IdUsuarioAuditoria = oDoMovimiento.idUsuario
          .MovNumeroE = oDoMovimiento.movNumero
-         .MovTipoE = oDoMovimiento.MovTipo
+         .MovTipoE = oDoMovimiento.movTipo
     End With
     If Not oFacturacionBienesDevol.EliminarPorMovNumeroE(oDoFacturacionBienesDevol) Then
        bProcesoOK = False: GoTo TerminarMNI
     End If
     '*********  Elimina tabla farmMovimientosDetalle y devuelve saldos de farmSaldo,farmSaldoDetalle  ***************
-    Set rs = FarmMovimientosDetalleDevuelveTodosItems(oConexion, oDoMovimiento.MovTipo, oDoMovimiento.movNumero)
+    Set rs = FarmMovimientosDetalleDevuelveTodosItems(oConexion, oDoMovimiento.movTipo, oDoMovimiento.movNumero)
     rs.MoveFirst
     Do While Not rs.EOF
        oDoMovimientoDetalle.movNumero = oDoMovimiento.movNumero
-       oDoMovimientoDetalle.MovTipo = oDoMovimiento.MovTipo
+       oDoMovimientoDetalle.movTipo = oDoMovimiento.movTipo
        oDoMovimientoDetalle.idProducto = rs.Fields!idProducto
        oDoMovimientoDetalle.Lote = rs.Fields!Lote
        oDoMovimientoDetalle.FechaVencimiento = rs.Fields!FechaVencimiento
@@ -2478,7 +2478,7 @@ Function ModificaDatosDeNotaIngreso(oDoMovimiento As DoFarmMovimiento, oDoMovimi
     
     oDoMovimientoDetalle.IdUsuarioAuditoria = oDoMovimiento.IdUsuarioAuditoria
     oDoMovimientoDetalle.movNumero = oDoMovimiento.movNumero
-    oDoMovimientoDetalle.MovTipo = oDoMovimiento.MovTipo
+    oDoMovimientoDetalle.movTipo = oDoMovimiento.movTipo
     lnItem = 1
     If oRsDetalleProductos.RecordCount = 0 Then
        bProcesoOK = False: GoTo TerminarMNI
@@ -2512,9 +2512,9 @@ Function ModificaDatosDeNotaIngreso(oDoMovimiento As DoFarmMovimiento, oDoMovimi
                 .IdUsuarioAuditoria = oDoMovimiento.idUsuario
                 .IdUsuarioAutoriza = oDoMovimiento.idUsuario
                 .movNumero = oRsDetalleProductos.Fields!movNumeroS
-                .MovTipo = "S"
+                .movTipo = "S"
                 .MovNumeroE = oDoMovimiento.movNumero
-                .MovTipoE = oDoMovimiento.MovTipo
+                .MovTipoE = oDoMovimiento.movTipo
             End With
             If Not oFacturacionBienesDevol.Insertar(oDoFacturacionBienesDevol) Then
                      bProcesoOK = False: GoTo TerminarMNI
@@ -2593,7 +2593,7 @@ Function AnulaNotaIngreso(oDoMovimiento As DoFarmMovimiento, oDOfarmMovimientoNo
             bProcesoOK = False: GoTo TerminarANI
     End If
     '
-    Call mo_ReglasSeguridad.AuditoriaAgregarV(oDoMovimiento.IdUsuarioAuditoria, "E", 0, "FarmMovimiento/" & oDoMovimiento.MovTipo & "/" & oDoMovimiento.movNumero, oConexion, mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc, "")            'ListBarItems.idListItem
+    Call mo_ReglasSeguridad.AuditoriaAgregarV(oDoMovimiento.IdUsuarioAuditoria, "E", 0, "FarmMovimiento/" & oDoMovimiento.movTipo & "/" & oDoMovimiento.movNumero, oConexion, mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc, "")            'ListBarItems.idListItem
     '*********  Elimina Devoluciones del Paciente
     If oDOfarmMovimientoNotaIngreso.idCuentaAtencion > 0 And oDoMovimiento.idTipoConcepto = 21 Then
         oRsDetalleProductos.MoveFirst
@@ -2615,7 +2615,7 @@ Function AnulaNotaIngreso(oDoMovimiento As DoFarmMovimiento, oDOfarmMovimientoNo
                     lnCantidadPagar = oRsDetalleProductos.Fields!CantidadS + oRsDetalleProductos.Fields!cantidad
                     lnTotalPagar = Round(lnCantidadPagar * oRsDetalleProductos.Fields!PrecioS, 2)
                     oDoFacturacionBienesFinan.movNumero = oRsDetalleProductos.Fields!movNumeroS
-                    oDoFacturacionBienesFinan.MovTipo = "S"
+                    oDoFacturacionBienesFinan.movTipo = "S"
                     oDoFacturacionBienesFinan.idProducto = oRsDetalleProductos.Fields!idProducto
                     oDoFacturacionBienesFinan.IdTipoFinanciamiento = oRsDetalleProductos.Fields!IdTipoFinanciamientoS
                     oDoFacturacionBienesFinan.idFuenteFinanciamiento = oRsDetalleProductos.Fields!IdFuenteFinanciamientoS
@@ -2635,14 +2635,14 @@ Function AnulaNotaIngreso(oDoMovimiento As DoFarmMovimiento, oDOfarmMovimientoNo
         With oDoFacturacionBienesDevol
                .IdUsuarioAuditoria = oDoMovimiento.idUsuario
                .MovNumeroE = oDoMovimiento.movNumero
-               .MovTipoE = oDoMovimiento.MovTipo
+               .MovTipoE = oDoMovimiento.movTipo
         End With
         If Not oFacturacionBienesDevol.EliminarPorMovNumeroE(oDoFacturacionBienesDevol) Then
              bProcesoOK = False: GoTo TerminarANI
         End If
     End If
     '*********  devuelve saldos de farmSaldo,farmSaldoDetalle  ***************
-    Set rs = FarmMovimientosDetalleDevuelveTodosItems(oConexion, oDoMovimiento.MovTipo, oDoMovimiento.movNumero)
+    Set rs = FarmMovimientosDetalleDevuelveTodosItems(oConexion, oDoMovimiento.movTipo, oDoMovimiento.movNumero)
     rs.MoveFirst
     Do While Not rs.EOF
        If Not oMovimientoDetalle.ActualizaSaldosPorProducto(lcConstanteMovimientoSalida, oDoMovimiento.idAlmacenDestino, rs.Fields!idProducto, rs.Fields!Lote, rs.Fields!FechaVencimiento, rs.Fields!idTipoSalidaBienInsumo, rs.Fields!cantidad, rs.Fields!Precio, oDoMovimiento.FechaCreacion) Then
@@ -2699,12 +2699,12 @@ Function AgregaDatosDeNotaSalida(oDoMovimiento As DoFarmMovimiento, oRsDetallePr
             bProcesoOK = False: GoTo TerminarNS
     End If
     '
-    Call mo_ReglasSeguridad.AuditoriaAgregarV(oDoMovimiento.IdUsuarioAuditoria, "A", 0, "FarmMovimiento/" & oDoMovimiento.MovTipo & "/" & oDoMovimiento.movNumero, oConexion, mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc, "")            'ListBarItems.idListItem
+    Call mo_ReglasSeguridad.AuditoriaAgregarV(oDoMovimiento.IdUsuarioAuditoria, "A", 0, "FarmMovimiento/" & oDoMovimiento.movTipo & "/" & oDoMovimiento.movNumero, oConexion, mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc, "")            'ListBarItems.idListItem
     '*********  graba tabla farmMovimientosDetalle,farmSaldo,farmSaldoDetalle  ***************
     
     oDoMovimientoDetalle.IdUsuarioAuditoria = oDoMovimiento.IdUsuarioAuditoria
     oDoMovimientoDetalle.movNumero = oDoMovimiento.movNumero
-    oDoMovimientoDetalle.MovTipo = oDoMovimiento.MovTipo
+    oDoMovimientoDetalle.movTipo = oDoMovimiento.movTipo
     lnItem = 1
     If oRsDetalleProductos.RecordCount = 0 Then
        bProcesoOK = False: ms_MensajeError = "No existe items": GoTo TerminarNS
@@ -2772,7 +2772,7 @@ Function ModificaDatosDeNotaSalida(oDoMovimiento As DoFarmMovimiento, oRsDetalle
             bProcesoOK = False: GoTo TerminarMNS
     End If
     '
-    Call mo_ReglasSeguridad.AuditoriaAgregarV(oDoMovimiento.IdUsuarioAuditoria, "M", 0, "FarmMovimiento/" & oDoMovimiento.MovTipo & "/" & oDoMovimiento.movNumero, oConexion, mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc, "")            'ListBarItems.idListItem
+    Call mo_ReglasSeguridad.AuditoriaAgregarV(oDoMovimiento.IdUsuarioAuditoria, "M", 0, "FarmMovimiento/" & oDoMovimiento.movTipo & "/" & oDoMovimiento.movNumero, oConexion, mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc, "")            'ListBarItems.idListItem
     '*************vuelve a chequear saldos ****************
 '    oRsDetalleProductos.MoveFirst
 '    Do While Not oRsDetalleProductos.EOF
@@ -2783,11 +2783,11 @@ Function ModificaDatosDeNotaSalida(oDoMovimiento As DoFarmMovimiento, oRsDetalle
 '       oRsDetalleProductos.MoveNext
 '    Loop
     '*********  Elimina tabla farmMovimientosDetalle y devuelve saldos de farmSaldo,farmSaldoDetalle  ***************
-    Set rs = FarmMovimientosDetalleDevuelveTodosItems(oConexion, oDoMovimiento.MovTipo, oDoMovimiento.movNumero)
+    Set rs = FarmMovimientosDetalleDevuelveTodosItems(oConexion, oDoMovimiento.movTipo, oDoMovimiento.movNumero)
     rs.MoveFirst
     Do While Not rs.EOF
        oDoMovimientoDetalle.movNumero = oDoMovimiento.movNumero
-       oDoMovimientoDetalle.MovTipo = oDoMovimiento.MovTipo
+       oDoMovimientoDetalle.movTipo = oDoMovimiento.movTipo
        oDoMovimientoDetalle.idProducto = rs.Fields!idProducto
        oDoMovimientoDetalle.Lote = rs.Fields!Lote
        oDoMovimientoDetalle.FechaVencimiento = rs.Fields!FechaVencimiento
@@ -2805,7 +2805,7 @@ Function ModificaDatosDeNotaSalida(oDoMovimiento As DoFarmMovimiento, oRsDetalle
     
     oDoMovimientoDetalle.IdUsuarioAuditoria = oDoMovimiento.IdUsuarioAuditoria
     oDoMovimientoDetalle.movNumero = oDoMovimiento.movNumero
-    oDoMovimientoDetalle.MovTipo = oDoMovimiento.MovTipo
+    oDoMovimientoDetalle.movTipo = oDoMovimiento.movTipo
     lnItem = 1
     If oRsDetalleProductos.RecordCount = 0 Then
        bProcesoOK = False: GoTo TerminarMNS
@@ -2884,10 +2884,10 @@ Function AnulaNotaSalida(oDoMovimiento As DoFarmMovimiento, mo_lnIdTablaLISTBARI
             bProcesoOK = False: GoTo TerminarANS
     End If
     '
-    Call mo_ReglasSeguridad.AuditoriaAgregarV(oDoMovimiento.IdUsuarioAuditoria, "E", 0, "FarmMovimiento/" & oDoMovimiento.MovTipo & "/" & oDoMovimiento.movNumero, oConexion, mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc, "")            'ListBarItems.idListItem
+    Call mo_ReglasSeguridad.AuditoriaAgregarV(oDoMovimiento.IdUsuarioAuditoria, "E", 0, "FarmMovimiento/" & oDoMovimiento.movTipo & "/" & oDoMovimiento.movNumero, oConexion, mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc, "")            'ListBarItems.idListItem
     '*********  anula tabla FactOrdenesBienes
     oDoFactOrdenesBienes.movNumero = oDoMovimiento.movNumero
-    oDoFactOrdenesBienes.MovTipo = oDoMovimiento.MovTipo
+    oDoFactOrdenesBienes.movTipo = oDoMovimiento.movTipo
     If Not oFactOrdenesBienes.SeleccionarPorMovNumero(oDoFactOrdenesBienes) Then
             bProcesoOK = False: GoTo TerminarANS
     End If
@@ -2898,11 +2898,11 @@ Function AnulaNotaSalida(oDoMovimiento As DoFarmMovimiento, mo_lnIdTablaLISTBARI
         End If
     End If
     '
-    If Not oFacturacionBienesFinanciam.ActualizaIdEstadoFacturacion(oDoMovimiento.movNumero, oDoMovimiento.MovTipo, 9) Then
+    If Not oFacturacionBienesFinanciam.ActualizaIdEstadoFacturacion(oDoMovimiento.movNumero, oDoMovimiento.movTipo, 9) Then
        bProcesoOK = False: GoTo TerminarANS
     End If
     '*********  devuelve saldos de farmSaldo,farmSaldoDetalle  ***************
-    Set rs = FarmMovimientosDetalleDevuelveTodosItems(oConexion, oDoMovimiento.MovTipo, oDoMovimiento.movNumero)
+    Set rs = FarmMovimientosDetalleDevuelveTodosItems(oConexion, oDoMovimiento.movTipo, oDoMovimiento.movNumero)
     If rs.RecordCount > 0 Then
         rs.MoveFirst
         Do While Not rs.EOF
@@ -6280,7 +6280,7 @@ Function AgregaDatosDeDespachoDonaciones(ByVal oDoMovimiento As DoFarmMovimiento
             bProcesoOK = False: GoTo TerminarIS
     End If
     '
-    Call mo_ReglasSeguridad.AuditoriaAgregarV(oDoMovimiento.IdUsuarioAuditoria, "A", 0, "FarmMovimiento/" & oDoMovimiento.MovTipo & "/" & oDoMovimiento.movNumero, oConexion, mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc, "")            'ListBarItems.idListItem
+    Call mo_ReglasSeguridad.AuditoriaAgregarV(oDoMovimiento.IdUsuarioAuditoria, "A", 0, "FarmMovimiento/" & oDoMovimiento.movTipo & "/" & oDoMovimiento.movNumero, oConexion, mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc, "")            'ListBarItems.idListItem
     '*************vuelve a chequear saldos ****************
     If Not DevuelveDetalleProductosConLotes(oConexion, oDoMovimiento.idAlmacenOrigen, oRsDetalleProductos, _
                                             oDoMovimiento.FechaCreacion, sghTipoSalidaItemFarmacia.sghDonaciones, "") Then
@@ -6309,7 +6309,7 @@ Function AgregaDatosDeDespachoDonaciones(ByVal oDoMovimiento As DoFarmMovimiento
     '*********  graba tabla farmMovimientosDetalle,farmSaldo,farmSaldoDetalle  ***************
     oDoMovimientoDetalle.IdUsuarioAuditoria = oDoMovimiento.IdUsuarioAuditoria
     oDoMovimientoDetalle.movNumero = oDoMovimiento.movNumero
-    oDoMovimientoDetalle.MovTipo = oDoMovimiento.MovTipo
+    oDoMovimientoDetalle.movTipo = oDoMovimiento.movTipo
     lnItem = 1
     oRsDetalleProductosConLotes.MoveFirst
     Do While Not oRsDetalleProductosConLotes.EOF
@@ -6374,7 +6374,7 @@ Function ModificaDatosDeDespachoDonaciones(oDoMovimiento As DoFarmMovimiento, oD
             bProcesoOK = False: GoTo TerminarMIS
     End If
     '
-    Call mo_ReglasSeguridad.AuditoriaAgregarV(oDoMovimiento.IdUsuarioAuditoria, "M", 0, "FarmMovimiento/" & oDoMovimiento.MovTipo & "/" & oDoMovimiento.movNumero, oConexion, mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc, "")            'ListBarItems.idListItem
+    Call mo_ReglasSeguridad.AuditoriaAgregarV(oDoMovimiento.IdUsuarioAuditoria, "M", 0, "FarmMovimiento/" & oDoMovimiento.movTipo & "/" & oDoMovimiento.movNumero, oConexion, mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc, "")            'ListBarItems.idListItem
     '*************vuelve a chequear saldos ****************
     If Not DevuelveDetalleProductosConLotes(oConexion, oDoMovimiento.idAlmacenOrigen, oRsDetalleProductos, _
                                             oDoMovimiento.FechaCreacion, sghTipoSalidaItemFarmacia.sghDonaciones, "") Then
@@ -6398,12 +6398,12 @@ Function ModificaDatosDeDespachoDonaciones(oDoMovimiento As DoFarmMovimiento, oD
             bProcesoOK = False: GoTo TerminarMIS
     End If
     '*********  Elimina tabla farmMovimientosDetalle y devuelve saldos de farmSaldo,farmSaldoDetalle  ***************
-    Set rs = FarmMovimientosDetalleDevuelveTodosItems(oConexion, oDoMovimiento.MovTipo, oDoMovimiento.movNumero)
+    Set rs = FarmMovimientosDetalleDevuelveTodosItems(oConexion, oDoMovimiento.movTipo, oDoMovimiento.movNumero)
     If rs.RecordCount > 0 Then
         rs.MoveFirst
         Do While Not rs.EOF
            oDoMovimientoDetalle.movNumero = oDoMovimiento.movNumero
-           oDoMovimientoDetalle.MovTipo = oDoMovimiento.MovTipo
+           oDoMovimientoDetalle.movTipo = oDoMovimiento.movTipo
            oDoMovimientoDetalle.idProducto = rs.Fields!idProducto
            oDoMovimientoDetalle.Lote = rs.Fields!Lote
            oDoMovimientoDetalle.FechaVencimiento = rs.Fields!FechaVencimiento
@@ -6422,7 +6422,7 @@ Function ModificaDatosDeDespachoDonaciones(oDoMovimiento As DoFarmMovimiento, oD
     
     oDoMovimientoDetalle.IdUsuarioAuditoria = oDoMovimiento.IdUsuarioAuditoria
     oDoMovimientoDetalle.movNumero = oDoMovimiento.movNumero
-    oDoMovimientoDetalle.MovTipo = oDoMovimiento.MovTipo
+    oDoMovimientoDetalle.movTipo = oDoMovimiento.movTipo
     lnItem = 1
     oRsDetalleProductosConLotes.MoveFirst
     Do While Not oRsDetalleProductosConLotes.EOF
@@ -7426,12 +7426,12 @@ Sub ActualizaImporteDeCabeceraMovimientos(mda_FechaInicio As Date, mda_FechaFin 
        oRsAct1.MoveFirst
        Do While Not oRsAct1.EOF
           lnidtipoConcepto = oRsAct1.Fields!idTipoConcepto
-          LcTexto1 = oRsAct1.Fields!MovTipo
+          LcTexto1 = oRsAct1.Fields!movTipo
           lcTexto2 = oRsAct1.Fields!movNumero
           lcNombre = Format(oRsAct1.Fields!FechaCreacion, sighentidades.DevuelveFechaSoloFormato_DMY) & " - " & IIf(IsNull(oRsAct1.Fields!DocumentoNumero), "", oRsAct1.Fields!DocumentoNumero)
           lnPrecio = oRsAct1.Fields!totalMovimiento
           ml_Importe = 0
-          Do While Not oRsAct1.EOF And LcTexto1 = oRsAct1.Fields!MovTipo And lcTexto2 = oRsAct1.Fields!movNumero
+          Do While Not oRsAct1.EOF And LcTexto1 = oRsAct1.Fields!movTipo And lcTexto2 = oRsAct1.Fields!movNumero
              ml_Importe = ml_Importe + Round(oRsAct1.Fields!cantidad * oRsAct1.Fields!Precio, 2)
              oRsAct1.MoveNext
              If oRsAct1.EOF Then
@@ -9114,7 +9114,7 @@ Function CierraInventario(oDoInventario As DOfarmInventario, lnTotalInventario A
        .idUsuario = oDoInventario.IdUsuarioAuditoria
        .IdUsuarioAuditoria = oDoInventario.IdUsuarioAuditoria
        .movNumero = lcCorrelativo
-       .MovTipo = lcConstanteMovimientoEntrada
+       .movTipo = lcConstanteMovimientoEntrada
        .total = lnTotalInventario
        .FechaCreacion = oDoInventario.FechaCierre
     End With
@@ -9122,17 +9122,17 @@ Function CierraInventario(oDoInventario As DOfarmInventario, lnTotalInventario A
             bProcesoOK = False: GoTo TerminarCI
     End If
     oDOfarmMovimientoNotaIngreso.movNumero = oDoMovimiento.movNumero
-    oDOfarmMovimientoNotaIngreso.MovTipo = oDoMovimiento.MovTipo
+    oDOfarmMovimientoNotaIngreso.movTipo = oDoMovimiento.movTipo
     If Not oFarmMovimientoNotaIngreso.Insertar(oDOfarmMovimientoNotaIngreso) Then
             bProcesoOK = False: GoTo TerminarCI
     End If
     '
-    Call mo_ReglasSeguridad.AuditoriaAgregarV(oDoMovimiento.IdUsuarioAuditoria, "A", 0, "FarmMovimiento/" & oDoMovimiento.MovTipo & "/" & oDoMovimiento.movNumero, oConexion, mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc, "")            'ListBarItems.idListItem
+    Call mo_ReglasSeguridad.AuditoriaAgregarV(oDoMovimiento.IdUsuarioAuditoria, "A", 0, "FarmMovimiento/" & oDoMovimiento.movTipo & "/" & oDoMovimiento.movNumero, oConexion, mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc, "")            'ListBarItems.idListItem
     '*********  graba tabla farmMovimientosDetalle,farmSaldo,farmSaldoDetalle  ***************
     
     oDoMovimientoDetalle.IdUsuarioAuditoria = oDoInventario.IdUsuarioAuditoria
     oDoMovimientoDetalle.movNumero = oDoMovimiento.movNumero
-    oDoMovimientoDetalle.MovTipo = oDoMovimiento.MovTipo
+    oDoMovimientoDetalle.movTipo = oDoMovimiento.movTipo
     lnItem = 1
     Set oRsInventarioDetalle = FarmInventarioDetalleDevuelveProductosLotesPorId(oDoInventario.idInventario)
     Do While Not oRsInventarioDetalle.EOF
@@ -10210,40 +10210,63 @@ ManejadorDeError:
 Exit Function
 End Function
 
+
+
  'JSPC 23/10/2020 Cambio29 inicio
-Function validaFecha2(retornafechaActual2 As Date, retornafechaRegistro As Date, movNumero As String) As Boolean
-   Dim mo_farmMovimiento As New SIGHcomun.DoFarmMovimiento
-   Dim mo_ReglasFarmacia As New SIGHNegocios.ReglasFarmacia
-   validaFecha2 = False
-   retornafechaActual2 = lcBuscaParametro.RetornaFechaServidorSQL
-   mo_farmMovimiento.movNumero = movNumero
-   mo_farmMovimiento.MovTipo = lcConstanteMovimientoSalida
-   If Not mo_ReglasFarmacia.FarmMovimientoSeleccionarPorId(mo_farmMovimiento) Then
-      MsgBox mo_ReglasFarmacia.MensajeError
-      Exit Function
-   End If
-   retornafechaRegistro = Format(mo_farmMovimiento.FechaCreacion, sighentidades.DevuelveFechaSoloFormato_DMY)
-   If retornafechaActual2 <> CDate(retornafechaRegistro) Then
-         validaFecha2 = True
-   End If
-End Function
+'Function validaFecha2(retornafechaActual2 As Date, retornafecharegistro As Date, movNumero As String) As Boolean
+ '  Dim mo_farmMovimiento As New SIGHcomun.DoFarmMovimiento
+  ' Dim mo_ReglasFarmacia As New SIGHNegocios.ReglasFarmacia
+  ' validaFecha2 = False
+  ' retornafechaActual2 = lcBuscaParametro.RetornaFechaServidorSQL
+  ' mo_farmMovimiento.movNumero = movNumero
+  ' mo_farmMovimiento.movTipo = lcConstanteMovimientoSalida
+  ' If Not mo_ReglasFarmacia.FarmMovimientoSeleccionarPorId(mo_farmMovimiento) Then
+   '   MsgBox mo_ReglasFarmacia.MensajeError
+    '  Exit Function
+  ' End If
+  ' retornafecharegistro = Format(mo_farmMovimiento.FechaCreacion, sighentidades.DevuelveFechaSoloFormato_DMY)
+  ' If retornafechaActual2 <> CDate(retornafecharegistro) Then
+   '      validaFecha2 = True
+   'End If
+'End Function
 'JSPC 23/10/2020 Cambio29 fin
 'JSPC 23/10/2020 Cambio29 inicio
-Function validaFecha(retornafechaActual As Date, retornafechaRegistro As Date, movNumero As String) As Boolean
-   Dim mo_farmMovimiento As New SIGHcomun.DoFarmMovimiento
-   Dim mo_ReglasFarmacia As New SIGHNegocios.ReglasFarmacia
-   validaFecha = False
-   retornafechaActual = lcBuscaParametro.RetornaFechaServidorSQL
-   mo_farmMovimiento.movNumero = movNumero
-   mo_farmMovimiento.MovTipo = lcConstanteMovimientoEntrada
-   If Not mo_ReglasFarmacia.FarmMovimientoSeleccionarPorId(mo_farmMovimiento) Then
-      MsgBox mo_ReglasFarmacia.MensajeError
-      Exit Function
-   End If
-   retornafechaRegistro = Format(mo_farmMovimiento.FechaCreacion, sighentidades.DevuelveFechaSoloFormato_DMY)
-   If retornafechaActual <> CDate(retornafechaRegistro) Then
-         validaFecha = True
-   End If
-End Function
+'Function validaFecha(retornafechaactual As Date, retornafecharegistro As Date, movNumero As String) As Boolean
+   'Dim mo_farmMovimiento As New SIGHcomun.DoFarmMovimiento
+   'Dim mo_ReglasFarmacia As New SIGHNegocios.ReglasFarmacia
+   'validaFecha = False
+   'retornafechaactual = lcBuscaParametro.RetornaFechaServidorSQL
+   'mo_farmMovimiento.movNumero = movNumero
+   'mo_farmMovimiento.movTipo = lcConstanteMovimientoEntrada
+   'If Not mo_ReglasFarmacia.FarmMovimientoSeleccionarPorId(mo_farmMovimiento) Then
+     ' MsgBox mo_ReglasFarmacia.MensajeError
+     ' Exit Function
+   'End If
+   'retornafecharegistro = Format(mo_farmMovimiento.FechaCreacion, sighentidades.DevuelveFechaSoloFormato_DMY)
+   'If retornafechaactual <> CDate(retornafecharegistro) Then
+    '     validaFecha = True
+  ' End If
+'End Function
 'JSPC 23/10/2020 Cambio29 fin
 
+
+'JSPC 23/10/2020 Cambio29 inicio
+Function validaFecha(movNumero As String, movTipo As String) As Boolean
+    Dim retornafechaactual As Date
+    Dim retornafecharegistro As Date
+    Dim mo_farmMovimiento As New SIGHcomun.DoFarmMovimiento
+    Dim mo_ReglasFarmacia As New SIGHNegocios.ReglasFarmacia
+    validaFecha = False
+    retornafechaactual = lcBuscaParametro.RetornaFechaServidorSQL
+    mo_farmMovimiento.movNumero = movNumero
+    mo_farmMovimiento.movTipo = movTipo
+    If Not mo_ReglasFarmacia.FarmMovimientoSeleccionarPorId(mo_farmMovimiento) Then
+      MsgBox mo_ReglasFarmacia.MensajeError
+      Exit Function
+    End If
+    retornafecharegistro = Format(mo_farmMovimiento.FechaCreacion, sighentidades.DevuelveFechaSoloFormato_DMY)
+    If retornafechaactual <> CDate(retornafecharegistro) Then
+         validaFecha = True
+    End If
+End Function
+'JSPC 23/10/2020 Cambio29 fin

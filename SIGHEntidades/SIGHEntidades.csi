@@ -1,8 +1,10 @@
 [History]
-1=#P0#=mb	#P1#=ParaAuditoria	#P2#=SIGHEntidades/Configuracion/ParaAuditoria [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201021082104	#P7#=0	#P8#=1	.
-2=#P0#=mb	#P1#=ParaAuditoriaPorCadaDato	#P2#=SIGHEntidades/Configuracion/ParaAuditoriaPorCadaDato	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201020120208	#P7#=0	#P8#=1	.
-3=#P0#=mb	#P1#=ConfigurarFilasBiColores	#P2#=SIGHEntidades/GridInfragistic/ConfigurarFilasBiColores	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201015085701	#P7#=0	#P8#=30	.
-4=#P0#=mb	#P1#=PrimerFechaDDMMYYDelMesActual	#P2#=SIGHEntidades/FechaHora/PrimerFechaDDMMYYDelMesActual	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201015085622	#P7#=0	#P8#=2	.
-5=#P0#=mb	#P1#=ObtenerCadena	#P2#=SIGHEntidades/Registro/ObtenerCadena	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201014075349	#P7#=0	#P8#=24	.
-6=#P0#=mb	#P1#=HabilitarDeshabilitar	#P2#=SIGHEntidades/Formulario/HabilitarDeshabilitar	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201013124350	#P7#=0	#P8#=1	.
-7=#P0#=mb	#P1#=CargarComboBoxDesdeRecordset	#P2#=SIGHEntidades/ListaDespleglable/CargarComboBoxDesdeRecordset	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201013112116	#P7#=0	#P8#=6	.
+1=#P0#=mb	#P1#=DevuelveValorTextoCompuesto	#P2#=SIGHEntidades/ListaDespleglable/DevuelveValorTextoCompuesto	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201028094727	#P7#=0	#P8#=6	.
+2=#P0#=mb	#P1#=BoundText	#P2#=SIGHEntidades/ListaDespleglable/BoundText [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201028094523	#P7#=0	#P8#=4	.
+3=#P0#=mb	#P1#=ParaAuditoria	#P2#=SIGHEntidades/Configuracion/ParaAuditoria [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201021082104	#P7#=0	#P8#=1	.
+4=#P0#=mb	#P1#=ParaAuditoriaPorCadaDato	#P2#=SIGHEntidades/Configuracion/ParaAuditoriaPorCadaDato	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201020120208	#P7#=0	#P8#=1	.
+5=#P0#=mb	#P1#=ConfigurarFilasBiColores	#P2#=SIGHEntidades/GridInfragistic/ConfigurarFilasBiColores	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201015085701	#P7#=0	#P8#=30	.
+6=#P0#=mb	#P1#=PrimerFechaDDMMYYDelMesActual	#P2#=SIGHEntidades/FechaHora/PrimerFechaDDMMYYDelMesActual	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201015085622	#P7#=0	#P8#=2	.
+7=#P0#=mb	#P1#=ObtenerCadena	#P2#=SIGHEntidades/Registro/ObtenerCadena	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201014075349	#P7#=0	#P8#=24	.
+8=#P0#=mb	#P1#=HabilitarDeshabilitar	#P2#=SIGHEntidades/Formulario/HabilitarDeshabilitar	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201013124350	#P7#=0	#P8#=1	.
+9=#P0#=mb	#P1#=CargarComboBoxDesdeRecordset	#P2#=SIGHEntidades/ListaDespleglable/CargarComboBoxDesdeRecordset	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201013112116	#P7#=0	#P8#=6	.

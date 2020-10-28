@@ -147,20 +147,20 @@ Begin VB.Form FarmVentas
       TabCaption(1)   =   "Datos complementarios de Cabecera"
       TabPicture(1)   =   "FarmVentas.frx":1128
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "Label15"
-      Tab(1).Control(1)=   "Label12"
-      Tab(1).Control(2)=   "Label11"
-      Tab(1).Control(3)=   "Label20"
-      Tab(1).Control(4)=   "Label9"
-      Tab(1).Control(5)=   "Label7"
-      Tab(1).Control(6)=   "txtCaja"
-      Tab(1).Control(7)=   "txtCajero"
-      Tab(1).Control(8)=   "txtVendedor"
-      Tab(1).Control(9)=   "txtTurno"
-      Tab(1).Control(10)=   "txtDx"
-      Tab(1).Control(11)=   "txtNombreDx"
-      Tab(1).Control(12)=   "txtObservaciones"
-      Tab(1).Control(13)=   "cmdBuscaDx"
+      Tab(1).Control(0)=   "cmdBuscaDx"
+      Tab(1).Control(1)=   "txtObservaciones"
+      Tab(1).Control(2)=   "txtNombreDx"
+      Tab(1).Control(3)=   "txtDx"
+      Tab(1).Control(4)=   "txtTurno"
+      Tab(1).Control(5)=   "txtVendedor"
+      Tab(1).Control(6)=   "txtCajero"
+      Tab(1).Control(7)=   "txtCaja"
+      Tab(1).Control(8)=   "Label7"
+      Tab(1).Control(9)=   "Label9"
+      Tab(1).Control(10)=   "Label20"
+      Tab(1).Control(11)=   "Label11"
+      Tab(1).Control(12)=   "Label12"
+      Tab(1).Control(13)=   "Label15"
       Tab(1).ControlCount=   14
       TabCaption(2)   =   "Despacho para FARMACIA UNIDOSIS"
       TabPicture(2)   =   "FarmVentas.frx":1144
@@ -1509,14 +1509,12 @@ Private Sub Form_Activate()
         Exit Sub
         End If
     Case sghModificar
-        Dim fecha_Actual As Date
-        Dim fecha_Registro As Date
-        If mo_ReglasFarmacia.validaFecha2(fecha_Actual, fecha_Registro, ml_movNumero) = True Then
+        If mo_ReglasFarmacia.validaFecha(ml_movNumero, "S") = True Then
             Me.Visible = False
             MsgBox "No tiene ACCESO a Modificar/Anular una NS" & Chr(13) & " de una Fecha Registro diferente a la actual", vbExclamation, Me.Caption
         End If
     Case sghEliminar
-        If mo_ReglasFarmacia.validaFecha2(fecha_Actual, fecha_Registro, ml_movNumero) = True Then
+        If mo_ReglasFarmacia.validaFecha(ml_movNumero, "S") = True Then
             Me.Visible = False
             MsgBox "No tiene ACCESO a Modificar/Anular una NS" & Chr(13) & " de una Fecha Registro diferente a la actual", vbExclamation, Me.Caption
         End If
@@ -1535,9 +1533,6 @@ End Sub
 
 Private Sub Form_Load()
     SIGHEntidades.ParaAuditoriaPorCadaDato sghAudLimpiar, ""
-    
-    
-    
     SSTab1.Tab = 0
     lblOrdenPago.Caption = ""
     txtFprescribe.Text = lcBuscaParametro.RetornaFechaHoraServidorSQL
@@ -1552,10 +1547,8 @@ Private Sub Form_Load()
     Case sghAgregar
         Me.Caption = "Agregar Ventas"
     Case sghModificar
-        Dim fecha_Actual As Date
-        Dim fecha_Registro As Date
         'JSPC 23/10/2020 Cambio29 inicio
-            If mo_ReglasFarmacia.validaFecha2(fecha_Actual, fecha_Registro, ml_movNumero) = True Then
+            If mo_ReglasFarmacia.validaFecha(ml_movNumero, "S") = True Then
                 Exit Sub
             End If
         'JSPC 23/10/2020 Cambio29 fin
@@ -1565,7 +1558,7 @@ Private Sub Form_Load()
         
     Case sghEliminar
      'JSPC 23/10/2020 Cambio29 inicio
-            If mo_ReglasFarmacia.validaFecha2(fecha_Actual, fecha_Registro, ml_movNumero) = True Then
+            If mo_ReglasFarmacia.validaFecha(ml_movNumero, "S") = True Then
                 Exit Sub
             End If
         'JSPC 23/10/2020 Cambio29 fin
