@@ -818,12 +818,10 @@ Private Sub Form_Activate()
 Select Case mi_Opcion
     Case sghAgregar
 'JSPC 23/10/2020 Cambio29 fin
-'JSPC 23/10/2020 Cambio29 inicio codigo anterior
         If mo_ReglasFarmacia.LaFarmaciaEstaRegenerandoSaldos(mo_farmMovimiento.IdAlmacenOrigen) = True Then
             btnCancelar_Click
             Exit Sub
         End If
-'JSPC 23/10/2020 Cambio29 fin codigo anterior
 'JSPC 23/10/2020 Cambio29 inicio
     Case sghModificar
         Dim fecha_Actual As Date

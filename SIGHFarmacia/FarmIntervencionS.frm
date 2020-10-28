@@ -649,10 +649,27 @@ Private Sub cmdPaquetes_Click()
 End Sub
 
 Private Sub Form_Activate()
+Select Case mi_Opcion
+    Case sghAgregar
     If mo_ReglasFarmacia.LaFarmaciaEstaRegenerandoSaldos(Val(mo_cmbAlmacenOrigen.BoundText)) = True Then
        btnCancelar_Click
        Exit Sub
     End If
+    'JSPC 23/10/2020 Cambio29 inicio
+    Case sghModificar
+        Dim fecha_Actual As Date
+        Dim fecha_Registro As Date
+        If mo_ReglasFarmacia.validaFecha2(fecha_Actual, fecha_Registro, ml_movNumero) = True Then
+            Me.Visible = False
+            MsgBox "No tiene ACCESO a Modificar/Anular una NS" & Chr(13) & " de una Fecha Registro diferente a la actual", vbExclamation, Me.Caption
+        End If
+    Case sghEliminar
+        If mo_ReglasFarmacia.validaFecha2(fecha_Actual, fecha_Registro, ml_movNumero) = True Then
+            Me.Visible = False
+            MsgBox "No tiene ACCESO a Modificar/Anular una NS" & Chr(13) & " de una Fecha Registro diferente a la actual", vbExclamation, Me.Caption
+        End If
+    End Select
+'JSPC 23/10/2020 Cambio29 fin
 End Sub
 
 
@@ -679,11 +696,23 @@ Private Sub Form_Load()
         Me.Caption = "Agregar Intervención Sanitaria"
         cmdPaquetes.Visible = True
     Case sghModificar
+    Dim fecha_Actual As Date
+    Dim fecha_Registro As Date
+    'JSPC 23/10/2020 Cambio29 inicio
+        If mo_ReglasFarmacia.validaFecha2(fecha_Actual, fecha_Registro, ml_movNumero) = True Then
+            Exit Sub
+        End If
+    'JSPC 23/10/2020 Cambio29 fin
         Me.Caption = "Modificar Intervención Sanitaria"
     Case sghConsultar
         Me.Caption = "Consultar Intervención Sanitaria"
         btnImprimir.Visible = True
     Case sghEliminar
+    'JSPC 23/10/2020 Cambio29 inicio
+        If mo_ReglasFarmacia.validaFecha2(fecha_Actual, fecha_Registro, ml_movNumero) = True Then
+            Exit Sub
+        End If
+    'JSPC 23/10/2020 Cambio29 fin
         Me.Caption = "Anular Intervención Sanitaria"
     End Select
     CargarDatosAlFormulario
@@ -954,7 +983,7 @@ Sub CargaDatosAlObjetosDeDatos()
             .IdUsuarioAuditoria = ml_idUsuario
             .MovTipo = lcConstanteMovimientoSalida
             .Observaciones = txtObservaciones.Text
-            .total = lnTotalDocumento
+            .Total = lnTotalDocumento
         End With
         With mo_DoFarmMovimientoProgramas
              .idComponente = Val(mo_cmbComponente.BoundText)
@@ -971,7 +1000,7 @@ Sub CargaDatosAlObjetosDeDatos()
         With mo_DoFarmMovimiento
             .Observaciones = txtObservaciones.Text
             .IdUsuarioAuditoria = ml_idUsuario
-            .total = lnTotalDocumento
+            .Total = lnTotalDocumento
         End With
         With mo_DoFarmMovimientoProgramas
              .idComponente = Val(mo_cmbComponente.BoundText)

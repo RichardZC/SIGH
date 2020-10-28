@@ -1,6 +1,6 @@
 [History]
 1=#P0#=mb	#P1#=validaFecha	#P2#=SIGHNegocios/ReglasFarmacia/validaFecha	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201026103744	#P7#=0	#P8#=16	.
-2=#P0#=mb	#P1#=validaFecha2	#P2#=SIGHNegocios/ReglasFarmacia/validaFecha2	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201026103350	#P7#=0	#P8#=15	.
+2=#P0#=mb	#P1#=validaFecha2	#P2#=SIGHNegocios/ReglasFarmacia/validaFecha2	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201026134841	#P7#=0	#P8#=6	.
 3=#P0#=mb	#P1#=FarmMovimientoSeleccionarPorId	#P2#=SIGHNegocios/ReglasFarmacia/FarmMovimientoSeleccionarPorId	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201026102752	#P7#=0	#P8#=5	.
 4=#P0#=mb	#P1#=FarmaciaItemsPorDebajoStockMinimo	#P2#=SIGHNegocios/ReglasFarmacia/FarmaciaItemsPorDebajoStockMinimo	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201026092022	#P7#=0	#P8#=23	.
 5=#P0#=mb	#P1#=DevuelveSiSonItemsDeUNIDOSIS	#P2#=SIGHNegocios/ReglasFarmacia/DevuelveSiSonItemsDeUNIDOSIS	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201026084641	#P7#=0	#P8#=12	.
