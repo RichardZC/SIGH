@@ -3336,7 +3336,7 @@ Sub deshabilitarControlesRENIECModificarPacienteValidado()
             txtFechaNacimiento.Enabled = False
             txtEdad.Enabled = False
             
-            UserControl.tabPaciente.Tab = 0
+            UserControl.TabPaciente.Tab = 0
 End Sub
  Sub deshabilitarControlesDeTextoRENIEC()
  
@@ -3346,7 +3346,15 @@ End Sub
                     cmdCambiaHC.Enabled = False
                     chkSinFechaNacimiento.Enabled = False
                     
-                    txtApellidoPaterno.Enabled = False
+                     
+'<(Inicio) Añadido Por: WABG el: 27/10/2020-10:03:25 p.m.en el Equipo: SISGALENPLUS-PC>
+                     txtNroDocumento.Enabled = False
+                     txtIdNroHistoria.Enabled = False
+                     cmbIdTipoGenHistoriaClinica.Enabled = False
+'</(Fin) Añadido Por: WABG el: 27/10/2020-10:03:25 p.m. en el Equipo: SISGALENPLUS-PC>
+                                          
+                     
+                     txtApellidoPaterno.Enabled = False
                      txtApellidoMaterno.Enabled = False
                      txtPrimerNombre.Enabled = False
                      txtSegundoNombre.Enabled = False
@@ -3421,6 +3429,11 @@ Sub CargarDatosDesdeRENIEC(DNI As String)
                   mo_CmbIdTipoSexo.BoundText = mo_Reniec.idTipoSexo
                   txtDireccionDomicilio.Text = mo_Reniec.DireccionDomicilio
                   
+                
+'<(Inicio) Añadido Por: WABG el: 27/10/2020-10:03:00 p.m.en el Equipo: SISGALENPLUS-PC>
+                  txtHoraNacimiento.SetFocus
+'</(Fin) Añadido Por: WABG el: 27/10/2020-10:03:00 p.m. en el Equipo: SISGALENPLUS-PC>
+                  
                   'llenando los combobox  etnia e idioma por defecto
                   
                   'Idioma español = 38 en el combobox
@@ -3438,7 +3451,7 @@ Sub CargarDatosDesdeRENIEC(DNI As String)
 '                    mo_cmbIdPaisNacimiento.BoundText = 166   'Peru
 '                    mo_cmbIdPaisProcedencia.BoundText = 166   'Peru'
                   End If
-                     UserControl.tabPaciente.Tab = 0
+                     UserControl.TabPaciente.Tab = 0
                      MsgBox "Los Datos del Paciente con  DNI : " & DNI & "  Fueron cargados desde la RENIEC", vbInformation, ""
                     
                     'DESHABILITAR CONTROLES IMPLICADOS EN DATOS DE RENIEC
@@ -3533,6 +3546,9 @@ Sub HabilitarControlesDeTextoRENIEC()
                      cmdSinApellidoPaterno.Enabled = True
                      cmdSinApellidoMaterno.Enabled = True
                      cmbIdDocIdentidad.Enabled = True
+'<(Inicio) Añadido Por: WABG el: 27/10/2020-08:12:48 p.m.en el Equipo: SISGALENPLUS-PC>
+                     cmbIdTipoGenHistoriaClinica.Enabled = True
+'</(Fin) Añadido Por: WABG el: 27/10/2020-08:12:48 p.m. en el Equipo: SISGALENPLUS-PC>
                      cmdCambiaHC.Enabled = True
                      chkSinFechaNacimiento.Enabled = True
                     
@@ -3553,8 +3569,10 @@ Sub HabilitarControlesDeTextoRENIEC()
                      cmbIdDistritoDomicilio.Enabled = True
                      cmbIdCentroPobladoDomicilio.Enabled = True
                      cmbIdPaisDomicilio.Enabled = True
-                     UserControl.tabPaciente.Tab = 0
-                     txtNroDocumento.SetFocus
+                     UserControl.TabPaciente.Tab = 0
+'<(Inicio)Comentado Por: WABG el: 27/10/2020-07:46:37 p.m. en el Equipo: SISGALENPLUS-PC>
+'                     txtNroDocumento.SetFocus
+'</(Fin)Comentado por: WABG el: 27/10/2020-07:46:37 p.m. en el Equipo: SISGALENPLUS-PC>
 End Sub
 '</(Fin) Añadido Por: WABG el: 23/10/2020-07:58:47 p.m. en el Equipo: SISGALENPLUS-PC>
 
@@ -4137,7 +4155,7 @@ Private Sub cmbIdCentroPobladoProcedencia_LostFocus()
    '    mo_cmbIdCentroPobladoProcedencia.BoundText = Val(Split(cmbIdCentroPobladoProcedencia.Text, " = ")(0))
    'End If
    mo_Formulario.MarcarComoVacio cmbIdCentroPobladoProcedencia
-   tabPaciente.Tab = 2
+   TabPaciente.Tab = 2
 End Sub
 
 Private Sub cmbIdCentroPobladoProcedencia_KeyPress(KeyAscii As Integer)
@@ -5147,7 +5165,7 @@ Private Sub txtNroDocumento_LostFocus()
                   MuestraQueUsoWebReniec
             End If
       End If
-      UserControl.tabPaciente.Tab = 0
+      UserControl.TabPaciente.Tab = 0
    End If
    Set rspacientes = Nothing
    '******** Nº Historia = Nº DNI
@@ -6434,7 +6452,7 @@ Public Sub SetFocusOnDepartamentoNacimiento()
     'cmbIdDepartamentoNacimiento.SetFocus
 End Sub
 Public Sub SetPestaniaTabPaciente(iPestania As Integer)
-    tabPaciente.Tab = iPestania
+    TabPaciente.Tab = iPestania
 End Sub
 Private Sub txtTelefono_KeyDown(KeyCode As Integer, Shift As Integer)
     mo_Teclado.RealizarNavegacion KeyCode, txtTelefono
@@ -6628,9 +6646,10 @@ Public Function Inicializar()
     ldHoy = lcBuscaParametro.RetornaFechaHoraServidorSQL
     mo_Formulario.HabilitarDeshabilitar txtEdad, False
     txtHoraNacimiento.Text = "00:00"
+   
     'grdEpicrisis.Clear
     If ml_meHwnd = 0 Then
-       tabPaciente.TabVisible(3) = False
+       TabPaciente.TabVisible(3) = False
     End If
     'Ficha Familiar
     lcFormaQgeneraHistoria = "0"
@@ -6676,13 +6695,13 @@ Sub AdministrarKeyPreview(KeyCode As Integer)
      Case vbKeyF5
      Case vbKeyF6
      Case vbKeyF7
-        UserControl.tabPaciente.Tab = 0
+        UserControl.TabPaciente.Tab = 0
         'On Error Resume Next
         cmbIdProvinciaDomicilio.SetFocus
      Case vbKeyF8
-        UserControl.tabPaciente.Tab = 1
+        UserControl.TabPaciente.Tab = 1
     Case vbKeyF9
-        UserControl.tabPaciente.Tab = 2
+        UserControl.TabPaciente.Tab = 2
     End Select
        
 End Sub

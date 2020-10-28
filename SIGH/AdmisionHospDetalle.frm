@@ -43,8 +43,8 @@ Begin VB.Form AdmisionHospDetalle
          TabIndex        =   170
          Top             =   285
          Width           =   3465
-         _ExtentX        =   6112
-         _ExtentY        =   5847
+         _extentx        =   6112
+         _extenty        =   5847
       End
    End
    Begin VB.Frame Frame 
@@ -131,8 +131,8 @@ Begin VB.Form AdmisionHospDetalle
       Top             =   210
       Visible         =   0   'False
       Width           =   3885
-      _ExtentX        =   6853
-      _ExtentY        =   1085
+      _extentx        =   6853
+      _extenty        =   1085
    End
    Begin UltraGrid.SSUltraGrid grdPacientesEncontrados 
       Height          =   255
@@ -646,8 +646,8 @@ Begin VB.Form AdmisionHospDetalle
          Top             =   180
          Visible         =   0   'False
          Width           =   1635
-         _ExtentX        =   6059
-         _ExtentY        =   1032
+         _extentx        =   6059
+         _extenty        =   1032
       End
    End
    Begin TabDlg.SSTab tabAdmision 
@@ -690,8 +690,8 @@ Begin VB.Form AdmisionHospDetalle
          TabIndex        =   6
          Top             =   420
          Width           =   11835
-         _ExtentX        =   20876
-         _ExtentY        =   11404
+         _extentx        =   20876
+         _extenty        =   11404
       End
       Begin TabDlg.SSTab TabIngreso 
          Height          =   6840
@@ -1401,8 +1401,8 @@ Begin VB.Form AdmisionHospDetalle
                Top             =   870
                Visible         =   0   'False
                Width           =   4890
-               _ExtentX        =   8625
-               _ExtentY        =   609
+               _extentx        =   8625
+               _extenty        =   609
             End
             Begin MSDataListLib.DataCombo cmbFormaPago 
                Height          =   330
@@ -1981,8 +1981,8 @@ Begin VB.Form AdmisionHospDetalle
             TabIndex        =   40
             Top             =   405
             Width           =   11535
-            _ExtentX        =   20346
-            _ExtentY        =   8811
+            _extentx        =   20346
+            _extenty        =   8811
          End
          Begin VB.Frame fraDatosReferenciaOrigen 
             Caption         =   "Referencia Origen"
@@ -2882,8 +2882,8 @@ Begin VB.Form AdmisionHospDetalle
             TabIndex        =   92
             Top             =   3480
             Width           =   11580
-            _ExtentX        =   20426
-            _ExtentY        =   3651
+            _extentx        =   20426
+            _extenty        =   3651
          End
          Begin SISGalenPlus.UcPacientesSunasa UcPacientesSunasa1 
             Height          =   225
@@ -2892,8 +2892,8 @@ Begin VB.Form AdmisionHospDetalle
             Top             =   930
             Visible         =   0   'False
             Width           =   2715
-            _ExtentX        =   4789
-            _ExtentY        =   397
+            _extentx        =   4789
+            _extenty        =   397
          End
          Begin SISGalenPlus.ucNacimientoDetalle ucNacimientoDetalle1 
             Height          =   3075
@@ -2901,8 +2901,8 @@ Begin VB.Form AdmisionHospDetalle
             TabIndex        =   133
             Top             =   1095
             Width           =   11505
-            _ExtentX        =   20294
-            _ExtentY        =   5424
+            _extentx        =   20294
+            _extenty        =   5424
          End
          Begin SISGalenPlus.ucDiagnosticoDetalle ucDiagnosticoNacimiento 
             Height          =   2445
@@ -2910,8 +2910,8 @@ Begin VB.Form AdmisionHospDetalle
             TabIndex        =   134
             Top             =   4200
             Width           =   11505
-            _ExtentX        =   20294
-            _ExtentY        =   4313
+            _extentx        =   20294
+            _extenty        =   4313
          End
          Begin VB.Label Label2 
             AutoSize        =   -1  'True
@@ -2940,8 +2940,8 @@ Begin VB.Form AdmisionHospDetalle
          Top             =   6840
          Visible         =   0   'False
          Width           =   11685
-         _ExtentX        =   8017
-         _ExtentY        =   1296
+         _extentx        =   8017
+         _extenty        =   1296
       End
    End
    Begin SISGalenPlus.ucPacientesCtasPDF ucPacientesCtasPDF1 
@@ -2950,8 +2950,8 @@ Begin VB.Form AdmisionHospDetalle
       TabIndex        =   171
       Top             =   4920
       Width           =   3630
-      _ExtentX        =   6403
-      _ExtentY        =   6482
+      _extentx        =   6403
+      _extenty        =   6482
    End
    Begin VB.Image pi_imagen 
       BorderStyle     =   1  'Fixed Single
@@ -3960,6 +3960,10 @@ Private Sub chkPacienteNuevo_Click()
         txtNroHistoriaBusqueda.Text = ""
         txtNroDNIBusqueda = ""
         Me.tabAdmision.Tab = 0
+        '
+'<(Inicio) Añadido Por: WABG el: 27/10/2020-08:54:54 p.m.en el Equipo: SISGALENPLUS-PC>
+        Me.ucPacientesDetalle1.HabilitarControlesDeTextoRENIEC
+'</(Fin) Añadido Por: WABG el: 27/10/2020-08:54:54 p.m. en el Equipo: SISGALENPLUS-PC>
         
         Me.ucPacientesDetalle1.ConfigurarValoresPorDefecto
         '
