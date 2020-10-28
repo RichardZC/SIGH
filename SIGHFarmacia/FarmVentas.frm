@@ -7,8 +7,8 @@ Begin VB.Form FarmVentas
    Caption         =   "Form1"
    ClientHeight    =   9420
    ClientLeft      =   60
-   ClientTop       =   348
-   ClientWidth     =   13836
+   ClientTop       =   345
+   ClientWidth     =   13830
    BeginProperty Font 
       Name            =   "Tahoma"
       Size            =   9
@@ -21,7 +21,7 @@ Begin VB.Form FarmVentas
    Icon            =   "FarmVentas.frx":0000
    LinkTopic       =   "Form1"
    ScaleHeight     =   9420
-   ScaleWidth      =   13836
+   ScaleWidth      =   13830
    StartUpPosition =   2  'CenterScreen
    Begin VB.CommandButton CargaInventarioExcel 
       Enabled         =   0   'False
@@ -378,7 +378,7 @@ Begin VB.Form FarmVentas
       Begin VB.Frame fraTipoVenta 
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -397,7 +397,7 @@ Begin VB.Form FarmVentas
             Top             =   180
             Width           =   2820
             _ExtentX        =   4974
-            _ExtentY        =   508
+            _ExtentY        =   503
             _Version        =   262144
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
                Name            =   "Tahoma"
@@ -417,8 +417,8 @@ Begin VB.Form FarmVentas
             TabIndex        =   45
             Top             =   180
             Width           =   2250
-            _ExtentX        =   3958
-            _ExtentY        =   508
+            _ExtentX        =   3969
+            _ExtentY        =   503
             _Version        =   262144
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
                Name            =   "Tahoma"
@@ -438,8 +438,8 @@ Begin VB.Form FarmVentas
             Top             =   180
             Visible         =   0   'False
             Width           =   2925
-            _ExtentX        =   5165
-            _ExtentY        =   508
+            _ExtentX        =   5159
+            _ExtentY        =   503
             _Version        =   262144
             BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
                Name            =   "Tahoma"
@@ -484,7 +484,7 @@ Begin VB.Form FarmVentas
          Enabled         =   0   'False
          BeginProperty Font 
             Name            =   "Tahoma"
-            Size            =   8.4
+            Size            =   8.25
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -517,7 +517,7 @@ Begin VB.Form FarmVentas
       Begin VB.ComboBox cmbTipoFinanciamiento 
          BeginProperty Font 
             Name            =   "Tahoma"
-            Size            =   8.4
+            Size            =   8.25
             Charset         =   0
             Weight          =   700
             Underline       =   0   'False
@@ -541,7 +541,7 @@ Begin VB.Form FarmVentas
          Enabled         =   0   'False
          BeginProperty Font 
             Name            =   "Tahoma"
-            Size            =   8.4
+            Size            =   8.25
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -584,7 +584,7 @@ Begin VB.Form FarmVentas
          Enabled         =   0   'False
          BeginProperty Font 
             Name            =   "Tahoma"
-            Size            =   8.4
+            Size            =   8.25
             Charset         =   0
             Weight          =   700
             Underline       =   0   'False
@@ -683,8 +683,8 @@ Begin VB.Form FarmVentas
          TabIndex        =   38
          Top             =   390
          Width           =   1350
-         _ExtentX        =   2392
-         _ExtentY        =   550
+         _ExtentX        =   2381
+         _ExtentY        =   556
          _Version        =   393216
          MaxLength       =   10
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -705,13 +705,13 @@ Begin VB.Form FarmVentas
          TabIndex        =   53
          Top             =   2085
          Width           =   1815
-         _ExtentX        =   3196
-         _ExtentY        =   550
+         _ExtentX        =   3201
+         _ExtentY        =   556
          _Version        =   393216
          MaxLength       =   16
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "Tahoma"
-            Size            =   8.4
+            Size            =   8.25
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -910,13 +910,13 @@ Begin VB.Form FarmVentas
       TabIndex        =   6
       Top             =   3060
       Width           =   13785
-      _ExtentX        =   24321
-      _ExtentY        =   6117
+      _ExtentX        =   24315
+      _ExtentY        =   6112
    End
    Begin VB.Frame Frame3 
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   0
          Weight          =   400
          Underline       =   0   'False
@@ -965,7 +965,7 @@ Begin VB.Form FarmVentas
       Begin VB.Frame FraRedondeo 
          BeginProperty Font 
             Name            =   "Tahoma"
-            Size            =   8.4
+            Size            =   8.25
             Charset         =   0
             Weight          =   700
             Underline       =   0   'False
@@ -982,7 +982,7 @@ Begin VB.Form FarmVentas
             Alignment       =   1  'Right Justify
             BeginProperty Font 
                Name            =   "Tahoma"
-               Size            =   9.6
+               Size            =   9.75
                Charset         =   0
                Weight          =   700
                Underline       =   0   'False
@@ -1038,15 +1038,15 @@ Begin VB.Form FarmVentas
       Top             =   7590
       Visible         =   0   'False
       Width           =   13755
-      _ExtentX        =   24257
-      _ExtentY        =   3196
+      _ExtentX        =   24262
+      _ExtentY        =   3201
       _Version        =   131072
       GridFlags       =   17040384
       LayoutFlags     =   71303188
       BorderStyle     =   5
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "Arial Narrow"
-         Size            =   9.6
+         Size            =   9.75
          Charset         =   0
          Weight          =   400
          Underline       =   0   'False
@@ -1777,6 +1777,13 @@ End Sub
 
 Private Sub optPreventa_Click(Value As Integer)
     If optPreventa.Value Then
+    'SCCQ 23/10/2020 Cambio34 Inicio
+    txtNcuenta.Text = ""
+    txtDatosDeCuenta.Text = ""
+    txtPlan.Text = ""
+    txtNhistoria.Text = ""
+    txtNombrePaciente.Text = ""
+    'SCCQ 23/10/2020 Cambio34 Fin
         BlanquedaVariablesUnidosis
         lnEpsPorcentaje = 0
         Set oRsTipoFinanciamiento = mo_ReglasFarmacia.TipoFinanciamientosDevuelveSoloFarmacia(" and dbo.TiposFinanciamiento.TipoVenta='P'")

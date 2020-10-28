@@ -1,11 +1,11 @@
 [History]
 1=#P0#=mb	#P1#=AgregaDatosDeDespachoDonaciones	#P2#=SIGHNegocios/ReglasFarmacia/AgregaDatosDeDespachoDonaciones	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201022133641	#P7#=0	#P8#=0	.
-2=#P0#=mb	#P1#=AgregaDatosDeInventario	#P2#=SIGHNegocios/ReglasFarmacia/AgregaDatosDeInventario	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201022121523	#P7#=0	#P8#=33	.
-3=#P0#=mb	#P1#=farmInventarioParaExportar	#P2#=SIGHNegocios/ReglasFarmacia/farmInventarioParaExportar	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201022115514	#P7#=0	#P8#=17	.
-4=#P0#=mb	#P1#=AgregaDatosDeNotaIngreso_NumDocAutomatico	#P2#=SIGHNegocios/ReglasFarmacia/AgregaDatosDeNotaIngreso_NumDocAutomatico	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201022131527	#P7#=0	#P8#=0	.
-5=#P0#=mb	#P1#=AgregaDatosDeNotaSalida_NumDocAutomatico	#P2#=SIGHNegocios/ReglasFarmacia/AgregaDatosDeNotaSalida_NumDocAutomatico	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201022130542	#P7#=0	#P8#=11	.
-6=#P0#=mb	#P1#=ModificaDatosDeNotaSalida	#P2#=SIGHNegocios/ReglasFarmacia/ModificaDatosDeNotaSalida	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201022111127	#P7#=0	#P8#=2	.
-7=#P0#=mb	#P1#=AgregaDatosDeIntervencion	#P2#=SIGHNegocios/ReglasFarmacia/AgregaDatosDeIntervencion	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201022132004	#P7#=0	#P8#=30	.
+2=#P0#=mb	#P1#=AgregaDatosDeIntervencion	#P2#=SIGHNegocios/ReglasFarmacia/AgregaDatosDeIntervencion	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201022132004	#P7#=0	#P8#=30	.
+3=#P0#=mb	#P1#=AgregaDatosDeNotaIngreso_NumDocAutomatico	#P2#=SIGHNegocios/ReglasFarmacia/AgregaDatosDeNotaIngreso_NumDocAutomatico	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201022131527	#P7#=0	#P8#=0	.
+4=#P0#=mb	#P1#=AgregaDatosDeNotaSalida_NumDocAutomatico	#P2#=SIGHNegocios/ReglasFarmacia/AgregaDatosDeNotaSalida_NumDocAutomatico	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201022130542	#P7#=0	#P8#=11	.
+5=#P0#=mb	#P1#=AgregaDatosDeInventario	#P2#=SIGHNegocios/ReglasFarmacia/AgregaDatosDeInventario	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201022121523	#P7#=0	#P8#=33	.
+6=#P0#=mb	#P1#=farmInventarioParaExportar	#P2#=SIGHNegocios/ReglasFarmacia/farmInventarioParaExportar	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201022115514	#P7#=0	#P8#=17	.
+7=#P0#=mb	#P1#=ModificaDatosDeNotaSalida	#P2#=SIGHNegocios/ReglasFarmacia/ModificaDatosDeNotaSalida	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201022111127	#P7#=0	#P8#=2	.
 8=#P0#=mb	#P1#=FarmaciaItemsPorDebajoStockMinimo	#P2#=SIGHNegocios/ReglasFarmacia/FarmaciaItemsPorDebajoStockMinimo	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201021094224	#P7#=0	#P8#=18	.
 9=#P0#=mb	#P1#=BloqueaTabla	#P2#=SIGHNegocios/ReglasFarmacia/BloqueaTabla	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201021090950	#P7#=0	#P8#=24	.
 10=#P0#=mb	#P1#=idOrdenPago	#P2#=SIGHNegocios/ReglasFarmacia/idOrdenPago [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201021090939	#P7#=0	#P8#=1	.

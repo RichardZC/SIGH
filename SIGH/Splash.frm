@@ -1,10 +1,10 @@
 VERSION 5.00
 Begin VB.Form Splash 
    BorderStyle     =   0  'None
-   ClientHeight    =   6468
-   ClientLeft      =   216
-   ClientTop       =   1368
-   ClientWidth     =   6372
+   ClientHeight    =   6465
+   ClientLeft      =   210
+   ClientTop       =   1365
+   ClientWidth     =   6375
    ClipControls    =   0   'False
    ControlBox      =   0   'False
    Icon            =   "Splash.frx":0000
@@ -14,17 +14,17 @@ Begin VB.Form Splash
    MaxButton       =   0   'False
    MinButton       =   0   'False
    Picture         =   "Splash.frx":000C
-   ScaleHeight     =   6468
-   ScaleWidth      =   6372
+   ScaleHeight     =   6465
+   ScaleWidth      =   6375
    ShowInTaskbar   =   0   'False
    StartUpPosition =   2  'CenterScreen
    Begin VB.Label Label1 
       Alignment       =   1  'Right Justify
       BackStyle       =   0  'Transparent
-      Caption         =   "SISGalenPLUS v3.28092015u73hra"
+      Caption         =   "SISGalenPLUS v3.28102020u74hra"
       BeginProperty Font 
          Name            =   "Tahoma"
-         Size            =   9.6
+         Size            =   9.75
          Charset         =   0
          Weight          =   700
          Underline       =   0   'False

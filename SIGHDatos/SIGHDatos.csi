@@ -1,7 +1,7 @@
 [History]
-1=#P0#=mb	#P1#=Insertar	#P2#=SIGHDatos/FarmInventario/Insertar	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201022115306	#P7#=0	#P8#=6	.
+1=#P0#=mb	#P1#=DevuelveYactualizaCorrelativosDisponibleFarmTipoDocumentos	#P2#=SIGHDatos/farmMovimiento/DevuelveYactualizaCorrelativosDisponibleFarmTipoDocumentos	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201022132657	#P7#=0	#P8#=10	.
 2=#P0#=mb	#P1#=DevuelveYactualizaCorrelativoDisponibleFarmRelMod	#P2#=SIGHDatos/farmMovimiento/DevuelveYactualizaCorrelativoDisponibleFarmRelMod	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201022130404	#P7#=0	#P8#=19	.
-3=#P0#=mb	#P1#=DevuelveYactualizaCorrelativosDisponibleFarmTipoDocumentos	#P2#=SIGHDatos/farmMovimiento/DevuelveYactualizaCorrelativosDisponibleFarmTipoDocumentos	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201022132657	#P7#=0	#P8#=10	.
+3=#P0#=mb	#P1#=Insertar	#P2#=SIGHDatos/FarmInventario/Insertar	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201022115306	#P7#=0	#P8#=6	.
 4=#P0#=mb	#P1#=DevuelveYactualizaCorrelativosDeDocumentosES	#P2#=SIGHDatos/farmMovimiento/DevuelveYactualizaCorrelativosDeDocumentosES	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201022110427	#P7#=0	#P8#=25	.
 5=#P0#=mb	#P1#=ServiciosSeleccionarConsultoriosPorEspecialidadDEBB	#P2#=SIGHDatos/Servicios/ServiciosSeleccionarConsultoriosPorEspecialidadDEBB	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201016135242	#P7#=0	#P8#=-1	.
 6=#P0#=mb	#P1#=SeleccionarCEDisponibles	#P2#=SIGHDatos/Servicios/SeleccionarCEDisponibles	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201016135209	#P7#=0	#P8#=9	.
