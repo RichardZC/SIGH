@@ -992,6 +992,26 @@ Sub CargarDatosALosControles()
    End If
    Set mo_PermisosFacturacion = Nothing
    Set mo_ReglasSeguridad = Nothing
+   'SCCQ 29/10/2020 Cambio32 Inicio
+     '******Modificar documento con Fecha Anterior a la actual,
+   '******siempre y cuando no hubieron SALIDAS
+   Dim oRsTmp As New ADODB.Recordset
+   Set mRs_Productos = grdProductos.DevuelveProductos
+   If mRs_Productos.RecordCount > 0 Then
+      mRs_Productos.MoveFirst
+      Do While Not mRs_Productos.EOF
+         Set oRsTmp = mo_ReglasFarmacia.farmMovimientoDetalleDevuelveSalidasSegunAlmacenProductoLote(mo_farmMovimiento.IdAlmacenDestino, mRs_Productos.Fields!idProducto, mRs_Productos.Fields!Lote, mRs_Productos.Fields!FechaVencimiento)
+         If oRsTmp.RecordCount > 0 Then
+            If oRsTmp.Fields!fechaCreacion >= CDate(txtFregistro.Text & " " & txtHoraRegistro.Text) Then
+                MsgBox "No podrá Modificar/Anular la NS porque el destino ya despachó el producto: " & Chr(13) & Trim(mRs_Productos.Fields!codigo) & " - " & Trim(mRs_Productos.Fields!nombreProducto) & "   NS: " & oRsTmp.Fields!movNumero, vbExclamation, Me.Caption
+                btnAceptar.Enabled = False
+                Exit Do
+            End If
+         End If
+         mRs_Productos.MoveNext
+      Loop
+   End If
+   'SCCQ 29/10/2020 Cambio32 Fin
    'unidosis
    lbLaFarmaciaDestinoEsUnidosis = False
    If Trim(mo_farmMovimiento.Observaciones) <> "" Then
