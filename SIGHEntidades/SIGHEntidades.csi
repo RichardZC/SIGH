@@ -1,0 +1,4 @@
+[History]
+1=#P0#=mb	#P1#=CadenaConexion	#P2#=SIGHEntidades/Configuracion/CadenaConexion [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201015123933	#P7#=0	#P8#=7	.
+2=#P0#=mb	#P1#=HKEY_CURRENT_USER	#P2#=SIGHEntidades/Registro/HKEY_CURRENT_USER [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201009091242	#P7#=0	#P8#=1	.
+3=#P0#=mb	#P1#=ObtenerCadena	#P2#=SIGHEntidades/Registro/ObtenerCadena	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201007101525	#P7#=0	#P8#=24	.

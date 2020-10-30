@@ -44,7 +44,47 @@ Property Get MensajeError() As String
    MensajeError = ms_MensajeError
 End Property
 
+'------------------------------------------------------------------------------------
+'   Función:        Insertar
+'   Descripción:    Inserta un registro a la tabla FactCatalogoServiciosN
+'   Parámetros:     oTabla=campos de la Tabla
+'------------------------------------------------------------------------------------
 
+Function usp_catalogoserviciosagregar(ByVal oTabla As DoFarmMovimientoDetalle) As Boolean
+On Error GoTo ManejadorDeError
+Dim oCommand As New ADODB.Command
+Dim oParameter As ADODB.Parameter
+usp_catalogoserviciosagregar = False
+With oCommand
+   .CommandType = adCmdStoredProc
+   Set .ActiveConnection = mo_Conexion
+   .CommandText = "usp_catalogoserviciosagregar"
+   Set oParameter = .CreateParameter("@Id", adInteger, adParamInput, 0, IIf(oTabla.Id = 0, Null, oTabla.Id))
+   .Parameters.Append oParameter
+   Set oParameter = .CreateParameter("@Id_Atencion", adVarChar, adParamInput, 20, IIf(oTabla.Id_Atencion = "", Null, oTabla.Id_Atencion))
+   .Parameters.Append oParameter
+   Set oParameter = .CreateParameter("@Descripcion_Tipo_Item", adVarChar, adParamInput, 100, IIf(oTabla.Descripcion_Tipo_Item = "", Null, oTabla.Descripcion_Tipo_Item))
+   .Parameters.Append oParameter
+   Set oParameter = .CreateParameter("@Fg_Tipo", adVarChar, adParamInput, 2, IIf(oTabla.Fg_Tipo = "", Null, oTabla.Fg_Tipo))
+   .Parameters.Append oParameter
+   Set oParameter = .CreateParameter("@Codigo", adVarChar, adParamInput, 10, IIf(oTabla.codigo = "", Null, oTabla.codigo))
+   .Parameters.Append oParameter
+   Set oParameter = .CreateParameter("@NombreProducto", adVarChar, adParamInput, 300, IIf(oTabla.NombreProducto = "", Null, oTabla.NombreProducto))
+   .Parameters.Append oParameter
+   
+   Set oParameter = .CreateParameter("@IdSubClasificacion", adVarChar, adParamInput, 20, IIf(oTabla.IdSubClasificacion = "", Null, oTabla.IdSubClasificacion))
+   .Parameters.Append oParameter
+   Set oParameter = .CreateParameter("@LabConfHis", adVarChar, adParamInput, 10, IIf(oTabla.labConfHIS = "", Null, oTabla.labConfHIS))
+   .Parameters.Append oParameter
+   .Execute
+End With
+usp_catalogoserviciosagregar = True
+ms_MensajeError = ""
+ Exit Function
+ManejadorDeError:
+   ms_MensajeError = Err.Number & " " + Err.Description
+Exit Function
+End Function
 
 
 '------------------------------------------------------------------------------------
@@ -93,10 +133,8 @@ With oCommand
    .Parameters.Append oParameter
    .Execute
 End With
- 
 Insertar = True
 ms_MensajeError = ""
- 
 Exit Function
 ManejadorDeError:
    ms_MensajeError = Err.Number & " " + Err.Description
@@ -160,6 +198,13 @@ ManejadorDeError:
 Exit Function
 End Function
 
+
+
+
+
+
+
+
 '------------------------------------------------------------------------------------
 '   Función:        Eliminar
 '   Descripción:    elimia o borra un registro a la tabla farmMovimientoDetalle
@@ -199,6 +244,36 @@ ms_MensajeError = ""
 Exit Function
 ManejadorDeError:
    ms_MensajeError = Err.Number & " " + Err.Description
+Exit Function
+End Function
+
+
+Function usp_eliminacatalogoidat(Id As Long) As ADODB.Recordset
+    On Error GoTo ManejadorDeError
+    Dim oRecordset As New ADODB.Recordset
+    Dim oCommand As New ADODB.Command
+    Dim oParameter As ADODB.Parameter
+    Dim ms_MensajeError As String
+    Dim oConexion As New ADODB.Connection
+    oConexion.Open SIGHENTIDADES.CadenaConexion
+    oConexion.CursorLocation = adUseClient
+    Set usp_eliminacatalogoidat = Nothing
+    ms_MensajeError = ""
+    With oCommand
+        .CommandType = adCmdStoredProc
+        Set .ActiveConnection = oConexion
+        .CommandTimeout = 150
+        .CommandText = "usp_eliminacatalogoidat"
+        Set oParameter = .CreateParameter("@Id", adInteger, adParamInput, 0, Id): .Parameters.Append oParameter
+               .Execute
+        Set oRecordset.ActiveConnection = Nothing
+   End With
+   oConexion.Close
+   Set oConexion = Nothing
+   Set usp_eliminacatalogoidat = oRecordset
+   Exit Function
+ManejadorDeError:
+   ms_MensajeError = Err.Number & " " + Err.Description: MsgBox ms_MensajeError + Chr(13) + "Por favor contacte al personal de soporte técnico", vbInformation, "Error en la interface de acceso a datos"
 Exit Function
 End Function
 
@@ -291,6 +366,41 @@ ManejadorDeError:
    ms_MensajeError = Err.Number & " " + Err.Description: MsgBox ms_MensajeError + Chr(13) + "Por favor contacte al personal de soporte técnico", vbInformation, "Error en la interface de acceso a datos"
 Exit Function
 End Function
+
+'***************** LLENAR GRILLA SERVICIOS RAUL
+Function usp_listarcatalogoidat(LcIdAtencion As String) As ADODB.Recordset
+    On Error GoTo ManejadorDeError
+    Dim oRecordset As New ADODB.Recordset
+    Dim oCommand As New ADODB.Command
+    Dim oParameter As ADODB.Parameter
+    Dim ms_MensajeError As String
+    Dim oConexion As New ADODB.Connection
+    oConexion.Open SIGHENTIDADES.CadenaConexion
+    oConexion.CursorLocation = adUseClient
+    Set usp_listarcatalogoidat = Nothing
+    ms_MensajeError = ""
+    With oCommand
+        .CommandType = adCmdStoredProc
+        Set .ActiveConnection = oConexion
+        .CommandTimeout = 150
+        .CommandText = "usp_listarcatalogoidat"
+        Set oParameter = .CreateParameter("@IdAtencion", adVarChar, adParamInput, 20, LcIdAtencion): .Parameters.Append oParameter
+                Set oRecordset = .Execute
+        Set oRecordset.ActiveConnection = Nothing
+   End With
+   oConexion.Close
+   Set oConexion = Nothing
+   Set usp_listarcatalogoidat = oRecordset
+   Exit Function
+ManejadorDeError:
+   ms_MensajeError = Err.Number & " " + Err.Description: MsgBox ms_MensajeError + Chr(13) + "Por favor contacte al personal de soporte técnico", vbInformation, "Error en la interface de acceso a datos"
+Exit Function
+End Function
+'*******************************
+
+
+
+
 
 Function FarmDevuelveMovimientosDeProducto(lnIdProducto As Long, ldFechaFin As Date) As ADODB.Recordset
     On Error GoTo ManejadorDeError

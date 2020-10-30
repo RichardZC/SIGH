@@ -262,6 +262,40 @@ ManejadorDeError:
    ms_MensajeError = Err.Number & " " + Err.Description: MsgBox ms_MensajeError + Chr(13) + "Por favor contacte al personal de soporte técnico", vbInformation, "Error en la interface de acceso a datos"
 Exit Function
 End Function
+
+'RHA 07/10/20 Cambio33 Inicio
+Function SeleccionarPorIdProducto1(LcMovNumero As String, LcMovTipo As String, lnIdProducto As Long) As Recordset
+On Error GoTo ManejadorDeError
+Dim oRecordset As New ADODB.Recordset
+Dim oCommand As New ADODB.Command
+Dim oParameter As ADODB.Parameter
+Dim oConexion As New ADODB.Connection
+Dim ms_MensajeError As String
+    Set SeleccionarPorIdProducto1 = Nothing
+    ms_MensajeError = ""
+    oConexion.Open SIGHENTIDADES.CadenaConexion
+    oConexion.CursorLocation = adUseClient
+    With oCommand
+        .CommandType = adCmdStoredProc
+        Set .ActiveConnection = oConexion
+        .CommandTimeout = 150
+        .CommandText = "usp_FacturacionBienesDevolucionesSeleccionarPorIdProducto"
+        Set oParameter = .CreateParameter("@MovNumero", adVarChar, adParamInput, 9, LcMovNumero): .Parameters.Append oParameter
+        Set oParameter = .CreateParameter("@MovTipo", adVarChar, adParamInput, 1, LcMovTipo): .Parameters.Append oParameter
+        Set oParameter = .CreateParameter("@idProducto", adInteger, adParamInput, 0, lnIdProducto): .Parameters.Append oParameter
+        Set oRecordset = .Execute
+        Set oRecordset.ActiveConnection = Nothing
+   End With
+   Set SeleccionarPorIdProducto1 = oRecordset
+Exit Function
+ManejadorDeError:
+   ms_MensajeError = Err.Number & " " + Err.Description: MsgBox ms_MensajeError + Chr(13) + "Por favor contacte al personal de soporte técnico", vbInformation, "Error en la interface de acceso a datos"
+Exit Function
+End Function
+'RHA 07/10/20 Cambio33 Fin
+
+
+
 Function EliminarPorMovNumeroE(ByVal oTabla As DoFacturacionBienesDevol) As Boolean
 On Error GoTo ManejadorDeError
 Dim oCommand As New ADODB.Command

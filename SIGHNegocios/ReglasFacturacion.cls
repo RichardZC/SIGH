@@ -3814,6 +3814,13 @@ Function FacturacionBienesDevolucionesSeleccionarPorIdProducto(lcMovNumero As St
     Set FacturacionBienesDevolucionesSeleccionarPorIdProducto = oTabla.SeleccionarPorIdProducto(lcMovNumero, lcMovTipo, idProducto)
 End Function
 
+'RHA 07/10/20 Cambio33 Inicio
+Function usp_FacturacionBienesDevolucionesSeleccionarPorIdProducto(lcMovNumero As String, lcMovTipo As String, idProducto As Long, oConexion As Connection) As ADODB.Recordset
+    Dim oTabla As New FacturacionBienesDevol
+    Set oTabla.Conexion = oConexion
+    Set usp_FacturacionBienesDevolucionesSeleccionarPorIdProducto = oTabla.SeleccionarPorIdProducto1(lcMovNumero, lcMovTipo, idProducto)
+End Function
+'RHA 07/10/20 Cambio33 fin
 
 Function FactOrdenServicioFiltraPorIdCuenta(lidCuenta As Long, Optional oConexion As Connection) As ADODB.Recordset
 On Error GoTo ManejadorDeError
@@ -11318,6 +11325,9 @@ ManejadorDeError:
    ms_MensajeError = Err.Number & " " + Err.Description: MsgBox ms_MensajeError + Chr(13) + "Por favor contacte al personal de soporte técnico", vbInformation, "Error en la interface de acceso a datos"
 Exit Function
 End Function
+
+
+
 'Modificado por Yamill Palomino 02-10-13 Se cambio a Store Procedure
 Function FacturacionCatalogoPaquetesXidPaquete(lnIdPaquete As Long) As Recordset
     Dim sSql As String, oRsTmp2 As New Recordset

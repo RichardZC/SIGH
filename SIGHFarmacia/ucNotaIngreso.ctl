@@ -46,7 +46,7 @@ Begin VB.UserControl ucNotaIngreso
       Height          =   2475
       Left            =   240
       TabIndex        =   0
-      Top             =   840
+      Top             =   1440
       Visible         =   0   'False
       Width           =   12600
       _ExtentX        =   22225
@@ -199,6 +199,7 @@ Dim ml_idTipoConcepto As Long
 Dim mb_EsUnaDonacionOestrategico As Long
 Dim ml_DocumentoNumero As String
 'kike 2017
+
 Property Get DocumentoNumero() As String
     DocumentoNumero = ml_DocumentoNumero
 End Property
@@ -268,7 +269,7 @@ Sub AgregaRegistro()
         .Fields!FechaVencimiento = Date
         .Fields!Cantidad = 0
         .Fields!Precio = 0
-        .Fields!total = 0
+        .Fields!Total = 0
     End With
 errAR:
 End Sub
@@ -307,7 +308,7 @@ Sub CargarItemsALaGrilla(rs As Recordset)
         mRs_Productos!FechaVencimiento = rs!FechaVencimiento
         mRs_Productos!Cantidad = rs!Cantidad
         mRs_Productos!Precio = rs!Precio
-        mRs_Productos!total = rs!total
+        mRs_Productos!Total = rs!Total
         mRs_Productos!idTipoSalidaBienInsumo = rs!idTipoSalidaBienInsumo
         mRs_Productos!registroSanitario = rs!registroSanitario
         If Not IsNull(rs!esPaquete) Then
@@ -338,7 +339,7 @@ Sub CargaProductosPorTemporal(rs As Recordset)
             mRs_Productos!FechaVencimiento = rs!medFechVto
             mRs_Productos!Cantidad = rs!movCantid
             mRs_Productos!Precio = rs!movPrecio
-            mRs_Productos!total = Round(rs!movCantid * rs!movPrecio, 2)
+            mRs_Productos!Total = Round(rs!movCantid * rs!movPrecio, 2)
             If mb_EsUnaDonacionOestrategico > 0 Then
                mRs_Productos!idTipoSalidaBienInsumo = mb_EsUnaDonacionOestrategico
             Else
@@ -371,9 +372,9 @@ Sub Totalizar()
         If Not (rsProductos.EOF And rsProductos.BOF) Then
             rsProductos.MoveFirst
             Do While Not rsProductos.EOF
-                rsProductos.Fields!total = Round(rsProductos.Fields!Cantidad * rsProductos.Fields!Precio, 2)
+                rsProductos.Fields!Total = Round(rsProductos.Fields!Cantidad * rsProductos.Fields!Precio, 2)
                 rsProductos.Update
-                dTotalIngresado = dTotalIngresado + rsProductos!total
+                dTotalIngresado = dTotalIngresado + rsProductos!Total
                 'rsProductos.Update
                 rsProductos.MoveNext
             Loop
@@ -853,14 +854,14 @@ End Sub
 
 Private Sub txtBusca_KeyPress(KeyAscii As Integer)
    If KeyAscii = 13 Then
-      If txtBusca.Text <> "" Then
-            txtBusca.Text = Trim(txtBusca.Text)
+      If TxtBusca.Text <> "" Then
+            TxtBusca.Text = Trim(TxtBusca.Text)
             mRs_Productos.MoveFirst
             If cmbOrden.ListIndex = 0 Then
-               mRs_Productos.Find "codigo='" & txtBusca.Text & "'"
+               mRs_Productos.Find "codigo='" & TxtBusca.Text & "'"
             Else
                Do While Not mRs_Productos.EOF
-                  If Left(mRs_Productos!nombreProducto, Len(txtBusca.Text)) = UCase(txtBusca.Text) Then
+                  If Left(mRs_Productos!nombreProducto, Len(TxtBusca.Text)) = UCase(TxtBusca.Text) Then
                      Exit Do
                   End If
                   mRs_Productos.MoveNext
@@ -882,7 +883,7 @@ Private Sub UserControl_Resize()
    Label1.Top = UserControl.Height - UserControl.Label1.Height - 50
    Label2.Top = UserControl.Height - UserControl.Label1.Height - 50
    cmbOrden.Top = UserControl.Height - UserControl.Label1.Height - 100
-   txtBusca.Top = UserControl.Height - UserControl.Label1.Height - 100
+   TxtBusca.Top = UserControl.Height - UserControl.Label1.Height - 100
    lblPrecios.Top = UserControl.Height - UserControl.Label1.Height - 100
    lblTotal.Top = UserControl.Height - UserControl.Label1.Height - 50
    lblTotal.Left = UserControl.Width - Len(lblTotal) * 150
@@ -928,7 +929,7 @@ Sub AgregaProductoParaSaldosDePruebas(lnIdProducto As Long, lcCodigo As String, 
         .Fields!FechaVencimiento = ldFechaVencimiento
         .Fields!Cantidad = lnCantidad
         .Fields!Precio = lnPrecio
-        .Fields!total = Round(lnCantidad * lnPrecio, 2)
+        .Fields!Total = Round(lnCantidad * lnPrecio, 2)
     End With
 End Sub
 

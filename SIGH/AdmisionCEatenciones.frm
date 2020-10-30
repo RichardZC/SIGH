@@ -25,8 +25,8 @@ Begin VB.Form AdmisionCEatenciones
       TabIndex        =   92
       Top             =   4965
       Width           =   3570
-      _ExtentX        =   6297
-      _ExtentY        =   3096
+      _extentx        =   6297
+      _extenty        =   3096
    End
    Begin VB.TextBox lblMedico 
       BeginProperty Font 
@@ -69,8 +69,8 @@ Begin VB.Form AdmisionCEatenciones
          TabIndex        =   42
          Top             =   180
          Width           =   3465
-         _ExtentX        =   6112
-         _ExtentY        =   5794
+         _extentx        =   6112
+         _extenty        =   5794
       End
    End
    Begin VB.Frame Frame4 
@@ -236,6 +236,7 @@ Begin VB.Form AdmisionCEatenciones
       _ExtentY        =   16933
       _Version        =   393216
       Tabs            =   5
+      Tab             =   1
       TabsPerRow      =   5
       TabHeight       =   520
       ForeColor       =   13653559
@@ -250,29 +251,30 @@ Begin VB.Form AdmisionCEatenciones
       EndProperty
       TabCaption(0)   =   "3.1 Anam/Ex.Físico"
       TabPicture(0)   =   "AdmisionCEatenciones.frx":6027
-      Tab(0).ControlEnabled=   -1  'True
+      Tab(0).ControlEnabled=   0   'False
       Tab(0).Control(0)=   "Frame17"
-      Tab(0).Control(0).Enabled=   0   'False
       Tab(0).Control(1)=   "Frame16"
-      Tab(0).Control(1).Enabled=   0   'False
       Tab(0).Control(2)=   "Frame7"
-      Tab(0).Control(2).Enabled=   0   'False
       Tab(0).Control(3)=   "Frame6"
-      Tab(0).Control(3).Enabled=   0   'False
       Tab(0).ControlCount=   4
       TabCaption(1)   =   "3.2 Diagnósticos"
       TabPicture(1)   =   "AdmisionCEatenciones.frx":6043
-      Tab(1).ControlEnabled=   0   'False
+      Tab(1).ControlEnabled=   -1  'True
       Tab(1).Control(0)=   "TabDx"
-      Tab(1).ControlCount=   1
+      Tab(1).Control(0).Enabled=   0   'False
+      Tab(1).Control(1)=   "grdServicios"
+      Tab(1).Control(1).Enabled=   0   'False
+      Tab(1).Control(2)=   "btnguardarcs"
+      Tab(1).Control(2).Enabled=   0   'False
+      Tab(1).ControlCount=   3
       TabCaption(2)   =   "3.3 Ordenes Médicas"
       TabPicture(2)   =   "AdmisionCEatenciones.frx":605F
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "btnAgregaApoyoDx"
-      Tab(2).Control(1)=   "UcRecetas1"
+      Tab(2).Control(0)=   "txtCitaExClinicos"
+      Tab(2).Control(1)=   "btnImprimir"
       Tab(2).Control(2)=   "btnImprimirOrden"
-      Tab(2).Control(3)=   "btnImprimir"
-      Tab(2).Control(4)=   "txtCitaExClinicos"
+      Tab(2).Control(3)=   "UcRecetas1"
+      Tab(2).Control(4)=   "btnAgregaApoyoDx"
       Tab(2).ControlCount=   5
       TabCaption(3)   =   "3.4 Tratamiento"
       TabPicture(3)   =   "AdmisionCEatenciones.frx":607B
@@ -282,13 +284,31 @@ Begin VB.Form AdmisionCEatenciones
       TabCaption(4)   =   "3.5 Destino Atención"
       TabPicture(4)   =   "AdmisionCEatenciones.frx":6097
       Tab(4).ControlEnabled=   0   'False
-      Tab(4).Control(0)=   "Frame11"
-      Tab(4).Control(1)=   "fraDatosReferenciaDestino"
-      Tab(4).Control(2)=   "Frame1"
-      Tab(4).Control(3)=   "UcEpisodioClinico1"
-      Tab(4).Control(4)=   "ucCitasLista1"
-      Tab(4).Control(5)=   "lblNroAtencion"
+      Tab(4).Control(0)=   "lblNroAtencion"
+      Tab(4).Control(1)=   "ucCitasLista1"
+      Tab(4).Control(2)=   "UcEpisodioClinico1"
+      Tab(4).Control(3)=   "Frame1"
+      Tab(4).Control(4)=   "fraDatosReferenciaDestino"
+      Tab(4).Control(5)=   "Frame11"
       Tab(4).ControlCount=   6
+      Begin VB.CommandButton btnguardarcs 
+         Caption         =   "Guardar "
+         Height          =   360
+         Left            =   11640
+         TabIndex        =   95
+         Top             =   9120
+         Visible         =   0   'False
+         Width           =   510
+      End
+      Begin SISGalenPlus.ucCatalogos grdServicios 
+         Height          =   3015
+         Left            =   0
+         TabIndex        =   93
+         Top             =   6600
+         Width           =   12135
+         _extentx        =   21405
+         _extenty        =   5318
+      End
       Begin VB.CommandButton btnAgregaApoyoDx 
          DisabledPicture =   "AdmisionCEatenciones.frx":60B3
          DownPicture     =   "AdmisionCEatenciones.frx":649C
@@ -951,8 +971,8 @@ Begin VB.Form AdmisionCEatenciones
          TabIndex        =   49
          Top             =   315
          Width           =   11685
-         _ExtentX        =   20611
-         _ExtentY        =   16219
+         _extentx        =   20611
+         _extenty        =   16219
       End
       Begin VB.CommandButton btnImprimirOrden 
          BeginProperty Font 
@@ -1004,7 +1024,7 @@ Begin VB.Form AdmisionCEatenciones
             Strikethrough   =   0   'False
          EndProperty
          Height          =   2565
-         Left            =   90
+         Left            =   -74910
          TabIndex        =   38
          Top             =   2760
          Width           =   5985
@@ -1040,7 +1060,7 @@ Begin VB.Form AdmisionCEatenciones
             Strikethrough   =   0   'False
          EndProperty
          Height          =   2565
-         Left            =   6120
+         Left            =   -68880
          TabIndex        =   36
          Top             =   2760
          Width           =   5595
@@ -1077,7 +1097,7 @@ Begin VB.Form AdmisionCEatenciones
             Strikethrough   =   0   'False
          EndProperty
          Height          =   2385
-         Left            =   120
+         Left            =   -74880
          TabIndex        =   10
          Top             =   360
          Width           =   11595
@@ -1322,7 +1342,7 @@ Begin VB.Form AdmisionCEatenciones
             Strikethrough   =   0   'False
          EndProperty
          Height          =   1125
-         Left            =   90
+         Left            =   -74910
          TabIndex        =   8
          Top             =   5400
          Width           =   11625
@@ -1347,13 +1367,13 @@ Begin VB.Form AdmisionCEatenciones
          End
       End
       Begin TabDlg.SSTab TabDx 
-         Height          =   7695
-         Left            =   -74970
+         Height          =   6255
+         Left            =   0
          TabIndex        =   23
          Top             =   360
          Width           =   12225
          _ExtentX        =   21564
-         _ExtentY        =   13573
+         _ExtentY        =   11033
          _Version        =   393216
          TabHeight       =   520
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -1392,7 +1412,9 @@ Begin VB.Form AdmisionCEatenciones
          Tab(0).Control(10).Enabled=   0   'False
          Tab(0).Control(11)=   "cmdRegistraActividades"
          Tab(0).Control(11).Enabled=   0   'False
-         Tab(0).ControlCount=   12
+         Tab(0).Control(12)=   "Command1"
+         Tab(0).Control(12).Enabled=   0   'False
+         Tab(0).ControlCount=   13
          TabCaption(1)   =   "3.2.2 Módulo Niño Sano"
          TabPicture(1)   =   "AdmisionCEatenciones.frx":80E5
          Tab(1).ControlEnabled=   0   'False
@@ -1404,6 +1426,14 @@ Begin VB.Form AdmisionCEatenciones
          Tab(2).ControlEnabled=   0   'False
          Tab(2).Control(0)=   "UcProgramaMaterno"
          Tab(2).ControlCount=   1
+         Begin VB.CommandButton Command1 
+            Caption         =   "Command1"
+            Height          =   360
+            Left            =   13560
+            TabIndex        =   94
+            Top             =   7200
+            Width           =   990
+         End
          Begin VB.CommandButton cmdRegistraActividades 
             BeginProperty Font 
                Name            =   "Tahoma"
@@ -1509,8 +1539,8 @@ Begin VB.Form AdmisionCEatenciones
             Top             =   2385
             Visible         =   0   'False
             Width           =   9090
-            _ExtentX        =   20558
-            _ExtentY        =   12515
+            _extentx        =   20558
+            _extenty        =   12515
          End
          Begin SISGalenPlus.ucPerinatalAS ucPerinatalAS1 
             Height          =   1440
@@ -1518,8 +1548,8 @@ Begin VB.Form AdmisionCEatenciones
             TabIndex        =   76
             Top             =   480
             Width           =   9750
-            _ExtentX        =   17198
-            _ExtentY        =   2540
+            _extentx        =   17198
+            _extenty        =   2540
          End
          Begin SISGalenPlus.UcDiagnosticoHIS UcDiagnosticoDetalle1 
             Height          =   3120
@@ -1527,19 +1557,19 @@ Begin VB.Form AdmisionCEatenciones
             TabIndex        =   48
             Top             =   375
             Width           =   11685
-            _ExtentX        =   20611
-            _ExtentY        =   5503
+            _extentx        =   20611
+            _extenty        =   5503
          End
          Begin VB.CommandButton btnQuitarCpt 
             DisabledPicture =   "AdmisionCEatenciones.frx":8C5F
             DownPicture     =   "AdmisionCEatenciones.frx":8FEA
             Height          =   555
-            Left            =   11115
+            Left            =   11280
             Picture         =   "AdmisionCEatenciones.frx":937D
             Style           =   1  'Graphical
             TabIndex        =   47
             ToolTipText     =   "Elimina CPT"
-            Top             =   6015
+            Top             =   5280
             Width           =   615
          End
          Begin SISGalenPlus.UcPrograma UcProgramaMaterno 
@@ -1548,8 +1578,8 @@ Begin VB.Form AdmisionCEatenciones
             TabIndex        =   40
             Top             =   360
             Width           =   11655
-            _ExtentX        =   20558
-            _ExtentY        =   12568
+            _extentx        =   20558
+            _extenty        =   12568
          End
          Begin VB.Frame Frame2 
             Caption         =   "Condición del paciente"
@@ -1562,11 +1592,11 @@ Begin VB.Form AdmisionCEatenciones
                Italic          =   0   'False
                Strikethrough   =   0   'False
             EndProperty
-            Height          =   720
+            Height          =   600
             Left            =   60
             TabIndex        =   28
             Top             =   4680
-            Width           =   11670
+            Width           =   11070
             Begin VB.ComboBox cmbIdCondicionEnElServicio 
                BeginProperty Font 
                   Name            =   "Tahoma"
@@ -1578,7 +1608,7 @@ Begin VB.Form AdmisionCEatenciones
                   Strikethrough   =   0   'False
                EndProperty
                Height          =   330
-               Left            =   7365
+               Left            =   6720
                TabIndex        =   30
                Top             =   255
                Width           =   3945
@@ -1612,9 +1642,9 @@ Begin VB.Form AdmisionCEatenciones
                   Strikethrough   =   0   'False
                EndProperty
                Height          =   285
-               Left            =   6210
+               Left            =   5400
                TabIndex        =   32
-               Top             =   270
+               Top             =   240
                Width           =   1155
             End
             Begin VB.Label Label56 
@@ -1647,12 +1677,12 @@ Begin VB.Form AdmisionCEatenciones
                Strikethrough   =   0   'False
             EndProperty
             Height          =   555
-            Left            =   11130
+            Left            =   11280
             Picture         =   "AdmisionCEatenciones.frx":970E
             Style           =   1  'Graphical
             TabIndex        =   27
             ToolTipText     =   "Agregar Procedimientos realizados en el Consultorio"
-            Top             =   5415
+            Top             =   4680
             Visible         =   0   'False
             Width           =   615
          End
@@ -1710,13 +1740,13 @@ Begin VB.Form AdmisionCEatenciones
             End
          End
          Begin UltraGrid.SSUltraGrid grdOtrosCpt 
-            Height          =   1695
-            Left            =   60
+            Height          =   975
+            Left            =   0
             TabIndex        =   34
-            Top             =   5430
+            Top             =   5280
             Width           =   11055
             _ExtentX        =   19500
-            _ExtentY        =   2990
+            _ExtentY        =   1720
             _Version        =   131072
             GridFlags       =   17040384
             LayoutFlags     =   67108884
@@ -1793,8 +1823,8 @@ Begin VB.Form AdmisionCEatenciones
          TabIndex        =   72
          Top             =   4170
          Width           =   5385
-         _ExtentX        =   9499
-         _ExtentY        =   1931
+         _extentx        =   9499
+         _extenty        =   1931
       End
       Begin SISGalenPlus.ucCitasLista ucCitasLista1 
          Height          =   4875
@@ -1802,8 +1832,8 @@ Begin VB.Form AdmisionCEatenciones
          TabIndex        =   80
          Top             =   420
          Width           =   6285
-         _ExtentX        =   11086
-         _ExtentY        =   8599
+         _extentx        =   11086
+         _extenty        =   8599
       End
       Begin VB.Label lblNroAtencion 
          Alignment       =   1  'Right Justify
@@ -1849,6 +1879,9 @@ Attribute VB_Exposed = False
 '        Fecha: Enero 2009
 '
 '------------------------------------------------------------------------------------
+
+Dim mRs_Productos As New ADODB.Recordset
+
 Option Explicit
 Dim lbHuboCambioEnDato As Boolean
 Dim mo_Teclado As New sighEntidades.Teclado
@@ -1857,7 +1890,9 @@ Dim ms_MensajeError As String
 Dim mi_Opcion As sghOpciones
 Dim ml_idUsuario As Long
 Dim mb_ExistenDatos As Boolean
-'
+
+Public ms_Atencion As String
+
 Dim mo_sighProxies As New SIGHProxies.Procesos
 Dim mo_ReglasSISgalenhos As New SIGHSis.ReglasSISgalenhos
 Dim mo_ReglasFarmacia As New SIGHNegocios.ReglasFarmacia
@@ -1976,6 +2011,10 @@ Dim ms_NroCola As String
 Dim lbUsuarioAutorizadoAregistrarCitasRepetidas As Boolean
 Dim mo_lbCargaTablasUnaVez As Boolean
 Dim mo_lbNuevoMovimiento As Boolean
+
+
+
+
 Dim lbYaSeTransfirioHCdeUnServicioAotro As Boolean
 Dim mo_DOAtencionesCE As New DOAtencionesCE
 Const lcLinea As String = "----------------------------------------------------------------------------------------"
@@ -2018,6 +2057,20 @@ Dim lbTienePermisoParaRegistrarAtencionesPasadas As Boolean
 Dim lbTieneLicenciaParaMensajeAcelulares As Boolean
 Dim lbImpresionDeAtencionDistintoAlGrabar As Boolean
 Dim lbTienePermisoParaImprimirAtencion As Boolean
+
+Dim IdCS As Long
+Dim lidatencionC As String
+
+Property Let cidatencion(lValue As String)
+   lidatencionC = lValue
+End Property
+
+
+Property Let cidCS(lValue As Long)
+   IdCS = lValue
+End Property
+
+
 
 
 
@@ -2168,6 +2221,11 @@ End Property
 Property Let TipoVistaForm(lValue As sghTipoVistaFormAtenciones)
    ml_TipoVistaForm = lValue
 End Property
+
+
+
+
+
 
 Sub CargarComboBoxes()
         mo_cmbIdCondicionEnElServicio.BoundColumn = "IdTipoCondicionPaciente"
@@ -2412,7 +2470,7 @@ Sub CargaCPTrealizadosEnVariosServicios(lbDesdeCargaDatosAlosControles As Boolea
              oRsGrdOtrosCpt.Fields!nombre = oRsServiciosIntermedios!nombre
              oRsGrdOtrosCpt.Fields!labConfHIS = oRsServiciosIntermedios!labConfHIS
              oRsGrdOtrosCpt.Fields!Cantidad = oRsServiciosIntermedios!Cantidad
-             oRsGrdOtrosCpt.Fields!precio = oRsServiciosIntermedios!precio
+             oRsGrdOtrosCpt.Fields!Precio = oRsServiciosIntermedios!Precio
              oRsGrdOtrosCpt.Fields!Total = oRsServiciosIntermedios!Total
              oRsGrdOtrosCpt.Fields!idCuentaAtencion = oRsServiciosIntermedios!idCuentaAtencion
              oRsGrdOtrosCpt.Fields!IdOrden = oRsServiciosIntermedios!IdOrden
@@ -2461,6 +2519,18 @@ Sub CargaCPTrealizadosEnVariosServicios(lbDesdeCargaDatosAlosControles As Boolea
        Set oRsTmp2 = Nothing
        Set oConexion99 = Nothing
 End Sub
+
+Private Sub btnguardarcs_Click()
+If ValidarDatosObligatoriosCS() Then
+If AgregarDatosCS() Then
+                MsgBox "Se registrarón correctamente los datos " + Chr(13) + ms_MensajeError, vbExclamation, Me.Caption
+                grdServicios.LimpiarGrilla
+            Else
+                MsgBox "No se registrarón los datos " + Chr(13) + ms_MensajeError, vbExclamation, Me.Caption
+            End If
+       End If
+End Sub
+
 
 'Sub CargaCPTrealizadosEnElServicio()
 '    Set oRsServiciosIntermedios = mo_AdminAdmision.BuscaAtencionesCptCEparaFormatoHIS(ml_idCuentaAtencion)
@@ -2668,6 +2738,8 @@ Private Sub cmbTipoEdad1_LostFocus()
       lbHuboCambioEnDato = False
     End If
 End Sub
+
+
 
 Private Sub cmdGenerarPlanAtencion_Click()
     If MsgBox("Desea Generar y/o Actualizar el Plan de Atención Integral del Paciente", vbQuestion + vbYesNo, "Módulo Niño Sano") = vbNo Then
@@ -3245,6 +3317,35 @@ Private Sub cmdRegistraActividades_Click()
 
 End Sub
 
+
+Function ValidarDatosObligatoriosCS() As Boolean
+   ValidarDatosObligatoriosCS = False
+   ms_MensajeError = ""
+    Set mRs_Productos = grdServicios.DevuelveProductos
+   If ms_MensajeError <> "" Then
+       MsgBox ms_MensajeError, vbInformation, Me.Caption
+       Exit Function
+   End If
+   ValidarDatosObligatoriosCS = True
+End Function
+
+Private Sub btnguardarserv_Click()
+If ValidarDatosObligatoriosCS() Then
+If AgregarDatosCS() Then
+                MsgBox "Se registrarón correctamente los datos " + Chr(13) + ms_MensajeError, vbExclamation, Me.Caption
+                grdServicios.LimpiarGrilla
+            Else
+                MsgBox "No se registrarón los datos " + Chr(13) + ms_MensajeError, vbExclamation, Me.Caption
+            End If
+       End If
+End Sub
+Function AgregarDatosCS() As Boolean
+    Dim lbAgregarDatosCS As Boolean   '
+    lbAgregarDatosCS = mo_ReglasFarmacia.usp_catalogoserviciosagregar(mRs_Productos)
+    ms_MensajeError = mo_ReglasFarmacia.MensajeError
+    AgregarDatosCS = lbAgregarDatosCS
+End Function
+
 Private Sub Form_Initialize()
     Set mo_cmbIdDestinoAtencion.MiComboBox = cmbIdDestinoAtencion
     Set mo_cmbIdTipoReferenciaDestino.MiComboBox = cmbIdTipoReferenciaDestino
@@ -3450,6 +3551,8 @@ Function EliminaAntecedentePersonal(lcMensajeEliminacion As String) As Boolean
        EliminaAntecedentePersonal = False
     End If
 End Function
+
+
 
 
 
@@ -3859,6 +3962,10 @@ Sub HabilitaModulosPerinatalYmaterno()
         TabDx.TabVisible(1) = False
         TabDx.TabVisible(2) = False
         
+        
+        ConfigurarGrdServicios
+        
+        
         mo_AdminArchivoClinico.ServicioSeUsanModulosPerinatalyMaterno ml_IdCita, lbElConsultorioUsaModuloPerinatal, _
                                                               lbElConsultorioUsaModuloMaterno, lbElConsultorioUsaFUA
         'Modulo niño sano - habilita
@@ -3935,6 +4042,15 @@ Sub HabilitaModulosPerinatalYmaterno()
         '
 End Sub
 
+
+Sub ConfigurarGrdServicios()
+    'grdServicios.movNumero = ml_movNumero
+    'grdServicios.IdAlmacen = 0
+    'grdServicios.FechaMinimaDespacho = CDate(lcBuscaParametro.RetornaFechaServidorSQL) + Val(lcBuscaParametro.SeleccionaFilaParametro(220))
+    grdServicios.Inicializar
+End Sub
+
+
 Sub SiempreCargaPorMovimiento()
     If mo_lbNuevoMovimiento = True Then
         sighEntidades.ParaAuditoria = ""
@@ -3971,6 +4087,10 @@ Sub SiempreCargaPorMovimiento()
         Case sghModificar
             Me.Caption = "Modifica Admisión de CE"
             EligeTabAtencion
+            
+            'grdServicios.AgregaRegistro
+            
+            
         Case sghConsultar
             Me.Caption = "Consulta Admisión de CE"
         Case sghEliminar
@@ -4085,6 +4205,10 @@ Sub Form_Activate()
         Select Case mi_Opcion
         Case sghAgregar
         Case sghModificar
+        
+        
+        grdServicios.CargaProductosPorIdAtencion
+        
             If mo_lnIdTablaLISTBARITEMS = sghOpcionGalenHos.sghRegistroAtencionCE Then
                AdministrarKeyPreview vbKeyF12
             Else
@@ -4145,6 +4269,10 @@ Private Sub btnAceptar_Click()
    Select Case mi_Opcion
    Case sghAgregar
    Case sghModificar, sghEliminar
+   
+   
+        
+       
        If ValidarDatosObligatorios() Then
             CargaDatosAlObjetosDeDatos
             If ValidarReglas() Then
@@ -4175,6 +4303,21 @@ Private Sub btnAceptar_Click()
                    
                    ms_NombrePaciente = mo_paciente.ApellidoPaterno + " " + mo_paciente.ApellidoMaterno + " " + mo_paciente.PrimerNombre
                    MsgBox " Los datos se modificaron correctamente, para la Cuenta N°: " & Trim(Str(ml_idCuentaAtencion)) & DevuelveNroRecetasGeneradas, vbInformation, Me.Caption
+                   
+                   
+                   If ValidarDatosObligatoriosCS() Then
+                If AgregarDatosCS() Then
+                'MsgBox "Se registrarón correctamente los datos " + Chr(13) + ms_MensajeError, vbExclamation, Me.Caption
+                grdServicios.LimpiarGrilla
+            'Else
+                'MsgBox "No se registrarón los datos " + Chr(13) + ms_MensajeError, vbExclamation, Me.Caption
+            End If
+            End If
+                   
+                   
+                   
+                   
+                   
                    If wxParametro302 = "S" And _
                       mo_Atenciones.IdFuenteFinanciamiento = sghFuenteFinanciamiento.sghFFSIS And _
                       lbElMedicoNOregistraDatosCE <> "S" Then
@@ -5270,6 +5413,13 @@ Dim lcEstadoAtencion As String
              Exit Sub
         End If
         lblNroAtencion.Caption = "N° Atención: " & Trim(Str(Me.idAtencion))
+        
+        'idatencion = Trim(Str(Me.idatencion))
+        
+        grdServicios.cidatencion = Trim(Str(Me.idAtencion))
+        
+     
+        
         If Not mo_Atenciones Is Nothing Then
            With mo_Atenciones
                 

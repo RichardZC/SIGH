@@ -17,15 +17,6 @@ Begin VB.Form FacOrdenServicioDetalle
    ScaleWidth      =   13860
    ShowInTaskbar   =   0   'False
    StartUpPosition =   2  'CenterScreen
-   Begin SISGalenPlus.ucFacturacionItems ucFacturacionProductos 
-      Height          =   4995
-      Left            =   30
-      TabIndex        =   16
-      Top             =   2550
-      Width           =   13755
-      _ExtentX        =   24262
-      _ExtentY        =   8811
-   End
    Begin VB.Frame fraDatosAtencion 
       Caption         =   "Datos de Cabecera"
       BeginProperty Font 
@@ -816,6 +807,15 @@ Begin VB.Form FacOrdenServicioDetalle
          Width           =   1365
       End
    End
+   Begin SISGalenPlus.ucFacturacionItems ucFacturacionProductos 
+      Height          =   4995
+      Left            =   120
+      TabIndex        =   16
+      Top             =   2520
+      Width           =   13755
+      _extentx        =   24262
+      _extenty        =   8811
+   End
 End
 Attribute VB_Name = "FacOrdenServicioDetalle"
 Attribute VB_GlobalNameSpace = False
@@ -846,12 +846,12 @@ Dim mo_ReglasSeguridad As New SIGHNegocios.ReglasDeSeguridad
 Dim mo_AdminArchivoClinico As New SIGHNegocios.ReglasArchivoClinico
 Dim mo_ReglasSISgalenhos As New SIGHSis.ReglasSISgalenhos
 Dim wxParametro302 As String, lnIdTipoServicio As Long
-Dim mo_Apariencia As New sighentidades.GridInfragistic
-Dim mo_cmbIdPuntoCarga As New sighentidades.ListaDespleglable
-Dim mo_cmbIdEstado As New sighentidades.ListaDespleglable
-Dim mo_cmbFechaIngreso As New sighentidades.ListaDespleglable
-Dim mo_cmbIdTipoGenHistoriaClinica As New sighentidades.ListaDespleglable
-Dim mo_cmbServicioIngreso As New sighentidades.ListaDespleglable
+Dim mo_Apariencia As New sighEntidades.GridInfragistic
+Dim mo_cmbIdPuntoCarga As New sighEntidades.ListaDespleglable
+Dim mo_cmbIdEstado As New sighEntidades.ListaDespleglable
+Dim mo_cmbFechaIngreso As New sighEntidades.ListaDespleglable
+Dim mo_cmbIdTipoGenHistoriaClinica As New sighEntidades.ListaDespleglable
+Dim mo_cmbServicioIngreso As New sighEntidades.ListaDespleglable
 Dim mo_DOFactOrdenServicio As New DoFactOrdenServ
 Dim mo_DoAtencion As New DOAtencion
 Dim ml_IdPaciente As Long
@@ -860,8 +860,8 @@ Dim ml_IdFuenteFinanciamiento As Long
 Dim lcBuscaParametro As New SIGHDatos.Parametros
 Dim oRsFormaPago As New ADODB.Recordset
 Dim lbDocumentoYaRegistradoEnSeguros As Boolean
-Dim mo_Teclado As New sighentidades.Teclado
-Dim mo_Formulario As New sighentidades.Formulario
+Dim mo_Teclado As New sighEntidades.Teclado
+Dim mo_Formulario As New sighEntidades.Formulario
 Dim ln_IdOrdenPago As Long
 Dim lbPrimeraVez As Boolean
 Dim oRsTipoFinanciamiento As New Recordset
@@ -968,7 +968,7 @@ Private Sub btnAceptar_Click()
                        MsgBox "Se Agregó correctamente la Orden de Pago N° " & DevuelveNroOrdenPago(mo_DOFactOrdenServicio.IdOrden), vbInformation, Me.Caption
                     End If
                     Me.txtIdOrden = mo_DOFactOrdenServicio.IdOrden
-                    If txtFentrega.Text <> sighentidades.FECHA_VACIA_DMY Then
+                    If txtFentrega.Text <> sighEntidades.FECHA_VACIA_DMY Then
                         LimpiarFormulario
                     Else
                         Me.Visible = False
@@ -1049,7 +1049,7 @@ Function ValidarDatosObligatorios() As Boolean
         If txtDatosDeCuenta.Text = "" Then
            MsgBox "Tiene problemas con el N° Cuenta", vbInformation, Me.Caption
            Exit Function
-        ElseIf txtFentrega.Text = sighentidades.FECHA_VACIA_DMY Or txtHentrega.Text = sighentidades.HORA_VACIA_HM Then
+        ElseIf txtFentrega.Text = sighEntidades.FECHA_VACIA_DMY Or txtHentrega.Text = sighEntidades.HORA_VACIA_HM Then
            MsgBox "Tiene que registrar la Fecha y Hora de despacho", vbInformation, Me.Caption
            Exit Function
         ElseIf cmbServicioIngreso.Text = "" Then
@@ -1107,7 +1107,7 @@ Sub CargaDatosAlObjetosDeDatos()
         mo_DOFactOrdenServicio.idTipoFinanciamiento = Val(cmbFormaPago.BoundText)
         mo_DOFactOrdenServicio.IdUsuarioAuditoria = ml_idUsuario
         mo_DOFactOrdenServicio.FechaHoraRealizaCpt = txtFrealizaCpt.Text
-        If txtHentrega.Text <> sighentidades.HORA_VACIA_HM Then
+        If txtHentrega.Text <> sighEntidades.HORA_VACIA_HM Then
            mo_DOFactOrdenServicio.idestadofacturacion = sghEstadoFacturacion.sghAtendido
            mo_DOFactOrdenServicio.FechaDespacho = CDate(txtFentrega.Text & " " & txtHentrega.Text) 'Now
            mo_DOFactOrdenServicio.IdUsuarioDespacho = ml_idUsuario
@@ -1204,8 +1204,8 @@ End Sub
 
 Private Sub Form_Activate()
     If txtNcuenta.Text <> "" And mi_Opcion = sghAgregar And lbDocumentoYaRegistradoEnSeguros = True Then
-        txtHentrega.Text = sighentidades.HORA_VACIA_HM
-        txtFentrega.Text = sighentidades.FECHA_VACIA_DMY
+        txtHentrega.Text = sighEntidades.HORA_VACIA_HM
+        txtFentrega.Text = sighEntidades.FECHA_VACIA_DMY
         txtHentrega.Enabled = False
         txtFentrega.Enabled = False
         cmbFormaPago.Enabled = False
@@ -1325,7 +1325,7 @@ Sub CargarDatosAlosControles()
         
         Dim oConexion As New Connection
         Dim oRsTmp As New Recordset
-        oConexion.Open sighentidades.CadenaConexion
+        oConexion.Open sighEntidades.CadenaConexion
         oConexion.CursorLocation = adUseClient
         cmdBuscaCuentaPorApellidos.Enabled = False
         chkPlanNoCubre.Visible = False: txtNombrePaciente.Width = txtNombrePaciente.Width + chkPlanNoCubre.Width + 170
@@ -1334,7 +1334,7 @@ Sub CargarDatosAlosControles()
         
         If Not mo_DOFactOrdenServicio Is Nothing Then
              With mo_DOFactOrdenServicio
-                  txtFregistro.Text = Format(.fechacreacion, sighentidades.DevuelveFechaSoloFormato_DMY)
+                  txtFregistro.Text = Format(.fechacreacion, sighEntidades.DevuelveFechaSoloFormato_DMY)
                   txtEstado.Text = mo_ReglasFarmacia.DevuelveEstadoActualDeFacturacion("idEstadoFacturacion=" & mo_DOFactOrdenServicio.idestadofacturacion)
                   mo_cmbIdPuntoCarga.BoundText = mo_DOFactOrdenServicio.idPuntoCarga
                   Me.txtIdOrden = Me.IdOrden
@@ -1345,7 +1345,7 @@ Sub CargarDatosAlosControles()
                   mo_cmbServicioIngreso.BoundText = .idServicioPaciente
                   
                   ml_IdPaciente = .idPaciente
-                  Me.txtFrealizaCpt.Text = Format(.FechaHoraRealizaCpt, sighentidades.DevuelveFechaSoloFormato_DMY_HM)
+                  Me.txtFrealizaCpt.Text = Format(.FechaHoraRealizaCpt, sighEntidades.DevuelveFechaSoloFormato_DMY_HM)
             End With
             If mo_DOFactOrdenServicio.idestadofacturacion <> 1 And mo_DOFactOrdenServicio.idestadofacturacion <> 11 Then
                btnAceptar.Enabled = False
@@ -1357,8 +1357,8 @@ Sub CargarDatosAlosControles()
                'Venta directa
                optVentas.Value = True
             End If
-            txtFentrega.Text = Format(mo_DOFactOrdenServicio.FechaDespacho, sighentidades.DevuelveFechaSoloFormato_DMY)
-            txtHentrega.Text = Format(mo_DOFactOrdenServicio.FechaDespacho, sighentidades.DevuelveHoraSoloFormato_HM)
+            txtFentrega.Text = Format(mo_DOFactOrdenServicio.FechaDespacho, sighEntidades.DevuelveFechaSoloFormato_DMY)
+            txtHentrega.Text = Format(mo_DOFactOrdenServicio.FechaDespacho, sighEntidades.DevuelveHoraSoloFormato_HM)
             fraTipoVenta.Enabled = False
             ml_IdServicioPaciente = Val(mo_cmbServicioIngreso.BoundText)
             'debb-14/04/2011
@@ -1432,7 +1432,7 @@ End Sub
 Function DevuelveNroOrdenPago(lnIdOrden As Long) As Long
         Dim oRsTmp1 As New Recordset
         Dim oConexion As New Connection
-        oConexion.Open sighentidades.CadenaConexion
+        oConexion.Open sighEntidades.CadenaConexion
         oConexion.CursorLocation = adUseClient
         DevuelveNroOrdenPago = 0
         Set oRsTmp1 = mo_ReglasFacturacion.FactOrdenServicioPagosSeleccionarPorIdOrden(lnIdOrden, oConexion)
@@ -1494,7 +1494,7 @@ Sub Impresion()
         oWorkSheet.Cells(4, 3).Value = cmbIdPuntoDeCarga.Text
         'oWorkSheet.Cells(4, 6).Value = txtNroHistoriaBusqueda.Text
         oWorkSheet.Cells(5, 3).Value = cmbFormaPago.Text
-        If txtHentrega.Text <> sighentidades.HORA_VACIA_HM Then
+        If txtHentrega.Text <> sighEntidades.HORA_VACIA_HM Then
            oWorkSheet.Cells(5, 6).Value = CDate(txtFentrega.Text & " " & txtHentrega.Text)
         End If
         oWorkSheet.Cells(6, 2).Value = ""
@@ -1518,7 +1518,7 @@ Sub Impresion()
         oWorkSheet.Cells(iFila, 2).Value = "Total: "
         oWorkSheet.Cells(iFila, 7).Value = Format(lnTotal, "####,##0.00")
         If oWorkSheet.PageSetup.PrintArea <> "" Then
-           oWorkSheet.PageSetup.PrintArea = sighentidades.DevuelveRangoExcelAimprimir(oWorkSheet.PageSetup.PrintArea, iFila)
+           oWorkSheet.PageSetup.PrintArea = sighEntidades.DevuelveRangoExcelAimprimir(oWorkSheet.PageSetup.PrintArea, iFila)
         End If
         oExcel.Visible = True
         oWorkSheet.PrintPreview
@@ -1588,7 +1588,7 @@ Private Sub cmdBuscaCuentaPorApellidos_Click()
     Dim oBusqueda As New SIGHNegocios.BuscaPacientes
     Dim oDOPaciente As New doPaciente
     Dim oConexion As New Connection
-    oConexion.Open sighentidades.CadenaConexion
+    oConexion.Open sighEntidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     oBusqueda.TipoFiltro = sghFiltrarTodos
@@ -1629,8 +1629,8 @@ Private Sub optPreventa_Click(Value As Integer)
         mo_Formulario.HabilitarDeshabilitar Me.txtHentrega, False
         mo_Formulario.HabilitarDeshabilitar Me.txtNcuenta, False
         '
-        txtFentrega.Text = sighentidades.FECHA_VACIA_DMY
-        txtHentrega.Text = sighentidades.HORA_VACIA_HM
+        txtFentrega.Text = sighEntidades.FECHA_VACIA_DMY
+        txtHentrega.Text = sighEntidades.HORA_VACIA_HM
         '
         Set oRsTipoFinanciamiento = mo_ReglasFarmacia.TipoFinanciamientosDevuelveSoloFarmacia(" and dbo.TiposFinanciamiento.TipoVenta='P'")
         lcPosicionDefaultCombo = ""
@@ -1683,7 +1683,7 @@ Private Sub txtNboleta_LostFocus()
         Dim oConexion As New Connection
         Dim oRsTmp1 As New Recordset
         oConexion.CommandTimeout = 300
-        oConexion.Open sighentidades.CadenaConexion
+        oConexion.Open sighEntidades.CadenaConexion
         oConexion.CursorLocation = adUseClient
         Set rsBuscaBoleta = mo_AdminCaja.CajaComprobantePagoServiciosPorNroSerieNroDocumentoConexion(txtNserie.Text, Trim(txtNboleta.Text), oConexion)
         If rsBuscaBoleta.RecordCount > 0 Then
@@ -1740,7 +1740,7 @@ Private Sub txtNcuenta_LostFocus()
        Dim oRsTmp As New Recordset
        Dim lbSigue As Boolean
        Dim oConexion As New Connection
-       oConexion.Open sighentidades.CadenaConexion
+       oConexion.Open sighEntidades.CadenaConexion
        oConexion.CursorLocation = adUseClient
        Set oRsTmp = mo_ReglasFarmacia.AtencionesSelecionarPorCuenta(txtNcuenta.Text, oConexion)
        txtDatosDeCuenta.Text = ""

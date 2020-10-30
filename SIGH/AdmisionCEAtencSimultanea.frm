@@ -794,7 +794,7 @@ Private Sub cmdBuscaCptDx_Click()
 End Sub
 
 Private Sub cmdCancelar_Click()
-mo_Formulario.HabilitarDeshabilitar fraAgregar(0), False
+mo_Formulario.HabilitarDeshabilitar FraAgregar(0), False
 LimpiaDatos
 End Sub
 
@@ -865,7 +865,7 @@ Private Sub cmdGrabar_Click()
     End If
     oRsActividades!lab = Me.txtLab.Text
     oRsActividades!cpt_dx = Me.lblDxCpt.Tag
-    oRsActividades!idTipo = IIf(Me.optCpt.Value = True, 1, 3)
+    oRsActividades!idTipo = IIf(Me.optCPT.Value = True, 1, 3)
     oRsActividades!EdadInicio = Val(Me.txtEdad.Text)
     oRsActividades!EdadFinal = Val(Me.txtEdadFin.Text)
     oRsActividades!idTipoEdad = Me.cmdTipoEdad.ListIndex + 1
@@ -873,13 +873,13 @@ Private Sub cmdGrabar_Click()
     oRsActividades!PesoKgMayor = Val(Me.txtPesoFinal.Text)
     oRsActividades.Update
     
-    mo_Formulario.HabilitarDeshabilitar fraAgregar(0), False
+    mo_Formulario.HabilitarDeshabilitar FraAgregar(0), False
     LimpiaDatos
 End Sub
 
 Private Sub cmdNew_Click()
 '   oRsActividades.AddNew
-    mo_Formulario.HabilitarDeshabilitar fraAgregar(0), True
+    mo_Formulario.HabilitarDeshabilitar FraAgregar(0), True
     LimpiaDatos
     txtGrupo.SetFocus
 End Sub
@@ -910,7 +910,7 @@ End Sub
 
 
 Private Sub Form_Load()
-    mo_Formulario.HabilitarDeshabilitar fraAgregar(0), False
+    mo_Formulario.HabilitarDeshabilitar FraAgregar(0), False
     ml_idCuentaAtencion = 0
     ml_NroFua = 0
     Me.Width = 11955
@@ -1015,7 +1015,7 @@ Private Sub Form_Load()
          Me.Caption = "ACTIVIDADES"
 
     Case "SERVICIOS"
-         fraAgregar(0).Visible = True
+         FraAgregar(0).Visible = True
          Me.Caption = "Mantenimiento de ACTIVIDADES"
          grdBusqueda.Visible = False
          fraAceptar.Visible = False

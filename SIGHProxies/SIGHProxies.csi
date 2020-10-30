@@ -1,12 +1,13 @@
 [History]
-1=#P0#=mb	#P1#=btnAceptar_Click	#P2#=SIGHProxies/HerrReprogramacMedica/btnAceptar_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200221152339	#P7#=0	#P8#=228	.
-2=#P0#=mb	#P1#=cmdProcesaXpaciente_Click	#P2#=SIGHProxies/HerrReprogramacMedica/cmdProcesaXpaciente_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200218090001	#P7#=0	#P8#=234	.
-3=#P0#=mb	#P1#=Form_Load	#P2#=SIGHProxies/HerrReprogramacMedica/Form_Load	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200218085954	#P7#=0	#P8#=-2	.
-4=#P0#=mb	#P1#=txtFechaAtencionPac_LostFocus	#P2#=SIGHProxies/HerrReprogramacMedica/txtFechaAtencionPac_LostFocus	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200218085708	#P7#=0	#P8#=-1	.
-5=#P0#=mb	#P1#=btnCancelar_Click	#P2#=SIGHProxies/HerrReprogramacMedica/btnCancelar_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200218085605	#P7#=0	#P8#=9	.
-6=#P0#=mb	#P1#=cmdCancelar_Click	#P2#=SIGHProxies/HerrReprogramacMedica/cmdCancelar_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200218085143	#P7#=0	#P8#=0	.
-7=#P0#=mb	#P1#=cmbIdServicioCEpac_Click	#P2#=SIGHProxies/HerrReprogramacMedica/cmbIdServicioCEpac_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200218085140	#P7#=0	#P8#=0	.
-8=#P0#=mb	#P1#=txtFechaRequeridaDesde_LostFocus	#P2#=SIGHProxies/HerrReprogramacMedica/txtFechaRequeridaDesde_LostFocus	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200218082540	#P7#=0	#P8#=7	.
-9=#P0#=mb	#P1#=txtHoraPac_LostFocus	#P2#=SIGHProxies/HerrReprogramacMedica/txtHoraPac_LostFocus	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200217164418	#P7#=0	#P8#=8	.
-10=#P0#=mb	#P1#=txtHoraPac_KeyDown	#P2#=SIGHProxies/HerrReprogramacMedica/txtHoraPac_KeyDown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200217164352	#P7#=0	#P8#=0	.
-11=#P0#=mb	#P1#=txtFechaNewPac_LostFocus	#P2#=SIGHProxies/HerrReprogramacMedica/txtFechaNewPac_LostFocus	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200217164042	#P7#=0	#P8#=8	.
+1=#P0#=mb	#P1#=btnAceptar_Click	#P2#=SIGHProxies/HerrRegeneraSaldos/btnAceptar_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201030000142	#P7#=0	#P8#=278	.
+2=#P0#=mb	#P1#=btnAceptar_Click	#P2#=SIGHProxies/HerrReprogramacMedica/btnAceptar_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200221152339	#P7#=0	#P8#=228	.
+3=#P0#=mb	#P1#=cmdProcesaXpaciente_Click	#P2#=SIGHProxies/HerrReprogramacMedica/cmdProcesaXpaciente_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200218090001	#P7#=0	#P8#=234	.
+4=#P0#=mb	#P1#=Form_Load	#P2#=SIGHProxies/HerrReprogramacMedica/Form_Load	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200218085954	#P7#=0	#P8#=-2	.
+5=#P0#=mb	#P1#=txtFechaAtencionPac_LostFocus	#P2#=SIGHProxies/HerrReprogramacMedica/txtFechaAtencionPac_LostFocus	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200218085708	#P7#=0	#P8#=-1	.
+6=#P0#=mb	#P1#=btnCancelar_Click	#P2#=SIGHProxies/HerrReprogramacMedica/btnCancelar_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200218085605	#P7#=0	#P8#=9	.
+7=#P0#=mb	#P1#=cmdCancelar_Click	#P2#=SIGHProxies/HerrReprogramacMedica/cmdCancelar_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200218085143	#P7#=0	#P8#=0	.
+8=#P0#=mb	#P1#=cmbIdServicioCEpac_Click	#P2#=SIGHProxies/HerrReprogramacMedica/cmbIdServicioCEpac_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200218085140	#P7#=0	#P8#=0	.
+9=#P0#=mb	#P1#=txtFechaRequeridaDesde_LostFocus	#P2#=SIGHProxies/HerrReprogramacMedica/txtFechaRequeridaDesde_LostFocus	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200218082540	#P7#=0	#P8#=7	.
+10=#P0#=mb	#P1#=txtHoraPac_LostFocus	#P2#=SIGHProxies/HerrReprogramacMedica/txtHoraPac_LostFocus	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200217164418	#P7#=0	#P8#=8	.
+11=#P0#=mb	#P1#=txtHoraPac_KeyDown	#P2#=SIGHProxies/HerrReprogramacMedica/txtHoraPac_KeyDown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200217164352	#P7#=0	#P8#=0	.
+12=#P0#=mb	#P1#=txtFechaNewPac_LostFocus	#P2#=SIGHProxies/HerrReprogramacMedica/txtFechaNewPac_LostFocus	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200217164042	#P7#=0	#P8#=8	.

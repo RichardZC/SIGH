@@ -259,6 +259,7 @@ UserControl=ucRecetaCpt.ctl
 UserControl=ucPacientesPDF.ctl
 UserControl=ucPacientesCtasPDF.ctl
 Form=AfiliacionSIS.frm
+UserControl=ucCatalogos.ctl
 IconForm="AdmisionAlojDetalle"
 Startup="Sub Main"
 HelpFile=""

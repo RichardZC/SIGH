@@ -111,16 +111,16 @@ Begin VB.Form FarmNotaIngreso
             Strikethrough   =   0   'False
          EndProperty
          Height          =   270
-         Left            =   6660
+         Left            =   6600
          TabIndex        =   59
-         Top             =   2385
+         Top             =   2400
          Width           =   1890
       End
       Begin VB.Frame fraPacienteForaneo 
          Height          =   1305
-         Left            =   6660
+         Left            =   6840
          TabIndex        =   54
-         Top             =   2430
+         Top             =   960
          Visible         =   0   'False
          Width           =   8235
          Begin VB.TextBox txtSerieBoleta 
@@ -905,6 +905,9 @@ Dim mo_ReglasSeguridad As New SIGHNegocios.ReglasDeSeguridad
 Dim mo_AdminAdmision As New ReglasAdmision
 Dim mo_ReglasFarmacia As New SIGHNegocios.ReglasFarmacia
 Dim mo_ReglasFacturacion As New SIGHNegocios.ReglasFacturacion
+
+Dim mo_ReglasFacturacion1 As New SIGHNegocios.ReglasFacturacion
+
 Dim mo_ReglasSISgalenhos As New SIGHSis.ReglasSISgalenhos
 Dim mo_ReglasCaja As New SIGHNegocios.ReglasCaja
 Dim mo_ReglasComunes As New SIGHNegocios.ReglasComunes
@@ -2498,9 +2501,9 @@ Private Sub txtNcuenta_LostFocus()
                 txtNombrePaciente.Text = Trim(oRsTmp.Fields!ApellidoPaterno) & " " & Trim(oRsTmp.Fields!ApellidoMaterno) & " " & oRsTmp.Fields!PrimerNombre
                 txtNhistoria.Text = oRsTmp.Fields!NroHistoriaClinica
                 'carga consumos del Paciente
-                
                 If mo_cmbConceptos.BoundText = LcIdTipoConceptoDevolucionPaciente Then
                     Dim oRsTmp1 As New Recordset
+                    Dim oRsTmp3 As New Recordset 'RHA 07/10/20 Cambio33
                     Dim lnCantidadConsumoQueda As Long
                     If mi_Opcion = sghAgregar Then
                         grdConsumoPaciente.Visible = True
@@ -2521,9 +2524,13 @@ Private Sub txtNcuenta_LostFocus()
                           lbContinuar = True
                           Set oRsTmp1 = mo_ReglasFacturacion.FacturacionBienesDevolucionesSeleccionarPorIdProducto(rsTmp.Fields!movNumero, "S", rsTmp.Fields!idProducto, oConexion)
                           lnCantidadConsumoQueda = rsTmp.Fields!Cantidad
+                          'RHA 07/10/20 Cambio33 Inicio
+                          Set oRsTmp3 = mo_ReglasFacturacion1.usp_FacturacionBienesDevolucionesSeleccionarPorIdProducto(rsTmp.Fields!movNumero, "S", rsTmp.Fields!idProducto, oConexion)
                           If oRsTmp1.RecordCount > 0 Then
-                             lnCantidadConsumoQueda = rsTmp.Fields!Cantidad - oRsTmp1.Fields!CantidadAdevolver
+                            lnCantidadConsumoQueda = rsTmp.Fields!Cantidad - oRsTmp3.Fields!cantdevolver 'Resta la cantidad con la sumatoria total de devoluciones
                           End If
+                          'RHA 07/10/20 Cambio33 Fin
+                           
                           If lnCantidadConsumoQueda > 0 Then
                              lnIdOrden = 0
                              If mo_ReglasFacturacion.TiposFinanciamientoGeneraReciboPago(ml_IdTipoFinanciamiento, oConexion) = True Then
