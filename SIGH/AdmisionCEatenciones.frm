@@ -252,10 +252,10 @@ Begin VB.Form AdmisionCEatenciones
       TabCaption(0)   =   "3.1 Anam/Ex.Físico"
       TabPicture(0)   =   "AdmisionCEatenciones.frx":6027
       Tab(0).ControlEnabled=   0   'False
-      Tab(0).Control(0)=   "Frame6"
-      Tab(0).Control(1)=   "Frame7"
-      Tab(0).Control(2)=   "Frame16"
-      Tab(0).Control(3)=   "Frame17"
+      Tab(0).Control(0)=   "Frame17"
+      Tab(0).Control(1)=   "Frame16"
+      Tab(0).Control(2)=   "Frame7"
+      Tab(0).Control(3)=   "Frame6"
       Tab(0).ControlCount=   4
       TabCaption(1)   =   "3.2 Diagnósticos"
       TabPicture(1)   =   "AdmisionCEatenciones.frx":6043
@@ -270,11 +270,11 @@ Begin VB.Form AdmisionCEatenciones
       TabCaption(2)   =   "3.3 Ordenes Médicas"
       TabPicture(2)   =   "AdmisionCEatenciones.frx":605F
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "btnAgregaApoyoDx"
-      Tab(2).Control(1)=   "UcRecetas1"
+      Tab(2).Control(0)=   "txtCitaExClinicos"
+      Tab(2).Control(1)=   "btnImprimir"
       Tab(2).Control(2)=   "btnImprimirOrden"
-      Tab(2).Control(3)=   "btnImprimir"
-      Tab(2).Control(4)=   "txtCitaExClinicos"
+      Tab(2).Control(3)=   "UcRecetas1"
+      Tab(2).Control(4)=   "btnAgregaApoyoDx"
       Tab(2).ControlCount=   5
       TabCaption(3)   =   "3.4 Tratamiento"
       TabPicture(3)   =   "AdmisionCEatenciones.frx":607B
@@ -284,12 +284,12 @@ Begin VB.Form AdmisionCEatenciones
       TabCaption(4)   =   "3.5 Destino Atención"
       TabPicture(4)   =   "AdmisionCEatenciones.frx":6097
       Tab(4).ControlEnabled=   0   'False
-      Tab(4).Control(0)=   "Frame11"
-      Tab(4).Control(1)=   "fraDatosReferenciaDestino"
-      Tab(4).Control(2)=   "Frame1"
-      Tab(4).Control(3)=   "UcEpisodioClinico1"
-      Tab(4).Control(4)=   "ucCitasLista1"
-      Tab(4).Control(5)=   "lblNroAtencion"
+      Tab(4).Control(0)=   "lblNroAtencion"
+      Tab(4).Control(1)=   "ucCitasLista1"
+      Tab(4).Control(2)=   "UcEpisodioClinico1"
+      Tab(4).Control(3)=   "Frame1"
+      Tab(4).Control(4)=   "fraDatosReferenciaDestino"
+      Tab(4).Control(5)=   "Frame11"
       Tab(4).ControlCount=   6
       Begin VB.CommandButton btnguardarcs 
          Caption         =   "Guardar "
@@ -301,13 +301,13 @@ Begin VB.Form AdmisionCEatenciones
          Width           =   510
       End
       Begin SISGalenPlus.ucCatalogos grdServicios 
-         Height          =   3255
+         Height          =   3015
          Left            =   0
          TabIndex        =   93
-         Top             =   6240
+         Top             =   6600
          Width           =   12135
          _extentx        =   21405
-         _extenty        =   5741
+         _extenty        =   5318
       End
       Begin VB.CommandButton btnAgregaApoyoDx 
          DisabledPicture =   "AdmisionCEatenciones.frx":60B3
@@ -1367,13 +1367,13 @@ Begin VB.Form AdmisionCEatenciones
          End
       End
       Begin TabDlg.SSTab TabDx 
-         Height          =   6135
+         Height          =   6255
          Left            =   0
          TabIndex        =   23
          Top             =   360
          Width           =   12225
          _ExtentX        =   21564
-         _ExtentY        =   10821
+         _ExtentY        =   11033
          _Version        =   393216
          TabHeight       =   520
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -1418,8 +1418,8 @@ Begin VB.Form AdmisionCEatenciones
          TabCaption(1)   =   "3.2.2 Módulo Niño Sano"
          TabPicture(1)   =   "AdmisionCEatenciones.frx":80E5
          Tab(1).ControlEnabled=   0   'False
-         Tab(1).Control(0)=   "ucPerinatalAS1"
-         Tab(1).Control(1)=   "ucPerinatal1"
+         Tab(1).Control(0)=   "ucPerinatal1"
+         Tab(1).Control(1)=   "ucPerinatalAS1"
          Tab(1).ControlCount=   2
          TabCaption(2)   =   "3.2.3 Módulo Materno"
          TabPicture(2)   =   "AdmisionCEatenciones.frx":8101
@@ -1592,7 +1592,7 @@ Begin VB.Form AdmisionCEatenciones
                Italic          =   0   'False
                Strikethrough   =   0   'False
             EndProperty
-            Height          =   720
+            Height          =   600
             Left            =   60
             TabIndex        =   28
             Top             =   4680
@@ -1740,13 +1740,13 @@ Begin VB.Form AdmisionCEatenciones
             End
          End
          Begin UltraGrid.SSUltraGrid grdOtrosCpt 
-            Height          =   375
+            Height          =   975
             Left            =   0
             TabIndex        =   34
-            Top             =   5400
+            Top             =   5280
             Width           =   11055
             _ExtentX        =   19500
-            _ExtentY        =   661
+            _ExtentY        =   1720
             _Version        =   131072
             GridFlags       =   17040384
             LayoutFlags     =   67108884

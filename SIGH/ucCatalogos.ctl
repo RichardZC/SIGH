@@ -1,7 +1,7 @@
 VERSION 5.00
 Object = "{5A9433E9-DD7B-4529-91B6-A5E8CA054615}#2.0#0"; "IGULTR~1.OCX"
 Begin VB.UserControl ucCatalogos 
-   ClientHeight    =   3330
+   ClientHeight    =   3120
    ClientLeft      =   0
    ClientTop       =   0
    ClientWidth     =   13110
@@ -14,14 +14,14 @@ Begin VB.UserControl ucCatalogos
       Italic          =   0   'False
       Strikethrough   =   0   'False
    EndProperty
-   ScaleHeight     =   3330
+   ScaleHeight     =   3120
    ScaleWidth      =   13110
    Begin VB.CommandButton btnagregar 
       Caption         =   "Agregar"
       Height          =   360
       Left            =   9240
       TabIndex        =   8
-      Top             =   2880
+      Top             =   2640
       Width           =   990
    End
    Begin VB.CommandButton btneliminar 
@@ -29,18 +29,18 @@ Begin VB.UserControl ucCatalogos
       Height          =   360
       Left            =   10320
       TabIndex        =   6
-      Top             =   2880
+      Top             =   2640
       Width           =   990
    End
    Begin UltraGrid.SSUltraGrid grillacod 
-      Height          =   1995
+      Height          =   1755
       Left            =   1440
       TabIndex        =   5
       Top             =   720
       Visible         =   0   'False
       Width           =   9360
       _ExtentX        =   16510
-      _ExtentY        =   3519
+      _ExtentY        =   3096
       _Version        =   131072
       GridFlags       =   17040384
       LayoutFlags     =   71303188
@@ -58,14 +58,14 @@ Begin VB.UserControl ucCatalogos
       Caption         =   ".."
    End
    Begin UltraGrid.SSUltraGrid grillaitem 
-      Height          =   1995
+      Height          =   1755
       Left            =   0
       TabIndex        =   4
       Top             =   720
       Visible         =   0   'False
-      Width           =   3240
-      _ExtentX        =   5715
-      _ExtentY        =   3519
+      Width           =   3720
+      _ExtentX        =   6562
+      _ExtentY        =   3096
       _Version        =   131072
       GridFlags       =   17040384
       LayoutFlags     =   71303188
@@ -83,14 +83,14 @@ Begin VB.UserControl ucCatalogos
       Caption         =   ".."
    End
    Begin UltraGrid.SSUltraGrid grillahis 
-      Height          =   1995
-      Left            =   9000
+      Height          =   1755
+      Left            =   8760
       TabIndex        =   0
       Top             =   720
       Visible         =   0   'False
-      Width           =   3240
-      _ExtentX        =   5715
-      _ExtentY        =   3519
+      Width           =   3480
+      _ExtentX        =   6138
+      _ExtentY        =   3096
       _Version        =   131072
       GridFlags       =   17040384
       LayoutFlags     =   71303188
@@ -108,14 +108,14 @@ Begin VB.UserControl ucCatalogos
       Caption         =   ".."
    End
    Begin UltraGrid.SSUltraGrid grilladx 
-      Height          =   1995
-      Left            =   7560
+      Height          =   1755
+      Left            =   6840
       TabIndex        =   1
       Top             =   720
       Visible         =   0   'False
-      Width           =   3120
-      _ExtentX        =   5503
-      _ExtentY        =   3519
+      Width           =   3840
+      _ExtentX        =   6773
+      _ExtentY        =   3096
       _Version        =   131072
       GridFlags       =   17040384
       LayoutFlags     =   71303188
@@ -133,14 +133,14 @@ Begin VB.UserControl ucCatalogos
       Caption         =   ".."
    End
    Begin UltraGrid.SSUltraGrid grillaBusqueda 
-      Height          =   1995
+      Height          =   1755
       Left            =   1080
       TabIndex        =   2
       Top             =   720
       Visible         =   0   'False
       Width           =   9360
       _ExtentX        =   16510
-      _ExtentY        =   3519
+      _ExtentY        =   3096
       _Version        =   131072
       GridFlags       =   17040384
       LayoutFlags     =   71303188
@@ -158,13 +158,13 @@ Begin VB.UserControl ucCatalogos
       Caption         =   ".."
    End
    Begin UltraGrid.SSUltraGrid grdProductos 
-      Height          =   2775
+      Height          =   2535
       Left            =   0
       TabIndex        =   3
       Top             =   0
       Width           =   12960
       _ExtentX        =   22860
-      _ExtentY        =   4895
+      _ExtentY        =   4471
       _Version        =   131072
       GridFlags       =   17040384
       LayoutFlags     =   67108884
@@ -195,7 +195,7 @@ Begin VB.UserControl ucCatalogos
       Height          =   195
       Left            =   0
       TabIndex        =   7
-      Top             =   3000
+      Top             =   2760
       Width           =   8670
    End
 End
