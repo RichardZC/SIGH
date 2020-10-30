@@ -40,8 +40,8 @@ Begin VB.Form FarmNotaSalida
       BackColor       =   &H00FFC0C0&
       Caption         =   "Medicamentos e Insumos cargados del EXCEL"
       ForeColor       =   &H00000000&
-      Height          =   1560
-      Left            =   0
+      Height          =   2520
+      Left            =   120
       TabIndex        =   25
       Top             =   2640
       Visible         =   0   'False
@@ -81,13 +81,13 @@ Begin VB.Form FarmNotaSalida
          Width           =   1785
       End
       Begin UltraGrid.SSUltraGrid grdExcel 
-         Height          =   3240
-         Left            =   75
+         Height          =   3120
+         Left            =   120
          TabIndex        =   29
-         Top             =   1110
+         Top             =   720
          Width           =   9720
          _ExtentX        =   17145
-         _ExtentY        =   5715
+         _ExtentY        =   5503
          _Version        =   131072
          GridFlags       =   17040384
          LayoutFlags     =   71303188
@@ -127,20 +127,20 @@ Begin VB.Form FarmNotaSalida
          Strikethrough   =   0   'False
       EndProperty
       Height          =   1110
-      Left            =   60
+      Left            =   120
       TabIndex        =   19
-      Top             =   7770
+      Top             =   7800
       Width           =   15120
       Begin VB.CommandButton btnAceptar 
          Caption         =   "Aceptar (F2)"
          DisabledPicture =   "farmNotaSalida.frx":2CFB
          DownPicture     =   "farmNotaSalida.frx":315B
          Height          =   700
-         Left            =   6173
+         Left            =   6240
          Picture         =   "farmNotaSalida.frx":35D0
          Style           =   1  'Graphical
          TabIndex        =   22
-         Top             =   225
+         Top             =   360
          Width           =   1365
       End
       Begin VB.CommandButton btnCancelar 
@@ -152,17 +152,17 @@ Begin VB.Form FarmNotaSalida
          Picture         =   "farmNotaSalida.frx":43F5
          Style           =   1  'Graphical
          TabIndex        =   21
-         Top             =   225
+         Top             =   360
          Width           =   1365
       End
       Begin VB.CommandButton btnImprimir 
          Caption         =   "Imprime"
          Height          =   700
-         Left            =   120
+         Left            =   240
          Picture         =   "farmNotaSalida.frx":48E1
          Style           =   1  'Graphical
          TabIndex        =   20
-         Top             =   225
+         Top             =   360
          Visible         =   0   'False
          Width           =   1365
       End
@@ -399,9 +399,9 @@ Begin VB.Form FarmNotaSalida
    End
    Begin SighFarmacia.ucNotaSalida grdProductos 
       Height          =   5025
-      Left            =   60
+      Left            =   120
       TabIndex        =   4
-      Top             =   2670
+      Top             =   2640
       Width           =   15075
       _ExtentX        =   26591
       _ExtentY        =   8864
@@ -479,7 +479,12 @@ Dim ml_idUsuarioCreo As Long
 Dim lcCodigoSismedFarmDestino As String
 Dim lbLaFarmaciaOrigenEsUnidosis As Boolean
 Dim lbLaFarmaciaDestinoEsUnidosis As Boolean
+Dim respuesta As Boolean
 Dim oRsItemsUnidosis As New Recordset
+
+
+
+
 
 Property Let lcNombrePc(lValue As String)
    mo_lcNombrePc = lValue
@@ -491,17 +496,17 @@ End Property
 Property Let movNumero(lValue As String)
    ml_movNumero = lValue
 End Property
+
+
+
+
+
 Property Let idUsuario(lValue As Long)
    ml_idUsuario = lValue
 End Property
 Property Let Opcion(lValue As sghOpciones)
    mi_Opcion = lValue
 End Property
-
-
-
-
-
 
 
 Private Sub ImprimeDocumento()
@@ -746,6 +751,11 @@ Private Sub cmbAlmOrigen_Click()
     mo_cmbConceptos.ListField = "Concepto"
     Set mo_cmbConceptos.RowSource = mo_ReglasFarmacia.FarmTipoConceptosDevuelveParaRegistroDeNiNs(oRsAlmacenOrigen.Fields!idTipoLocales, lcConstanteMovimientoSalida, oRsAlmacenOrigen.Fields!idTipoSuministro)
     grdProductos.IdAlmacen = oRsAlmacenOrigen.Fields!IdAlmacen
+    
+     
+     
+      
+    
     lcTipoLocalesAlmOrigen = oRsAlmacenOrigen.Fields!idTipoLocales
     ms_MensajeError = ms_MensajeError + mo_ReglasFarmacia.MensajeError
     lbLaFarmaciaOrigenEsUnidosis = mo_ReglasFarmacia.FarmaciaEsUnidosis(Val(mo_cmbAlmacenOrigen.BoundText))
@@ -779,6 +789,8 @@ Private Sub cmbConcepto_Click()
     '
     grdProductos.MuestraLoteParaDespachoNS = IIf(oRsConceptos.Fields!MuestraLoteParaDespachoNS = "S", True, False)
     grdProductos.TipoPrecioParaNiNs = oRsConceptos.Fields!TipoPrecioParaNiNs
+    
+     
     '
     lbDocumentoEsAutomatico = IIf(oRsConceptos.Fields!DocumentoEsAutomatico = "S", True, False)
     If lbDocumentoEsAutomatico = True Then
@@ -811,6 +823,24 @@ Private Sub cmdAgregar_Click()
     Set oRsTmp1 = Nothing
 End Sub
 
+Private Sub cmdCommand1_Click()
+
+If ValidarDatosObligatorios() Then
+            
+            
+If AgregarDatosCS() Then
+                MsgBox "se pudo agregar los datos " + Chr(13) + ms_MensajeError, vbExclamation, Me.Caption
+            Else
+                MsgBox "No se pudo agregar los datos " + Chr(13) + ms_MensajeError, vbExclamation, Me.Caption
+            End If
+            
+            
+       End If
+
+
+
+End Sub
+
 Private Sub cmdSalir_Click()
     FrmExcel.Visible = False
 End Sub
@@ -839,6 +869,9 @@ Private Sub Form_Load()
     SIGHEntidades.ParaAuditoriaPorCadaDato sghAudLimpiar, ""
     mo_lbElEstablecimentoEsCS = IIf(lcBuscaParametro.SeleccionaFilaParametro(282) = "S", True, False)
     ConfigurarGrdProductos
+    
+     
+     
     CargarComboBoxes
     Select Case mi_Opcion
     Case sghAgregar
@@ -865,6 +898,8 @@ Sub ConfigurarGrdProductos()
     grdProductos.FechaMinimaDespacho = CDate(lcBuscaParametro.RetornaFechaServidorSQL) + Val(lcBuscaParametro.SeleccionaFilaParametro(220))
     grdProductos.inicializar
 End Sub
+
+
 
 
 Sub CargarComboBoxes()
@@ -928,6 +963,8 @@ Sub CargarDatosAlFormulario()
         grdProductos.CargaProductosPorMovNumero
         grdProductos.AgregaRegistro
         
+     
+        
      Case sghModificar
         DeshabilitaCabecera
         CargarDatosALosControles
@@ -965,7 +1002,12 @@ Sub CargarDatosALosControles()
    grdProductos.movNumero = ml_movNumero
    grdProductos.CargaProductosPorMovNumero
    grdProductos.RefrescarDatos
+   
+ 
+   
    lnTotalDocumento = grdProductos.DevuelveTotal
+      
+      
    If mo_farmMovimiento.idEstadoMovimiento = 0 Then
       btnAceptar.Enabled = False
    End If
@@ -1098,8 +1140,10 @@ Function ValidarDatosObligatorios() As Boolean
       oRsTmp.Close
       Set oRsTmp = Nothing
    End If
+   
    lnTotalDocumento = grdProductos.DevuelveTotal
    Set mRs_Productos = grdProductos.DevuelveProductos
+   
    If mRs_Productos.RecordCount = 0 Then
        ms_MensajeError = ms_MensajeError + "Por favor Ingrese Productos" + Chr(13)
    Else
@@ -1179,7 +1223,7 @@ Sub CargaDatosAlObjetosDeDatos()
             .IdUsuarioAuditoria = ml_idUsuario
             .MovTipo = lcConstanteMovimientoSalida
             .Observaciones = txtObservaciones.Text
-            .total = lnTotalDocumento
+            .Total = lnTotalDocumento
             
         End With
    Case sghModificar
@@ -1187,7 +1231,7 @@ Sub CargaDatosAlObjetosDeDatos()
             .DocumentoNumero = txtNdocum.Text
             .Observaciones = txtObservaciones.Text
             .IdUsuarioAuditoria = ml_idUsuario
-            .total = lnTotalDocumento
+            .Total = lnTotalDocumento
             '.FechaCreacion = txtFregistro.Text
         End With
    Case sghEliminar
@@ -1216,6 +1260,7 @@ Function AgregarDatos() As Boolean
     End If
     '
     lbAgregarDatos = mo_ReglasFarmacia.AgregaDatosDeNotaSalida(mo_farmMovimiento, mRs_Productos, mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc)
+    
     txtNotaSalida.Text = mo_farmMovimiento.movNumero
     If GeneraNIenFormaAutomatica(lbAgregarDatos) Then
         If lbLaFarmaciaDestinoEsUnidosis = True Then
@@ -1239,6 +1284,21 @@ Function AgregarDatos() As Boolean
     ms_MensajeError = mo_ReglasFarmacia.MensajeError
     AgregarDatos = lbAgregarDatos
 End Function
+
+
+
+Function AgregarDatosCS() As Boolean
+    Dim lbAgregarDatosCS As Boolean
+    '*********  graba tabla RELMOD  ***************
+       '
+    lbAgregarDatosCS = mo_ReglasFarmacia.usp_catalogoserviciosagregar(mRs_Productos)
+     
+    ms_MensajeError = mo_ReglasFarmacia.MensajeError
+    AgregarDatosCS = lbAgregarDatosCS
+End Function
+
+
+
 Function ModificarDatos() As Boolean
     Dim lbModificarDatos As Boolean
     Dim lbModificarDatosNI As Boolean
@@ -1257,7 +1317,7 @@ Function ModificarDatos() As Boolean
             Set oMovimiento.Conexion = oConexion
             Set oMovimientoNotaIngreso.Conexion = oConexion
             '
-            lnTotal = mo_farmMovimiento.total
+            lnTotal = mo_farmMovimiento.Total
             Set oRsTmp = mo_ReglasFarmacia.farmMovimientoSeleccionarPorTipoYnumeroDocumento(mo_farmMovimiento.DocumentoNumero, mo_farmMovimiento.DocumentoIdtipo)
             oRsTmp.Filter = "movTipo='E' and idAlmacenDestino=" & mo_farmMovimiento.IdAlmacenDestino
             If oRsTmp.RecordCount > 0 Then
@@ -1271,7 +1331,7 @@ Function ModificarDatos() As Boolean
                    MsgBox "Fallo en Nota de Ingreso automática" & Chr(13) & oMovimiento.MensajeError
                    Exit Function
                 End If
-                mo_farmMovimiento.total = lnTotal
+                mo_farmMovimiento.Total = lnTotal
                 '
                 With mo_farmMovimientoNotaIngreso
                     .MovTipo = lcConstanteMovimientoEntrada
@@ -1387,6 +1447,8 @@ Private Sub grdExcel_InitializeLayout(ByVal Context As UltraGrid.Constants_Conte
 
 End Sub
 
+
+
 Private Sub txtNdocum_KeyDown(KeyCode As Integer, Shift As Integer)
     mo_Teclado.RealizarNavegacion KeyCode, txtNdocum
 
@@ -1477,7 +1539,7 @@ Sub CreaNIaFarmaciaUNIDOSIS(oRsProductosConLotes1 As Recordset)
                         oRsProductosConLotes1!codigo = lcCodigoConPunto
                         oRsProductosConLotes1!Cantidad = oRsProductosConLotes1!Cantidad * lnConvertir
                         oRsProductosConLotes1!Precio = rs!PrecioUnitario
-                        oRsProductosConLotes1!total = lnImporte
+                        oRsProductosConLotes1!Total = lnImporte
                         oRsProductosConLotes1.Update
                         lnTotalUnidosis = lnTotalUnidosis + lnImporte
                     End If
@@ -1497,7 +1559,7 @@ Sub CreaNIaFarmaciaUNIDOSIS(oRsProductosConLotes1 As Recordset)
                mo_farmMovimientoNotaIngreso1.IdUsuarioAuditoria = mo_farmMovimiento1.IdUsuarioAuditoria
                If mo_FarmMovimientoNotaIngreso2.SeleccionarPorId(mo_farmMovimientoNotaIngreso1) Then
                     If mi_Opcion = sghModificar Then
-                        mo_farmMovimiento1.total = lnTotalUnidosis
+                        mo_farmMovimiento1.Total = lnTotalUnidosis
                         ActualizarDatos1 = mo_ReglasFarmacia.ModificaDatosDeNotaIngreso(mo_farmMovimiento1, _
                                       mo_farmMovimientoNotaIngreso1, oDoProveedores1, oRsProductosConLotes1, _
                                       mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc)
@@ -1525,7 +1587,7 @@ Sub CreaNIaFarmaciaUNIDOSIS(oRsProductosConLotes1 As Recordset)
                 .idTipoConcepto = 4   'distribucion
                 .DocumentoIdtipo = 3  'guía remisión
                 .DocumentoNumero = txtNdocum.Text 'format(Now, SIGHEntidades.DevuelveFechaSoloFormato_DMYHMS)
-                .total = lnTotalUnidosis
+                .Total = lnTotalUnidosis
                 .fechaCreacion = mo_farmMovimiento.fechaCreacion
                 .IdUsuarioAuditoria = mo_farmMovimiento.IdUsuarioAuditoria
                 .idUsuario = mo_farmMovimiento.IdUsuarioAuditoria

@@ -2,18 +2,17 @@ VERSION 5.00
 Object = "{5A9433E9-DD7B-4529-91B6-A5E8CA054615}#2.0#0"; "IGULTR~1.OCX"
 Object = "{F20E41DE-526A-423A-B746-D860D06076B4}#4.0#0"; "IGTHRE~1.OCX"
 Begin VB.UserControl ucNotaSalida 
-   ClientHeight    =   5685
+   ClientHeight    =   5880
    ClientLeft      =   0
    ClientTop       =   0
    ClientWidth     =   13050
-   LockControls    =   -1  'True
-   ScaleHeight     =   5685
+   ScaleHeight     =   5880
    ScaleWidth      =   13050
    Begin VB.Frame fraSinLote 
       Height          =   2535
       Left            =   0
       TabIndex        =   8
-      Top             =   3000
+      Top             =   2760
       Visible         =   0   'False
       Width           =   13005
       Begin VB.TextBox txtEsEstrategico 
@@ -48,7 +47,7 @@ Begin VB.UserControl ucNotaSalida
          MaxLength       =   50
          TabIndex        =   16
          Top             =   270
-         Width           =   5235
+         Width           =   4155
       End
       Begin VB.TextBox txtCantidad 
          Alignment       =   1  'Right Justify
@@ -119,9 +118,9 @@ Begin VB.UserControl ucNotaSalida
       End
       Begin UltraGrid.SSUltraGrid grdProductosLotes 
          Height          =   1635
-         Left            =   930
+         Left            =   1320
          TabIndex        =   18
-         Top             =   690
+         Top             =   720
          Width           =   10440
          _ExtentX        =   18415
          _ExtentY        =   2884
@@ -231,14 +230,14 @@ Begin VB.UserControl ucNotaSalida
       Width           =   1905
    End
    Begin UltraGrid.SSUltraGrid grillaBusqueda 
-      Height          =   2475
+      Height          =   1635
       Left            =   240
       TabIndex        =   0
       Top             =   840
       Visible         =   0   'False
       Width           =   12600
       _ExtentX        =   22225
-      _ExtentY        =   4366
+      _ExtentY        =   2884
       _Version        =   131072
       GridFlags       =   17040384
       LayoutFlags     =   71303188
@@ -256,13 +255,13 @@ Begin VB.UserControl ucNotaSalida
       Caption         =   ".."
    End
    Begin UltraGrid.SSUltraGrid grdProductos 
-      Height          =   4455
+      Height          =   2535
       Left            =   30
       TabIndex        =   1
       Top             =   30
       Width           =   12960
       _ExtentX        =   22860
-      _ExtentY        =   7858
+      _ExtentY        =   4471
       _Version        =   131072
       GridFlags       =   17040384
       LayoutFlags     =   67108884
@@ -463,7 +462,7 @@ Sub AgregaRegistro()
 '        .Fields!fechaVencimiento=null
         .Fields!Cantidad = 0
         .Fields!Precio = 0
-        .Fields!total = 0
+        .Fields!Total = 0
         .Fields!saldo = 0
     End With
 errAR:
@@ -507,7 +506,7 @@ Sub CargarItemsALaGrilla(rs As Recordset)
         mRs_Productos!FechaVencimiento = rs!FechaVencimiento
         mRs_Productos!Cantidad = rs!Cantidad
         mRs_Productos!Precio = rs!Precio
-        mRs_Productos!total = rs!total
+        mRs_Productos!Total = rs!Total
         mRs_Productos!saldo = lnSaldoDe + rs!Cantidad
         mRs_Productos.Fields("idTipoSalidaBienInsumo").Value = rs!idTipoSalidaBienInsumo
         oRsTmp.Close
@@ -528,9 +527,9 @@ Sub Totalizar()
         If Not (rsProductos.EOF And rsProductos.BOF) Then
             rsProductos.MoveFirst
             Do While Not rsProductos.EOF
-                rsProductos.Fields!total = Round(rsProductos.Fields!Cantidad * rsProductos.Fields!Precio, 2)
+                rsProductos.Fields!Total = Round(rsProductos.Fields!Cantidad * rsProductos.Fields!Precio, 2)
                 rsProductos.Update
-                dTotalIngresado = dTotalIngresado + rsProductos!total
+                dTotalIngresado = dTotalIngresado + rsProductos!Total
                 rsProductos.Update
                 rsProductos.MoveNext
             Loop
@@ -1378,4 +1377,6 @@ End Property
 Property Get DevuelveTotal() As Double
     DevuelveTotal = dTotalIngresado
 End Property
+
+
 

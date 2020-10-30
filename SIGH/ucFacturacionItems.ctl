@@ -2,12 +2,36 @@ VERSION 5.00
 Object = "{5A9433E9-DD7B-4529-91B6-A5E8CA054615}#2.0#0"; "IGULTR~1.OCX"
 Object = "{F20E41DE-526A-423A-B746-D860D06076B4}#4.0#0"; "IGTHRE~1.OCX"
 Begin VB.UserControl ucFacturacionItems 
-   ClientHeight    =   5730
+   ClientHeight    =   6735
    ClientLeft      =   0
    ClientTop       =   0
    ClientWidth     =   11685
-   ScaleHeight     =   5730
+   ScaleHeight     =   6735
    ScaleWidth      =   11685
+   Begin UltraGrid.SSUltraGrid grillaBusqueda1 
+      Height          =   1695
+      Left            =   120
+      TabIndex        =   11
+      Top             =   4320
+      Visible         =   0   'False
+      Width           =   10140
+      _ExtentX        =   17886
+      _ExtentY        =   2990
+      _Version        =   131072
+      GridFlags       =   17040384
+      LayoutFlags     =   67108884
+      BorderStyle     =   9
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Caption         =   "grillabusqueda1"
+   End
    Begin VB.Frame FraFiltroBusqueda 
       Height          =   1785
       Left            =   10290
@@ -59,9 +83,9 @@ Begin VB.UserControl ucFacturacionItems
    End
    Begin UltraGrid.SSUltraGrid grillaBusqueda 
       Height          =   1695
-      Left            =   150
+      Left            =   120
       TabIndex        =   0
-      Top             =   840
+      Top             =   1200
       Visible         =   0   'False
       Width           =   10140
       _ExtentX        =   17886
@@ -82,13 +106,13 @@ Begin VB.UserControl ucFacturacionItems
       Caption         =   ".."
    End
    Begin UltraGrid.SSUltraGrid grdProductos 
-      Height          =   5265
+      Height          =   2865
       Left            =   -30
       TabIndex        =   1
       Top             =   30
       Width           =   11700
       _ExtentX        =   20638
-      _ExtentY        =   9287
+      _ExtentY        =   5054
       _Version        =   131072
       GridFlags       =   17040384
       LayoutFlags     =   67108884
@@ -107,7 +131,7 @@ Begin VB.UserControl ucFacturacionItems
       Height          =   255
       Left            =   5640
       TabIndex        =   4
-      Top             =   5370
+      Top             =   6330
       Width           =   1635
       _ExtentX        =   2884
       _ExtentY        =   450
@@ -127,7 +151,7 @@ Begin VB.UserControl ucFacturacionItems
       Height          =   255
       Left            =   7320
       TabIndex        =   5
-      Top             =   5370
+      Top             =   6330
       Width           =   2055
       _ExtentX        =   3625
       _ExtentY        =   450
@@ -144,6 +168,28 @@ Begin VB.UserControl ucFacturacionItems
       Caption         =   "Reg. Por Descripción"
       Value           =   -1
    End
+   Begin UltraGrid.SSUltraGrid grdservicios 
+      Height          =   2865
+      Left            =   120
+      TabIndex        =   10
+      Top             =   3240
+      Width           =   11460
+      _ExtentX        =   20214
+      _ExtentY        =   5054
+      _Version        =   131072
+      GridFlags       =   17040384
+      LayoutFlags     =   67108884
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Tahoma"
+         Size            =   9
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Caption         =   "Servicios"
+   End
    Begin VB.Label Label1 
       Caption         =   "Teclas de ayuda: <F10> = Agregar         <Supr>  = Eliminar "
       BeginProperty Font 
@@ -158,7 +204,7 @@ Begin VB.UserControl ucFacturacionItems
       Height          =   255
       Left            =   90
       TabIndex        =   3
-      Top             =   5400
+      Top             =   6360
       Width           =   5145
    End
    Begin VB.Label lblTotal 
@@ -177,7 +223,7 @@ Begin VB.UserControl ucFacturacionItems
       Height          =   240
       Left            =   11055
       TabIndex        =   2
-      Top             =   5400
+      Top             =   6360
       Width           =   555
    End
    Begin VB.Menu mnuProductos 
@@ -690,7 +736,7 @@ End Sub
 Sub CargaProductosPorIdOrden()
 Dim rs As Recordset
 Dim oConexion As New Connection
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighEntidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     
     Select Case ms_TipoProducto
@@ -726,7 +772,7 @@ Sub CargaProductosPorIdReceta(rs As Recordset)
     lcMensaje = ""
     Set oRsTmp879 = mo_ReglasComunes.RecetaDetalleItemPorIdReceta(rs!idReceta)
     Do While Not rs.EOF
-        If rs!precio > 0 Then
+        If rs!Precio > 0 Then
             lbContinar = True
             If oRsTmp879.RecordCount > 0 Then
                oRsTmp879.MoveFirst
@@ -743,7 +789,7 @@ Sub CargaProductosPorIdReceta(rs As Recordset)
                 mrs_FacturacionProductos!NombreProducto = rs!nombre
                 mrs_FacturacionProductos!idTipoFinanciamiento = ml_IdTipoFinanciamiento
                 mrs_FacturacionProductos!Cantidad = rs!CantidadPedida
-                mrs_FacturacionProductos!PrecioUnitario = rs!precio
+                mrs_FacturacionProductos!PrecioUnitario = rs!Precio
                 mrs_FacturacionProductos!TotalPorPagar = rs!Total
                 If rsCatHos.RecordCount > 0 Then
                    mrs_FacturacionProductos!SeUsaSinPrecio = IIf(IsNull(rsCatHos!SeUsaSinPrecio), False, rsCatHos!SeUsaSinPrecio)
@@ -773,7 +819,7 @@ Sub CargaProductosDeLaBoleta(rs As Recordset)
     mb_CargandoProductos = True
     lcMensaje = ""
     Do While Not rs.EOF
-        If rs!precio > 0 Then
+        If rs!Precio > 0 Then
             lbContinar = True
             If lbContinar = True Then
                 Set rsCatHos = mo_ReglasFacturacion.FactCatalogoServiciosHospSeleccionarPorIdYtipoFinanciamiento(rs!idItem, ml_IdTipoFinanciamiento)
@@ -783,7 +829,7 @@ Sub CargaProductosDeLaBoleta(rs As Recordset)
                 mrs_FacturacionProductos!NombreProducto = rs!nombre
                 mrs_FacturacionProductos!idTipoFinanciamiento = ml_IdTipoFinanciamiento
                 mrs_FacturacionProductos!Cantidad = rs!CantidadPedida
-                mrs_FacturacionProductos!PrecioUnitario = rs!precio
+                mrs_FacturacionProductos!PrecioUnitario = rs!Precio
                 mrs_FacturacionProductos!TotalPorPagar = rs!Total
                 If rsCatHos.RecordCount > 0 Then
                    mrs_FacturacionProductos!SeUsaSinPrecio = IIf(IsNull(rsCatHos!SeUsaSinPrecio), False, rsCatHos!SeUsaSinPrecio)
@@ -812,7 +858,7 @@ Sub CargaDespachosPorIdOrden()
 Dim rs As Recordset
 Dim rs1 As Recordset
 Dim oConexion As New Connection
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighEntidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
     Select Case ms_TipoProducto
     Case sghServicio
@@ -911,7 +957,7 @@ Sub CargarItemsALaGrillaS(rs As Recordset)
         End If
         mrs_FacturacionProductos!idTipoFinanciamiento = ml_IdTipoFinanciamiento
         mrs_FacturacionProductos!Cantidad = rs!Cantidad
-        mrs_FacturacionProductos!PrecioUnitario = rs!precio
+        mrs_FacturacionProductos!PrecioUnitario = rs!Precio
         mrs_FacturacionProductos!TotalPorPagar = rs!Total
         If rsCatHos.RecordCount > 0 Then
            mrs_FacturacionProductos!SeUsaSinPrecio = IIf(IsNull(rsCatHos!SeUsaSinPrecio), False, rsCatHos!SeUsaSinPrecio)
@@ -1533,6 +1579,8 @@ Sub OnKeyPress(oGrilla As SSUltraGrid, KeyAscii As UltraGrid.SSReturnShort)
 End Sub
 
 
+
+
 'WILLIAM CASTRO
 Sub GenerarRecordsetProductos()
     Set mrs_FacturacionProductos = DevuelveGenerarRecordsetProductos()
@@ -1653,11 +1701,11 @@ Private Sub InicializarLaGrilla(oGrilla As SSUltraGrid)
 
     oGrilla.Bands(0).Columns("FechaAutorizaPendiente").Width = 2500
     oGrilla.Bands(0).Columns("FechaAutorizaPendiente").Header.Caption = "Fecha Aut. Pend."
-    oGrilla.Bands(0).Columns("FechaAutorizaPendiente").Format = SIGHEntidades.DevuelveFechaSoloFormato_DMY_HM
+    oGrilla.Bands(0).Columns("FechaAutorizaPendiente").Format = sighEntidades.DevuelveFechaSoloFormato_DMY_HM
 
     oGrilla.Bands(0).Columns("FechaAutorizaSeguro").Width = 2500
     oGrilla.Bands(0).Columns("FechaAutorizaSeguro").Header.Caption = "Fec. Aut. Seguro."
-    oGrilla.Bands(0).Columns("FechaAutorizaSeguro").Format = SIGHEntidades.DevuelveFechaSoloFormato_DMY_HM
+    oGrilla.Bands(0).Columns("FechaAutorizaSeguro").Format = sighEntidades.DevuelveFechaSoloFormato_DMY_HM
     'mgaray201411a
     If ExisteColumnaLab(oGrilla) = True Then
         oGrilla.Bands(0).Columns("labConfHIS").Hidden = Not mb_MostrarColumnaLab
@@ -1682,7 +1730,7 @@ Private Sub InicializarLaGrilla(oGrilla As SSUltraGrid)
     
     
 ConfigEstilo:
-    gridInfra.ConfigurarFilasBiColores oGrilla, SIGHEntidades.GrillaConFilasBicolor
+    gridInfra.ConfigurarFilasBiColores oGrilla, sighEntidades.GrillaConFilasBicolor
     
 End Sub
 
@@ -1756,7 +1804,7 @@ End Sub
 
 Private Sub grillaBusqueda_InitializeLayout(ByVal Context As UltraGrid.Constants_Context, ByVal Layout As UltraGrid.SSLayout)
     InicializarLaGrillaBusqueda grillaBusqueda
-    gridInfra.ConfigurarFilasBiColores grillaBusqueda, SIGHEntidades.GrillaConFilasBicolor
+    gridInfra.ConfigurarFilasBiColores grillaBusqueda, sighEntidades.GrillaConFilasBicolor
 End Sub
 Private Sub InicializarLaGrillaBusqueda(oGrilla As SSUltraGrid)
     On Error GoTo errInic
@@ -1775,7 +1823,7 @@ Private Sub InicializarLaGrillaBusqueda(oGrilla As SSUltraGrid)
     oGrilla.Bands(0).Columns("Codigo").Activation = ssActivationActivateNoEdit
     oGrilla.Bands(0).Columns("Nombre").Activation = ssActivationActivateNoEdit
     
-    gridInfra.ConfigurarFilasBiColores oGrilla, SIGHEntidades.GrillaConFilasBicolor
+    gridInfra.ConfigurarFilasBiColores oGrilla, sighEntidades.GrillaConFilasBicolor
 errInic:
 End Sub
 Private Sub grillaBusqueda_DblClick()
@@ -1866,7 +1914,7 @@ Private Sub mnuAddDevolucion_Click()
     lbContinuar99 = False
     oConexion.CommandTimeout = 300
     oConexion.CursorLocation = adUseClient
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighEntidades.CadenaConexion
     If ml_idCuentaAtencion = 0 Then
         MsgBox "Las devoluciones de dinero se realizan sólo a Pacientes con N° Cuenta", vbInformation, "Mensaje"
     Else
@@ -2324,7 +2372,7 @@ Public Sub PaqueteServicioAgregaProductos(lnIdPaquete As Long)
                 .Fields!Codigo = oRsTmp.Fields!Codigo
                 .Fields!NombreProducto = oRsTmp.Fields!procedimiento
                 .Fields!Cantidad = oRsTmp.Fields!Cantidad
-                .Fields!PrecioUnitario = oRsTmp.Fields!precio
+                .Fields!PrecioUnitario = oRsTmp.Fields!Precio
                 .Fields!TotalPorPagar = oRsTmp.Fields!Importe
                 .Fields!idTipoFinanciamiento = 1
                 .Fields!idPuntoCarga = ml_IdPuntoCarga
@@ -2443,7 +2491,7 @@ Public Sub CargaCptPorAtencion()
             'mgaray201411a
             .Fields!labConfHIS = orstemp1.Fields!labConfHIS
             .Fields!Cantidad = orstemp1.Fields!Cantidad
-            .Fields!PrecioUnitario = orstemp1.Fields!precio
+            .Fields!PrecioUnitario = orstemp1.Fields!Precio
             .Fields!TotalPorPagar = orstemp1.Fields!Total
             .Fields!idTipoFinanciamiento = ml_IdTipoFinanciamiento
             .Fields!idPuntoCarga = orstemp1.Fields!idPuntoCarga

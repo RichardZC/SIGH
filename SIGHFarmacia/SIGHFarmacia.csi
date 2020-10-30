@@ -1,3 +1,98 @@
 [History]
-1=#P0#=mb	#P1#=Form_Load	#P2#=SighFarmacia/FarmVentas/Form_Load	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200617110005	#P7#=0	#P8#=22	.
-2=#P0#=mb	#P1#=CargarComboBoxes	#P2#=SighFarmacia/FarmVentas/CargarComboBoxes	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20200603105515	#P7#=0	#P8#=21	.
+1=#P0#=mb	#P1#=LimpiarGrilla	#P2#=SighFarmacia/ucNotaSalida/LimpiarGrilla	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201030084601	#P7#=0	#P8#=16	.
+2=#P0#=mb	#P1#=txtBusca_KeyPress	#P2#=SighFarmacia/ucNotaSalida/txtBusca_KeyPress	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201030084539	#P7#=0	#P8#=0	.
+3=#P0#=mb	#P1#=OnKeyDown	#P2#=SighFarmacia/ucNotaSalida/OnKeyDown	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201030084228	#P7#=0	#P8#=28	.
+4=#P0#=mb	#P1#=CargarItemsALaGrilla	#P2#=SighFarmacia/ucNotaSalida/CargarItemsALaGrilla	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201030011946	#P7#=0	#P8#=29	.
+5=#P0#=mb	#P1#=CargaProductosPorMovNumero	#P2#=SighFarmacia/ucNotaSalida/CargaProductosPorMovNumero	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201030011759	#P7#=0	#P8#=4	.
+6=#P0#=mb	#P1#=CreaNIaFarmaciaUNIDOSIS	#P2#=SighFarmacia/FarmNotaSalida/CreaNIaFarmaciaUNIDOSIS	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201030011747	#P7#=0	#P8#=104	.
+7=#P0#=mb	#P1#=AgregaRegistro	#P2#=SighFarmacia/ucNotaSalida/AgregaRegistro	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201030011512	#P7#=0	#P8#=11	.
+8=#P0#=mb	#P1#=Totalizar	#P2#=SighFarmacia/ucNotaSalida/Totalizar	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201029090825	#P7#=0	#P8#=23	.
+9=#P0#=mb	#P1#=grdProductos_AfterRowsDeleted	#P2#=SighFarmacia/ucNotaSalida/grdProductos_AfterRowsDeleted	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201029090727	#P7#=0	#P8#=9	.
+10=#P0#=mb	#P1#=inicializar	#P2#=SighFarmacia/ucNotaSalida/inicializar	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201029090524	#P7#=0	#P8#=16	.
+11=#P0#=mb	#P1#=txtObservaciones_KeyDown	#P2#=SighFarmacia/FarmNotaSalida/txtObservaciones_KeyDown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201029084407	#P7#=0	#P8#=1	.
+12=#P0#=mb	#P1#=AnularNS	#P2#=SighFarmacia/FarmNotaSalida/AnularNS	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201029084048	#P7#=0	#P8#=1	.
+13=#P0#=mb	#P1#=CargarDatosAlFormulario	#P2#=SighFarmacia/FarmNotaSalida/CargarDatosAlFormulario	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201030084930	#P7#=0	#P8#=17	.
+14=#P0#=mb	#P1#=CargarDatosALosControles	#P2#=SighFarmacia/FarmNotaSalida/CargarDatosALosControles	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201030084946	#P7#=0	#P8#=1	.
+15=#P0#=mb	#P1#=Form_Activate	#P2#=SighFarmacia/FarmNotaSalida/Form_Activate	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201030083226	#P7#=0	#P8#=1	.
+16=#P0#=mb	#P1#=CargaDatosAlObjetosDeDatos	#P2#=SighFarmacia/FarmNotaSalida/CargaDatosAlObjetosDeDatos	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201028232131	#P7#=0	#P8#=25	.
+17=#P0#=mb	#P1#=DevuelveProductos	#P2#=SighFarmacia/ucNotaSalida/DevuelveProductos [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201028223942	#P7#=0	#P8#=0	.
+18=#P0#=mb	#P1#=ValidarDatosObligatorios	#P2#=SighFarmacia/FarmNotaSalida/ValidarDatosObligatorios	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201028223821	#P7#=0	#P8#=27	.
+19=#P0#=mb	#P1#=cmdCommand1_Click	#P2#=SighFarmacia/FarmNotaSalida/cmdCommand1_Click	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201028223005	#P7#=0	#P8#=1	.
+20=#P0#=mb	#P1#=AgregarDatosCS	#P2#=SighFarmacia/FarmNotaSalida/AgregarDatosCS	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201028222728	#P7#=0	#P8#=4	.
+21=#P0#=mb	#P1#=btnAceptar_Click	#P2#=SighFarmacia/FarmNotaSalida/btnAceptar_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201028220626	#P7#=0	#P8#=1	.
+22=#P0#=mb	#P1#=AgregarDatos	#P2#=SighFarmacia/FarmNotaSalida/AgregarDatos	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201028220356	#P7#=0	#P8#=2	.
+23=#P0#=mb	#P1#=Form_Load	#P2#=SighFarmacia/FarmNotaSalida/Form_Load	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201030084923	#P7#=0	#P8#=5	.
+24=#P0#=mb	#P1#=ModificarDatos	#P2#=SighFarmacia/FarmNotaSalida/ModificarDatos	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201028212503	#P7#=0	#P8#=-3	.
+25=#P0#=mb	#P1#=OnKeyPress	#P2#=SighFarmacia/ucCatalogos/OnKeyPress	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201026100758	#P7#=0	#P8#=125	.
+26=#P0#=mb	#P1#=grdProductos_AfterRowActivate	#P2#=SighFarmacia/ucCatalogos/grdProductos_AfterRowActivate	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201026100709	#P7#=0	#P8#=1	.
+27=#P0#=mb	#P1#=grillahis_KeyDown	#P2#=SighFarmacia/ucCatalogos/grillahis_KeyDown	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201026095806	#P7#=0	#P8#=8	.
+28=#P0#=mb	#P1#=LimpiarGrilla	#P2#=SighFarmacia/ucCatalogos/LimpiarGrilla	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201026095047	#P7#=0	#P8#=-1	.
+29=#P0#=mb	#P1#=grillahis_DblClick	#P2#=SighFarmacia/ucCatalogos/grillahis_DblClick	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201026095014	#P7#=0	#P8#=2	.
+30=#P0#=mb	#P1#=grillahis_InitializeLayout	#P2#=SighFarmacia/ucCatalogos/grillahis_InitializeLayout	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201026094420	#P7#=0	#P8#=-1	.
+31=#P0#=mb	#P1#=InicializarLaGrillahis	#P2#=SighFarmacia/ucCatalogos/InicializarLaGrillahis	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201026093803	#P7#=0	#P8#=0	.
+32=#P0#=mb	#P1#=grdProductos_BeforeCellUpdate	#P2#=SighFarmacia/ucCatalogos/grdProductos_BeforeCellUpdate	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201026092951	#P7#=0	#P8#=1	.
+33=#P0#=mb	#P1#=grillaBusqueda_KeyDown	#P2#=SighFarmacia/ucCatalogos/grillaBusqueda_KeyDown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201026092804	#P7#=0	#P8#=-1	.
+34=#P0#=mb	#P1#=grilladx_DblClick	#P2#=SighFarmacia/ucCatalogos/grilladx_DblClick	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201026092607	#P7#=0	#P8#=-3	.
+35=#P0#=mb	#P1#=grilladx_KeyDown	#P2#=SighFarmacia/ucCatalogos/grilladx_KeyDown	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201026092508	#P7#=0	#P8#=1	.
+36=#P0#=mb	#P1#=InicializarLaGrilladx	#P2#=SighFarmacia/ucCatalogos/InicializarLaGrilladx	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201026092403	#P7#=0	#P8#=-2	.
+37=#P0#=mb	#P1#=grillaBusqueda_DblClick	#P2#=SighFarmacia/ucCatalogos/grillaBusqueda_DblClick	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201026092351	#P7#=0	#P8#=0	.
+38=#P0#=mb	#P1#=grilladx_InitializeLayout	#P2#=SighFarmacia/ucCatalogos/grilladx_InitializeLayout	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201026092329	#P7#=0	#P8#=-2	.
+39=#P0#=mb	#P1#=InicializarLaGrillaBusqueda	#P2#=SighFarmacia/ucCatalogos/InicializarLaGrillaBusqueda	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201026092324	#P7#=0	#P8#=1	.
+40=#P0#=mb	#P1#=grillaBusqueda_InitializeLayout	#P2#=SighFarmacia/ucCatalogos/grillaBusqueda_InitializeLayout	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201026084549	#P7#=0	#P8#=0	.
+41=#P0#=mb	#P1#=RefrescarDatos	#P2#=SighFarmacia/ucCatalogos/RefrescarDatos	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201026083713	#P7#=0	#P8#=0	.
+42=#P0#=mb	#P1#=DevuelveProductos	#P2#=SighFarmacia/ucCatalogos/DevuelveProductos [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201026081357	#P7#=0	#P8#=0	.
+43=#P0#=mb	#P1#=DevuelveTotal	#P2#=SighFarmacia/ucCatalogos/DevuelveTotal [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201023131203	#P7#=0	#P8#=0	.
+44=#P0#=mb	#P1#=GenerarRecordsetProductos	#P2#=SighFarmacia/ucCatalogos/GenerarRecordsetProductos	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201023121717	#P7#=0	#P8#=0	.
+45=#P0#=mb	#P1#=InicializarLaGrilla	#P2#=SighFarmacia/ucCatalogos/InicializarLaGrilla	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201023120723	#P7#=0	#P8#=-5	.
+46=#P0#=mb	#P1#=grdProductos_KeyPress	#P2#=SighFarmacia/ucCatalogos/grdProductos_KeyPress	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201023115618	#P7#=0	#P8#=-1	.
+47=#P0#=mb	#P1#=ItemYaExisteSinLote	#P2#=SighFarmacia/ucCatalogos/ItemYaExisteSinLote	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201023115602	#P7#=0	#P8#=1	.
+48=#P0#=mb	#P1#=AgregaProducto	#P2#=SighFarmacia/ucCatalogos/AgregaProducto	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201023105921	#P7#=0	#P8#=1	.
+49=#P0#=mb	#P1#=BuscarMaximoItemsEnParametros	#P2#=SighFarmacia/ucCatalogos/BuscarMaximoItemsEnParametros	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201023105207	#P7#=0	#P8#=-1	.
+50=#P0#=mb	#P1#=ItemYaExiste	#P2#=SighFarmacia/ucCatalogos/ItemYaExiste	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201023101757	#P7#=0	#P8#=10	.
+51=#P0#=mb	#P1#=AgregaRegistro	#P2#=SighFarmacia/ucCatalogos/AgregaRegistro	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201023101330	#P7#=0	#P8#=-1	.
+52=#P0#=mb	#P1#=CargarItemsALaGrilla	#P2#=SighFarmacia/ucCatalogos/CargarItemsALaGrilla	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201023101306	#P7#=0	#P8#=23	.
+53=#P0#=mb	#P1#=inicializar	#P2#=SighFarmacia/ucCatalogos/inicializar	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201023094608	#P7#=0	#P8#=-2	.
+54=#P0#=mb	#P1#=grdProductos_InitializeLayout	#P2#=SighFarmacia/ucCatalogos/grdProductos_InitializeLayout	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201023094333	#P7#=0	#P8#=1	.
+55=#P0#=mb	#P1#=InicializarLaGrillaBusqueda	#P2#=SighFarmacia/ucNotaSalida/InicializarLaGrillaBusqueda	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201023081155	#P7#=0	#P8#=16	.
+56=#P0#=mb	#P1#=OnKeyPress	#P2#=SighFarmacia/ucNotaSalida/OnKeyPress	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201030084252	#P7#=0	#P8#=80	.
+57=#P0#=mb	#P1#=grdProductos_AfterRowsDeleted	#P2#=SighFarmacia/ucCatalogos/grdProductos_AfterRowsDeleted	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201022131853	#P7#=0	#P8#=-2	.
+58=#P0#=mb	#P1#=ConfigurarGrdServicios	#P2#=SighFarmacia/FarmNotaSalida/ConfigurarGrdServicios	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201022131105	#P7#=0	#P8#=0	.
+59=#P0#=mb	#P1#=cmbConcepto_Click	#P2#=SighFarmacia/FarmNotaSalida/cmbConcepto_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201030084909	#P7#=0	#P8#=7	.
+60=#P0#=mb	#P1#=cmbAlmOrigen_Click	#P2#=SighFarmacia/FarmNotaSalida/cmbAlmOrigen_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201030084859	#P7#=0	#P8#=9	.
+61=#P0#=mb	#P1#=GenerarRecordsetProductos	#P2#=SighFarmacia/ucNotaSalida/GenerarRecordsetProductos	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201022130144	#P7#=0	#P8#=19	.
+62=#P0#=mb	#P1#=InicializarLaGrilla	#P2#=SighFarmacia/ucNotaSalida/InicializarLaGrilla	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201022125235	#P7#=0	#P8#=31	.
+63=#P0#=mb	#P1#=grdProductos_KeyDown	#P2#=SighFarmacia/ucCatalogos/grdProductos_KeyDown	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201022101428	#P7#=0	#P8#=-1	.
+64=#P0#=mb	#P1#=ConfigurarGrdProductos	#P2#=SighFarmacia/FarmNotaSalida/ConfigurarGrdProductos	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201030084918	#P7#=-2147483640	#P8#=7	.
+65=#P0#=mb	#P1#=CargarComboBoxes	#P2#=SighFarmacia/FarmNotaSalida/CargarComboBoxes	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201022100212	#P7#=0	#P8#=-4	.
+66=#P0#=mb	#P1#=grillaBusqueda_InitializeLayout	#P2#=SighFarmacia/ucNotaSalida/grillaBusqueda_InitializeLayout	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201022095445	#P7#=0	#P8#=3	.
+67=#P0#=mb	#P1#=AgregaProducto	#P2#=SighFarmacia/ucNotaSalida/AgregaProducto	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201030084144	#P7#=0	#P8#=14	.
+68=#P0#=mb	#P1#=grillaBusqueda_DblClick	#P2#=SighFarmacia/ucNotaSalida/grillaBusqueda_DblClick	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201030084350	#P7#=0	#P8#=111	.
+69=#P0#=mb	#P1#=grdProductos_KeyPress	#P2#=SighFarmacia/ucNotaSalida/grdProductos_KeyPress	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201022094503	#P7#=0	#P8#=0	.
+70=#P0#=mb	#P1#=UserControl_Resize	#P2#=SighFarmacia/ucNotaSalida/UserControl_Resize	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201022093625	#P7#=0	#P8#=17	.
+71=#P0#=mb	#P1#=grdProductos_AfterCellUpdate	#P2#=SighFarmacia/ucNotaSalida/grdProductos_AfterCellUpdate	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201022082302	#P7#=0	#P8#=4	.
+72=#P0#=mb	#P1#=movNumero	#P2#=SighFarmacia/ucNotaSalida/movNumero [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201022082109	#P7#=0	#P8#=4	.
+73=#P0#=mb	#P1#=AgregaRegistro	#P2#=SighFarmacia/ucNotaIngreso/AgregaRegistro	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201014140136	#P7#=0	#P8#=3	.
+74=#P0#=mb	#P1#=CargaProductosPorMovNumero	#P2#=SighFarmacia/ucNotaIngreso/CargaProductosPorMovNumero	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201014135821	#P7#=0	#P8#=-3	.
+75=#P0#=mb	#P1#=AgregaProducto	#P2#=SighFarmacia/ucNotaIngreso/AgregaProducto	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201014133904	#P7#=0	#P8#=11	.
+76=#P0#=mb	#P1#=DocumentoNumero	#P2#=SighFarmacia/ucNotaIngreso/DocumentoNumero [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201014132510	#P7#=0	#P8#=2	.
+77=#P0#=mb	#P1#=grdProductos_AfterCellUpdate	#P2#=SighFarmacia/ucNotaIngreso/grdProductos_AfterCellUpdate	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201014130905	#P7#=0	#P8#=1	.
+78=#P0#=mb	#P1#=ImprimeDocumento	#P2#=SighFarmacia/FarmNotaSalida/ImprimeDocumento	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201014130826	#P7#=0	#P8#=15	.
+79=#P0#=mb	#P1#=Opcion	#P2#=SighFarmacia/FarmNotaSalida/Opcion [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201014130815	#P7#=0	#P8#=5	.
+80=#P0#=mb	#P1#=lcNombrePc	#P2#=SighFarmacia/FarmNotaSalida/lcNombrePc [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201014125534	#P7#=0	#P8#=1	.
+81=#P0#=mb	#P1#=InicializarLaGrilla	#P2#=SighFarmacia/ucNotaIngreso/InicializarLaGrilla	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201014123725	#P7#=0	#P8#=1	.
+82=#P0#=mb	#P1#=btnCancelar_Click	#P2#=SighFarmacia/FarmNotaIngreso/btnCancelar_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201014123011	#P7#=0	#P8#=5	.
+83=#P0#=mb	#P1#=LimpiarGrilla	#P2#=SighFarmacia/ucNotaIngreso/LimpiarGrilla	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201014122439	#P7#=0	#P8#=5	.
+84=#P0#=mb	#P1#=Totalizar	#P2#=SighFarmacia/ucNotaIngreso/Totalizar	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201014122141	#P7#=0	#P8#=29	.
+85=#P0#=mb	#P1#=grdProductos_AfterRowActivate	#P2#=SighFarmacia/ucNotaIngreso/grdProductos_AfterRowActivate	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201014115844	#P7#=0	#P8#=0	.
+86=#P0#=mb	#P1#=grdProductos_AfterRowActivate	#P2#=SighFarmacia/ucNotaSalida/grdProductos_AfterRowActivate	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201014113227	#P7#=0	#P8#=-1	.
+87=#P0#=mb	#P1#=grdProductos_BeforeCellUpdate	#P2#=SighFarmacia/ucNotaSalida/grdProductos_BeforeCellUpdate	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201014081600	#P7#=0	#P8#=1	.
+88=#P0#=mb	#P1#=lnIdTablaLISTBARITEMS	#P2#=SighFarmacia/FarmNotaSalida/lnIdTablaLISTBARITEMS [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201013134027	#P7#=-2147483640	#P8#=1	.
+89=#P0#=mb	#P1#=grdExcel_InitializeLayout	#P2#=SighFarmacia/FarmNotaSalida/grdExcel_InitializeLayout	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201013133454	#P7#=0	#P8#=19	.
+90=#P0#=mb	#P1#=cmdAgregar_Click	#P2#=SighFarmacia/FarmNotaSalida/cmdAgregar_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201013080935	#P7#=0	#P8#=1	.
+91=#P0#=mb	#P1#=cmdStockMinimo_Click	#P2#=SighFarmacia/FarmNotaSalida/cmdStockMinimo_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201012124636	#P7#=0	#P8#=0	.
+92=#P0#=mb	#P1#=btnAgregar_Click	#P2#=SighFarmacia/ucNotaSalida/btnAgregar_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201012111742	#P7#=0	#P8#=53	.
+93=#P0#=mb	#P1#=grdProductos_BeforeCellDeactivate	#P2#=SighFarmacia/ucNotaSalida/grdProductos_BeforeCellDeactivate	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201012103717	#P7#=0	#P8#=22	.
+94=#P0#=mb	#P1#=DecargaPorCadaLote	#P2#=SighFarmacia/ucNotaSalida/DecargaPorCadaLote	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201012100556	#P7#=0	#P8#=29	.
+95=#P0#=mb	#P1#=txtBusca_KeyPress	#P2#=SighFarmacia/ucNotaIngreso/txtBusca_KeyPress	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201012095019	#P7#=0	#P8#=16	.
+96=#P0#=mb	#P1#=grillaBusqueda_DblClick	#P2#=SighFarmacia/ucNotaIngreso/grillaBusqueda_DblClick	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201012094952	#P7#=0	#P8#=1	.
+97=#P0#=mb	#P1#=txtNcuenta_LostFocus	#P2#=SighFarmacia/FarmNotaIngreso/txtNcuenta_LostFocus	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201030083436	#P7#=0	#P8#=53	.

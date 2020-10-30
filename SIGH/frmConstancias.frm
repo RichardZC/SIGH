@@ -669,8 +669,8 @@ Option Explicit
 
 Dim oPaciente As New Pacientes
 Dim mi_Opcion As sghOpciones
-Dim mo_Teclado As New SIGHEntidades.Teclado
-Dim mo_Formulario As New SIGHEntidades.Formulario
+Dim mo_Teclado As New sighEntidades.Teclado
+Dim mo_Formulario As New sighEntidades.Formulario
 Dim mo_paciente As New SIGHNegocios.ReglasAdmision
 Dim mo_ReglasLaboratorio As New SIGHNegocios.ReglasLaboratorio
 Dim mo_ReglasHoteleria As New SIGHNegocios.ReglasHoteleria
@@ -678,8 +678,8 @@ Dim mo_AdminAdmision As New SIGHNegocios.ReglasAdmision
 Dim mo_ReglasFacturacion As New SIGHNegocios.ReglasFacturacion
 Dim mo_AdminServiciosComunes As New SIGHNegocios.ReglasComunes
 Dim lcBuscaParametro As New SIGHDatos.Parametros
-Dim ml_IdUsuario As Long
-Dim ml_idPaciente As Long
+Dim ml_idUsuario As Long
+Dim ml_IdPaciente As Long
 Dim ml_IdServicio As Long
 Dim ml_idAtencion As Long
 Dim ml_idAtencion1 As Long
@@ -699,7 +699,7 @@ Dim ml_Historia As Long
 Dim ml_Nombres As String
 Dim ml_CAfiliacion As String
 Dim ml_servicio As String
-Dim mo_cboServicio As New SIGHEntidades.ListaDespleglable
+Dim mo_cboServicio As New sighEntidades.ListaDespleglable
 Dim gridInfra As New GridInfragistic
 Dim ml_NombreMaquina As String
 Dim ml_NConstancia As String
@@ -740,8 +740,8 @@ Property Get Opcion() As sghOpciones
   Opcion = mi_Opcion
 End Property
 
-Property Let IdUsuario(lValue As Long)
-   ml_IdUsuario = lValue
+Property Let idUsuario(lValue As Long)
+   ml_idUsuario = lValue
 End Property
 
 Property Let idConstancia(lValue As Long)
@@ -781,9 +781,9 @@ Sub CargaDB_TextBox(Tabla As ADODB.Recordset, T As TextBox)
   Do While Not (Tabla.EOF)
     K = K + 1
     If K = 1 Then
-      T.Text = Tabla!Descripcion
+      T.Text = Tabla!descripcion
     Else
-      T.Text = T.Text & vbCrLf & Tabla!Descripcion
+      T.Text = T.Text & vbCrLf & Tabla!descripcion
     End If
     Tabla.MoveNext
   Loop
@@ -793,17 +793,17 @@ End Sub
 Private Function BuscaPaciente(HCPaciente As Long)
   If HCPaciente = 0 Then Exit Function
   Set oDOPaciente = mo_paciente.PacientesSeleccionarPorHistoriaClinicaDefinitiva(Val(HCigualDNI_AgregaNUEVEaLaHistoria(txtHC.Text)))
-  ml_idPaciente = Val(oDOPaciente.idPaciente)
-  If ml_idPaciente <> 0 Then
+  ml_IdPaciente = Val(oDOPaciente.idPaciente)
+  If ml_IdPaciente <> 0 Then
     ml_Nombres = oDOPaciente.ApellidoPaterno & " " & oDOPaciente.ApellidoMaterno & ", " & oDOPaciente.PrimerNombre & " " & oDOPaciente.SegundoNombre
     If mi_Opcion = sghAgregar Then
-      Set oAtenciones = mo_ReglasLaboratorio.AtencionesQueTuvoElPacienteConstancias(ml_idPaciente)
+      Set oAtenciones = mo_ReglasLaboratorio.AtencionesQueTuvoElPacienteConstancias(ml_IdPaciente)
       Set grdAtenciones.DataSource = oAtenciones
       grdAtenciones.Enabled = True
     Else
       mo_Formulario.HabilitarDeshabilitar txtNconstancia, False
       txtNconstancia.Text = ml_idConstancia
-      Set oAtenciones = mo_ReglasLaboratorio.AtencionesQueTuvoElPacienteConstanciasPorId(ml_idPaciente, ml_idAtencion1)
+      Set oAtenciones = mo_ReglasLaboratorio.AtencionesQueTuvoElPacienteConstanciasPorId(ml_IdPaciente, ml_idAtencion1)
       Set grdAtenciones.DataSource = oAtenciones
       Dim tmp As UltraGrid.SSRow
       grdAtenciones.Enabled = False
@@ -821,7 +821,7 @@ Private Function BuscaPaciente(HCPaciente As Long)
     End If
   Else
     ml_Nombres = ""
-    ml_idPaciente = 0
+    ml_IdPaciente = 0
     grdAtenciones.Enabled = False
   End If
   txtAN.Text = ml_Nombres
@@ -854,8 +854,8 @@ Sub IngresaDx()
         If oBusqueda.BotonPresionado = sghAceptar Then
             Set oDODiagnostico = mo_AdminServiciosComunes.DiagnosticosSeleccionarPorId(oBusqueda.idRegistroSeleccionado)
             If Not oDODiagnostico Is Nothing Then
-                lnIdDx = oDODiagnostico.IdDiagnostico
-                txtD.Text = oDODiagnostico.CodigoCIE2004 & " " & oDODiagnostico.Descripcion
+                lnIdDx = oDODiagnostico.idDiagnostico
+                txtD.Text = oDODiagnostico.CodigoCIE2004 & " " & oDODiagnostico.descripcion
             End If
         End If
     End If
@@ -897,7 +897,7 @@ Private Sub cmdBuscaCuentaPorApellidos_Click()
   Dim oBusqueda As New SIGHNegocios.BuscaPacientes
   Dim oDOPaciente As New doPaciente
   Dim oConexion As New Connection
-  oConexion.Open SIGHEntidades.CadenaConexion
+  oConexion.Open sighEntidades.CadenaConexion
   oConexion.CursorLocation = adUseClient
   oBusqueda.TipoFiltro = sghFiltrarTodos
   oBusqueda.MostrarFormulario
@@ -915,9 +915,9 @@ End Sub
 
 Private Sub Form_Load()
   ml_IdServicio = 0
-  ml_idPaciente = 0
+  ml_IdPaciente = 0
   ml_idAtencion = 0
-  ml_NombreMaquina = SIGHEntidades.RetornaNombrePC
+  ml_NombreMaquina = sighEntidades.RetornaNombrePC
   
   Select Case mi_Opcion
     Case sghAgregar
@@ -981,10 +981,10 @@ Private Sub grdAtenciones_Click()
       End If
     End If
     If mi_Opcion = sghAgregar Then
-      Set oServicios = mo_ReglasLaboratorio.ServiciosDondeEstuvoElPaciente(ml_idPaciente, ml_idAtencion)
+      Set oServicios = mo_ReglasLaboratorio.ServiciosDondeEstuvoElPaciente(ml_IdPaciente, ml_idAtencion)
       grdServicios.Enabled = True
     Else
-      Set oServicios = mo_ReglasLaboratorio.ServiciosDondeEstuvoElPacientePorId(ml_idPaciente, ml_idServicio1, ml_idAtencion)
+      Set oServicios = mo_ReglasLaboratorio.ServiciosDondeEstuvoElPacientePorId(ml_IdPaciente, ml_idServicio1, ml_idAtencion)
       grdServicios.Enabled = False
       Set tmp = grdServicios.GetRow(ssChildRowFirst)
       grdServicios_Click
@@ -1022,7 +1022,7 @@ Private Sub grdAtenciones_Click()
     optTipoConstancia(0).Visible = True
     optTipoConstancia(1).Visible = True
     optTipoConstancia(2).Visible = False
-    Set oServicios = mo_ReglasLaboratorio.ServiciosDondeSeAtendioElPaciente(ml_idPaciente, ml_idAtencion)
+    Set oServicios = mo_ReglasLaboratorio.ServiciosDondeSeAtendioElPaciente(ml_IdPaciente, ml_idAtencion)
     
     If mi_Opcion = sghAgregar Then
       grdServicios.Enabled = True
@@ -1093,7 +1093,7 @@ Private Sub grdAtenciones_InitializeLayout(ByVal Context As UltraGrid.Constants_
   grdAtenciones.Bands(0).Columns("idMedicoIngreso").Hidden = True
   grdAtenciones.Bands(0).Columns("idMedicoEgreso").Hidden = True
   grdAtenciones.Bands(0).Columns("idTipoServicio").Hidden = True
-  gridInfra.ConfigurarFilasBiColores grdAtenciones, SIGHEntidades.GrillaConFilasBicolor
+  gridInfra.ConfigurarFilasBiColores grdAtenciones, sighEntidades.GrillaConFilasBicolor
 End Sub
 
 Private Sub grdAtenciones_KeyDown(KeyCode As UltraGrid.SSReturnShort, Shift As Integer)
@@ -1111,7 +1111,7 @@ End Sub
 
 Private Sub grdServicios_Click()
   Dim oConexion As New Connection
-  oConexion.Open SIGHEntidades.CadenaConexion
+  oConexion.Open sighEntidades.CadenaConexion
   oConexion.CursorLocation = adUseClient
   Label15.Caption = "Servicio ..."
   'btnAceptar.Enabled = False
@@ -1146,19 +1146,19 @@ Private Sub grdServicios_InitializeLayout(ByVal Context As UltraGrid.Constants_C
   grdServicios.Bands(0).Columns("IdServicio").Width = 1000
   grdServicios.Bands(0).Columns("FechaOcupacion").Header.Caption = "Fecha Ingreso"
   grdServicios.Bands(0).Columns("FechaOcupacion").Width = 1300
-  grdServicios.Bands(0).Columns("FechaOcupacion").Format = SIGHEntidades.DevuelveFechaSoloFormato_DMY
+  grdServicios.Bands(0).Columns("FechaOcupacion").Format = sighEntidades.DevuelveFechaSoloFormato_DMY
   grdServicios.Bands(0).Columns("HoraOcupacion").Header.Caption = "Hora Ingreso"
   grdServicios.Bands(0).Columns("HoraOcupacion").Width = 1200
-  grdServicios.Bands(0).Columns("HoraOcupacion").Format = SIGHEntidades.DevuelveHoraSoloFormato_HMS
+  grdServicios.Bands(0).Columns("HoraOcupacion").Format = sighEntidades.DevuelveHoraSoloFormato_HMS
   grdServicios.Bands(0).Columns("FechaDesocupacion").Header.Caption = "Fecha Salida"
   grdServicios.Bands(0).Columns("FechaDesocupacion").Width = 1300
-  grdServicios.Bands(0).Columns("FechaDesocupacion").Format = SIGHEntidades.DevuelveFechaSoloFormato_DMY
+  grdServicios.Bands(0).Columns("FechaDesocupacion").Format = sighEntidades.DevuelveFechaSoloFormato_DMY
   grdServicios.Bands(0).Columns("HoraDesocupacion").Header.Caption = "Hora Salida"
   grdServicios.Bands(0).Columns("HoraDesocupacion").Width = 1200
-  grdServicios.Bands(0).Columns("HoraDesocupacion").Format = SIGHEntidades.DevuelveHoraSoloFormato_HMS
+  grdServicios.Bands(0).Columns("HoraDesocupacion").Format = sighEntidades.DevuelveHoraSoloFormato_HMS
   grdServicios.Bands(0).Columns("IdCama").Header.Caption = "Id Cama"
   grdServicios.Bands(0).Columns("IdCama").Width = 900
-  gridInfra.ConfigurarFilasBiColores grdServicios, SIGHEntidades.GrillaConFilasBicolor
+  gridInfra.ConfigurarFilasBiColores grdServicios, sighEntidades.GrillaConFilasBicolor
 End Sub
 
 Private Sub grdServicios_KeyDown(KeyCode As UltraGrid.SSReturnShort, Shift As Integer)
@@ -1248,7 +1248,7 @@ Function ConstanciasSeleccionaMedico(idMedico As Long) As ADODB.Recordset
   Dim lnIdServicioDelPaciente As Long
   
   ms_MensajeError = ""
-  oConexion.Open SIGHEntidades.CadenaConexion
+  oConexion.Open sighEntidades.CadenaConexion
   oConexion.CursorLocation = adUseClient
   With oCommand
     .CommandType = adCmdStoredProc
@@ -1320,7 +1320,7 @@ Public Function constanciasAgregar(idPaciente As Double, idAtencion As Double, i
   ms_MensajeError = ""
   oConexion.CommandTimeout = 300
   oConexion.CursorLocation = adUseClient
-  oConexion.Open SIGHEntidades.CadenaConexionIntegrada
+  oConexion.Open sighEntidades.CadenaConexionIntegrada
   oConexion.BeginTrans
   '
   lnIdentNuevo = lnIdentNuevo - 1
@@ -1350,21 +1350,21 @@ Public Function constanciasAgregar(idPaciente As Double, idAtencion As Double, i
     ml_idConstancia = lnIdConstancia
   End With
   '
-  mo_ReglasSeguridad.AuditoriaAgregarV ml_IdUsuario, "A", lnIdConstancia, "Constancias", oConexion, mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc, ""
+  mo_ReglasSeguridad.AuditoriaAgregarV ml_idUsuario, "A", lnIdConstancia, "Constancias", oConexion, mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc, ""
   '
   'Agrega MOVIMIENTO DE ARCHIVO si no esta la Historia ubicada en Archivo Clinico}
   Set oMovimientosHistoriaClinica.Conexion = oConexion
-  Set oRsTmp1 = mo_ReglasArchivoClinico.MovimientosHistoriaClinicaSeleccionaUltimoMovimientoPorPaciente(ml_idPaciente)
+  Set oRsTmp1 = mo_ReglasArchivoClinico.MovimientosHistoriaClinicaSeleccionaUltimoMovimientoPorPaciente(ml_IdPaciente)
   If oRsTmp1.RecordCount > 0 Then
         If oRsTmp1.Fields!idServicioDestino <> oBuscaCodigoNombre.ParametrosIdServicioArchivoClinico And oRsTmp1.Fields!idServicioDestino <> Val(lcBuscaParametro.SeleccionaFilaParametro(256)) Then
-            oDOMovimientoHistoriaClinica.idPaciente = ml_idPaciente
+            oDOMovimientoHistoriaClinica.idPaciente = ml_IdPaciente
             oDOMovimientoHistoriaClinica.FechaMovimiento = lcBuscaParametro.RetornaFechaHoraServidorSQL()
             oDOMovimientoHistoriaClinica.idMotivo = 7    'Transferencia
             oDOMovimientoHistoriaClinica.IdServicioOrigen = oRsTmp1.Fields!idServicioDestino
             oDOMovimientoHistoriaClinica.idServicioDestino = Val(lcBuscaParametro.SeleccionaFilaParametro(256))  'Estadistica
-            oDOMovimientoHistoriaClinica.IdEmpleadoArchivo = ml_IdUsuario
-            oDOMovimientoHistoriaClinica.IdEmpleadoTransporte = ml_IdUsuario
-            oDOMovimientoHistoriaClinica.IdEmpleadoRecepcion = ml_IdUsuario
+            oDOMovimientoHistoriaClinica.IdEmpleadoArchivo = ml_idUsuario
+            oDOMovimientoHistoriaClinica.IdEmpleadoTransporte = ml_idUsuario
+            oDOMovimientoHistoriaClinica.IdEmpleadoRecepcion = ml_idUsuario
             oDOMovimientoHistoriaClinica.IdGrupoMovimiento = 1
             oDOMovimientoHistoriaClinica.idAtencion = ml_idAtencion
             If Not oMovimientosHistoriaClinica.Insertar(oDOMovimientoHistoriaClinica) Then
@@ -1379,9 +1379,9 @@ Public Function constanciasAgregar(idPaciente As Double, idAtencion As Double, i
      oDOAtencionDiagnostico.idAtencion = ml_idAtencion
      'oDOAtencionDiagnostico.IdAtencionDiagnostico
      oDOAtencionDiagnostico.IdClasificacionDx = 1
-     oDOAtencionDiagnostico.IdDiagnostico = lnIdDx
+     oDOAtencionDiagnostico.idDiagnostico = lnIdDx
      oDOAtencionDiagnostico.IdSubclasificacionDx = 102
-     oDOAtencionDiagnostico.IdUsuarioAuditoria = ml_IdUsuario
+     oDOAtencionDiagnostico.IdUsuarioAuditoria = ml_idUsuario
      oDOAtencionDiagnostico.labConfHIS = " "
      If Not oAtencionesDiagnosticos.Insertar(oDOAtencionDiagnostico) Then
          GoTo ManejadorDeError
@@ -1425,7 +1425,7 @@ Public Function constanciasEliminar(idConstancia As Double) As Boolean
   
   constanciasEliminar = False
   ms_MensajeError = ""
-  oConexion.Open SIGHEntidades.CadenaConexion
+  oConexion.Open sighEntidades.CadenaConexion
   oConexion.CursorLocation = adUseClient
   With oCommand
     .CommandType = adCmdStoredProc
@@ -1436,15 +1436,15 @@ Public Function constanciasEliminar(idConstancia As Double) As Boolean
     Set oRecordset = .Execute
   End With
   '
-  mo_ReglasSeguridad.AuditoriaAgregarV ml_IdUsuario, "E", CLng(idConstancia), "Constancias", oConexion, mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc, ""
+  mo_ReglasSeguridad.AuditoriaAgregarV ml_idUsuario, "E", CLng(idConstancia), "Constancias", oConexion, mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc, ""
       
   'Elimina MOVIMIENTO DE ARCHIVO (si corresponde al Servicio de ESTADISTICA}
   Set oMovimientosHistoriaClinica.Conexion = oConexion
-  Set oRsTmp1 = mo_ReglasArchivoClinico.MovimientosHistoriaClinicaSeleccionaUltimoMovimientoPorPaciente(ml_idPaciente)
+  Set oRsTmp1 = mo_ReglasArchivoClinico.MovimientosHistoriaClinicaSeleccionaUltimoMovimientoPorPaciente(ml_IdPaciente)
   If oRsTmp1.RecordCount > 0 Then
         If oRsTmp1.Fields!idServicioDestino = Val(lcBuscaParametro.SeleccionaFilaParametro(256)) Then
             oDOMovimientoHistoriaClinica.IdMovimiento = oRsTmp1.Fields!IdMovimiento
-            oDOMovimientoHistoriaClinica.IdUsuarioAuditoria = ml_IdUsuario
+            oDOMovimientoHistoriaClinica.IdUsuarioAuditoria = ml_idUsuario
             If Not oMovimientosHistoriaClinica.Eliminar(oDOMovimientoHistoriaClinica) Then
                GoTo ManejadorDeError
             End If
@@ -1479,7 +1479,7 @@ Public Function constanciasModificar(idConstancia As Double, idResponsable As Do
   
   constanciasModificar = False
   ms_MensajeError = ""
-  oConexion.Open SIGHEntidades.CadenaConexion
+  oConexion.Open sighEntidades.CadenaConexion
   oConexion.CursorLocation = adUseClient
   With oCommand
     .CommandType = adCmdStoredProc
@@ -1491,7 +1491,7 @@ Public Function constanciasModificar(idConstancia As Double, idResponsable As Do
     Set oParameter = .CreateParameter("@idResponsable", adInteger, adParamInput, 0, idResponsable): .Parameters.Append oParameter
     Set oRecordset = .Execute
   End With
-  mo_ReglasSeguridad.AuditoriaAgregarV ml_IdUsuario, "M", CLng(idConstancia), "Constancias", oConexion, mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc, ""
+  mo_ReglasSeguridad.AuditoriaAgregarV ml_idUsuario, "M", CLng(idConstancia), "Constancias", oConexion, mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc, ""
   oConexion.Close
   Set oConexion = Nothing
   Set oCommand = Nothing
@@ -1550,8 +1550,8 @@ Private Sub Formato1()
   oRptConstanciaAM.fecha = ", " & Format(Now, "dd") & " de " & Format(Now, "mmmm") & " del " & Format(Now, "yyyy")
   oRptConstanciaAM.HC = "H.C. " & HCigualDNI_DevuelveHistoriaConCerosIzquierda(txtHC.Text, False)
   oRptConstanciaAM.idAtencion = ml_idAtencion
-  oRptConstanciaAM.idPaciente = ml_idPaciente
-  ml_Responsable = SIGHEntidades.Usuario
+  oRptConstanciaAM.idPaciente = ml_IdPaciente
+  ml_Responsable = sighEntidades.Usuario
   oRptConstanciaAM.idResponsable = ml_Responsable
   oRptConstanciaAM.Medico = txtNMedico.Text
   oRptConstanciaAM.idMedico = ml_NColegiatura & txtIdMedico.Text
@@ -1564,9 +1564,9 @@ Private Sub Formato1()
   oRptConstanciaAM.cama = Trim(txtNC.Text)
   oRptConstanciaAM.Hospitaliza = ml_Hospitaliza
   If mi_Opcion = sghAgregar Then
-     constanciasAgregar Val(ml_idPaciente), Val(ml_idAtencion), Val(ml_Responsable), ml_IdServicio, _
+     constanciasAgregar Val(ml_IdPaciente), Val(ml_idAtencion), Val(ml_Responsable), ml_IdServicio, _
                         Val(txtIdMedic.Text), ml_TipoConstancia, _
-                        Format(Now, SIGHEntidades.DevuelveFechaSoloFormato_DMY_HM), ml_NombreMaquina, _
+                        Format(Now, sighEntidades.DevuelveFechaSoloFormato_DMY_HM), ml_NombreMaquina, _
                         txtNR.Text, txtO.Text, Val(txtNconstancia.Text)
      oRptConstanciaAM.NConstancia = ml_idConstancia
   End If
@@ -1615,7 +1615,7 @@ If btnAceptar.Enabled = False Then
   oRptConstanciaAMAlternativa.NroHC = "H.C. " & HCigualDNI_DevuelveHistoriaConCerosIzquierda(txtHC.Text, False)
   oRptConstanciaAMAlternativa.NroConstancia = ml_idConstancia & " - " & Year(Now)
   oRptConstanciaAMAlternativa.EdadPaciente = Year(Now) - Year(oDOPaciente.FechaNacimiento)
-  ml_Responsable = SIGHEntidades.Usuario
+  ml_Responsable = sighEntidades.Usuario
   oRptConstanciaAMAlternativa.NombreMedico = txtNMedico.Text
   oRptConstanciaAMAlternativa.CodigoMedico = ml_NColegiatura & txtIdMedico.Text
   oRptConstanciaAMAlternativa.TipoConstancia = ml_NConstancia
@@ -1623,9 +1623,9 @@ If btnAceptar.Enabled = False Then
   oRptConstanciaAMAlternativa.Datos = oMedico
 
   If mi_Opcion = sghAgregar Then
-     constanciasAgregar Val(ml_idPaciente), Val(ml_idAtencion), Val(ml_Responsable), ml_IdServicio, _
+     constanciasAgregar Val(ml_IdPaciente), Val(ml_idAtencion), Val(ml_Responsable), ml_IdServicio, _
                         Val(txtIdMedic.Text), ml_TipoConstancia, _
-                        Format(Now, SIGHEntidades.DevuelveFechaSoloFormato_DMY_HM), ml_NombreMaquina, _
+                        Format(Now, sighEntidades.DevuelveFechaSoloFormato_DMY_HM), ml_NombreMaquina, _
                         txtNR.Text, txtO.Text, Val(txtNconstancia.Text)
      oRptConstanciaAMAlternativa.NroConstancia = ml_idConstancia & " - " & Year(Now)
   End If
@@ -1648,7 +1648,7 @@ Dim oParameter As ADODB.Parameter
 Dim oConexion As New Connection
     oConexion.CommandTimeout = 300
     oConexion.CursorLocation = adUseClient
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighEntidades.CadenaConexion
     With oCommand
         .CommandType = adCmdStoredProc
         Set .ActiveConnection = oConexion
@@ -1697,7 +1697,7 @@ Dim ms_MensajeError  As String
 Dim oConexion As New Connection
     oConexion.CommandTimeout = 300
     oConexion.CursorLocation = adUseClient
-    oConexion.Open SIGHEntidades.CadenaConexion
+    oConexion.Open sighEntidades.CadenaConexion
     ms_MensajeError = ""
     With oCommand
         .CommandType = adCmdStoredProc

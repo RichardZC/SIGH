@@ -1512,6 +1512,13 @@ TerminarMVTDTA:
 End Function
 
 
+
+
+
+
+
+
+
 Function farmMovimientoVentasSeleccionarPorId(ByVal oDoMovimientoVentas As DoFarmMovimientoVentas, Optional oConexion1 As Connection) As Boolean
     Dim oConexion As New ADODB.Connection
     Dim oMovimientoVtas As New farmMovimientoVentas
@@ -2717,7 +2724,7 @@ Function AgregaDatosDeNotaSalida(oDoMovimiento As DoFarmMovimiento, oRsDetallePr
        oDoMovimientoDetalle.Item = lnItem
        oDoMovimientoDetalle.Lote = oRsDetalleProductos.Fields!Lote
        oDoMovimientoDetalle.Precio = oRsDetalleProductos.Fields!Precio
-       oDoMovimientoDetalle.RegistroSanitario = ""
+       oDoMovimientoDetalle.RegistroSanitario = "A"
        oDoMovimientoDetalle.total = oRsDetalleProductos.Fields!total
        oDoMovimientoDetalle.idTipoSalidaBienInsumo = oRsDetalleProductos.Fields!idTipoSalidaBienInsumo
        If Not ChequeaQueSaldosConLotesSeaPositivo(oConexion, oDoMovimiento.idAlmacenOrigen, oRsDetalleProductos.Fields!idProducto, oRsDetalleProductos.Fields!Lote, oRsDetalleProductos.Fields!FechaVencimiento, oRsDetalleProductos.Fields!idTipoSalidaBienInsumo, oRsDetalleProductos.Fields!cantidad) Then
@@ -2749,6 +2756,75 @@ TerminarNS:
     Set oMovimientoDetalle = Nothing
     Set oDoMovimientoDetalle = Nothing
 End Function
+
+
+'********************************   AGREGAR SERVICIOS  RAUL***************************************
+Function usp_catalogoserviciosagregar(oRsDetalleProductos As ADODB.Recordset) As Boolean
+    Dim oConexion As New ADODB.Connection
+    Dim oMovimiento As New farmMovimiento
+    Dim oMovimientoDetalle As New FarmMovimientoDetalle
+    Dim oDoMovimientoDetalle As New DoFarmMovimientoDetalle
+    
+    Dim lcCorrelativo As String
+    Dim lnItem As Long
+    Dim bProcesoOK As Boolean
+    oConexion.CommandTimeout = 900
+    oConexion.CursorLocation = adUseClient
+    oConexion.Open sighentidades.CadenaConexion
+    oConexion.BeginTrans
+    bProcesoOK = True
+    ms_MensajeError = ""
+    Set oMovimiento.Conexion = oConexion
+    Set oMovimientoDetalle.Conexion = oConexion
+              'ListBarItems.idListItem
+    '*********  graba tabla farmMovimientosDetalle,farmSaldo,farmSaldoDetalle  ***************
+   
+    lnItem = 1
+    If oRsDetalleProductos.RecordCount = 0 Then
+       bProcesoOK = False: ms_MensajeError = "No existe items": GoTo TerminarNS
+    End If
+    oRsDetalleProductos.MoveFirst
+    Do While Not oRsDetalleProductos.EOF
+      ' oDoMovimientoDetalle.cantidad = oRsDetalleProductos.Fields!cantidad
+       oDoMovimientoDetalle.Id = oRsDetalleProductos.Fields!Id
+       oDoMovimientoDetalle.Id_Atencion = oRsDetalleProductos.Fields!idAtencion
+       oDoMovimientoDetalle.Descripcion_Tipo_Item = oRsDetalleProductos.Fields!Descripcion_Tipo_Item
+        oDoMovimientoDetalle.Fg_tipo = oRsDetalleProductos.Fields!Fg_tipo
+       oDoMovimientoDetalle.Codigo = oRsDetalleProductos.Fields!Codigo
+       oDoMovimientoDetalle.nombreProducto = oRsDetalleProductos.Fields!nombreProducto
+       oDoMovimientoDetalle.IdSubClasificacion = oRsDetalleProductos.Fields!IdSubClasificacion
+       oDoMovimientoDetalle.labConfHIS = oRsDetalleProductos.Fields!labConfHIS
+            
+      If Not oMovimientoDetalle.usp_catalogoserviciosagregar(oDoMovimientoDetalle) Then
+                bProcesoOK = False: GoTo TerminarNS
+       End If
+            lnItem = lnItem + 1
+       oRsDetalleProductos.MoveNext
+    Loop
+TerminarNS:
+    If bProcesoOK Then
+        usp_catalogoserviciosagregar = True
+        oConexion.CommitTrans
+    Else
+        usp_catalogoserviciosagregar = False
+        ms_MensajeError = ms_MensajeError + IIf(oMovimiento.MensajeError <> "", oMovimiento.MensajeError + Chr(13), "")
+        ms_MensajeError = ms_MensajeError + IIf(oMovimientoDetalle.MensajeError <> "", oMovimientoDetalle.MensajeError + Chr(13), "")
+        oConexion.RollbackTrans
+    End If
+    oConexion.Close
+    Set oConexion = Nothing
+    Set oMovimiento = Nothing
+    Set oMovimientoDetalle = Nothing
+    Set oDoMovimientoDetalle = Nothing
+End Function
+
+'******************* elimina servicios raul
+
+
+
+
+
+
 Function ModificaDatosDeNotaSalida(oDoMovimiento As DoFarmMovimiento, oRsDetalleProductos As ADODB.Recordset, mo_lnIdTablaLISTBARITEMS As Long, mo_lcNombrePc As String) As Boolean
     Dim oConexion As New ADODB.Connection
     Dim oMovimiento As New farmMovimiento
@@ -2978,6 +3054,11 @@ Function FarmMovimientoDetalleEliminar(oConexion As ADODB.Connection, ByVal oDoM
     Set oMovimientoDetalle.Conexion = Nothing
 End Function
 
+
+'*-------- eliminar catalogos
+
+
+
 '********************************   Nota de Salida  ***************************************
 
 
@@ -3199,6 +3280,37 @@ Function FarmMovimientosDetalleDevuelveTodosItems(oConexion As ADODB.Connection,
 End Function
 '********************************   farmMovimientosDetalle ***************************************
 
+'********************************   carga grillaservicios raul  ***************************************
+Function usp_listarcatalogoidat(oConexion As ADODB.Connection, lcIdAtencion As String) As ADODB.Recordset
+    Dim oTabla As New FarmMovimientoDetalle
+    Set oTabla.Conexion = oConexion
+    Set usp_listarcatalogoidat = oTabla.usp_listarcatalogoidat(lcIdAtencion)
+    ms_MensajeError = oTabla.MensajeError
+    Set oTabla = Nothing
+End Function
+
+Function usp_eliminacatalogoidat(oConexion As ADODB.Connection, Id As Long) As ADODB.Recordset
+    Dim oTabla As New FarmMovimientoDetalle
+    Set oTabla.Conexion = oConexion
+    Set usp_eliminacatalogoidat = oTabla.usp_eliminacatalogoidat(Id)
+    ms_MensajeError = oTabla.MensajeError
+    Set oTabla = Nothing
+End Function
+
+'********************************   listar grillaservicios id raul  ***************************************
+'Function usp_listarcatalogoid(oConexion As ADODB.Connection, id As Long) As ADODB.Recordset
+    'Dim oTabla As New FarmMovimientoDetalle
+    'Set oTabla.Conexion = oConexion
+    'Set usp_listarcatalogoid = oTabla.usp_listarcatalogoid(id)
+    'ms_MensajeError = oTabla.MensajeError
+    'Set oTabla = Nothing
+'End Function
+
+'********************************   farmMovimientosDetalle ***************************************
+
+
+
+
 
 '********************************   INVENTARIO  ***************************************
 Function FarmInventarioCabeceraDevuelveProductosPorId(lnIdInventario As Long) As ADODB.Recordset
@@ -3402,6 +3514,179 @@ ManejadorDeError:
    ms_MensajeError = Err.Number & " " + Err.Description: MsgBox ms_MensajeError + Chr(13) + "Por favor contacte al personal de soporte técnico", vbInformation, "Error en la interface de acceso a datos"
 Exit Function
 End Function
+
+
+
+
+
+
+
+Function usp_listarcatalogoservicio(lcFiltro As String, lcFiltro1 As String) As ADODB.Recordset
+On Error GoTo ManejadorDeError
+Dim oRecordset As New ADODB.Recordset
+Dim oCommand As New ADODB.Command
+Dim oParameter As ADODB.Parameter
+Dim oConexion As New ADODB.Connection
+Dim ms_MensajeError As String
+    Set usp_listarcatalogoservicio = Nothing
+    ms_MensajeError = ""
+    oConexion.Open sighentidades.CadenaConexion
+    oConexion.CursorLocation = adUseClient
+    With oCommand
+        .CommandType = adCmdStoredProc
+        Set .ActiveConnection = oConexion
+        .CommandTimeout = 150
+        .CommandText = "usp_listarcatalogoservicio"
+                Set oParameter = .CreateParameter("@Descripcion_Item", adVarChar, adParamInput, 300, lcFiltro): .Parameters.Append oParameter
+                Set oParameter = .CreateParameter("@Descripcion_Tipo_Item", adVarChar, adParamInput, 100, lcFiltro1): .Parameters.Append oParameter
+        Set oRecordset = .Execute
+        Set oRecordset.ActiveConnection = Nothing
+   End With
+   Set usp_listarcatalogoservicio = oRecordset
+   oConexion.Close
+   Set oConexion = Nothing
+   Set oCommand = Nothing
+   Set oRecordset = Nothing
+Exit Function
+ManejadorDeError:
+   ms_MensajeError = Err.Number & " " + Err.Description: MsgBox ms_MensajeError + Chr(13) + "Por favor contacte al personal de soporte técnico", vbInformation, "Error en la interface de acceso a datos"
+Exit Function
+End Function
+
+
+
+
+Function usp_listarcatalogoservicioc(lcFiltro As String, lcFiltro1 As String) As ADODB.Recordset
+On Error GoTo ManejadorDeError
+Dim oRecordset As New ADODB.Recordset
+Dim oCommand As New ADODB.Command
+Dim oParameter As ADODB.Parameter
+Dim oConexion As New ADODB.Connection
+Dim ms_MensajeError As String
+    Set usp_listarcatalogoservicioc = Nothing
+    ms_MensajeError = ""
+    oConexion.Open sighentidades.CadenaConexion
+    oConexion.CursorLocation = adUseClient
+    With oCommand
+        .CommandType = adCmdStoredProc
+        Set .ActiveConnection = oConexion
+        .CommandTimeout = 150
+        .CommandText = "usp_listarcatalogoservicioc"
+                Set oParameter = .CreateParameter("@Codigo_Item", adVarChar, adParamInput, 300, lcFiltro): .Parameters.Append oParameter
+                Set oParameter = .CreateParameter("@Descripcion_Tipo_Item", adVarChar, adParamInput, 100, lcFiltro1): .Parameters.Append oParameter
+        Set oRecordset = .Execute
+        Set oRecordset.ActiveConnection = Nothing
+   End With
+   Set usp_listarcatalogoservicioc = oRecordset
+   oConexion.Close
+   Set oConexion = Nothing
+   Set oCommand = Nothing
+   Set oRecordset = Nothing
+Exit Function
+ManejadorDeError:
+   ms_MensajeError = Err.Number & " " + Err.Description: MsgBox ms_MensajeError + Chr(13) + "Por favor contacte al personal de soporte técnico", vbInformation, "Error en la interface de acceso a datos"
+Exit Function
+End Function
+
+
+
+Function usp_listarsubclasdx(lcFiltro As String) As ADODB.Recordset
+On Error GoTo ManejadorDeError
+Dim oRecordset As New ADODB.Recordset
+Dim oCommand As New ADODB.Command
+Dim oParameter As ADODB.Parameter
+Dim oConexion As New ADODB.Connection
+Dim ms_MensajeError As String
+    Set usp_listarsubclasdx = Nothing
+    ms_MensajeError = ""
+    oConexion.Open sighentidades.CadenaConexion
+    oConexion.CursorLocation = adUseClient
+    With oCommand
+        .CommandType = adCmdStoredProc
+        Set .ActiveConnection = oConexion
+        .CommandTimeout = 150
+        .CommandText = "usp_listarsubclasdx"
+                Set oParameter = .CreateParameter("@Descripcion", adVarChar, adParamInput, 100, lcFiltro): .Parameters.Append oParameter
+        Set oRecordset = .Execute
+        Set oRecordset.ActiveConnection = Nothing
+   End With
+   Set usp_listarsubclasdx = oRecordset
+   oConexion.Close
+   Set oConexion = Nothing
+   Set oCommand = Nothing
+   Set oRecordset = Nothing
+Exit Function
+ManejadorDeError:
+   ms_MensajeError = Err.Number & " " + Err.Description: MsgBox ms_MensajeError + Chr(13) + "Por favor contacte al personal de soporte técnico", vbInformation, "Error en la interface de acceso a datos"
+Exit Function
+End Function
+
+
+
+Function usp_listarhissituacio(lcFiltro As String) As ADODB.Recordset
+On Error GoTo ManejadorDeError
+Dim oRecordset As New ADODB.Recordset
+Dim oCommand As New ADODB.Command
+Dim oParameter As ADODB.Parameter
+Dim oConexion As New ADODB.Connection
+Dim ms_MensajeError As String
+    Set usp_listarhissituacio = Nothing
+    ms_MensajeError = ""
+    oConexion.Open sighentidades.CadenaConexion
+    oConexion.CursorLocation = adUseClient
+    With oCommand
+        .CommandType = adCmdStoredProc
+        Set .ActiveConnection = oConexion
+        .CommandTimeout = 150
+        .CommandText = "usp_listarhissituacio"
+                Set oParameter = .CreateParameter("@Descripcio", adVarChar, adParamInput, 100, lcFiltro): .Parameters.Append oParameter
+        Set oRecordset = .Execute
+        Set oRecordset.ActiveConnection = Nothing
+   End With
+   Set usp_listarhissituacio = oRecordset
+   oConexion.Close
+   Set oConexion = Nothing
+   Set oCommand = Nothing
+   Set oRecordset = Nothing
+Exit Function
+ManejadorDeError:
+   ms_MensajeError = Err.Number & " " + Err.Description: MsgBox ms_MensajeError + Chr(13) + "Por favor contacte al personal de soporte técnico", vbInformation, "Error en la interface de acceso a datos"
+Exit Function
+End Function
+
+Function usp_listartipoitem(lcFiltro As String) As ADODB.Recordset
+On Error GoTo ManejadorDeError
+Dim oRecordset As New ADODB.Recordset
+Dim oCommand As New ADODB.Command
+Dim oParameter As ADODB.Parameter
+Dim oConexion As New ADODB.Connection
+Dim ms_MensajeError As String
+    Set usp_listartipoitem = Nothing
+    ms_MensajeError = ""
+    oConexion.Open sighentidades.CadenaConexion
+    oConexion.CursorLocation = adUseClient
+    With oCommand
+        .CommandType = adCmdStoredProc
+        Set .ActiveConnection = oConexion
+        .CommandTimeout = 150
+        .CommandText = "usp_listartipoitem"
+                Set oParameter = .CreateParameter("@Descripcion_Tipo_Item", adVarChar, adParamInput, 100, lcFiltro): .Parameters.Append oParameter
+        Set oRecordset = .Execute
+        Set oRecordset.ActiveConnection = Nothing
+   End With
+   Set usp_listartipoitem = oRecordset
+   oConexion.Close
+   Set oConexion = Nothing
+   Set oCommand = Nothing
+   Set oRecordset = Nothing
+Exit Function
+ManejadorDeError:
+   ms_MensajeError = Err.Number & " " + Err.Description: MsgBox ms_MensajeError + Chr(13) + "Por favor contacte al personal de soporte técnico", vbInformation, "Error en la interface de acceso a datos"
+Exit Function
+End Function
+
+
+
 
 
 
@@ -6463,6 +6748,14 @@ TerminarMIS:
     Set rs = Nothing
     Set oRsLookTablas = Nothing
 End Function
+
+
+
+
+
+
+
+
 Function FarmMovimientoDespachoDonacionesSeleccionarPorId(ByVal oDoFarmMovimientoDespachoDonaciones As DoFarmMovimientoDonaciones) As Boolean
     Dim oConexion As New ADODB.Connection
     Dim oMovimientoDespachoDonaciones As New FarmMovimientoDonaciones
@@ -7014,6 +7307,23 @@ Sub SaldoEliminarTodosSegunFiltro(lcWhere As String, oConexion As Connection)
             End With
             Set oCommand = Nothing
 End Sub
+
+
+'***********eliminar servicio raul
+'Sub usp_eliminacatalogoidat(lcWhere As Long, oConexion As Connection)
+           
+           ' Dim oCommand As New ADODB.Command
+           ' Dim oParameter As ADODB.Parameter
+            'With oCommand
+             ' .CommandType = adCmdStoredProc
+             ' Set .ActiveConnection = oConexion
+             ' .CommandTimeout = 150
+            '  .CommandText = "usp_eliminacatalogoidat"
+            '  Set oParameter = .CreateParameter("@Id", adInteger, adParamInput, 0, lcWhere): .Parameters.Append oParameter
+             ' .Execute
+           ' End With
+           ' Set oCommand = Nothing
+'End Sub
 
 Sub SaldoMensualEliminarTodosSegunFiltro(lcWhere As String, oConexion As Connection)
 '            Dim lcSql As String, oRsTmp As New Recordset
