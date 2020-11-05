@@ -21,7 +21,7 @@ Begin VB.Form Splash
    Begin VB.Label Label1 
       Alignment       =   1  'Right Justify
       BackStyle       =   0  'Transparent
-      Caption         =   "SISGalenPLUS v3.28102020u74.1hra"
+      Caption         =   "SISGalenPLUS v3.05112020u74.1hra"
       BeginProperty Font 
          Name            =   "Tahoma"
          Size            =   9.75

@@ -1576,7 +1576,7 @@ Sub CreaTemporales(lbHabilitaFrame As Boolean, _
         mo_Apariencia.ConfigurarFilasBiColores grdFarmacia, sighEntidades.GrillaConFilasBicolor
         grdFarmacia.Caption = ""
         If lbHabilitaFrame = True Then
-           fraFarmacia.Enabled = True
+           FraFarmacia.Enabled = True
         End If
     End If
 End Sub
@@ -2101,7 +2101,7 @@ Public Sub CargaDatosAcontroles(oRsCabeceraRecetas As Recordset, _
                lblFarmacia.Caption = "(Receta N° " & Trim(Str(oRsCabeceraRecetas.Fields!idReceta)) & ") (Estado: " & mo_ReglasComunes.DevuelveEstadoReceta(oRsCabeceraRecetas.Fields!idEstado) & ")"
                If oRsCabeceraRecetas.Fields!idEstado <> sghRecetaEstados.sighRecetaRegistrada Then
                   lnRecetaFarmacia = -100
-                  fraFarmacia.Enabled = False
+                  FraFarmacia.Enabled = False
                   Select Case oRsCabeceraRecetas.Fields!idEstado
                   Case sghRecetaEstados.sighRecetaDespachada, sghRecetaEstados.sighRecetaConBoleta
                      If IsNull(oRsCabeceraRecetas.Fields!IdComprobantePago) Then
@@ -2304,7 +2304,7 @@ Function LimpiarDatos(lbDesdeModuloMaternoOperinatal As Boolean)
         If UserControl.FraBancoS.Enabled = True Then
            Set oRsBanco = Nothing
         End If
-        If UserControl.fraFarmacia.Enabled = True Then
+        If UserControl.FraFarmacia.Enabled = True Then
            Set oRsFarmacia = Nothing
         End If
         CreaTemporales False, True, True, True, True, True, True, True, True
@@ -2940,7 +2940,7 @@ Public Sub CargaRecetaDesdeMaterno(oRsTmpFarmacia As Recordset, oRsTmpCpt As Rec
     
     LimpiarDatos True
     
-    If oRsTmpFarmacia.RecordCount > 0 And UserControl.fraFarmacia.Enabled = True Then
+    If oRsTmpFarmacia.RecordCount > 0 And UserControl.FraFarmacia.Enabled = True Then
        
        lnNroItems = oRsFarmacia.RecordCount
        oRsTmpFarmacia.MoveFirst
@@ -3443,7 +3443,7 @@ Private Sub cmdPaquetes_Click()
                                 lnMaximoItems, lnIdDosisDefault, ml_IdTipoFinanciamiento, True, 0, True, oRsTomografia, Nothing, lcDxUnico
             End If
         End If
-        If fraFarmacia.Enabled = True Then
+        If FraFarmacia.Enabled = True Then
            oRsItems.Filter = "idPuntoCarga=" & sghPtoCargaFarmacia
            If oRsItems.RecordCount > 0 Then
               Set oRsFarmacia = Nothing
