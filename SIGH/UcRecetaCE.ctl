@@ -13,8 +13,8 @@ Begin VB.UserControl UcRecetaCE
       Left            =   0
       TabIndex        =   43
       Top             =   7530
-      Width           =   11670
-      _ExtentX        =   20585
+      Width           =   10900
+      _ExtentX        =   19235
       _ExtentY        =   2990
    End
    Begin UltraGrid.SSUltraGrid grdDiag 
@@ -3471,7 +3471,20 @@ Sub CargaFarmaciasAelegir()
     cmdFarmacias.AddItem "Muestra todos los ITEMS"
     cmdFarmacias.AddItem "Muestra sólo los q tienen SALDOS mayores a CERO"
     Set oFarmAlmacen.Conexion = oConexion
-    Set oRsTmp1 = oFarmAlmacen.SeleccionarSegunFiltro("idTipoLocales='F' and idTipoSuministro='01' and idEstado=1")
+    'SCCQ 05/11/2020 Cambio40 Inicio
+    Dim lcBuscaParametro As New SIGHDatos.Parametros
+    Dim lcParametro601 As String
+    lcParametro601 = Trim(lcBuscaParametro.SeleccionaFilaParametro(601))
+    If lcParametro601 > 0 Then
+        Set oRsTmp1 = oFarmAlmacen.SeleccionarSegunFiltro("idTipoLocales='F' and idTipoSuministro='01' and idEstado=1 and idAlmacen=" + lcParametro601)
+        cmdFarmacias.Enabled = False
+    Else
+        cmdFarmacias.Enabled = True
+   'SCCQ 05/11/2020 Cambio40 Fin
+        Set oRsTmp1 = oFarmAlmacen.SeleccionarSegunFiltro("idTipoLocales='F' and idTipoSuministro='01' and idEstado=1")
+   'SCCQ 05/11/2020 Cambio40 Inicio
+    End If
+   'SCCQ 05/11/2020 Cambio40 Fin
     If oRsTmp1.RecordCount > 0 Then
        oRsTmp1.MoveFirst
        Do While Not oRsTmp1.EOF
@@ -3495,9 +3508,16 @@ Sub CargaFarmaciasAelegir()
     Else
        cmdFarmacias.ListIndex = lnIdFarmaciaElegida
     End If
+    'SCCQ 05/11/2020 Cambio40 Inicio
+    If lcParametro601 > 0 Then
+        cmdFarmacias.ListIndex = 2
+    End If
+    Set lcBuscaParametro = Nothing
+   'SCCQ 05/11/2020 Cambio40 Fin
     Set oFarmAlmacen = Nothing
     Set oRsTmp1 = Nothing
     Set oConexion = Nothing
+    
 End Sub
 'debb-14/07/2015
 Private Sub cmdFarmacias_Click()
@@ -3767,4 +3787,14 @@ End Function
 Public Function DevuelveOtrosCpt() As Recordset
     Set DevuelveOtrosCpt = UserControl.ucRecetaCpt1.DevuelveOtrosCpt
 End Function
-
+'SCCQ 05/11/2020 Cambio40 Inicio
+Private Sub UserControl_Initialize()
+btnAddRayosX.Enabled = False
+btnAddEcoO.Enabled = False
+btnAddEcoG.Enabled = False
+btnAddTomografia.Enabled = False
+btnAddPatologia.Enabled = False
+btnAddAnatomia.Enabled = False
+btnAddBanco.Enabled = False
+End Sub
+'SCCQ 05/11/2020 Cambio40 Fin

@@ -83,7 +83,7 @@ Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
 Option Explicit
-Dim mo_Apariencia As New sighentidades.GridInfragistic
+Dim mo_Apariencia As New sighEntidades.GridInfragistic
 Dim mo_ReglasComunes As New SIGHNegocios.ReglasComunes
 Dim ml_IdTipoFinanciamiento As Long
 Dim lcDx As String
@@ -137,7 +137,7 @@ Private Sub btnOtrosCpt_Click()
                     If lbVariosFormatosFua = True Then
                        oRsOtrosCpt.Fields!FUA = 1
                     End If
-                    oRsOtrosCpt.Fields!Id = lnIdProducto
+                    oRsOtrosCpt.Fields!ID = lnIdProducto
                     oRsOtrosCpt.Fields!procedimiento = lcProducto
                     If lbSeEligioPaquete = True Then
                        oRsOtrosCpt.Fields!Cantidad = oRsItemsElegidos!Cantidad
@@ -154,7 +154,7 @@ Private Sub btnOtrosCpt_Click()
                     End If
                     oRsOtrosCpt.Fields!idPuntoCarga = oRsItemsElegidos!idPuntoCarga
                     oRsOtrosCpt.Update
-                    sighentidades.ParaAuditoriaPorCadaDato sghAudGrabaRegEdit, Left(lcProducto, 7)
+                    sighEntidades.ParaAuditoriaPorCadaDato sghAudGrabaRegEdit, Left(lcProducto, 7)
                 End If
                 oRsItemsElegidos.MoveNext
            Loop
@@ -211,7 +211,7 @@ Sub CreaTemporales(lbHabilitaFrame As Boolean, _
               .Open
         End With
         Set grdOtrosCpt.DataSource = oRsOtrosCpt
-        mo_Apariencia.ConfigurarFilasBiColores grdOtrosCpt, sighentidades.GrillaConFilasBicolor
+        mo_Apariencia.ConfigurarFilasBiColores grdOtrosCpt, sighEntidades.GrillaConFilasBicolor
         grdOtrosCpt.Caption = ""
         If lbHabilitaFrame = True Then
            FraOtrosCpt.Enabled = True
@@ -252,7 +252,7 @@ Public Sub CargaDatosAcontroles(oRsDetalleReceta As Recordset)
             If oRsTmp198.RecordCount > 0 Then
                 oRsOtrosCpt.AddNew
                 oRsOtrosCpt.Fields!Receta = oRsDetalleReceta!idReceta
-                oRsOtrosCpt.Fields!Id = oRsDetalleReceta.Fields!idItem
+                oRsOtrosCpt.Fields!ID = oRsDetalleReceta.Fields!idItem
                 oRsOtrosCpt.Fields!procedimiento = Left(Trim(oRsDetalleReceta.Fields!Producto) & " <<" & Trim(oRsTmp198!descripcion) & ">>", 255)
                 oRsOtrosCpt.Fields!Cantidad = oRsDetalleReceta.Fields!CantidadPedida
                 oRsOtrosCpt.Fields!precio = oRsDetalleReceta.Fields!precio
