@@ -1,11 +1,11 @@
 [History]
-1=#P0#=mb	#P1#=AdmisionPacienteExternoConSeguroAgregar	#P2#=SIGHNegocios/ReglasAdmision/AdmisionPacienteExternoConSeguroAgregar	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20200924100100	#P7#=0	#P8#=31	.
-2=#P0#=mb	#P1#=AdmisionPacienteExternoParticularAgregar	#P2#=SIGHNegocios/ReglasAdmision/AdmisionPacienteExternoParticularAgregar	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20200922114801	#P7#=0	#P8#=41	.
-3=#P0#=mb	#P1#=EmpleadosAutenticar	#P2#=SIGHNegocios/ReglasDeSeguridad/EmpleadosAutenticar	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200917105504	#P7#=0	#P8#=16	.
-4=#P0#=mb	#P1#=LogueaUsuario	#P2#=SIGHNegocios/ReglasDeSeguridad/LogueaUsuario	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200917103717	#P7#=0	#P8#=1	.
-5=#P0#=mb	#P1#=AbreTablaFox	#P2#=SIGHNegocios/ReglasComunes/AbreTablaFox	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200724090827	#P7#=0	#P8#=6	.
-6=#P0#=mb	#P1#=TiposDocIdentidadSeleccionarTodosIncSinTipoDoc	#P2#=SIGHNegocios/ReglasComunes/TiposDocIdentidadSeleccionarTodosIncSinTipoDoc	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200707122712	#P7#=0	#P8#=12	.
-7=#P0#=mb	#P1#=CatalogoBienesInsumosSeleccionarXid	#P2#=SIGHNegocios/ReglasComunes/CatalogoBienesInsumosSeleccionarXid	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200707094756	#P7#=0	#P8#=-12	.
+1=#P0#=mb	#P1#=CatalogoBienesInsumosSeleccionarXid	#P2#=SIGHNegocios/ReglasComunes/CatalogoBienesInsumosSeleccionarXid	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201109131342	#P7#=0	#P8#=-16	.
+2=#P0#=mb	#P1#=AdmisionPacienteExternoConSeguroAgregar	#P2#=SIGHNegocios/ReglasAdmision/AdmisionPacienteExternoConSeguroAgregar	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20200924100100	#P7#=0	#P8#=31	.
+3=#P0#=mb	#P1#=AdmisionPacienteExternoParticularAgregar	#P2#=SIGHNegocios/ReglasAdmision/AdmisionPacienteExternoParticularAgregar	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20200922114801	#P7#=0	#P8#=41	.
+4=#P0#=mb	#P1#=EmpleadosAutenticar	#P2#=SIGHNegocios/ReglasDeSeguridad/EmpleadosAutenticar	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200917105504	#P7#=0	#P8#=16	.
+5=#P0#=mb	#P1#=LogueaUsuario	#P2#=SIGHNegocios/ReglasDeSeguridad/LogueaUsuario	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200917103717	#P7#=0	#P8#=1	.
+6=#P0#=mb	#P1#=AbreTablaFox	#P2#=SIGHNegocios/ReglasComunes/AbreTablaFox	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200724090827	#P7#=0	#P8#=6	.
+7=#P0#=mb	#P1#=TiposDocIdentidadSeleccionarTodosIncSinTipoDoc	#P2#=SIGHNegocios/ReglasComunes/TiposDocIdentidadSeleccionarTodosIncSinTipoDoc	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200707122712	#P7#=0	#P8#=12	.
 8=#P0#=mb	#P1#=DiagnosticosCapitulosSeleccionarTodos	#P2#=SIGHNegocios/ReglasComunes/DiagnosticosCapitulosSeleccionarTodos	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200707094536	#P7#=0	#P8#=2	.
 9=#P0#=mb	#P1#=EstablecimientosNoMinsaSeleccionarTodos	#P2#=SIGHNegocios/ReglasComunes/EstablecimientosNoMinsaSeleccionarTodos	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200707094427	#P7#=0	#P8#=0	.
 10=#P0#=mb	#P1#=PaisCodigoPostalPorIdentificador	#P2#=SIGHNegocios/ReglasComunes/PaisCodigoPostalPorIdentificador	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200707094313	#P7#=0	#P8#=-1	.

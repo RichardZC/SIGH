@@ -1573,13 +1573,13 @@ Public Function mapearMensageError(numberError As Integer)
                 message = Label5.Caption & limitMessage
             Case sighTriajeVariable.Temperatura:
                 message = Label2.Caption & limitMessage
-                'GLCC-Validar Perímetro Cefálico-21/07/2020
-             Case sighTriajeVariable.PerimCefalico:
-                message = "Perimetro Cefálicos" & limitMessage
-                
-            Case sighTriajeVariable.PresArtDiastolica:
-                message = "Pres. Art. Diastólicagegeggagdleonel" & limitMessage
-                
+                'GLCC-Validar Perímetro Cefálico-21/07/2020 Inicio
+'             Case sighTriajeVariable.PerimCefalico:
+'                message = "Perimetro Cefálicos" & limitMessage
+'
+'            Case sighTriajeVariable.PresArtDiastolica:
+'                message = "Pres. Art. Diastólica" & limitMessage
+                'GLCC-Validar Perímetro Cefálico-21/07/2020 Fin
                 
             'valores obligatorios vacios
             Case sighTriajeVariable.FrecCardiaca * -1:
@@ -1757,22 +1757,24 @@ Public Function ValidarReglas() As Boolean
           MsgBox "El Paciente debe tener una TALLA mayor a 20 cm", vbInformation, "Reglas"
           ValidarReglas = False
        End If
-       'Validar que el campo talla tenga un registro - GLCC-21/07/2020 - Inicio
-        If Val(txtTalla.Text) = " " Then
-        MsgBox "El Paciente debe tener una TALLA leonel", vbInformation, "Reglas"
-       End If
+       'GLCC 21/07/20 CAMBIO42 INICIO
+       ' If Val(txtTalla.Text) = " " Then
+       ' MsgBox "El Paciente debe tener una TALLA", vbInformation, "Reglas"
+         'GLCC 21/07/20 CAMBIO42 FIN
+      ' End If
        End If
 End Function
 Private Sub txtPeso_LostFocus()
     If Val(txtPeso.Text) > 300 Then
        MsgBox "El PESO no puede pasar de 300 Kg", vbInformation, "TRIAJE"
-       txtPeso.Text = ""
+       txtPeso.Text = " "
     End If
     CalculaIMC
-'    'Validar que el campo talla tenga un registro - GLCC-21/07/2020 - Inicio
-        If Val(txtPeso.Text) = " " Then
-        MsgBox "El Paciente debe tener un PESO", vbInformation, "Reglas"
-       End If
+    'GLCC 21/07/20 CAMBIO42 INICIO
+'        If (txtPeso.Text) = " " Then
+'        MsgBox "El Paciente debe tener un PESO", vbInformation, "Reglas"
+'       End If
+        'GLCC 21/07/20 CAMBIO42 FIN
 End Sub
 
 Sub CalculaIMC()

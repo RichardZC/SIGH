@@ -31,10 +31,10 @@ Dim lcParaMsgbox As String
 Dim mo_CabeceraReportes As New SIGHNegocios.ReglasComunes
 Dim oRsDxCpt As New Recordset
 Dim ml_ValorActual As String
-Const wxNueve As String = "9"
+'GLCC 02/11/20 CAMBIO36 INICIO
+'ANTERIOR: Const wxNueve As String = "9"
+'GLCC 02/11/20 CAMBIO36 FIN
 Const wxObservacionCrearPaciente As String = "Creado desde Citas Web"
-
-
 Property Get ValorActual() As String
    ValorActual = ml_ValorActual
 End Property
@@ -7400,7 +7400,10 @@ Function HistoriaWebCrearIgualAlDNIsoloSIS(lcDNI As String, oConexion As Connect
     Dim rspacientes As New Recordset
     Dim lnDni1 As Long
     If wxParametro351 = "S" Then
-        lnDni1 = Val(wxNueve & lcDNI)
+'GLCC 02/11/20 CAMBIO36 INICIO
+'ANTERIOR:        lnDni1 = Val(wxNueve & lcDNI)
+            lnDni1 = Val(lcDNI)
+'GLCC 02/11/20 CAMBIO36 FIN
     Else
         lnDni1 = Val(lcDNI)
     End If

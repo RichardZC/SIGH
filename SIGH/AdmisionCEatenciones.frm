@@ -268,11 +268,11 @@ Begin VB.Form AdmisionCEatenciones
       TabCaption(2)   =   "3.3 Ordenes Médicas"
       TabPicture(2)   =   "AdmisionCEatenciones.frx":605F
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "txtCitaExClinicos"
-      Tab(2).Control(1)=   "btnImprimir"
+      Tab(2).Control(0)=   "btnAgregaApoyoDx"
+      Tab(2).Control(1)=   "UcRecetas1"
       Tab(2).Control(2)=   "btnImprimirOrden"
-      Tab(2).Control(3)=   "UcRecetas1"
-      Tab(2).Control(4)=   "btnAgregaApoyoDx"
+      Tab(2).Control(3)=   "btnImprimir"
+      Tab(2).Control(4)=   "txtCitaExClinicos"
       Tab(2).ControlCount=   5
       TabCaption(3)   =   "3.4 Tratamiento"
       TabPicture(3)   =   "AdmisionCEatenciones.frx":607B
@@ -282,12 +282,12 @@ Begin VB.Form AdmisionCEatenciones
       TabCaption(4)   =   "3.5 Destino Atención"
       TabPicture(4)   =   "AdmisionCEatenciones.frx":6097
       Tab(4).ControlEnabled=   0   'False
-      Tab(4).Control(0)=   "lblNroAtencion"
-      Tab(4).Control(1)=   "ucCitasLista1"
-      Tab(4).Control(2)=   "UcEpisodioClinico1"
-      Tab(4).Control(3)=   "Frame1"
-      Tab(4).Control(4)=   "fraDatosReferenciaDestino"
-      Tab(4).Control(5)=   "Frame11"
+      Tab(4).Control(0)=   "Frame11"
+      Tab(4).Control(1)=   "fraDatosReferenciaDestino"
+      Tab(4).Control(2)=   "Frame1"
+      Tab(4).Control(3)=   "UcEpisodioClinico1"
+      Tab(4).Control(4)=   "ucCitasLista1"
+      Tab(4).Control(5)=   "lblNroAtencion"
       Tab(4).ControlCount=   6
       Begin VB.CommandButton btnAgregaApoyoDx 
          DisabledPicture =   "AdmisionCEatenciones.frx":60B3
@@ -1396,8 +1396,8 @@ Begin VB.Form AdmisionCEatenciones
          TabCaption(1)   =   "3.2.2 Módulo Niño Sano"
          TabPicture(1)   =   "AdmisionCEatenciones.frx":80E5
          Tab(1).ControlEnabled=   0   'False
-         Tab(1).Control(0)=   "ucPerinatalAS1"
-         Tab(1).Control(1)=   "ucPerinatal1"
+         Tab(1).Control(0)=   "ucPerinatal1"
+         Tab(1).Control(1)=   "ucPerinatalAS1"
          Tab(1).ControlCount=   2
          TabCaption(2)   =   "3.2.3 Módulo Materno"
          TabPicture(2)   =   "AdmisionCEatenciones.frx":8101

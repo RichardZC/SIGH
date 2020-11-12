@@ -958,7 +958,7 @@ Function ValidarDatosObligatorios() As Boolean
     UcPacienteDatos1.CargarDatosAlObjetoDatos oDOPaciente
 '    If  .Text = "" Then
 '       If oDOPaciente.nrodocumento = "" Then
-'           ms_MensajeError = ms_MensajeError & "Tiene que registrar el N° DNI Leonel" & Chr(13)
+'           ms_MensajeError = ms_MensajeError & "Tiene que registrar el N° DNI" & Chr(13)
 '           lnTabError = 1
 '       End If
 '        If oDOPaciente.ApellidoPaterno = "" Then

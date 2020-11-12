@@ -5173,11 +5173,11 @@ Private Sub txtNroDocumento_LostFocus()
       If Val(txtNroDocumento.Text) > 0 Then
         Dim lnHC11 As Long
         lnHC11 = Val(txtNroDocumento.Text)
-        'GLCC -22/09/2020 - cambio 01 - Inicio
+        'GLCC 02/11/20 CAMBIO36 INICIO
         'Quita el wxNueve &
         'txtIdNroHistoria.Tag = wxNueve & Trim(Str(lnHC11))
         txtIdNroHistoria.Tag = Trim$(Str(lnHC11))
-        'GLCC -22/09/2020 - cambio 01 - Fin
+       'GLCC 02/11/20 CAMBIO36 FIN
         txtIdNroHistoria.Text = Trim(Str(lnHC11))
       End If
    End If

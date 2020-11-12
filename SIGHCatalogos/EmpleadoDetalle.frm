@@ -830,6 +830,8 @@ Const lnDefaultEmpleado As Long = 738
 Dim lnIdEstablecimientoExterno As Long
 '--GLCC Agregar objeto cmbNacionaliudad - Cambio5 Inicio
 Dim mo_cmbIdNacionalidad As New sighentidades.ListaDespleglable
+Dim mo_AdminServiciosGeograficos As New SIGHNegocios.ReglasServGeograf
+'Dim mo_cmbIdNacionalidad As New sighentidades.ListaDespleglable
 'GLCC Agregar objeto cmbNacionaliudad - Cambio 5 Fin
 Property Let lcNombrePc(lValue As String)
    mo_lcNombrePc = lValue
@@ -876,11 +878,10 @@ Dim oConexion As New ADODB.Connection
        mo_cmbIdDocIdentidad.BoundText = "1"
        
        'GLCC- Cargar combo nacionalidad-06/07/2020
-'       mo_cmbIdNacionalidad.BoundColumn = "idPais"
-'       mo_cmbIdNacionalidad.ListField = "DescripcionLarga"
-'       Set mo_cmbIdNacionalidad.RowSource = mo_AdminServiciosComunes.NacionalidadSeleccionarTodos()
-'       mo_cmbIdNacionalidad.BoundText = "166"
-       
+       mo_cmbIdNacionalidad.BoundColumn = "IdPais"
+       mo_cmbIdNacionalidad.ListField = "Nombre"
+       Set mo_cmbIdNacionalidad.RowSource = mo_AdminServiciosGeograficos.PaisesSeleccionarTodos()
+       mo_cmbIdNacionalidad.BoundText = "166"
 End Sub
 Property Let ExistenDatos(bValue As Boolean)
    mb_ExistenDatos = bValue

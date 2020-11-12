@@ -146,11 +146,11 @@ Private Sub btnAceptar_Click()
        Dim oRsTmp1 As New Recordset
        Dim lbActualizaDNI As Boolean
        If txtNewHistoria.Text = ml_DNI Then
-       'GLCC-22/09/2020 - cambio 1 Inicio
+      'GLCC 02/11/20 CAMBIO36 INICIO
        'Quita wxNueve & para que no anteponga el numero 9 a la historia clinica
           'Set oRsTmp1 = mo_ReglasAdmision.PacientesXnroHistoriaTipoNumeracion(wxNueve & txtNewHistoria.Text, 2)
            Set oRsTmp1 = mo_ReglasAdmision.PacientesXnroHistoriaTipoNumeracion(txtNewHistoria.Text, 2)
-           'GLCC-22/09/2020 - cambio 1 Fin
+      'GLCC 02/11/20 CAMBIO36 FIN
        Else
           Set oRsTmp1 = mo_ReglasAdmision.PacientesXnroHistoriaTipoNumeracion(Val(txtNewHistoria.Text), ml_idTipoNumeracion)
        End If
@@ -167,11 +167,11 @@ Private Sub btnAceptar_Click()
                 .idTipoHistoria = 1
                ' .FechaPasoAPasivo = IIf(Me.txtFechaPasoAPasivo.Text = sighentidades.FECHA_VACIA_DMY, 0, Me.txtFechaPasoAPasivo.Text)
                 .fechacreacion = Now
-                'GLCC-22/09/2020 - Cambio 1 Inicio
+               'GLCC 02/11/20 CAMBIO36 INICIO
                 'Quitar la palabra wxNueve & para que no anteponga el numero 9
                '.NroHistoriaClinica = IIf(txtNewHistoria.Text = ml_DNI, wxNueve & txtNewHistoria.Text, txtNewHistoria.Text)
                 .NroHistoriaClinica = IIf(txtNewHistoria.Text = ml_DNI, txtNewHistoria.Text, txtNewHistoria.Text)
-                'GLCC-22/09/2020 - Cambio 1 Fin
+               'GLCC 02/11/20 CAMBIO36 FIN
                 .IdUsuarioAuditoria = sighEntidades.Usuario
                 .idTipoNumeracion = 2
                ' .IdTipoNumeracionAnterior = Val(mo_cmbIdTipoNumeracionHistoriaAnt.BoundText)
