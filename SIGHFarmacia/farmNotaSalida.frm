@@ -994,6 +994,26 @@ Sub CargarDatosALosControles()
       MsgBox "No puede MODIFICAR/ELIMINAR la Nota de Ingreso, debe de usar la opción ARMADO DE PAQUETES", vbInformation, Me.Caption
       btnAceptar.Enabled = False
    End If
+   
+    '******Modificar documento con Fecha Anterior a la actual,
+   '******siempre y cuando no hubieron SALIDAS
+   Dim oRsTmp As New ADODB.Recordset
+   Set mRs_Productos = grdProductos.DevuelveProductos
+    If mRs_Productos.RecordCount > 0 Then
+       mRs_Productos.MoveFirst
+       Do While Not mRs_Productos.EOF
+          Set oRsTmp = mo_ReglasFarmacia.farmMovimientoDetalleDevuelveSalidasSegunAlmacenProductoLote(mo_farmMovimiento.IdAlmacenDestino, mRs_Productos.Fields!idProducto, mRs_Productos.Fields!Lote, mRs_Productos.Fields!FechaVencimiento)
+            If oRsTmp.RecordCount > 0 Then
+               If oRsTmp.Fields!fechaCreacion >= CDate(txtFregistro.Text & " " & txtHoraRegistro.Text) Then
+                 MsgBox "No podrá Modificar/Anular una NI porque ya se despachó el producto: " & Chr(13) & Trim(mRs_Productos.Fields!codigo) & " - " & Trim(mRs_Productos.Fields!nombreProducto) & "   NS: " & oRsTmp.Fields!movNumero, vbExclamation, Me.Caption
+                 btnAceptar.Enabled = False
+                 Exit Do
+            End If
+         End If
+         mRs_Productos.MoveNext
+      Loop
+    End If
+   
    '******permiso a Modificar documento con Fecha Anterior a la actual
    Dim mo_PermisosFacturacion As New PermisosFacturacion
    Dim mo_ReglasSeguridad As New SIGHNegocios.ReglasDeSeguridad

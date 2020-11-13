@@ -131,7 +131,7 @@ Sub ProcesaDatosYllenaTmp(lnIdResponsable As Long, mda_FechaInicio As Date, mda_
            
                         lnSaldoInicial = IIf(IsNull(mrs_Tmp1.Fields!NroHistoriaClinica), 0, mrs_Tmp1.Fields!NroHistoriaClinica)
                         ml_IdCuenta = mrs_Tmp1.Fields!idCuentaAtencion
-                        lcTexto2 = Trim(mrs_Tmp1.Fields!ApellidoPaterno) & " " & Trim(mrs_Tmp1.Fields!apellidoMaterno) & " " & Trim(mrs_Tmp1.Fields!PrimerNombre)
+                        lcTexto2 = Trim(mrs_Tmp1.Fields!ApellidoPaterno) & " " & Trim(mrs_Tmp1.Fields!ApellidoMaterno) & " " & Trim(mrs_Tmp1.Fields!PrimerNombre)
                         If Len(lcTexto2) > 30 Then
                            lcTexto2 = Left(lcTexto2, 30)
                         Else
@@ -201,7 +201,7 @@ Sub ProcesaDatosYllenaTmp(lnIdResponsable As Long, mda_FechaInicio As Date, mda_
                             rsTmp.Filter = "idEstadoFacturacion=1 or idEstadoFacturacion=4"
                         Else
                             Set rsTmp = mo_ReglasFarmacia.farmMovimientoVentasXcuenta(ml_IdCuenta, oConexion)
-                            rsTmp.Filter = "totalFinanciado>0 and idTipoFinanciamiento=" & mrs_Tmp1.Fields!idFormaPago
+                            rsTmp.Filter = "totalFinanciado>0 and idTipoFinanciamiento=" & mrs_Tmp1.Fields!IdFormaPago
                         End If
                         If rsTmp.RecordCount > 0 Then
                            rsTmp.MoveFirst
@@ -450,8 +450,8 @@ Sub ProcesaDatosYllenaTmp(lnIdResponsable As Long, mda_FechaInicio As Date, mda_
                 lbEsAdmisionCE = False
                 lnSaldoInicial = mrs_Tmp1.Fields!NroHistoriaClinica
                 ml_IdCuenta = mrs_Tmp1.Fields!idCuentaAtencion
-                lcTexto2 = Trim(mrs_Tmp1.Fields!ApellidoPaterno) & " " & Trim(mrs_Tmp1.Fields!apellidoMaterno) & " " & Trim(mrs_Tmp1.Fields!PrimerNombre)
-                lcTexto2 = Trim(mrs_Tmp1.Fields!ApellidoPaterno) & " " & Trim(mrs_Tmp1.Fields!apellidoMaterno) & " " & Trim(mrs_Tmp1.Fields!PrimerNombre)
+                lcTexto2 = Trim(mrs_Tmp1.Fields!ApellidoPaterno) & " " & Trim(mrs_Tmp1.Fields!ApellidoMaterno) & " " & Trim(mrs_Tmp1.Fields!PrimerNombre)
+                lcTexto2 = Trim(mrs_Tmp1.Fields!ApellidoPaterno) & " " & Trim(mrs_Tmp1.Fields!ApellidoMaterno) & " " & Trim(mrs_Tmp1.Fields!PrimerNombre)
                 lcTexto2 = lcTexto2 & " (Hc: " & HCigualDNI_DevuelveHistoriaConCerosIzquierda(Trim(Str(lnSaldoInicial)), False) & ") (Cta: " & Format(ml_IdCuenta, "########") & ")"
                 lcTexto2 = lcTexto2 & " (Ce)"
                 lnTotalPorCuenta = 0
@@ -522,7 +522,7 @@ Sub ProcesaDatosYllenaTmp(lnIdResponsable As Long, mda_FechaInicio As Date, mda_
                     rsTmp.Filter = "idEstadoFacturacion=1 or idEstadoFacturacion=4"
                 Else
                     Set rsTmp = mo_ReglasFacturacion.FacturacionBienesFinanciamientosXcuentaYconexion(ml_IdCuenta, oConexion)
-                    rsTmp.Filter = "totalFinanciado>0 and idTipoFinanciamiento=" & mrs_Tmp1.Fields!idFormaPago
+                    rsTmp.Filter = "totalFinanciado>0 and idTipoFinanciamiento=" & mrs_Tmp1.Fields!IdFormaPago
                 End If
                 If rsTmp.RecordCount > 0 Then
                    rsTmp.MoveFirst
@@ -702,7 +702,7 @@ Sub ReporteHRAagregaCtas(mrs_Tmp As Recordset, mb_EnResumen As Boolean, lnConsum
         End If
         If lbEncontroRegistro = False Then
            rsTmpSOAT.AddNew
-           rsTmpSOAT.Fields!idTipoFinanciamiento = mrs_Tmp!idFormaPago
+           rsTmpSOAT.Fields!idTipoFinanciamiento = mrs_Tmp!IdFormaPago
            rsTmpSOAT.Fields!idCuentaAtencion = mrs_Tmp.Fields!idCuentaAtencion
            rsTmpSOAT.Fields!Paciente = mrs_Tmp.Fields!Paciente
            rsTmpSOAT.Fields!nroHistoria = mrs_Tmp.Fields!nroHistoria
@@ -1061,14 +1061,14 @@ Sub ProcesaDatosYllenaTmpRapidamente(lnIdResponsable As Long, mda_FechaInicio As
                      '
                      lnSaldoInicial = IIf(IsNull(mrs_Tmp1.Fields!NroHistoriaClinica), 0, mrs_Tmp1.Fields!NroHistoriaClinica)
                      ml_IdCuenta = mrs_Tmp1.Fields!idCuentaAtencion
-
-                     
-                     lcTexto2 = Trim(mrs_Tmp1.Fields!ApellidoPaterno) & " " & Trim(mrs_Tmp1.Fields!apellidoMaterno) & " " & Trim(mrs_Tmp1.Fields!PrimerNombre)
-                     If Len(lcTexto2) > 30 Then
-                        lcTexto2 = Left(lcTexto2, 30)
-                     Else
-                        lcTexto2 = Left(lcTexto2, 30) & String(30 - Len(lcTexto2), " ")
-                     End If
+                     'JSPC 13/11/2020 Cambiosinnumero inicio
+                     lcTexto2 = " (FecIng: " & mrs_Tmp1.Fields!FechaIngreso & ")" & " " & Trim(mrs_Tmp1.Fields!ApellidoPaterno) & " " & Trim(mrs_Tmp1.Fields!ApellidoMaterno) & " " & Trim(mrs_Tmp1.Fields!PrimerNombre)
+                     'If Len(lcTexto2) > 100 Then
+                      '  lcTexto2 = Left(lcTexto2, 100)
+                     'Else
+                      '  lcTexto2 = Left(lcTexto2, 100) & String(100 - Len(lcTexto2), " ")
+                     'End If
+                     'JSPC 13/11/2020 Cambiosinnumero fin
                      lcTexto2 = lcTexto2 & " (Hc: " & HCigualDNI_DevuelveHistoriaConCerosIzquierda(Trim(Str(lnSaldoInicial)), False) & ") (Cta: " & Format(ml_IdCuenta, "########") & ")"
                      lcTexto2 = lcTexto2 & IIf(mrs_Tmp1.Fields!idTipoServicio = 3, " (Ho)", IIf(mrs_Tmp1.Fields!idTipoServicio = 1, " (Ce)", " (Em)"))
                      lcTexto2 = lcTexto2 & IIf(IsNull(mrs_Tmp1.Fields!fechaEgreso) And mrs_Tmp1.Fields!idTipoServicio <> 1, " (sin AM)", "")
@@ -1144,7 +1144,7 @@ Sub ProcesaDatosYllenaTmpRapidamente(lnIdResponsable As Long, mda_FechaInicio As
                              End If
                              If lnTotalFacturadoCuenta > 0 Or LnTotalPagadoCuenta > 0 Or lnTotalPagadoEnReembolso > 0 Then
                                 rsTmpSOAT.AddNew
-                                rsTmpSOAT.Fields!idTipoFinanciamiento = mrs_Tmp1!idFormaPago
+                                rsTmpSOAT.Fields!idTipoFinanciamiento = mrs_Tmp1!IdFormaPago
                                 rsTmpSOAT.Fields!idCuentaAtencion = ml_IdCuenta
                                 rsTmpSOAT.Fields!Paciente = lcTexto2
                                 rsTmpSOAT.Fields!nroHistoria = Val(HCigualDNI_DevuelveHistoriaConCerosIzquierda(Trim(Str(lnSaldoInicial)), False))
@@ -1167,7 +1167,7 @@ Sub ProcesaDatosYllenaTmpRapidamente(lnIdResponsable As Long, mda_FechaInicio As
                                 If lbEsCuentaPagante = True And lnNroCptConsumidos = 1 And lbSoloPasoPorCita = True And mrs_Tmp1.Fields!idTipoServicio = 1 And lnTotalDeudaCuenta > 0 Then
                                    rsTmpSOAT.Fields!NoPagoCita = "Pagante, solo sacó cita, no pagó"
                                 End If
-                                If mrs_Tmp1!idFormaPago = sghTipoFinanciamiento.sghSis Then
+                                If mrs_Tmp1!IdFormaPago = sghTipoFinanciamiento.sghSis Then
                                    rsTmpSOAT.Fields!fua = mo_ReglasAdmision.SisFuaAtencionDevuelveNumeroFUA(ml_IdCuenta)
                                 End If
                                 If mrs_Tmp.Fields!idCuentaAtencion > 0 Then
@@ -1257,6 +1257,7 @@ Sub GenerarRecordsetTemporal()
          .Fields.Append "Consumo", adDouble
          .Fields.Append "FechaEgreso", adDate
          .Fields.Append "horaEgreso", adVarChar, 5
+         '.Fields.Append "FechaIngreso", adDate 'josopacu
          .Fields.Append "dFuenteFinanciamiento", adVarChar, 100
          .Fields.Append "idTipoServicio", adInteger
          .LockType = adLockOptimistic

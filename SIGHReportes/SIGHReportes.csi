@@ -1,4 +1,10 @@
 [History]
-1=#P0#=mb	#P1#=Form_Activate	#P2#=SIGHReportes/rCrystal/Form_Activate	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200619130522	#P7#=0	#P8#=683	.
-2=#P0#=mb	#P1#=ListaServiciosPorPuntosDeCarga	#P2#=SIGHReportes/clCatalogoServicios/ListaServiciosPorPuntosDeCarga	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200619130457	#P7#=0	#P8#=220	.
-3=#P0#=mb	#P1#=ListaServiciosEnGeneral	#P2#=SIGHReportes/clCatalogoServicios/ListaServiciosEnGeneral	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200619115533	#P7#=0	#P8#=256	.
+1=#P0#=mb	#P1#=ProcesaDatosYllenaTmpRapidamente	#P2#=SIGHReportes/RptEConsumoXptoCarga/ProcesaDatosYllenaTmpRapidamente	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201113081632	#P7#=0	#P8#=72	.
+2=#P0#=mb	#P1#=btnAceptar_Click	#P2#=SIGHReportes/EConsumoXPtoCarga/btnAceptar_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201112211149	#P7#=0	#P8#=7	.
+3=#P0#=mb	#P1#=GenerarRecordsetTemporal	#P2#=SIGHReportes/RptEConsumoXptoCarga/GenerarRecordsetTemporal	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201112205512	#P7#=0	#P8#=-13	.
+4=#P0#=mb	#P1#=oGeneraDatos_ProgressActualizaValor	#P2#=SIGHReportes/EConsumoXPtoCarga/oGeneraDatos_ProgressActualizaValor	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201112204600	#P7#=0	#P8#=6	.
+5=#P0#=mb	#P1#=RecordSet_mrs_Tmp	#P2#=SIGHReportes/rCrystal/RecordSet_mrs_Tmp [Set]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201111123633	#P7#=0	#P8#=1	.
+6=#P0#=mb	#P1#=ProcesaDatosYllenaTmp	#P2#=SIGHReportes/RptEConsumoXptoCarga/ProcesaDatosYllenaTmp	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201113080335	#P7#=0	#P8#=13	.
+7=#P0#=mb	#P1#=Form_Activate	#P2#=SIGHReportes/rCrystal/Form_Activate	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200619130522	#P7#=0	#P8#=683	.
+8=#P0#=mb	#P1#=ListaServiciosPorPuntosDeCarga	#P2#=SIGHReportes/clCatalogoServicios/ListaServiciosPorPuntosDeCarga	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200619130457	#P7#=0	#P8#=220	.
+9=#P0#=mb	#P1#=ListaServiciosEnGeneral	#P2#=SIGHReportes/clCatalogoServicios/ListaServiciosEnGeneral	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200619115533	#P7#=0	#P8#=256	.
