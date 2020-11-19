@@ -1,12 +1,12 @@
 [History]
-1=#P0#=mb	#P1#=SetDefaults	#P2#=SIGHDatos/HIS_Detalle_Verifica/SetDefaults	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201109135522	#P7#=0	#P8#=18	.
-2=#P0#=mb	#P1#=SeleccionarPorNroHistoria	#P2#=SIGHDatos/AtencionesCE/SeleccionarPorNroHistoria	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201109135502	#P7#=0	#P8#=18	.
-3=#P0#=mb	#P1#=AtencionesPacientesCitasDatosadicionalesSeleccionarPorId	#P2#=SIGHDatos/Atenciones/AtencionesPacientesCitasDatosadicionalesSeleccionarPorId	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201023083350	#P7#=0	#P8#=155	.
-4=#P0#=mb	#P1#=ActualizarCitasConIdAtencion	#P2#=SIGHDatos/Atenciones/ActualizarCitasConIdAtencion	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201023083315	#P7#=-2147483640	#P8#=15	.
-5=#P0#=mb	#P1#=Insertar	#P2#=SIGHDatos/AtencionesDatosAdicionales/Insertar	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201023083238	#P7#=0	#P8#=14	.
-6=#P0#=mb	#P1#=Conexion	#P2#=SIGHDatos/AtencionesDatosAdicionales/Conexion [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201023083209	#P7#=0	#P8#=0	.
-7=#P0#=mb	#P1#=SetDefaults	#P2#=SIGHDatos/Pacientes/SetDefaults	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201022230137	#P7#=-2147483640	#P8#=43	.
-8=#P0#=mb	#P1#=CargaDatosDelPaciente	#P2#=SIGHDatos/Pacientes/CargaDatosDelPaciente	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201022230106	#P7#=-2147483640	#P8#=0	.
+1=#P0#=mb	#P1#=CargaDatosDelPaciente	#P2#=SIGHDatos/Pacientes/CargaDatosDelPaciente	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201118085808	#P7#=0	#P8#=40	.
+2=#P0#=mb	#P1#=AtencionesPacientesCitasDatosadicionalesSeleccionarPorId	#P2#=SIGHDatos/Atenciones/AtencionesPacientesCitasDatosadicionalesSeleccionarPorId	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201118085806	#P7#=0	#P8#=155	.
+3=#P0#=mb	#P1#=SetDefaults	#P2#=SIGHDatos/Pacientes/SetDefaults	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201118085758	#P7#=0	#P8#=49	.
+4=#P0#=mb	#P1#=SetDefaults	#P2#=SIGHDatos/HIS_Detalle_Verifica/SetDefaults	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201109135522	#P7#=0	#P8#=18	.
+5=#P0#=mb	#P1#=SeleccionarPorNroHistoria	#P2#=SIGHDatos/AtencionesCE/SeleccionarPorNroHistoria	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201109135502	#P7#=0	#P8#=18	.
+6=#P0#=mb	#P1#=ActualizarCitasConIdAtencion	#P2#=SIGHDatos/Atenciones/ActualizarCitasConIdAtencion	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201023083315	#P7#=-2147483640	#P8#=15	.
+7=#P0#=mb	#P1#=Insertar	#P2#=SIGHDatos/AtencionesDatosAdicionales/Insertar	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201023083238	#P7#=0	#P8#=14	.
+8=#P0#=mb	#P1#=Conexion	#P2#=SIGHDatos/AtencionesDatosAdicionales/Conexion [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201023083209	#P7#=0	#P8#=0	.
 9=#P0#=mb	#P1#=Insertar	#P2#=SIGHDatos/Pacientes/Insertar	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201022230049	#P7#=-2147483640	#P8#=0	.
 10=#P0#=mb	#P1#=Eliminar	#P2#=SIGHDatos/HistoriasClinicas/Eliminar	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200924122317	#P7#=0	#P8#=19	.
 11=#P0#=mb	#P1#=Modificar	#P2#=SIGHDatos/HistoriasClinicas/Modificar	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200924122301	#P7#=0	#P8#=32	.

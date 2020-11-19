@@ -535,9 +535,9 @@ Dim oParameter As ADODB.Parameter
        DoPaciente.FactorRh = IIf(IsNull(oRecordset!FactorRh), "", oRecordset!FactorRh)
        DoPaciente.UsoWebReniec = IIf(IsNull(oRecordset!UsoWebReniec), 0, oRecordset!UsoWebReniec)
        
-'<(Inicio) Añadido Por: WABG el: 22/10/2020-10:55:47 p.m.en el Equipo: SISGALENPLUS-PC>
+'<(Inicio) Añadido Por: WABG el: 22/10/2020-10:55:47 p.m.en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
        DoPaciente.validacionReniec = IIf(IsNull(oRecordset!validacionReniec), 0, oRecordset!validacionReniec)
-'</(Fin) Añadido Por: WABG el: 22/10/2020-10:55:47 p.m. en el Equipo: SISGALENPLUS-PC>
+'</(Fin) Añadido Por: WABG el: 22/10/2020-10:55:47 p.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
        
        DoPaciente.idIdioma = IIf(IsNull(oRecordset!idIdioma), 0, oRecordset!idIdioma)
        DoPaciente.Email = IIf(IsNull(oRecordset!Email), "", oRecordset!Email)

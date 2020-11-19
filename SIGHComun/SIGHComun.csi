@@ -1,8 +1,8 @@
 [History]
-1=#P0#=mb	#P1#=Peso	#P2#=SIGHComun/DOPacienteMovimientos/Peso [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201109135456	#P7#=0	#P8#=1	.
-2=#P0#=mb	#P1#=Peso	#P2#=SIGHComun/DOHIS_Detalle_Verifica/Peso [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201109133745	#P7#=0	#P8#=1	.
-3=#P0#=mb	#P1#=validacionReniec	#P2#=SIGHComun/DOPaciente/validacionReniec [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201022224350	#P7#=0	#P8#=1	.
-4=#P0#=mb	#P1#=validacionReniec	#P2#=SIGHComun/DOPaciente/validacionReniec [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201022224256	#P7#=0	#P8#=2	.
+1=#P0#=mb	#P1#=validacionReniec	#P2#=SIGHComun/DOPaciente/validacionReniec [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201118085742	#P7#=0	#P8#=-1	.
+2=#P0#=mb	#P1#=validacionReniec	#P2#=SIGHComun/DOPaciente/validacionReniec [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201118085737	#P7#=0	#P8#=3	.
+3=#P0#=mb	#P1#=Peso	#P2#=SIGHComun/DOPacienteMovimientos/Peso [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201109135456	#P7#=0	#P8#=1	.
+4=#P0#=mb	#P1#=Peso	#P2#=SIGHComun/DOHIS_Detalle_Verifica/Peso [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201109133745	#P7#=0	#P8#=1	.
 5=#P0#=mb	#P1#=FactorRh	#P2#=SIGHComun/DOPaciente/FactorRh [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201022224243	#P7#=0	#P8#=-2	.
 6=#P0#=mb	#P1#=UsoWebReniec	#P2#=SIGHComun/DOPaciente/UsoWebReniec [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201022224208	#P7#=-2147483640	#P8#=2	.
 7=#P0#=mb	#P1#=NroHistoriaClinica	#P2#=SIGHComun/DOPaciente/NroHistoriaClinica [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200922114022	#P7#=0	#P8#=0	.

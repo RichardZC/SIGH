@@ -59,9 +59,9 @@ Dim ms_GrupoSanguineo As String
 Dim ms_FactorRh As String
 Dim mb_UsoWebReniec As Boolean
 
-'<(Inicio) Añadido Por: WABG el: 22/10/2020-10:40:28 p.m.en el Equipo: SISGALENPLUS-PC>
+'<(Inicio) Añadido Por: WABG el: 22/10/2020-10:40:28 p.m.en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
 Dim mb_validacionReniec As Boolean
-'</(Fin) Añadido Por: WABG el: 22/10/2020-10:40:28 p.m. en el Equipo: SISGALENPLUS-PC>
+'</(Fin) Añadido Por: WABG el: 22/10/2020-10:40:28 p.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
 
 Dim ml_IdIdioma As Long
 Dim ms_Email As String
@@ -161,14 +161,14 @@ End Property
 Property Get UsoWebReniec() As Boolean
    UsoWebReniec = mb_UsoWebReniec
 End Property
-'<(Inicio) Añadido Por: WABG el: 22/10/2020-10:42:56 p.m.en el Equipo: SISGALENPLUS-PC>
+'<(Inicio) Añadido Por: WABG el: 22/10/2020-10:42:56 p.m.en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
 Property Let validacionReniec(vValue As Boolean)
    mb_validacionReniec = vValue
 End Property
 Property Get validacionReniec() As Boolean
    validacionReniec = mb_validacionReniec
 End Property
-'</(Fin) Añadido Por: WABG el: 22/10/2020-10:42:56 p.m. en el Equipo: SISGALENPLUS-PC>
+'</(Fin) Añadido Por: WABG el: 22/10/2020-10:42:56 p.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
 
 Property Let FactorRh(sValue As String)
    ms_FactorRh = sValue

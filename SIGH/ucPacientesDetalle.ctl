@@ -3053,14 +3053,14 @@ Dim ml_TipoServicio As sghTipoServicio
 Dim mo_AdminReportes As New SIGHNegocios.ReglasReportes
 Dim mo_AdminHoteleria As New SIGHNegocios.ReglasHoteleria
 
-'<(Inicio)Comentado Por: WABG el: 16/10/2020-10:29:40 a.m. en el Equipo: SISGALENPLUS-PC>
+'<(Inicio)Comentado Por: WABG el: 16/10/2020-10:29:40 a.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
 ''Dim mo_Reniec As New ReniecGalenhos
-'</(Fin)Comentado por: WABG el: 16/10/2020-10:29:40 a.m. en el Equipo: SISGALENPLUS-PC>
+'</(Fin)Comentado por: WABG el: 16/10/2020-10:29:40 a.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
 
-'<(Inicio) Añadido Por: WABG el: 16/10/2020-10:53:29 a.m.en el Equipo: SISGALENPLUS-PC>
+'<(Inicio) Añadido Por: WABG el: 16/10/2020-10:53:29 a.m.en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
 Dim mo_Reniec As New ReniecGalenhosNegocios
 Dim lcIdDistrito As String
-'</(Fin) Añadido Por: WABG el: 16/10/2020-10:53:29 a.m. en el Equipo: SISGALENPLUS-PC>
+'</(Fin) Añadido Por: WABG el: 16/10/2020-10:53:29 a.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
 
 Dim mrs_Diagnosticos As New ADODB.Recordset
 Dim mo_Apariencia As New sighEntidades.GridInfragistic
@@ -3119,9 +3119,9 @@ Dim lbExigeIngresoDeCentroPoblado As Boolean
 Dim lbBuscaDNIenReniec As Boolean
 Dim mb_UsoWebReniec As Boolean
 
-'<(Inicio) Añadido Por: WABG el: 23/10/2020-07:42:08 p.m.en el Equipo: SISGALENPLUS-PC>
+'<(Inicio) Añadido Por: WABG el: 23/10/2020-07:42:08 p.m.en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
 Dim mb_validacionReniec As Boolean
-'</(Fin) Añadido Por: WABG el: 23/10/2020-07:42:08 p.m. en el Equipo: SISGALENPLUS-PC>
+'</(Fin) Añadido Por: WABG el: 23/10/2020-07:42:08 p.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
 
 Dim mb_MarcoCheckPacienteNuevo As Boolean
 Dim oCampos() As String
@@ -3153,14 +3153,14 @@ Property Get UsoWebReniec() As Boolean
 End Property
 
 
-'<(Inicio) Añadido Por: WABG el: 23/10/2020-07:45:00 p.m.en el Equipo: SISGALENPLUS-PC>
+'<(Inicio) Añadido Por: WABG el: 23/10/2020-07:45:00 p.m.en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
 Property Let validacionReniec(vValue As Boolean)
    mb_validacionReniec = vValue
 End Property
 Property Get validacionReniec() As Boolean
     validacionReniec = mb_validacionReniec
 End Property
-'</(Fin) Añadido Por: WABG el: 23/10/2020-07:45:00 p.m. en el Equipo: SISGALENPLUS-PC>
+'</(Fin) Añadido Por: WABG el: 23/10/2020-07:45:00 p.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
 
 Property Let meHwnd(lValue As Long)
    ml_meHwnd = lValue
@@ -3316,7 +3316,7 @@ Private Sub chkIgualUQueDomicilioNac_KeyDown(KeyCode As Integer, Shift As Intege
     mo_Teclado.RealizarNavegacion KeyCode, chkIgualUQueDomicilioNac
     RaiseEvent SePresionoTeclaEspecial(KeyCode)
 End Sub
-'<(Inicio) Añadido Por: WABG el: 23/10/2020-07:58:47 p.m.en el Equipo: SISGALENPLUS-PC>
+'<(Inicio) Añadido Por: WABG el: 23/10/2020-07:58:47 p.m.en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
 'DESHABILITA CONTROLES PARA MODIFICAR UN PACIENTE VALIDADO POR LA RENIEC
 Sub deshabilitarControlesRENIECModificarPacienteValidado()
 
@@ -3347,11 +3347,11 @@ End Sub
                     chkSinFechaNacimiento.Enabled = False
                     
                      
-'<(Inicio) Añadido Por: WABG el: 27/10/2020-10:03:25 p.m.en el Equipo: SISGALENPLUS-PC>
+'<(Inicio) Añadido Por: WABG el: 27/10/2020-10:03:25 p.m.en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
                      txtNroDocumento.Enabled = False
                      txtIdNroHistoria.Enabled = False
                      cmbIdTipoGenHistoriaClinica.Enabled = False
-'</(Fin) Añadido Por: WABG el: 27/10/2020-10:03:25 p.m. en el Equipo: SISGALENPLUS-PC>
+'</(Fin) Añadido Por: WABG el: 27/10/2020-10:03:25 p.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
                                           
                      
                      txtApellidoPaterno.Enabled = False
@@ -3408,6 +3408,7 @@ Sub CargarDatosDesdeRENIEC(DNI As String)
                       
                   mo_Reniec.Inicializar
                   mo_Reniec.ConsultarDNIenReniec Trim(DNI)
+                  
 
                   If mo_Reniec.ApellidoPaterno <> "" Then
                   If Trim(txtNroDocumento.Text) <> DNI Then
@@ -3430,9 +3431,9 @@ Sub CargarDatosDesdeRENIEC(DNI As String)
                   txtDireccionDomicilio.Text = mo_Reniec.DireccionDomicilio
                   
                 
-'<(Inicio) Añadido Por: WABG el: 27/10/2020-10:03:00 p.m.en el Equipo: SISGALENPLUS-PC>
+'<(Inicio) Añadido Por: WABG el: 27/10/2020-10:03:00 p.m.en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
                   txtHoraNacimiento.SetFocus
-'</(Fin) Añadido Por: WABG el: 27/10/2020-10:03:00 p.m. en el Equipo: SISGALENPLUS-PC>
+'</(Fin) Añadido Por: WABG el: 27/10/2020-10:03:00 p.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
                   
                   'llenando los combobox  etnia e idioma por defecto
                   
@@ -3546,9 +3547,9 @@ Sub HabilitarControlesDeTextoRENIEC()
                      cmdSinApellidoPaterno.Enabled = True
                      cmdSinApellidoMaterno.Enabled = True
                      cmbIdDocIdentidad.Enabled = True
-'<(Inicio) Añadido Por: WABG el: 27/10/2020-08:12:48 p.m.en el Equipo: SISGALENPLUS-PC>
+'<(Inicio) Añadido Por: WABG el: 27/10/2020-08:12:48 p.m.en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
                      cmbIdTipoGenHistoriaClinica.Enabled = True
-'</(Fin) Añadido Por: WABG el: 27/10/2020-08:12:48 p.m. en el Equipo: SISGALENPLUS-PC>
+'</(Fin) Añadido Por: WABG el: 27/10/2020-08:12:48 p.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
                      cmdCambiaHC.Enabled = True
                      chkSinFechaNacimiento.Enabled = True
                     
@@ -3570,11 +3571,11 @@ Sub HabilitarControlesDeTextoRENIEC()
                      cmbIdCentroPobladoDomicilio.Enabled = True
                      cmbIdPaisDomicilio.Enabled = True
                      UserControl.TabPaciente.Tab = 0
-'<(Inicio)Comentado Por: WABG el: 27/10/2020-07:46:37 p.m. en el Equipo: SISGALENPLUS-PC>
+'<(Inicio)Comentado Por: WABG el: 27/10/2020-07:46:37 p.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
 '                     txtNroDocumento.SetFocus
-'</(Fin)Comentado por: WABG el: 27/10/2020-07:46:37 p.m. en el Equipo: SISGALENPLUS-PC>
+'</(Fin)Comentado por: WABG el: 27/10/2020-07:46:37 p.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
 End Sub
-'</(Fin) Añadido Por: WABG el: 23/10/2020-07:58:47 p.m. en el Equipo: SISGALENPLUS-PC>
+'</(Fin) Añadido Por: WABG el: 23/10/2020-07:58:47 p.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
 
 Private Sub chkNN_Click()
     
@@ -4505,17 +4506,17 @@ Private Sub txtMadreDocumento_LostFocus()
                 txtMadreSnombre.Text = IIf(IsNull(rspacientes.Fields!SegundoNombre), "", rspacientes.Fields!SegundoNombre)
              'End If
              
-             '<(Inicio) Añadido Por: WABG el: 16/10/2020-12:10:08 p.m.en el Equipo: SISGALENPLUS-PC>
+             '<(Inicio) Añadido Por: WABG el: 16/10/2020-12:10:08 p.m.en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
              Else
                 CargarDatosTutorDesdeRENIEC (Trim(txtMadreDocumento.Text))
-             '</(Fin) Añadido Por: WABG el: 16/10/2020-12:10:08 p.m. en el Equipo: SISGALENPLUS-PC>
+             '</(Fin) Añadido Por: WABG el: 16/10/2020-12:10:08 p.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
                 
           End If
           rspacientes.Close
           Set rspacientes = Nothing
           
           '****buscar a la madre en la RENIEC
-'          <(Inicio)Comentado Por: WABG el: 16/10/2020-12:13:01 p.m. en el Equipo: SISGALENPLUS-PC>
+'          <(Inicio)Comentado Por: WABG el: 16/10/2020-12:13:01 p.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
 '          If lbBuscaDNIenReniec = True And Len(txtMadreDocumento.Text) = 8 And Val(mo_cmbMadreTipoDocumento.BoundText) = 1 Then
 '               Dim lbContinuar As Boolean
 '               lbContinuar = True
@@ -4540,7 +4541,7 @@ Private Sub txtMadreDocumento_LostFocus()
 '                     End If
 '               End If
 '          End If
-'          </(Fin)Comentado por: WABG el: 16/10/2020-12:13:01 p.m. en el Equipo: SISGALENPLUS-PC>
+'          </(Fin)Comentado por: WABG el: 16/10/2020-12:13:01 p.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
         End If
 End Sub
 
@@ -5118,13 +5119,13 @@ Private Sub txtNroDocumento_LostFocus()
                   rspacientes.MoveNext
                Loop
          End If
-'<(Inicio) Añadido Por: WABG el: 16/10/2020-11:46:19 a.m.en el Equipo: SISGALENPLUS-PC>
+'<(Inicio) Añadido Por: WABG el: 16/10/2020-11:46:19 a.m.en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
          Else
     
     'CARGAR CONTROLES DE TEXTO DESDE RENIEC
     CargarDatosDesdeRENIEC ((Trim(txtNroDocumento.Text)))
     
-'</(Fin) Añadido Por: WABG el: 16/10/2020-11:46:19 a.m. en el Equipo: SISGALENPLUS-PC>
+'</(Fin) Añadido Por: WABG el: 16/10/2020-11:46:19 a.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
    End If
    rspacientes.Close
    '
@@ -5144,9 +5145,9 @@ Private Sub txtNroDocumento_LostFocus()
       If lbContinuar = True Then
             mo_Reniec.ConsultarDNIenReniec txtNroDocumento.Text
             If mo_Reniec.ApellidoPaterno <> "" Then
-'                  <(Inicio)Comentado Por: WABG el: 16/10/2020-12:19:18 p.m. en el Equipo: SISGALENPLUS-PC>
+'                  <(Inicio)Comentado Por: WABG el: 16/10/2020-12:19:18 p.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
 '                  Dim lcIdDistrito As String
-'                  </(Fin)Comentado por: WABG el: 16/10/2020-12:19:18 p.m. en el Equipo: SISGALENPLUS-PC>
+'                  </(Fin)Comentado por: WABG el: 16/10/2020-12:19:18 p.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
                   txtApellidoPaterno.Text = mo_Reniec.ApellidoPaterno
                   txtApellidoMaterno.Text = mo_Reniec.ApellidoMaterno
                   txtPrimerNombre.Text = mo_Reniec.PrimerNombre
@@ -6068,9 +6069,9 @@ Public Function CargarDatosAlObjetoDatos(oDOPaciente As doPaciente, oDOHistoria 
          End If
          
          '
-'<(Inicio) Añadido Por: WABG el: 23/10/2020-07:48:42 p.m.en el Equipo: SISGALENPLUS-PC>
+'<(Inicio) Añadido Por: WABG el: 23/10/2020-07:48:42 p.m.en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
          .validacionReniec = mb_validacionReniec
-'</(Fin) Añadido Por: WABG el: 23/10/2020-07:48:42 p.m. en el Equipo: SISGALENPLUS-PC>
+'</(Fin) Añadido Por: WABG el: 23/10/2020-07:48:42 p.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
 
          .UsoWebReniec = mb_UsoWebReniec
          .Email = UserControl.txtEmail.Text
@@ -6154,13 +6155,13 @@ Dim oConexion As New Connection
            oConexion.Close
         End If
         
-'<(Inicio) Añadido Por: WABG el: 23/10/2020-08:01:40 p.m.en el Equipo: SISGALENPLUS-PC>
+'<(Inicio) Añadido Por: WABG el: 23/10/2020-08:01:40 p.m.en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
         If oPacientes.validacionReniec = True Then
         
         deshabilitarControlesRENIECModificarPacienteValidado
         
         End If
-'</(Fin) Añadido Por: WABG el: 23/10/2020-08:01:40 p.m. en el Equipo: SISGALENPLUS-PC>
+'</(Fin) Añadido Por: WABG el: 23/10/2020-08:01:40 p.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
         
         Set oConexion = Nothing
 ErrrCargaDatos:
@@ -6375,9 +6376,9 @@ Public Sub LimpiarDatosDePaciente(lcParametro211 As String, ldFechaActual As Dat
             '
             cmbIdioma.Text = ""
             
-'<(Inicio) Añadido Por: WABG el: 23/10/2020-07:50:15 p.m.en el Equipo: SISGALENPLUS-PC>
+'<(Inicio) Añadido Por: WABG el: 23/10/2020-07:50:15 p.m.en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
             mb_validacionReniec = False
-'</(Fin) Añadido Por: WABG el: 23/10/2020-07:50:15 p.m. en el Equipo: SISGALENPLUS-PC>
+'</(Fin) Añadido Por: WABG el: 23/10/2020-07:50:15 p.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
             '
             mb_UsoWebReniec = False
             txtEmail.Text = ""
@@ -6406,6 +6407,10 @@ Public Sub LimpiarDatosDePaciente(lcParametro211 As String, ldFechaActual As Dat
             
             txtGs.Text = ""
             txtFRh.Text = ""
+            
+'<(Inicio) Añadido Por: WABG el: 16/11/2020-09:44:22 a.m.en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
+            txtNroDocumento.Text = ""
+'</(Fin) Añadido Por: WABG el: 16/11/2020-09:44:22 a.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
             
             Call bloquearControlEdad
             
@@ -6545,12 +6550,12 @@ End Sub
 
 Private Sub txtIdNroHistoria_LostFocus()
 
-'<(Inicio) Añadido Por: WABG el: 16/10/2020-12:02:05 p.m.en el Equipo: SISGALENPLUS-PC>
+'<(Inicio) Añadido Por: WABG el: 16/10/2020-12:02:05 p.m.en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
 VerificarExistenciaHistoriaClinica (txtIdNroHistoria.Text)
-'</(Fin) Añadido Por: WABG el: 16/10/2020-12:02:05 p.m. en el Equipo: SISGALENPLUS-PC>
+'</(Fin) Añadido Por: WABG el: 16/10/2020-12:02:05 p.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
 
 
-'<(Inicio)Comentado Por: WABG el: 16/10/2020-12:02:23 p.m. en el Equipo: SISGALENPLUS-PC>
+'<(Inicio)Comentado Por: WABG el: 16/10/2020-12:02:23 p.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
 '    On Error Resume Next
 '    If mo_Teclado.TextoEsSoloNumeros(txtIdNroHistoria.Text) Then
 '        Dim lbContinua000 As Boolean
@@ -6573,7 +6578,7 @@ VerificarExistenciaHistoriaClinica (txtIdNroHistoria.Text)
 '           MsgBox "Existe un paciente con el mismo número de historia clínica: " + Chr(13) + ms_MensajeError
 '        End If
 '    End If
-'</(Fin)Comentado por: WABG el: 16/10/2020-12:02:23 p.m. en el Equipo: SISGALENPLUS-PC>
+'</(Fin)Comentado por: WABG el: 16/10/2020-12:02:23 p.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
 End Sub
 
 Private Sub txtIdNroHistoria_KeyPress(KeyAscii As Integer)

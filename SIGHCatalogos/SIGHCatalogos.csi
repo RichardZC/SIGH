@@ -1,16 +1,16 @@
 [History]
-1=#P0#=mb	#P1#=CargaDatosAlObjetosDeDatos	#P2#=SIGHCatalogos/MedicoDetalle/CargaDatosAlObjetosDeDatos	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201110092438	#P7#=0	#P8#=29	.
-2=#P0#=mb	#P1#=CargarDatosALosControles	#P2#=SIGHCatalogos/MedicoDetalle/CargarDatosALosControles	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201110092421	#P7#=0	#P8#=43	.
-3=#P0#=mb	#P1#=CargaDatosAlObjetosDeDatos	#P2#=SIGHCatalogos/EmpleadoDetalle/CargaDatosAlObjetosDeDatos	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201110092538	#P7#=0	#P8#=27	.
-4=#P0#=mb	#P1#=CargarComboBoxes	#P2#=SIGHCatalogos/EmpleadoDetalle/CargarComboBoxes	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201110093045	#P7#=0	#P8#=37	.
-5=#P0#=mb	#P1#=mapearMensageError	#P2#=SIGHCatalogos/ucTriaje/mapearMensageError	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201110092243	#P7#=0	#P8#=31	.
-6=#P0#=mb	#P1#=LimpiarFormulario	#P2#=SIGHCatalogos/EmpleadoDetalle/LimpiarFormulario	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201110092237	#P7#=0	#P8#=8	.
-7=#P0#=mb	#P1#=CargarComboBoxes	#P2#=SIGHCatalogos/MedicoDetalle/CargarComboBoxes	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201110093008	#P7#=0	#P8#=37	.
-8=#P0#=mb	#P1#=CargarDatosALosControles	#P2#=SIGHCatalogos/EmpleadoDetalle/CargarDatosALosControles	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201110085004	#P7#=0	#P8#=37	.
-9=#P0#=mb	#P1#=lcNombrePc	#P2#=SIGHCatalogos/EmpleadoDetalle/lcNombrePc [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201110092652	#P7#=0	#P8#=-1	.
-10=#P0#=mb	#P1#=ValidarDatosObligatorios	#P2#=SIGHCatalogos/Triaje/ValidarDatosObligatorios	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201110081554	#P7#=0	#P8#=8	.
-11=#P0#=mb	#P1#=Form_Initialize	#P2#=SIGHCatalogos/EmpleadoDetalle/Form_Initialize	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201110081550	#P7#=0	#P8#=8	.
-12=#P0#=mb	#P1#=ValidarDatosObligatorios	#P2#=SIGHCatalogos/EmpleadoDetalle/ValidarDatosObligatorios	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201110092141	#P7#=0	#P8#=8	.
+1=#P0#=mb	#P1#=CargarComboBoxes	#P2#=SIGHCatalogos/EmpleadoDetalle/CargarComboBoxes	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201110093045	#P7#=0	#P8#=37	.
+2=#P0#=mb	#P1#=CargarComboBoxes	#P2#=SIGHCatalogos/MedicoDetalle/CargarComboBoxes	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201110093008	#P7#=0	#P8#=37	.
+3=#P0#=mb	#P1#=lcNombrePc	#P2#=SIGHCatalogos/EmpleadoDetalle/lcNombrePc [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201110092652	#P7#=0	#P8#=-1	.
+4=#P0#=mb	#P1#=CargaDatosAlObjetosDeDatos	#P2#=SIGHCatalogos/EmpleadoDetalle/CargaDatosAlObjetosDeDatos	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201110092538	#P7#=0	#P8#=27	.
+5=#P0#=mb	#P1#=CargaDatosAlObjetosDeDatos	#P2#=SIGHCatalogos/MedicoDetalle/CargaDatosAlObjetosDeDatos	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201110092438	#P7#=0	#P8#=29	.
+6=#P0#=mb	#P1#=CargarDatosALosControles	#P2#=SIGHCatalogos/MedicoDetalle/CargarDatosALosControles	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201110092421	#P7#=0	#P8#=43	.
+7=#P0#=mb	#P1#=mapearMensageError	#P2#=SIGHCatalogos/ucTriaje/mapearMensageError	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201110092243	#P7#=0	#P8#=31	.
+8=#P0#=mb	#P1#=LimpiarFormulario	#P2#=SIGHCatalogos/EmpleadoDetalle/LimpiarFormulario	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201110092237	#P7#=0	#P8#=8	.
+9=#P0#=mb	#P1#=ValidarDatosObligatorios	#P2#=SIGHCatalogos/EmpleadoDetalle/ValidarDatosObligatorios	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201110092141	#P7#=0	#P8#=8	.
+10=#P0#=mb	#P1#=CargarDatosALosControles	#P2#=SIGHCatalogos/EmpleadoDetalle/CargarDatosALosControles	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201110085004	#P7#=0	#P8#=37	.
+11=#P0#=mb	#P1#=ValidarDatosObligatorios	#P2#=SIGHCatalogos/Triaje/ValidarDatosObligatorios	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201110081554	#P7#=0	#P8#=8	.
+12=#P0#=mb	#P1#=Form_Initialize	#P2#=SIGHCatalogos/EmpleadoDetalle/Form_Initialize	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201110081550	#P7#=0	#P8#=8	.
 13=#P0#=mb	#P1#=ValidarReglas	#P2#=SIGHCatalogos/ucTriaje/ValidarReglas	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201110081448	#P7#=0	#P8#=7	.
 14=#P0#=mb	#P1#=txtPeso_LostFocus	#P2#=SIGHCatalogos/ucTriaje/txtPeso_LostFocus	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201110081445	#P7#=0	#P8#=6	.
 15=#P0#=mb	#P1#=devuelveMensajeError	#P2#=SIGHCatalogos/ucTriaje/devuelveMensajeError	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201110081412	#P7#=0	#P8#=4	.

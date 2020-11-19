@@ -168,9 +168,9 @@ Begin VB.Form AdmisionCEDetalle
          TabCaption(1)   =   "2.2 Citas para otros días"
          TabPicture(1)   =   "AdmisionDetalle.frx":0D1E
          Tab(1).ControlEnabled=   0   'False
-         Tab(1).Control(0)=   "Label9"
+         Tab(1).Control(0)=   "UcPacientesSunasa1"
          Tab(1).Control(1)=   "ucCitasLista11"
-         Tab(1).Control(2)=   "UcPacientesSunasa1"
+         Tab(1).Control(2)=   "Label9"
          Tab(1).ControlCount=   3
          Begin VB.Frame FraGeneraCita 
             Caption         =   "Forma que se genera la CITA"
@@ -2870,10 +2870,10 @@ Private Sub btnBuscarPaciente_Click()
     lcSnombreSIS = ""
     lcSnombreReniec = "": ldFnacimientoReniec = 0: lnIdSexoReniec = 0: lcDireccionReniec = "": mb_UsoWebReniec = False
     If mo_Teclado.TextoEsSoloNumeros(Me.txtNroHistoriaBusqueda.Text) Then
-'<(Inicio) Modificado Por: WABG el 16/10/2020-12:32:21 p.m. en el Equipo: SISGALENPLUS-PC>
+'<(Inicio) Modificado Por: WABG el 16/10/2020-12:32:21 p.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
 '      oDOPaciente.NroHistoriaClinica = Val(HCigualDNI_AgregaNUEVEaLaHistoria(Me.txtNroHistoriaBusqueda.Text))
        oDOPaciente.NroHistoriaClinica = Val(Me.txtNroHistoriaBusqueda.Text)
-'</(Fin) Modificado Por: Project Administrator el 16/10/2020-12:32:21 p.m. en el Equipo: SISGALENPLUS-PC>
+'</(Fin) Modificado Por: Project Administrator el 16/10/2020-12:32:21 p.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
     End If
     oDOPaciente.ApellidoPaterno = Me.txtApellidoPaternoBusqueda
     oDOPaciente.ApellidoMaterno = Me.txtApellidoMaternoBusqueda
@@ -3109,9 +3109,9 @@ Private Sub chkPacienteNuevo_Click()
         'txtNroDNIBusqueda = ""
         Me.tabAdmision.Tab = 0
         
-'<(Inicio) Añadido Por: WABG el: 27/10/2020-08:00:01 p.m.en el Equipo: SISGALENPLUS-PC>
+'<(Inicio) Añadido Por: WABG el: 27/10/2020-08:00:01 p.m.en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
         Me.ucPacientesDetalle1.HabilitarControlesDeTextoRENIEC
-'</(Fin) Añadido Por: WABG el: 27/10/2020-08:00:01 p.m. en el Equipo: SISGALENPLUS-PC>
+'</(Fin) Añadido Por: WABG el: 27/10/2020-08:00:01 p.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
         
         Me.ucPacientesDetalle1.ConfigurarValoresPorDefecto
         Me.ucPacientesDetalle1.Opcion = mi_Opcion
@@ -3384,7 +3384,12 @@ Sub grdPacientesEncontradosSIS()
                 If lnIdPlanSIS > 0 Then
                      mo_cmbIdFuentesFinanciamiento.BoundText = lnIdPlanSIS
                      cmbFuenteFinanciamiento_Click
-                     Me.ucPacientesDetalle1.SetFocusEnDNI
+'<(Inicio) Añadido Por: WABG el: 13/11/2020-12:50:56 p.m.en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
+                     Me.ucPacientesDetalle1.deshabilitarControlesRENIECModificarPacienteValidado
+'</(Fin) Añadido Por: WABG el: 13/11/2020-12:50:56 p.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
+'<(Inicio)Comentado Por: WABG el: 13/11/2020-12:49:34 p.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
+'                     Me.ucPacientesDetalle1.SetFocusEnDNI
+'</(Fin)Comentado por: WABG el: 13/11/2020-12:49:34 p.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
                 End If
             End If
         End If
