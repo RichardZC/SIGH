@@ -21,7 +21,7 @@ Begin VB.Form Splash
    Begin VB.Label Label1 
       Alignment       =   1  'Right Justify
       BackStyle       =   0  'Transparent
-      Caption         =   "SISGalenPLUS v3.05112020u74.1hra"
+      Caption         =   "SISGalenPLUS v3.20112020u74.2hra"
       BeginProperty Font 
          Name            =   "Tahoma"
          Size            =   9.75
@@ -75,9 +75,6 @@ Attribute VB_Exposed = False
 Option Explicit
 Dim mb_FormLoad  As Boolean
 Dim mb_MostrarCreditos  As Boolean
- 'SCCQ 03/06/2020 Cambio22 Inicio
-'Dim lcBuscaParametro As New SIGHDatos.Parametros
- 'SCCQ 03/06/2020 Cambio22 Fin
 Property Let MostrarCreditos(bValue As Boolean)
     mb_MostrarCreditos = bValue
 End Property
@@ -90,14 +87,6 @@ Private Sub Form_Activate()
             'Creditos.Show 1
         End If
     End If
-    'SCCQ 03/06/2020 Cambio22 Inicio
-'    Dim version As String
-'     version = "28092015u73" 'seleccionar la verisión del aplicativo
-'    If version <> lcBuscaParametro.SeleccionaFilaParametro(314) Then
-'        MsgBox "Existe una versión más reciente del SIS-GalenPlus. " + lcBuscaParametro.SeleccionaFilaParametro(600), vbExclamation, Me.Caption
-'        End
-'    End If
-    'SCCQ 03/06/2020 Cambio22 Fin
 End Sub
 
 Private Sub Form_KeyDown(KeyCode As Integer, Shift As Integer)

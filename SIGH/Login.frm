@@ -3,9 +3,9 @@ Begin VB.Form Login
    BorderStyle     =   1  'Fixed Single
    Caption         =   "SIS-GalenPLUS"
    ClientHeight    =   2460
-   ClientLeft      =   2832
+   ClientLeft      =   2835
    ClientTop       =   3480
-   ClientWidth     =   4788
+   ClientWidth     =   4785
    BeginProperty Font 
       Name            =   "Tahoma"
       Size            =   9
@@ -27,7 +27,7 @@ Begin VB.Form Login
    Begin VB.Frame Frame3 
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   0
          Weight          =   400
          Underline       =   0   'False
@@ -68,7 +68,7 @@ Begin VB.Form Login
    Begin VB.Frame Frame1 
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   0
          Weight          =   400
          Underline       =   0   'False
@@ -198,6 +198,26 @@ On Error GoTo ErrorManager
     
     Set rsUsuarioAutenticado = mo_AdminSeguridad.EmpleadosAutenticar(Me.txtUsuario)
     
+    'SCCQ 20/11/2020 Cambio22 Inicio
+    'PROCESO DE VALIDAR VERSIÓN DEL APLICATIVO
+    Dim lcBuscaParametro As New SIGHDatos.Parametros
+    Dim version As String
+    version = "20112020u74.2hra" 'Verisión actual de los dlls del sistema
+    If version <> lcBuscaParametro.SeleccionaFilaParametro(314) Then 'Parámetro 314 versión del sistema en la Base de Datos
+        MsgBox "El sistema se actualizará con la última versión", vbExclamation, Me.Caption
+        Dim rutaRaiz As String
+        rutaRaiz = App.Path & "\Updategalenos.bat"
+        Shell (rutaRaiz)
+        Set lcBuscaParametro = Nothing
+        version = ""
+        rutaRaiz = ""
+        End
+    End If
+    Set lcBuscaParametro = Nothing
+        version = ""
+        rutaRaiz = ""
+    'SCCQ 20/11/2020 Cambio22 Fin
+    
      Dim lcMensaje As String, lbSeTerminaSistema As Boolean, oRsCitasWeb As New Recordset
      lcMensaje = ""
      Set oRsCitasWeb = Nothing
@@ -293,7 +313,6 @@ On Error GoTo ErrorManager
     Else
         MsgBox "El usuario ingresado no es válido.", vbInformation, Me.Caption
     End If
-    
     rsUsuarioAutenticado.Close
     Set rsUsuarioAutenticado = Nothing
 Exit Sub
