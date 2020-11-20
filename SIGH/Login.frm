@@ -206,7 +206,7 @@ On Error GoTo ErrorManager
     If version <> lcBuscaParametro.SeleccionaFilaParametro(314) Then 'Parámetro 314 versión del sistema en la Base de Datos
         MsgBox "El sistema se actualizará con la última versión", vbExclamation, Me.Caption
         Dim rutaRaiz As String
-        rutaRaiz = App.Path & "\Updategalenos.bat"
+        rutaRaiz = App.Path & "\actualizar.bat"
         Shell (rutaRaiz)
         Set lcBuscaParametro = Nothing
         version = ""
