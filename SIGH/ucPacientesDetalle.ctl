@@ -665,7 +665,7 @@ Begin VB.UserControl ucPacientesDetalle
          Left            =   4590
          MaxLength       =   8
          TabIndex        =   0
-         Top             =   240
+         Top             =   255
          Width           =   1665
       End
       Begin VB.ComboBox cmbIdDocIdentidad 
@@ -3405,7 +3405,12 @@ Sub CargarDatosDesdeRENIEC(DNI As String)
                   
                   'LIMPIAR TODOS LOS CONTROLES, METODO ENCONTRADO EN EL CODIGO
                   Call LimpiarDatosDePaciente(0, Format(ldHoy, sighEntidades.DevuelveFechaSoloFormato_DMY))
-                      
+                
+                
+'<Agregado por: WABG el: 11/24/2020-09:55:01 en el equipo: SISGALENPLUS-PC><CAMBIO 37>
+                
+                 mo_Reniec.SeAccesaAlaWebDesdeGalenhos = True
+'</Agregado por: WABG el: 11/24/2020-09:55:01 en el equipo: SISGALENPLUS-PC><CAMBIO 37>
                   mo_Reniec.Inicializar
                   mo_Reniec.ConsultarDNIenReniec Trim(DNI)
                   
@@ -3473,6 +3478,11 @@ Sub CargarDatosDesdeRENIEC(DNI As String)
 
                      'HABILITAR CONTROLES IMPLICADOS EN DATOS DE RENIEC
                      HabilitarControlesDeTextoRENIEC
+                     
+                     txtNroDocumento.Text = DNI
+                     txtIdNroHistoria.Text = DNI
+                     txtApellidoPaterno.SetFocus
+                     
 '
             End If
             

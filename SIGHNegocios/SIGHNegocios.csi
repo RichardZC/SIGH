@@ -1,5 +1,5 @@
 [History]
-1=#P0#=mb	#P1#=procesarRespuesta	#P2#=SIGHNegocios/ReniecGalenhosNegocios/procesarRespuesta	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201118094423	#P7#=-2147483640	#P8#=0	.
+1=#P0#=mb	#P1#=procesarRespuesta	#P2#=SIGHNegocios/ReniecGalenhosNegocios/procesarRespuesta	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201124095424	#P7#=-2147483640	#P8#=0	.
 2=#P0#=mb	#P1#=EstableceConexion	#P2#=SIGHNegocios/SisConsumoWeb/EstableceConexion	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201118094353	#P7#=-2147483640	#P8#=0	.
 3=#P0#=mb	#P1#=SeAccesaAlaWebDesdeGalenhos	#P2#=SIGHNegocios/ReniecGalenhosNegocios/SeAccesaAlaWebDesdeGalenhos [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201118090938	#P7#=-2147483640	#P8#=0	.
 4=#P0#=mb	#P1#=CatalogoBienesInsumosSeleccionarXid	#P2#=SIGHNegocios/ReglasComunes/CatalogoBienesInsumosSeleccionarXid	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201109131342	#P7#=0	#P8#=-16	.

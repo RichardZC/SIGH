@@ -208,6 +208,10 @@ Private Sub enviarComando(ByVal sXml As String, ByVal sSoapAction As String)
     oHttReq.setRequestHeader "Content-Type", "text/xml; charset=utf-8"
     oHttReq.setRequestHeader "SOAPAction", sSoapAction
     
+'<Agregado por: WABG el: 11/24/2020-09:49:38 en el equipo: SISGALENPLUS-PC><CAMBIO-37>
+    On Error Resume Next
+'</Agregado por: WABG el: 11/24/2020-09:49:38 en el equipo: SISGALENPLUS-PC><CAMBIO-37>
+    
     ' enviar el comando
     oHttReq.send sXml
     '
