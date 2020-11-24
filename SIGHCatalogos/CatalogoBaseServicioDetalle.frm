@@ -1327,8 +1327,8 @@ Function ValidarReglas() As Boolean
 '           Loop
 '        End If
         'debb-21/09/2015
-        If Len(txtCodigo.Text) > 7 Then
-           sMensaje = sMensaje + "El CODIGO no debe tener longitud mayor a 7" + Chr(13)
+        If Len(txtCodigo.Text) > 8 Then
+           sMensaje = sMensaje + "El CODIGO no debe tener longitud mayor a 8" + Chr(13)
         End If
    Case sghEliminar
        oRsBuscaCodigo.Close
@@ -1343,8 +1343,8 @@ Function ValidarReglas() As Boolean
           End If
        End If
        'debb-21/09/2015
-        If Len(txtCodigo.Text) > 7 Then
-           sMensaje = sMensaje + "El CODIGO no debe tener longitud mayor a 7" + Chr(13)
+        If Len(txtCodigo.Text) > 8 Then
+           sMensaje = sMensaje + "El CODIGO no debe tener longitud mayor a 8" + Chr(13)
         End If
    End Select
    Set oRsBuscaCodigo = Nothing
