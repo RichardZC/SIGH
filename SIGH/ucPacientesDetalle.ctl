@@ -2256,8 +2256,8 @@ Begin VB.UserControl ucPacientesDetalle
          TabIndex        =   135
          Top             =   345
          Width           =   11610
-         _ExtentX        =   20479
-         _ExtentY        =   1773
+         _extentx        =   20479
+         _extenty        =   1773
       End
       Begin VB.Frame fraProcedencia 
          BeginProperty Font 
@@ -3412,8 +3412,8 @@ Sub CargarDatosDesdeRENIEC(DNI As String)
                  mo_Reniec.SeAccesaAlaWebDesdeGalenhos = True
 '</Agregado por: WABG el: 11/24/2020-09:55:01 en el equipo: SISGALENPLUS-PC><CAMBIO 37>
                   mo_Reniec.Inicializar
-                  mo_Reniec.ConsultarDNIenReniec Trim(DNI)
-                  
+'                  mo_Reniec.ConsultarDNIenReniec Trim(DNI) genaro leonel campos carmen
+                  mo_Reniec.ConsultarDNIenReniec DNI
 
                   If mo_Reniec.ApellidoPaterno <> "" Then
                   If Trim(txtNroDocumento.Text) <> DNI Then
@@ -5799,8 +5799,8 @@ Dim rspacientes As ADODB.Recordset
              End If
              rspacientes.Close
          End Select
-         '
-         If mo_cmbIdDocIdentidad.BoundText <> "" And txtNroDocumento.Text <> "" Then
+         
+       If mo_cmbIdDocIdentidad.BoundText <> "" And txtNroDocumento.Text <> "" Then
             Set rspacientes = mo_AdminAdmision.PacientesFiltraPorNroDocumentoYtipo(txtNroDocumento.Text, Val(mo_cmbIdDocIdentidad.BoundText))
             If rspacientes.RecordCount > 0 Then
                  rspacientes.MoveFirst

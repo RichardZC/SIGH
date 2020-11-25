@@ -1,9 +1,10 @@
 [History]
-1=#P0#=mb	#P1#=ArchivoElegido	#P2#=SISGalenPlus/ucPacientesDetalle/ArchivoElegido [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201124104548	#P7#=0	#P8#=0	.
-2=#P0#=mb	#P1#=TipoNumeracion	#P2#=SISGalenPlus/ucPacientesDetalle/TipoNumeracion [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201124104510	#P7#=0	#P8#=6	.
-3=#P0#=mb	#P1#=LimpiarDatosDePaciente	#P2#=SISGalenPlus/ucPacientesDetalle/LimpiarDatosDePaciente	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201124102828	#P7#=0	#P8#=1	.
-4=#P0#=mb	#P1#=deshabilitarControlesDeTextoRENIEC	#P2#=SISGalenPlus/ucPacientesDetalle/deshabilitarControlesDeTextoRENIEC	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201124102758	#P7#=0	#P8#=4	.
-5=#P0#=mb	#P1#=txtNroDocumento_KeyDown	#P2#=SISGalenPlus/ucPacientesDetalle/txtNroDocumento_KeyDown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201124102026	#P7#=0	#P8#=1	.
-6=#P0#=mb	#P1#=CargarDatosTutorDesdeRENIEC	#P2#=SISGalenPlus/ucPacientesDetalle/CargarDatosTutorDesdeRENIEC	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201124101919	#P7#=0	#P8#=15	.
-7=#P0#=mb	#P1#=CargarDatosDesdeRENIEC	#P2#=SISGalenPlus/ucPacientesDetalle/CargarDatosDesdeRENIEC	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201124105349	#P7#=0	#P8#=80	.
-8=#P0#=mb	#P1#=txtNroDocumento_LostFocus	#P2#=SISGalenPlus/ucPacientesDetalle/txtNroDocumento_LostFocus	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201124102037	#P7#=0	#P8#=44	.
+1=#P0#=mb	#P1#=ValidarReglas	#P2#=SISGalenPlus/ucPacientesDetalle/ValidarReglas	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201124134026	#P7#=0	#P8#=55	.
+2=#P0#=mb	#P1#=txtNroDocumento_LostFocus	#P2#=SISGalenPlus/ucPacientesDetalle/txtNroDocumento_LostFocus	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201124133542	#P7#=0	#P8#=51	.
+3=#P0#=mb	#P1#=txtNroDocumento_KeyDown	#P2#=SISGalenPlus/ucPacientesDetalle/txtNroDocumento_KeyDown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201124133509	#P7#=0	#P8#=1	.
+4=#P0#=mb	#P1#=CargarDatosDesdeRENIEC	#P2#=SISGalenPlus/ucPacientesDetalle/CargarDatosDesdeRENIEC	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201124105349	#P7#=0	#P8#=80	.
+5=#P0#=mb	#P1#=ArchivoElegido	#P2#=SISGalenPlus/ucPacientesDetalle/ArchivoElegido [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201124104548	#P7#=0	#P8#=0	.
+6=#P0#=mb	#P1#=TipoNumeracion	#P2#=SISGalenPlus/ucPacientesDetalle/TipoNumeracion [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201124104510	#P7#=0	#P8#=6	.
+7=#P0#=mb	#P1#=LimpiarDatosDePaciente	#P2#=SISGalenPlus/ucPacientesDetalle/LimpiarDatosDePaciente	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201124102828	#P7#=0	#P8#=1	.
+8=#P0#=mb	#P1#=deshabilitarControlesDeTextoRENIEC	#P2#=SISGalenPlus/ucPacientesDetalle/deshabilitarControlesDeTextoRENIEC	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201124102758	#P7#=0	#P8#=4	.
+9=#P0#=mb	#P1#=CargarDatosTutorDesdeRENIEC	#P2#=SISGalenPlus/ucPacientesDetalle/CargarDatosTutorDesdeRENIEC	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201124101919	#P7#=0	#P8#=15	.

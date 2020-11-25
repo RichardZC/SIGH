@@ -229,10 +229,12 @@ Private Sub procesarRespuesta(ByVal s As String)
     Set parser = New DOMDocument
     parser.loadXML s
     '
-    On Error Resume Next
+    'On Error Resume Next ----genaro leonel campos carmen
+    'On Error Resume Next
     'DEBB-Desagrega Datos (inicio)
     Dim lcDatosWeb As String, lcTextoBusqueda1 As String, lcTextoBusqueda2 As String
-    Dim lnPosActual1 As Integer, lnPosActual2 As Integer, lnPosInicial As Integer
+    'Dim lnPosActual1 As Integer, lnPosActual2 As Integer, lnPosInicial As Integer-----Genaro leonel campos carmerne
+    Dim lnPosActual1 As String, lnPosActual2 As String, lnPosInicial As String
     Dim LcTexto1 As String, lcDniAbuscar As String, lcUbigeoDomicilio As String
     'lcDatosWeb = Me.txtDatosBasicos.Text
     lcDatosWeb = parser.selectSingleNode("/soap:Envelope/soap:Body/GetReniecResponse/GetReniecResult").XML
