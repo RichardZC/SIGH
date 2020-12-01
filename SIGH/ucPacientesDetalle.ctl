@@ -3482,6 +3482,7 @@ Sub CargarDatosDesdeRENIEC(DNI As String)
                      
                      txtNroDocumento.Text = DNI
                      txtIdNroHistoria.Text = DNI
+                     cmbIdTipoGenHistoriaClinica.ListIndex = 1
                      txtApellidoPaterno.SetFocus
                      
 '
