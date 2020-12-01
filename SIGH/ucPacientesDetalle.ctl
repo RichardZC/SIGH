@@ -2256,8 +2256,8 @@ Begin VB.UserControl ucPacientesDetalle
          TabIndex        =   135
          Top             =   345
          Width           =   11610
-         _extentx        =   20479
-         _extenty        =   1773
+         _ExtentX        =   20479
+         _ExtentY        =   1773
       End
       Begin VB.Frame fraProcedencia 
          BeginProperty Font 
@@ -3470,7 +3470,8 @@ Sub CargarDatosDesdeRENIEC(DNI As String)
                      
             Else
             
-                     MsgBox "El Numero de DNI : " & DNI & " no fue encontrado en la RENIEC", vbInformation, "Error"
+                     MsgBox "El Numero de DNI : " & DNI & " no fue encontrado en la RENIEC o no tiene conexion a INTERNET" & Chr(13) & _
+                     "Ingrese los Datos Manualmente", vbInformation, "Error"
                     
                      
                      'LIMPIAR TODOS LOS CONTROLES, METODO ENCONTRADO EN EL CODIGO
@@ -3514,9 +3515,9 @@ Sub CargarDatosTutorDesdeRENIEC(DNITUTOR As String)
             txtMadreApellidoM.Enabled = True
             txtNombreMadre.Enabled = True
             txtMadreSnombre.Enabled = True
-            txtMadreDocumento.Text = ""
+            txtMadreDocumento.Text = DNITUTOR
             mo_cmbMadreTipoDocumento.BoundText = 1
-            txtMadreDocumento.SetFocus
+            txtMadreApellidoP.SetFocus
      End If
 
     Else

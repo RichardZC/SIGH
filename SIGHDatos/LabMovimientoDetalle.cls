@@ -55,7 +55,7 @@ Function Insertar(ByVal oTabla As DOLabMovimientoDetalle) As Boolean
     .CommandType = adCmdStoredProc
     Set .ActiveConnection = mo_Conexion
     .CommandText = "LabMovimientoDetalleAgregar"
-    Set oParameter = .CreateParameter("@idMovimiento", adInteger, adParamInput, 0, IIf(oTabla.IdMovimiento = 0, Null, oTabla.IdMovimiento))
+    Set oParameter = .CreateParameter("@idMovimiento", adInteger, adParamInput, 0, IIf(oTabla.idMovimiento = 0, Null, oTabla.idMovimiento))
     .Parameters.Append oParameter
     Set oParameter = .CreateParameter("@idProductoCPT", adInteger, adParamInput, 0, IIf(oTabla.idProductoCpt = 0, Null, oTabla.idProductoCpt))
     .Parameters.Append oParameter
@@ -63,7 +63,7 @@ Function Insertar(ByVal oTabla As DOLabMovimientoDetalle) As Boolean
     .Parameters.Append oParameter
     Set oParameter = .CreateParameter("@CantidadFallada", adInteger, adParamInput, 0, oTabla.CantidadFallada)
     .Parameters.Append oParameter
-    Set oParameter = .CreateParameter("@Cantidad", adInteger, adParamInput, 0, IIf(oTabla.Cantidad = 0, Null, oTabla.Cantidad))
+    Set oParameter = .CreateParameter("@Cantidad", adInteger, adParamInput, 0, IIf(oTabla.cantidad = 0, Null, oTabla.cantidad))
     .Parameters.Append oParameter
     Set oParameter = .CreateParameter("@IdUsuarioAuditoria", adInteger, adParamInput, 0, oTabla.IdUsuarioAuditoria)
    .Parameters.Append oParameter
@@ -93,7 +93,7 @@ Function Modificar(ByVal oTabla As DOLabMovimientoDetalle) As Boolean
     .CommandType = adCmdStoredProc
     Set .ActiveConnection = mo_Conexion
     .CommandText = "LabMovimientoDetalleModificar"
-    Set oParameter = .CreateParameter("@idMovimiento", adInteger, adParamInput, 0, IIf(oTabla.IdMovimiento = 0, Null, oTabla.IdMovimiento))
+    Set oParameter = .CreateParameter("@idMovimiento", adInteger, adParamInput, 0, IIf(oTabla.idMovimiento = 0, Null, oTabla.idMovimiento))
     .Parameters.Append oParameter
     Set oParameter = .CreateParameter("@idProductoCPT", adInteger, adParamInput, 0, IIf(oTabla.idProductoCpt = 0, Null, oTabla.idProductoCpt))
     .Parameters.Append oParameter
@@ -101,7 +101,7 @@ Function Modificar(ByVal oTabla As DOLabMovimientoDetalle) As Boolean
     .Parameters.Append oParameter
     Set oParameter = .CreateParameter("@CantidadFallada", adInteger, adParamInput, 0, IIf(oTabla.CantidadFallada = 0, Null, oTabla.CantidadFallada))
     .Parameters.Append oParameter
-    Set oParameter = .CreateParameter("@Cantidad", adInteger, adParamInput, 0, IIf(oTabla.Cantidad = 0, Null, oTabla.Cantidad))
+    Set oParameter = .CreateParameter("@Cantidad", adInteger, adParamInput, 0, IIf(oTabla.cantidad = 0, Null, oTabla.cantidad))
     .Parameters.Append oParameter
     Set oParameter = .CreateParameter("@IdUsuarioAuditoria", adInteger, adParamInput, 0, oTabla.IdUsuarioAuditoria)
     .Parameters.Append oParameter
@@ -131,7 +131,7 @@ Function Eliminar(ByVal oTabla As DOLabMovimientoDetalle) As Boolean
     .CommandType = adCmdStoredProc
     Set .ActiveConnection = mo_Conexion
     .CommandText = "LabMovimientoDetalleEliminar"
-    Set oParameter = .CreateParameter("@idMovimiento", adInteger, adParamInput, 0, oTabla.IdMovimiento)
+    Set oParameter = .CreateParameter("@idMovimiento", adInteger, adParamInput, 0, oTabla.idMovimiento)
     .Parameters.Append oParameter
     Set oParameter = .CreateParameter("@IdUsuarioAuditoria", adInteger, adParamInput, 0, oTabla.IdUsuarioAuditoria)
     .Parameters.Append oParameter
@@ -162,16 +162,16 @@ Function SeleccionarPorId(ByVal oTabla As DOLabMovimientoDetalle) As Boolean
     .CommandType = adCmdStoredProc
     Set .ActiveConnection = mo_Conexion
     .CommandText = "LabMovimientoDetalleSeleccionarPorId"
-    Set oParameter = .CreateParameter("@idMovimiento", adInteger, adParamInput, 0, oTabla.IdMovimiento)
+    Set oParameter = .CreateParameter("@idMovimiento", adInteger, adParamInput, 0, oTabla.idMovimiento)
     .Parameters.Append oParameter
     Set oRecordset = .Execute
   End With
   If Not (oRecordset.EOF And oRecordset.BOF) Then
-    oTabla.IdMovimiento = IIf(IsNull(oRecordset!IdMovimiento), 0, oRecordset!IdMovimiento)
+    oTabla.idMovimiento = IIf(IsNull(oRecordset!idMovimiento), 0, oRecordset!idMovimiento)
     oTabla.idProductoCpt = IIf(IsNull(oRecordset!idProductoCpt), 0, oRecordset!idProductoCpt)
     oTabla.idProducto = IIf(IsNull(oRecordset!idProducto), 0, oRecordset!idProducto)
     oTabla.CantidadFallada = IIf(IsNull(oRecordset!CantidadFallada), 0, oRecordset!CantidadFallada)
-    oTabla.Cantidad = IIf(IsNull(oRecordset!Cantidad), 0, oRecordset!Cantidad)
+    oTabla.cantidad = IIf(IsNull(oRecordset!cantidad), 0, oRecordset!cantidad)
     SeleccionarPorId = True
     ms_MensajeError = ""
   End If
@@ -184,10 +184,10 @@ ManejadorDeError:
 End Function
 
 Sub SetDefaults(ByVal oTabla As DOLabMovimientoDetalle)
-  oTabla.IdMovimiento = 0
+  oTabla.idMovimiento = 0
   oTabla.idProductoCpt = 0
   oTabla.idProducto = 0
   oTabla.CantidadFallada = 0
-  oTabla.Cantidad = 0
+  oTabla.cantidad = 0
 End Sub
 

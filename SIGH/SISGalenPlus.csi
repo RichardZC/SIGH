@@ -1,10 +1,26 @@
 [History]
-1=#P0#=mb	#P1#=ValidarReglas	#P2#=SISGalenPlus/ucPacientesDetalle/ValidarReglas	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201124134026	#P7#=0	#P8#=55	.
-2=#P0#=mb	#P1#=txtNroDocumento_LostFocus	#P2#=SISGalenPlus/ucPacientesDetalle/txtNroDocumento_LostFocus	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201124133542	#P7#=0	#P8#=51	.
-3=#P0#=mb	#P1#=txtNroDocumento_KeyDown	#P2#=SISGalenPlus/ucPacientesDetalle/txtNroDocumento_KeyDown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201124133509	#P7#=0	#P8#=1	.
-4=#P0#=mb	#P1#=CargarDatosDesdeRENIEC	#P2#=SISGalenPlus/ucPacientesDetalle/CargarDatosDesdeRENIEC	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201124105349	#P7#=0	#P8#=80	.
-5=#P0#=mb	#P1#=ArchivoElegido	#P2#=SISGalenPlus/ucPacientesDetalle/ArchivoElegido [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201124104548	#P7#=0	#P8#=0	.
-6=#P0#=mb	#P1#=TipoNumeracion	#P2#=SISGalenPlus/ucPacientesDetalle/TipoNumeracion [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201124104510	#P7#=0	#P8#=6	.
-7=#P0#=mb	#P1#=LimpiarDatosDePaciente	#P2#=SISGalenPlus/ucPacientesDetalle/LimpiarDatosDePaciente	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201124102828	#P7#=0	#P8#=1	.
-8=#P0#=mb	#P1#=deshabilitarControlesDeTextoRENIEC	#P2#=SISGalenPlus/ucPacientesDetalle/deshabilitarControlesDeTextoRENIEC	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201124102758	#P7#=0	#P8#=4	.
-9=#P0#=mb	#P1#=CargarDatosTutorDesdeRENIEC	#P2#=SISGalenPlus/ucPacientesDetalle/CargarDatosTutorDesdeRENIEC	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201124101919	#P7#=0	#P8#=15	.
+1=#P0#=mb	#P1#=grdPacientesEncontrados_InitializeLayout	#P2#=SISGalenPlus/AdmisionCEDetalle/grdPacientesEncontrados_InitializeLayout	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201201111515	#P7#=0	#P8#=34	.
+2=#P0#=mb	#P1#=grdPacientesEncontradosSIS	#P2#=SISGalenPlus/AdmisionCEDetalle/grdPacientesEncontradosSIS	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201201103410	#P7#=0	#P8#=74	.
+3=#P0#=mb	#P1#=chkPacienteNuevo_Click	#P2#=SISGalenPlus/AdmisionCEDetalle/chkPacienteNuevo_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201201103354	#P7#=0	#P8#=23	.
+4=#P0#=mb	#P1#=btnBuscarPaciente_Click	#P2#=SISGalenPlus/AdmisionCEDetalle/btnBuscarPaciente_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201201103352	#P7#=0	#P8#=25	.
+5=#P0#=mb	#P1#=chkBuscarEnSIS_Click	#P2#=SISGalenPlus/AdmisionCEDetalle/chkBuscarEnSIS_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201201103344	#P7#=0	#P8#=13	.
+6=#P0#=mb	#P1#=grdPacientesEncontradosSIS	#P2#=SISGalenPlus/AdmisionHospDetalle/grdPacientesEncontradosSIS	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201201103302	#P7#=0	#P8#=71	.
+7=#P0#=mb	#P1#=chkPacienteNuevo_Click	#P2#=SISGalenPlus/AdmisionHospDetalle/chkPacienteNuevo_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201201103248	#P7#=0	#P8#=20	.
+8=#P0#=mb	#P1#=btnBuscarPaciente_Click	#P2#=SISGalenPlus/AdmisionHospDetalle/btnBuscarPaciente_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201201103235	#P7#=0	#P8#=22	.
+9=#P0#=mb	#P1#=btnAceptar_Click	#P2#=SISGalenPlus/AdmisionHospDetalle/btnAceptar_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201201103226	#P7#=0	#P8#=38	.
+10=#P0#=mb	#P1#=txtMedicoRef_LostFocus	#P2#=SISGalenPlus/AdmisionHospDetalle/txtMedicoRef_LostFocus	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201130215808	#P7#=0	#P8#=0	.
+11=#P0#=mb	#P1#=txtNombreAcompañante_Change	#P2#=SISGalenPlus/AdmisionHospDetalle/txtNombreAcompañante_Change	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201130215621	#P7#=0	#P8#=-1	.
+12=#P0#=mb	#P1#=ProvieneDeEmergencia_o_CE	#P2#=SISGalenPlus/AdmisionHospDetalle/ProvieneDeEmergencia_o_CE	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201130213452	#P7#=0	#P8#=15	.
+13=#P0#=mb	#P1#=lcCodigoEstablecimientoAdscripcionSISxMedico	#P2#=SISGalenPlus/AdmisionCEDetalle/lcCodigoEstablecimientoAdscripcionSISxMedico [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201201103324	#P7#=0	#P8#=1	.
+14=#P0#=mb	#P1#=chequeaFechaIngresoQueNoSeaMENORalORIGEN	#P2#=SISGalenPlus/AdmisionHospDetalle/chequeaFechaIngresoQueNoSeaMENORalORIGEN	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201130203306	#P7#=0	#P8#=50	.
+15=#P0#=mb	#P1#=btnImprimeFichaSIS_Click	#P2#=SISGalenPlus/AdmisionCEDetalle/btnImprimeFichaSIS_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201130202906	#P7#=0	#P8#=-1	.
+16=#P0#=mb	#P1#=CargaCPTrealizadosEnElServicio	#P2#=SISGalenPlus/AdmisionCEDetalle/CargaCPTrealizadosEnElServicio	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201130202846	#P7#=0	#P8#=-5	.
+17=#P0#=mb	#P1#=CargarDatosDesdeRENIEC	#P2#=SISGalenPlus/ucPacientesDetalle/CargarDatosDesdeRENIEC	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201125224341	#P7#=0	#P8#=66	.
+18=#P0#=mb	#P1#=CargarDatosTutorDesdeRENIEC	#P2#=SISGalenPlus/ucPacientesDetalle/CargarDatosTutorDesdeRENIEC	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201125223956	#P7#=0	#P8#=7	.
+19=#P0#=mb	#P1#=ValidarReglas	#P2#=SISGalenPlus/ucPacientesDetalle/ValidarReglas	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201124134026	#P7#=0	#P8#=55	.
+20=#P0#=mb	#P1#=txtNroDocumento_LostFocus	#P2#=SISGalenPlus/ucPacientesDetalle/txtNroDocumento_LostFocus	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201124133542	#P7#=0	#P8#=44	.
+21=#P0#=mb	#P1#=txtNroDocumento_KeyDown	#P2#=SISGalenPlus/ucPacientesDetalle/txtNroDocumento_KeyDown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201124133509	#P7#=0	#P8#=1	.
+22=#P0#=mb	#P1#=ArchivoElegido	#P2#=SISGalenPlus/ucPacientesDetalle/ArchivoElegido [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201124104548	#P7#=0	#P8#=0	.
+23=#P0#=mb	#P1#=TipoNumeracion	#P2#=SISGalenPlus/ucPacientesDetalle/TipoNumeracion [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201124104510	#P7#=0	#P8#=6	.
+24=#P0#=mb	#P1#=LimpiarDatosDePaciente	#P2#=SISGalenPlus/ucPacientesDetalle/LimpiarDatosDePaciente	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201124102828	#P7#=0	#P8#=1	.
+25=#P0#=mb	#P1#=deshabilitarControlesDeTextoRENIEC	#P2#=SISGalenPlus/ucPacientesDetalle/deshabilitarControlesDeTextoRENIEC	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201124102758	#P7#=0	#P8#=4	.

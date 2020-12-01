@@ -168,9 +168,9 @@ Begin VB.Form AdmisionCEDetalle
          TabCaption(1)   =   "2.2 Citas para otros días"
          TabPicture(1)   =   "AdmisionDetalle.frx":0D1E
          Tab(1).ControlEnabled=   0   'False
-         Tab(1).Control(0)=   "UcPacientesSunasa1"
+         Tab(1).Control(0)=   "Label9"
          Tab(1).Control(1)=   "ucCitasLista11"
-         Tab(1).Control(2)=   "Label9"
+         Tab(1).Control(2)=   "UcPacientesSunasa1"
          Tab(1).ControlCount=   3
          Begin VB.Frame FraGeneraCita 
             Caption         =   "Forma que se genera la CITA"
@@ -2488,6 +2488,7 @@ Dim ml_txtIdEstablecimientoOrigenXmedico As String, ml_cmbServicioReferenciaOXme
 Dim ml_lcCodigoEstablecimientoAdscripcionSISxMedico As String
 Dim lnDocumentoTipoSIS As Long
 Dim lbElConsultorioNoCobraApagantes As Boolean
+
 Property Let lcCodigoEstablecimientoAdscripcionSISxMedico(lValue As String)
     ml_lcCodigoEstablecimientoAdscripcionSISxMedico = lValue
 End Property
@@ -3083,6 +3084,7 @@ Private Sub chkBuscarEnSIS_Click()
        fraBusqueda.ForeColor = vbBlack
        mo_Formulario.HabilitarDeshabilitar txtNroHistoriaBusqueda, True
        mo_Formulario.HabilitarDeshabilitar txtFichaFamiliar, True
+
     End If
 End Sub
 
@@ -3379,13 +3381,16 @@ Sub grdPacientesEncontradosSIS()
             Set rsPaciente = Me.grdPacientesEncontrados.DataSource
             If rsPaciente.RecordCount = 1 Then
                     grdPacientesEncontrados_DblClick
+                    
             End If
             If Me.ucPacientesDetalle1.idPaciente > 0 Then
                 If lnIdPlanSIS > 0 Then
                      mo_cmbIdFuentesFinanciamiento.BoundText = lnIdPlanSIS
                      cmbFuenteFinanciamiento_Click
+
 '<(Inicio) Añadido Por: WABG el: 13/11/2020-12:50:56 p.m.en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
                      Me.ucPacientesDetalle1.deshabilitarControlesRENIECModificarPacienteValidado
+                     
 '</(Fin) Añadido Por: WABG el: 13/11/2020-12:50:56 p.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
 '<(Inicio)Comentado Por: WABG el: 13/11/2020-12:49:34 p.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
 '                     Me.ucPacientesDetalle1.SetFocusEnDNI

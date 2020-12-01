@@ -10,6 +10,7 @@ Begin VB.Form frmLaboratorio
    ClientLeft      =   45
    ClientTop       =   330
    ClientWidth     =   13860
+   ForeColor       =   &H80000004&
    Icon            =   "laboratorio.frx":0000
    LinkTopic       =   "Form1"
    LockControls    =   -1  'True
@@ -35,6 +36,16 @@ Begin VB.Form frmLaboratorio
       TabIndex        =   19
       Top             =   60
       Width           =   13755
+      Begin VB.CommandButton btnTamizaje 
+         BackColor       =   &H8000000D&
+         Caption         =   "Tamizaje"
+         Height          =   360
+         Left            =   9195
+         TabIndex        =   68
+         Top             =   3270
+         Visible         =   0   'False
+         Width           =   990
+      End
       Begin VB.Frame Frame2 
          Height          =   555
          Left            =   60
@@ -1681,6 +1692,23 @@ Private Sub btnCancelar_Click()
     Me.Visible = False
 End Sub
 
+Private Sub btnTamizaje_Click()
+
+'<Agregado por: WABG el: 11/29/2020-12:39:16 en el equipo: SISGALENPLUS-PC>
+   Dim rs As Recordset
+   Dim oConexion As New ADODB.Connection
+   oConexion.Open sighentidades.CadenaConexion
+   oConexion.CursorLocation = adUseClient
+   Set rs = mo_ReglasLaboratorio.SeleccionarProcedimientosTamizajeSegunTipoFinanciamiento(ml_IdTipoFinanciamiento)
+   ucProductos.CargarItemsALaGrillaPaquete rs
+   oConexion.Close
+   Set oConexion = Nothing
+   btnTamizaje.Visible = False
+'</Agregado por: WABG el: 11/29/2020-12:39:16 en el equipo: SISGALENPLUS-PC>
+
+
+End Sub
+
 Private Sub chkPlanNoCubre_Click()
     If chkPlanNoCubre.Value = 1 Then
        ml_IdTipoFinanciamiento = 1
@@ -2477,6 +2505,11 @@ Private Sub txtNcuenta_LostFocus()
     oConexion.Close
     Set oConexion = Nothing
     Set oRsTmp2 = Nothing
+'<Agregado por: WABG el: 11/30/2020-13:32:44 en el equipo: SISGALENPLUS-PC>
+     If Me.Caption = "Agregar Órdenes Banco de Sangre" Then
+     btnTamizaje.Visible = True
+     End If
+'</Agregado por: WABG el: 11/30/2020-13:32:44 en el equipo: SISGALENPLUS-PC>
   End If
 End Sub
 

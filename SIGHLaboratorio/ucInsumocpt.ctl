@@ -212,7 +212,7 @@ Dim mo_ReglasFacturacion As New SIGHNegocios.ReglasFacturacion
 Dim mo_AdminCaja As New SIGHNegocios.ReglasCaja
 Dim mo_reglasComunes As New SIGHNegocios.ReglasComunes
 Dim mo_ReglasSeguridad As New SIGHNegocios.ReglasDeSeguridad
-Dim gridInfra As New SIGHEntidades.GridInfragistic
+Dim gridInfra As New sighentidades.GridInfragistic
 Dim mo_PermisosFacturacion As New PermisosFacturacion
 Dim ms_TipoProducto As sghTipoProducto
 Dim ml_IdTipoFinanciamiento As Long
@@ -827,7 +827,7 @@ Private Sub grdInsumos_KeyPress(KeyAscii As UltraGrid.SSReturnShort)
   OnKeyPress grdInsumos, KeyAscii
 End Sub
 
-Private Sub grdInsumos_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub grdInsumos_MouseDown(Button As Integer, Shift As Integer, x As Single, Y As Single)
   If Button = 2 Then PopupMenu mnuProductos
 End Sub
 
@@ -983,7 +983,7 @@ Private Sub grdProductos_KeyPress(KeyAscii As UltraGrid.SSReturnShort)
   OnKeyPress grdProductos, KeyAscii
 End Sub
 
-Private Sub grdProductos_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub grdProductos_MouseDown(Button As Integer, Shift As Integer, x As Single, Y As Single)
   If ml_PermiteAgregarItems = True Then
     If Button = 2 Then PopupMenu mnuProductos
   End If
@@ -1032,7 +1032,7 @@ Sub ConfigurarProductoPorCodigo(oGrilla As SSUltraGrid)
        Dim fechaDespacho As Date
        fechaDespacho = DateAdd("h", ml_ParametroHoras, Now)
        If idCuentaAtencion = 0 Then GoTo Sigue1
-       If BuscaItemEnDia(idCuentaAtencion, Format(fechaDespacho, SIGHEntidades.DevuelveFechaSoloFormato_DMY_HMS), rs.Fields("idproducto").Value) = True Then
+       If BuscaItemEnDia(idCuentaAtencion, Format(fechaDespacho, sighentidades.DevuelveFechaSoloFormato_DMY_HMS), rs.Fields("idproducto").Value) = True Then
 Sigue1:
         oRow.Cells("IdFacturacionProducto").Value = 0
         oRow.Cells("Idproducto").Value = rs.Fields("idproducto").Value
@@ -1390,11 +1390,11 @@ Private Sub InicializarLaGrilla(oGrilla As SSUltraGrid)
   
   oGrilla.Bands(0).Columns("FechaAutorizaPendiente").Width = 2500
   oGrilla.Bands(0).Columns("FechaAutorizaPendiente").Header.Caption = "Fecha Aut. Pend."
-  oGrilla.Bands(0).Columns("FechaAutorizaPendiente").Format = SIGHEntidades.DevuelveFechaSoloFormato_DMY_HM
+  oGrilla.Bands(0).Columns("FechaAutorizaPendiente").Format = sighentidades.DevuelveFechaSoloFormato_DMY_HM
 
   oGrilla.Bands(0).Columns("FechaAutorizaSeguro").Width = 2500
   oGrilla.Bands(0).Columns("FechaAutorizaSeguro").Header.Caption = "Fec. Aut. Seguro."
-  oGrilla.Bands(0).Columns("FechaAutorizaSeguro").Format = SIGHEntidades.DevuelveFechaSoloFormato_DMY_HM
+  oGrilla.Bands(0).Columns("FechaAutorizaSeguro").Format = sighentidades.DevuelveFechaSoloFormato_DMY_HM
     
   'Configura Values List
   SeteaListaEstado oGrilla, oGrilla.Bands(0).Columns("idEstadoFacturacion")
@@ -1416,7 +1416,7 @@ Private Sub InicializarLaGrilla(oGrilla As SSUltraGrid)
   oGrilla.Bands(0).Columns("IdTipoFinanciamiento").Activation = ssActivationActivateNoEdit
     
 ConfigEstilo:
-  gridInfra.ConfigurarFilasBiColores oGrilla, SIGHEntidades.GrillaConFilasBicolor
+  gridInfra.ConfigurarFilasBiColores oGrilla, sighentidades.GrillaConFilasBicolor
 End Sub
 
 Sub SeteaListaTipoFinanciamiento(oGrilla As SSUltraGrid, oColumn As SSColumn)
@@ -1482,7 +1482,7 @@ End Sub
 
 Private Sub grillaBusqueda_InitializeLayout(ByVal Context As UltraGrid.Constants_Context, ByVal Layout As UltraGrid.SSLayout)
   InicializarLaGrillaBusqueda grillaBusqueda
-  gridInfra.ConfigurarFilasBiColores grillaBusqueda, SIGHEntidades.GrillaConFilasBicolor
+  gridInfra.ConfigurarFilasBiColores grillaBusqueda, sighentidades.GrillaConFilasBicolor
 End Sub
 
 Private Sub InicializarLaGrillaBusqueda(oGrilla As SSUltraGrid)
@@ -1502,7 +1502,7 @@ Private Sub InicializarLaGrillaBusqueda(oGrilla As SSUltraGrid)
   oGrilla.Bands(0).Columns("Nombre").Activation = ssActivationActivateNoEdit
   oGrilla.Bands(0).Columns("preciounitario").Format = "0.00"
   oGrilla.Bands(0).Columns("preciounitario").Activation = ssActivationActivateNoEdit
-  gridInfra.ConfigurarFilasBiColores oGrilla, SIGHEntidades.GrillaConFilasBicolor
+  gridInfra.ConfigurarFilasBiColores oGrilla, sighentidades.GrillaConFilasBicolor
 End Sub
 
 Private Sub grillaBusqueda_DblClick()
@@ -1526,7 +1526,7 @@ Private Sub grillaBusqueda_DblClick()
   Else
     fechaDespacho = DateAdd("h", ml_ParametroHoras, Now)
     If idCuentaAtencion = 0 Then GoTo Sigue
-    If BuscaItemEnDia(idCuentaAtencion, Format(fechaDespacho, SIGHEntidades.DevuelveFechaSoloFormato_DMY_HMS), grillaBusqueda.ActiveRow.Cells("idproducto").Value) = True Then
+    If BuscaItemEnDia(idCuentaAtencion, Format(fechaDespacho, sighentidades.DevuelveFechaSoloFormato_DMY_HMS), grillaBusqueda.ActiveRow.Cells("idproducto").Value) = True Then
 Sigue:
       RefrescarDatos
       Set grillaBusqueda.DataSource = Nothing
@@ -1707,7 +1707,34 @@ Sub CargaProductosPorIdCita(lnIdCitaSI As Long)
     CargaProductosPorIdReceta rs
     Set mo_ReglasImagenes = Nothing
 End Sub
+'<Agregado por: WABG el: 11/29/2020-12:44:07 en el equipo: SISGALENPLUS-PC>
+Sub CargarItemsALaGrillaPaquete(rs As Recordset)
 
+  Dim oRsTmp1 As New Recordset
+  Dim lnSubTotal As Double
+  mb_CargandoProductos = True
+  Do While Not rs.EOF
+    Set oRsTmp1 = rs
+    If oRsTmp1.RecordCount > 0 Then
+    'codigo/descripcion/cantidad/p.u./subtotal/resultadoautomatico/ObsReceta
+      mrs_FacturacionProductos.AddNew
+      mrs_FacturacionProductos!Codigo = rs!Codigo
+      mrs_FacturacionProductos!NombreProducto = rs!Nombre
+      mrs_FacturacionProductos!Cantidad = 1
+      mrs_FacturacionProductos!PrecioUnitario = rs!PrecioUnitario
+      mrs_FacturacionProductos!TotalPorPagar = rs!PrecioUnitario
+      mrs_FacturacionProductos!ResultadoAutomatico = IIf(rs!LabResultadoAutomatico = 1, True, False)
+    End If
+     rs.MoveNext
+   Loop
+    mb_CargandoProductos = False
+    
+    Set rs = Nothing
+  Set grdProductos.DataSource = mrs_FacturacionProductos
+ Totalizar
+ 
+End Sub
+'</Agregado por: WABG el: 11/29/2020-12:44:07 en el equipo: SISGALENPLUS-PC>
 
 'Actualizado 16092014 Frank
 Sub CargaProductosPorIdReceta(rs As Recordset)
@@ -1742,7 +1769,7 @@ Sub CargaProductosPorIdReceta(rs As Recordset)
                    End If
                 End If
                 mrs_FacturacionProductos!idOrden = 0 'rs!IdOrden
-                mrs_FacturacionProductos!obsReceta = rs!observaciones
+                mrs_FacturacionProductos!ObsReceta = rs!observaciones
             End If
 
         rs.MoveNext
@@ -1767,7 +1794,7 @@ Sub CargaObservacionesDeReceta(lnIdReceta As Long, oConexion As Connection)
                  mrs_FacturacionProductos.MoveFirst
                  mrs_FacturacionProductos.Find "idProducto=" & oRsTmp1!idItem
                  If Not mrs_FacturacionProductos.EOF Then
-                    mrs_FacturacionProductos!obsReceta = oRsTmp1!observaciones
+                    mrs_FacturacionProductos!ObsReceta = oRsTmp1!observaciones
                     mrs_FacturacionProductos.Update
                  End If
               End If

@@ -3038,7 +3038,6 @@ Dim mo_DoAtencionDatosAdicionales As New DoAtencionDatosAdicionales
 Dim ldFechaEgresoMedicoAnterior As Date   'cuando se "modifique", generar "consumo por dias estancia"
 Dim mo_lnIdTablaLISTBARITEMS As Long, mo_lcNombrePc As String
 Dim wxParametroBusqRapida As String
-
 '------------------------------------------------------------------------------------
 '                               VARIABLES CUENTAS DE ATENCION
 '------------------------------------------------------------------------------------
@@ -4599,6 +4598,8 @@ Sub grdPacientesEncontradosSIS()
                 If lnIdPlanSIS > 0 Then
                      cmbFuenteFinanciamiento.BoundText = lnIdPlanSIS
                      cmbFuenteFinanciamiento_Click 1
+                     
+
 '<(Inicio) Añadido Por: WABG el: 13/11/2020-12:51:14 p.m.en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
                      Me.ucPacientesDetalle1.deshabilitarControlesDeTextoRENIEC
 '</(Fin) Añadido Por: WABG el: 13/11/2020-12:51:14 p.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
