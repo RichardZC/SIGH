@@ -1114,7 +1114,7 @@ Begin VB.Form AdmisionCEatenciones
                Strikethrough   =   0   'False
             EndProperty
             Height          =   825
-            Left            =   6750
+            Left            =   6735
             MaxLength       =   1000
             MultiLine       =   -1  'True
             ScrollBars      =   2  'Vertical
@@ -4179,6 +4179,7 @@ Sub Form_Activate()
    If mi_Opcion <> sghAgregar Then
        If Not mb_ExistenDatos Then
             Me.Visible = False
+            
             LimpiarVariablesDeMemoria
        End If
        

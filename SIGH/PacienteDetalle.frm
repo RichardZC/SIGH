@@ -6,24 +6,23 @@ Begin VB.Form PacienteDetalle
    ClientHeight    =   8100
    ClientLeft      =   45
    ClientTop       =   330
-   ClientWidth     =   11925
+   ClientWidth     =   12045
    Icon            =   "PacienteDetalle.frx":0000
    LinkTopic       =   "Form1"
-   LockControls    =   -1  'True
    MaxButton       =   0   'False
    MinButton       =   0   'False
    ScaleHeight     =   8100
-   ScaleWidth      =   11925
+   ScaleWidth      =   12045
    ShowInTaskbar   =   0   'False
    StartUpPosition =   2  'CenterScreen
    Begin TabDlg.SSTab TabPaciente 
-      Height          =   6885
-      Left            =   30
+      Height          =   6975
+      Left            =   75
       TabIndex        =   3
-      Top             =   60
-      Width           =   11865
-      _ExtentX        =   20929
-      _ExtentY        =   12144
+      Top             =   75
+      Width           =   11895
+      _ExtentX        =   20981
+      _ExtentY        =   12303
       _Version        =   393216
       Tabs            =   2
       TabsPerRow      =   2
@@ -50,6 +49,15 @@ Begin VB.Form PacienteDetalle
       Tab(1).Control(0)=   "cmdActualizaNroAutomatico"
       Tab(1).Control(1)=   "UcPacientesSunasa1"
       Tab(1).ControlCount=   2
+      Begin SISGalenPlus.ucPacientesDetalle ucPacientesDetalle1 
+         Height          =   6465
+         Left            =   60
+         TabIndex        =   4
+         Top             =   360
+         Width           =   11775
+         _ExtentX        =   20770
+         _ExtentY        =   11404
+      End
       Begin VB.CommandButton cmdActualizaNroAutomatico 
          Caption         =   "..."
          Height          =   255
@@ -63,19 +71,10 @@ Begin VB.Form PacienteDetalle
          Height          =   5925
          Left            =   -74880
          TabIndex        =   5
-         Top             =   390
+         Top             =   450
          Width           =   11505
          _ExtentX        =   20294
          _ExtentY        =   10451
-      End
-      Begin SISGalenPlus.ucPacientesDetalle ucPacientesDetalle1 
-         Height          =   6465
-         Left            =   60
-         TabIndex        =   4
-         Top             =   360
-         Width           =   11775
-         _ExtentX        =   20770
-         _ExtentY        =   11404
       End
    End
    Begin VB.Frame Frame2 
@@ -281,9 +280,6 @@ Sub CargarDatosAlFormulario()
         DeshabilitarControlesParaEdicion
         
     End Select
- 
- 
- 
 End Sub
 Sub DeshabilitarControlesParaEdicion()
 
@@ -305,7 +301,6 @@ Private Sub btnImprimeFiliacion_Click()
     ImprimeFiliacion True
     Me.Visible = False
 End Sub
-
 Sub ImprimeFiliacion(lbCargaDatos As Boolean)
     Dim oImprime As New RptHistoriaClinicaCE
     Dim oEdad As Edad
@@ -316,13 +311,10 @@ Sub ImprimeFiliacion(lbCargaDatos As Boolean)
     oImprime.ImprimeEnFormatoDeFiliacionParaHistoriaClinica ml_IdPaciente, oEdad.Edad, oEdad.TipoEdad, Me.hwnd
     Set oImprime = Nothing
 End Sub
-
 Private Sub cmdActualizaNroAutomatico_Click()
-
     mo_ReglasArchivoClinico.ActualizaDatosConProblemas False
     Me.Visible = False
 End Sub
-
 Sub InicializarParametros()
     wxParametro211 = lcBuscaParametro.SeleccionaFilaParametro(211)
     wxParametro237 = lcBuscaParametro.SeleccionaFilaParametro(237)
@@ -338,12 +330,7 @@ End Sub
 Private Sub Form_Deactivate()
     lbCargaUnaVezVEntana = True
 End Sub
-
-
-
 Sub Form_Load()
-        
-        
         InicializarParametros
         '
 
@@ -376,8 +363,6 @@ Sub Form_Load()
        lbCargaUnaVezVEntana = True
 End Sub
 
-
-
 '------------------------------------------------------------------------------------
 '   CargarDatosAlFormulario
 '   Descripción:    Seleccionar un registro unico de la tabla Pacientes
@@ -402,8 +387,6 @@ Sub Form_Activate()
         End Select
    End If
 End Sub
-
-
 Sub AdministrarKeyPreview(KeyCode As Integer)
     
     Select Case KeyCode
@@ -520,7 +503,6 @@ Private Sub btnAceptar_Click()
             End If
    End Select
 End Sub
-
 Sub GrabaParametro8(lcValorTExto As String)
     Dim oConexion1 As New Connection
     Dim oRsTmp1 As New Recordset
@@ -538,7 +520,6 @@ End Sub
 '------------------------------------------------------------------------------------
 '        Agregar Datos
 '------------------------------------------------------------------------------------
-
 Function AgregarDatos() As Boolean
     GrabaParametro8 "Antes de Grabar"
     AgregarDatos = mo_AdminAdmision.PacientesAgregarPacienteEHistoriaClinica(mo_Pacientes, mo_Historia, _
@@ -558,7 +539,6 @@ End Function
 '------------------------------------------------------------------------------------
 '        Modificar Datos
 '------------------------------------------------------------------------------------
-
 Function ModificarDatos() As Boolean
     ModificarDatos = mo_AdminAdmision.PacientesModificarYActualizarHistoriaClinicaDefinitiva(mo_Pacientes, mo_Historia, Me.ucPacientesDetalle1.TipoNumeracionAnterior, mo_lnIdTablaLISTBARITEMS, mo_lcNombrePc, Trim(Str(mo_Pacientes.NroHistoriaClinica)) & " : " & Trim(mo_Pacientes.ApellidoPaterno) & " " & Trim(mo_Pacientes.ApellidoMaterno) & " " & Trim(mo_Pacientes.PrimerNombre) & " " & mo_Pacientes.SegundoNombre, oDoSunasaPacientesHistoricos, mo_DoPacientesDatosAdd)
     GrabaImagenesEnRutaDelServidor
@@ -588,7 +568,6 @@ Sub GrabaImagenesEnRutaDelServidor()
         GrabaParametro8 "grabo img"
     End If
 End Sub
-
 
 '------------------------------------------------------------------------------------
 '        Eliminar Datos
@@ -681,16 +660,11 @@ Sub CargarDatosAlosControles()
         Set oConexion = Nothing
    
 End Sub
-
-
 Sub CargarComboBoxes()
         Me.ucPacientesDetalle1.OpcionQueUsaEsteControl = 1      '1->Pacientes, 2->Admision de Emergencia, 3->Admision de Hospitalizacion
         Me.ucPacientesDetalle1.ConfigurarComboBoxes
         
 End Sub
-
-
-
 Private Sub TabPaciente_Click(PreviousTab As Integer)
     If TabPaciente.Tab = 1 Then
          On Error Resume Next
@@ -699,15 +673,12 @@ Private Sub TabPaciente_Click(PreviousTab As Integer)
     End If
 
 End Sub
-
-
 Private Sub ucPacientesDetalle1_SePresionoTeclaEspecial(KeyCode As Integer)
     AdministrarKeyPreview KeyCode
 End Sub
 Private Sub btnImprimir_Click()
 
 End Sub
-
 Private Sub UcPacientesSunasa1_SePresionoTeclaEspecial(KeyCode As Integer)
     AdministrarKeyPreview KeyCode
 End Sub

@@ -45,3 +45,6 @@ ThreadingModel=1
 
 [MS Transaction Server]
 AutoRefresh=1
+
+[CodeSMART]
+Task_UID=25_09_20_09_07_02

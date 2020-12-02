@@ -112,7 +112,9 @@ Begin VB.UserControl UcPacienteDatos
             Strikethrough   =   0   'False
          EndProperty
          Height          =   315
+         ItemData        =   "UcPacienteDatos.ctx":058A
          Left            =   2640
+         List            =   "UcPacienteDatos.ctx":058C
          TabIndex        =   17
          Top             =   240
          Width           =   1635
@@ -866,8 +868,8 @@ oConexion.CursorLocation = adUseClient
         End If
         If Not oPacientes Is Nothing Then
            With oPacientes
-                txtGs.Text = .GrupoSanguineo
-                txtFRh.Text = .FactorRh
+                txtGs.Text = .grupoSanguineo
+                txtFRh.Text = .factorRh
                 mo_Formulario.HabilitarDeshabilitar txtGs, False
                 mo_Formulario.HabilitarDeshabilitar txtFRh, False
            

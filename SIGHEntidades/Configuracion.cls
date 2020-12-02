@@ -23,7 +23,9 @@ Option Explicit
 Dim oReg As New Registro
 Const RutaDeRegistroProyecto2000 = "Software\Digital Works Corporation"
 Const RutaDeRegistroSIGH = "Software\Digital Works Corporation\SIGH"
-Const wxNueve As String = "9"
+'GLCC 02/11/20 CAMBIO36 INICIO
+'ANTERIOR: Const wxNueve As String = "9"
+'GLCC 02/11/20 CAMBIO36 FIN
 '**********************************
 'BASE DE DATOS
 '**********************************
@@ -195,7 +197,10 @@ Function HCigualDNI_DevuelveHistoriaConCerosIzquierda(lcHistoriaOriginal As Stri
            Else
               HCigualDNI_DevuelveHistoriaConCerosIzquierda = lcHistoriaOriginal
            End If
-           If lcParametro351 = "S" And Len(lcHistoriaOriginal) = 9 And Left(lcHistoriaOriginal, 1) = wxNueve Then
+           'GLCC 02/11/20 CAMBIO36 INICIO
+           'ANTERIOR: If lcParametro351 = "S" And Len(lcHistoriaOriginal) = 9 And Left(lcHistoriaOriginal, 1) = wxNueve Then
+           If lcParametro351 = "S" And Len(lcHistoriaOriginal) = 8 Then
+          'GLCC 02/11/20 CAMBIO36 FIN
               If lbEsImpresionExcel = True Then
                  HCigualDNI_DevuelveHistoriaConCerosIzquierda = "'" & Right(lcHistoriaOriginal, 8)
               Else
@@ -209,7 +214,10 @@ Function HCigualDNI_AgregaNUEVEaLaHistoria(lcHistoriaOriginal As String) As Stri
            lcParametro351 = Parametro351
            HCigualDNI_AgregaNUEVEaLaHistoria = lcHistoriaOriginal
            If lcParametro351 = "S" And Len(lcHistoriaOriginal) = 8 Then
-              HCigualDNI_AgregaNUEVEaLaHistoria = wxNueve & lcHistoriaOriginal
+           'GLCC 02/11/20 CAMBIO36 INICIO
+           'ANTERIOR: HCigualDNI_AgregaNUEVEaLaHistoria = wxNueve & lcHistoriaOriginal
+              HCigualDNI_AgregaNUEVEaLaHistoria = lcHistoriaOriginal
+         'GLCC 02/11/20 CAMBIO36 FIN
            End If
 End Function
 Property Get Parametro550() As String

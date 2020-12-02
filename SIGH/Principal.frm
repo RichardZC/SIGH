@@ -9,18 +9,18 @@ Begin VB.Form Principal
    ClientHeight    =   9090
    ClientLeft      =   1260
    ClientTop       =   840
-   ClientWidth     =   9840
+   ClientWidth     =   16275
    Icon            =   "Principal.frx":0000
    KeyPreview      =   -1  'True
    LinkTopic       =   "Form1"
    ScaleHeight     =   9090
-   ScaleWidth      =   9840
+   ScaleWidth      =   16275
    WindowState     =   2  'Maximized
    Begin SISGalenPlus.ucSIcitasLista ucSIlistasCitas1 
       Height          =   885
-      Left            =   2715
+      Left            =   135
       TabIndex        =   81
-      Top             =   120
+      Top             =   15
       Visible         =   0   'False
       Width           =   2430
       _ExtentX        =   4286
@@ -28,9 +28,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucCajaNotaCredito ucCajaNotaCredito1 
       Height          =   615
-      Left            =   12840
+      Left            =   10350
       TabIndex        =   80
-      Top             =   6360
+      Top             =   690
       Visible         =   0   'False
       Width           =   615
       _ExtentX        =   1085
@@ -38,9 +38,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucFarmAlmacenes ucFarmAlmacenes1 
       Height          =   495
-      Left            =   10320
+      Left            =   6150
       TabIndex        =   77
-      Top             =   6720
+      Top             =   6510
       Visible         =   0   'False
       Width           =   3255
       _ExtentX        =   5741
@@ -48,9 +48,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucImagTipoModalidadSala ucImagTipoModalidadSala1 
       Height          =   375
-      Left            =   12720
+      Left            =   6750
       TabIndex        =   76
-      Top             =   4680
+      Top             =   6165
       Visible         =   0   'False
       Width           =   855
       _ExtentX        =   1508
@@ -58,9 +58,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucImagSala ucImagSala1 
       Height          =   375
-      Left            =   12840
+      Left            =   6900
       TabIndex        =   75
-      Top             =   4080
+      Top             =   5655
       Visible         =   0   'False
       Width           =   855
       _ExtentX        =   1508
@@ -68,9 +68,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucImagCatServDuracion ucImagCatalgoServicioDuracion1 
       Height          =   735
-      Left            =   12960
+      Left            =   8790
       TabIndex        =   74
-      Top             =   2040
+      Top             =   870
       Visible         =   0   'False
       Width           =   735
       _ExtentX        =   1296
@@ -78,9 +78,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucInteoIntegracionSistema ucInteoIntegracionSistema1 
       Height          =   615
-      Left            =   12600
+      Left            =   8505
       TabIndex        =   73
-      Top             =   1080
+      Top             =   210
       Visible         =   0   'False
       Width           =   1095
       _ExtentX        =   1931
@@ -88,9 +88,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucConfiguraResLab ucConfiguraResLab2 
       Height          =   735
-      Left            =   12240
+      Left            =   10335
       TabIndex        =   72
-      Top             =   5520
+      Top             =   3345
       Visible         =   0   'False
       Width           =   1215
       _ExtentX        =   2143
@@ -98,9 +98,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.UcHISCalidad UcHISCalidad 
       Height          =   465
-      Left            =   8280
+      Left            =   4890
       TabIndex        =   71
-      Top             =   1620
+      Top             =   2460
       Visible         =   0   'False
       Width           =   2685
       _ExtentX        =   4736
@@ -108,9 +108,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.UcHISPadronNominal UcHISPadronNominal 
       Height          =   585
-      Left            =   8520
+      Left            =   4665
       TabIndex        =   70
-      Top             =   1230
+      Top             =   1965
       Visible         =   0   'False
       Width           =   3585
       _ExtentX        =   6324
@@ -118,9 +118,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucHCelectronicaLista ucHCelectronicaLista1 
       Height          =   495
-      Left            =   2340
+      Left            =   -165
       TabIndex        =   0
-      Top             =   6600
+      Top             =   7125
       Visible         =   0   'False
       Width           =   4305
       _ExtentX        =   7594
@@ -128,9 +128,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucHISEstablecimientos ucHISEstablecimientos 
       Height          =   615
-      Left            =   6840
+      Left            =   3240
       TabIndex        =   69
-      Top             =   6690
+      Top             =   5970
       Visible         =   0   'False
       Width           =   1005
       _ExtentX        =   1773
@@ -138,9 +138,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucHISListaProgramacion ucHISListaProgramacion 
       Height          =   735
-      Left            =   7860
+      Left            =   3300
       TabIndex        =   68
-      Top             =   6540
+      Top             =   6375
       Visible         =   0   'False
       Width           =   975
       _ExtentX        =   1720
@@ -148,9 +148,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucHISListaLotes ucHISListaLotes 
       Height          =   735
-      Left            =   7560
+      Left            =   3225
       TabIndex        =   67
-      Top             =   5640
+      Top             =   5445
       Visible         =   0   'False
       Width           =   1095
       _ExtentX        =   1931
@@ -158,9 +158,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucHISListaAtencion ucHISListaAtencion 
       Height          =   975
-      Left            =   5760
+      Left            =   3240
       TabIndex        =   66
-      Top             =   5640
+      Top             =   4590
       Visible         =   0   'False
       Width           =   1455
       _ExtentX        =   2566
@@ -178,9 +178,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.UcSISfuaLista UcSISfuaLista1 
       Height          =   405
-      Left            =   2520
+      Left            =   -105
       TabIndex        =   64
-      Top             =   7080
+      Top             =   7650
       Visible         =   0   'False
       Width           =   3195
       _ExtentX        =   5636
@@ -188,9 +188,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucRecetasLista ucRecetasLista1 
       Height          =   585
-      Left            =   12000
+      Left            =   8280
       TabIndex        =   63
-      Top             =   3240
+      Top             =   3360
       Visible         =   0   'False
       Width           =   1305
       _ExtentX        =   2302
@@ -209,9 +209,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucAtencionesTriaje ucAtencionesTriaje1 
       Height          =   435
-      Left            =   11190
+      Left            =   8265
       TabIndex        =   61
-      Top             =   5100
+      Top             =   4680
       Visible         =   0   'False
       Width           =   1725
       _ExtentX        =   3043
@@ -229,9 +229,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucFactPaquetesLista ucFactPaquetesLista1 
       Height          =   555
-      Left            =   10890
+      Left            =   8310
       TabIndex        =   59
-      Top             =   1800
+      Top             =   1605
       Visible         =   0   'False
       Width           =   1845
       _ExtentX        =   3254
@@ -239,9 +239,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucPacienteExternos ucPacienteExternos1 
       Height          =   525
-      Left            =   9720
+      Left            =   8145
       TabIndex        =   58
-      Top             =   2280
+      Top             =   2145
       Visible         =   0   'False
       Width           =   3045
       _ExtentX        =   5371
@@ -276,9 +276,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucContanciasDeAtencion ucContanciasAtencion 
       Height          =   735
-      Left            =   9480
+      Left            =   4695
       TabIndex        =   56
-      Top             =   3960
+      Top             =   5115
       Visible         =   0   'False
       Width           =   1335
       _ExtentX        =   2355
@@ -286,9 +286,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucMovimientoFormatoHcLista ucMovimientoFormatoHcLista1 
       Height          =   465
-      Left            =   4260
+      Left            =   3255
       TabIndex        =   55
-      Top             =   2730
+      Top             =   2340
       Visible         =   0   'False
       Width           =   1125
       _ExtentX        =   1773
@@ -296,9 +296,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucMovimientoHistoriasLista ucMovimientoHistoriasLista1 
       Height          =   585
-      Left            =   2460
+      Left            =   210
       TabIndex        =   54
-      Top             =   2670
+      Top             =   2805
       Visible         =   0   'False
       Width           =   1725
       _ExtentX        =   3043
@@ -306,9 +306,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucReembolsosLista ucReembolsosLista1 
       Height          =   705
-      Left            =   8700
+      Left            =   5625
       TabIndex        =   53
-      Top             =   2640
+      Top             =   3300
       Visible         =   0   'False
       Width           =   1455
       _ExtentX        =   2566
@@ -316,9 +316,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucFarmNiLista ucFarmNiLista1 
       Height          =   645
-      Left            =   8520
+      Left            =   8325
       TabIndex        =   52
-      Top             =   8700
+      Top             =   7830
       Visible         =   0   'False
       Width           =   1425
       _ExtentX        =   2514
@@ -326,9 +326,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucFacturacionLaboratorio ucFactOrdenesLaboratorio 
       Height          =   375
-      Left            =   11280
+      Left            =   10380
       TabIndex        =   48
-      Top             =   6240
+      Top             =   1470
       Visible         =   0   'False
       Width           =   1335
       _ExtentX        =   2355
@@ -336,9 +336,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucArchivadoresLista ucArchivadoresLista1 
       Height          =   645
-      Left            =   10380
+      Left            =   8415
       TabIndex        =   45
-      Top             =   2790
+      Top             =   2745
       Visible         =   0   'False
       Width           =   2055
       _ExtentX        =   3625
@@ -346,9 +346,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.UcImagSalidas UcImagSalidas1 
       Height          =   585
-      Left            =   10920
+      Left            =   10380
       TabIndex        =   44
-      Top             =   6540
+      Top             =   30
       Visible         =   0   'False
       Width           =   1845
       _ExtentX        =   3254
@@ -356,9 +356,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.UcImagIngresos UcImagIngresos1 
       Height          =   645
-      Left            =   10950
+      Left            =   10455
       TabIndex        =   43
-      Top             =   7260
+      Top             =   5100
       Visible         =   0   'False
       Width           =   1845
       _ExtentX        =   3254
@@ -366,9 +366,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.UcImagenesLista UcImagenesLista1 
       Height          =   585
-      Left            =   10950
+      Left            =   11295
       TabIndex        =   42
-      Top             =   8040
+      Top             =   2115
       Visible         =   0   'False
       Width           =   1845
       _ExtentX        =   3254
@@ -386,9 +386,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucFarmVentasLista ucFarmVentasLista1 
       Height          =   735
-      Left            =   11010
+      Left            =   11850
       TabIndex        =   40
-      Top             =   8760
+      Top             =   2730
       Visible         =   0   'False
       Width           =   1815
       _ExtentX        =   3201
@@ -396,9 +396,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucFarmIntervencionLista ucFarmIntervencionLista1 
       Height          =   735
-      Left            =   6270
+      Left            =   4050
       TabIndex        =   39
-      Top             =   8550
+      Top             =   7560
       Visible         =   0   'False
       Width           =   1095
       _ExtentX        =   1931
@@ -406,9 +406,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucFarmNsLista ucFarmNsLista1 
       Height          =   615
-      Left            =   9960
+      Left            =   9855
       TabIndex        =   38
-      Top             =   8670
+      Top             =   7905
       Visible         =   0   'False
       Width           =   765
       _ExtentX        =   1349
@@ -416,9 +416,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucPartidasLista ucPartidasLista1 
       Height          =   825
-      Left            =   5880
+      Left            =   2580
       TabIndex        =   37
-      Top             =   90
+      Top             =   45
       Visible         =   0   'False
       Width           =   2145
       _ExtentX        =   3784
@@ -426,9 +426,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucFarmInventarioLista ucFarmInventarioLista1 
       Height          =   795
-      Left            =   7500
+      Left            =   5355
       TabIndex        =   36
-      Top             =   8580
+      Top             =   7710
       Visible         =   0   'False
       Width           =   945
       _ExtentX        =   1667
@@ -446,9 +446,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucPacientesLista ucPacientesLista1 
       Height          =   585
-      Left            =   5640
+      Left            =   3525
       TabIndex        =   34
-      Top             =   5040
+      Top             =   4080
       Visible         =   0   'False
       Width           =   1560
       _ExtentX        =   2752
@@ -456,9 +456,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucGestionCaja ucGestionCaja1 
       Height          =   795
-      Left            =   5520
+      Left            =   3195
       TabIndex        =   33
-      Top             =   3480
+      Top             =   3255
       Visible         =   0   'False
       Width           =   2415
       _ExtentX        =   4260
@@ -466,9 +466,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucFacturacionOrdenesLista ucFacturacionGeneralLista 
       Height          =   585
-      Left            =   8940
+      Left            =   4425
       TabIndex        =   27
-      Top             =   4680
+      Top             =   5715
       Visible         =   0   'False
       Width           =   2055
       _ExtentX        =   3625
@@ -476,9 +476,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucEstadoCuenta ucEstadoCuenta1 
       Height          =   375
-      Left            =   5880
+      Left            =   3585
       TabIndex        =   26
-      Top             =   8220
+      Top             =   7515
       Visible         =   0   'False
       Width           =   3255
       _ExtentX        =   5741
@@ -486,9 +486,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucEspecialidadesLista ucEspecialidadesLista1 
       Height          =   375
-      Left            =   8910
+      Left            =   4680
       TabIndex        =   25
-      Top             =   4080
+      Top             =   4680
       Visible         =   0   'False
       Width           =   1095
       _ExtentX        =   1931
@@ -496,9 +496,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucCatalogoServiciosLista ucCatalogoServiciosLista1 
       Height          =   495
-      Left            =   2460
+      Left            =   360
       TabIndex        =   24
-      Top             =   8460
+      Top             =   8265
       Visible         =   0   'False
       Width           =   3435
       _ExtentX        =   5318
@@ -516,9 +516,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucCajeroLista ucCajeroLista1 
       Height          =   435
-      Left            =   5700
+      Left            =   2535
       TabIndex        =   22
-      Top             =   3120
+      Top             =   2805
       Visible         =   0   'False
       Width           =   2955
       _ExtentX        =   5212
@@ -526,9 +526,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucCajaLista ucCajaLista1 
       Height          =   375
-      Left            =   2520
+      Left            =   -210
       TabIndex        =   21
-      Top             =   7560
+      Top             =   8055
       Visible         =   0   'False
       Width           =   2895
       _ExtentX        =   5106
@@ -536,9 +536,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucSolicitudHistoriasLista ucSolicitudHistoriasLista1 
       Height          =   465
-      Left            =   8670
+      Left            =   5490
       TabIndex        =   20
-      Top             =   1950
+      Top             =   2880
       Visible         =   0   'False
       Width           =   1950
       _ExtentX        =   3440
@@ -550,8 +550,8 @@ Begin VB.Form Principal
       Left            =   0
       TabIndex        =   19
       Top             =   8745
-      Width           =   9840
-      _ExtentX        =   17357
+      Width           =   16275
+      _ExtentX        =   28707
       _ExtentY        =   609
       _Version        =   393216
       BeginProperty Panels {8E3867A5-8586-11D1-B16A-00C0F0283628} 
@@ -600,9 +600,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucRolesLista ucRolesLista1 
       Height          =   525
-      Left            =   8610
+      Left            =   5685
       TabIndex        =   18
-      Top             =   720
+      Top             =   1440
       Visible         =   0   'False
       Width           =   2280
       _ExtentX        =   4022
@@ -610,9 +610,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucAdmisionLista ucAdmisionCE 
       Height          =   1770
-      Left            =   8535
+      Left            =   4365
       TabIndex        =   16
-      Top             =   0
+      Top             =   75
       Visible         =   0   'False
       Width           =   3885
       _ExtentX        =   6853
@@ -620,9 +620,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucAdmisionLista ucAdmisionHospitalizacion 
       Height          =   555
-      Left            =   8850
+      Left            =   5100
       TabIndex        =   15
-      Top             =   3270
+      Top             =   4035
       Visible         =   0   'False
       Width           =   2835
       _ExtentX        =   5001
@@ -630,9 +630,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucAdmisionLista ucAdmisionObservacion 
       Height          =   585
-      Left            =   2460
+      Left            =   -105
       TabIndex        =   14
-      Top             =   6060
+      Top             =   6570
       Visible         =   0   'False
       Width           =   2865
       _ExtentX        =   5054
@@ -640,9 +640,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucCamasLista ucCamasLista1 
       Height          =   615
-      Left            =   5790
+      Left            =   3600
       TabIndex        =   13
-      Top             =   7440
+      Top             =   7035
       Visible         =   0   'False
       Width           =   2655
       _ExtentX        =   4683
@@ -650,9 +650,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucEstablecimientosNoMinsaL ucEstablecimientosNoMinsaLista1 
       Height          =   555
-      Left            =   2430
+      Left            =   -255
       TabIndex        =   12
-      Top             =   5490
+      Top             =   5985
       Visible         =   0   'False
       Width           =   3165
       _ExtentX        =   5583
@@ -660,9 +660,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucFuentesFinanLista ucFuentesFinanciamientoLista1 
       Height          =   585
-      Left            =   5640
+      Left            =   3180
       TabIndex        =   11
-      Top             =   2520
+      Top             =   1830
       Visible         =   0   'False
       Width           =   2415
       _ExtentX        =   4260
@@ -670,9 +670,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucTiposFinanciamientoLista ucTiposFinanciamientoLista1 
       Height          =   615
-      Left            =   5580
+      Left            =   2775
       TabIndex        =   10
-      Top             =   1920
+      Top             =   1365
       Visible         =   0   'False
       Width           =   2775
       _ExtentX        =   4895
@@ -680,9 +680,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucDiagnosticosLista ucDiagnosticosLista1 
       Height          =   525
-      Left            =   5700
+      Left            =   2595
       TabIndex        =   9
-      Top             =   1380
+      Top             =   915
       Visible         =   0   'False
       Width           =   2745
       _ExtentX        =   4842
@@ -690,9 +690,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucProcedimientosLista ucProcedimientosLista1 
       Height          =   495
-      Left            =   5640
+      Left            =   2580
       TabIndex        =   8
-      Top             =   810
+      Top             =   525
       Visible         =   0   'False
       Width           =   2745
       _ExtentX        =   4842
@@ -700,9 +700,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucHistoriaClinicaLista ucHistoriaClinicaLista1 
       Height          =   555
-      Left            =   2430
+      Left            =   -15
       TabIndex        =   7
-      Top             =   4890
+      Top             =   5355
       Visible         =   0   'False
       Width           =   3105
       _ExtentX        =   5477
@@ -710,9 +710,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucServiciosLista ucServiciosLista1 
       Height          =   675
-      Left            =   2400
+      Left            =   15
       TabIndex        =   6
-      Top             =   4350
+      Top             =   4620
       Visible         =   0   'False
       Width           =   3105
       _ExtentX        =   5477
@@ -720,9 +720,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucCitasLista ucCitasLista1 
       Height          =   675
-      Left            =   2430
+      Left            =   135
       TabIndex        =   5
-      Top             =   3720
+      Top             =   3975
       Visible         =   0   'False
       Width           =   3105
       _ExtentX        =   5477
@@ -730,9 +730,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucProgramacionLista ucProgramacionLista1 
       Height          =   645
-      Left            =   2520
+      Left            =   75
       TabIndex        =   4
-      Top             =   3240
+      Top             =   3420
       Visible         =   0   'False
       Width           =   3105
       _ExtentX        =   5477
@@ -740,9 +740,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucEmpleadosLista ucEmpleadosLista1 
       Height          =   585
-      Left            =   2400
+      Left            =   90
       TabIndex        =   3
-      Top             =   2040
+      Top             =   2235
       Visible         =   0   'False
       Width           =   3105
       _ExtentX        =   5477
@@ -750,9 +750,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucAdmisionLista ucAdmisionConsEmerg 
       Height          =   585
-      Left            =   2460
+      Left            =   15
       TabIndex        =   2
-      Top             =   1290
+      Top             =   1605
       Visible         =   0   'False
       Width           =   3105
       _ExtentX        =   5477
@@ -760,9 +760,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucFacturacionOrdenesLista ucFactAnatomiaPatologica 
       Height          =   525
-      Left            =   8910
+      Left            =   4380
       TabIndex        =   28
-      Top             =   5460
+      Top             =   6165
       Visible         =   0   'False
       Width           =   1635
       _ExtentX        =   2884
@@ -770,9 +770,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucFacturacionOrdenesLista ucFactPatologiaClinica 
       Height          =   525
-      Left            =   8910
+      Left            =   4470
       TabIndex        =   29
-      Top             =   6150
+      Top             =   6465
       Visible         =   0   'False
       Width           =   1395
       _ExtentX        =   2461
@@ -780,9 +780,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucFacturacionOrdenesLista ucFactImagenologia 
       Height          =   525
-      Left            =   8910
+      Left            =   10110
       TabIndex        =   30
-      Top             =   6810
+      Top             =   6180
       Visible         =   0   'False
       Width           =   1395
       _ExtentX        =   2461
@@ -790,9 +790,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucFacturacionOrdenesLista ucFactFarmacia 
       Height          =   525
-      Left            =   8910
+      Left            =   7320
       TabIndex        =   31
-      Top             =   7440
+      Top             =   7155
       Visible         =   0   'False
       Width           =   1545
       _ExtentX        =   2725
@@ -800,9 +800,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucFacturacionOrdenesLista ucFactSalaOperaciones 
       Height          =   525
-      Left            =   8880
+      Left            =   9075
       TabIndex        =   32
-      Top             =   8070
+      Top             =   7155
       Visible         =   0   'False
       Width           =   1665
       _ExtentX        =   2937
@@ -810,9 +810,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucFacturacionLaboratorio ucFacturacionBS 
       Height          =   375
-      Left            =   11280
+      Left            =   8430
       TabIndex        =   46
-      Top             =   5520
+      Top             =   5610
       Visible         =   0   'False
       Width           =   1335
       _ExtentX        =   2355
@@ -820,9 +820,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucFacturacionLaboratorio ucFacturacionOrdenesPatologia 
       Height          =   375
-      Left            =   11280
+      Left            =   10470
       TabIndex        =   47
-      Top             =   6000
+      Top             =   2820
       Visible         =   0   'False
       Width           =   1335
       _ExtentX        =   2355
@@ -830,9 +830,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.UcLabIngresos UcLabIngresos1 
       Height          =   615
-      Left            =   11160
+      Left            =   8325
       TabIndex        =   49
-      Top             =   3840
+      Top             =   4005
       Visible         =   0   'False
       Width           =   1455
       _ExtentX        =   2566
@@ -840,9 +840,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.UcLabSalidas UcLabSalidas1 
       Height          =   735
-      Left            =   11160
+      Left            =   6585
       TabIndex        =   50
-      Top             =   4320
+      Top             =   4665
       Visible         =   0   'False
       Width           =   1455
       _ExtentX        =   2566
@@ -850,9 +850,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucFacturacionLaboratorio ucFacturacionLaboratorio2 
       Height          =   375
-      Left            =   11280
+      Left            =   10185
       TabIndex        =   51
-      Top             =   5640
+      Top             =   4590
       Visible         =   0   'False
       Width           =   1335
       _ExtentX        =   2355
@@ -860,9 +860,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucMedicosLista ucMedicosLista1 
       Height          =   585
-      Left            =   2460
+      Left            =   15
       TabIndex        =   1
-      Top             =   660
+      Top             =   1035
       Visible         =   0   'False
       Width           =   3105
       _ExtentX        =   5477
@@ -1048,9 +1048,9 @@ Begin VB.Form Principal
       Width           =   10200
       Begin SISGalenPlus.ucTurnosLista ucTurnosLista1 
          Height          =   555
-         Left            =   2325
+         Left            =   75
          TabIndex        =   82
-         Top             =   240
+         Top             =   555
          Visible         =   0   'False
          Width           =   2625
          _ExtentX        =   4630
@@ -1059,9 +1059,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucGestionDevolucion ucGestionDevolucion2 
       Height          =   1215
-      Left            =   10920
+      Left            =   11490
       TabIndex        =   78
-      Top             =   7440
+      Top             =   3675
       Visible         =   0   'False
       Width           =   2775
       _ExtentX        =   4895
@@ -1069,9 +1069,9 @@ Begin VB.Form Principal
    End
    Begin SISGalenPlus.ucFarmHpreciosLista ucFarmHpreciosLista1 
       Height          =   615
-      Left            =   11040
+      Left            =   6585
       TabIndex        =   79
-      Top             =   5160
+      Top             =   5505
       Visible         =   0   'False
       Width           =   3015
       _ExtentX        =   5318

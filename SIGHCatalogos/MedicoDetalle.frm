@@ -5,9 +5,9 @@ Begin VB.Form MedicoDetalle
    BorderStyle     =   1  'Fixed Single
    Caption         =   "Form1"
    ClientHeight    =   8040
-   ClientLeft      =   48
-   ClientTop       =   336
-   ClientWidth     =   11892
+   ClientLeft      =   45
+   ClientTop       =   330
+   ClientWidth     =   11895
    BeginProperty Font 
       Name            =   "Tahoma"
       Size            =   9
@@ -23,12 +23,12 @@ Begin VB.Form MedicoDetalle
    MaxButton       =   0   'False
    MinButton       =   0   'False
    ScaleHeight     =   8040
-   ScaleWidth      =   11892
+   ScaleWidth      =   11895
    StartUpPosition =   2  'CenterScreen
    Begin VB.Frame Frame3 
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   0
          Weight          =   400
          Underline       =   0   'False
@@ -59,7 +59,7 @@ Begin VB.Form MedicoDetalle
          DownPicture     =   "MedicoDetalle.frx":1055
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -79,7 +79,7 @@ Begin VB.Form MedicoDetalle
          DownPicture     =   "MedicoDetalle.frx":1B62
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -100,7 +100,7 @@ Begin VB.Form MedicoDetalle
          TabIndex        =   18
          Top             =   1395
          Width           =   6090
-         _ExtentX        =   10732
+         _ExtentX        =   10742
          _ExtentY        =   9525
          _Version        =   131072
          GridFlags       =   17040384
@@ -136,7 +136,7 @@ Begin VB.Form MedicoDetalle
    Begin VB.Frame Frame2 
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   0
          Weight          =   400
          Underline       =   0   'False
@@ -213,7 +213,7 @@ Begin VB.Form MedicoDetalle
    Begin VB.Frame Frame1 
       BeginProperty Font 
          Name            =   "MS Sans Serif"
-         Size            =   7.8
+         Size            =   8.25
          Charset         =   0
          Weight          =   400
          Underline       =   0   'False
@@ -228,7 +228,7 @@ Begin VB.Form MedicoDetalle
       Begin VB.ComboBox cmbIdPais 
          BeginProperty Font 
             Name            =   "Tahoma"
-            Size            =   8.4
+            Size            =   8.25
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -278,7 +278,7 @@ Begin VB.Form MedicoDetalle
       Begin VB.TextBox txtSupervisor 
          BeginProperty Font 
             Name            =   "Tahoma"
-            Size            =   8.4
+            Size            =   8.25
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -297,7 +297,7 @@ Begin VB.Form MedicoDetalle
          DownPicture     =   "MedicoDetalle.frx":42EB
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -317,7 +317,7 @@ Begin VB.Form MedicoDetalle
          DownPicture     =   "MedicoDetalle.frx":4DF8
          BeginProperty Font 
             Name            =   "MS Sans Serif"
-            Size            =   7.8
+            Size            =   8.25
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -352,7 +352,7 @@ Begin VB.Form MedicoDetalle
       Begin VB.ComboBox cmbColegioHIS 
          BeginProperty Font 
             Name            =   "Tahoma"
-            Size            =   8.4
+            Size            =   8.25
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -449,7 +449,7 @@ Begin VB.Form MedicoDetalle
          Top             =   1650
          Width           =   1440
          _ExtentX        =   2540
-         _ExtentY        =   550
+         _ExtentY        =   556
          _Version        =   393216
          MaxLength       =   10
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -776,7 +776,9 @@ Dim sSQL As String
        mo_CmbIdPais.ListField = "Nombre"
        Set mo_CmbIdPais.RowSource = mo_AdminServiciosGeograficos.PaisesSeleccionarTodos()
        mo_CmbIdPais.BoundText = "166"
-       cmbIdPais.Enabled = False
+       '       cmbIdPais.Enabled = False
+       'GLCC Combo debe estar activo - 20-07-2020
+       cmbIdPais.Enabled = True
        'SCCQ 25/03/2020 Cambio2 Fin
 End Sub
 
@@ -851,13 +853,11 @@ Private Sub cmbIdDocIdentidad_LostFocus()
     End Select
 
 End Sub
-
 Private Sub cmbIdEspecialidad_KeyDown(KeyCode As Integer, Shift As Integer)
     mo_Teclado.RealizarNavegacion KeyCode, cmbIdEspecialidad
     AdministrarKeyPreview KeyCode
 
 End Sub
-
 Private Sub cmbIdEspecialidad_KeyPress(KeyAscii As Integer)
    If Not mo_Teclado.CodigoAsciiEsEspecial(KeyAscii) Then
        If Not mo_Teclado.CodigoAsciiEsNumero(KeyAscii) Then
@@ -1632,10 +1632,10 @@ Sub CargarDatosALosControles()
                     Case 1    'dni
                     'Si es DNI el país debe ser siempre Perú
                         mo_CmbIdPais.BoundText = "166" '166 es para Perú
-                         cmbIdPais.Enabled = False
+                         cmbIdPais.Enabled = True
                     Case Else
                          cmbIdPais.Enabled = True
-                         mo_CmbIdPais.BoundText = .IdPais
+                        mo_CmbIdPais.BoundText = .IdPais
                     End Select
                 'SCCQ 25/03/2020 Cambio2 Fin
                 BuscaEmpleadoYllenaDatosDelSupervisor .IdSupervisor

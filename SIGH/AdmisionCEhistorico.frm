@@ -1,6 +1,6 @@
 VERSION 5.00
 Object = "{5A9433E9-DD7B-4529-91B6-A5E8CA054615}#2.0#0"; "IGULTR~1.OCX"
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "tabctl32.ocx"
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
 Begin VB.Form AdmisionCEhistorico 
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "Datos Históricos en Consultorios Externos"
@@ -97,9 +97,9 @@ Begin VB.Form AdmisionCEhistorico
          TabCaption(1)   =   "Atención integral Niño Sano"
          TabPicture(1)   =   "AdmisionCEhistorico.frx":139D
          Tab(1).ControlEnabled=   0   'False
-         Tab(1).Control(0)=   "lblControl"
+         Tab(1).Control(0)=   "ucPerinatalAS1"
          Tab(1).Control(1)=   "grdControles"
-         Tab(1).Control(2)=   "ucPerinatalAS1"
+         Tab(1).Control(2)=   "lblControl"
          Tab(1).ControlCount=   3
          TabCaption(2)   =   "Historico de atenciones"
          TabPicture(2)   =   "AdmisionCEhistorico.frx":13B9
@@ -138,9 +138,9 @@ Begin VB.Form AdmisionCEhistorico
             TabCaption(1)   =   "Solo con Resultados (cpt de Laboratorio/Imágenes)"
             TabPicture(1)   =   "AdmisionCEhistorico.frx":13F1
             Tab(1).ControlEnabled=   0   'False
-            Tab(1).Control(0)=   "chkSoloConResultados"
+            Tab(1).Control(0)=   "Label4"
             Tab(1).Control(1)=   "grdApoyoDx"
-            Tab(1).Control(2)=   "Label4"
+            Tab(1).Control(2)=   "chkSoloConResultados"
             Tab(1).ControlCount=   3
             Begin VB.CheckBox chkSoloConResultados 
                Caption         =   "Solo con Resultados"
@@ -212,8 +212,8 @@ Begin VB.Form AdmisionCEhistorico
                TabCaption(1)   =   "Imágenes (exámenes)"
                TabPicture(1)   =   "AdmisionCEhistorico.frx":1429
                Tab(1).ControlEnabled=   0   'False
-               Tab(1).Control(0)=   "grdImagenes"
-               Tab(1).Control(1)=   "Label3"
+               Tab(1).Control(0)=   "Label3"
+               Tab(1).Control(1)=   "grdImagenes"
                Tab(1).ControlCount=   2
                TabCaption(2)   =   "Farmacia (despachos)"
                TabPicture(2)   =   "AdmisionCEhistorico.frx":1445
@@ -223,8 +223,8 @@ Begin VB.Form AdmisionCEhistorico
                TabCaption(3)   =   "Laboratorio (exámenes)"
                TabPicture(3)   =   "AdmisionCEhistorico.frx":1461
                Tab(3).ControlEnabled=   0   'False
-               Tab(3).Control(0)=   "grdLaboratorio"
-               Tab(3).Control(1)=   "Label2"
+               Tab(3).Control(0)=   "Label2"
+               Tab(3).Control(1)=   "grdLaboratorio"
                Tab(3).ControlCount=   2
                TabCaption(4)   =   "Otros CPT"
                TabPicture(4)   =   "AdmisionCEhistorico.frx":147D
@@ -744,7 +744,7 @@ Attribute VB_Exposed = False
 '
 '------------------------------------------------------------------------------------
 Option Explicit
-Dim mo_Apariencia As New sighentidades.GridInfragistic
+Dim mo_Apariencia As New sighEntidades.GridInfragistic
 Dim mo_ReglasLaboratorio As New SIGHNegocios.ReglasLaboratorio
 Dim mo_ReglasComunes As New SIGHNegocios.ReglasComunes
 Dim mo_AdminAdmision As New SIGHNegocios.ReglasAdmision
@@ -763,7 +763,7 @@ Dim ml_NombreMedico As String
 Dim ml_areaTrabajo As Long
 Dim ml_idOrdenLab As Long
 Dim ldFechaNacimiento As Date
-Dim mo_Formulario As New sighentidades.Formulario
+Dim mo_Formulario As New sighEntidades.Formulario
 Dim lcBuscaParametro As New SIGHDatos.Parametros
 Dim oRsCitasAnteriores As New Recordset
 Dim oRsServiciosIntermedios As New Recordset
@@ -859,7 +859,7 @@ End Sub
 Private Sub chkSoloConResultados_Click()
     Me.MousePointer = 11
     CargaSoloResultadosImagenesLaboratorio
-    mo_Apariencia.ConfigurarFilasBiColores grdApoyoDx, sighentidades.GrillaConFilasBicolor
+    mo_Apariencia.ConfigurarFilasBiColores grdApoyoDx, sighEntidades.GrillaConFilasBicolor
     Me.MousePointer = 1
 End Sub
 
@@ -889,15 +889,15 @@ Private Sub Form_Load()
    Set oRsCitasAnteriores = mo_AdminAdmision.AtencionesCeXnrohistoria(ml_NroHistoriaClinica, oConexion)
    Set Me.grdAnteriores.DataSource = oRsCitasAnteriores
    grdFarmacia.Caption = "": grdImagenes.Caption = "": grdLaboratorio.Caption = ""
-   mo_Apariencia.ConfigurarFilasBiColores grdAnteriores, sighentidades.GrillaConFilasBicolor
-   mo_Apariencia.ConfigurarFilasBiColores grdFarmacia, sighentidades.GrillaConFilasBicolor
-   mo_Apariencia.ConfigurarFilasBiColores grdImagenes, sighentidades.GrillaConFilasBicolor
-   mo_Apariencia.ConfigurarFilasBiColores grdLaboratorio, sighentidades.GrillaConFilasBicolor
-   mo_Apariencia.ConfigurarFilasBiColores grdOtrosCpt, sighentidades.GrillaConFilasBicolor
+   mo_Apariencia.ConfigurarFilasBiColores grdAnteriores, sighEntidades.GrillaConFilasBicolor
+   mo_Apariencia.ConfigurarFilasBiColores grdFarmacia, sighEntidades.GrillaConFilasBicolor
+   mo_Apariencia.ConfigurarFilasBiColores grdImagenes, sighEntidades.GrillaConFilasBicolor
+   mo_Apariencia.ConfigurarFilasBiColores grdLaboratorio, sighEntidades.GrillaConFilasBicolor
+   mo_Apariencia.ConfigurarFilasBiColores grdOtrosCpt, sighEntidades.GrillaConFilasBicolor
    '
    Set oRsControlesNS = mo_ReglasComunes.PerinatalAtencionCredSeleccionarControles(ml_IdPaciente)
    Set grdControles.DataSource = oRsControlesNS
-   mo_Apariencia.ConfigurarFilasBiColores grdControles, sighentidades.GrillaConFilasBicolor
+   mo_Apariencia.ConfigurarFilasBiColores grdControles, sighEntidades.GrillaConFilasBicolor
    '
    TieneAccesoAlBotonImprimir
    '
@@ -921,7 +921,7 @@ End Sub
 
 Sub TieneAccesoAlBotonImprimir()
     Dim oRsPermisos As New Recordset
-    Set oRsPermisos = ms_ReglasSeguridad.UsuariosRolesSeleccionarPermisosTodos(sighentidades.Usuario)
+    Set oRsPermisos = ms_ReglasSeguridad.UsuariosRolesSeleccionarPermisosTodos(sighEntidades.Usuario)
     oRsPermisos.Filter = "IdPermiso=407"
     If oRsPermisos.RecordCount = 0 Then
        btnImprime.Enabled = False
@@ -1134,7 +1134,7 @@ Private Sub grdControles_DblClick()
        Dim oConexion1 As New Connection
        oConexion1.CommandTimeout = 900
        oConexion1.CursorLocation = adUseClient
-       oConexion1.Open sighentidades.CadenaConexion
+       oConexion1.Open sighEntidades.CadenaConexion
        
        lnPeso9 = 0: lnTalla9 = 0
        If oRsCitasAnteriores.RecordCount > 0 Then
@@ -1151,20 +1151,20 @@ Private Sub grdControles_DblClick()
        End If
        
        lnEdadEnDias = oRsControlesNS!Edad
-       lnIdTipoEdad = oRsControlesNS!IdTipoEdad
+       lnIdTipoEdad = oRsControlesNS!idTipoEdad
        
            
         Me.ucPerinatalAS1.FechaAtencion = oRsControlesNS!fechaEgreso
         Me.ucPerinatalAS1.FechaNacimiento = oRsControlesNS!FechaNacimiento
        'If lbCargaUnaSolaVez = False Then
        '   lbCargaUnaSolaVez = True
-           Me.ucPerinatalAS1.idUsuario = sighentidades.Usuario
+           Me.ucPerinatalAS1.idUsuario = sighEntidades.Usuario
            Me.ucPerinatalAS1.Inicializar
        'End If
        Me.ucPerinatalAS1.idPaciente = ml_IdPaciente
        Me.ucPerinatalAS1.idAtencion = oRsControlesNS!idAtencion
        Me.ucPerinatalAS1.idTipoSexo = oRsControlesNS!idTipoSexo
-       Me.ucPerinatalAS1.EdadEnMeses = sighentidades.DevuelveEdadEnMeses(oRsControlesNS!FechaNacimiento, oRsControlesNS!fechaEgreso)
+       Me.ucPerinatalAS1.EdadEnMeses = sighEntidades.DevuelveEdadEnMeses(oRsControlesNS!FechaNacimiento, oRsControlesNS!fechaEgreso)
        Me.ucPerinatalAS1.CargaDatosAcontroles lnEdadEnDias, lnIdTipoEdad, lnPeso9, lnTalla9, oConexion1
        lblControl.Caption = "N° " & Trim(Str(oRsControlesNS!CredN)) & _
                             "  F.Atención: " & oRsControlesNS!fechaEgreso & _
@@ -1385,7 +1385,7 @@ Private Sub SSTabResultados_Click(PreviousTab As Integer)
         Case 1   'Imagenes/laboratorio
              Me.MousePointer = 11
              CargaSoloResultadosImagenesLaboratorio
-             mo_Apariencia.ConfigurarFilasBiColores grdApoyoDx, sighentidades.GrillaConFilasBicolor
+             mo_Apariencia.ConfigurarFilasBiColores grdApoyoDx, sighEntidades.GrillaConFilasBicolor
              Me.MousePointer = 1
         End Select
 End Sub

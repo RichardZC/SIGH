@@ -679,8 +679,8 @@ Public Sub CargarDatosDePacienteALosControles()
   End If
   If Not oPacientes Is Nothing Then
     With oPacientes
-                txtGs.Text = .GrupoSanguineo
-                txtFRh.Text = .FactorRh
+                txtGs.Text = .grupoSanguineo
+                txtFRh.Text = .factorRh
                 mo_Formulario.HabilitarDeshabilitar txtGs, False
                 mo_Formulario.HabilitarDeshabilitar txtFRh, False
     

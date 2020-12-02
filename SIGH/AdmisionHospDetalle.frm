@@ -3038,7 +3038,6 @@ Dim mo_DoAtencionDatosAdicionales As New DoAtencionDatosAdicionales
 Dim ldFechaEgresoMedicoAnterior As Date   'cuando se "modifique", generar "consumo por dias estancia"
 Dim mo_lnIdTablaLISTBARITEMS As Long, mo_lcNombrePc As String
 Dim wxParametroBusqRapida As String
-
 '------------------------------------------------------------------------------------
 '                               VARIABLES CUENTAS DE ATENCION
 '------------------------------------------------------------------------------------
@@ -3527,7 +3526,10 @@ Private Sub btnBuscarPaciente_Click()
     lcPnom = ""
     lcSnombreReniec = "": ldFnacimientoReniec = 0: lnIdSexoReniec = 0: lcDireccionReniec = "": mb_UsoWebReniec = False
     
-    oDOPaciente.NroHistoriaClinica = Val(HCigualDNI_AgregaNUEVEaLaHistoria(Me.txtNroHistoriaBusqueda.Text))
+'<(Inicio) Modificado Por: WABG el 18/10/2020-04:53:51 p.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
+    'oDOPaciente.NroHistoriaClinica = Val(HCigualDNI_AgregaNUEVEaLaHistoria(Me.txtNroHistoriaBusqueda.Text))
+    oDOPaciente.NroHistoriaClinica = Val(Me.txtNroHistoriaBusqueda.Text)
+'</(Fin) Modificado Por: Project Administrator el 18/10/2020-04:53:51 p.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
     oDOPaciente.ApellidoPaterno = Me.txtApellidoPaternoBusqueda
     oDOPaciente.ApellidoMaterno = Me.txtApellidoMaternoBusqueda
     oDOPaciente.PrimerNombre = Me.txtPrimerNombreBusqueda
@@ -3957,6 +3959,10 @@ Private Sub chkPacienteNuevo_Click()
         txtNroHistoriaBusqueda.Text = ""
         txtNroDNIBusqueda = ""
         Me.tabAdmision.Tab = 0
+        '
+'<(Inicio) Añadido Por: WABG el: 27/10/2020-08:54:54 p.m.en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
+        Me.ucPacientesDetalle1.HabilitarControlesDeTextoRENIEC
+'</(Fin) Añadido Por: WABG el: 27/10/2020-08:54:54 p.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
         
         Me.ucPacientesDetalle1.ConfigurarValoresPorDefecto
         '
@@ -4592,7 +4598,14 @@ Sub grdPacientesEncontradosSIS()
                 If lnIdPlanSIS > 0 Then
                      cmbFuenteFinanciamiento.BoundText = lnIdPlanSIS
                      cmbFuenteFinanciamiento_Click 1
-                     Me.ucPacientesDetalle1.SetFocusEnDNI
+                     
+
+'<(Inicio) Añadido Por: WABG el: 13/11/2020-12:51:14 p.m.en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
+                     Me.ucPacientesDetalle1.deshabilitarControlesDeTextoRENIEC
+'</(Fin) Añadido Por: WABG el: 13/11/2020-12:51:14 p.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
+'<(Inicio)Comentado Por: WABG el: 13/11/2020-12:42:22 p.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
+'                     Me.ucPacientesDetalle1.SetFocusEnDNI
+'</(Fin)Comentado por: WABG el: 13/11/2020-12:42:22 p.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
                 End If
             End If
         End If

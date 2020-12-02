@@ -58,7 +58,6 @@ Property Set RowSourceSinClear(rsRecordset As ADODB.Recordset)
         CargarComboBoxDesdeRecordsetSinClear mo_ComboBox, rsRecordset, ms_BoundColumn, ms_ListField
     End If
 End Property
-
 Property Let BoundText(sValue As String)
     
     ms_BoundText = sValue
@@ -157,8 +156,6 @@ Property Set RowSourceTextCompuesto(rsRecordset As ADODB.Recordset)
         CargarComboBoxDesdeRecordsetTextCompuesto mo_ComboBox, rsRecordset, ms_BoundColumn, ms_ListField
     End If
 End Property
-
-
 'permite concatenar varios campos en lo que se mmuestra en la lista de la lista desplegable
 '|:fieldName|(|:fieldName|) los valores que desea concatenar deben ir separados por | y si se quiere concatener el valor de un campo de recordset se debe iniciar con :
 Private Sub CargarComboBoxDesdeRecordsetTextCompuesto(oComboBox As Object, rsDatos As ADODB.Recordset, sCodigo As String, sDescripcion As String)
@@ -183,7 +180,6 @@ Private Sub CargarComboBoxDesdeRecordsetTextCompuesto(oComboBox As Object, rsDat
             rsDatos.MoveNext
         Loop
 End Sub
-
 Private Function DevuelveValorTextoCompuesto(rsDatos As ADODB.Recordset, arrayListaCampos As Variant) As String
     Dim I As Integer
     Dim sCadena As String

@@ -54,7 +54,7 @@ Begin VB.Form frmPlanDesarrollo
          ScaleHeight     =   9975
          ScaleWidth      =   10335
          TabIndex        =   1
-         Top             =   0
+         Top             =   15
          Width           =   10335
          Begin VB.TextBox itemDesarrolloSi 
             Alignment       =   2  'Center
@@ -250,10 +250,10 @@ Begin VB.Form frmPlanDesarrollo
             EndProperty
             Height          =   180
             Index           =   7
-            Left            =   4530
+            Left            =   4485
             TabIndex        =   136
             Text            =   "x"
-            Top             =   1560
+            Top             =   1575
             Width           =   255
          End
          Begin VB.TextBox itemDesarrolloSi 
@@ -2983,7 +2983,7 @@ Private Sub ocultarControles()
 End Sub
 
 Private Sub Form_Activate()
-    inicializar
+    Inicializar
 End Sub
 
 Private Sub Form_Initialize()
@@ -3002,7 +3002,7 @@ Private Sub Form_Load()
     ocultarControles
 End Sub
 
-Private Sub inicializar()
+Private Sub Inicializar()
 On Error GoTo miError
     If Not (mo_rsPlanDesarrollo Is Nothing) Then
         If Not (mo_rsPlanDesarrollo.BOF = True And mo_rsPlanDesarrollo.EOF = True) Then

@@ -355,7 +355,7 @@ Begin VB.Form HerrExportaSEM
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         ForeColor       =   &H80000004&
+         ForeColor       =   &H000080FF&
          Height          =   4890
          Left            =   90
          TabIndex        =   4
@@ -409,6 +409,7 @@ Begin VB.Form HerrExportaSEM
          Style           =   1  'Graphical
          TabIndex        =   16
          Top             =   225
+         Visible         =   0   'False
          Width           =   2415
       End
       Begin VB.CommandButton cmdMayo2011 
@@ -501,7 +502,7 @@ Dim ml_idUsuario As Long
 Dim mo_lcNombrePc  As String
 Dim ml_Valor As Integer
 Dim ml_Tabla As String
-Dim mo_reglasComunes As New SIGHNegocios.ReglasComunes
+Dim mo_ReglasComunes As New SIGHNegocios.ReglasComunes
 
 Property Let lcNombrePc(lValue As String)
   mo_lcNombrePc = lValue
@@ -637,7 +638,7 @@ If wxFranklin = "*" Then Exit Sub
 End Sub
 
 Private Sub Form_Load()
-  mo_reglasComunes.LlenaListBoxConTablaMensajesEnVentana cmbConsideraciones, "HerrExportaSEM"
+  mo_ReglasComunes.LlenaListBoxConTablaMensajesEnVentana cmbConsideraciones, "HerrExportaSEM"
   cmbConsideraciones.AddItem "******* Junio 2016 *******"
   cmbConsideraciones.AddItem "- Deben ODBC=SEM, tabla libre, apunte ..\galenhos\archivos"
   cmbConsideraciones.AddItem "- Deben existir las tablas vacias: sem_egre.dbf, sem_emer.dbf, sem_med.dbf"
@@ -723,6 +724,6 @@ Private Sub txtAnio_LostFocus()
 End Sub
 
 Sub ActualizaFechas(lcANIO As String, lnMes As Integer)
-    txtFechaInicio.Text = "01/" & Right("0" & Trim(Str(lnMes + 1)), 2) & "/" & lcANIO
+    txtFechaInicio.Text = "01/" & Right("0" & Trim(str(lnMes + 1)), 2) & "/" & lcANIO
     txtFechaFin.Text = sighentidades.UltimaFechaDDMMYYDelMesActual1(CDate(txtFechaInicio.Text))
 End Sub

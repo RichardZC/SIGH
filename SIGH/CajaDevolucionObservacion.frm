@@ -111,7 +111,7 @@ Attribute VB_Exposed = False
 '------------------------------------------------------------------------------------
 Option Explicit
 Dim lcBuscaParametro As New SIGHDatos.Parametros
-Dim ml_idPaciente As Long
+Dim ml_IdPaciente As Long
 Dim ml_NroHistoriaClinica As Long
 Dim ml_DNI As String
 Dim ml_idTipoNumeracion As Long
@@ -129,7 +129,7 @@ Property Let NewHistoria(lValue As String)
 End Property
 
 Property Let idPaciente(lValue As Long)
-   ml_idPaciente = lValue
+   ml_IdPaciente = lValue
 End Property
 Property Let NroHistoriaClinica(lValue As Long)
    ml_NroHistoriaClinica = lValue
@@ -146,7 +146,11 @@ Private Sub btnAceptar_Click()
        Dim oRsTmp1 As New Recordset
        Dim lbActualizaDNI As Boolean
        If txtNewHistoria.Text = ml_DNI Then
-          Set oRsTmp1 = mo_ReglasAdmision.PacientesXnroHistoriaTipoNumeracion(wxNueve & txtNewHistoria.Text, 2)
+      'GLCC 02/11/20 CAMBIO36 INICIO
+       'Quita wxNueve & para que no anteponga el numero 9 a la historia clinica
+          'Set oRsTmp1 = mo_ReglasAdmision.PacientesXnroHistoriaTipoNumeracion(wxNueve & txtNewHistoria.Text, 2)
+           Set oRsTmp1 = mo_ReglasAdmision.PacientesXnroHistoriaTipoNumeracion(txtNewHistoria.Text, 2)
+      'GLCC 02/11/20 CAMBIO36 FIN
        Else
           Set oRsTmp1 = mo_ReglasAdmision.PacientesXnroHistoriaTipoNumeracion(Val(txtNewHistoria.Text), ml_idTipoNumeracion)
        End If
@@ -158,13 +162,17 @@ Private Sub btnAceptar_Click()
             '*** pasa temporal al HC final
             Dim mo_HistoriasClinicas As New DOHistoriaClinica
             With mo_HistoriasClinicas
-                .idPaciente = ml_idPaciente
+                .idPaciente = ml_IdPaciente
                 .IdEstadoHistoria = 1
                 .idTipoHistoria = 1
                ' .FechaPasoAPasivo = IIf(Me.txtFechaPasoAPasivo.Text = sighentidades.FECHA_VACIA_DMY, 0, Me.txtFechaPasoAPasivo.Text)
                 .fechacreacion = Now
-                .NroHistoriaClinica = IIf(txtNewHistoria.Text = ml_DNI, wxNueve & txtNewHistoria.Text, txtNewHistoria.Text)
-                .IdUsuarioAuditoria = sighentidades.Usuario
+               'GLCC 02/11/20 CAMBIO36 INICIO
+                'Quitar la palabra wxNueve & para que no anteponga el numero 9
+               '.NroHistoriaClinica = IIf(txtNewHistoria.Text = ml_DNI, wxNueve & txtNewHistoria.Text, txtNewHistoria.Text)
+                .NroHistoriaClinica = IIf(txtNewHistoria.Text = ml_DNI, txtNewHistoria.Text, txtNewHistoria.Text)
+               'GLCC 02/11/20 CAMBIO36 FIN
+                .IdUsuarioAuditoria = sighEntidades.Usuario
                 .idTipoNumeracion = 2
                ' .IdTipoNumeracionAnterior = Val(mo_cmbIdTipoNumeracionHistoriaAnt.BoundText)
                 '.NroHistoriaClinicaAnterior = Me.txtIdHistoriaClinicaAnt
@@ -180,7 +188,7 @@ Private Sub btnAceptar_Click()
             Dim oConexionExterna As New Connection
             oConexion.CommandTimeout = 900
             oConexion.CursorLocation = adUseClient
-            oConexion.Open sighentidades.CadenaConexion
+            oConexion.Open sighEntidades.CadenaConexion
             oConexionExterna.CommandTimeout = 900
             oConexionExterna.CursorLocation = adUseClient
             oConexionExterna.Open lcBuscaParametro.SeleccionaFilaParametro(sghBaseDatosExterna.sghJamo)
@@ -191,8 +199,8 @@ Private Sub btnAceptar_Click()
             Set oConexion = Nothing
             Set oConexionExterna = Nothing
           Else
-             mo_ReglasAdmision.PacientesActualizarDNI ml_DNI, ml_idPaciente, 2
-             mo_ReglasAdmision.ActualizaHistoriaIgualDNI Trim(Str(ml_idPaciente))
+             mo_ReglasAdmision.PacientesActualizarDNI ml_DNI, ml_IdPaciente, 2
+             mo_ReglasAdmision.ActualizaHistoriaIgualDNI Trim(Str(ml_IdPaciente))
              mi_BotonPresionado = sghAceptar
           End If
        End If
@@ -201,7 +209,6 @@ Private Sub btnAceptar_Click()
        Me.Visible = False
     End If
 End Sub
-
 Private Sub btnCancelar_Click()
     Me.Visible = False
 End Sub

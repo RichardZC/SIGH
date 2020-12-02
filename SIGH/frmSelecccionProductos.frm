@@ -57,6 +57,7 @@ Begin VB.Form SelecccionProductos
       _ExtentY        =   10345
       _Version        =   393216
       Tabs            =   2
+      Tab             =   1
       TabsPerRow      =   2
       TabHeight       =   520
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -70,19 +71,20 @@ Begin VB.Form SelecccionProductos
       EndProperty
       TabCaption(0)   =   "Servicios"
       TabPicture(0)   =   "frmSelecccionProductos.frx":1BE6
-      Tab(0).ControlEnabled=   -1  'True
+      Tab(0).ControlEnabled=   0   'False
       Tab(0).Control(0)=   "grdServicios"
-      Tab(0).Control(0).Enabled=   0   'False
       Tab(0).ControlCount=   1
       TabCaption(1)   =   "Bienes e Insumos"
       TabPicture(1)   =   "frmSelecccionProductos.frx":1C02
-      Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "grillaBusqueda"
-      Tab(1).Control(1)=   "grdBienes"
+      Tab(1).ControlEnabled=   -1  'True
+      Tab(1).Control(0)=   "grdBienes"
+      Tab(1).Control(0).Enabled=   0   'False
+      Tab(1).Control(1)=   "grillaBusqueda"
+      Tab(1).Control(1).Enabled=   0   'False
       Tab(1).ControlCount=   2
       Begin UltraGrid.SSUltraGrid grillaBusqueda 
          Height          =   2655
-         Left            =   -74640
+         Left            =   360
          TabIndex        =   1
          Top             =   2280
          Visible         =   0   'False
@@ -105,7 +107,7 @@ Begin VB.Form SelecccionProductos
       End
       Begin UltraGrid.SSUltraGrid grdServicios 
          Height          =   5295
-         Left            =   120
+         Left            =   -74880
          TabIndex        =   2
          Top             =   450
          Width           =   11640
@@ -128,7 +130,7 @@ Begin VB.Form SelecccionProductos
       End
       Begin UltraGrid.SSUltraGrid grdBienes 
          Height          =   5265
-         Left            =   -74850
+         Left            =   150
          TabIndex        =   3
          Top             =   450
          Width           =   11610
@@ -189,7 +191,7 @@ Property Get Acepta() As Boolean
    Acepta = mb_Acepta
 End Property
 
-Public Function inicializar()
+Public Function Inicializar()
     Set grdBienes.DataSource = Nothing
     Set grdServicios.DataSource = Nothing
    ConfiguraGrilla ("Servicios")

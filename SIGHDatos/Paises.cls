@@ -166,8 +166,6 @@ ManejadorDeError:
    ms_MensajeError = Err.Number & " " + Err.Description: MsgBox ms_MensajeError + Chr(13) + "Por favor contacte al personal de soporte técnico", vbInformation, "Error en la interface de acceso a datos"
 Exit Function
 End Function
-
-
 Function SeleccionarTodos() As ADODB.Recordset
 On Error GoTo ManejadorDeError
 Dim oRecordset As New ADODB.Recordset

@@ -151,15 +151,15 @@ Begin VB.Form AdmisionHospEgreso
       TabCaption(2)   =   "3.3 Nacimientos"
       TabPicture(2)   =   "AdmisionHospEgreso.frx":334B
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "Frame5"
+      Tab(2).Control(0)=   "ucDiagnosticoNacimiento"
       Tab(2).Control(1)=   "ucNacimientoDetalle1"
-      Tab(2).Control(2)=   "ucDiagnosticoNacimiento"
+      Tab(2).Control(2)=   "Frame5"
       Tab(2).ControlCount=   3
       TabCaption(3)   =   "3.4 Mortalidad"
       TabPicture(3)   =   "AdmisionHospEgreso.frx":3367
       Tab(3).ControlEnabled=   0   'False
-      Tab(3).Control(0)=   "Frame3"
-      Tab(3).Control(1)=   "ucDiagnosticosMortalidad"
+      Tab(3).Control(0)=   "ucDiagnosticosMortalidad"
+      Tab(3).Control(1)=   "Frame3"
       Tab(3).ControlCount=   2
       Begin VB.Frame fraSoloEme 
          Height          =   1275

@@ -1,11 +1,11 @@
 VERSION 5.00
 Begin VB.UserControl ucTriaje 
-   ClientHeight    =   2520
+   ClientHeight    =   2460
    ClientLeft      =   0
    ClientTop       =   0
    ClientWidth     =   11055
    LockControls    =   -1  'True
-   ScaleHeight     =   2520
+   ScaleHeight     =   2460
    ScaleWidth      =   11055
    Begin VB.Frame frDatosTriaje 
       BeginProperty Font 
@@ -661,8 +661,8 @@ Attribute VB_Exposed = False
 '
 '------------------------------------------------------------------------------------
 Option Explicit
-Dim mo_Teclado As New SIGHEntidades.Teclado
-Dim mo_Formulario As New SIGHEntidades.Formulario
+Dim mo_Teclado As New sighentidades.Teclado
+Dim mo_Formulario As New sighentidades.Formulario
 Dim lcBuscaParametro As New SIGHDatos.Parametros
 'Dim mo_ReglasSISgalenhos As New ReglasSISgalenhos
 'variables standares para el mantenimiento y auditoria
@@ -1085,7 +1085,7 @@ Private Function setIdAtencion(lValue As Long) As Boolean
     Else
         Dim oReglasAdmision As New ReglasAdmision
         Dim oConexion As New ADODB.Connection
-        oConexion.Open SIGHEntidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
     
@@ -1116,7 +1116,7 @@ On Error GoTo miError
         Dim oReglasAdmision As New ReglasAdmision
         Dim oConexion As New ADODB.Connection
         
-        oConexion.Open SIGHEntidades.CadenaConexion
+        oConexion.Open sighentidades.CadenaConexion
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 300
     
@@ -1573,6 +1573,13 @@ Public Function mapearMensageError(numberError As Integer)
                 message = Label5.Caption & limitMessage
             Case sighTriajeVariable.Temperatura:
                 message = Label2.Caption & limitMessage
+                'GLCC-Validar Perímetro Cefálico-21/07/2020 Inicio
+'             Case sighTriajeVariable.PerimCefalico:
+'                message = "Perimetro Cefálicos" & limitMessage
+'
+'            Case sighTriajeVariable.PresArtDiastolica:
+'                message = "Pres. Art. Diastólica" & limitMessage
+                'GLCC-Validar Perímetro Cefálico-21/07/2020 Fin
                 
             'valores obligatorios vacios
             Case sighTriajeVariable.FrecCardiaca * -1:
@@ -1623,7 +1630,7 @@ Public Function CargaDatosAlObjetosDeDatos(ByRef mo_DOAtencionesCE As DOAtencion
         .TriajeFrecRespiratoria = Val(txtFrespiratoria.Text)
         .TriajePeso = txtPeso.Text
         .TriajeTalla = txtTalla.Text
-        .TriajePerimCefalico = Val(txtPerimetroCefalico.Text)
+'        .TriajePerimCefalico = Val(txtPerimetroCefalico.Text)
         .TriajeOrigen = lTriajeOrigen
         .TriajePerimAbdominal = UserControl.txtPermAbdominal.Text
         .TriajeSaturacionOxigeno = UserControl.txtSaturacionOxigeno.Text
@@ -1649,7 +1656,8 @@ Public Function CargarDatosALosControles(ByVal mo_DOAtencionesCE As DOAtenciones
         txtFrespiratoria.Text = IIf(.TriajeFrecRespiratoria = 0, "", .TriajeFrecRespiratoria)
         txtPeso.Text = .TriajePeso
         txtTalla.Text = .TriajeTalla
-        txtPerimetroCefalico.Text = IIf(.TriajePerimCefalico = 0, "", .TriajePerimCefalico)
+'        txtPerimetroCefalico.Text = .TriajePerimCefalico
+ '       txtPerimetroCefalico.Text = IIf(.TriajePerimCefalico = 0, "", .TriajePerimCefalico)
         UserControl.txtPermAbdominal.Text = .TriajePerimAbdominal
         UserControl.txtSaturacionOxigeno.Text = .TriajeSaturacionOxigeno
     End With
@@ -1749,15 +1757,24 @@ Public Function ValidarReglas() As Boolean
           MsgBox "El Paciente debe tener una TALLA mayor a 20 cm", vbInformation, "Reglas"
           ValidarReglas = False
        End If
+       'GLCC 21/07/20 CAMBIO42 INICIO
+       ' If Val(txtTalla.Text) = " " Then
+       ' MsgBox "El Paciente debe tener una TALLA", vbInformation, "Reglas"
+         'GLCC 21/07/20 CAMBIO42 FIN
+      ' End If
        End If
 End Function
 Private Sub txtPeso_LostFocus()
     If Val(txtPeso.Text) > 300 Then
        MsgBox "El PESO no puede pasar de 300 Kg", vbInformation, "TRIAJE"
-       txtPeso.Text = ""
-       
+       txtPeso.Text = " "
     End If
     CalculaIMC
+    'GLCC 21/07/20 CAMBIO42 INICIO
+'        If (txtPeso.Text) = " " Then
+'        MsgBox "El Paciente debe tener un PESO", vbInformation, "Reglas"
+'       End If
+        'GLCC 21/07/20 CAMBIO42 FIN
 End Sub
 
 Sub CalculaIMC()
@@ -1767,3 +1784,4 @@ Sub CalculaIMC()
            lblIMC.Caption = "IMC: " & Trim(Str(Round(CStr(txtPeso.Text) / (CStr(txtTalla.Text) * CStr(txtTalla.Text) * 0.0001), 0)))
         End If
 End Sub
+

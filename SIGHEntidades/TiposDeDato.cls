@@ -20,7 +20,9 @@ Attribute VB_Exposed = True
 '
 '------------------------------------------------------------------------------------
 Option Explicit
-Const wxNueve As String = "9"
+'GLCC 02/11/20 CAMBIO36 INICIO
+'ANTES: Const wxNueve As String = "9"
+'GLCC 02/11/20 CAMBIO36 FIN
 Dim Unidades$(9), Decenas$(9), Oncenas$(9)
 Dim Veintes$(9), Centenas$(9)
 
@@ -362,7 +364,10 @@ Function HCigualDNI_DevuelveRsConHistoriaOCHOdigitos(rsRs As Recordset, NroHisto
             For lnCampo = 0 To lnNroCamposRs - 1
                 If UCase(rsRs.Fields(lnCampo).Name) = UCase(NroHistoriaClinicaName) Then
                    lcNroHistoria = Trim(str(rsRs.Fields(lnCampo).Value))
-                   If Len(lcNroHistoria) = 9 And Left(lcNroHistoria, 1) = wxNueve Then
+                  'GLCC 02/11/20 CAMBIO36 INICIO
+                   'ANTERIOR: If Len(lcNroHistoria) = 9 And Left(lcNroHistoria, 1) = wxNueve Then
+                   If Len(lcNroHistoria) = 8 Then
+                  'GLCC 02/11/20 CAMBIO36 FIN
                       oRsTmpHC.Fields(lnCampo).Value = Val(Right(lcNroHistoria, 8))
                    Else
                       oRsTmpHC.Fields(lnCampo).Value = rsRs.Fields(lnCampo).Value

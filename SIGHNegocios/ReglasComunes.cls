@@ -259,7 +259,7 @@ End Function
 '                                       Empleados
 '-------------------------------------------------------------------------------------
 
-Function EmpleadosAgregar(oDOEmpleado As dOEmpleado, oUsuariosRoles As Collection, oRsCargos As Recordset, oRsLaboraEn As Recordset, mo_lnIdTablaLISTBARITEMS As Long, mo_lcNombrePc As String, lcNombreEmpleado As String, lcDniEncriptado As String) As Boolean
+Function EmpleadosAgregar(oDOEmpleado As DOEmpleado, oUsuariosRoles As Collection, oRsCargos As Recordset, oRsLaboraEn As Recordset, mo_lnIdTablaLISTBARITEMS As Long, mo_lcNombrePc As String, lcNombreEmpleado As String, lcDniEncriptado As String) As Boolean
 Dim oConexion As New ADODB.Connection
 Dim oEmpleado As New Empleados
 Dim oUsuarioRol As New UsuariosRoles
@@ -416,7 +416,7 @@ ErrEmpl:
    Set mo_AdminComun = Nothing
 End Function
 
-Function EmpleadosModificar(oDOEmpleado As dOEmpleado, oUsuariosRoles As Collection, oRsCargos As Recordset, oRsLaboraEn As Recordset, mo_lnIdTablaLISTBARITEMS As Long, mo_lcNombrePc As String, lcNombreEmpleado As String, lcDniEncriptado As String) As Boolean
+Function EmpleadosModificar(oDOEmpleado As DOEmpleado, oUsuariosRoles As Collection, oRsCargos As Recordset, oRsLaboraEn As Recordset, mo_lnIdTablaLISTBARITEMS As Long, mo_lcNombrePc As String, lcNombreEmpleado As String, lcDniEncriptado As String) As Boolean
 Dim oConexion As New ADODB.Connection
 Dim oEmpleado As New Empleados
 Dim oUsuarioRol As New UsuariosRoles
@@ -605,7 +605,7 @@ ErrEmplM:
 End Function
 
 'Modificado por Yamill Palomino 07-10-13 Se cambio a Store Procedure
-Function EmpleadosEliminar(oDOEmpleado As dOEmpleado, mo_lnIdTablaLISTBARITEMS As Long, mo_lcNombrePc As String, _
+Function EmpleadosEliminar(oDOEmpleado As DOEmpleado, mo_lnIdTablaLISTBARITEMS As Long, mo_lcNombrePc As String, _
                                              lcNombreEmpleado As String) As Boolean
 Dim oConexion As New ADODB.Connection
 Dim oEmpleado As New Empleados
@@ -698,10 +698,10 @@ Dim oParameter As ADODB.Parameter
     Set oRsTmp1 = Nothing
 End Function
 
-Function EmpleadosSeleccionarPorId(idEmpleado As Long) As dOEmpleado
+Function EmpleadosSeleccionarPorId(idEmpleado As Long) As DOEmpleado
 Dim oConexion As New ADODB.Connection
 Dim oEmpleado As New Empleados
-Dim oDOEmpleado As New dOEmpleado
+Dim oDOEmpleado As New DOEmpleado
     
     Set EmpleadosSeleccionarPorId = Nothing
     
@@ -733,7 +733,7 @@ Dim oTabla As New Empleados
     Set oConexion = Nothing
     Set oTabla = Nothing
 End Function
-Function EmpleadosFiltrar(oDOEmpleado As dOEmpleado) As ADODB.Recordset
+Function EmpleadosFiltrar(oDOEmpleado As DOEmpleado) As ADODB.Recordset
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New Empleados
     
@@ -747,7 +747,7 @@ Dim oTabla As New Empleados
     Set oConexion = Nothing
     Set oTabla = Nothing
 End Function
-Function EmpleadosSeleccionarPorCodigo(Codigo As String, oDOEmpleado As dOEmpleado) As Boolean
+Function EmpleadosSeleccionarPorCodigo(Codigo As String, oDOEmpleado As DOEmpleado) As Boolean
 Dim oConexion As New ADODB.Connection
 Dim oEmpleado As New Empleados
 Dim rsMedicoEspecialidad As Recordset
@@ -769,11 +769,10 @@ Dim rsMedicoEspecialidad As Recordset
     Set oEmpleado = Nothing
 
 End Function
-Function EmpleadosObtenerConElMismoUsuario(oDOEmpleado As dOEmpleado) As ADODB.Recordset
+Function EmpleadosObtenerConElMismoUsuario(oDOEmpleado As DOEmpleado) As ADODB.Recordset
 Dim oConexion As New ADODB.Connection
 Dim oEmpleado As New Empleados
 Dim rsMedicoEspecialidad As Recordset
-
     
     oConexion.Open SIGHEntidades.CadenaConexion
     oConexion.CursorLocation = adUseClient
@@ -785,7 +784,7 @@ Dim rsMedicoEspecialidad As Recordset
     
 End Function
 
-Function EmpleadosObtenerConElMismoCodigoPlanilla(oDOEmpleado As dOEmpleado) As ADODB.Recordset
+Function EmpleadosObtenerConElMismoCodigoPlanilla(oDOEmpleado As DOEmpleado) As ADODB.Recordset
 Dim oConexion As New ADODB.Connection
 Dim oEmpleado As New Empleados
 Dim rsMedicoEspecialidad As Recordset
@@ -1344,7 +1343,6 @@ Dim oTabla As New TiposAlta
     Set oTabla = Nothing
 
 End Function
-
 Function DiagnosticosCapitulosSeleccionarTodos() As ADODB.Recordset
 Dim oConexion As New ADODB.Connection
 Dim oTabla As New DiagnosticosCapitulos
@@ -8507,8 +8505,21 @@ Dim oTabla As New TiposDocIdentidad
     Set oConexion = Nothing
 
 End Function
-
-
+'''Mostrar todos los paises - GLCC
+''Function NacionalidadSeleccionarTodos() As ADODB.Recordset
+''Dim oConexion As New ADODB.Connection
+''Dim oTabla As New Nacionalidad
+''
+''    oConexion.Open sighentidades.CadenaConexion
+''    oConexion.CursorLocation = adUseClient
+''
+''    Set oTabla.Conexion = oConexion
+''    Set NacionalidadSeleccionarTodos = oTabla.NacionalidadSeleccionarTodos
+''    oConexion.Close
+''    ms_MensajeError = oTabla.MensajeError
+''    Set oTabla = Nothing
+''    Set oConexion = Nothing
+''End Function
 'debb2014b
 Function CatalogoBienesInsumosSeleccionarXid(lnIdProducto As Long, Optional oConexion1 As Connection) As Recordset
 Dim oRecordset As New ADODB.Recordset
@@ -9352,7 +9363,6 @@ Function CatalogoServiciosHospPorCuenta(oConexion As Connection, lnIdCuentaAtenc
    Set oRs = Nothing
    Set oCommand = Nothing
 End Function
-
 Sub FactCatalogoBienesInsumosHospActualizaPrecio(oConexion As Connection, lnIdProducto As Long, _
                                                  lnIdtipoFinanciamiento As Long, lnPrecio As Double)
     Dim lcSql As String, oRs As New Recordset
@@ -9371,11 +9381,6 @@ Sub FactCatalogoBienesInsumosHospActualizaPrecio(oConexion As Connection, lnIdPr
    End With
    Set oCommand = Nothing
 End Sub
-
-
-
-
-
 Function TiposActividadesSeleccionarTodos() As Recordset
     Dim lcSql As String, oRsTmp1 As New Recordset
     Dim oCommand As New ADODB.Command
@@ -9555,7 +9560,6 @@ Sub ServiciosGrabaYdevueveCorrelativoEmergencia(lbSoloDevuelveCorrelativo As Boo
     Set oDOServicio = Nothing
     Set oServicios = Nothing
 End Sub
-
 Function FuentesFinanciamientoTarifasSoloTarifa() As Recordset
 On Error GoTo ManejadorDeError
 Dim oCommand As New ADODB.Command
@@ -9622,11 +9626,6 @@ Dim ms_MensajeError  As String
 ManejadorDeError:
 
 End Function
-
-
-
-
-
 Function DevuelvePrioridadEmergencia(lcDx As String) As String
 On Error GoTo ManejadorDeError
 Dim oCommand As New ADODB.Command
@@ -9852,8 +9851,6 @@ ManejadorDeError:
    ms_MensajeError = Err.Number & " " + Err.Description: MsgBox ms_MensajeError + Chr(13) + "Por favor contacte al personal de soporte técnico", vbInformation, "Error en la interface de acceso a datos"
 Exit Sub
 End Sub
-
-
 Function FuenteFinanciamientoEsUnidosis(lnIdFuenteFinanciamiento As Long, ByRef lnCuentaUnidosis As Long) As Boolean
     Dim oRsFF As New Recordset
     Set oRsFF = FuentesFinanciamientoSegunFiltro("idFuenteFinanciamiento=" & lnIdFuenteFinanciamiento)
@@ -9867,7 +9864,6 @@ Function FuenteFinanciamientoEsUnidosis(lnIdFuenteFinanciamiento As Long, ByRef 
     oRsFF.Close
     Set oRsFF = Nothing
 End Function
-
 Function CuentaDeEmergenciaCerrada(lnIdCuenta As Long, lnIdPuntoCarga As sghPuntosCargaBasicos) As Boolean
     CuentaDeEmergenciaCerrada = False
     Dim oRsTmp2 As New Recordset
@@ -9902,9 +9898,6 @@ Function CuentaDeEmergenciaCerrada(lnIdCuenta As Long, lnIdPuntoCarga As sghPunt
     Set oReglasFarmacia = Nothing
     Set mo_ReglasFacturacion = Nothing
 End Function
-
-
-
 Function AuditoriaPorTabla(lcTabla As String) As ADODB.Recordset
 On Error GoTo ManejadorDeError
 Dim oRecordset As New ADODB.Recordset
@@ -9935,8 +9928,6 @@ ManejadorDeError:
    ms_MensajeError = Err.Number & " " + Err.Description: MsgBox ms_MensajeError + Chr(13) + "Por favor contacte al personal de soporte técnico", vbInformation, "Error en la interface de acceso a datos"
 
 End Function
-
-
 Function DevuelveNumeroColaEnCita(lnIdCuenta As Long, lcHoraCita As String) As String
     Dim oRsTmp3 As New Recordset
     Dim mo_ReglasAdmision As New ReglasAdmision
@@ -9975,8 +9966,6 @@ Function DevuelveNumeroColaEnCita(lnIdCuenta As Long, lcHoraCita As String) As S
     Set mo_ReglasAdmision = Nothing
     Set mo_ReglasDeProgMedica = Nothing
 End Function
-
-
 Function RecetaCabeceraFiltrar(lcFiltro As String) As Recordset
     Dim lcSql As String
     Dim oRsTmp5 As New Recordset
@@ -10003,7 +9992,6 @@ Function RecetaCabeceraFiltrar(lcFiltro As String) As Recordset
    Set oParameter = Nothing
    Set oConexion = Nothing
 End Function
-
 Function RetornaNombrePuntoCargaRecetaConsumoEnServicio(lnIdReceta As Long) As String
     Dim oRsTmp5 As New Recordset
     Dim oCommand As New ADODB.Command
@@ -10033,9 +10021,6 @@ Function RetornaNombrePuntoCargaRecetaConsumoEnServicio(lnIdReceta As Long) As S
    oConexion.Close
    Set oConexion = Nothing
 End Function
-
-
-
 Function RecetaCabeceraFiltraXpuntoCargaYDocumentodespacho(lcDocumentoDespacho As String, lnIdPuntoCarga As sghPuntosCargaBasicos) As Recordset
     Dim lcSql As String, oRs As New Recordset
     Dim oCommand As New ADODB.Command
@@ -10090,9 +10075,6 @@ Function RecetaDetalleItemFiltraXidComprobantePagoYpuntoCarga(lnIdComprobantePag
    Set oParameter = Nothing
 
 End Function
-
-
-
 Sub AnularCptGeneradasEnCitas(lnIdCuentaAtencion As Long)
 On Error GoTo ManejadorDeError
 Dim oRecordset As New Recordset

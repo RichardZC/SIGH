@@ -87,6 +87,11 @@ Dim lnNroErrores As Integer
            Set oParameter = .CreateParameter("@GrupoSanguineo", adVarChar, adParamInput, 10, IIf(oTabla.GrupoSanguineo = "", Null, oTabla.GrupoSanguineo)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@FactorRh", adVarChar, adParamInput, 10, IIf(oTabla.FactorRh = "", Null, oTabla.FactorRh)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@UsoWebReniec", adBoolean, adParamInput, 0, IIf(oTabla.UsoWebReniec = True, 1, 0)): .Parameters.Append oParameter
+           
+            '<(Inicio) Añadido Por: WABG el: 22/10/2020-10:27:47 p.m.en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
+           Set oParameter = .CreateParameter("@validacionReniec", adBoolean, adParamInput, 0, IIf(oTabla.validacionReniec = True, 1, 0)): .Parameters.Append oParameter
+            '</(Fin) Añadido Por: WABG el: 22/10/2020-10:27:47 p.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
+           
            Set oParameter = .CreateParameter("@IdIdioma", adInteger, adParamInput, 0, IIf(oTabla.idIdioma = 0, Null, oTabla.idIdioma)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@Email", adVarChar, adParamInput, 50, IIf(oTabla.Email = "", Null, oTabla.Email)): .Parameters.Append oParameter
            Set oParameter = .CreateParameter("@madreDocumento", adVarChar, adParamInput, 12, IIf(oTabla.madreDocumento = "", Null, oTabla.madreDocumento)): .Parameters.Append oParameter
@@ -356,6 +361,11 @@ Sub CargaDatosDelPaciente(ByRef oTabla As DoPaciente, oRecordset As Recordset)
        oTabla.GrupoSanguineo = IIf(IsNull(oRecordset!GrupoSanguineo), "", oRecordset!GrupoSanguineo)
        oTabla.FactorRh = IIf(IsNull(oRecordset!FactorRh), "", oRecordset!FactorRh)
        oTabla.UsoWebReniec = IIf(IsNull(oRecordset!UsoWebReniec), 0, oRecordset!UsoWebReniec)
+       
+'<(Inicio) Añadido Por: WABG el: 22/10/2020-10:30:37 p.m.en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
+       oTabla.validacionReniec = IIf(IsNull(oRecordset!validacionReniec), 0, oRecordset!validacionReniec)
+'</(Fin) Añadido Por: WABG el: 22/10/2020-10:30:37 p.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
+       
        oTabla.idIdioma = IIf(IsNull(oRecordset!idIdioma), 0, oRecordset!idIdioma)
        oTabla.Email = IIf(IsNull(oRecordset!Email), "", oRecordset!Email)
        oTabla.madreDocumento = IIf(IsNull(oRecordset!madreDocumento), "", oRecordset!madreDocumento)
@@ -985,6 +995,11 @@ Sub SetDefaults(ByVal oTabla As DoPaciente)
    oTabla.Telefono = ""
    oTabla.TercerNombre = ""
    oTabla.UsoWebReniec = False
+   
+'<(Inicio) Añadido Por: WABG el: 22/10/2020-10:31:42 p.m.en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
+   oTabla.validacionReniec = False
+'</(Fin) Añadido Por: WABG el: 22/10/2020-10:31:42 p.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
+   
 End Sub
 
 
