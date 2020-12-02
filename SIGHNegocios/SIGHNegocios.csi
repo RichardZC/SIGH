@@ -1,8 +1,8 @@
 [History]
-1=#P0#=mb	#P1#=SeleccionarProcedimientosTamizajeSegunTipoFinanciamiento	#P2#=SIGHNegocios/ReglasLaboratorio/SeleccionarProcedimientosTamizajeSegunTipoFinanciamiento	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201129214629	#P7#=0	#P8#=3	.
-2=#P0#=mb	#P1#=LabMovimientoSeleccionarPorFechasPuntoCarga	#P2#=SIGHNegocios/ReglasLaboratorio/LabMovimientoSeleccionarPorFechasPuntoCarga	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201129101352	#P7#=0	#P8#=7	.
-3=#P0#=mb	#P1#=MensajeError	#P2#=SIGHNegocios/ReglasLaboratorio/MensajeError [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201129101128	#P7#=0	#P8#=0	.
-4=#P0#=mb	#P1#=idOrdenPago	#P2#=SIGHNegocios/ReglasLaboratorio/idOrdenPago [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201129100932	#P7#=0	#P8#=-2	.
+1=#P0#=mb	#P1#=idOrdenPago	#P2#=SIGHNegocios/ReglasLaboratorio/idOrdenPago [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201201201650	#P7#=0	#P8#=-1	.
+2=#P0#=mb	#P1#=SeleccionarProcedimientosTamizajeSegunTipoFinanciamiento	#P2#=SIGHNegocios/ReglasLaboratorio/SeleccionarProcedimientosTamizajeSegunTipoFinanciamiento	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201201133336	#P7#=0	#P8#=28	.
+3=#P0#=mb	#P1#=LabMovimientoSeleccionarPorFechasPuntoCarga	#P2#=SIGHNegocios/ReglasLaboratorio/LabMovimientoSeleccionarPorFechasPuntoCarga	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201129101352	#P7#=0	#P8#=-2	.
+4=#P0#=mb	#P1#=MensajeError	#P2#=SIGHNegocios/ReglasLaboratorio/MensajeError [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201202080126	#P7#=0	#P8#=0	.
 5=#P0#=mb	#P1#=ConsultarDNIenReniec	#P2#=SIGHNegocios/ReniecGalenhosNegocios/ConsultarDNIenReniec	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201125223931	#P7#=0	#P8#=12	.
 6=#P0#=mb	#P1#=procesarRespuesta	#P2#=SIGHNegocios/ReniecGalenhosNegocios/procesarRespuesta	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201124140434	#P7#=-2147483640	#P8#=25	.
 7=#P0#=mb	#P1#=EstableceConexion	#P2#=SIGHNegocios/SisConsumoWeb/EstableceConexion	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201118094353	#P7#=-2147483640	#P8#=0	.

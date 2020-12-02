@@ -40,7 +40,7 @@ Property Get MensajeError() As String
   MensajeError = ms_MensajeError
 End Property
 
-'<Agregado por: WABG el: 11/29/2020-12:22:22 en el equipo: SISGALENPLUS-PC>
+'<Agregado por: WABG el: 11/29/2020-12:22:22 en el equipo: SISGALENPLUS-PC><CAMBIO 44>
 Function SeleccionarProcedimientosTamizajeSegunTipoFinanciamiento(lnIdtipoFinanciamiento As Long) As ADODB.Recordset
 On Error GoTo ManejadorDeError
 Dim oRecordset As New ADODB.Recordset
@@ -71,7 +71,7 @@ ManejadorDeError:
    ms_MensajeError = Err.Number & " " + Err.Description: MsgBox ms_MensajeError + Chr(13) + "Por favor contacte al personal de soporte técnico", vbInformation, "Error en la interface de acceso a datos"
 Exit Function
 End Function
-'</Agregado por: WABG el: 11/29/2020-12:22:22 en el equipo: SISGALENPLUS-PC>
+'</Agregado por: WABG el: 11/29/2020-12:22:22 en el equipo: SISGALENPLUS-PC><CAMBIO 44>
 'MODIFICADO FRANKLIN CACHAY 19/09/2013 - se agrego oConexion.CommandTimeout = 300
 Function LabMovimientoSeleccionarPorFechasPuntoCarga(lnIdPuntoCarga As Long, ldFechaEgresoIni As Date, ldFechaEgresoFin As Date) As ADODB.Recordset
   On Error GoTo ManejadorDeError

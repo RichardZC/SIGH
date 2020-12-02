@@ -339,8 +339,8 @@ Begin VB.Form frmLaboratorio
          TabIndex        =   18
          Top             =   150
          Width           =   4455
-         _ExtentX        =   7858
-         _ExtentY        =   5318
+         _extentx        =   7858
+         _extenty        =   5318
       End
       Begin VB.Frame Frame1 
          Enabled         =   0   'False
@@ -1060,8 +1060,8 @@ Begin VB.Form frmLaboratorio
       TabIndex        =   15
       Top             =   3870
       Width           =   13725
-      _ExtentX        =   24209
-      _ExtentY        =   6006
+      _extentx        =   24209
+      _extenty        =   6006
    End
    Begin VB.Frame Frame3 
       Height          =   1110
@@ -1694,7 +1694,7 @@ End Sub
 
 Private Sub btnTamizaje_Click()
 
-'<Agregado por: WABG el: 11/29/2020-12:39:16 en el equipo: SISGALENPLUS-PC>
+'<Agregado por: WABG el: 11/29/2020-12:39:16 en el equipo: SISGALENPLUS-PC><CAMBIO 44>
    Dim rs As Recordset
    Dim oConexion As New ADODB.Connection
    oConexion.Open sighentidades.CadenaConexion
@@ -1704,7 +1704,7 @@ Private Sub btnTamizaje_Click()
    oConexion.Close
    Set oConexion = Nothing
    btnTamizaje.Visible = False
-'</Agregado por: WABG el: 11/29/2020-12:39:16 en el equipo: SISGALENPLUS-PC>
+'</Agregado por: WABG el: 11/29/2020-12:39:16 en el equipo: SISGALENPLUS-PC><CAMBIO 44>
 
 
 End Sub
@@ -2505,11 +2505,11 @@ Private Sub txtNcuenta_LostFocus()
     oConexion.Close
     Set oConexion = Nothing
     Set oRsTmp2 = Nothing
-'<Agregado por: WABG el: 11/30/2020-13:32:44 en el equipo: SISGALENPLUS-PC>
+'<Agregado por: WABG el: 11/30/2020-13:32:44 en el equipo: SISGALENPLUS-PC><CAMBIO 44>
      If Me.Caption = "Agregar Órdenes Banco de Sangre" Then
      btnTamizaje.Visible = True
      End If
-'</Agregado por: WABG el: 11/30/2020-13:32:44 en el equipo: SISGALENPLUS-PC>
+'</Agregado por: WABG el: 11/30/2020-13:32:44 en el equipo: SISGALENPLUS-PC><CAMBIO 44>
   End If
 End Sub
 

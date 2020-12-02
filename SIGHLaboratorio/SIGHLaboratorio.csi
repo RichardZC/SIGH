@@ -1,20 +1,21 @@
 [History]
-1=#P0#=mb	#P1#=txtNcuenta_LostFocus	#P2#=SIGHLaboratorio/frmLaboratorio/txtNcuenta_LostFocus	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201130175949	#P7#=0	#P8#=127	.
-2=#P0#=mb	#P1#=btnTamizaje_Click	#P2#=SIGHLaboratorio/frmLaboratorio/btnTamizaje_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201130174847	#P7#=0	#P8#=2	.
-3=#P0#=mb	#P1#=grdProductosFocusColumna	#P2#=SIGHLaboratorio/ucInsumocpt/grdProductosFocusColumna	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201129192425	#P7#=-2147483640	#P8#=13	.
-4=#P0#=mb	#P1#=DevuelveTotalPagar	#P2#=SIGHLaboratorio/ucInsumocpt/DevuelveTotalPagar	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201129192053	#P7#=-2147483640	#P8#=0	.
-5=#P0#=mb	#P1#=RefrescarDatos	#P2#=SIGHLaboratorio/ucInsumocpt/RefrescarDatos	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201129184107	#P7#=0	#P8#=0	.
-6=#P0#=mb	#P1#=grillaBusqueda_DblClick	#P2#=SIGHLaboratorio/ucInsumocpt/grillaBusqueda_DblClick	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201129184048	#P7#=0	#P8#=23	.
-7=#P0#=mb	#P1#=grillaBusqueda_Click	#P2#=SIGHLaboratorio/ucInsumocpt/grillaBusqueda_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201129184045	#P7#=0	#P8#=1	.
-8=#P0#=mb	#P1#=grdProductos_BeforeCellDeactivate	#P2#=SIGHLaboratorio/ucInsumocpt/grdProductos_BeforeCellDeactivate	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201129183358	#P7#=0	#P8#=10	.
-9=#P0#=mb	#P1#=grdInsumos_BeforeCellDeactivate	#P2#=SIGHLaboratorio/ucInsumocpt/grdInsumos_BeforeCellDeactivate	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201129183317	#P7#=0	#P8#=3	.
-10=#P0#=mb	#P1#=PermiteVerColumnaCantidadFallada	#P2#=SIGHLaboratorio/ucInsumocpt/PermiteVerColumnaCantidadFallada [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201129183250	#P7#=0	#P8#=2	.
-11=#P0#=mb	#P1#=RecalcularSubTotal	#P2#=SIGHLaboratorio/ucInsumocpt/RecalcularSubTotal	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201129183202	#P7#=0	#P8#=12	.
-12=#P0#=mb	#P1#=chkPlanNoCubre_Click	#P2#=SIGHLaboratorio/frmLaboratorio/chkPlanNoCubre_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201129171841	#P7#=0	#P8#=9	.
-13=#P0#=mb	#P1#=Form_Load	#P2#=SIGHLaboratorio/frmLaboratorio/Form_Load	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201129170946	#P7#=0	#P8#=15	.
-14=#P0#=mb	#P1#=CargarItemsALaGrillaS	#P2#=SIGHLaboratorio/ucInsumocpt/CargarItemsALaGrillaS	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201129161313	#P7#=0	#P8#=4	.
-15=#P0#=mb	#P1#=CargarItemsALaGrillaCPT	#P2#=SIGHLaboratorio/ucInsumocpt/CargarItemsALaGrillaCPT	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201129161256	#P7#=0	#P8#=2	.
-16=#P0#=mb	#P1#=BuscaItemEnDia	#P2#=SIGHLaboratorio/ucInsumocpt/BuscaItemEnDia	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201129160928	#P7#=0	#P8#=-3	.
-17=#P0#=mb	#P1#=ValidarDatosObligatorios	#P2#=SIGHLaboratorio/frmLaboratorio/ValidarDatosObligatorios	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201129160122	#P7#=0	#P8#=105	.
-18=#P0#=mb	#P1#=CargaProductosPorIdCita	#P2#=SIGHLaboratorio/ucInsumocpt/CargaProductosPorIdCita	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201129155843	#P7#=0	#P8#=3	.
-19=#P0#=mb	#P1#=SeEligioGridBoleta	#P2#=SIGHLaboratorio/frmLaboratorio/SeEligioGridBoleta [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201129100747	#P7#=0	#P8#=-1	.
+1=#P0#=mb	#P1#=txtNcuenta_LostFocus	#P2#=SIGHLaboratorio/frmLaboratorio/txtNcuenta_LostFocus	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201201133843	#P7#=0	#P8#=118	.
+2=#P0#=mb	#P1#=CargarItemsALaGrillaPaquete	#P2#=SIGHLaboratorio/ucInsumocpt/CargarItemsALaGrillaPaquete	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201201133706	#P7#=0	#P8#=9	.
+3=#P0#=mb	#P1#=btnTamizaje_Click	#P2#=SIGHLaboratorio/frmLaboratorio/btnTamizaje_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201201133505	#P7#=0	#P8#=12	.
+4=#P0#=mb	#P1#=grdProductosFocusColumna	#P2#=SIGHLaboratorio/ucInsumocpt/grdProductosFocusColumna	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201129192425	#P7#=-2147483640	#P8#=13	.
+5=#P0#=mb	#P1#=DevuelveTotalPagar	#P2#=SIGHLaboratorio/ucInsumocpt/DevuelveTotalPagar	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201129192053	#P7#=-2147483640	#P8#=0	.
+6=#P0#=mb	#P1#=RefrescarDatos	#P2#=SIGHLaboratorio/ucInsumocpt/RefrescarDatos	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201129184107	#P7#=0	#P8#=0	.
+7=#P0#=mb	#P1#=grillaBusqueda_DblClick	#P2#=SIGHLaboratorio/ucInsumocpt/grillaBusqueda_DblClick	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201129184048	#P7#=0	#P8#=23	.
+8=#P0#=mb	#P1#=grillaBusqueda_Click	#P2#=SIGHLaboratorio/ucInsumocpt/grillaBusqueda_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201129184045	#P7#=0	#P8#=1	.
+9=#P0#=mb	#P1#=grdProductos_BeforeCellDeactivate	#P2#=SIGHLaboratorio/ucInsumocpt/grdProductos_BeforeCellDeactivate	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201129183358	#P7#=0	#P8#=10	.
+10=#P0#=mb	#P1#=grdInsumos_BeforeCellDeactivate	#P2#=SIGHLaboratorio/ucInsumocpt/grdInsumos_BeforeCellDeactivate	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201129183317	#P7#=0	#P8#=3	.
+11=#P0#=mb	#P1#=PermiteVerColumnaCantidadFallada	#P2#=SIGHLaboratorio/ucInsumocpt/PermiteVerColumnaCantidadFallada [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201129183250	#P7#=0	#P8#=2	.
+12=#P0#=mb	#P1#=RecalcularSubTotal	#P2#=SIGHLaboratorio/ucInsumocpt/RecalcularSubTotal	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201129183202	#P7#=0	#P8#=12	.
+13=#P0#=mb	#P1#=chkPlanNoCubre_Click	#P2#=SIGHLaboratorio/frmLaboratorio/chkPlanNoCubre_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201129171841	#P7#=0	#P8#=9	.
+14=#P0#=mb	#P1#=Form_Load	#P2#=SIGHLaboratorio/frmLaboratorio/Form_Load	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201129170946	#P7#=0	#P8#=15	.
+15=#P0#=mb	#P1#=CargarItemsALaGrillaS	#P2#=SIGHLaboratorio/ucInsumocpt/CargarItemsALaGrillaS	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201129161313	#P7#=0	#P8#=4	.
+16=#P0#=mb	#P1#=CargarItemsALaGrillaCPT	#P2#=SIGHLaboratorio/ucInsumocpt/CargarItemsALaGrillaCPT	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201129161256	#P7#=0	#P8#=2	.
+17=#P0#=mb	#P1#=BuscaItemEnDia	#P2#=SIGHLaboratorio/ucInsumocpt/BuscaItemEnDia	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201129160928	#P7#=0	#P8#=-3	.
+18=#P0#=mb	#P1#=ValidarDatosObligatorios	#P2#=SIGHLaboratorio/frmLaboratorio/ValidarDatosObligatorios	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201129160122	#P7#=0	#P8#=37	.
+19=#P0#=mb	#P1#=CargaProductosPorIdCita	#P2#=SIGHLaboratorio/ucInsumocpt/CargaProductosPorIdCita	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201129155843	#P7#=0	#P8#=3	.
+20=#P0#=mb	#P1#=SeEligioGridBoleta	#P2#=SIGHLaboratorio/frmLaboratorio/SeEligioGridBoleta [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201129100747	#P7#=0	#P8#=-1	.

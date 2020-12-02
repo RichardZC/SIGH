@@ -1707,7 +1707,7 @@ Sub CargaProductosPorIdCita(lnIdCitaSI As Long)
     CargaProductosPorIdReceta rs
     Set mo_ReglasImagenes = Nothing
 End Sub
-'<Agregado por: WABG el: 11/29/2020-12:44:07 en el equipo: SISGALENPLUS-PC>
+'<Agregado por: WABG el: 11/29/2020-12:44:07 en el equipo: SISGALENPLUS-PC><CAMBIO 44>
 Sub CargarItemsALaGrillaPaquete(rs As Recordset)
 
   Dim oRsTmp1 As New Recordset
@@ -1716,7 +1716,7 @@ Sub CargarItemsALaGrillaPaquete(rs As Recordset)
   Do While Not rs.EOF
     Set oRsTmp1 = rs
     If oRsTmp1.RecordCount > 0 Then
-    'codigo/descripcion/cantidad/p.u./subtotal/resultadoautomatico/ObsReceta
+    'codigo/descripcion/cantidad/p.u./subtotal=totalporpagar/resultadoautomatico/ObsReceta
       mrs_FacturacionProductos.AddNew
       mrs_FacturacionProductos!Codigo = rs!Codigo
       mrs_FacturacionProductos!NombreProducto = rs!Nombre
@@ -1734,7 +1734,7 @@ Sub CargarItemsALaGrillaPaquete(rs As Recordset)
  Totalizar
  
 End Sub
-'</Agregado por: WABG el: 11/29/2020-12:44:07 en el equipo: SISGALENPLUS-PC>
+'</Agregado por: WABG el: 11/29/2020-12:44:07 en el equipo: SISGALENPLUS-PC><CAMBIO 44>
 
 'Actualizado 16092014 Frank
 Sub CargaProductosPorIdReceta(rs As Recordset)
