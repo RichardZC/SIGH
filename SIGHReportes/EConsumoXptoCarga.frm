@@ -2,7 +2,7 @@ VERSION 5.00
 Object = "{C932BA88-4374-101B-A56C-00AA003668DC}#1.1#0"; "msmask32.ocx"
 Object = "{F20E41DE-526A-423A-B746-D860D06076B4}#4.0#0"; "IGTHRE~1.OCX"
 Object = "{F0D2F211-CCB0-11D0-A316-00AA00688B10}#1.0#0"; "msdatlst.ocx"
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCTL.OCX"
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0"; "MSCOMCTL.OCX"
 Begin VB.Form EConsumoXPtoCarga 
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "Consumo por Punto de Carga"
@@ -451,11 +451,11 @@ Attribute VB_Exposed = False
 '------------------------------------------------------------------------------------
 Option Explicit
 Dim sMensaje As String
-Dim mo_Teclado As New SIGHEntidades.Teclado
+Dim mo_Teclado As New sighEntidades.Teclado
 Dim ml_idUsuarioConPermisoEnSISoEXOoSOAT As Long
 Dim ml_idUsuario As Long
 Dim lcBuscaParametro As New SIGHDatos.Parametros
-Dim mo_cmbTipoFinanciamiento As New SIGHEntidades.ListaDespleglable
+Dim mo_cmbTipoFinanciamiento As New sighEntidades.ListaDespleglable
 Dim mo_ReglasFarmacia As New SIGHNegocios.ReglasFarmacia
 Dim mo_ReglasFacturacion As New SIGHNegocios.ReglasFacturacion
 Dim mo_ReglasImagenes As New SIGHNegocios.ReglasImagenes
@@ -493,8 +493,8 @@ Private Sub btnAceptar_Click()
             Else
                 Dim oRptClaseCry As New rCrystal
                 oRptClaseCry.EnArchivoExcel = IIf(chkExcel.Value = 1, True, False)
-                oRptClaseCry.FechaInicio = Format(txtFecha1.Text, SIGHEntidades.DevuelveFechaSoloFormato_DMY)
-                oRptClaseCry.FechaFin = Format(txtFecha2.Text, SIGHEntidades.DevuelveFechaSoloFormato_DMY)
+                oRptClaseCry.FechaInicio = Format(txtFecha1.Text, sighEntidades.DevuelveFechaSoloFormato_DMY)
+                oRptClaseCry.FechaFin = Format(txtFecha2.Text, sighEntidades.DevuelveFechaSoloFormato_DMY)
                 oRptClaseCry.IdResponsable = Val(mo_cmbTipoFinanciamiento.BoundText)
                 oRptClaseCry.IdPlan = Val(cmbFuenteFinanciamiento.BoundText)
                 oRptClaseCry.TextoDelFiltro = lcSubTitulo
@@ -529,18 +529,18 @@ Function ValidaDatosObligatorios() As Boolean
       End If
     End If
     
-    If Me.txtFecha1 = SIGHEntidades.FECHA_VACIA_DMY Then
+    If Me.txtFecha1 = sighEntidades.FECHA_VACIA_DMY Then
         sMensaje = "Ingrese la fecha de egreso medico inicial"
     Else
-        If Not SIGHEntidades.EsFecha(Me.txtFecha1, "DD/MM/AAAA") Then
+        If Not sighEntidades.EsFecha(Me.txtFecha1, "DD/MM/AAAA") Then
             sMensaje = "La fecha de egreso medico inicial no tiene el formato correcto"
         End If
     End If
     
-    If Me.txtFecha2 = SIGHEntidades.FECHA_VACIA_DMY Then
+    If Me.txtFecha2 = sighEntidades.FECHA_VACIA_DMY Then
         sMensaje = "Ingrese la fecha de egreso medico final"
     Else
-        If Not SIGHEntidades.EsFecha(Me.txtFecha2, "DD/MM/AAAA") Then
+        If Not sighEntidades.EsFecha(Me.txtFecha2, "DD/MM/AAAA") Then
             sMensaje = "La fecha de egreso medico final no tiene el formato correcto"
         End If
     End If
@@ -572,8 +572,8 @@ Private Sub Form_Load()
        Set oGeneraDatos = New RptEConsumoXptoCarga
        XP_ProgressBar1.ShowText = True
        '
-       Me.txtFecha1.Text = SIGHEntidades.PrimerFechaDDMMYYDelMesActual()
-       Me.txtFecha2.Text = Format(Date, SIGHEntidades.DevuelveFechaSoloFormato_DMY)
+       Me.txtFecha1.Text = sighEntidades.PrimerFechaDDMMYYDelMesActual()
+       Me.txtFecha2.Text = Format(Date, sighEntidades.DevuelveFechaSoloFormato_DMY)
        '
        Dim lbBuscaPermisoEnFacturacion As New SIGHNegocios.ReglasFacturacion
        mo_cmbTipoFinanciamiento.BoundColumn = "idTipoFinanciamiento"
@@ -643,19 +643,19 @@ Private Sub optTipoFinanciamiento_Click(Value As Integer)
 End Sub
 
 Private Sub txtFecha1_LostFocus()
-    If txtFecha1 <> SIGHEntidades.FECHA_VACIA_DMY Then
-        If Not SIGHEntidades.EsFecha(txtFecha1, "DD/MM/AAAA") Then
+    If txtFecha1 <> sighEntidades.FECHA_VACIA_DMY Then
+        If Not sighEntidades.EsFecha(txtFecha1, "DD/MM/AAAA") Then
             MsgBox "La fecha ingresada no es válida", vbInformation, Me.Caption
-            txtFecha1 = SIGHEntidades.FECHA_VACIA_DMY
+            txtFecha1 = sighEntidades.FECHA_VACIA_DMY
         End If
     End If
 End Sub
 
 Private Sub txtFecha2_LostFocus()
-    If txtFecha2 <> SIGHEntidades.FECHA_VACIA_DMY Then
-        If Not SIGHEntidades.EsFecha(txtFecha2, "DD/MM/AAAA") Then
+    If txtFecha2 <> sighEntidades.FECHA_VACIA_DMY Then
+        If Not sighEntidades.EsFecha(txtFecha2, "DD/MM/AAAA") Then
             MsgBox "La fecha ingresada no es válida", vbInformation, Me.Caption
-            txtFecha2 = SIGHEntidades.FECHA_VACIA_DMY
+            txtFecha2 = sighEntidades.FECHA_VACIA_DMY
         End If
     End If
 End Sub
@@ -686,7 +686,7 @@ oConexionExterna.CommandTimeout = 900
 oConexionExterna.CursorLocation = adUseClient
 oConexionExterna.Open lcBuscaParametro.SeleccionaFilaParametro(sghBaseDatosExterna.sghJamo)
 
-SIGHEntidades.AbreConexionSIGH oConexion
+sighEntidades.AbreConexionSIGH oConexion
 
 lbEsOpenOffice = False
 On Error GoTo ManejadorErrorExcel
@@ -850,7 +850,7 @@ On Error GoTo ManejadorErrorExcel
                 MsgBox "El Reporte se generó en forma exitosa: " & lcArchivoExcel, vbInformation
             Else
                 If oWorkSheet.PageSetup.PrintArea <> "" Then
-                   oWorkSheet.PageSetup.PrintArea = SIGHEntidades.DevuelveRangoExcelAimprimir(oWorkSheet.PageSetup.PrintArea, iFila)
+                   oWorkSheet.PageSetup.PrintArea = sighEntidades.DevuelveRangoExcelAimprimir(oWorkSheet.PageSetup.PrintArea, iFila)
                 End If
                 oExcel.Visible = True
                 oWorkSheet.PrintPreview
