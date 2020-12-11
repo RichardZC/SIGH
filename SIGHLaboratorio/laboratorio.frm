@@ -339,8 +339,8 @@ Begin VB.Form frmLaboratorio
          TabIndex        =   18
          Top             =   150
          Width           =   4455
-         _extentx        =   7858
-         _extenty        =   5318
+         _ExtentX        =   7858
+         _ExtentY        =   5318
       End
       Begin VB.Frame Frame1 
          Enabled         =   0   'False
@@ -1060,8 +1060,8 @@ Begin VB.Form frmLaboratorio
       TabIndex        =   15
       Top             =   3870
       Width           =   13725
-      _extentx        =   24209
-      _extenty        =   6006
+      _ExtentX        =   24209
+      _ExtentY        =   6006
    End
    Begin VB.Frame Frame3 
       Height          =   1110

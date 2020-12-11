@@ -1,7 +1,7 @@
 [History]
-1=#P0#=mb	#P1#=txtNcuenta_LostFocus	#P2#=SIGHLaboratorio/frmLaboratorio/txtNcuenta_LostFocus	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201201133843	#P7#=0	#P8#=118	.
-2=#P0#=mb	#P1#=CargarItemsALaGrillaPaquete	#P2#=SIGHLaboratorio/ucInsumocpt/CargarItemsALaGrillaPaquete	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201201133706	#P7#=0	#P8#=9	.
-3=#P0#=mb	#P1#=btnTamizaje_Click	#P2#=SIGHLaboratorio/frmLaboratorio/btnTamizaje_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201201133505	#P7#=0	#P8#=12	.
+1=#P0#=mb	#P1#=CargarItemsALaGrillaPaquete	#P2#=SIGHLaboratorio/ucInsumocpt/CargarItemsALaGrillaPaquete	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201211124626	#P7#=0	#P8#=9	.
+2=#P0#=mb	#P1#=txtNcuenta_LostFocus	#P2#=SIGHLaboratorio/frmLaboratorio/txtNcuenta_LostFocus	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201201133843	#P7#=0	#P8#=118	.
+3=#P0#=mb	#P1#=btnTamizaje_Click	#P2#=SIGHLaboratorio/frmLaboratorio/btnTamizaje_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201201133505	#P7#=0	#P8#=1	.
 4=#P0#=mb	#P1#=grdProductosFocusColumna	#P2#=SIGHLaboratorio/ucInsumocpt/grdProductosFocusColumna	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201129192425	#P7#=-2147483640	#P8#=13	.
 5=#P0#=mb	#P1#=DevuelveTotalPagar	#P2#=SIGHLaboratorio/ucInsumocpt/DevuelveTotalPagar	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201129192053	#P7#=-2147483640	#P8#=0	.
 6=#P0#=mb	#P1#=RefrescarDatos	#P2#=SIGHLaboratorio/ucInsumocpt/RefrescarDatos	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201129184107	#P7#=0	#P8#=0	.

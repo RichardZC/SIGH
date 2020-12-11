@@ -1718,8 +1718,10 @@ Sub CargarItemsALaGrillaPaquete(rs As Recordset)
     If oRsTmp1.RecordCount > 0 Then
     'codigo/descripcion/cantidad/p.u./subtotal=totalporpagar/resultadoautomatico/ObsReceta
       mrs_FacturacionProductos.AddNew
+      mrs_FacturacionProductos!idProducto = rs!idProducto
       mrs_FacturacionProductos!Codigo = rs!Codigo
       mrs_FacturacionProductos!NombreProducto = rs!Nombre
+      mrs_FacturacionProductos!IdTipoFinanciamiento = ml_IdTipoFinanciamiento
       mrs_FacturacionProductos!Cantidad = 1
       mrs_FacturacionProductos!PrecioUnitario = rs!PrecioUnitario
       mrs_FacturacionProductos!TotalPorPagar = rs!PrecioUnitario
@@ -1730,8 +1732,9 @@ Sub CargarItemsALaGrillaPaquete(rs As Recordset)
     mb_CargandoProductos = False
     
     Set rs = Nothing
+    Totalizar
   Set grdProductos.DataSource = mrs_FacturacionProductos
- Totalizar
+ 
  
 End Sub
 '</Agregado por: WABG el: 11/29/2020-12:44:07 en el equipo: SISGALENPLUS-PC><CAMBIO 44>
