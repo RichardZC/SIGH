@@ -25,13 +25,30 @@ Option Explicit
 Dim ml_IdUsuarioAuditoria As Long
 Dim ml_IdOrden As Long
 Dim ml_idProducto As Long
-Dim ml_Cantidad As Long
-Dim mc_Precio As Currency
+Dim ml_cantidad As Long
+Dim mc_precio As Currency
 Dim mc_Total As Currency
 'mgaray201411a
 Dim ms_LabConfHIS As String
 Dim ml_GrupoHIS As Long
 Dim ml_SubGrupoHIS As Long
+
+'RHA 17/11/2020 Cambio 46 Inicio
+Dim ml_IdFinan As Long
+Dim ml_CodPres As String
+Property Get IdFinan() As Long
+   IdFinan = ml_IdFinan
+End Property
+Property Let IdFinan(lValue As Long)
+   ml_IdFinan = lValue
+End Property
+Property Get CodPres() As String
+   CodPres = ml_CodPres
+End Property
+Property Let CodPres(lValue As String)
+   ml_CodPres = lValue
+End Property
+'RHA 17/11/2020 Cambio 46 Fin
 
 Property Get GrupoHIS() As Long
    GrupoHIS = ml_GrupoHIS
@@ -64,23 +81,23 @@ End Property
 Property Get idProducto() As Long
    idProducto = ml_idProducto
 End Property
-Property Let Cantidad(iValue As Long)
-   ml_Cantidad = iValue
+Property Let cantidad(iValue As Long)
+   ml_cantidad = iValue
 End Property
-Property Get Cantidad() As Long
-   Cantidad = ml_Cantidad
+Property Get cantidad() As Long
+   cantidad = ml_cantidad
 End Property
-Property Let Precio(cValue As Currency)
-   mc_Precio = cValue
+Property Let precio(cValue As Currency)
+   mc_precio = cValue
 End Property
-Property Get Precio() As Currency
-   Precio = mc_Precio
+Property Get precio() As Currency
+   precio = mc_precio
 End Property
-Property Let Total(cValue As Currency)
+Property Let TOTAL(cValue As Currency)
    mc_Total = cValue
 End Property
-Property Get Total() As Currency
-   Total = mc_Total
+Property Get TOTAL() As Currency
+   TOTAL = mc_Total
 End Property
 'mgaray201411a
 Property Let labConfHIS(sValue As String)

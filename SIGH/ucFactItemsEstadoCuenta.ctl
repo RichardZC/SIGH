@@ -85,7 +85,7 @@ Public Event Totalizado(TotalIngresado As Double, TotalPendientePago As Double, 
 Dim mo_AdminAdmision As New SIGHNegocios.ReglasAdmision
 Dim mo_ReglasFacturacion As New SIGHNegocios.ReglasFacturacion
 Dim mo_AdminCaja As New SIGHNegocios.ReglasCaja
-Dim mo_reglasComunes As New SIGHNegocios.ReglasComunes
+Dim mo_ReglasComunes As New SIGHNegocios.ReglasComunes
 Dim mo_ReglasSeguridad As New SIGHNegocios.ReglasDeSeguridad
 Dim mo_ReglasImagenes As New SIGHNegocios.ReglasImagenes
 Dim mo_ReglasLaboratorio As New SIGHNegocios.ReglasLaboratorio
@@ -279,7 +279,7 @@ End Property
 
 Sub Inicializar()
     If oConexion.State = 0 Then
-        oConexion.Open sighentidades.CadenaConexion
+        oConexion.Open sighEntidades.CadenaConexion
         oConexion.CursorLocation = adUseClient
         oConexion.CommandTimeout = 150
     End If
@@ -498,7 +498,7 @@ Sub CargarItemsALaGrillaB(rs As Recordset)
                 oRs.Close
                 '
                 If lnPrecioPagar = 0 Then
-                    Set oRs = mo_reglasComunes.CatalogoBienesSeleccionarPorIdYtipoFinanciamiento(oConexion, rs!idProducto, 1)
+                    Set oRs = mo_ReglasComunes.CatalogoBienesSeleccionarPorIdYtipoFinanciamiento(oConexion, rs!idProducto, 1)
                     lnPrecioDespacho = 0
                     If oRs.RecordCount > 0 Then
                        lnPrecioDespacho = oRs.Fields!PrecioUnitario
@@ -510,7 +510,7 @@ Sub CargarItemsALaGrillaB(rs As Recordset)
                 Select Case lnComoSeTrabajaEnEstadoCuenta1
                 Case sghTrabajaSeguroSIS
                      If lnPrecioSIS = 0 Then
-                          Set oRs = mo_reglasComunes.CatalogoBienesSeleccionarPorIdYtipoFinanciamiento(oConexion, rs!idProducto, ml_IdTipoFinanciamiento)
+                          Set oRs = mo_ReglasComunes.CatalogoBienesSeleccionarPorIdYtipoFinanciamiento(oConexion, rs!idProducto, ml_IdTipoFinanciamiento)
                           If oRs.RecordCount > 0 Then
                              lnPrecioSIS = oRs.Fields!PrecioUnitario
                           End If
@@ -521,7 +521,7 @@ Sub CargarItemsALaGrillaB(rs As Recordset)
                      End If
                 Case sghTrabajaSeguroSOAT
                      If lnPrecioSOAT = 0 Then
-                          Set oRs = mo_reglasComunes.CatalogoBienesSeleccionarPorIdYtipoFinanciamiento(oConexion, rs!idProducto, ml_IdTipoFinanciamiento)
+                          Set oRs = mo_ReglasComunes.CatalogoBienesSeleccionarPorIdYtipoFinanciamiento(oConexion, rs!idProducto, ml_IdTipoFinanciamiento)
                           If oRs.RecordCount > 0 Then
                              lnPrecioSOAT = oRs.Fields!PrecioUnitario
                           End If
@@ -532,7 +532,7 @@ Sub CargarItemsALaGrillaB(rs As Recordset)
                      End If
                 Case sghTrabajaSeguroConvenios
                      If lnPrecioCONV = 0 Then
-                          Set oRs = mo_reglasComunes.CatalogoBienesSeleccionarPorIdYtipoFinanciamiento(oConexion, rs!idProducto, ml_IdTipoFinanciamiento)
+                          Set oRs = mo_ReglasComunes.CatalogoBienesSeleccionarPorIdYtipoFinanciamiento(oConexion, rs!idProducto, ml_IdTipoFinanciamiento)
                           If oRs.RecordCount > 0 Then
                              lnPrecioCONV = oRs.Fields!PrecioUnitario
                           End If
@@ -589,7 +589,7 @@ Sub CargarItemsALaGrillaB(rs As Recordset)
                 mrs_FacturacionProductos!CantidadDevuelta = lnCantidadDev
                 mrs_FacturacionProductos!nrodocumento = rs!DocumentoNumero
                 If ml_AgruparPor = 3 Or ml_AgruparPor = 5 Then
-                   mrs_FacturacionProductos!Descripcion = rs!dfinanciamiento
+                   mrs_FacturacionProductos!descripcion = rs!dfinanciamiento
                 End If
                 mrs_FacturacionProductos!ImporteEnBoleta = lnImporteEnBoleta
                 mrs_FacturacionProductos!nroDcto = rs!DocumentoNumero
@@ -730,7 +730,7 @@ Sub CargarItemsALaGrillaS(rs As Recordset)
                 oRs.Close
                 'Actualiza Precios Contado
                 If lnPrecioPagar = 0 Then
-                    Set oRs = mo_reglasComunes.CatalogoServicioSeleccionarPorIdYtipoFinanciamiento(oConexion, rs!idProducto, 1)
+                    Set oRs = mo_ReglasComunes.CatalogoServicioSeleccionarPorIdYtipoFinanciamiento(oConexion, rs!idProducto, 1)
                     lnPrecioDespacho = 0
                     If oRs.RecordCount > 0 Then
                        If rs!idPuntoCarga = sghPtoCargaAdmisionHospitalizacion Then
@@ -775,7 +775,7 @@ Sub CargarItemsALaGrillaS(rs As Recordset)
                 Select Case lnComoSeTrabajaEnEstadoCuenta1
                 Case sghTrabajaSeguroSIS
                      If lnPrecioSIS = 0 Then
-                          Set oRs = mo_reglasComunes.CatalogoServicioSeleccionarPorIdYtipoFinanciamiento(oConexion, rs!idProducto, ml_IdTipoFinanciamiento)
+                          Set oRs = mo_ReglasComunes.CatalogoServicioSeleccionarPorIdYtipoFinanciamiento(oConexion, rs!idProducto, ml_IdTipoFinanciamiento)
                           If oRs.RecordCount > 0 Then
                              lnPrecioSIS = oRs.Fields!PrecioUnitario
                           End If
@@ -786,7 +786,7 @@ Sub CargarItemsALaGrillaS(rs As Recordset)
                      End If
                 Case sghTrabajaSeguroSOAT
                      If lnPrecioSOAT = 0 Then
-                          Set oRs = mo_reglasComunes.CatalogoServicioSeleccionarPorIdYtipoFinanciamiento(oConexion, rs!idProducto, ml_IdTipoFinanciamiento)
+                          Set oRs = mo_ReglasComunes.CatalogoServicioSeleccionarPorIdYtipoFinanciamiento(oConexion, rs!idProducto, ml_IdTipoFinanciamiento)
                           If oRs.RecordCount > 0 Then
                              lnPrecioSOAT = oRs.Fields!PrecioUnitario
                           End If
@@ -797,7 +797,7 @@ Sub CargarItemsALaGrillaS(rs As Recordset)
                      End If
                 Case sghTrabajaSeguroConvenios
                      If lnPrecioCONV = 0 Then
-                          Set oRs = mo_reglasComunes.CatalogoServicioSeleccionarPorIdYtipoFinanciamiento(oConexion, rs!idProducto, ml_IdTipoFinanciamiento)
+                          Set oRs = mo_ReglasComunes.CatalogoServicioSeleccionarPorIdYtipoFinanciamiento(oConexion, rs!idProducto, ml_IdTipoFinanciamiento)
                           If oRs.RecordCount > 0 Then
                              lnPrecioCONV = oRs.Fields!PrecioUnitario
                           End If
@@ -853,7 +853,7 @@ End If
                         mrs_FacturacionProductos!idServicioDeEstancia = IIf(IsNull(rs!idServicioPaciente), 0, rs!idServicioPaciente)
                     End If
                     If ml_AgruparPor = 3 Or ml_AgruparPor = 5 Then
-                       mrs_FacturacionProductos!Descripcion = rs!dfinanciamiento
+                       mrs_FacturacionProductos!descripcion = rs!dfinanciamiento
                     End If
                     mrs_FacturacionProductos!ImporteEnBoleta = lnImporteEnBoleta
                     mrs_FacturacionProductos!nroDcto = lcNroDcto
@@ -1273,11 +1273,11 @@ Dim idUsuarioConPermisoEnSISoEXOoSOATconf As sghComoSeTrabajaEnEstadoCuentaLosSe
 
     oGrilla.Bands(lBanda).Columns("FechaAutorizaPendiente").Width = 2500
     oGrilla.Bands(lBanda).Columns("FechaAutorizaPendiente").Header.Caption = "Fecha Aut. Pend."
-    oGrilla.Bands(lBanda).Columns("FechaAutorizaPendiente").Format = sighentidades.DevuelveFechaSoloFormato_DMY_HM
+    oGrilla.Bands(lBanda).Columns("FechaAutorizaPendiente").Format = sighEntidades.DevuelveFechaSoloFormato_DMY_HM
 
     oGrilla.Bands(lBanda).Columns("FechaAutorizaSeguro").Width = 2500
     oGrilla.Bands(lBanda).Columns("FechaAutorizaSeguro").Header.Caption = "Fec. Aut. Seguro."
-    oGrilla.Bands(lBanda).Columns("FechaAutorizaSeguro").Format = sighentidades.DevuelveFechaSoloFormato_DMY_HM
+    oGrilla.Bands(lBanda).Columns("FechaAutorizaSeguro").Format = sighEntidades.DevuelveFechaSoloFormato_DMY_HM
     
    
     oGrilla.Bands(lBanda).Columns("IdOrden").Width = 1000
@@ -1447,7 +1447,7 @@ Dim idUsuarioConPermisoEnSISoEXOoSOATconf As sghComoSeTrabajaEnEstadoCuentaLosSe
     oGrilla.Bands(lBanda).Columns("TotalPorPagar").Activation = ssActivationActivateNoEdit
     
 ConfigEstilo:
-    gridInfra.ConfigurarFilasBiColores oGrilla, sighentidades.GrillaConFilasBicolor
+    gridInfra.ConfigurarFilasBiColores oGrilla, sighEntidades.GrillaConFilasBicolor
     
 End Sub
 
@@ -1461,7 +1461,7 @@ Dim oValueTF As SSValueList
         Set rs = mo_ReglasFacturacion.TiposFinanciamientoSeleccionarTodos
         Do While Not rs.EOF
             If rs!idTipoFinanciamiento <> 0 Then
-                oValueTF.ValueListItems.Add Val(rs!idTipoFinanciamiento), Trim(rs!Descripcion)
+                oValueTF.ValueListItems.Add Val(rs!idTipoFinanciamiento), Trim(rs!descripcion)
             End If
             rs.MoveNext
         Loop
@@ -1481,10 +1481,10 @@ Dim oValuePC As SSValueList
     
     If Not oGrilla.ValueLists.Exists("listaPuntosCarga") Then
         Set oValuePC = oGrilla.ValueLists.Add("listaPuntosCarga")
-        Set rs = mo_reglasComunes.SeleccionarPuntosDeCarga()
+        Set rs = mo_ReglasComunes.SeleccionarPuntosDeCarga()
         Do While Not rs.EOF
             If rs!idPuntoCarga <> 0 Then
-                oValuePC.ValueListItems.Add Val(rs!idPuntoCarga), Trim(rs!Descripcion)
+                oValuePC.ValueListItems.Add Val(rs!idPuntoCarga), Trim(rs!descripcion)
             End If
             rs.MoveNext
         Loop
@@ -1506,7 +1506,7 @@ Dim oValueEstado As SSValueList
         Set oValueEstado = oGrilla.ValueLists.Add("listaEstadoFacturacion")
         Set rs = mo_ReglasFacturacion.EstadosFacturacionObtenerTodos
         Do While Not rs.EOF
-            oValueEstado.ValueListItems.Add Val(rs!idestadofacturacion), Trim(rs!Descripcion)
+            oValueEstado.ValueListItems.Add Val(rs!idestadofacturacion), Trim(rs!descripcion)
             rs.MoveNext
         Loop
         rs.Close
@@ -1533,7 +1533,7 @@ End Sub
 
 Sub LimpiarGrilla()
         If oConexion.State = 0 Then
-            oConexion.Open sighentidades.CadenaConexion
+            oConexion.Open sighEntidades.CadenaConexion
             oConexion.CursorLocation = adUseClient
             oConexion.CommandTimeout = 150
         End If
@@ -1950,12 +1950,12 @@ Sub CargarItemsALaGrillaB_menorTiempo(rs As Recordset, ByRef lnTotalPagoSeguro A
             '
             Set oRsDevoluciones = mo_ReglasFarmacia.FacturacionBienesDevolucionesXcuenta(ml_idCuentaAtencion, oConexion)
             '
-            Set oRecetas = mo_reglasComunes.RecetaDetalleSoloFarmaciaSeleccionarXidCuentaAtencion(ml_idCuentaAtencion, False)
+            Set oRecetas = mo_ReglasComunes.RecetaDetalleSoloFarmaciaSeleccionarXidCuentaAtencion(ml_idCuentaAtencion, False)
             '
             If wxParametro514 <> "S" Then
-                Set oRsCatalogo = mo_reglasComunes.CatalogoBienesInsumosHospSeleccionarTodos(oConexion)
+                Set oRsCatalogo = mo_ReglasComunes.CatalogoBienesInsumosHospSeleccionarTodos(oConexion)
             Else
-                Set oRsCatalogo = mo_reglasComunes.CatalogoBienesInsumosHospPorCuenta(oConexion, ml_idCuentaAtencion)
+                Set oRsCatalogo = mo_ReglasComunes.CatalogoBienesInsumosHospPorCuenta(oConexion, ml_idCuentaAtencion)
             End If
             '
             lnComoSeTrabajaEnEstadoCuenta1 = mo_ReglasFacturacion.TiposFinanciamientoDevuelveComoSeTrabajaEnEstadoCuenta(ml_IdTipoFinanciamiento, oConexion)
@@ -2174,14 +2174,14 @@ Sub CargarItemsALaGrillaB_menorTiempo(rs As Recordset, ByRef lnTotalPagoSeguro A
                     mrs_FacturacionProductos!CantidadDevuelta = lnCantidadDev
                     mrs_FacturacionProductos!nrodocumento = rs!DocumentoNumero
                     If ml_AgruparPor = 3 Or ml_AgruparPor = 5 Then
-                       mrs_FacturacionProductos!Descripcion = rs!dfinanciamiento
+                       mrs_FacturacionProductos!descripcion = rs!dfinanciamiento
                     End If
                     mrs_FacturacionProductos!ImporteEnBoleta = lnImporteEnBoleta
                     mrs_FacturacionProductos!nroDcto = rs!DocumentoNumero
                     mrs_FacturacionProductos!ComoSeTrabajaEnEstadoCuenta = lnComoSeTrabajaEnEstadoCuenta
                     mrs_FacturacionProductos!FechaDespacho = rs!fechacreacion
                     mrs_FacturacionProductos!esPaquete = IIf(IsNull(rs!esPaquete), False, rs!esPaquete)
-                    mrs_FacturacionProductos!receta = lnReceta
+                    mrs_FacturacionProductos!Receta = lnReceta
                     'Function TotalizaPagoDelPaciente()
                     If (mrs_FacturacionProductos.Fields!idestadofacturacion = 1 Or _
                           mrs_FacturacionProductos.Fields!idestadofacturacion = sghConPreVenta) And _
@@ -2203,10 +2203,10 @@ Sub CargarItemsALaGrillaB_menorTiempo(rs As Recordset, ByRef lnTotalPagoSeguro A
                     'Resumen-Farmacia
                     
                     If mrs_FacturacionProductos.Fields!idestadofacturacion = 1 Or mrs_FacturacionProductos.Fields!idestadofacturacion = 4 Then
-                        Set oRs = mo_reglasComunes.FactPuntosCargaSeleccionarPorId(mrs_FacturacionProductos.Fields!idPuntoCarga, oConexion)
+                        Set oRs = mo_ReglasComunes.FactPuntosCargaSeleccionarPorId(mrs_FacturacionProductos.Fields!idPuntoCarga, oConexion)
                         lcTexto = ""
                         If oRs.RecordCount > 0 Then
-                           lcTexto = Trim(oRs.Fields!Descripcion)
+                           lcTexto = Trim(oRs.Fields!descripcion)
                         End If
                         oRs.Close
                         Select Case lnIdTipoConceptoFarmaciaPlanActual
@@ -2251,7 +2251,7 @@ Sub CargarItemsALaGrillaB_menorTiempo(rs As Recordset, ByRef lnTotalPagoSeguro A
                         oRsCuentaDetalle.AddNew
                         oRsCuentaDetalle.Fields!llave = lcLlave
                         oRsCuentaDetalle.Fields!Codigo = mrs_FacturacionProductos.Fields!Codigo
-                        oRsCuentaDetalle.Fields!Descripcion = Left(mrs_FacturacionProductos.Fields!NombreProducto, 150)
+                        oRsCuentaDetalle.Fields!descripcion = Left(mrs_FacturacionProductos.Fields!NombreProducto, 150)
                         oRsCuentaDetalle.Fields!Cantidad = lnCant
                         oRsCuentaDetalle.Fields!Precio = lnPrec
                         oRsCuentaDetalle.Fields!Importe = lnImpo
@@ -2326,12 +2326,12 @@ Sub CargarItemsALaGrillaS_menorTiempo(rs As Recordset, ByRef lnTotalPagoSeguro A
             '
             Set oRsDevoluciones = mo_ReglasFacturacion.FacturacionServicioDevolucionesXcuenta(ml_idCuentaAtencion, oConexion)
             '
-            Set oRecetas = mo_reglasComunes.RecetaDetalleSoloServiciosSeleccionarXidCuentaAtencion(ml_idCuentaAtencion, False)
+            Set oRecetas = mo_ReglasComunes.RecetaDetalleSoloServiciosSeleccionarXidCuentaAtencion(ml_idCuentaAtencion, False)
             '
             If wxParametro514 <> "S" Then
-               Set oRsCatalogo = mo_reglasComunes.CatalogoServiciosSeleccionarTodos(oConexion)
+               Set oRsCatalogo = mo_ReglasComunes.CatalogoServiciosSeleccionarTodos(oConexion)
             Else
-               Set oRsCatalogo = mo_reglasComunes.CatalogoServiciosHospPorCuenta(oConexion, ml_idCuentaAtencion)
+               Set oRsCatalogo = mo_ReglasComunes.CatalogoServiciosHospPorCuenta(oConexion, ml_idCuentaAtencion)
             End If
             '
             lnComoSeTrabajaEnEstadoCuenta1 = mo_ReglasFacturacion.TiposFinanciamientoDevuelveComoSeTrabajaEnEstadoCuenta(ml_IdTipoFinanciamiento, oConexion)
@@ -2585,14 +2585,14 @@ Sub CargarItemsALaGrillaS_menorTiempo(rs As Recordset, ByRef lnTotalPagoSeguro A
                             mrs_FacturacionProductos!idServicioDeEstancia = IIf(IsNull(rs!idServicioPaciente), 0, rs!idServicioPaciente)
                         End If
                         If ml_AgruparPor = 3 Or ml_AgruparPor = 5 Then
-                           mrs_FacturacionProductos!Descripcion = rs!dfinanciamiento
+                           mrs_FacturacionProductos!descripcion = rs!dfinanciamiento
                         End If
                         mrs_FacturacionProductos!ImporteEnBoleta = lnImporteEnBoleta
                         mrs_FacturacionProductos!nroDcto = lcNroDcto
                         mrs_FacturacionProductos!ComoSeTrabajaEnEstadoCuenta = lnComoSeTrabajaEnEstadoCuenta
                         mrs_FacturacionProductos!IdOrdenPago = lnIdOrdenPago
                         mrs_FacturacionProductos!FechaDespacho = rs!FechaDespacho
-                        mrs_FacturacionProductos!receta = lnReceta
+                        mrs_FacturacionProductos!Receta = lnReceta
                     End If
                     'Function TotalizaPagoDelPaciente()
                     If (mrs_FacturacionProductos.Fields!idestadofacturacion = 1 Or _
@@ -2614,10 +2614,10 @@ Sub CargarItemsALaGrillaS_menorTiempo(rs As Recordset, ByRef lnTotalPagoSeguro A
                     lnTotalizaPagosDelPacienteConSeguro = lnTotalizaPagosDelPacienteConSeguro + mrs_FacturacionProductos.Fields!TotalPorPagar
                     '***Resumen-Servicios
                     If mrs_FacturacionProductos.Fields!idestadofacturacion = 1 Or mrs_FacturacionProductos.Fields!idestadofacturacion = 4 Or mrs_FacturacionProductos.Fields!idestadofacturacion = sghConPreVenta Then
-                        Set oRs = mo_reglasComunes.FactPuntosCargaSeleccionarPorId(mrs_FacturacionProductos.Fields!idPuntoCarga, oConexion)
+                        Set oRs = mo_ReglasComunes.FactPuntosCargaSeleccionarPorId(mrs_FacturacionProductos.Fields!idPuntoCarga, oConexion)
                         lcTexto = ""
                         If oRs.RecordCount > 0 Then
-                           lcTexto = Trim(oRs.Fields!Descripcion)
+                           lcTexto = Trim(oRs.Fields!descripcion)
                         End If
                         oRs.Close
                         Select Case lnIdTipoConceptoFarmaciaPlanActual
@@ -2662,7 +2662,7 @@ Sub CargarItemsALaGrillaS_menorTiempo(rs As Recordset, ByRef lnTotalPagoSeguro A
                         oRsCuentaDetalle.AddNew
                         oRsCuentaDetalle.Fields!llave = lcLlave
                         oRsCuentaDetalle.Fields!Codigo = mrs_FacturacionProductos.Fields!Codigo
-                        oRsCuentaDetalle.Fields!Descripcion = Left(mrs_FacturacionProductos.Fields!NombreProducto, 50)
+                        oRsCuentaDetalle.Fields!descripcion = Left(mrs_FacturacionProductos.Fields!NombreProducto, 50)
                         oRsCuentaDetalle.Fields!Cantidad = lnCant
                         oRsCuentaDetalle.Fields!Precio = lnPrec
                         oRsCuentaDetalle.Fields!Importe = lnImpo

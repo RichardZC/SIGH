@@ -21,7 +21,6 @@ Begin VB.Form SisFuaVersion2
    EndProperty
    Icon            =   "SISFormatoFUA.frx":0000
    LinkTopic       =   "Form1"
-   LockControls    =   -1  'True
    MaxButton       =   0   'False
    MinButton       =   0   'False
    ScaleHeight     =   10440
@@ -317,6 +316,15 @@ Begin VB.Form SisFuaVersion2
       TabIndex        =   9
       Top             =   9390
       Width           =   12510
+      Begin VB.CommandButton btnguardafua 
+         Caption         =   "Command1"
+         Height          =   480
+         Left            =   8520
+         TabIndex        =   258
+         Top             =   960
+         Visible         =   0   'False
+         Width           =   615
+      End
       Begin VB.CommandButton btnImprimir 
          Caption         =   "Imprime FUA"
          BeginProperty Font 
@@ -351,7 +359,7 @@ Begin VB.Form SisFuaVersion2
             Strikethrough   =   0   'False
          EndProperty
          Height          =   645
-         Left            =   6390
+         Left            =   10680
          Picture         =   "SISFormatoFUA.frx":1B53
          Style           =   1  'Graphical
          TabIndex        =   8
@@ -389,6 +397,7 @@ Begin VB.Form SisFuaVersion2
       _ExtentX        =   22093
       _ExtentY        =   13467
       _Version        =   393216
+      Tab             =   2
       TabHeight       =   520
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "Tahoma"
@@ -401,17 +410,12 @@ Begin VB.Form SisFuaVersion2
       EndProperty
       TabCaption(0)   =   "Cabecera  (F3)"
       TabPicture(0)   =   "SISFormatoFUA.frx":2D89
-      Tab(0).ControlEnabled=   -1  'True
-      Tab(0).Control(0)=   "Frame1"
-      Tab(0).Control(0).Enabled=   0   'False
-      Tab(0).Control(1)=   "Frame3"
-      Tab(0).Control(1).Enabled=   0   'False
+      Tab(0).ControlEnabled=   0   'False
+      Tab(0).Control(0)=   "Frame17"
+      Tab(0).Control(1)=   "Frame16"
       Tab(0).Control(2)=   "Frame7"
-      Tab(0).Control(2).Enabled=   0   'False
-      Tab(0).Control(3)=   "Frame16"
-      Tab(0).Control(3).Enabled=   0   'False
-      Tab(0).Control(4)=   "Frame17"
-      Tab(0).Control(4).Enabled=   0   'False
+      Tab(0).Control(3)=   "Frame3"
+      Tab(0).Control(4)=   "Frame1"
       Tab(0).ControlCount=   5
       TabCaption(1)   =   "N° Hoja Refer/Cont"
       TabPicture(1)   =   "SISFormatoFUA.frx":2DA5
@@ -430,12 +434,17 @@ Begin VB.Form SisFuaVersion2
       Tab(1).ControlCount=   11
       TabCaption(2)   =   "Medicamentos/Cpt  (F5)"
       TabPicture(2)   =   "SISFormatoFUA.frx":2DC1
-      Tab(2).ControlEnabled=   0   'False
+      Tab(2).ControlEnabled=   -1  'True
       Tab(2).Control(0)=   "Label15"
+      Tab(2).Control(0).Enabled=   0   'False
       Tab(2).Control(1)=   "grdDiag"
+      Tab(2).Control(1).Enabled=   0   'False
       Tab(2).Control(2)=   "Frame19"
+      Tab(2).Control(2).Enabled=   0   'False
       Tab(2).Control(3)=   "FraPatologia"
+      Tab(2).Control(3).Enabled=   0   'False
       Tab(2).Control(4)=   "FraFarmacia"
+      Tab(2).Control(4).Enabled=   0   'False
       Tab(2).ControlCount=   5
       Begin VB.TextBox txtMedicoRNE 
          Height          =   315
@@ -474,7 +483,7 @@ Begin VB.Form SisFuaVersion2
             Strikethrough   =   0   'False
          EndProperty
          Height          =   2955
-         Left            =   -74880
+         Left            =   120
          TabIndex        =   65
          Top             =   360
          Width           =   12135
@@ -533,7 +542,7 @@ Begin VB.Form SisFuaVersion2
             Strikethrough   =   0   'False
          EndProperty
          Height          =   2040
-         Left            =   -74880
+         Left            =   120
          TabIndex        =   62
          Top             =   3345
          Width           =   12165
@@ -630,7 +639,7 @@ Begin VB.Form SisFuaVersion2
             Strikethrough   =   0   'False
          EndProperty
          Height          =   1425
-         Left            =   -74880
+         Left            =   120
          TabIndex        =   55
          Top             =   6120
          Width           =   8100
@@ -2914,7 +2923,7 @@ Begin VB.Form SisFuaVersion2
             Strikethrough   =   0   'False
          EndProperty
          Height          =   975
-         Left            =   3960
+         Left            =   -71040
          TabIndex        =   26
          Top             =   6480
          Width           =   8475
@@ -3018,7 +3027,7 @@ Begin VB.Form SisFuaVersion2
             Strikethrough   =   0   'False
          EndProperty
          Height          =   975
-         Left            =   60
+         Left            =   -74940
          TabIndex        =   24
          Top             =   6480
          Width           =   3825
@@ -3069,7 +3078,7 @@ Begin VB.Form SisFuaVersion2
             Strikethrough   =   0   'False
          EndProperty
          Height          =   2115
-         Left            =   60
+         Left            =   -74940
          TabIndex        =   14
          Top             =   390
          Width           =   12345
@@ -3483,7 +3492,7 @@ Begin VB.Form SisFuaVersion2
             Strikethrough   =   0   'False
          EndProperty
          Height          =   1755
-         Left            =   60
+         Left            =   -74940
          TabIndex        =   13
          Top             =   4680
          Width           =   12375
@@ -3988,7 +3997,7 @@ Begin VB.Form SisFuaVersion2
             Strikethrough   =   0   'False
          EndProperty
          Height          =   2115
-         Left            =   60
+         Left            =   -74940
          TabIndex        =   12
          Top             =   2520
          Width           =   12315
@@ -4497,7 +4506,7 @@ Begin VB.Form SisFuaVersion2
       End
       Begin UltraGrid.SSUltraGrid grdDiag 
          Height          =   2145
-         Left            =   -66705
+         Left            =   8295
          TabIndex        =   257
          Top             =   5385
          Width           =   3990
@@ -4533,7 +4542,7 @@ Begin VB.Form SisFuaVersion2
          EndProperty
          ForeColor       =   &H000000FF&
          Height          =   195
-         Left            =   -74850
+         Left            =   150
          TabIndex        =   256
          Top             =   5550
          Width           =   7485
@@ -4694,6 +4703,13 @@ Dim ldHoy As Date
 Dim mo_SoloImprimeFUAyaGrabado As Boolean
 Dim ml_CodigoPrestacion As String
 
+'HRA 10/12/2020 Cambio Inicio
+Dim mc_GuardarFua As String
+Property Let GuardarFua(lValue As String)
+   mc_GuardarFua = lValue
+End Property
+'HRA 10/12/2020 Cambio Fin
+
 Property Let CodigoPrestacion(lValue As String)
     ml_CodigoPrestacion = lValue
 End Property
@@ -4732,6 +4748,8 @@ End Property
 Property Let FuaTipoAnexo2015(lValue As Integer)
    mi_FuaTipoAnexo2015 = lValue
 End Property
+
+
 
 Sub AdministrarKeyPreview(KeyCode As Integer)
    Select Case KeyCode
@@ -4790,9 +4808,10 @@ Sub ArsSisCargaDatosAntesDeGrabar()
        ml_IdCuentaAtencion = Left("9" & Trim(txtFua1.Text) & Trim(txtFua2.Text) & Trim(Val(txtFua3.Text)) & lcMinimoCuentaARFSIS, 9)
        'ml_idCuentaAtencion = 999999999
     End If
+   
 End Sub
 
-Private Sub btnAceptar_Click()
+Public Sub btnAceptar_Click()
    If btnAceptar.Enabled = False Then
       Exit Sub
    End If
@@ -5281,6 +5300,38 @@ End Sub
 
 Private Sub btnCancelar_Click()
    Me.Visible = False
+End Sub
+
+Public Sub btnguardafua_Click()
+Select Case mi_opcion
+   Case sghAgregar
+       ArsSisCargaDatosAntesDeGrabar
+       If ValidacionesOK = True Then
+            If AgregarDatos() Then
+                 'If MsgBox("Los datos se agregaron correctamente" & Chr(13) & "Desea Imprimir el Formato", vbQuestion + vbYesNo, "Mensaje") = vbYes Then
+                   ' ImpresionFua
+                 'End If
+                 'Me.Visible = False
+                 Unload Me
+            Else
+               ' MsgBox "No se pudo agregar los datos" + Chr(13) + mo_ReglasSISgalenhos.MensajeError, vbExclamation, Me.Caption
+                If lnNroFuaRepetido = True Then
+'                    If Val(wxParametro320) = sghFuaTipo.sghFuaTipoAutomatico Then
+'                       txtFua3.Text = Right("00000000" & Trim(Str(Val(mo_ReglasSISgalenhos.sisFuaAtencionUltimoCorrelativo()) + 1)), 8)
+'                    Else
+                    Dim oRsTmp1 As New Recordset
+                    Set oRsTmp1 = mo_ReglasSISgalenhos.SisFuaSeleccionarTodos
+                    If oRsTmp1.RecordCount > 0 Then
+                       txtFua3.Text = Right("00000000" & Trim(Str(Val(oRsTmp1.Fields!FuaUltimoGenerado) + 1)), 8)
+                    End If
+                    oRsTmp1.Close
+                    Set oRsTmp1 = Nothing
+'                    End If
+                End If
+            End If
+       End If
+
+   End Select
 End Sub
 
 Private Sub btnImprimir_Click()
@@ -5925,6 +5976,10 @@ Private Sub cmbIdDestinoAtencion_KeyDown(KeyCode As Integer, Shift As Integer)
     AdministrarKeyPreview KeyCode
 End Sub
 
+'Private Sub Command1_Click()
+'Text1.Text = ucSISfuaCodPrestacion1.CodigoPrestacion
+'End Sub
+
 Private Sub Form_Activate()
   If lbEsIgualQueArSIS = False Then
         If mo_lbCargaTablasUnaVez = True Then
@@ -5953,6 +6008,8 @@ Private Sub Form_Activate()
               ArsSisHabilitaAgregarYmodificar
               PermitirManipularDatosSegunSexo
               mo_Formulario.HabilitarDeshabilitar txtFua3, False
+                          
+              
            End If
         End If
         If Val(wxParametro320) = sghFuaTipo.sghFuaTipoAutomatico And mi_opcion = sghAgregar Then
@@ -5969,6 +6026,13 @@ Private Sub Form_Activate()
      btnImprimir_Click
      Unload Me
   End If
+  
+  'HRA 10/12/2020 Cambio 47 Inicio
+    If mc_GuardarFua = "S" Then
+        Me.btnguardafua_Click
+    End If
+  'HRA 10/12/2020 47 Cambio Fin
+  
 End Sub
 
 
@@ -6053,6 +6117,8 @@ Private Sub Form_Load()    '
     CargarDatosAlFormulario
     
     CargaGrdDiagAyuda
+    
+  
     
  
 End Sub
@@ -8052,9 +8118,6 @@ Sub ImpresionFua()
             MsgBox "No existe información con esos Datos", vbInformation, "Resultado"
         Else
         
-        
-        
-        
             If Val(txtFua3.Text) = 0 Then
                txtFua3.Text = oDoSisFuaAtencion.FuaNumero
                ml_IdCuentaAtencion = oDoSisFuaAtencion.IdCuentaAtencion
@@ -8938,9 +9001,21 @@ Sub ImpresionFua()
                         oWorkSheet.Cells(iFila, IIf(lbDerecha = True, 3, 42)).Value = Left(oRsPatologia.Fields!procedimiento, 65)
                         If mo_lnIdTablaLISTBARITEMS = sghOpcionGalenHos.sghRegistroCitaCE Or IIf(mo_lnIdTablaLISTBARITEMS = sghOpcionGalenHos.sghAdmisionEmergencia And mo_lbEsAltaMedica = False, True, False) Then
                         Else
+                            
+                            'HRA 23/11/2020 Cambio 48 Inicio
+                            If ucSISfuaCodPrestacion1.CodigoPrestacion = "071" Then
+                           ' oWorkSheet.Cells(iFila, IIf(lbDerecha = True, 22, 57)).Value = "'" & IIf(oRsPatologia.Fields!indicado = 0, "", oRsPatologia.Fields!indicado)
+                            oWorkSheet.Cells(iFila, IIf(lbDerecha = True, 22, 57)).Value = "'" & IIf(oRsPatologia.Fields!ejecutado = 0, "", oRsPatologia.Fields!ejecutado) 'raul
+                            oWorkSheet.Cells(iFila, IIf(lbDerecha = True, 28, 61)).Value = "'" & IIf(oRsPatologia.Fields!ejecutado = 0, "", oRsPatologia.Fields!ejecutado)
+                            oWorkSheet.Cells(iFila, IIf(lbDerecha = True, 32, 63)).Value = "'" & oRsPatologia.Fields!dx
+                            Else
                             oWorkSheet.Cells(iFila, IIf(lbDerecha = True, 22, 57)).Value = "'" & IIf(oRsPatologia.Fields!indicado = 0, "", oRsPatologia.Fields!indicado)
                             oWorkSheet.Cells(iFila, IIf(lbDerecha = True, 28, 61)).Value = "'" & IIf(oRsPatologia.Fields!ejecutado = 0, "", oRsPatologia.Fields!ejecutado)
                             oWorkSheet.Cells(iFila, IIf(lbDerecha = True, 32, 63)).Value = "'" & oRsPatologia.Fields!dx
+                            End If
+                            'HRA 23/11/2020 Cambio 48 Fin
+                            
+                            
                         End If
                         oWorkSheet.Range(oWorkSheet.Cells(iFila, 1), oWorkSheet.Cells(iFila, 64)).RowHeight = 21.75
                     End If

@@ -93,6 +93,12 @@ With oCommand
    .Parameters.Append oParameter
    Set oParameter = .CreateParameter("@IdUsuarioAuditoria", adInteger, adParamInput, 0, oTabla.IdUsuarioAuditoria)
    .Parameters.Append oParameter
+   
+   'HRA 10/12/2020 Cambio 46 Inicio
+   Set oParameter = .CreateParameter("@FuaCodigoPrestacion", adVarChar, adParamInput, 3, IIf(oTabla.CodPres = "", Null, oTabla.CodPres))
+   .Parameters.Append oParameter
+   'HRA 10/12/2020 Cambio 46 Fin
+
    .Execute
    oTabla.IdOrden = .Parameters("@IdOrden")
 End With

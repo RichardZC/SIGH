@@ -77,7 +77,6 @@ Begin VB.UserControl ucEstadoCuenta
       _ExtentY        =   9657
       _Version        =   393216
       Tabs            =   6
-      Tab             =   3
       TabsPerRow      =   6
       TabHeight       =   520
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -91,27 +90,35 @@ Begin VB.UserControl ucEstadoCuenta
       EndProperty
       TabCaption(0)   =   "Servicios"
       TabPicture(0)   =   "ucEstadoCuenta.ctx":1223
-      Tab(0).ControlEnabled=   0   'False
+      Tab(0).ControlEnabled=   -1  'True
       Tab(0).Control(0)=   "lblTotalServicios"
+      Tab(0).Control(0).Enabled=   0   'False
       Tab(0).Control(1)=   "lblTotalSeguroServicio"
+      Tab(0).Control(1).Enabled=   0   'False
       Tab(0).Control(2)=   "Label49"
+      Tab(0).Control(2).Enabled=   0   'False
       Tab(0).Control(3)=   "ucFacturacionServicios"
+      Tab(0).Control(3).Enabled=   0   'False
       Tab(0).Control(4)=   "txtTotalServicios"
+      Tab(0).Control(4).Enabled=   0   'False
       Tab(0).Control(5)=   "chkServiciosTodos"
+      Tab(0).Control(5).Enabled=   0   'False
       Tab(0).Control(6)=   "txtTotalSeguroServicio"
+      Tab(0).Control(6).Enabled=   0   'False
       Tab(0).Control(7)=   "txtPagosAdelantoS"
+      Tab(0).Control(7).Enabled=   0   'False
       Tab(0).ControlCount=   8
       TabCaption(1)   =   "Farmacia"
       TabPicture(1)   =   "ucEstadoCuenta.ctx":123F
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "lblPagoFarmacia"
-      Tab(1).Control(1)=   "lblTotalSeguroFarmacia"
-      Tab(1).Control(2)=   "Label50"
-      Tab(1).Control(3)=   "ucFacturacionBienes"
-      Tab(1).Control(4)=   "txtTotalFarmacia"
-      Tab(1).Control(5)=   "chkFarmaciaTodos"
-      Tab(1).Control(6)=   "txtTotalSeguroFarmacia"
-      Tab(1).Control(7)=   "txtPagosAdelantoF"
+      Tab(1).Control(0)=   "txtPagosAdelantoF"
+      Tab(1).Control(1)=   "txtTotalSeguroFarmacia"
+      Tab(1).Control(2)=   "chkFarmaciaTodos"
+      Tab(1).Control(3)=   "txtTotalFarmacia"
+      Tab(1).Control(4)=   "ucFacturacionBienes"
+      Tab(1).Control(5)=   "Label50"
+      Tab(1).Control(6)=   "lblTotalSeguroFarmacia"
+      Tab(1).Control(7)=   "lblPagoFarmacia"
       Tab(1).ControlCount=   8
       TabCaption(2)   =   "Consolidado"
       TabPicture(2)   =   "ucEstadoCuenta.ctx":125B
@@ -133,11 +140,9 @@ Begin VB.UserControl ucEstadoCuenta
       Tab(2).ControlCount=   14
       TabCaption(3)   =   "Resumen"
       TabPicture(3)   =   "ucEstadoCuenta.ctx":1277
-      Tab(3).ControlEnabled=   -1  'True
-      Tab(3).Control(0)=   "Frame1(0)"
-      Tab(3).Control(0).Enabled=   0   'False
-      Tab(3).Control(1)=   "Frame6"
-      Tab(3).Control(1).Enabled=   0   'False
+      Tab(3).ControlEnabled=   0   'False
+      Tab(3).Control(0)=   "Frame6"
+      Tab(3).Control(1)=   "Frame1(0)"
       Tab(3).ControlCount=   2
       TabCaption(4)   =   "Reembolso"
       TabPicture(4)   =   "ucEstadoCuenta.ctx":1293
@@ -258,7 +263,7 @@ Begin VB.UserControl ucEstadoCuenta
             Strikethrough   =   0   'False
          EndProperty
          Height          =   4965
-         Left            =   8790
+         Left            =   -66210
          TabIndex        =   184
          Top             =   360
          Width           =   3705
@@ -450,7 +455,7 @@ Begin VB.UserControl ucEstadoCuenta
          EndProperty
          Height          =   4965
          Index           =   0
-         Left            =   120
+         Left            =   -74880
          TabIndex        =   171
          Top             =   360
          Width           =   8685
@@ -832,7 +837,7 @@ Begin VB.UserControl ucEstadoCuenta
             Strikethrough   =   0   'False
          EndProperty
          Height          =   360
-         Left            =   -70020
+         Left            =   4980
          TabIndex        =   104
          Text            =   "0"
          Top             =   4950
@@ -868,7 +873,7 @@ Begin VB.UserControl ucEstadoCuenta
             Strikethrough   =   0   'False
          EndProperty
          Height          =   360
-         Left            =   -66930
+         Left            =   8070
          TabIndex        =   15
          Text            =   "0"
          Top             =   4950
@@ -904,7 +909,7 @@ Begin VB.UserControl ucEstadoCuenta
             Strikethrough   =   0   'False
          EndProperty
          Height          =   240
-         Left            =   -74850
+         Left            =   150
          TabIndex        =   13
          Top             =   5040
          Visible         =   0   'False
@@ -939,14 +944,14 @@ Begin VB.UserControl ucEstadoCuenta
             Strikethrough   =   0   'False
          EndProperty
          Height          =   360
-         Left            =   -63570
+         Left            =   11430
          TabIndex        =   10
          Top             =   4950
          Width           =   1005
       End
       Begin SISGalenPlus.ucFactItemsEstadoCuenta ucFacturacionServicios 
          Height          =   4485
-         Left            =   -74880
+         Left            =   120
          TabIndex        =   120
          Top             =   390
          Width           =   12270
@@ -1779,7 +1784,7 @@ Begin VB.UserControl ucEstadoCuenta
             Strikethrough   =   0   'False
          EndProperty
          Height          =   210
-         Left            =   -71355
+         Left            =   3645
          TabIndex        =   105
          Top             =   5040
          Width           =   1275
@@ -1817,7 +1822,7 @@ Begin VB.UserControl ucEstadoCuenta
             Strikethrough   =   0   'False
          EndProperty
          Height          =   210
-         Left            =   -68760
+         Left            =   6240
          TabIndex        =   16
          Top             =   5040
          Width           =   1815
@@ -1855,7 +1860,7 @@ Begin VB.UserControl ucEstadoCuenta
             Strikethrough   =   0   'False
          EndProperty
          Height          =   210
-         Left            =   -65670
+         Left            =   9330
          TabIndex        =   9
          Top             =   5040
          Width           =   2100
@@ -4783,7 +4788,7 @@ Sub EstadoCuentaConsolidadaXitem()
               rsItems.Fields!Codigo = lcCodigo
               rsItems.Fields!Item = Left(lcItem, 200)
               rsItems.Fields!Cantidad = lnCantidad
-              rsItems.Fields!precio = lnPrecio
+              rsItems.Fields!Precio = lnPrecio
               rsItems.Fields!Total = Round(lnCantidad * lnPrecio, 2)
               rsItems.Fields!esPaquete = lbEsOpenOffice
               rsItems.Fields!idProducto = lnIdProducto123
@@ -4803,7 +4808,7 @@ Sub EstadoCuentaConsolidadaXitem()
                        oRsPqte.MoveFirst
                        Do While Not oRsPqte.EOF
                           lnIdProducto123 = oRsPqte!idProducto
-                          lnPrecio = oRsPqte!precio
+                          lnPrecio = oRsPqte!Precio
                           If rsIte1.RecordCount > 0 Then
                                 rsIte1.MoveFirst
                                 rsIte1.Find "codigo='" & oRsPqte!Codigo & "'"
@@ -4815,7 +4820,7 @@ Sub EstadoCuentaConsolidadaXitem()
                              rsIte1.Fields!PuntoCarga = lcXFARMACIA
                              rsIte1.Fields!Codigo = oRsPqte!Codigo
                              rsIte1.Fields!Item = Left(oRsPqte!nombre, 200)
-                             rsIte1.Fields!precio = lnPrecio
+                             rsIte1.Fields!Precio = lnPrecio
                              rsIte1.Fields!idProducto = lnIdProducto123
                              
                           Else
@@ -4853,7 +4858,7 @@ Sub EstadoCuentaConsolidadaXitem()
                              rsItems.Fields!PuntoCarga = rsIte1!PuntoCarga
                              rsItems.Fields!Codigo = rsIte1!Codigo
                              rsItems.Fields!Item = rsIte1!Item
-                             rsItems.Fields!precio = rsIte1!precio
+                             rsItems.Fields!Precio = rsIte1!Precio
                              rsItems.Fields!idProducto = rsIte1!idProducto
                              rsItems!TipoProducto = lcTipoProducto
                           Else
@@ -4955,7 +4960,7 @@ Sub EstadoCuentaConsolidadaXitem()
                             rsItems.Fields!Codigo = lcCodigo
                             rsItems.Fields!Item = Left(lcItem, 200)
                             rsItems.Fields!Cantidad = lnCantidad
-                            rsItems.Fields!precio = lnPrecio
+                            rsItems.Fields!Precio = lnPrecio
                             rsItems.Fields!Total = Round(lnCantidad * lnPrecio, 2)
                             rsItems.Fields!idProducto = lnIdProducto123
                             rsItems!TipoProducto = " "
@@ -4976,7 +4981,7 @@ Sub EstadoCuentaConsolidadaXitem()
                   oRsCabecera!Paciente = rsItems!Codigo
                   oRsCabecera!ServicioHosp = Left(rsItems!Item, 100)
                   oRsCabecera!idUsuario = rsItems!Cantidad
-                  oRsCabecera!Estancia = CCur(rsItems!precio)
+                  oRsCabecera!Estancia = CCur(rsItems!Precio)
                   oRsCabecera!nrocuenta = ml_idCuentaAtencion
                   oRsCabecera!recibe = Trim(Str(rsItems!idProducto))
                   oRsCabecera.Update
@@ -5113,7 +5118,7 @@ Sub EstadoCuentaConsolidadaXitem()
                            Call Feuille.getcellbyposition(2, iFila - 1).setFormula(rsItems!Codigo)
                            Call Feuille.getcellbyposition(3, iFila - 1).setFormula(rsItems!Item)
                            Call Feuille.getcellbyposition(7, iFila - 1).setFormula(rsItems!Cantidad)
-                           Call Feuille.getcellbyposition(8, iFila - 1).setFormula(rsItems!precio)
+                           Call Feuille.getcellbyposition(8, iFila - 1).setFormula(rsItems!Precio)
                            Call Feuille.getcellbyposition(9, iFila - 1).setFormula(rsItems!Total)
                     Else
                            oWorkSheet.Cells(iFila, 2).Value = rsItems!TipoProducto
@@ -5122,7 +5127,7 @@ Sub EstadoCuentaConsolidadaXitem()
                            oWorkSheet.Cells(iFila, 4).Font.Name = "Arial Narrow"
                            oWorkSheet.Cells(iFila, 4).Font.Size = 8
                            oWorkSheet.Cells(iFila, 8).Value = rsItems!Cantidad
-                           oWorkSheet.Cells(iFila, 9).Value = rsItems!precio
+                           oWorkSheet.Cells(iFila, 9).Value = rsItems!Precio
                            oWorkSheet.Cells(iFila, 10).Value = rsItems!Total
                     End If
                     iFila = iFila + 1
@@ -9195,7 +9200,7 @@ Sub CargaCuentaEnResumen()
           oRsCuentaDetalle.Fields!Codigo = RsBusqueda.Fields!Codigo
           oRsCuentaDetalle.Fields!descripcion = Left(RsBusqueda.Fields!NombreProducto, 50)
           oRsCuentaDetalle.Fields!Cantidad = lnCant
-          oRsCuentaDetalle.Fields!precio = lnPrec
+          oRsCuentaDetalle.Fields!Precio = lnPrec
           oRsCuentaDetalle.Fields!Importe = lnImpo
           If oRsTmp1.RecordCount > 0 Then
              oRsTmp1.MoveFirst
@@ -9278,7 +9283,7 @@ Sub CargaCuentaEnResumen()
           oRsCuentaDetalle.Fields!Codigo = RsBusqueda.Fields!Codigo
           oRsCuentaDetalle.Fields!descripcion = Left(RsBusqueda.Fields!NombreProducto, 150)
           oRsCuentaDetalle.Fields!Cantidad = lnCant
-          oRsCuentaDetalle.Fields!precio = lnPrec
+          oRsCuentaDetalle.Fields!Precio = lnPrec
           oRsCuentaDetalle.Fields!Importe = lnImpo
           oRsCuentaDetalle.Fields!CantDevuelta = RsBusqueda.Fields!CantidadDevuelta
           If oRsTmp1.RecordCount > 0 Then
