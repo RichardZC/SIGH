@@ -22,9 +22,9 @@ Attribute VB_Exposed = True
 Option Explicit
 
 Dim ml_IdUsuarioAuditoria As Long
-Dim ml_idOrden As Long
+Dim ml_IdOrden As Long
 Dim ml_idPuntoCarga As Long
-Dim ml_IdPaciente As Long
+Dim ml_idPaciente As Long
 Dim ml_idCuentaAtencion As Long
 Dim ml_IdTipoFinanciamiento As Long
 Dim ml_idFuenteFinanciamiento As Long
@@ -35,6 +35,18 @@ Dim ml_IdUsuarioDespacho As Long
 Dim ml_IdEstadoFacturacion As Long
 Dim ml_IdServicioPaciente As Long
 Dim mda_FechaHoraRealizaCpt As Date
+
+'RHA 17/11/2020 Cambio 46 Inicio
+Dim ml_CodPres As String
+Property Get CodPres() As String
+   CodPres = ml_CodPres
+End Property
+Property Let CodPres(sValue As String)
+   ml_CodPres = sValue
+End Property
+'RHA 17/11/2020 Cambio 46 Fin
+
+
 Property Let FechaHoraRealizaCpt(daValue As Date)
    mda_FechaHoraRealizaCpt = daValue
 End Property
@@ -56,11 +68,11 @@ Property Get IdUsuarioAuditoria() As Long
    IdUsuarioAuditoria = ml_IdUsuarioAuditoria
 End Property
 
-Property Let idOrden(iValue As Long)
-   ml_idOrden = iValue
+Property Let IdOrden(iValue As Long)
+   ml_IdOrden = iValue
 End Property
-Property Get idOrden() As Long
-   idOrden = ml_idOrden
+Property Get IdOrden() As Long
+   IdOrden = ml_IdOrden
 End Property
 Property Let idPuntoCarga(iValue As Long)
    ml_idPuntoCarga = iValue
@@ -68,11 +80,11 @@ End Property
 Property Get idPuntoCarga() As Long
    idPuntoCarga = ml_idPuntoCarga
 End Property
-Property Let IdPaciente(iValue As Long)
-   ml_IdPaciente = iValue
+Property Let idPaciente(iValue As Long)
+   ml_idPaciente = iValue
 End Property
-Property Get IdPaciente() As Long
-   IdPaciente = ml_IdPaciente
+Property Get idPaciente() As Long
+   idPaciente = ml_idPaciente
 End Property
 Property Let idCuentaAtencion(iValue As Long)
    ml_idCuentaAtencion = iValue

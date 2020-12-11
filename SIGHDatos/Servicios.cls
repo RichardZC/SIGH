@@ -414,7 +414,7 @@ Dim oParameter As ADODB.Parameter
      Set oParameter = .CreateParameter("@IdEspecialidad", adInteger, adParamInput, 0, IdEspecialidad): .Parameters.Append oParameter
      Set oParameter = .CreateParameter("@HoraInicio", adChar, adParamInput, 5, IIf(lnHoraInicio = "", Null, lnHoraInicio)): .Parameters.Append oParameter
      Set oParameter = .CreateParameter("@HoraFin", adChar, adParamInput, 5, IIf(lnHoraFin = "", Null, lnHoraFin)): .Parameters.Append oParameter
-     Set oParameter = .CreateParameter("@Fecha", adDBTimeStamp, adParamInput, 0, Format(lnFecha, sighentidades.DevuelveFechaSoloFormato_DMY)): .Parameters.Append oParameter
+     Set oParameter = .CreateParameter("@Fecha", adDBTimeStamp, adParamInput, 0, Format(lnFecha, SIGHENTIDADES.DevuelveFechaSoloFormato_DMY)): .Parameters.Append oParameter
      Set oRecordset = .Execute
      Set oRecordset.ActiveConnection = Nothing
    End With

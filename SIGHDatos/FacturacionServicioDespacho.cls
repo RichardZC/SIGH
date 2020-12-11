@@ -65,9 +65,9 @@ With oCommand
    .Parameters.Append oParameter
    Set oParameter = .CreateParameter("@IdProducto", adInteger, adParamInput, 0, IIf(oTabla.idProducto = 0, Null, oTabla.idProducto))
    .Parameters.Append oParameter
-   Set oParameter = .CreateParameter("@Cantidad", adInteger, adParamInput, 0, oTabla.Cantidad)
+   Set oParameter = .CreateParameter("@Cantidad", adInteger, adParamInput, 0, oTabla.cantidad)
    .Parameters.Append oParameter
-   Set oParameter = .CreateParameter("@Precio", adCurrency, adParamInput, 0, oTabla.Precio)
+   Set oParameter = .CreateParameter("@Precio", adCurrency, adParamInput, 0, oTabla.precio)
    .Parameters.Append oParameter
    Set oParameter = .CreateParameter("@Total", adCurrency, adParamInput, 0, oTabla.Total)
    .Parameters.Append oParameter
@@ -80,6 +80,15 @@ With oCommand
    .Parameters.Append oParameter
    Set oParameter = .CreateParameter("@IdUsuarioAuditoria", adInteger, adParamInput, 0, oTabla.IdUsuarioAuditoria)
    .Parameters.Append oParameter
+   
+   'RHA 17/11/2020 Cambio 46 Inicio
+    Set oParameter = .CreateParameter("@IdFinan", adInteger, adParamInput, 0, oTabla.IdFinan)
+   .Parameters.Append oParameter
+    Set oParameter = .CreateParameter("@FuaCodigoPrestacion", adVarChar, adParamInput, 3, IIf(oTabla.CodPres = "", Null, oTabla.CodPres))
+   .Parameters.Append oParameter
+   'RHA 17/11/2020 Cambio 46 Fin
+   
+   
    .Execute
 End With
  
@@ -116,7 +125,7 @@ Sub GrabaHistorico(oTabla As DoFacturacionServicioDespacho)
 "     Values" & _
 "           (" & _
 "            " & oTabla.IdOrden & "," & oTabla.idProducto & _
-"           , " & oTabla.Cantidad & "," & oTabla.Precio & _
+"           , " & oTabla.cantidad & "," & oTabla.precio & _
 "           , " & oTabla.Total & ",'" & oTabla.labConfHIS & "'" & _
 "           , " & oTabla.GrupoHIS & "," & oTabla.SubGrupoHIS & ",'" & oRsParametros!FechaCreacion & _
 "           ')"
@@ -149,9 +158,9 @@ With oCommand
    .Parameters.Append oParameter
    Set oParameter = .CreateParameter("@IdProducto", adInteger, adParamInput, 0, IIf(oTabla.idProducto = 0, Null, oTabla.idProducto))
    .Parameters.Append oParameter
-   Set oParameter = .CreateParameter("@Cantidad", adInteger, adParamInput, 0, IIf(oTabla.Cantidad = 0, Null, oTabla.Cantidad))
+   Set oParameter = .CreateParameter("@Cantidad", adInteger, adParamInput, 0, IIf(oTabla.cantidad = 0, Null, oTabla.cantidad))
    .Parameters.Append oParameter
-   Set oParameter = .CreateParameter("@Precio", adCurrency, adParamInput, 0, oTabla.Precio)
+   Set oParameter = .CreateParameter("@Precio", adCurrency, adParamInput, 0, oTabla.precio)
    .Parameters.Append oParameter
    Set oParameter = .CreateParameter("@Total", adCurrency, adParamInput, 0, oTabla.Total)
    .Parameters.Append oParameter
@@ -161,6 +170,15 @@ With oCommand
    .Parameters.Append oParameter
    Set oParameter = .CreateParameter("@IdUsuarioAuditoria", adInteger, adParamInput, 0, oTabla.IdUsuarioAuditoria)
    .Parameters.Append oParameter
+   
+    'RHA 17/11/2020 Cambio 46 Inicio
+    Set oParameter = .CreateParameter("@IdFinan", adInteger, adParamInput, 0, oTabla.IdFinan)
+   .Parameters.Append oParameter
+     Set oParameter = .CreateParameter("@FuaCodigoPrestacion", adVarChar, adParamInput, 3, IIf(oTabla.CodPres = "", Null, oTabla.CodPres))
+   .Parameters.Append oParameter
+   'RHA 17/11/2020 Cambio 46 Fin
+   
+   
    .Execute
 End With
  
@@ -250,8 +268,8 @@ End Function
 Sub SetDefaults(ByVal oTabla As DoFacturacionServicioDespacho)
    oTabla.IdOrden = 0
    oTabla.idProducto = 0
-   oTabla.Cantidad = 0
-   oTabla.Precio = 0
+   oTabla.cantidad = 0
+   oTabla.precio = 0
    oTabla.Total = 0
 End Sub
 
@@ -281,8 +299,8 @@ End Function
 Sub CargaTabla(ByRef oTabla As DoFacturacionServicioDespacho, oRecordset As Recordset)
        oTabla.IdOrden = IIf(IsNull(oRecordset!IdOrden), 0, oRecordset!IdOrden)
        oTabla.idProducto = IIf(IsNull(oRecordset!idProducto), 0, oRecordset!idProducto)
-       oTabla.Cantidad = IIf(IsNull(oRecordset!Cantidad), 0, oRecordset!Cantidad)
-       oTabla.Precio = oRecordset!Precio
+       oTabla.cantidad = IIf(IsNull(oRecordset!cantidad), 0, oRecordset!cantidad)
+       oTabla.precio = oRecordset!precio
        oTabla.Total = oRecordset!Total
        oTabla.GrupoHIS = IIf(IsNull(oRecordset!GrupoHIS), 0, oRecordset!GrupoHIS)
        oTabla.SubGrupoHIS = IIf(IsNull(oRecordset!SubGrupoHIS), 0, oRecordset!SubGrupoHIS)

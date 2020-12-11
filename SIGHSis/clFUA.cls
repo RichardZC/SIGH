@@ -100,6 +100,7 @@ Sub MostrarFormulario()
         mo_SISFuaV1.lnIdTablaLISTBARITEMS = mo_lnIdTablaLISTBARITEMS
         mo_SISFuaV1.EsAltaMedica = mo_lbEsAltaMedica
         mo_SISFuaV1.Show 1
+           
         Set mo_SISFuaV1 = Nothing
     ElseIf mc_FuaVersionFormato = "B" Then '2do Formato FUA
         mo_SISFuaV2.CodigoPrestacion = ml_CodigoPrestacion
@@ -113,9 +114,46 @@ Sub MostrarFormulario()
         mo_SISFuaV2.FuaVersionFormato = mc_FuaVersionFormato
         mo_SISFuaV2.FuaTipoAnexo2015 = mi_FuaTipoAnexo2015
         mo_SISFuaV2.Show 1
+        
         Set mo_SISFuaV2 = Nothing
     End If
 End Sub
+
+'HRA 10/12/2020 Cambio 47 Inicio
+Sub MostrarFormularioF()
+    If ml_IdServicio <> 0 Then
+        If Not SeRegistroFua Then
+            mc_FuaVersionFormato = lcBuscaParametro.SeleccionaFilaParametro(358)
+            ObtenerValidarFuaTipoAnexo2015 mi_FuaTipoAnexo2015
+            If mi_FuaTipoAnexo2015 = 0 Then Exit Sub
+        End If
+    End If
+    If mc_FuaVersionFormato = "A" Then '1er Formato FUA
+        mo_SISFuaV1.IdCuentaAtencion = ml_IdCuentaAtencion
+        mo_SISFuaV1.Opcion = mi_opcion
+        mo_SISFuaV1.idUsuario = ml_idUsuario
+        mo_SISFuaV1.lcNombrePc = mo_lcNombrePc
+        mo_SISFuaV1.lnIdTablaLISTBARITEMS = mo_lnIdTablaLISTBARITEMS
+        mo_SISFuaV1.EsAltaMedica = mo_lbEsAltaMedica
+        mo_SISFuaV1.Show 1
+        Set mo_SISFuaV1 = Nothing
+    ElseIf mc_FuaVersionFormato = "B" Then '2do Formato FUA
+        mo_SISFuaV2.CodigoPrestacion = ml_CodigoPrestacion
+        mo_SISFuaV2.SoloImprimeFUAyaGrabado = mo_SoloImprimeFUAyaGrabado
+        mo_SISFuaV2.IdCuentaAtencion = ml_IdCuentaAtencion
+        mo_SISFuaV2.Opcion = mi_opcion
+        mo_SISFuaV2.idUsuario = ml_idUsuario
+        mo_SISFuaV2.lcNombrePc = mo_lcNombrePc
+        mo_SISFuaV2.lnIdTablaLISTBARITEMS = mo_lnIdTablaLISTBARITEMS
+        mo_SISFuaV2.EsAltaMedica = mo_lbEsAltaMedica
+        mo_SISFuaV2.FuaVersionFormato = mc_FuaVersionFormato
+        mo_SISFuaV2.FuaTipoAnexo2015 = mi_FuaTipoAnexo2015
+        mo_SISFuaV2.GuardarFua = "S"
+        mo_SISFuaV2.Show 1
+        Set mo_SISFuaV2 = Nothing
+    End If
+End Sub
+'HRA 10/12/2020 Cambio 47 Fin
 
 Function SeRegistroFua() As Boolean
     Dim oRsTmp1 As New Recordset

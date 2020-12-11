@@ -1,6 +1,6 @@
 VERSION 5.00
 Object = "{C932BA88-4374-101B-A56C-00AA003668DC}#1.1#0"; "msmask32.ocx"
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "tabctl32.ocx"
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
 Object = "{F20E41DE-526A-423A-B746-D860D06076B4}#4.0#0"; "IGTHRE~1.OCX"
 Begin VB.Form frmBancoSangre 
    BorderStyle     =   3  'Fixed Dialog
@@ -320,21 +320,21 @@ Begin VB.Form frmBancoSangre
          TabCaption(1)   =   "Protocolo de Selección"
          TabPicture(1)   =   "frmBancoSangre.frx":2E2A
          Tab(1).ControlEnabled=   0   'False
-         Tab(1).Control(0)=   "BS000_06(1)"
-         Tab(1).Control(1)=   "BS000_05(2)"
+         Tab(1).Control(0)=   "BS000_05(2)"
+         Tab(1).Control(1)=   "BS000_06(1)"
          Tab(1).ControlCount=   2
          TabCaption(2)   =   "Exámenes"
          TabPicture(2)   =   "frmBancoSangre.frx":2E46
          Tab(2).ControlEnabled=   0   'False
-         Tab(2).Control(0)=   "BS000_06(2)"
+         Tab(2).Control(0)=   "BS000_05(8)"
          Tab(2).Control(1)=   "BS000_05(7)"
-         Tab(2).Control(2)=   "BS000_05(8)"
+         Tab(2).Control(2)=   "BS000_06(2)"
          Tab(2).ControlCount=   3
          TabCaption(3)   =   "Calificación del Donante"
          TabPicture(3)   =   "frmBancoSangre.frx":2E62
          Tab(3).ControlEnabled=   0   'False
-         Tab(3).Control(0)=   "BS000_06(3)"
-         Tab(3).Control(1)=   "BS000_05(9)"
+         Tab(3).Control(0)=   "BS000_05(9)"
+         Tab(3).Control(1)=   "BS000_06(3)"
          Tab(3).ControlCount=   2
          Begin VB.Frame BS000_05 
             BorderStyle     =   0  'None

@@ -22,8 +22,8 @@ Attribute VB_Exposed = True
 Option Explicit
 
 Dim ml_IdUsuarioAuditoria As Long
-Dim ml_idOrden As Long
-Dim ml_IdProducto As Long
+Dim ml_IdOrden As Long
+Dim ml_idProducto As Long
 Dim ml_IdTipoFinanciamiento As Long
 Dim ml_CantidadFinanciada As Long
 Dim mc_PrecioFinanciado As Currency
@@ -32,6 +32,18 @@ Dim mda_FechaAutoriza As Date
 Dim ml_IdUsuarioAutoriza As Long
 Dim ml_idFuenteFinanciamiento As Long
 Dim ml_IdEstadoFacturacion As Long
+
+
+'RHA 17/11/2020 Cambio 46 Inicio
+Dim ml_CodPres As String
+Property Get CodPres() As String
+   CodPres = ml_CodPres
+End Property
+Property Let CodPres(lValue As String)
+   ml_CodPres = lValue
+End Property
+'RHA 17/11/2020 Cambio 46 Fin
+
 
 Property Let IdEstadoFacturacion(iValue As Long)
    ml_IdEstadoFacturacion = iValue
@@ -55,17 +67,17 @@ Property Get IdUsuarioAuditoria() As Long
    IdUsuarioAuditoria = ml_IdUsuarioAuditoria
 End Property
 
-Property Let idOrden(iValue As Long)
-   ml_idOrden = iValue
+Property Let IdOrden(iValue As Long)
+   ml_IdOrden = iValue
 End Property
-Property Get idOrden() As Long
-   idOrden = ml_idOrden
+Property Get IdOrden() As Long
+   IdOrden = ml_IdOrden
 End Property
-Property Let IdProducto(iValue As Long)
-   ml_IdProducto = iValue
+Property Let idProducto(iValue As Long)
+   ml_idProducto = iValue
 End Property
-Property Get IdProducto() As Long
-   IdProducto = ml_IdProducto
+Property Get idProducto() As Long
+   idProducto = ml_idProducto
 End Property
 Property Let IdTipoFinanciamiento(iValue As Long)
    ml_IdTipoFinanciamiento = iValue

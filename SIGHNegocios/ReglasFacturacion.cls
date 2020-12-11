@@ -2572,6 +2572,8 @@ Dim oRsTmp1 As New Recordset
                 .Precio = lnPrecioUnitario
                 .total = rsFacturacionProductos.Fields!cantidad * lnPrecioUnitario
                 .labConfHIS = IIf(IsNull(rsFacturacionProductos.Fields!labConfHIS), "", rsFacturacionProductos.Fields!labConfHIS)
+                
+                             
                 If mo_lnIdTablaLISTBARITEMS = sghOpcionGalenHos.sghRegistroAtencionCE Then   'debb-27/05/2015
                     .GrupoHIS = rsFacturacionProductos.Fields!Grupo                          'debb-27/05/2015
                     .SubGrupoHIS = rsFacturacionProductos.Fields!subGrupo                    'debb-27/05/2015
@@ -2827,6 +2829,7 @@ Dim lnIdOtrosClinica As Long
      Do While Not rsFacturacionProductos.EOF
             'Despachos
             lnPrecioUnitario = rsFacturacionProductos.Fields!PrecioUnitario
+                   
             With oDoFacturacionServicioDesp
                 .cantidad = rsFacturacionProductos.Fields!cantidad
                 .IdOrden = oDoFactOrdenServ.IdOrden
@@ -2835,6 +2838,7 @@ Dim lnIdOtrosClinica As Long
                 .Precio = lnPrecioUnitario
                 .total = rsFacturacionProductos.Fields!cantidad * lnPrecioUnitario
                 .labConfHIS = IIf(IsNull(rsFacturacionProductos.Fields!labConfHIS), "", rsFacturacionProductos.Fields!labConfHIS)
+                                            
             End With
             If Not oFacturacionServicioDespacho.Insertar(oDoFacturacionServicioDesp) Then
                    bProcesoOK = False: GoTo ErrorManager

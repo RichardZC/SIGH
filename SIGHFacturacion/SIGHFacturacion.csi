@@ -1,2 +1,3 @@
 [History]
-1=#P0#=mb	#P1#=GrabaCantidadesPreciosEnElNuevoPlan	#P2#=SighFacturacion/dllFactUcEstadoCuenta/GrabaCantidadesPreciosEnElNuevoPlan	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201029204641	#P7#=0	#P8#=452	.
+1=#P0#=mb	#P1#=GenerarRecordsetProductos	#P2#=SighFacturacion/dllFactUcEstadoCuenta/GenerarRecordsetProductos	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201111083958	#P7#=0	#P8#=65	.
+2=#P0#=mb	#P1#=GrabaCantidadesPreciosEnElNuevoPlan	#P2#=SighFacturacion/dllFactUcEstadoCuenta/GrabaCantidadesPreciosEnElNuevoPlan	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201029204641	#P7#=0	#P8#=452	.

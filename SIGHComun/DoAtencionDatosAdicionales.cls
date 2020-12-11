@@ -31,6 +31,9 @@ Dim mda_ProximaCita As Date
 Dim ml_NumeroDeHijos As Long
 Dim ml_IdSiaSis As Long
 Dim ms_FuaCodigoPrestacion As String
+
+Dim ms_FuaCodigoPrestacion1 As String 'HRA 10/12/2020 Cambio Inicio
+
 Dim ms_SisCodigo As String
 Dim ml_IdTipoReferenciaDestino As Long
 Dim ml_IdTipoReferenciaOrigen As Long
@@ -256,11 +259,11 @@ End Property
 Property Get IdUsuarioAuditoria() As Long
    IdUsuarioAuditoria = ml_IdUsuarioAuditoria
 End Property
-Property Let IdAtencion(sValue As Long)
+Property Let idAtencion(sValue As Long)
    ms_idAtencion = sValue
 End Property
-Property Get IdAtencion() As Long
-   IdAtencion = ms_idAtencion
+Property Get idAtencion() As Long
+   idAtencion = ms_idAtencion
 End Property
 Property Let DireccionDomicilio(sValue As String)
    ms_DireccionDomicilio = sValue
@@ -294,6 +297,13 @@ Property Get SeImprimioFicha() As Boolean
    SeImprimioFicha = mb_SeImprimioFicha
 End Property
 
-
+'HRA 10/12/2020 Cambio Inicio
+Property Let FuaCodigoPrestacion1(sValue As String)
+   ms_FuaCodigoPrestacion1 = sValue
+End Property
+Property Get FuaCodigoPrestacion1() As String
+   FuaCodigoPrestacion1 = ms_FuaCodigoPrestacion1
+End Property
+'HRA 10/12/2020 Cambio Fin
  
 

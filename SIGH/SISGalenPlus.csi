@@ -1,96 +1,101 @@
 [History]
-1=#P0#=mb	#P1#=btnAceptar_Click	#P2#=SISGalenPlus/AdmisionCEatenciones/btnAceptar_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201030090907	#P7#=0	#P8#=10	.
-2=#P0#=mb	#P1#=btnagregar_Click	#P2#=SISGalenPlus/ucCatalogos/btnagregar_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201030090934	#P7#=0	#P8#=2	.
-3=#P0#=mb	#P1#=grillaitem_DblClick	#P2#=SISGalenPlus/ucCatalogos/grillaitem_DblClick	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201030092052	#P7#=0	#P8#=8	.
-4=#P0#=mb	#P1#=btnguardarserv_Click	#P2#=SISGalenPlus/AdmisionCEatenciones/btnguardarserv_Click	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201030040731	#P7#=0	#P8#=4	.
-5=#P0#=mb	#P1#=OnKeyDown	#P2#=SISGalenPlus/ucCatalogos/OnKeyDown	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201030090717	#P7#=0	#P8#=66	.
-6=#P0#=mb	#P1#=CargarItemsALaGrilla	#P2#=SISGalenPlus/ucCatalogos/CargarItemsALaGrilla	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201030093436	#P7#=0	#P8#=13	.
-7=#P0#=mb	#P1#=ItemYaExiste	#P2#=SISGalenPlus/ucCatalogos/ItemYaExiste	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201030035457	#P7#=0	#P8#=10	.
-8=#P0#=mb	#P1#=ItemYaExisteC	#P2#=SISGalenPlus/ucCatalogos/ItemYaExisteC	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201030035444	#P7#=0	#P8#=0	.
-9=#P0#=mb	#P1#=grdProductos_AfterRowsDeleted	#P2#=SISGalenPlus/ucCatalogos/grdProductos_AfterRowsDeleted	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201030065612	#P7#=0	#P8#=21	.
-10=#P0#=mb	#P1#=btneliminar_Click	#P2#=SISGalenPlus/ucCatalogos/btneliminar_Click	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201030091457	#P7#=0	#P8#=1	.
-11=#P0#=mb	#P1#=CargaProductosPorIdAtencion	#P2#=SISGalenPlus/ucCatalogos/CargaProductosPorIdAtencion	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201030084803	#P7#=0	#P8#=9	.
-12=#P0#=mb	#P1#=AgregaRegistro	#P2#=SISGalenPlus/ucCatalogos/AgregaRegistro	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201030091739	#P7#=0	#P8#=7	.
-13=#P0#=mb	#P1#=FechaMinimaDespacho	#P2#=SISGalenPlus/ucCatalogos/FechaMinimaDespacho [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201030034749	#P7#=0	#P8#=0	.
-14=#P0#=mb	#P1#=IdAlmacen	#P2#=SISGalenPlus/ucCatalogos/IdAlmacen [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201030034733	#P7#=0	#P8#=0	.
-15=#P0#=mb	#P1#=Inicializar	#P2#=SISGalenPlus/ucCatalogos/Inicializar	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201030034728	#P7#=0	#P8#=3	.
-16=#P0#=mb	#P1#=AgregaProducto	#P2#=SISGalenPlus/ucCatalogos/AgregaProducto	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201030034647	#P7#=0	#P8#=14	.
-17=#P0#=mb	#P1#=grdProductos_AfterRowActivate	#P2#=SISGalenPlus/ucCatalogos/grdProductos_AfterRowActivate	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201030064611	#P7#=0	#P8#=1	.
-18=#P0#=mb	#P1#=ValidarDatosObligatoriosCS	#P2#=SISGalenPlus/AdmisionCEatenciones/ValidarDatosObligatoriosCS	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201030034449	#P7#=0	#P8#=13	.
-19=#P0#=mb	#P1#=Form_Initialize	#P2#=SISGalenPlus/AdmisionCEatenciones/Form_Initialize	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201030034439	#P7#=0	#P8#=-1	.
-20=#P0#=mb	#P1#=AgregarDatosCS	#P2#=SISGalenPlus/AdmisionCEatenciones/AgregarDatosCS	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201030034435	#P7#=0	#P8#=5	.
-21=#P0#=mb	#P1#=cmbTipoEdad1_LostFocus	#P2#=SISGalenPlus/AdmisionCEatenciones/cmbTipoEdad1_LostFocus	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201030025959	#P7#=0	#P8#=7	.
-22=#P0#=mb	#P1#=grdProductos_Click	#P2#=SISGalenPlus/ucCatalogos/grdProductos_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201030025823	#P7#=0	#P8#=7	.
-23=#P0#=mb	#P1#=Totalizar	#P2#=SISGalenPlus/ucCatalogos/Totalizar	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201030024843	#P7#=0	#P8#=3	.
-24=#P0#=mb	#P1#=SiempreCargaPorMovimiento	#P2#=SISGalenPlus/AdmisionCEatenciones/SiempreCargaPorMovimiento	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201030021828	#P7#=0	#P8#=33	.
-25=#P0#=mb	#P1#=OnKeyPress	#P2#=SISGalenPlus/ucCatalogos/OnKeyPress	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201030021615	#P7#=0	#P8#=12	.
-26=#P0#=mb	#P1#=LimpiarGrilla	#P2#=SISGalenPlus/ucCatalogos/LimpiarGrilla	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201030020207	#P7#=0	#P8#=1	.
-27=#P0#=mb	#P1#=grillacod_DblClick	#P2#=SISGalenPlus/ucCatalogos/grillacod_DblClick	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201030014655	#P7#=0	#P8#=0	.
-28=#P0#=mb	#P1#=GenerarRecordsetProductos	#P2#=SISGalenPlus/ucCatalogos/GenerarRecordsetProductos	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201030091936	#P7#=0	#P8#=5	.
-29=#P0#=mb	#P1#=InicializarLaGrilla	#P2#=SISGalenPlus/ucCatalogos/InicializarLaGrilla	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201030092000	#P7#=0	#P8#=8	.
-30=#P0#=mb	#P1#=cidatencion	#P2#=SISGalenPlus/ucCatalogos/cidatencion [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201029230839	#P7#=0	#P8#=0	.
-31=#P0#=mb	#P1#=CargarDatosDelaAtencion	#P2#=SISGalenPlus/AdmisionCEatenciones/CargarDatosDelaAtencion	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201029224844	#P7#=0	#P8#=19	.
-32=#P0#=mb	#P1#=grdProductos_InitializeLayout	#P2#=SISGalenPlus/ucCatalogos/grdProductos_InitializeLayout	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201029224753	#P7#=0	#P8#=-1	.
-33=#P0#=mb	#P1#=cidatencion	#P2#=SISGalenPlus/AdmisionCEatenciones/cidatencion [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201029223925	#P7#=0	#P8#=0	.
-34=#P0#=mb	#P1#=CargarComboBoxes	#P2#=SISGalenPlus/AdmisionCEatenciones/CargarComboBoxes	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201029223627	#P7#=0	#P8#=-5	.
-35=#P0#=mb	#P1#=RefrescarDatosC	#P2#=SISGalenPlus/ucCatalogos/RefrescarDatosC	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201029221108	#P7#=0	#P8#=1	.
-36=#P0#=mb	#P1#=RefrescarDatos	#P2#=SISGalenPlus/ucCatalogos/RefrescarDatos	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201029221103	#P7#=0	#P8#=2	.
-37=#P0#=mb	#P1#=Form_Activate	#P2#=SISGalenPlus/AdmisionCEatenciones/Form_Activate	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201029124309	#P7#=0	#P8#=34	.
-38=#P0#=mb	#P1#=Form_Load	#P2#=SISGalenPlus/AdmisionCEatenciones/Form_Load	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201029012759	#P7#=0	#P8#=1	.
-39=#P0#=mb	#P1#=CompletarDatosDelEstablecimientoEnElLostFocus	#P2#=SISGalenPlus/AdmisionCEatenciones/CompletarDatosDelEstablecimientoEnElLostFocus	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201029012638	#P7#=0	#P8#=0	.
-40=#P0#=mb	#P1#=CargarDatosAlFormulario	#P2#=SISGalenPlus/AdmisionCEatenciones/CargarDatosAlFormulario	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201029012617	#P7#=0	#P8#=-11	.
-41=#P0#=mb	#P1#=grillaBusqueda_DblClick	#P2#=SISGalenPlus/ucCatalogos/grillaBusqueda_DblClick	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201030081948	#P7#=0	#P8#=0	.
-42=#P0#=mb	#P1#=ValidarDatosObligatorios	#P2#=SISGalenPlus/AdmisionCEatenciones/ValidarDatosObligatorios	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201028224714	#P7#=0	#P8#=22	.
-43=#P0#=mb	#P1#=TipoVistaForm	#P2#=SISGalenPlus/AdmisionCEatenciones/TipoVistaForm [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201028224253	#P7#=0	#P8#=4	.
-44=#P0#=mb	#P1#=DevuelveProductos	#P2#=SISGalenPlus/ucCatalogos/DevuelveProductos [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201028224043	#P7#=0	#P8#=3	.
-45=#P0#=mb	#P1#=ItemYaExisteSinLote	#P2#=SISGalenPlus/ucCatalogos/ItemYaExisteSinLote	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201028110902	#P7#=0	#P8#=16	.
-46=#P0#=mb	#P1#=grillacod_KeyDown	#P2#=SISGalenPlus/ucCatalogos/grillacod_KeyDown	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201028105127	#P7#=0	#P8#=1	.
-47=#P0#=mb	#P1#=grillaBusqueda_KeyDown	#P2#=SISGalenPlus/ucCatalogos/grillaBusqueda_KeyDown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201028105110	#P7#=0	#P8#=0	.
-48=#P0#=mb	#P1#=grilladx_KeyDown	#P2#=SISGalenPlus/ucCatalogos/grilladx_KeyDown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201028104919	#P7#=0	#P8#=-6	.
-49=#P0#=mb	#P1#=InicializarLaGrillaBusqueda	#P2#=SISGalenPlus/ucCatalogos/InicializarLaGrillaBusqueda	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201030092208	#P7#=0	#P8#=18	.
-50=#P0#=mb	#P1#=grillacod_InitializeLayout	#P2#=SISGalenPlus/ucCatalogos/grillacod_InitializeLayout	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201028104723	#P7#=0	#P8#=-1	.
-51=#P0#=mb	#P1#=grillaitem_InitializeLayout	#P2#=SISGalenPlus/ucCatalogos/grillaitem_InitializeLayout	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201028104712	#P7#=0	#P8#=-1	.
-52=#P0#=mb	#P1#=grillahis_InitializeLayout	#P2#=SISGalenPlus/ucCatalogos/grillahis_InitializeLayout	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201028104624	#P7#=0	#P8#=0	.
-53=#P0#=mb	#P1#=grilladx_InitializeLayout	#P2#=SISGalenPlus/ucCatalogos/grilladx_InitializeLayout	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201028104546	#P7#=0	#P8#=-1	.
-54=#P0#=mb	#P1#=grdProductos_KeyDown	#P2#=SISGalenPlus/ucCatalogos/grdProductos_KeyDown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201028104425	#P7#=0	#P8#=0	.
-55=#P0#=mb	#P1#=grillaBusqueda_InitializeLayout	#P2#=SISGalenPlus/ucCatalogos/grillaBusqueda_InitializeLayout	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201028104351	#P7#=0	#P8#=-1	.
-56=#P0#=mb	#P1#=btnCpt_Click	#P2#=SISGalenPlus/AdmisionCEatenciones/btnCpt_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201021112344	#P7#=0	#P8#=1	.
-57=#P0#=mb	#P1#=grdOtrosCpt_AfterRowActivate	#P2#=SISGalenPlus/AdmisionCEatenciones/grdOtrosCpt_AfterRowActivate	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201021111945	#P7#=0	#P8#=1	.
-58=#P0#=mb	#P1#=TabAtencion_Click	#P2#=SISGalenPlus/AdmisionCEatenciones/TabAtencion_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201021111853	#P7#=0	#P8#=1	.
-59=#P0#=mb	#P1#=OnKeyPress	#P2#=SISGalenPlus/ucFacturacionItems/OnKeyPress	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201021111444	#P7#=-2147483640	#P8#=111	.
-60=#P0#=mb	#P1#=cmdMuestraActividades_Click	#P2#=SISGalenPlus/AdmisionCEatenciones/cmdMuestraActividades_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201021105014	#P7#=0	#P8#=43	.
-61=#P0#=mb	#P1#=btnImprimeAtencion_Click	#P2#=SISGalenPlus/AdmisionCEatenciones/btnImprimeAtencion_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201021104347	#P7#=0	#P8#=-2	.
-62=#P0#=mb	#P1#=CargaCPTrealizadosEnVariosServicios	#P2#=SISGalenPlus/AdmisionCEatenciones/CargaCPTrealizadosEnVariosServicios	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201021104329	#P7#=0	#P8#=117	.
-63=#P0#=mb	#P1#=GeneraTmpCPT	#P2#=SISGalenPlus/AdmisionCEatenciones/GeneraTmpCPT	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201021100603	#P7#=0	#P8#=50	.
-64=#P0#=mb	#P1#=Form_Load	#P2#=SISGalenPlus/FacOrdenServicioDetalle/Form_Load	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201021100028	#P7#=0	#P8#=6	.
-65=#P0#=mb	#P1#=Form_Activate	#P2#=SISGalenPlus/FacOrdenServicioDetalle/Form_Activate	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201021095933	#P7#=0	#P8#=1	.
-66=#P0#=mb	#P1#=InicializarLaGrillaBusqueda	#P2#=SISGalenPlus/ucFacturacionItems/InicializarLaGrillaBusqueda	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201021095901	#P7#=-2147483640	#P8#=7	.
-67=#P0#=mb	#P1#=UserControl_Resize	#P2#=SISGalenPlus/ucFacturacionItems/UserControl_Resize	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201020110146	#P7#=0	#P8#=1	.
-68=#P0#=mb	#P1#=InicializarLaGrilla	#P2#=SISGalenPlus/ucFacturacionItems/InicializarLaGrilla	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201020105257	#P7#=-2147483640	#P8#=0	.
-69=#P0#=mb	#P1#=grdProductos_AfterCellUpdate	#P2#=SISGalenPlus/ucFacturacionItems/grdProductos_AfterCellUpdate	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201020094913	#P7#=0	#P8#=1	.
-70=#P0#=mb	#P1#=grillaBusqueda_InitializeLayout	#P2#=SISGalenPlus/ucFacturacionItems/grillaBusqueda_InitializeLayout	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201020094039	#P7#=0	#P8#=3	.
-71=#P0#=mb	#P1#=grdProductos_KeyPress	#P2#=SISGalenPlus/ucFacturacionItems/grdProductos_KeyPress	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201020083259	#P7#=0	#P8#=1	.
-72=#P0#=mb	#P1#=ucFacturacionProductos_SePresionoTeclaEspecial	#P2#=SISGalenPlus/FacOrdenServicioDetalle/ucFacturacionProductos_SePresionoTeclaEspecial	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201020083208	#P7#=0	#P8#=1	.
-73=#P0#=mb	#P1#=grdOtrosCpt_InitializeLayout	#P2#=SISGalenPlus/AdmisionCEatenciones/grdOtrosCpt_InitializeLayout	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201020082606	#P7#=0	#P8#=15	.
-74=#P0#=mb	#P1#=Inicializar	#P2#=SISGalenPlus/ucFacturacionItems/Inicializar	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201016135610	#P7#=-2147483640	#P8#=0	.
-75=#P0#=mb	#P1#=GenerarRecordsetProductos	#P2#=SISGalenPlus/ucFacturacionItems/GenerarRecordsetProductos	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201016130101	#P7#=0	#P8#=45	.
-76=#P0#=mb	#P1#=OnKeyDown	#P2#=SISGalenPlus/ucFacturacionItems/OnKeyDown	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201016125932	#P7#=0	#P8#=2	.
-77=#P0#=mb	#P1#=IdPuntoCargaServicioHosp	#P2#=SISGalenPlus/ucFacturacionItems/IdPuntoCargaServicioHosp [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201016125258	#P7#=0	#P8#=2	.
-78=#P0#=mb	#P1#=MaximoNroItems	#P2#=SISGalenPlus/ucFacturacionItems/MaximoNroItems [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201016125245	#P7#=0	#P8#=0	.
-79=#P0#=mb	#P1#=grillaBusqueda_DblClick	#P2#=SISGalenPlus/ucFacturacionItems/grillaBusqueda_DblClick	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201015132009	#P7#=0	#P8#=1	.
-80=#P0#=mb	#P1#=grdProductos_InitializeLayout	#P2#=SISGalenPlus/ucFacturacionItems/grdProductos_InitializeLayout	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201015125700	#P7#=0	#P8#=2	.
-81=#P0#=mb	#P1#=grdProductos_AfterRowActivate	#P2#=SISGalenPlus/ucFacturacionItems/grdProductos_AfterRowActivate	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201015125557	#P7#=0	#P8#=0	.
-82=#P0#=mb	#P1#=LimpiarVariablesDeMemoria	#P2#=SISGalenPlus/FacOrdenServicioDetalle/LimpiarVariablesDeMemoria	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201014093825	#P7#=0	#P8#=-1	.
-83=#P0#=mb	#P1#=ActualizaVacunasDesdeModuloPerinatalAS	#P2#=SISGalenPlus/AdmisionCEatenciones/ActualizaVacunasDesdeModuloPerinatalAS	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201014090411	#P7#=0	#P8#=2	.
-84=#P0#=mb	#P1#=CargaCptPorAtencion	#P2#=SISGalenPlus/FacOrdenServicioDetalle/CargaCptPorAtencion	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201013133849	#P7#=0	#P8#=2	.
-85=#P0#=mb	#P1#=GrabaConsumosConsolidados	#P2#=SISGalenPlus/ucEstadoCuenta/GrabaConsumosConsolidados [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201013124336	#P7#=0	#P8#=1	.
-86=#P0#=mb	#P1#=toolbar_ToolClick	#P2#=SISGalenPlus/Principal/toolbar_ToolClick	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201012101232	#P7#=0	#P8#=1057	.
-87=#P0#=mb	#P1#=Form_Load	#P2#=SISGalenPlus/frmConstancias/Form_Load	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201007082017	#P7#=0	#P8#=17	.
-88=#P0#=mb	#P1#=ConstanciasMuestraUltimoIDENT	#P2#=SISGalenPlus/frmConstancias/ConstanciasMuestraUltimoIDENT	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201007082014	#P7#=0	#P8#=0	.
-89=#P0#=mb	#P1#=CargarItemsALaGrillaB	#P2#=SISGalenPlus/ucFactItemsEstadoCuenta/CargarItemsALaGrillaB	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201006131414	#P7#=0	#P8#=70	.
-90=#P0#=mb	#P1#=btnAceptar_Click	#P2#=SISGalenPlus/Login/btnAceptar_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200603111405	#P7#=0	#P8#=-1	.
-91=#P0#=mb	#P1#=PasswordSesionSQLServer	#P2#=SISGalenPlus/Login/PasswordSesionSQLServer [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200603111233	#P7#=0	#P8#=2	.
-92=#P0#=mb	#P1#=Form_Activate	#P2#=SISGalenPlus/Splash/Form_Activate	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20200603110318	#P7#=0	#P8#=-1	.
-93=#P0#=mb	#P1#=MostrarCreditos	#P2#=SISGalenPlus/Splash/MostrarCreditos [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200603110009	#P7#=0	#P8#=2	.
-94=#P0#=mb	#P1#=CargaComboBox	#P2#=SISGalenPlus/ucFarmVentasLista/CargaComboBox	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20200603105721	#P7#=0	#P8#=22	.
-95=#P0#=mb	#P1#=FuaVersionFormato	#P2#=SISGalenPlus/UcSISfuaLista/FuaVersionFormato [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20200603094446	#P7#=0	#P8#=2	.
+1=#P0#=mb	#P1#=AgregarDatos	#P2#=SISGalenPlus/AdmisionCEDetalle/AgregarDatos	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201211102058	#P7#=0	#P8#=10	.
+2=#P0#=mb	#P1#=btnAceptar_Click	#P2#=SISGalenPlus/AdmisionCEDetalle/btnAceptar_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201211102046	#P7#=0	#P8#=19	.
+3=#P0#=mb	#P1#=CargaDatosAlObjetosDeDatos	#P2#=SISGalenPlus/AdmisionCEDetalle/CargaDatosAlObjetosDeDatos	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201211100523	#P7#=0	#P8#=126	.
+4=#P0#=mb	#P1#=btnImprimeFichaSIS_Click	#P2#=SISGalenPlus/AdmisionCEDetalle/btnImprimeFichaSIS_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201211100334	#P7#=0	#P8#=27	.
+5=#P0#=mb	#P1#=ModificarDatos	#P2#=SISGalenPlus/AdmisionCEDetalle/ModificarDatos	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201210125015	#P7#=0	#P8#=1	.
+6=#P0#=mb	#P1#=TipoVistaForm	#P2#=SISGalenPlus/AdmisionCEDetalle/TipoVistaForm [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201203133603	#P7#=0	#P8#=1	.
+7=#P0#=mb	#P1#=CargarComboBoxes	#P2#=SISGalenPlus/AdmisionCEDetalle/CargarComboBoxes	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201203133351	#P7#=0	#P8#=0	.
+8=#P0#=mb	#P1#=DeudasPendientesDeAnterioresAtenciones	#P2#=SISGalenPlus/AdmisionCEDetalle/DeudasPendientesDeAnterioresAtenciones	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201203100648	#P7#=0	#P8#=3	.
+9=#P0#=mb	#P1#=CargarDatosDelaAtencion	#P2#=SISGalenPlus/AdmisionCEDetalle/CargarDatosDelaAtencion	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201203093655	#P7#=0	#P8#=87	.
+10=#P0#=mb	#P1#=CargarDatosAlosControles	#P2#=SISGalenPlus/AdmisionCEDetalle/CargarDatosAlosControles	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201203092752	#P7#=0	#P8#=76	.
+11=#P0#=mb	#P1#=CalculaLaHoraFinal	#P2#=SISGalenPlus/AdmisionCEDetalle/CalculaLaHoraFinal	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201203081627	#P7#=0	#P8#=10	.
+12=#P0#=mb	#P1#=TabIngreso_Click	#P2#=SISGalenPlus/AdmisionCEDetalle/TabIngreso_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201202114912	#P7#=0	#P8#=-2	.
+13=#P0#=mb	#P1#=CargarTipoDeConsulta	#P2#=SISGalenPlus/AdmisionCEDetalle/CargarTipoDeConsulta	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201130113513	#P7#=0	#P8#=17	.
+14=#P0#=mb	#P1#=CargarAutomaticamenteEstablecimientoReferenciaSIS	#P2#=SISGalenPlus/AdmisionCEDetalle/CargarAutomaticamenteEstablecimientoReferenciaSIS	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201130112709	#P7#=0	#P8#=3	.
+15=#P0#=mb	#P1#=ValidarReglas	#P2#=SISGalenPlus/AdmisionCEDetalle/ValidarReglas	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201130112550	#P7#=0	#P8#=194	.
+16=#P0#=mb	#P1#=ValidarDatosObligatorios	#P2#=SISGalenPlus/AdmisionCEDetalle/ValidarDatosObligatorios	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201130112425	#P7#=0	#P8#=97	.
+17=#P0#=mb	#P1#=Form_Activate	#P2#=SISGalenPlus/AdmisionCEDetalle/Form_Activate	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201130111027	#P7#=0	#P8#=57	.
+18=#P0#=mb	#P1#=ConfiguraTABSsegunPermisosDelUsuario	#P2#=SISGalenPlus/AdmisionCEDetalle/ConfiguraTABSsegunPermisosDelUsuario	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201130110738	#P7#=0	#P8#=0	.
+19=#P0#=mb	#P1#=grdPacientesEncontrados_DblClick	#P2#=SISGalenPlus/AdmisionCEDetalle/grdPacientesEncontrados_DblClick	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201130105156	#P7#=0	#P8#=37	.
+20=#P0#=mb	#P1#=grdPacientesEncontradosSIS	#P2#=SISGalenPlus/AdmisionCEDetalle/grdPacientesEncontradosSIS	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201130105138	#P7#=0	#P8#=71	.
+21=#P0#=mb	#P1#=ActualizaCitas_Atencion	#P2#=SISGalenPlus/AdmisionCEDetalle/ActualizaCitas_Atencion	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201127130054	#P7#=0	#P8#=81	.
+22=#P0#=mb	#P1#=HaceVisibleOnoBotonFUA	#P2#=SISGalenPlus/AdmisionCEDetalle/HaceVisibleOnoBotonFUA	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201127125909	#P7#=0	#P8#=19	.
+23=#P0#=mb	#P1#=ImprimePreCuenta	#P2#=SISGalenPlus/AdmisionCEDetalle/ImprimePreCuenta	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201124130434	#P7#=0	#P8#=1	.
+24=#P0#=mb	#P1#=CargarItemsALaGrilla	#P2#=SISGalenPlus/ucCatalogos/CargarItemsALaGrilla	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201124104807	#P7#=0	#P8#=17	.
+25=#P0#=mb	#P1#=cboTipoEdadPaciente_LostFocus	#P2#=SISGalenPlus/ucPacientesDetalle/cboTipoEdadPaciente_LostFocus	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201117081328	#P7#=0	#P8#=0	.
+26=#P0#=mb	#P1#=IdHistoriaClinicaAnterior	#P2#=SISGalenPlus/ucPacientesDetalle/IdHistoriaClinicaAnterior [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201117081244	#P7#=0	#P8#=2	.
+27=#P0#=mb	#P1#=AdministrarKeyPreview	#P2#=SISGalenPlus/AdmisionCEDetalle/AdministrarKeyPreview	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201116100222	#P7#=0	#P8#=35	.
+28=#P0#=mb	#P1#=txtNboleta_LostFocus	#P2#=SISGalenPlus/AdmisionCEDetalle/txtNboleta_LostFocus	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201116092859	#P7#=0	#P8#=35	.
+29=#P0#=mb	#P1#=txtEdadEnDias_KeyPress	#P2#=SISGalenPlus/AdmisionCEDetalle/txtEdadEnDias_KeyPress	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201116092826	#P7#=0	#P8#=1	.
+30=#P0#=mb	#P1#=cmbIdTipoServicio_KeyPress	#P2#=SISGalenPlus/AdmisionCEDetalle/cmbIdTipoServicio_KeyPress	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201116092448	#P7#=0	#P8#=5	.
+31=#P0#=mb	#P1#=txtIdEstablecimientoOrigen_KeyDown	#P2#=SISGalenPlus/AdmisionCEDetalle/txtIdEstablecimientoOrigen_KeyDown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201116092347	#P7#=0	#P8#=6	.
+32=#P0#=mb	#P1#=VerSiTieneServicioAutomaticoPorEstancia	#P2#=SISGalenPlus/AdmisionCEDetalle/VerSiTieneServicioAutomaticoPorEstancia	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201116081019	#P7#=0	#P8#=4	.
+33=#P0#=mb	#P1#=CargarItemsALaGrillaS_menorTiempo	#P2#=SISGalenPlus/ucFactItemsEstadoCuenta/CargarItemsALaGrillaS_menorTiempo	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201111084639	#P7#=0	#P8#=46	.
+34=#P0#=mb	#P1#=CargaProductosPorIdCuentaAtencion	#P2#=SISGalenPlus/ucFactItemsEstadoCuenta/CargaProductosPorIdCuentaAtencion	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201111084438	#P7#=0	#P8#=10	.
+35=#P0#=mb	#P1#=UserControl_Resize	#P2#=SISGalenPlus/ucFactItemsEstadoCuenta/UserControl_Resize	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201111084227	#P7#=0	#P8#=1	.
+36=#P0#=mb	#P1#=Totalizar	#P2#=SISGalenPlus/ucFactItemsEstadoCuenta/Totalizar	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201111083945	#P7#=0	#P8#=1	.
+37=#P0#=mb	#P1#=CargarItemsALaGrillaB_menorTiempo	#P2#=SISGalenPlus/ucFactItemsEstadoCuenta/CargarItemsALaGrillaB_menorTiempo	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201110103823	#P7#=0	#P8#=371	.
+38=#P0#=mb	#P1#=CargarItemsALaGrillaB	#P2#=SISGalenPlus/ucFactItemsEstadoCuenta/CargarItemsALaGrillaB	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201110102635	#P7#=0	#P8#=223	.
+39=#P0#=mb	#P1#=Inicializar	#P2#=SISGalenPlus/ucFactItemsEstadoCuenta/Inicializar	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201110083747	#P7#=0	#P8#=32	.
+40=#P0#=mb	#P1#=ProductosEliminados	#P2#=SISGalenPlus/ucFactItemsEstadoCuenta/ProductosEliminados [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201110083633	#P7#=0	#P8#=-1	.
+41=#P0#=mb	#P1#=TotalizaPagosDelPacienteConSeguro	#P2#=SISGalenPlus/ucFactItemsEstadoCuenta/TotalizaPagosDelPacienteConSeguro	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201110083429	#P7#=0	#P8#=10	.
+42=#P0#=mb	#P1#=txtNroCuenta_KeyPress	#P2#=SISGalenPlus/ucEstadoCuenta/txtNroCuenta_KeyPress	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201110083207	#P7#=0	#P8#=1	.
+43=#P0#=mb	#P1#=CargarDatosDeServiciosFacturados	#P2#=SISGalenPlus/AdmisionCEDetalle/CargarDatosDeServiciosFacturados	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201110075752	#P7#=0	#P8#=39	.
+44=#P0#=mb	#P1#=Autogenerado	#P2#=SISGalenPlus/AdmisionCEDetalle/Autogenerado [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201106090157	#P7#=0	#P8#=1	.
+45=#P0#=mb	#P1#=CargaDeServiciosAFacturar	#P2#=SISGalenPlus/AdmisionCEDetalle/CargaDeServiciosAFacturar	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201106083124	#P7#=0	#P8#=15	.
+46=#P0#=mb	#P1#=OnKeyPress	#P2#=SISGalenPlus/ucCatalogos/OnKeyPress	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201031065111	#P7#=0	#P8#=125	.
+47=#P0#=mb	#P1#=InicializarLaGrilla	#P2#=SISGalenPlus/ucCatalogos/InicializarLaGrilla	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201030115349	#P7#=0	#P8#=-3	.
+48=#P0#=mb	#P1#=btneliminar_Click	#P2#=SISGalenPlus/ucCatalogos/btneliminar_Click	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201030104820	#P7#=0	#P8#=1	.
+49=#P0#=mb	#P1#=btnAceptar_Click	#P2#=SISGalenPlus/AdmisionCEatenciones/btnAceptar_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201030103645	#P7#=0	#P8#=1	.
+50=#P0#=mb	#P1#=ValidarDatosObligatoriosCS	#P2#=SISGalenPlus/AdmisionCEatenciones/ValidarDatosObligatoriosCS	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201030103628	#P7#=0	#P8#=1	.
+51=#P0#=mb	#P1#=grdProductos_AfterRowsDeleted	#P2#=SISGalenPlus/ucCatalogos/grdProductos_AfterRowsDeleted	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201030102416	#P7#=0	#P8#=6	.
+52=#P0#=mb	#P1#=InicializarLaGrillaCod	#P2#=SISGalenPlus/ucCatalogos/InicializarLaGrillaCod	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201030102300	#P7#=0	#P8#=0	.
+53=#P0#=mb	#P1#=AgregaRegistro	#P2#=SISGalenPlus/ucCatalogos/AgregaRegistro	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201030101617	#P7#=0	#P8#=6	.
+54=#P0#=mb	#P1#=InicializarLaGrillaBusqueda	#P2#=SISGalenPlus/ucCatalogos/InicializarLaGrillaBusqueda	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201030092208	#P7#=0	#P8#=2	.
+55=#P0#=mb	#P1#=grillaitem_DblClick	#P2#=SISGalenPlus/ucCatalogos/grillaitem_DblClick	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201030092052	#P7#=0	#P8#=3	.
+56=#P0#=mb	#P1#=GenerarRecordsetProductos	#P2#=SISGalenPlus/ucCatalogos/GenerarRecordsetProductos	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201030091936	#P7#=0	#P8#=5	.
+57=#P0#=mb	#P1#=btnagregar_Click	#P2#=SISGalenPlus/ucCatalogos/btnagregar_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201030090934	#P7#=0	#P8#=2	.
+58=#P0#=mb	#P1#=OnKeyDown	#P2#=SISGalenPlus/ucCatalogos/OnKeyDown	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201030090717	#P7#=0	#P8#=66	.
+59=#P0#=mb	#P1#=CargaProductosPorIdAtencion	#P2#=SISGalenPlus/ucCatalogos/CargaProductosPorIdAtencion	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201030084803	#P7#=0	#P8#=9	.
+60=#P0#=mb	#P1#=grillaBusqueda_DblClick	#P2#=SISGalenPlus/ucCatalogos/grillaBusqueda_DblClick	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201030081948	#P7#=0	#P8#=0	.
+61=#P0#=mb	#P1#=grdProductos_AfterRowActivate	#P2#=SISGalenPlus/ucCatalogos/grdProductos_AfterRowActivate	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201030064611	#P7#=0	#P8#=1	.
+62=#P0#=mb	#P1#=btnguardarserv_Click	#P2#=SISGalenPlus/AdmisionCEatenciones/btnguardarserv_Click	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201030040731	#P7#=0	#P8#=4	.
+63=#P0#=mb	#P1#=ItemYaExiste	#P2#=SISGalenPlus/ucCatalogos/ItemYaExiste	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201030035457	#P7#=0	#P8#=10	.
+64=#P0#=mb	#P1#=ItemYaExisteC	#P2#=SISGalenPlus/ucCatalogos/ItemYaExisteC	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201030035444	#P7#=0	#P8#=0	.
+65=#P0#=mb	#P1#=FechaMinimaDespacho	#P2#=SISGalenPlus/ucCatalogos/FechaMinimaDespacho [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201030034749	#P7#=0	#P8#=0	.
+66=#P0#=mb	#P1#=IdAlmacen	#P2#=SISGalenPlus/ucCatalogos/IdAlmacen [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201030034733	#P7#=0	#P8#=0	.
+67=#P0#=mb	#P1#=Inicializar	#P2#=SISGalenPlus/ucCatalogos/Inicializar	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201030034728	#P7#=0	#P8#=3	.
+68=#P0#=mb	#P1#=AgregaProducto	#P2#=SISGalenPlus/ucCatalogos/AgregaProducto	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201030034647	#P7#=0	#P8#=14	.
+69=#P0#=mb	#P1#=Form_Initialize	#P2#=SISGalenPlus/AdmisionCEatenciones/Form_Initialize	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201030034439	#P7#=0	#P8#=-1	.
+70=#P0#=mb	#P1#=AgregarDatosCS	#P2#=SISGalenPlus/AdmisionCEatenciones/AgregarDatosCS	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201030034435	#P7#=0	#P8#=5	.
+71=#P0#=mb	#P1#=cmbTipoEdad1_LostFocus	#P2#=SISGalenPlus/AdmisionCEatenciones/cmbTipoEdad1_LostFocus	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201030025959	#P7#=0	#P8#=7	.
+72=#P0#=mb	#P1#=grdProductos_Click	#P2#=SISGalenPlus/ucCatalogos/grdProductos_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201030025823	#P7#=0	#P8#=7	.
+73=#P0#=mb	#P1#=Totalizar	#P2#=SISGalenPlus/ucCatalogos/Totalizar	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201030024843	#P7#=0	#P8#=3	.
+74=#P0#=mb	#P1#=SiempreCargaPorMovimiento	#P2#=SISGalenPlus/AdmisionCEatenciones/SiempreCargaPorMovimiento	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201030021828	#P7#=0	#P8#=33	.
+75=#P0#=mb	#P1#=LimpiarGrilla	#P2#=SISGalenPlus/ucCatalogos/LimpiarGrilla	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201030020207	#P7#=0	#P8#=1	.
+76=#P0#=mb	#P1#=grillacod_DblClick	#P2#=SISGalenPlus/ucCatalogos/grillacod_DblClick	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201030014655	#P7#=0	#P8#=0	.
+77=#P0#=mb	#P1#=cidatencion	#P2#=SISGalenPlus/ucCatalogos/cidatencion [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201029230839	#P7#=0	#P8#=0	.
+78=#P0#=mb	#P1#=CargarDatosDelaAtencion	#P2#=SISGalenPlus/AdmisionCEatenciones/CargarDatosDelaAtencion	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201029224844	#P7#=0	#P8#=19	.
+79=#P0#=mb	#P1#=grdProductos_InitializeLayout	#P2#=SISGalenPlus/ucCatalogos/grdProductos_InitializeLayout	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201029224753	#P7#=0	#P8#=-1	.
+80=#P0#=mb	#P1#=cidatencion	#P2#=SISGalenPlus/AdmisionCEatenciones/cidatencion [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201029223925	#P7#=0	#P8#=0	.
+81=#P0#=mb	#P1#=CargarComboBoxes	#P2#=SISGalenPlus/AdmisionCEatenciones/CargarComboBoxes	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201029223627	#P7#=0	#P8#=-5	.
+82=#P0#=mb	#P1#=RefrescarDatosC	#P2#=SISGalenPlus/ucCatalogos/RefrescarDatosC	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201029221108	#P7#=0	#P8#=1	.
+83=#P0#=mb	#P1#=RefrescarDatos	#P2#=SISGalenPlus/ucCatalogos/RefrescarDatos	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201029221103	#P7#=0	#P8#=2	.
+84=#P0#=mb	#P1#=Form_Activate	#P2#=SISGalenPlus/AdmisionCEatenciones/Form_Activate	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201029124309	#P7#=0	#P8#=1	.
+85=#P0#=mb	#P1#=Form_Load	#P2#=SISGalenPlus/AdmisionCEatenciones/Form_Load	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201029012759	#P7#=0	#P8#=1	.
+86=#P0#=mb	#P1#=CompletarDatosDelEstablecimientoEnElLostFocus	#P2#=SISGalenPlus/AdmisionCEatenciones/CompletarDatosDelEstablecimientoEnElLostFocus	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201029012638	#P7#=0	#P8#=0	.
+87=#P0#=mb	#P1#=CargarDatosAlFormulario	#P2#=SISGalenPlus/AdmisionCEatenciones/CargarDatosAlFormulario	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201029012617	#P7#=0	#P8#=-11	.
+88=#P0#=mb	#P1#=ValidarDatosObligatorios	#P2#=SISGalenPlus/AdmisionCEatenciones/ValidarDatosObligatorios	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201028224714	#P7#=0	#P8#=22	.
+89=#P0#=mb	#P1#=TipoVistaForm	#P2#=SISGalenPlus/AdmisionCEatenciones/TipoVistaForm [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201028224253	#P7#=0	#P8#=4	.
+90=#P0#=mb	#P1#=DevuelveProductos	#P2#=SISGalenPlus/ucCatalogos/DevuelveProductos [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201028224043	#P7#=0	#P8#=3	.
+91=#P0#=mb	#P1#=ItemYaExisteSinLote	#P2#=SISGalenPlus/ucCatalogos/ItemYaExisteSinLote	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201028110902	#P7#=0	#P8#=16	.
+92=#P0#=mb	#P1#=grillacod_KeyDown	#P2#=SISGalenPlus/ucCatalogos/grillacod_KeyDown	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201028105127	#P7#=0	#P8#=1	.
+93=#P0#=mb	#P1#=grillaBusqueda_KeyDown	#P2#=SISGalenPlus/ucCatalogos/grillaBusqueda_KeyDown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201028105110	#P7#=0	#P8#=0	.
+94=#P0#=mb	#P1#=grilladx_KeyDown	#P2#=SISGalenPlus/ucCatalogos/grilladx_KeyDown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201028104919	#P7#=0	#P8#=-6	.
+95=#P0#=mb	#P1#=grillacod_InitializeLayout	#P2#=SISGalenPlus/ucCatalogos/grillacod_InitializeLayout	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201028104723	#P7#=0	#P8#=-1	.
+96=#P0#=mb	#P1#=grillaitem_InitializeLayout	#P2#=SISGalenPlus/ucCatalogos/grillaitem_InitializeLayout	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201028104712	#P7#=0	#P8#=-1	.
+97=#P0#=mb	#P1#=grillahis_InitializeLayout	#P2#=SISGalenPlus/ucCatalogos/grillahis_InitializeLayout	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201028104624	#P7#=0	#P8#=0	.
+98=#P0#=mb	#P1#=grilladx_InitializeLayout	#P2#=SISGalenPlus/ucCatalogos/grilladx_InitializeLayout	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201028104546	#P7#=0	#P8#=-1	.
+99=#P0#=mb	#P1#=grdProductos_KeyDown	#P2#=SISGalenPlus/ucCatalogos/grdProductos_KeyDown	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201028104425	#P7#=0	#P8#=0	.
+100=#P0#=mb	#P1#=grillaBusqueda_InitializeLayout	#P2#=SISGalenPlus/ucCatalogos/grillaBusqueda_InitializeLayout	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201028104351	#P7#=0	#P8#=-1	.

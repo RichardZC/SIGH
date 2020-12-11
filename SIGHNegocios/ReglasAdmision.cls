@@ -28,6 +28,7 @@ Dim mo_ReglasArchivoClinico As New SIGHNegocios.ReglasArchivoClinico
 Dim lcBuscaParametro As New SIGHDatos.Parametros
 
 
+
 Dim mo_rsAtenInteInmunizaciones As ADODB.Recordset
 Dim mo_rsAtenInteDesarrollo As ADODB.Recordset
 Dim mo_rsAtenInteCrecimiento As ADODB.Recordset
@@ -42,6 +43,7 @@ Dim mo_rsPlanCrecimiento As ADODB.Recordset
 Dim mo_rsPlanSuplemento As ADODB.Recordset
 Dim mo_rsPlanTamizaje As ADODB.Recordset
 Dim mo_idOrdenPago As Long
+
 
 Property Get idOrdenPago() As Long
    idOrdenPago = mo_idOrdenPago
@@ -933,6 +935,11 @@ Function AdmisionCEAgregar(oDOCuentaAtencion As DOCuentaAtencion, oDoAtencion As
       Dim ml_ReglasFacturacion As New SIGHNegocios.ReglasFacturacion
       Dim oBuscaCodigoNombre As New SIGHNegocios.ReglasComunes
       Dim mo_ReglasArchivoClinico As New SIGHNegocios.ReglasArchivoClinico
+      
+     
+      
+     
+      
       Dim lcMinutosCita As String
       Dim lnImporteTotal As Double
       Dim lnPrecioUnitario As Double
@@ -1107,6 +1114,7 @@ Function AdmisionCEAgregar(oDOCuentaAtencion As DOCuentaAtencion, oDoAtencion As
 1160          bProcesoOK = False: ms_MensajeError = oAtencion.MensajeError: GoTo Terminar
 1170      End If
           '
+          
 1180      Call mo_ReglasSeguridad.AuditoriaAgregarV(oDoAtencion.IdUsuarioAuditoria, "A", oDoAtencion.idAtencion, "Atenciones", oConexion, lnIdTablaLISTBARITEMS, lcNombrePc, lcObservacionesAuditoria)    'ListBarItems.idListItem
           
           'Agregar solicitud de prestamo
@@ -1134,7 +1142,7 @@ Function AdmisionCEAgregar(oDOCuentaAtencion As DOCuentaAtencion, oDoAtencion As
 1300      If Not oCita.Insertar(oDOCita) Then
 1310          bProcesoOK = False: ms_MensajeError = oCita.MensajeError: GoTo Terminar
 1320      End If
-
+            
 
           'Aqui se agrega automaticamente el costo de la CONSULTA, el costo de CARNÉ y FOLDER
           'que fueron almacenados en mo_FacturacionServicios
@@ -1153,6 +1161,9 @@ Function AdmisionCEAgregar(oDOCuentaAtencion As DOCuentaAtencion, oDoAtencion As
 1430          .IdUsuarioAuditoria = oDoAtencion.IdUsuarioAuditoria
 1440          .fechaDespacho = .FechaCreacion
 1450          .IdUsuarioDespacho = oDoAtencion.IdUsuarioAuditoria
+              
+               .CodPres = mo_DoAtencionDatosAdicionales.FuaCodigoPrestacion1 'HRA 09/12/2020 Cambio 46
+              
 1460      End With
 1470      If Not oFactOrdenesServicio.Insertar(oDoFactOrdenServ) Then
 1480          bProcesoOK = False: ms_MensajeError = oFactOrdenesServicio.MensajeError: GoTo Terminar
@@ -1198,6 +1209,7 @@ Function AdmisionCEAgregar(oDOCuentaAtencion As DOCuentaAtencion, oDoAtencion As
 1760              End If
                  ' If oDoCatalogoServicioHosp.PrecioUnitario > 0 Then
 1770                  lnPrecioUnitario = oDoCatalogoServicioHosp.PrecioUnitario
+                       
 1780                  With oDoFacturacionServicioDesp
 1790                      .cantidad = oDOFacturacionServicio.cantidad
 1800                      .IdOrden = oDoFactOrdenServ.IdOrden
@@ -1205,6 +1217,12 @@ Function AdmisionCEAgregar(oDOCuentaAtencion As DOCuentaAtencion, oDoAtencion As
 1820                      .IdUsuarioAuditoria = oDoAtencion.IdUsuarioAuditoria
 1830                      .Precio = lnPrecioUnitario
 1840                      .total = oDOFacturacionServicio.cantidad * lnPrecioUnitario
+
+                          'HRA 09/12/2020 Cambio 46 Inicio
+                          .IdFinan = oDOFacturacionServicio.IdTipoFinanciamiento
+                          .CodPres = mo_DoAtencionDatosAdicionales.FuaCodigoPrestacion1
+                          'HRA 09/12/2020 Cambio 46 Fin
+                   
 1850                  End With
 1860                  If Not oFacturacionServicioDespacho.Insertar(oDoFacturacionServicioDesp) Then
 1870                         bProcesoOK = False: ms_MensajeError = oFacturacionServicioDespacho.MensajeError: GoTo Terminar
@@ -1237,6 +1255,9 @@ Function AdmisionCEAgregar(oDOCuentaAtencion As DOCuentaAtencion, oDoAtencion As
 2120                         .PrecioFinanciado = lnPrecioUnitario
 2130                         .TotalFinanciado = oDOFacturacionServicio.cantidad * lnPrecioUnitario
 2140                         .idFuenteFinanciamiento = oDoAtencion.idFuenteFinanciamiento
+
+                              .CodPres = mo_DoAtencionDatosAdicionales.FuaCodigoPrestacion1 'HRA 09/12/2020 Cambio 46
+                                                
 2150                     End With
 2160                     If Not oFacturacionServicioFinan.Insertar(oDoFacturacionServicioFinanc) Then
 2170                         bProcesoOK = False: ms_MensajeError = oFacturacionServicioFinan.MensajeError: GoTo Terminar
@@ -1273,6 +1294,7 @@ Function AdmisionCEAgregar(oDOCuentaAtencion As DOCuentaAtencion, oDoAtencion As
 2400                  oDOMovimientoHistoriaClinica.IdEmpleadoRecepcion = oDoAtencion.IdUsuarioAuditoria
 2410                  oDOMovimientoHistoriaClinica.IdGrupoMovimiento = 1
 2420                  oDOMovimientoHistoriaClinica.idAtencion = oDoAtencion.idAtencion
+
 2430                  If Not oMovimientosHistoriaClinica.Insertar(oDOMovimientoHistoriaClinica) Then
 2440                      bProcesoOK = False: ms_MensajeError = oMovimientosHistoriaClinica.MensajeError: GoTo Terminar
 2450                  End If
@@ -1282,12 +1304,13 @@ Function AdmisionCEAgregar(oDOCuentaAtencion As DOCuentaAtencion, oDoAtencion As
 2490          oRsTmp1.Close
 2500      End If
           'datos adicionales
+    
 2510      mo_DoAtencionDatosAdicionales.idAtencion = oDoAtencion.idAtencion
 2520      If Not oAtencionesDatosAdicionales.Insertar(mo_DoAtencionDatosAdicionales) Then
 2530          bProcesoOK = False: ms_MensajeError = oAtencionesDatosAdicionales.MensajeError: GoTo Terminar
 2540      End If
 2550      If mo_DoAtencionDatosAdicionales.idSiaSis > 0 Then
-2560         Call mo_ReglasSeguridad.AuditoriaAgregarV(oDoAtencion.IdUsuarioAuditoria, "A", oDoAtencion.idCuentaAtencion, "FUA", oConexion, 1345, lcNombrePc, "Cod.Prestacion FUA: " & mo_DoAtencionDatosAdicionales.fuaCodigoPrestacion & " N° Cuenta: " & oDoAtencion.idCuentaAtencion)
+2560         Call mo_ReglasSeguridad.AuditoriaAgregarV(oDoAtencion.IdUsuarioAuditoria, "A", oDoAtencion.idCuentaAtencion, "FUA", oConexion, 1345, lcNombrePc, "Cod.Prestacion FUA: " & mo_DoAtencionDatosAdicionales.FuaCodigoPrestacion & " N° Cuenta: " & oDoAtencion.idCuentaAtencion)
 2570      End If
           'Cupo Adicional
 2580      If oDOCita.EsCitaAdicional = True Then
@@ -1979,6 +2002,12 @@ Function AdmisionCEModificar(oDOCuentaAtencion As DOCuentaAtencion, oDoAtencion 
 1840                              .IdUsuarioAuditoria = oDoAtencion.IdUsuarioAuditoria
 1850                              .Precio = lnPrecioUnitario
 1860                              .total = oDOFacturacionServicio.cantidad * lnPrecioUnitario
+
+                                   'HRA 09/12/2020 Cambio 46 Inicio
+                                   .IdFinan = oDOFacturacionServicio.IdTipoFinanciamiento
+                                   .CodPres = mo_DoAtencionDatosAdicionales.FuaCodigoPrestacion1
+                                   'HRA 09/12/2020 Cambio 46 Fin
+                                 
 1870                          End With
 1880                          If Not oFacturacionServicioDespacho.Insertar(oDoFacturacionServicioDesp) Then
 1890                                 bProcesoOK = False: ms_MensajeError = oFacturacionServicioDespacho.MensajeError: GoTo Terminar
@@ -2010,6 +2039,9 @@ Function AdmisionCEModificar(oDOCuentaAtencion As DOCuentaAtencion, oDoAtencion 
 2130                                 .PrecioFinanciado = lnPrecioUnitario
 2140                                 .TotalFinanciado = oDOFacturacionServicio.cantidad * lnPrecioUnitario
 2150                                 .idFuenteFinanciamiento = oDoAtencion.idFuenteFinanciamiento
+
+                                     .CodPres = mo_DoAtencionDatosAdicionales.FuaCodigoPrestacion1 'HRA 09/12/2020 Cambio 46
+                                    
 2160                             End With
 2170                             If Not oFacturacionServicioFinan.Insertar(oDoFacturacionServicioFinanc) Then
 2180                                 bProcesoOK = False: ms_MensajeError = oFacturacionServicioFinan.MensajeError: GoTo Terminar
@@ -2075,7 +2107,7 @@ Function AdmisionCEModificar(oDOCuentaAtencion As DOCuentaAtencion, oDoAtencion 
 2650          bProcesoOK = False: ms_MensajeError = oAtencionesDatosAdicionales.MensajeError: GoTo Terminar
 2660      End If
 2670      If mo_DoAtencionDatosAdicionales.idSiaSis > 0 Then
-2680         Call mo_ReglasSeguridad.AuditoriaAgregarV(oDoAtencion.IdUsuarioAuditoria, "M", oDoAtencion.idCuentaAtencion, "FUA", oConexion, 1345, lcNombrePc, "Cod.Prestacion FUA " & mo_DoAtencionDatosAdicionales.fuaCodigoPrestacion & " Cta: " & oDoAtencion.idCuentaAtencion)
+2680         Call mo_ReglasSeguridad.AuditoriaAgregarV(oDoAtencion.IdUsuarioAuditoria, "M", oDoAtencion.idCuentaAtencion, "FUA", oConexion, 1345, lcNombrePc, "Cod.Prestacion FUA " & mo_DoAtencionDatosAdicionales.FuaCodigoPrestacion & " Cta: " & oDoAtencion.idCuentaAtencion)
 2690      End If
       
           mo_ReglasArchivoClinico.HistoriasClinicasActualizaFmovimiento oConexion, oDoAtencion.idPaciente
@@ -3165,7 +3197,7 @@ Function AdmisionHospAgregar(oDOCuentaAtencion As DOCuentaAtencion, oDoAtencion 
 2660          bProcesoOK = False: ms_MensajeError = oAtencionesDatosAdicionales.MensajeError: GoTo Terminar
 2670      End If
 2680      If mo_DoAtencionDatosAdicionales.idSiaSis > 0 Then
-2690         Call mo_ReglasSeguridad.AuditoriaAgregarV(oDoAtencion.IdUsuarioAuditoria, "A", oDoAtencion.idCuentaAtencion, "FUA", oConexion, 1345, lcNombrePc, "Cod.Prestacion FUA: " & mo_DoAtencionDatosAdicionales.fuaCodigoPrestacion & " N° Cuenta: " & oDoAtencion.idCuentaAtencion)
+2690         Call mo_ReglasSeguridad.AuditoriaAgregarV(oDoAtencion.IdUsuarioAuditoria, "A", oDoAtencion.idCuentaAtencion, "FUA", oConexion, 1345, lcNombrePc, "Cod.Prestacion FUA: " & mo_DoAtencionDatosAdicionales.FuaCodigoPrestacion & " N° Cuenta: " & oDoAtencion.idCuentaAtencion)
 2700      End If
           '
           mo_ReglasArchivoClinico.HistoriasClinicasActualizaFmovimiento oConexion, oDoAtencion.idPaciente
@@ -3914,7 +3946,7 @@ Function AdmisionHospModificar(oDOCuentaAtencion As DOCuentaAtencion, oDoAtencio
 5180          bProcesoOK = False: ms_MensajeError = oAtencionesDatosAdicionales.MensajeError: GoTo Terminar
 5190      End If
 5200      If mo_DoAtencionDatosAdicionales.idSiaSis > 0 Then
-5210         Call mo_ReglasSeguridad.AuditoriaAgregarV(oDoAtencion.IdUsuarioAuditoria, "M", oDoAtencion.idCuentaAtencion, "FUA", oConexion, 1345, lcNombrePc, "Cod.Prestacion FUA: " & mo_DoAtencionDatosAdicionales.fuaCodigoPrestacion & " N° Cuenta: " & oDoAtencion.idCuentaAtencion)
+5210         Call mo_ReglasSeguridad.AuditoriaAgregarV(oDoAtencion.IdUsuarioAuditoria, "M", oDoAtencion.idCuentaAtencion, "FUA", oConexion, 1345, lcNombrePc, "Cod.Prestacion FUA: " & mo_DoAtencionDatosAdicionales.FuaCodigoPrestacion & " N° Cuenta: " & oDoAtencion.idCuentaAtencion)
 5220      End If
           'Episodio Clinico
 5230      If sighentidades.EsFecha(oDoAtencion.fechaEgreso, "DD/MM/AAAA") Then
@@ -8446,14 +8478,14 @@ Function PerinatalCEAgregar(oDoPerinatalAtencion As DoPerinatalAtencion, oRsCptI
        oDoPerinatalAtencionCpt.IdUsuarioAuditoria = oDoPerinatalAtencion.IdUsuarioAuditoria
        oRsCptInmunizaciones.MoveFirst
        Do While Not oRsCptInmunizaciones.EOF
-          oDoPerinatalAtencionCpt.idProducto = oRsCptInmunizaciones.Fields!ID
+          oDoPerinatalAtencionCpt.idProducto = oRsCptInmunizaciones.Fields!Id
           oDoPerinatalAtencionCpt.CptEsAutomatico = False
           oDoPerinatalAtencionCpt.idAtencion = oRsCptInmunizaciones.Fields!idAtencion
           'elegidos
           oDoPerinatalAtencionCpt.CodigoHIS = ""
           If oRsTmpCodigoHis.RecordCount > 0 Then
              oRsTmpCodigoHis.MoveFirst
-             oRsTmpCodigoHis.Find "idProducto=" & oRsCptInmunizaciones.Fields!ID
+             oRsTmpCodigoHis.Find "idProducto=" & oRsCptInmunizaciones.Fields!Id
              If Not oRsTmpCodigoHis.EOF Then
                 oDoPerinatalAtencionCpt.CodigoHIS = oRsTmpCodigoHis.Fields!CodigoHIS
              End If
@@ -8465,7 +8497,7 @@ Function PerinatalCEAgregar(oDoPerinatalAtencion As DoPerinatalAtencion, oRsCptI
           'automaticos
           If oRsTmpAutomatico.RecordCount > 0 Then
              oRsTmpAutomatico.MoveFirst
-             oRsTmpAutomatico.Find "idProducto=" & oRsCptInmunizaciones.Fields!ID
+             oRsTmpAutomatico.Find "idProducto=" & oRsCptInmunizaciones.Fields!Id
              If oRsTmpAutomatico.EOF = False Then
                 oDoPerinatalAtencionCpt.idProducto = oRsTmpAutomatico.Fields!idProductoAutomatico
                 oDoPerinatalAtencionCpt.CptEsAutomatico = True
@@ -8488,14 +8520,14 @@ Function PerinatalCEAgregar(oDoPerinatalAtencion As DoPerinatalAtencion, oRsCptI
        oDoPerinatalAtencionCpt.IdUsuarioAuditoria = oDoPerinatalAtencion.IdUsuarioAuditoria
        oRsCptFrecuentes.MoveFirst
        Do While Not oRsCptFrecuentes.EOF
-          oDoPerinatalAtencionCpt.idProducto = oRsCptFrecuentes.Fields!ID
+          oDoPerinatalAtencionCpt.idProducto = oRsCptFrecuentes.Fields!Id
           oDoPerinatalAtencionCpt.CptEsAutomatico = False
           oDoPerinatalAtencionCpt.idAtencion = oRsCptFrecuentes.Fields!idAtencion
           '
           oDoPerinatalAtencionCpt.CodigoHIS = ""
           If oRsTmpCodigoHis.RecordCount > 0 Then
              oRsTmpCodigoHis.MoveFirst
-             oRsTmpCodigoHis.Find "idProducto=" & oRsCptFrecuentes.Fields!ID
+             oRsTmpCodigoHis.Find "idProducto=" & oRsCptFrecuentes.Fields!Id
              If Not oRsTmpCodigoHis.EOF Then
                 oDoPerinatalAtencionCpt.CodigoHIS = oRsTmpCodigoHis.Fields!CodigoHIS
              End If
@@ -8539,7 +8571,7 @@ Function PerinatalCEAgregar(oDoPerinatalAtencion As DoPerinatalAtencion, oRsCptI
        oDoPerinatalAtencionDx.IdUsuarioAuditoria = oDoPerinatalAtencion.IdUsuarioAuditoria
        oRsDxDesarrollo.MoveFirst
        Do While Not oRsDxDesarrollo.EOF
-            oDoPerinatalAtencionDx.IdDiagnostico = oRsDxDesarrollo.Fields!ID
+            oDoPerinatalAtencionDx.IdDiagnostico = oRsDxDesarrollo.Fields!Id
             oDoPerinatalAtencionDx.idAtencion = oRsDxDesarrollo.Fields!idAtencion
             oDoPerinatalAtencionDx.labConfHIS = IIf(IsNull(oRsDxDesarrollo.Fields!labConfHIS), "", oRsDxDesarrollo.Fields!labConfHIS)
             'mgaray201411a
@@ -8548,7 +8580,7 @@ Function PerinatalCEAgregar(oDoPerinatalAtencion As DoPerinatalAtencion, oRsCptI
             oDoPerinatalAtencionDx.CodigoHIS = ""
             If oRsTmpCodigoHis.RecordCount > 0 Then
                oRsTmpCodigoHis.MoveFirst
-               oRsTmpCodigoHis.Find "idDiagnostico=" & oRsDxDesarrollo.Fields!ID
+               oRsTmpCodigoHis.Find "idDiagnostico=" & oRsDxDesarrollo.Fields!Id
                If Not oRsTmpCodigoHis.EOF Then
                   oDoPerinatalAtencionDx.CodigoHIS = oRsTmpCodigoHis.Fields!CodigoHIS
                End If
@@ -8574,7 +8606,7 @@ Function PerinatalCEAgregar(oDoPerinatalAtencion As DoPerinatalAtencion, oRsCptI
        oDoPerinatalAtencionDx.IdUsuarioAuditoria = oDoPerinatalAtencion.IdUsuarioAuditoria
        oRsDxMorbilidadFrec.MoveFirst
        Do While Not oRsDxMorbilidadFrec.EOF
-            oDoPerinatalAtencionDx.IdDiagnostico = oRsDxMorbilidadFrec.Fields!ID
+            oDoPerinatalAtencionDx.IdDiagnostico = oRsDxMorbilidadFrec.Fields!Id
             oDoPerinatalAtencionDx.idAtencion = oRsDxMorbilidadFrec.Fields!idAtencion
             oDoPerinatalAtencionDx.labConfHIS = IIf(IsNull(oRsDxMorbilidadFrec.Fields!labConfHIS), "", oRsDxMorbilidadFrec.Fields!labConfHIS)
             'mgaray201411a
@@ -8584,7 +8616,7 @@ Function PerinatalCEAgregar(oDoPerinatalAtencion As DoPerinatalAtencion, oRsCptI
             oDoPerinatalAtencionDx.CodigoHIS = ""
             If oRsTmpCodigoHis.RecordCount > 0 Then
                oRsTmpCodigoHis.MoveFirst
-               oRsTmpCodigoHis.Find "idDiagnostico=" & oRsDxMorbilidadFrec.Fields!ID
+               oRsTmpCodigoHis.Find "idDiagnostico=" & oRsDxMorbilidadFrec.Fields!Id
                If Not oRsTmpCodigoHis.EOF Then
                   oDoPerinatalAtencionDx.CodigoHIS = oRsTmpCodigoHis.Fields!CodigoHIS
                End If
@@ -8609,7 +8641,7 @@ Function PerinatalCEAgregar(oDoPerinatalAtencion As DoPerinatalAtencion, oRsCptI
        oDoPerinatalAtencionMedicamentos.IdUsuarioAuditoria = oDoPerinatalAtencion.IdUsuarioAuditoria
        oRsMedicamentos.MoveFirst
        Do While Not oRsMedicamentos.EOF
-          oDoPerinatalAtencionMedicamentos.idProducto = oRsMedicamentos.Fields!ID
+          oDoPerinatalAtencionMedicamentos.idProducto = oRsMedicamentos.Fields!Id
           oDoPerinatalAtencionMedicamentos.idAtencion = oRsMedicamentos.Fields!idAtencion
           If Not oPerinatalAtencionMedicamentos.Insertar(oDoPerinatalAtencionMedicamentos) Then
              ms_MensajeError = oPerinatalAtencionMedicamentos.MensajeError: GoTo ErrCeAgr
@@ -8743,14 +8775,14 @@ Function PerinatalCEModificar(oDoPerinatalAtencion As DoPerinatalAtencion, oRsCp
        oDoPerinatalAtencionCpt.idModulo = oDoPerinatalAtencion.idModulo
        oRsCptInmunizaciones.MoveFirst
        Do While Not oRsCptInmunizaciones.EOF
-          oDoPerinatalAtencionCpt.idProducto = oRsCptInmunizaciones.Fields!ID
+          oDoPerinatalAtencionCpt.idProducto = oRsCptInmunizaciones.Fields!Id
           oDoPerinatalAtencionCpt.CptEsAutomatico = False
           oDoPerinatalAtencionCpt.idAtencion = oRsCptInmunizaciones.Fields!idAtencion
           'elegidos
           oDoPerinatalAtencionCpt.CodigoHIS = ""
           If oRsTmpCodigoHis.RecordCount > 0 Then
              oRsTmpCodigoHis.MoveFirst
-             oRsTmpCodigoHis.Find "idProducto=" & oRsCptInmunizaciones.Fields!ID
+             oRsTmpCodigoHis.Find "idProducto=" & oRsCptInmunizaciones.Fields!Id
              If Not oRsTmpCodigoHis.EOF Then
                 oDoPerinatalAtencionCpt.CodigoHIS = oRsTmpCodigoHis.Fields!CodigoHIS
              End If
@@ -8762,7 +8794,7 @@ Function PerinatalCEModificar(oDoPerinatalAtencion As DoPerinatalAtencion, oRsCp
           'automaticos
           If oRsTmpAutomatico.RecordCount > 0 Then
              oRsTmpAutomatico.MoveFirst
-             oRsTmpAutomatico.Find "idProducto=" & oRsCptInmunizaciones.Fields!ID
+             oRsTmpAutomatico.Find "idProducto=" & oRsCptInmunizaciones.Fields!Id
              If oRsTmpAutomatico.EOF = False Then
                 oDoPerinatalAtencionCpt.idProducto = oRsTmpAutomatico.Fields!idProductoAutomatico
                 oDoPerinatalAtencionCpt.CptEsAutomatico = True
@@ -8785,14 +8817,14 @@ Function PerinatalCEModificar(oDoPerinatalAtencion As DoPerinatalAtencion, oRsCp
        oDoPerinatalAtencionCpt.IdUsuarioAuditoria = oDoPerinatalAtencion.IdUsuarioAuditoria
        oRsCptFrecuentes.MoveFirst
        Do While Not oRsCptFrecuentes.EOF
-          oDoPerinatalAtencionCpt.idProducto = oRsCptFrecuentes.Fields!ID
+          oDoPerinatalAtencionCpt.idProducto = oRsCptFrecuentes.Fields!Id
           oDoPerinatalAtencionCpt.CptEsAutomatico = False
           oDoPerinatalAtencionCpt.idAtencion = oRsCptFrecuentes.Fields!idAtencion
           
           oDoPerinatalAtencionCpt.CodigoHIS = ""
           If oRsTmpCodigoHis.RecordCount > 0 Then
              oRsTmpCodigoHis.MoveFirst
-             oRsTmpCodigoHis.Find "idProducto=" & oRsCptFrecuentes.Fields!ID
+             oRsTmpCodigoHis.Find "idProducto=" & oRsCptFrecuentes.Fields!Id
              If Not oRsTmpCodigoHis.EOF Then
                 oDoPerinatalAtencionCpt.CodigoHIS = oRsTmpCodigoHis.Fields!CodigoHIS
              End If
@@ -8855,7 +8887,7 @@ Function PerinatalCEModificar(oDoPerinatalAtencion As DoPerinatalAtencion, oRsCp
        oDoPerinatalAtencionDx.idModulo = oDoPerinatalAtencion.idModulo
        oRsDxDesarrollo.MoveFirst
        Do While Not oRsDxDesarrollo.EOF
-          oDoPerinatalAtencionDx.IdDiagnostico = oRsDxDesarrollo.Fields!ID
+          oDoPerinatalAtencionDx.IdDiagnostico = oRsDxDesarrollo.Fields!Id
           oDoPerinatalAtencionDx.idAtencion = oRsDxDesarrollo.Fields!idAtencion
           oDoPerinatalAtencionDx.labConfHIS = IIf(IsNull(oRsDxDesarrollo.Fields!labConfHIS), "", oRsDxDesarrollo.Fields!labConfHIS)
           'mgaray201411a
@@ -8865,7 +8897,7 @@ Function PerinatalCEModificar(oDoPerinatalAtencion As DoPerinatalAtencion, oRsCp
           oDoPerinatalAtencionDx.CodigoHIS = ""
           If oRsTmpCodigoHis.RecordCount > 0 Then
              oRsTmpCodigoHis.MoveFirst
-             oRsTmpCodigoHis.Find "idDiagnostico=" & oRsDxDesarrollo.Fields!ID
+             oRsTmpCodigoHis.Find "idDiagnostico=" & oRsDxDesarrollo.Fields!Id
              If Not oRsTmpCodigoHis.EOF Then
                 oDoPerinatalAtencionDx.CodigoHIS = oRsTmpCodigoHis.Fields!CodigoHIS
              End If
@@ -8917,7 +8949,7 @@ Function PerinatalCEModificar(oDoPerinatalAtencion As DoPerinatalAtencion, oRsCp
        oDoPerinatalAtencionDx.IdUsuarioAuditoria = oDoPerinatalAtencion.IdUsuarioAuditoria
        oRsDxMorbilidadFrec.MoveFirst
        Do While Not oRsDxMorbilidadFrec.EOF
-          oDoPerinatalAtencionDx.IdDiagnostico = oRsDxMorbilidadFrec.Fields!ID
+          oDoPerinatalAtencionDx.IdDiagnostico = oRsDxMorbilidadFrec.Fields!Id
           oDoPerinatalAtencionDx.idAtencion = oRsDxMorbilidadFrec.Fields!idAtencion
           oDoPerinatalAtencionDx.labConfHIS = IIf(IsNull(oRsDxMorbilidadFrec.Fields!labConfHIS), "", oRsDxMorbilidadFrec.Fields!labConfHIS)
           'mgaray201411a
@@ -8927,7 +8959,7 @@ Function PerinatalCEModificar(oDoPerinatalAtencion As DoPerinatalAtencion, oRsCp
           oDoPerinatalAtencionDx.CodigoHIS = ""
           If oRsTmpCodigoHis.RecordCount > 0 Then
              oRsTmpCodigoHis.MoveFirst
-             oRsTmpCodigoHis.Find "idDiagnostico=" & oRsDxMorbilidadFrec.Fields!ID
+             oRsTmpCodigoHis.Find "idDiagnostico=" & oRsDxMorbilidadFrec.Fields!Id
              If Not oRsTmpCodigoHis.EOF Then
                 oDoPerinatalAtencionDx.CodigoHIS = oRsTmpCodigoHis.Fields!CodigoHIS
              End If
@@ -9008,7 +9040,7 @@ Function PerinatalCEModificar(oDoPerinatalAtencion As DoPerinatalAtencion, oRsCp
        oDoPerinatalAtencionMedicamentos.idModulo = oDoPerinatalAtencion.idModulo
        oRsMedicamentos.MoveFirst
        Do While Not oRsMedicamentos.EOF
-          oDoPerinatalAtencionMedicamentos.idProducto = oRsMedicamentos.Fields!ID
+          oDoPerinatalAtencionMedicamentos.idProducto = oRsMedicamentos.Fields!Id
           oDoPerinatalAtencionMedicamentos.idAtencion = oRsMedicamentos.Fields!idAtencion
           If Not oPerinatalAtencionMedicamentos.Insertar(oDoPerinatalAtencionMedicamentos) Then
              ms_MensajeError = oPerinatalAtencionMedicamentos.MensajeError: GoTo ErrCeAgr
@@ -9272,7 +9304,7 @@ Function RecetaAgregar(lnIdCuentaAtencion As Long, lnIdServicio As Long, lnIdUsu
        Do While Not oRsRayosX.EOF
           oDoRecetaDetalle.dx = IIf(IsNull(oRsRayosX!dx), "", oRsRayosX!dx)
           oDoRecetaDetalle.cantidadPedida = oRsRayosX.Fields!cantidad
-          oDoRecetaDetalle.idItem = oRsRayosX.Fields!ID
+          oDoRecetaDetalle.idItem = oRsRayosX.Fields!Id
           oDoRecetaDetalle.Precio = oRsRayosX.Fields!Precio
           oDoRecetaDetalle.SaldoEnRegistroReceta = oRsRayosX.Fields!saldoActual
           oDoRecetaDetalle.total = Round(oRsRayosX.Fields!cantidad * oRsRayosX.Fields!Precio, 2)
@@ -9295,7 +9327,7 @@ Function RecetaAgregar(lnIdCuentaAtencion As Long, lnIdServicio As Long, lnIdUsu
        Do While Not oRsEcografiaO.EOF
           oDoRecetaDetalle.dx = IIf(IsNull(oRsEcografiaO!dx), "", oRsEcografiaO!dx)
           oDoRecetaDetalle.cantidadPedida = oRsEcografiaO.Fields!cantidad
-          oDoRecetaDetalle.idItem = oRsEcografiaO.Fields!ID
+          oDoRecetaDetalle.idItem = oRsEcografiaO.Fields!Id
           oDoRecetaDetalle.Precio = oRsEcografiaO.Fields!Precio
           oDoRecetaDetalle.SaldoEnRegistroReceta = oRsEcografiaO.Fields!saldoActual
           oDoRecetaDetalle.total = Round(oRsEcografiaO.Fields!cantidad * oRsEcografiaO.Fields!Precio, 2)
@@ -9318,7 +9350,7 @@ Function RecetaAgregar(lnIdCuentaAtencion As Long, lnIdServicio As Long, lnIdUsu
        Do While Not oRsEcografiaG.EOF
           oDoRecetaDetalle.dx = IIf(IsNull(oRsEcografiaG!dx), "", oRsEcografiaG!dx)
           oDoRecetaDetalle.cantidadPedida = oRsEcografiaG.Fields!cantidad
-          oDoRecetaDetalle.idItem = oRsEcografiaG.Fields!ID
+          oDoRecetaDetalle.idItem = oRsEcografiaG.Fields!Id
           oDoRecetaDetalle.Precio = oRsEcografiaG.Fields!Precio
           oDoRecetaDetalle.SaldoEnRegistroReceta = oRsEcografiaG.Fields!saldoActual
           oDoRecetaDetalle.total = Round(oRsEcografiaG.Fields!cantidad * oRsEcografiaG.Fields!Precio, 2)
@@ -9341,7 +9373,7 @@ Function RecetaAgregar(lnIdCuentaAtencion As Long, lnIdServicio As Long, lnIdUsu
        Do While Not oRsTomografia.EOF
           oDoRecetaDetalle.dx = IIf(IsNull(oRsTomografia!dx), "", oRsTomografia!dx)
           oDoRecetaDetalle.cantidadPedida = oRsTomografia.Fields!cantidad
-          oDoRecetaDetalle.idItem = oRsTomografia.Fields!ID
+          oDoRecetaDetalle.idItem = oRsTomografia.Fields!Id
           oDoRecetaDetalle.Precio = oRsTomografia.Fields!Precio
           oDoRecetaDetalle.SaldoEnRegistroReceta = oRsTomografia.Fields!saldoActual
           oDoRecetaDetalle.total = Round(oRsTomografia.Fields!cantidad * oRsTomografia.Fields!Precio, 2)
@@ -9364,7 +9396,7 @@ Function RecetaAgregar(lnIdCuentaAtencion As Long, lnIdServicio As Long, lnIdUsu
        Do While Not oRsAnatomia.EOF
           oDoRecetaDetalle.dx = IIf(IsNull(oRsAnatomia!dx), "", oRsAnatomia!dx)
           oDoRecetaDetalle.cantidadPedida = oRsAnatomia.Fields!cantidad
-          oDoRecetaDetalle.idItem = oRsAnatomia.Fields!ID
+          oDoRecetaDetalle.idItem = oRsAnatomia.Fields!Id
           oDoRecetaDetalle.Precio = oRsAnatomia.Fields!Precio
           oDoRecetaDetalle.SaldoEnRegistroReceta = oRsAnatomia.Fields!saldoActual
           oDoRecetaDetalle.total = Round(oRsAnatomia.Fields!cantidad * oRsAnatomia.Fields!Precio, 2)
@@ -9387,7 +9419,7 @@ Function RecetaAgregar(lnIdCuentaAtencion As Long, lnIdServicio As Long, lnIdUsu
        Do While Not oRsPatologia.EOF
           oDoRecetaDetalle.dx = IIf(IsNull(oRsPatologia!dx), "", oRsPatologia!dx)
           oDoRecetaDetalle.cantidadPedida = oRsPatologia.Fields!cantidad
-          oDoRecetaDetalle.idItem = oRsPatologia.Fields!ID
+          oDoRecetaDetalle.idItem = oRsPatologia.Fields!Id
           oDoRecetaDetalle.Precio = oRsPatologia.Fields!Precio
           oDoRecetaDetalle.SaldoEnRegistroReceta = oRsPatologia.Fields!saldoActual
           oDoRecetaDetalle.total = Round(oRsPatologia.Fields!cantidad * oRsPatologia.Fields!Precio, 2)
@@ -9410,7 +9442,7 @@ Function RecetaAgregar(lnIdCuentaAtencion As Long, lnIdServicio As Long, lnIdUsu
        Do While Not oRsBanco.EOF
           oDoRecetaDetalle.dx = IIf(IsNull(oRsBanco!dx), "", oRsBanco!dx)
           oDoRecetaDetalle.cantidadPedida = oRsBanco.Fields!cantidad
-          oDoRecetaDetalle.idItem = oRsBanco.Fields!ID
+          oDoRecetaDetalle.idItem = oRsBanco.Fields!Id
           oDoRecetaDetalle.Precio = oRsBanco.Fields!Precio
           oDoRecetaDetalle.SaldoEnRegistroReceta = oRsBanco.Fields!saldoActual
           oDoRecetaDetalle.total = Round(oRsBanco.Fields!cantidad * oRsBanco.Fields!Precio, 2)
@@ -9437,7 +9469,7 @@ Function RecetaAgregar(lnIdCuentaAtencion As Long, lnIdServicio As Long, lnIdUsu
        Do While Not oRsFarmacia.EOF
           oDoRecetaDetalle.dx = IIf(IsNull(oRsFarmacia!dx), "", oRsFarmacia!dx)
           oDoRecetaDetalle.cantidadPedida = oRsFarmacia.Fields!cantidad
-          oDoRecetaDetalle.idItem = oRsFarmacia.Fields!ID
+          oDoRecetaDetalle.idItem = oRsFarmacia.Fields!Id
           oDoRecetaDetalle.Precio = oRsFarmacia.Fields!Precio
           oDoRecetaDetalle.SaldoEnRegistroReceta = oRsFarmacia.Fields!saldoActual
           oDoRecetaDetalle.total = Round(oRsFarmacia.Fields!cantidad * oRsFarmacia.Fields!Precio, 2)
@@ -9464,7 +9496,7 @@ Function RecetaAgregar(lnIdCuentaAtencion As Long, lnIdServicio As Long, lnIdUsu
             oDoRecetaDetalle.idReceta = oDoRecetaCabecera.idReceta
             oDoRecetaDetalle.dx = IIf(IsNull(oRsOtrosCpt!dx), "", oRsOtrosCpt!dx)
             oDoRecetaDetalle.cantidadPedida = oRsOtrosCpt.Fields!cantidad
-            oDoRecetaDetalle.idItem = oRsOtrosCpt.Fields!ID
+            oDoRecetaDetalle.idItem = oRsOtrosCpt.Fields!Id
             oDoRecetaDetalle.Precio = oRsOtrosCpt.Fields!Precio
             oDoRecetaDetalle.SaldoEnRegistroReceta = 0
             oDoRecetaDetalle.total = Round(oRsOtrosCpt.Fields!cantidad * oRsOtrosCpt.Fields!Precio, 2)
@@ -9565,7 +9597,7 @@ Function RecetaModificar(lnIdCuentaAtencion As Long, lnIdServicio As Long, lnIdU
 460              Do While Not oRsRayosX.EOF
                     oDoRecetaDetalle.dx = IIf(IsNull(oRsRayosX!dx), "", oRsRayosX!dx)
 470                 oDoRecetaDetalle.cantidadPedida = oRsRayosX.Fields!cantidad
-480                 oDoRecetaDetalle.idItem = oRsRayosX.Fields!ID
+480                 oDoRecetaDetalle.idItem = oRsRayosX.Fields!Id
 490                 oDoRecetaDetalle.Precio = oRsRayosX.Fields!Precio
 500                 oDoRecetaDetalle.SaldoEnRegistroReceta = oRsRayosX.Fields!saldoActual
 510                 oDoRecetaDetalle.total = Round(oRsRayosX.Fields!cantidad * oRsRayosX.Fields!Precio, 2)
@@ -9604,7 +9636,7 @@ Function RecetaModificar(lnIdCuentaAtencion As Long, lnIdServicio As Long, lnIdU
 830              Do While Not oRsEcografiaO.EOF
                     oDoRecetaDetalle.dx = IIf(IsNull(oRsEcografiaO!dx), "", oRsEcografiaO!dx)
 840                 oDoRecetaDetalle.cantidadPedida = oRsEcografiaO.Fields!cantidad
-850                 oDoRecetaDetalle.idItem = oRsEcografiaO.Fields!ID
+850                 oDoRecetaDetalle.idItem = oRsEcografiaO.Fields!Id
 860                 oDoRecetaDetalle.Precio = oRsEcografiaO.Fields!Precio
 870                 oDoRecetaDetalle.SaldoEnRegistroReceta = oRsEcografiaO.Fields!saldoActual
 880                 oDoRecetaDetalle.total = Round(oRsEcografiaO.Fields!cantidad * oRsEcografiaO.Fields!Precio, 2)
@@ -9643,7 +9675,7 @@ Function RecetaModificar(lnIdCuentaAtencion As Long, lnIdServicio As Long, lnIdU
 1200             Do While Not oRsEcografiaG.EOF
                     oDoRecetaDetalle.dx = IIf(IsNull(oRsEcografiaG!dx), "", oRsEcografiaG!dx)
 1210                oDoRecetaDetalle.cantidadPedida = oRsEcografiaG.Fields!cantidad
-1220                oDoRecetaDetalle.idItem = oRsEcografiaG.Fields!ID
+1220                oDoRecetaDetalle.idItem = oRsEcografiaG.Fields!Id
 1230                oDoRecetaDetalle.Precio = oRsEcografiaG.Fields!Precio
 1240                oDoRecetaDetalle.SaldoEnRegistroReceta = oRsEcografiaG.Fields!saldoActual
 1250                oDoRecetaDetalle.total = Round(oRsEcografiaG.Fields!cantidad * oRsEcografiaG.Fields!Precio, 2)
@@ -9682,7 +9714,7 @@ Function RecetaModificar(lnIdCuentaAtencion As Long, lnIdServicio As Long, lnIdU
 1570             Do While Not oRsTomografia.EOF
                     oDoRecetaDetalle.dx = IIf(IsNull(oRsTomografia!dx), "", oRsTomografia!dx)
 1580                oDoRecetaDetalle.cantidadPedida = oRsTomografia.Fields!cantidad
-1590                oDoRecetaDetalle.idItem = oRsTomografia.Fields!ID
+1590                oDoRecetaDetalle.idItem = oRsTomografia.Fields!Id
 1600                oDoRecetaDetalle.Precio = oRsTomografia.Fields!Precio
 1610                oDoRecetaDetalle.SaldoEnRegistroReceta = oRsTomografia.Fields!saldoActual
 1620                oDoRecetaDetalle.total = Round(oRsTomografia.Fields!cantidad * oRsTomografia.Fields!Precio, 2)
@@ -9721,7 +9753,7 @@ Function RecetaModificar(lnIdCuentaAtencion As Long, lnIdServicio As Long, lnIdU
 1940             Do While Not oRsAnatomia.EOF
                     oDoRecetaDetalle.dx = IIf(IsNull(oRsAnatomia!dx), "", oRsAnatomia!dx)
 1950                oDoRecetaDetalle.cantidadPedida = oRsAnatomia.Fields!cantidad
-1960                oDoRecetaDetalle.idItem = oRsAnatomia.Fields!ID
+1960                oDoRecetaDetalle.idItem = oRsAnatomia.Fields!Id
 1970                oDoRecetaDetalle.Precio = oRsAnatomia.Fields!Precio
 1980                oDoRecetaDetalle.SaldoEnRegistroReceta = oRsAnatomia.Fields!saldoActual
 1990                oDoRecetaDetalle.total = Round(oRsAnatomia.Fields!cantidad * oRsAnatomia.Fields!Precio, 2)
@@ -9760,7 +9792,7 @@ Function RecetaModificar(lnIdCuentaAtencion As Long, lnIdServicio As Long, lnIdU
 2310             Do While Not oRsPatologia.EOF
                     oDoRecetaDetalle.dx = IIf(IsNull(oRsPatologia!dx), "", oRsPatologia!dx)
 2320                oDoRecetaDetalle.cantidadPedida = oRsPatologia.Fields!cantidad
-2330                oDoRecetaDetalle.idItem = oRsPatologia.Fields!ID
+2330                oDoRecetaDetalle.idItem = oRsPatologia.Fields!Id
 2340                oDoRecetaDetalle.Precio = oRsPatologia.Fields!Precio
 2350                oDoRecetaDetalle.SaldoEnRegistroReceta = oRsPatologia.Fields!saldoActual
 2360                oDoRecetaDetalle.total = Round(oRsPatologia.Fields!cantidad * oRsPatologia.Fields!Precio, 2)
@@ -9798,7 +9830,7 @@ Function RecetaModificar(lnIdCuentaAtencion As Long, lnIdServicio As Long, lnIdU
 2670             Do While Not oRsBanco.EOF
                     oDoRecetaDetalle.dx = IIf(IsNull(oRsBanco!dx), "", oRsBanco!dx)
 2680                oDoRecetaDetalle.cantidadPedida = oRsBanco.Fields!cantidad
-2690                oDoRecetaDetalle.idItem = oRsBanco.Fields!ID
+2690                oDoRecetaDetalle.idItem = oRsBanco.Fields!Id
 2700                oDoRecetaDetalle.Precio = oRsBanco.Fields!Precio
 2710                oDoRecetaDetalle.SaldoEnRegistroReceta = oRsBanco.Fields!saldoActual
 2720                oDoRecetaDetalle.total = Round(oRsBanco.Fields!cantidad * oRsBanco.Fields!Precio, 2)
@@ -9853,7 +9885,7 @@ Function RecetaModificar(lnIdCuentaAtencion As Long, lnIdServicio As Long, lnIdU
 3180             Do While Not oRsFarmacia.EOF
                     oDoRecetaDetalle.dx = IIf(IsNull(oRsFarmacia!dx), "", oRsFarmacia!dx)
 3190                oDoRecetaDetalle.cantidadPedida = oRsFarmacia.Fields!cantidad
-3200                oDoRecetaDetalle.idItem = oRsFarmacia.Fields!ID
+3200                oDoRecetaDetalle.idItem = oRsFarmacia.Fields!Id
 3210                oDoRecetaDetalle.Precio = oRsFarmacia.Fields!Precio
 3220                oDoRecetaDetalle.SaldoEnRegistroReceta = oRsFarmacia.Fields!saldoActual
 3230                oDoRecetaDetalle.total = Round(oRsFarmacia.Fields!cantidad * oRsFarmacia.Fields!Precio, 2)
@@ -9885,7 +9917,7 @@ Function RecetaModificar(lnIdCuentaAtencion As Long, lnIdServicio As Long, lnIdU
                           oDoRecetaDetalle.idReceta = oDoRecetaCabecera.idReceta
                           oDoRecetaDetalle.dx = IIf(IsNull(oRsOtrosCpt!dx), "", oRsOtrosCpt!dx)
                           oDoRecetaDetalle.cantidadPedida = oRsOtrosCpt.Fields!cantidad
-                          oDoRecetaDetalle.idItem = oRsOtrosCpt.Fields!ID
+                          oDoRecetaDetalle.idItem = oRsOtrosCpt.Fields!Id
                           oDoRecetaDetalle.Precio = oRsOtrosCpt.Fields!Precio
                           oDoRecetaDetalle.SaldoEnRegistroReceta = 0
                           oDoRecetaDetalle.total = Round(oRsOtrosCpt.Fields!cantidad * oRsOtrosCpt.Fields!Precio, 2)
@@ -9943,7 +9975,7 @@ Function RecetaModificar(lnIdCuentaAtencion As Long, lnIdServicio As Long, lnIdU
                           oDoRecetaDetalle.idReceta = oDoRecetaCabecera.idReceta
                           oDoRecetaDetalle.dx = IIf(IsNull(oRsOtrosCpt!dx), "", oRsOtrosCpt!dx)
                           oDoRecetaDetalle.cantidadPedida = oRsOtrosCpt.Fields!cantidad
-                          oDoRecetaDetalle.idItem = oRsOtrosCpt.Fields!ID
+                          oDoRecetaDetalle.idItem = oRsOtrosCpt.Fields!Id
                           oDoRecetaDetalle.Precio = oRsOtrosCpt.Fields!Precio
                           oDoRecetaDetalle.SaldoEnRegistroReceta = 0
                           oDoRecetaDetalle.total = Round(oRsOtrosCpt.Fields!cantidad * oRsOtrosCpt.Fields!Precio, 2)
@@ -10789,8 +10821,8 @@ Function AtencionesDatosAdicionalesSItieneCodigoPrestacionSIS(lnIdCuentaAtencion
                 AtencionesDatosAdicionalesSItieneCodigoPrestacionSIS = True
            End If
            '*****************************
-           If Not IsNull(oRsTmp1.Fields!fuaCodigoPrestacion) Then
-              If Len(Trim(oRsTmp1.Fields!fuaCodigoPrestacion)) > 0 Then
+           If Not IsNull(oRsTmp1.Fields!FuaCodigoPrestacion) Then
+              If Len(Trim(oRsTmp1.Fields!FuaCodigoPrestacion)) > 0 Then
                  AtencionesDatosAdicionalesSItieneCodigoPrestacionSIS = True
               End If
            End If
@@ -10821,7 +10853,7 @@ Function AtencionesDatosAdicionalesSItieneCodigoPrestacionSIS(lnIdCuentaAtencion
                      If oRsTmp1.Fields!UsaGalenHos = False Then
                         Dim lbHayProblemas As Boolean
                         lbHayProblemas = True
-                        If oRsTmp1!idSiaSis > 0 And IsNull(oRsTmp1.Fields!fuaCodigoPrestacion) Then
+                        If oRsTmp1!idSiaSis > 0 And IsNull(oRsTmp1.Fields!FuaCodigoPrestacion) Then
                             Dim oRsTmp2 As New Recordset
                             Dim oRsTmp3 As New Recordset
                             Dim oConexionExterna As New Connection
@@ -10842,7 +10874,7 @@ Function AtencionesDatosAdicionalesSItieneCodigoPrestacionSIS(lnIdCuentaAtencion
                             Set oCommand = Nothing
                             Set oParameter = Nothing
                             If oRsTmp2.RecordCount > 0 Then
-                               If Not IsNull(oRsTmp2!fuaCodigoPrestacion) Then
+                               If Not IsNull(oRsTmp2!FuaCodigoPrestacion) Then
                                     With oCommand
                                          .CommandType = adCmdStoredProc
                                          Set .ActiveConnection = oConexion
@@ -10857,7 +10889,7 @@ Function AtencionesDatosAdicionalesSItieneCodigoPrestacionSIS(lnIdCuentaAtencion
                                     oDOAtencionDatosAdicionales.idAtencion = oRsTmp3!idAtencion
                                     Set oAtencionesDatosAdicionales.Conexion = oConexion
                                     If oAtencionesDatosAdicionales.SeleccionarPorId(oDOAtencionDatosAdicionales) = True Then
-                                       oDOAtencionDatosAdicionales.fuaCodigoPrestacion = oRsTmp2!fuaCodigoPrestacion
+                                       oDOAtencionDatosAdicionales.FuaCodigoPrestacion = oRsTmp2!FuaCodigoPrestacion
                                        If oAtencionesDatosAdicionales.modificar(oDOAtencionDatosAdicionales) = True Then
                                        End If
                                     End If
@@ -13579,7 +13611,7 @@ Function AdmisionHospModEGRESO(oDOCuentaAtencion As DOCuentaAtencion, oDoAtencio
                 End If
              End If
 2970      If mo_DoAtencionDatosAdicionales.idSiaSis > 0 Then
-2980         Call mo_ReglasSeguridad.AuditoriaAgregarV(oDoAtencion.IdUsuarioAuditoria, "M", oDoAtencion.idCuentaAtencion, "FUA", oConexion, 1345, lcNombrePc, "Cod.Prestacion FUA: " & mo_DoAtencionDatosAdicionales.fuaCodigoPrestacion & " N° Cuenta: " & oDoAtencion.idCuentaAtencion)
+2980         Call mo_ReglasSeguridad.AuditoriaAgregarV(oDoAtencion.IdUsuarioAuditoria, "M", oDoAtencion.idCuentaAtencion, "FUA", oConexion, 1345, lcNombrePc, "Cod.Prestacion FUA: " & mo_DoAtencionDatosAdicionales.FuaCodigoPrestacion & " N° Cuenta: " & oDoAtencion.idCuentaAtencion)
 2990      End If
           'Episodio Clinico
 3000      If sighentidades.EsFecha(oDoAtencion.fechaEgreso, "DD/MM/AAAA") Then
@@ -14519,6 +14551,9 @@ Function PacientesDatosAdicionalesPersonalesAgregar(oDOPacienteAdd As DoPaciente
     'Dim oConexion As New ADODB.Connection
     If Not (oDOPacienteAdd Is Nothing) Then
         Dim oPacienteAdd As New PacientesDatosAdd
+        
+        
+        
         Set oPacienteAdd.Conexion = oConexion
         PacientesDatosAdicionalesPersonalesAgregar = oPacienteAdd.DatosPersonalesAgregar(oDOPacienteAdd)
         If PacientesDatosAdicionalesPersonalesAgregar = False Then
@@ -15420,7 +15455,7 @@ Private Function AgregarDiagnosticosAtencionDesdePerinatal(oRsDxDesarrollo As AD
             oAtencionesDiagnosticos As AtencionesDiagnosticos, oDOAtencionDiagnostico As DOAtencionDiagnostico, _
             oRsTmpCodigoHis As ADODB.Recordset) As Boolean
             
-    oDOAtencionDiagnostico.IdDiagnostico = oRsDxDesarrollo.Fields!ID
+    oDOAtencionDiagnostico.IdDiagnostico = oRsDxDesarrollo.Fields!Id
     oDOAtencionDiagnostico.idAtencion = oRsDxDesarrollo.Fields!idAtencion
     oDOAtencionDiagnostico.IdClasificacionDx = oRsDxDesarrollo.Fields!IdClasificacionDx
     oDOAtencionDiagnostico.IdSubclasificacionDx = oRsDxDesarrollo.Fields!IdSubclasificacionDx
@@ -16092,7 +16127,7 @@ Function ActualizaVariosFUASdeVariosConsultorios(lnIdAtencion As Long, oRsDx As 
 340                   lnIdAtencion1 = rsConsultorios!idAtencion
 350             End If
                 '
-360             lcFuaCodigoPrestacion = IIf(IsNull(oRsDx!fuaCodigoPrestacion), "", oRsDx!fuaCodigoPrestacion)
+360             lcFuaCodigoPrestacion = IIf(IsNull(oRsDx!FuaCodigoPrestacion), "", oRsDx!FuaCodigoPrestacion)
 370             If ServiciosAtenSimultaneaFuaAgregar(lnAScorrelativo, lnIdAtencion1, oRsDx!IdDiagnostico, _
                                                      3, oRsDx!fua, lnIdFuaIdCuentaAtencion, oConexion, _
                                                      lcFuaCodigoPrestacion) = False Then
@@ -16142,7 +16177,7 @@ Function ActualizaVariosFUASdeVariosConsultorios(lnIdAtencion As Long, oRsDx As 
 760                End If
 770             End If
                 '
-780             If ServiciosAtenSimultaneaFuaAgregar(lnAScorrelativo, lnIdAtencion, oRsRayosX!ID, _
+780             If ServiciosAtenSimultaneaFuaAgregar(lnAScorrelativo, lnIdAtencion, oRsRayosX!Id, _
                                                      1, oRsRayosX!fua, lnIdFuaIdCuentaAtencion, oConexion, "") = False Then
 790                GoTo ErrImpCWEB
 800             End If
@@ -16162,7 +16197,7 @@ Function ActualizaVariosFUASdeVariosConsultorios(lnIdAtencion As Long, oRsDx As 
 930                End If
 940             End If
                 '
-950             If ServiciosAtenSimultaneaFuaAgregar(lnAScorrelativo, lnIdAtencion, oRsEcografiaO!ID, _
+950             If ServiciosAtenSimultaneaFuaAgregar(lnAScorrelativo, lnIdAtencion, oRsEcografiaO!Id, _
                                                      1, oRsEcografiaO!fua, lnIdFuaIdCuentaAtencion, oConexion, "") = False Then
 960                GoTo ErrImpCWEB
 970             End If
@@ -16182,7 +16217,7 @@ Function ActualizaVariosFUASdeVariosConsultorios(lnIdAtencion As Long, oRsDx As 
 1100               End If
 1110            End If
                 '
-1120            If ServiciosAtenSimultaneaFuaAgregar(lnAScorrelativo, lnIdAtencion, oRsEcografiaG!ID, _
+1120            If ServiciosAtenSimultaneaFuaAgregar(lnAScorrelativo, lnIdAtencion, oRsEcografiaG!Id, _
                                                      1, lnIdFuaIdCuentaAtencion, oRsEcografiaG!fua, oConexion, "") = False Then
 1130               GoTo ErrImpCWEB
 1140            End If
@@ -16202,7 +16237,7 @@ Function ActualizaVariosFUASdeVariosConsultorios(lnIdAtencion As Long, oRsDx As 
 1270               End If
 1280            End If
                 '
-1290            If ServiciosAtenSimultaneaFuaAgregar(lnAScorrelativo, lnIdAtencion, oRsTomografia!ID, _
+1290            If ServiciosAtenSimultaneaFuaAgregar(lnAScorrelativo, lnIdAtencion, oRsTomografia!Id, _
                                                      1, oRsTomografia!fua, lnIdFuaIdCuentaAtencion, oConexion, "") = False Then
 1300               GoTo ErrImpCWEB
 1310            End If
@@ -16222,7 +16257,7 @@ Function ActualizaVariosFUASdeVariosConsultorios(lnIdAtencion As Long, oRsDx As 
 1440               End If
 1450            End If
                 '
-1460            If ServiciosAtenSimultaneaFuaAgregar(lnAScorrelativo, lnIdAtencion, oRsAnatomia!ID, _
+1460            If ServiciosAtenSimultaneaFuaAgregar(lnAScorrelativo, lnIdAtencion, oRsAnatomia!Id, _
                                                      1, oRsAnatomia!fua, lnIdFuaIdCuentaAtencion, oConexion, "") = False Then
 1470               GoTo ErrImpCWEB
 1480            End If
@@ -16242,7 +16277,7 @@ Function ActualizaVariosFUASdeVariosConsultorios(lnIdAtencion As Long, oRsDx As 
 1610               End If
 1620            End If
                 '
-1630            If ServiciosAtenSimultaneaFuaAgregar(lnAScorrelativo, lnIdAtencion, oRsPatologia!ID, _
+1630            If ServiciosAtenSimultaneaFuaAgregar(lnAScorrelativo, lnIdAtencion, oRsPatologia!Id, _
                                                      1, oRsPatologia!fua, lnIdFuaIdCuentaAtencion, oConexion, "") = False Then
 1640               GoTo ErrImpCWEB
 1650            End If
@@ -16262,7 +16297,7 @@ Function ActualizaVariosFUASdeVariosConsultorios(lnIdAtencion As Long, oRsDx As 
 1780               End If
 1790            End If
                 '
-1800            If ServiciosAtenSimultaneaFuaAgregar(lnAScorrelativo, lnIdAtencion, oRsBanco!ID, _
+1800            If ServiciosAtenSimultaneaFuaAgregar(lnAScorrelativo, lnIdAtencion, oRsBanco!Id, _
                                                       1, oRsBanco!fua, lnIdFuaIdCuentaAtencion, oConexion, "") = False Then
 1810               GoTo ErrImpCWEB
 1820            End If
@@ -16282,7 +16317,7 @@ Function ActualizaVariosFUASdeVariosConsultorios(lnIdAtencion As Long, oRsDx As 
 1950               End If
 1960            End If
                 '
-1970            If ServiciosAtenSimultaneaFuaAgregar(lnAScorrelativo, lnIdAtencion, oRsFarmacia!ID, _
+1970            If ServiciosAtenSimultaneaFuaAgregar(lnAScorrelativo, lnIdAtencion, oRsFarmacia!Id, _
                                                       2, oRsFarmacia!fua, lnIdFuaIdCuentaAtencion, oConexion, "") = False Then
 1980               GoTo ErrImpCWEB
 1990            End If

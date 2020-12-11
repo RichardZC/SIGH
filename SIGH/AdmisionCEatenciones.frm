@@ -25,8 +25,8 @@ Begin VB.Form AdmisionCEatenciones
       TabIndex        =   92
       Top             =   4965
       Width           =   3570
-      _extentx        =   6297
-      _extenty        =   3096
+      _ExtentX        =   6297
+      _ExtentY        =   3096
    End
    Begin VB.TextBox lblMedico 
       BeginProperty Font 
@@ -69,8 +69,8 @@ Begin VB.Form AdmisionCEatenciones
          TabIndex        =   42
          Top             =   180
          Width           =   3465
-         _extentx        =   6112
-         _extenty        =   5794
+         _ExtentX        =   6112
+         _ExtentY        =   5794
       End
    End
    Begin VB.Frame Frame4 
@@ -264,9 +264,7 @@ Begin VB.Form AdmisionCEatenciones
       Tab(1).Control(0).Enabled=   0   'False
       Tab(1).Control(1)=   "grdServicios"
       Tab(1).Control(1).Enabled=   0   'False
-      Tab(1).Control(2)=   "btnguardarcs"
-      Tab(1).Control(2).Enabled=   0   'False
-      Tab(1).ControlCount=   3
+      Tab(1).ControlCount=   2
       TabCaption(2)   =   "3.3 Ordenes Médicas"
       TabPicture(2)   =   "AdmisionCEatenciones.frx":605F
       Tab(2).ControlEnabled=   0   'False
@@ -291,23 +289,14 @@ Begin VB.Form AdmisionCEatenciones
       Tab(4).Control(4)=   "fraDatosReferenciaDestino"
       Tab(4).Control(5)=   "Frame11"
       Tab(4).ControlCount=   6
-      Begin VB.CommandButton btnguardarcs 
-         Caption         =   "Guardar "
-         Height          =   360
-         Left            =   11640
-         TabIndex        =   95
-         Top             =   9120
-         Visible         =   0   'False
-         Width           =   510
-      End
       Begin SISGalenPlus.ucCatalogos grdServicios 
          Height          =   3015
          Left            =   0
          TabIndex        =   93
          Top             =   6600
          Width           =   12135
-         _extentx        =   21405
-         _extenty        =   5318
+         _ExtentX        =   21405
+         _ExtentY        =   5318
       End
       Begin VB.CommandButton btnAgregaApoyoDx 
          DisabledPicture =   "AdmisionCEatenciones.frx":60B3
@@ -971,8 +960,8 @@ Begin VB.Form AdmisionCEatenciones
          TabIndex        =   49
          Top             =   315
          Width           =   11685
-         _extentx        =   20611
-         _extenty        =   16219
+         _ExtentX        =   20611
+         _ExtentY        =   16219
       End
       Begin VB.CommandButton btnImprimirOrden 
          BeginProperty Font 
@@ -1539,8 +1528,8 @@ Begin VB.Form AdmisionCEatenciones
             Top             =   2385
             Visible         =   0   'False
             Width           =   9090
-            _extentx        =   20558
-            _extenty        =   12515
+            _ExtentX        =   20558
+            _ExtentY        =   12515
          End
          Begin SISGalenPlus.ucPerinatalAS ucPerinatalAS1 
             Height          =   1440
@@ -1548,8 +1537,8 @@ Begin VB.Form AdmisionCEatenciones
             TabIndex        =   76
             Top             =   480
             Width           =   9750
-            _extentx        =   17198
-            _extenty        =   2540
+            _ExtentX        =   17198
+            _ExtentY        =   2540
          End
          Begin SISGalenPlus.UcDiagnosticoHIS UcDiagnosticoDetalle1 
             Height          =   3120
@@ -1557,8 +1546,8 @@ Begin VB.Form AdmisionCEatenciones
             TabIndex        =   48
             Top             =   375
             Width           =   11685
-            _extentx        =   20611
-            _extenty        =   5503
+            _ExtentX        =   20611
+            _ExtentY        =   5503
          End
          Begin VB.CommandButton btnQuitarCpt 
             DisabledPicture =   "AdmisionCEatenciones.frx":8C5F
@@ -1578,8 +1567,8 @@ Begin VB.Form AdmisionCEatenciones
             TabIndex        =   40
             Top             =   360
             Width           =   11655
-            _extentx        =   20558
-            _extenty        =   12568
+            _ExtentX        =   20558
+            _ExtentY        =   12568
          End
          Begin VB.Frame Frame2 
             Caption         =   "Condición del paciente"
@@ -1823,8 +1812,8 @@ Begin VB.Form AdmisionCEatenciones
          TabIndex        =   72
          Top             =   4170
          Width           =   5385
-         _extentx        =   9499
-         _extenty        =   1931
+         _ExtentX        =   9499
+         _ExtentY        =   1931
       End
       Begin SISGalenPlus.ucCitasLista ucCitasLista1 
          Height          =   4875
@@ -1832,8 +1821,8 @@ Begin VB.Form AdmisionCEatenciones
          TabIndex        =   80
          Top             =   420
          Width           =   6285
-         _extentx        =   11086
-         _extenty        =   8599
+         _ExtentX        =   11086
+         _ExtentY        =   8599
       End
       Begin VB.Label lblNroAtencion 
          Alignment       =   1  'Right Justify
@@ -2470,7 +2459,7 @@ Sub CargaCPTrealizadosEnVariosServicios(lbDesdeCargaDatosAlosControles As Boolea
              oRsGrdOtrosCpt.Fields!nombre = oRsServiciosIntermedios!nombre
              oRsGrdOtrosCpt.Fields!labConfHIS = oRsServiciosIntermedios!labConfHIS
              oRsGrdOtrosCpt.Fields!Cantidad = oRsServiciosIntermedios!Cantidad
-             oRsGrdOtrosCpt.Fields!Precio = oRsServiciosIntermedios!Precio
+             oRsGrdOtrosCpt.Fields!precio = oRsServiciosIntermedios!precio
              oRsGrdOtrosCpt.Fields!Total = oRsServiciosIntermedios!Total
              oRsGrdOtrosCpt.Fields!idCuentaAtencion = oRsServiciosIntermedios!idCuentaAtencion
              oRsGrdOtrosCpt.Fields!IdOrden = oRsServiciosIntermedios!IdOrden

@@ -1,4 +1,8 @@
 [History]
-1=#P0#=mb	#P1#=CadenaConexion	#P2#=SIGHEntidades/Configuracion/CadenaConexion [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201015123933	#P7#=0	#P8#=7	.
-2=#P0#=mb	#P1#=HKEY_CURRENT_USER	#P2#=SIGHEntidades/Registro/HKEY_CURRENT_USER [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201009091242	#P7#=0	#P8#=1	.
-3=#P0#=mb	#P1#=ObtenerCadena	#P2#=SIGHEntidades/Registro/ObtenerCadena	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201007101525	#P7#=0	#P8#=24	.
+1=#P0#=mb	#P1#=HORA_VACIA_HM	#P2#=SIGHEntidades/FechaHora/HORA_VACIA_HM [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201123105923	#P7#=0	#P8#=1	.
+2=#P0#=mb	#P1#=DevuelveHoraSoloFormato_HMS	#P2#=SIGHEntidades/FechaHora/DevuelveHoraSoloFormato_HMS [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201118104855	#P7#=0	#P8#=0	.
+3=#P0#=mb	#P1#=ValidaHora	#P2#=SIGHEntidades/FechaHora/ValidaHora	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201118104828	#P7#=0	#P8#=10	.
+4=#P0#=mb	#P1#=DevuelveHoraSoloFormato_HM	#P2#=SIGHEntidades/FechaHora/DevuelveHoraSoloFormato_HM [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201118104735	#P7#=0	#P8#=0	.
+5=#P0#=mb	#P1#=CadenaConexion	#P2#=SIGHEntidades/Configuracion/CadenaConexion [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201015123933	#P7#=0	#P8#=7	.
+6=#P0#=mb	#P1#=HKEY_CURRENT_USER	#P2#=SIGHEntidades/Registro/HKEY_CURRENT_USER [Get]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201009091242	#P7#=0	#P8#=1	.
+7=#P0#=mb	#P1#=ObtenerCadena	#P2#=SIGHEntidades/Registro/ObtenerCadena	#P3#=	#P4#=	#P5#=MembMethodPublic	#P6#=20201007101525	#P7#=0	#P8#=24	.

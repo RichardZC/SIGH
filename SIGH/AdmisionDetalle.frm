@@ -12,7 +12,6 @@ Begin VB.Form AdmisionCEDetalle
    ControlBox      =   0   'False
    Icon            =   "AdmisionDetalle.frx":0000
    LinkTopic       =   "Form1"
-   LockControls    =   -1  'True
    MaxButton       =   0   'False
    MinButton       =   0   'False
    ScaleHeight     =   9675
@@ -168,9 +167,9 @@ Begin VB.Form AdmisionCEDetalle
          TabCaption(1)   =   "2.2 Citas para otros días"
          TabPicture(1)   =   "AdmisionDetalle.frx":0D1E
          Tab(1).ControlEnabled=   0   'False
-         Tab(1).Control(0)=   "UcPacientesSunasa1"
+         Tab(1).Control(0)=   "Label9"
          Tab(1).Control(1)=   "ucCitasLista11"
-         Tab(1).Control(2)=   "Label9"
+         Tab(1).Control(2)=   "UcPacientesSunasa1"
          Tab(1).ControlCount=   3
          Begin VB.Frame FraGeneraCita 
             Caption         =   "Forma que se genera la CITA"
@@ -2326,6 +2325,15 @@ Attribute VB_Exposed = False
 '        Programado por: Barrantes D
 '        Fecha: Enero 2009
 '
+
+'---Variable para guardar fua automatico
+
+'HRA 10/12/2020 Cambio 47 Inicio
+Dim GuardaFua As String
+'Dim Codpr As New ReglasAdmision
+'HRA 10/12/2020 Cambio 47 Fin
+
+
 '------------------------------------------------------------------------------------
 Option Explicit
 Dim mo_ReporteUtil As New sighEntidades.ReporteUtil
@@ -2335,6 +2343,7 @@ Dim ms_MensajeError As String
 Dim mi_Opcion As sghOpciones
 Dim ml_idUsuario As Long
 Dim mb_ExistenDatos As Boolean
+
 '
 Dim mo_ReglasSISgalenhos As New SIGHSis.ReglasSISgalenhos
 Dim mo_ReglasFarmacia As New SIGHNegocios.ReglasFarmacia
@@ -2998,6 +3007,8 @@ Private Sub btnImprimeFichaSIS_Click()
          End If
     End If
     Dim ml_FuaTipoAnexo2015 As Integer
+    
+    
     Dim oFua As New SIGHSis.clFUA
     oFua.CodigoPrestacion = Me.ucSISfuaCodPrestacion1.CodigoPrestacion
     oFua.idCuentaAtencion = Val(txtNroCuenta.Text) 'ml_idCuentaAtencion
@@ -3006,7 +3017,17 @@ Private Sub btnImprimeFichaSIS_Click()
     oFua.idUsuario = ml_idUsuario
     oFua.Opcion = mi_Opcion
     oFua.IdServicio = CLng(Val(mo_cmbIdServicio.BoundText))
+    
+    'HRA 10/12/2020 Cambio 47 Inicio
+    If GuardaFua = "F" Then
+    oFua.MostrarFormularioF
+    Else
     oFua.MostrarFormulario
+    End If
+    'HRA 10/12/2020 Cambio 47 Fin
+  
+     
+    
     Set oFua = Nothing
 End Sub
 
@@ -3515,18 +3536,6 @@ Dim daHoraFin  As Date
     End If
     
 End Sub
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -4680,6 +4689,8 @@ Private Sub btnAceptar_Click()
    Select Case mi_Opcion
    Case sghAgregar
        
+       GuardaFua = "F" 'HRA 10/12/2020 Cambio 47
+       
        If ValidarDatosObligatorios() Then
             CargaDatosAlObjetosDeDatos
             If ValidarReglas() Then
@@ -4766,6 +4777,7 @@ Private Sub btnAceptar_Click()
                     End If
                     
                     If wxParametro302 = "S" And mo_Atenciones.IdFuenteFinanciamiento = sghFuenteFinanciamiento.sghFFSIS And lbElMedicoNOregistraFUA = "S" Then
+                     
                         btnImprimeFichaSIS_Click
                     ElseIf mo_Atenciones.IdFormaPago = sghTipoFinanciamiento.sghSis Then
                         If Val(wxParametro208) = 1910 Then  'sullana
@@ -4782,6 +4794,7 @@ Private Sub btnAceptar_Click()
        End If
        
    Case sghModificar
+     
        If ValidarDatosObligatorios() Then
             CargaDatosAlObjetosDeDatos
             If ValidarReglas() Then
@@ -5503,8 +5516,14 @@ Sub CargaDatosAlObjetosDeDatos()
                 .SisCodigo = lcSIScodigo
                 If mi_Opcion = sghAgregar Then
                    .FuaCodigoPrestacion = ""
+                                
+                    .FuaCodigoPrestacion1 = Me.ucSISfuaCodPrestacion1.CodigoPrestacion 'HRA 10/12/2020 Cambio 46
+                    
                 ElseIf wxParametro302 = "S" And Me.ucSISfuaCodPrestacion1.CodigoPrestacion <> "" Then
                    .FuaCodigoPrestacion = Me.ucSISfuaCodPrestacion1.CodigoPrestacion
+              
+                  .FuaCodigoPrestacion1 = Me.ucSISfuaCodPrestacion1.CodigoPrestacion 'HRA 10/12/2020 Cambio 46
+                   
                 End If
                 
            Else
@@ -6087,7 +6106,7 @@ Function AgregarDatos() As Boolean
         
     AgregarDatos = False
     '5seg/1seg
-    
+  
     If mo_AdminAdmision.AdmisionCEAgregar(mo_CuentasAtencion, mo_Atenciones, mo_Pacientes, mo_Cita, mo_Historia, _
                         Me.ucPacientesDetalle1.TipoNumeracionAnterior, mo_Diagnosticos, mo_Procedimientos, _
                         mo_Examenes, Me.ucPacientesDetalle1.IdHistoriaClinicaAnterior, mo_FacturacionServicios, _
@@ -6096,6 +6115,7 @@ Function AgregarDatos() As Boolean
                         mo_DoAtencionDatosAdicionales, mo_DoPacientesDatosAdd) Then
         txtNroOrdenPago.Text = mo_AdminAdmision.IdOrdenPago
         AgregarDatos = True
+    
         If Val(wxParametro208) <> 7686 Then
             GrabaImagenesEnRutaDelServidor
             If esPacienteNuevo = True Then
@@ -6126,6 +6146,10 @@ Function AgregarDatos() As Boolean
                                             wxParametro323
         End If
     End If
+    
+    
+    
+    
 End Function
 
 '------------------------------------------------------------------------------------
@@ -7467,4 +7491,5 @@ errActCita:
     'MsgBox lcErrorSql & Chr(13) & Err.Description
     lblNroAtencion.Caption = lcErrorSql & Chr(13) & Err.Description
 End Sub
+
 

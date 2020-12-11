@@ -158,6 +158,7 @@ Begin VB.Form SisFua
       _ExtentX        =   22093
       _ExtentY        =   13573
       _Version        =   393216
+      Tab             =   2
       TabHeight       =   520
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "Tahoma"
@@ -170,27 +171,17 @@ Begin VB.Form SisFua
       EndProperty
       TabCaption(0)   =   "Cabecera  (F3)"
       TabPicture(0)   =   "SisFua.frx":2D89
-      Tab(0).ControlEnabled=   -1  'True
-      Tab(0).Control(0)=   "Frame1"
-      Tab(0).Control(0).Enabled=   0   'False
-      Tab(0).Control(1)=   "Frame3"
-      Tab(0).Control(1).Enabled=   0   'False
-      Tab(0).Control(2)=   "Frame7"
-      Tab(0).Control(2).Enabled=   0   'False
-      Tab(0).Control(3)=   "fraReconsideracion"
-      Tab(0).Control(3).Enabled=   0   'False
-      Tab(0).Control(4)=   "Frame13"
-      Tab(0).Control(4).Enabled=   0   'False
-      Tab(0).Control(5)=   "Frame15"
-      Tab(0).Control(5).Enabled=   0   'False
-      Tab(0).Control(6)=   "Frame16"
-      Tab(0).Control(6).Enabled=   0   'False
-      Tab(0).Control(7)=   "Frame17"
-      Tab(0).Control(7).Enabled=   0   'False
-      Tab(0).Control(8)=   "Frame18"
-      Tab(0).Control(8).Enabled=   0   'False
-      Tab(0).Control(9)=   "btnBuscarPaciente"
-      Tab(0).Control(9).Enabled=   0   'False
+      Tab(0).ControlEnabled=   0   'False
+      Tab(0).Control(0)=   "btnBuscarPaciente"
+      Tab(0).Control(1)=   "Frame18"
+      Tab(0).Control(2)=   "Frame17"
+      Tab(0).Control(3)=   "Frame16"
+      Tab(0).Control(4)=   "Frame15"
+      Tab(0).Control(5)=   "Frame13"
+      Tab(0).Control(6)=   "fraReconsideracion"
+      Tab(0).Control(7)=   "Frame7"
+      Tab(0).Control(8)=   "Frame3"
+      Tab(0).Control(9)=   "Frame1"
       Tab(0).ControlCount=   10
       TabCaption(1)   =   "Serv.Prev/Vacunas/Dx  (F4)"
       TabPicture(1)   =   "SisFua.frx":2DA5
@@ -208,15 +199,18 @@ Begin VB.Form SisFua
       Tab(1).ControlCount=   10
       TabCaption(2)   =   "Medicamentos/Cpt  (F5)"
       TabPicture(2)   =   "SisFua.frx":2DC1
-      Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "FraFarmacia"
+      Tab(2).ControlEnabled=   -1  'True
+      Tab(2).Control(0)=   "Frame19"
+      Tab(2).Control(0).Enabled=   0   'False
       Tab(2).Control(1)=   "FraPatologia"
-      Tab(2).Control(2)=   "Frame19"
+      Tab(2).Control(1).Enabled=   0   'False
+      Tab(2).Control(2)=   "FraFarmacia"
+      Tab(2).Control(2).Enabled=   0   'False
       Tab(2).ControlCount=   3
       Begin VB.CommandButton btnBuscarPaciente 
          Caption         =   "..."
          Height          =   315
-         Left            =   8880
+         Left            =   -66120
          TabIndex        =   232
          ToolTipText     =   "Busca por Apellidos y Nombres"
          Top             =   2040
@@ -234,7 +228,7 @@ Begin VB.Form SisFua
             Strikethrough   =   0   'False
          EndProperty
          Height          =   3405
-         Left            =   -74850
+         Left            =   150
          TabIndex        =   153
          Top             =   360
          Width           =   12135
@@ -303,7 +297,7 @@ Begin VB.Form SisFua
             Strikethrough   =   0   'False
          EndProperty
          Height          =   2805
-         Left            =   -74850
+         Left            =   150
          TabIndex        =   150
          Top             =   3810
          Width           =   12165
@@ -437,7 +431,7 @@ Begin VB.Form SisFua
             Strikethrough   =   0   'False
          EndProperty
          Height          =   975
-         Left            =   -74850
+         Left            =   150
          TabIndex        =   142
          Top             =   6630
          Width           =   12315
@@ -585,7 +579,7 @@ Begin VB.Form SisFua
             Strikethrough   =   0   'False
          EndProperty
          Height          =   975
-         Left            =   9930
+         Left            =   -65070
          TabIndex        =   82
          Top             =   5640
          Width           =   2445
@@ -2916,7 +2910,7 @@ Begin VB.Form SisFua
             Strikethrough   =   0   'False
          EndProperty
          Height          =   975
-         Left            =   2850
+         Left            =   -72150
          TabIndex        =   76
          Top             =   5640
          Width           =   7035
@@ -3029,7 +3023,7 @@ Begin VB.Form SisFua
             Strikethrough   =   0   'False
          EndProperty
          Height          =   975
-         Left            =   60
+         Left            =   -74940
          TabIndex        =   74
          Top             =   5640
          Width           =   2745
@@ -3080,7 +3074,7 @@ Begin VB.Form SisFua
             Strikethrough   =   0   'False
          EndProperty
          Height          =   1095
-         Left            =   5160
+         Left            =   -69840
          TabIndex        =   70
          Top             =   4470
          Width           =   7215
@@ -3193,7 +3187,7 @@ Begin VB.Form SisFua
             Strikethrough   =   0   'False
          EndProperty
          Height          =   1095
-         Left            =   60
+         Left            =   -74940
          TabIndex        =   68
          Top             =   4470
          Width           =   5025
@@ -3260,7 +3254,7 @@ Begin VB.Form SisFua
       End
       Begin VB.Frame fraReconsideracion 
          Height          =   675
-         Left            =   9810
+         Left            =   -65190
          TabIndex        =   46
          Top             =   399
          Width           =   2565
@@ -3315,7 +3309,7 @@ Begin VB.Form SisFua
             Strikethrough   =   0   'False
          EndProperty
          Height          =   675
-         Left            =   60
+         Left            =   -74940
          TabIndex        =   42
          Top             =   390
          Width           =   9705
@@ -3384,7 +3378,7 @@ Begin VB.Form SisFua
             Strikethrough   =   0   'False
          EndProperty
          Height          =   1485
-         Left            =   60
+         Left            =   -74940
          TabIndex        =   41
          Top             =   2940
          Width           =   12315
@@ -3805,7 +3799,7 @@ Begin VB.Form SisFua
             Strikethrough   =   0   'False
          EndProperty
          Height          =   1755
-         Left            =   60
+         Left            =   -74940
          TabIndex        =   39
          Top             =   1140
          Width           =   12315
