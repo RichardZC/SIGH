@@ -17908,7 +17908,10 @@ Sub ActualizaHistoriaIgualDNI(lcIdPaciente As String)
           oRsTmp1.MoveFirst
           Do While Not oRsTmp1.EOF
              lcNroHistoriaActual = oRsTmp1!NroHistoriaClinica
-             lcNroHistoriaNew = "9" & Right("0000000000" & Trim(oRsTmp1!NroDocumento), 8)
+             'GLCC 22/12/20 CAMBIO36 INICIO
+             'ANTERIOR:lcNroHistoriaNew = "9" & Right("0000000000" & Trim(oRsTmp1!NroDocumento), 8)
+             lcNroHistoriaNew = Right("0000000000" & Trim(oRsTmp1!NroDocumento), 8)
+             'GLCC 22/12/20 CAMBIO36 FIN
 '             lcSql = "update atencionesCE set nroHistoriaClinica=" & lcNroHistoriaNew & _
 '                     " where nroHistoriaClinica=" & lcNroHistoriaActual
 '             If oRsTmp2.State = 1 Then oRsTmp2.Close
