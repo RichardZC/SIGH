@@ -202,7 +202,7 @@ On Error GoTo ErrorManager
     'PROCESO DE VALIDAR VERSIÓN DEL APLICATIVO
     Dim lcBuscaParametro As New SIGHDatos.Parametros
     Dim version As String
-    version = "11122020u74.2hra" 'Verisión actual de los dlls del sistema
+    version = "23122020u74.2hra" 'Verisión actual de los dlls del sistema
     If version <> lcBuscaParametro.SeleccionaFilaParametro(314) Then 'Parámetro 314 versión del sistema en la Base de Datos
         MsgBox "El sistema se actualizará con la última versión", vbExclamation, Me.Caption
         Dim rutaRaiz As String

@@ -1,5 +1,5 @@
 [History]
-1=#P0#=mb	#P1#=btnAceptar_Click	#P2#=SISGalenPlus/Login/btnAceptar_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201211124828	#P7#=0	#P8#=17	.
+1=#P0#=mb	#P1#=btnAceptar_Click	#P2#=SISGalenPlus/Login/btnAceptar_Click	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201223111640	#P7#=0	#P8#=17	.
 2=#P0#=mb	#P1#=MostrarCreditos	#P2#=SISGalenPlus/Splash/MostrarCreditos [Let]	#P3#=	#P4#=	#P5#=MembProperty	#P6#=20201120091602	#P7#=0	#P8#=2	.
 3=#P0#=mb	#P1#=Form_Activate	#P2#=SISGalenPlus/Splash/Form_Activate	#P3#=	#P4#=	#P5#=MembEventProcPrivate	#P6#=20201120091539	#P7#=0	#P8#=8	.
 4=#P0#=mb	#P1#=imprimirReceta_Version2	#P2#=SISGalenPlus/RptCaja/imprimirReceta_Version2	#P3#=	#P4#=	#P5#=MembMethodPrivate	#P6#=20201119130444	#P7#=0	#P8#=44	.
