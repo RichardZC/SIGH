@@ -151,15 +151,15 @@ Begin VB.Form AdmisionHospEgreso
       TabCaption(2)   =   "3.3 Nacimientos"
       TabPicture(2)   =   "AdmisionHospEgreso.frx":334B
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "ucDiagnosticoNacimiento"
+      Tab(2).Control(0)=   "Frame5"
       Tab(2).Control(1)=   "ucNacimientoDetalle1"
-      Tab(2).Control(2)=   "Frame5"
+      Tab(2).Control(2)=   "ucDiagnosticoNacimiento"
       Tab(2).ControlCount=   3
       TabCaption(3)   =   "3.4 Mortalidad"
       TabPicture(3)   =   "AdmisionHospEgreso.frx":3367
       Tab(3).ControlEnabled=   0   'False
-      Tab(3).Control(0)=   "ucDiagnosticosMortalidad"
-      Tab(3).Control(1)=   "Frame3"
+      Tab(3).Control(0)=   "Frame3"
+      Tab(3).Control(1)=   "ucDiagnosticosMortalidad"
       Tab(3).ControlCount=   2
       Begin VB.Frame fraSoloEme 
          Height          =   1275
@@ -3021,9 +3021,12 @@ Private Sub btnAceptar_Click()
                    MsgBox " Los datos se modificaron correctamente, para la Cuenta N° " & Trim(Str(ml_idCuentaAtencion)), vbInformation, Me.Caption
                    If wxParametro302 = "S" And mo_Atenciones.IdFormaPago = 2 And Me.txtFechaEgreso.Text <> sighEntidades.FECHA_VACIA_DMY Then
                         'mgaray201410e
-                        If ServicioImprimeFUAAdmision() = False Then
-                            btnImprimeFichaSIS_Click
-                        End If
+                        'RZC 28/12/2020 Cambio por error de impresión de FUA en hospitalizacion INICIO
+                        'Se comento:
+                        'If ServicioImprimeFUAAdmision() = False Then
+                        '    btnImprimeFichaSIS_Click
+                        'End If
+                        'RZC 28/12/2020 Cambio por error de impresión de FUA en hospitalizacion FIN
                    End If
                    If mo_Atenciones.IdDestinoAtencion = 21 And wxParametro552 = "S" Then
                       'es una ALTA DE EMERGENCIA CON DESTINO=HOSPITALIZACION
