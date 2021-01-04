@@ -5512,15 +5512,15 @@ Dim mb_FaltaDato As Boolean
    End If
       
    If Not mb_PacienteNoIdentificado Then
-   'GLCC-Validad que campo DNI Tenga registros-20/07/2020
-   If Trim(txtNroDocumento.Text) = "" Then
-            sMensajeLocal = sMensajeLocal + vbCrLf + "Ingrese el N° de Documento" '+ Chr(13)
-            If mb_FaltaDato = False Then
-                UserControl.txtNroDocumento.SetFocus
-                mb_FaltaDato = True
-            End If
-            txtNroDocumento.BackColor = ml_ColorError
-        End If
+'   'GLCC-Validad que campo DNI Tenga registros-20/07/2020
+'   If Trim(txtNroDocumento.Text) = "" Then
+'            sMensajeLocal = sMensajeLocal + vbCrLf + "Ingrese el N° de Documento" '+ Chr(13)
+'            If mb_FaltaDato = False Then
+'                UserControl.txtNroDocumento.SetFocus
+'                mb_FaltaDato = True
+'            End If
+'            txtNroDocumento.BackColor = ml_ColorError
+'        End If
         'Termina Modificación GLCC-20-07-2020
         If Trim(txtApellidoPaterno.Text) = "" Then
             sMensajeLocal = sMensajeLocal + vbCrLf + "Ingrese el Apellido Paterno" '+ Chr(13)
