@@ -5135,7 +5135,7 @@ Private Sub txtNroDocumento_LostFocus()
          Else
     
     'CARGAR CONTROLES DE TEXTO DESDE RENIEC
-    CargarDatosDesdeRENIEC ((Trim(txtNroDocumento.Text)))
+  '  CargarDatosDesdeRENIEC ((Trim(txtNroDocumento.Text)))
     
 '</(Fin) Añadido Por: WABG el: 16/10/2020-11:46:19 a.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
    End If
