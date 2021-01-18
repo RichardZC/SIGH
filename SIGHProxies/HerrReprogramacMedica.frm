@@ -1574,7 +1574,10 @@ If wxFranklin = "*" Then Exit Sub
            oRsTmp2.Close
            Set oRsTmp2 = mo_ReglasFacturacion.FactOrdenServicioSeleccionarPorIdCuenta(Val(Me.txtNcuenta.Text))
            oRsTmp2.Filter = "idEstadoFacturacion<>9"
-           If oRsTmp2.RecordCount <= 1 Then
+           'RHA 18/01/2021 Cambio46 Inicio
+           'Antes:If oRsTmp2.RecordCount <= 1 Then
+           If oRsTmp2.RecordCount <= 3 Then
+           'RHA 18/01/2021 Cambio46 Fin
            Else
                 If sighentidades.Parametro561 = "S" Then
                     oRsTmp2.Close
