@@ -693,6 +693,12 @@ Dim mo_loginEstado As Long
 Dim lnIdEstablecimientoExterno As Long
 Dim lbReniecAutorizado As Boolean
 
+'<(Inicio) Añadido Por: WABG el: 26/01/2021-12:05:07 p.m.en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
+Dim mo_Reniec As New ReniecGalenhosNegocios
+Dim lbBuscaDNIenReniec As Boolean
+Dim lcBuscaParametro As New SIGHDatos.Parametros
+'</(Fin) Añadido Por: WABG el: 26/01/2021-12:05:07 p.m. en el Equipo: SISGALENPLUS-PC<CAMBIO-37>
+
 Property Let lcNombrePc(lValue As String)
    mo_lcNombrePc = lValue
 End Property
@@ -1057,6 +1063,33 @@ Private Sub txtDni_LostFocus()
         txtDNI.SetFocus
     Else
         ActualizaDatosDesdeSIS
+        
+'<(Inicio) Añadido Por: WABG el: 26/01/2021-12:06:04 p.m.en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
+        If mo_cmbIdDocIdentidad.BoundText = "1" And Len(Trim(txtApellidoPaterno.Text)) = 0 And Len(Trim$(txtApellidoMaterno.Text)) = 0 And mi_Opcion = sghAgregar Then
+            lbBuscaDNIenReniec = IIf(lcBuscaParametro.SeleccionaFilaParametro(296) = "S", True, False)
+            If lbBuscaDNIenReniec = True Then
+                mo_Reniec.SeAccesaAlaWebDesdeGalenhos = True
+                mo_Reniec.Inicializar
+            End If
+               mo_Reniec.ConsultarDNIenReniec txtDNI.Text
+            If mo_Reniec.ApellidoPaterno <> "" Then
+                  
+                  txtCodigoPlanilla.Text = txtDNI.Text
+                  txtApellidoPaterno.Text = mo_Reniec.ApellidoPaterno
+                  txtApellidoMaterno.Text = mo_Reniec.ApellidoMaterno
+                  txtNombres.Text = Trim(mo_Reniec.PrimerNombre) + " " + Trim(mo_Reniec.SegundoNombre) + " " + Trim$(mo_Reniec.TercerNombre)
+                  txtFechaNacimiento.Text = mo_Reniec.FechaNacimiento
+                  
+                  'CARGAR SEXO
+                  If mo_Reniec.idTipoSexo = 1 Then
+                    cmbIdTipoSexo.ListIndex = 0
+                  Else
+                    cmbIdTipoSexo.ListIndex = 1
+                  End If
+                  
+            End If
+        End If
+'</(Fin) Añadido Por: WABG el: 26/01/2021-12:06:04 p.m. en el Equipo: SISGALENPLUS-PC<CAMBIO-37>
     End If
     Set rsTmp = Nothing
   End If

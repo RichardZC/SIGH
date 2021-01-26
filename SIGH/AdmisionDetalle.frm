@@ -3409,13 +3409,10 @@ Sub grdPacientesEncontradosSIS()
                      mo_cmbIdFuentesFinanciamiento.BoundText = lnIdPlanSIS
                      cmbFuenteFinanciamiento_Click
 
-'<(Inicio) Añadido Por: WABG el: 13/11/2020-12:50:56 p.m.en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
-                     Me.ucPacientesDetalle1.deshabilitarControlesRENIECModificarPacienteValidado
-                     
-'</(Fin) Añadido Por: WABG el: 13/11/2020-12:50:56 p.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
-'<(Inicio)Comentado Por: WABG el: 13/11/2020-12:49:34 p.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
-'                     Me.ucPacientesDetalle1.SetFocusEnDNI
-'</(Fin)Comentado por: WABG el: 13/11/2020-12:49:34 p.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
+'<(Inicio) Añadido Por: WABG el: 26/01/2021-11:55:26 a.m.en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
+                     Me.ucPacientesDetalle1.SetFocusEnHistoria
+'</(Fin) Añadido Por: WABG el: 26/01/2021-11:55:26 a.m. en el Equipo: SISGALENPLUS-PC<CAMBIO-37>
+
                 End If
             End If
         End If

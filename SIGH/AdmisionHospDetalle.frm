@@ -4600,12 +4600,10 @@ Sub grdPacientesEncontradosSIS()
                      cmbFuenteFinanciamiento_Click 1
                      
 
-'<(Inicio) Añadido Por: WABG el: 13/11/2020-12:51:14 p.m.en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
-                     Me.ucPacientesDetalle1.deshabilitarControlesDeTextoRENIEC
-'</(Fin) Añadido Por: WABG el: 13/11/2020-12:51:14 p.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
-'<(Inicio)Comentado Por: WABG el: 13/11/2020-12:42:22 p.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
-'                     Me.ucPacientesDetalle1.SetFocusEnDNI
-'</(Fin)Comentado por: WABG el: 13/11/2020-12:42:22 p.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
+'<(Inicio) Añadido Por: WABG el: 26/01/2021-11:54:25 a.m.en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
+                     Me.ucPacientesDetalle1.SetFocusEnHistoria
+'</(Fin) Añadido Por: WABG el: 26/01/2021-11:54:25 a.m. en el Equipo: SISGALENPLUS-PC<CAMBIO-37>
+
                 End If
             End If
         End If

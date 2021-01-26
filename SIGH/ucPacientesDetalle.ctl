@@ -5142,7 +5142,8 @@ Private Sub txtNroDocumento_LostFocus()
    rspacientes.Close
    '
    mo_Formulario.MarcarComoVacio txtNroDocumento
-   If lbBuscaDNIenReniec = True And Len(txtNroDocumento.Text) = 8 Then
+   'If lbBuscaDNIenReniec = True And Len(txtNroDocumento.Text) = 8 Then
+   If lbBuscaDNIenReniec = True And Len(txtNroDocumento.Text) = 8 And mo_cmbIdDocIdentidad.BoundText = "1" Then
       Dim lbContinuar As Boolean
       lbContinuar = True
       If mi_Opcion <> sghAgregar Then
@@ -5176,6 +5177,14 @@ Private Sub txtNroDocumento_LostFocus()
                   End If
                   mb_UsoWebReniec = True
                   MuestraQueUsoWebReniec
+'<(Inicio) Añadido Por: WABG el: 26/01/2021-11:57:02 a.m.en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
+                    'Idioma español = 38 en el combobox
+                  cmbIdioma.ListIndex = 38
+                  
+                  'Etnia mestizo = 43 en el combobox
+                  cmbEtnia.ListIndex = 43
+                  
+'</(Fin) Añadido Por: WABG el: 26/01/2021-11:57:02 a.m. en el Equipo: SISGALENPLUS-PC<CAMBIO-37>
             End If
       End If
       UserControl.TabPaciente.Tab = 0

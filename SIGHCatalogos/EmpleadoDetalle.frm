@@ -831,6 +831,11 @@ Dim lnIdEstablecimientoExterno As Long
 '--GLCC Agregar objeto cmbNacionaliudad - Cambio5 Inicio
 Dim mo_cmbIdNacionalidad As New sighentidades.ListaDespleglable
 Dim mo_AdminServiciosGeograficos As New SIGHNegocios.ReglasServGeograf
+'<(Inicio) Añadido Por: WABG el: 26/01/2021-12:07:00 p.m.en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
+Dim mo_Reniec As New ReniecGalenhosNegocios
+Dim lbBuscaDNIenReniec As Boolean
+Dim lcBuscaParametro As New SIGHDatos.Parametros
+'</(Fin) Añadido Por: WABG el: 26/01/2021-12:07:00 p.m. en el Equipo: SISGALENPLUS-PC<CAMBIO-37>
 'Dim mo_cmbIdNacionalidad As New sighentidades.ListaDespleglable
 'GLCC Agregar objeto cmbNacionaliudad - Cambio 5 Fin
 Property Let lcNombrePc(lValue As String)
@@ -1863,6 +1868,35 @@ Private Sub txtDni_LostFocus()
            txtDNI.SetFocus
            Exit Sub
         End If
+        
+'<(Inicio) Añadido Por: WABG el: 26/01/2021-12:08:01 p.m.en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
+        If mo_cmbIdDocIdentidad.BoundText = "1" And Len(Trim(txtApellidoPaterno.Text)) = 0 And Len(Trim$(txtApellidoMaterno.Text)) = 0 And mi_Opcion = sghAgregar Then
+            lbBuscaDNIenReniec = IIf(lcBuscaParametro.SeleccionaFilaParametro(296) = "S", True, False)
+            If lbBuscaDNIenReniec = True Then
+                mo_Reniec.SeAccesaAlaWebDesdeGalenhos = True
+                mo_Reniec.Inicializar
+            End If
+               mo_Reniec.ConsultarDNIenReniec txtDNI.Text
+            If mo_Reniec.ApellidoPaterno <> "" Then
+                  
+                  txtCodigoPlanilla.Text = txtDNI.Text
+                  txtApellidoPaterno.Text = mo_Reniec.ApellidoPaterno
+                  txtApellidoMaterno.Text = mo_Reniec.ApellidoMaterno
+                  txtNombres.Text = Trim(mo_Reniec.PrimerNombre) + " " + Trim(mo_Reniec.SegundoNombre) + " " + Trim$(mo_Reniec.TercerNombre)
+                  txtFechaNacimiento.Text = mo_Reniec.FechaNacimiento
+                  
+                  'CARGAR SEXO
+                  If mo_Reniec.idTipoSexo = 1 Then
+                    cmbIdTipoSexo.ListIndex = 0
+                  Else
+                    cmbIdTipoSexo.ListIndex = 1
+                  End If
+                  
+            End If
+        End If
+'</(Fin) Añadido Por: WABG el: 26/01/2021-12:08:01 p.m. en el Equipo: SISGALENPLUS-PC<CAMBIO-37>
+        
+        
    End If
    mo_Formulario.MarcarComoVacio txtDNI
 End Sub
