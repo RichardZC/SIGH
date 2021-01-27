@@ -1065,12 +1065,12 @@ Private Sub txtDni_LostFocus()
         ActualizaDatosDesdeSIS
         
 '<(Inicio) Añadido Por: WABG el: 26/01/2021-12:06:04 p.m.en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
-        If mo_cmbIdDocIdentidad.BoundText = "1" And Len(Trim(txtApellidoPaterno.Text)) = 0 And Len(Trim$(txtApellidoMaterno.Text)) = 0 And mi_Opcion = sghAgregar Then
-            lbBuscaDNIenReniec = IIf(lcBuscaParametro.SeleccionaFilaParametro(296) = "S", True, False)
-            If lbBuscaDNIenReniec = True Then
+        lbBuscaDNIenReniec = IIf(lcBuscaParametro.SeleccionaFilaParametro(296) = "S", True, False)
+        If mo_cmbIdDocIdentidad.BoundText = "1" And lbBuscaDNIenReniec = True And Len(Trim(txtApellidoPaterno.Text)) = 0 And Len(Trim$(txtApellidoMaterno.Text)) = 0 And mi_Opcion = sghAgregar Then
+            
                 mo_Reniec.SeAccesaAlaWebDesdeGalenhos = True
                 mo_Reniec.Inicializar
-            End If
+            
                mo_Reniec.ConsultarDNIenReniec txtDNI.Text
             If mo_Reniec.ApellidoPaterno <> "" Then
                   

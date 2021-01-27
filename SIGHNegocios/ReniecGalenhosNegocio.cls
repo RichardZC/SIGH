@@ -203,14 +203,16 @@ Private Sub enviarComando(ByVal sXml As String, ByVal sSoapAction As String)
     '
     ' Enviar el comando de forma síncrona (se espera a que se reciba la respuesta)
     oHttReq.Open "POST", RutaWeb, False
+
     
     ' las cabeceras a enviar al servicio Web - (no incluir los dos puntos en el nombre de la cabecera)
     oHttReq.setRequestHeader "Content-Type", "text/xml; charset=utf-8"
     oHttReq.setRequestHeader "SOAPAction", sSoapAction
-    
-'<Agregado por: WABG el: 11/24/2020-09:49:38 en el equipo: SISGALENPLUS-PC><CAMBIO-37>
+
+'<(Inicio) Añadido Por: WABG el: 27/01/2021-11:11:09 a.m.en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
     On Error Resume Next
-'</Agregado por: WABG el: 11/24/2020-09:49:38 en el equipo: SISGALENPLUS-PC><CAMBIO-37>
+'</(Fin) Añadido Por: WABG el: 27/01/2021-11:11:09 a.m. en el Equipo: SISGALENPLUS-PC<CAMBIO-37>
+
     
     ' enviar el comando
     oHttReq.send sXml
