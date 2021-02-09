@@ -1650,6 +1650,24 @@ Sub CargarDatosALosControles()
          btnAceptar.Enabled = False
       End If
    End If
+   'SCCQ 09/02/2021 Cambio53 Inicio
+   'Si tiene permiso y la opción es diferente de sonsultar (MODIFICAR o ELIMINAR)
+   If mo_PermisosFacturacion.ActualizaFechaDocumentoES = True And mi_Opcion <> sghConsultar Then
+   '1: Consultar si es movimiento de fecha anterior
+    If CDate(lcBuscaParametro.RetornaFechaServidorSQL) <> CDate(txtFregistro.Text) Then
+     'El movimiento es de fecha anterior
+     '2: Verifica si esta dentro del rango permitido
+        If mo_ReglasFarmacia.ValidaSiMovimientoCumpleRangoTiempo(txtFregistro.Text, txtHoraRegistro.Text, lcBuscaParametro.SeleccionaFilaParametro(602)) Then
+            'Si está dentro del rango límite permitido:
+            MsgBox "Está dentro del rango permitido", vbExclamation, Me.Caption
+            Else
+            'No está dentro del rango permitido
+             MsgBox "No está dentro del rango permitido", vbExclamation, Me.Caption
+             btnAceptar.Enabled = False
+        End If
+    End If
+   End If
+   'SCCQ 09/02/2021 Cambio53 Fin
    Set mo_PermisosFacturacion = Nothing
    Set mo_ReglasSeguridad = Nothing
 End Sub

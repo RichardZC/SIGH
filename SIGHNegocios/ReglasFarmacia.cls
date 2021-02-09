@@ -10731,7 +10731,34 @@ ManejadorDeError:
 Exit Function
 End Function
 
-
+'============================================================================
+'Objetivo    :  Valida si la fecha de creación del movimiento se encuentra dentro del rango permitido para la modificación
+'Creado por  :  Sheyla Cynthia Carpio Quispe
+'Dia Creacion: 2021-02-08
+'Requerimiento: Cambio 53
+'Ultima Modificacion
+'Modific. por:  Sheyla Cynthia Carpio Quispe
+'Dia Modific.: 2021-02-08
+'----------------------------------------------------------------------------
+Function ValidaSiMovimientoCumpleRangoTiempo(fecha_movimiento As String, hora_movimiento As String, hora_limite As String) As Boolean
+'Se contruye la fecha límite para el movimiento
+Dim fecha_limite As Date
+fecha_limite = DateAdd("d", 1, fecha_movimiento)
+Dim fecha_servidor As Date
+fecha_servidor = lcBuscaParametro.RetornaFechaServidorSQL
+'Dim horaM As Double
+'Dim horaL As Double
+'horaM = CDbl(Replace(hora_movimiento, ":", "."))
+'horaL = CDbl(Replace(hora_limite, ":", "."))
+   If (fecha_servidor = fecha_limite) Then
+    If (CDbl(Replace(hora_movimiento, ":", ".")) <= CDbl(Replace(hora_limite, ":", "."))) Then
+      ValidaSiMovimientoCumpleRangoTiempo = True
+    End If
+   
+   End If
+  
+        ValidaSiMovimientoCumpleRangoTiempo = False
+End Function
 
 
 
