@@ -40,6 +40,16 @@ Dim mda_FechaCreacion As Date
 Dim ml_idUsuario As Long
 Dim ml_idEstadoMovimiento As Long
 
+'RHA 12/01/2021 CAMBIO 50 INICIO
+Dim ml_docext As String
+Property Let docExterno(sValue As String)
+   ml_docext = sValue
+End Property
+Property Get docExterno() As String
+   docExterno = ml_docext
+End Property
+'RHA 12/01/2021 CAMBIO 50 FIN
+
 Property Let IdUsuarioAuditoria(lValue As Long)
    ml_IdUsuarioAuditoria = lValue
 End Property
@@ -95,11 +105,11 @@ End Property
 Property Get Observaciones() As String
    Observaciones = ms_Observaciones
 End Property
-Property Let Total(vValue As Double)
+Property Let TOTAL(vValue As Double)
    mv_Total = vValue
 End Property
-Property Get Total() As Double
-   Total = mv_Total
+Property Get TOTAL() As Double
+   TOTAL = mv_Total
 End Property
 Property Let idMotivoAnulacion(iValue As Long)
    ml_idMotivoAnulacion = iValue

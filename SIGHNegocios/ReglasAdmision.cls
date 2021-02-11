@@ -1219,7 +1219,7 @@ Function AdmisionCEAgregar(oDOCuentaAtencion As DOCuentaAtencion, oDoAtencion As
 1840                      .total = oDOFacturacionServicio.cantidad * lnPrecioUnitario
 
                           'HRA 09/12/2020 Cambio 46 Inicio
-                          .IdFinan = oDOFacturacionServicio.IdTipoFinanciamiento
+                          .IdFinan = oDoAtencion.IdFormaPago
                           .CodPres = mo_DoAtencionDatosAdicionales.FuaCodigoPrestacion1
                           'HRA 09/12/2020 Cambio 46 Fin
                    
@@ -1254,9 +1254,11 @@ Function AdmisionCEAgregar(oDOCuentaAtencion As DOCuentaAtencion, oDoAtencion As
 2110                         .IdUsuarioAutoriza = oDoAtencion.IdUsuarioAuditoria
 2120                         .PrecioFinanciado = lnPrecioUnitario
 2130                         .TotalFinanciado = oDOFacturacionServicio.cantidad * lnPrecioUnitario
-2140                         .idFuenteFinanciamiento = oDoAtencion.idFuenteFinanciamiento
-
-                              .CodPres = mo_DoAtencionDatosAdicionales.FuaCodigoPrestacion1 'HRA 09/12/2020 Cambio 46
+                            
+                             'HRA 09/12/2020 Cambio 46 Inicio
+2140                         .idFuenteFinanciamiento = oDoAtencion.IdFormaPago
+                              .CodPres = mo_DoAtencionDatosAdicionales.FuaCodigoPrestacion1
+                             'HRA 09/12/2020 Cambio 46
                                                 
 2150                     End With
 2160                     If Not oFacturacionServicioFinan.Insertar(oDoFacturacionServicioFinanc) Then
@@ -2004,7 +2006,7 @@ Function AdmisionCEModificar(oDOCuentaAtencion As DOCuentaAtencion, oDoAtencion 
 1860                              .total = oDOFacturacionServicio.cantidad * lnPrecioUnitario
 
                                    'HRA 09/12/2020 Cambio 46 Inicio
-                                   .IdFinan = oDOFacturacionServicio.IdTipoFinanciamiento
+                                   .IdFinan = oDoAtencion.IdFormaPago
                                    .CodPres = mo_DoAtencionDatosAdicionales.FuaCodigoPrestacion1
                                    'HRA 09/12/2020 Cambio 46 Fin
                                  
@@ -2038,9 +2040,11 @@ Function AdmisionCEModificar(oDOCuentaAtencion As DOCuentaAtencion, oDoAtencion 
 2120                                 .IdUsuarioAutoriza = oDoAtencion.IdUsuarioAuditoria
 2130                                 .PrecioFinanciado = lnPrecioUnitario
 2140                                 .TotalFinanciado = oDOFacturacionServicio.cantidad * lnPrecioUnitario
-2150                                 .idFuenteFinanciamiento = oDoAtencion.idFuenteFinanciamiento
 
-                                     .CodPres = mo_DoAtencionDatosAdicionales.FuaCodigoPrestacion1 'HRA 09/12/2020 Cambio 46
+                                     'HRA 09/12/2020 Cambio 46 Inicio
+2150                                 .idFuenteFinanciamiento = oDoAtencion.IdFormaPago
+                                     .CodPres = mo_DoAtencionDatosAdicionales.FuaCodigoPrestacion1
+                                     'HRA 09/12/2020 Cambio 46 Fin
                                     
 2160                             End With
 2170                             If Not oFacturacionServicioFinan.Insertar(oDoFacturacionServicioFinanc) Then

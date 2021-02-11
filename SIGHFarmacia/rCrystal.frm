@@ -1,6 +1,6 @@
 VERSION 5.00
 Object = "{C4847593-972C-11D0-9567-00A0C9273C2A}#8.0#0"; "crviewer.dll"
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCTL.OCX"
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.2#0"; "MSCOMCTL.OCX"
 Begin VB.Form rCrystal 
    ClientHeight    =   5625
    ClientLeft      =   60
@@ -96,6 +96,9 @@ Dim LnJul As Long: Dim LnAgo As Long: Dim LnSet As Long: Dim LnOct As Long: Dim 
 Dim lc_TextoDelFiltro As String, lcTexto10 As String
 Dim lnidFuenteFinanciamiento As Long:  Dim dFinanciamiento As String
 Dim lc_TipoReporte As String, lcCodigo As String, lcNombre As String
+
+Dim lc_Paciente As String 'RHA 12/01/2021 CAMBIO 52
+
 Dim lnIdAlmacen As Long
 Dim lnOrdenadoPor As Long: Dim lnIdProducto As Long
 Dim mrs_Tmp As New Recordset
@@ -389,6 +392,13 @@ End Property
 Property Let TipoReporte(iValue As String)
    lc_TipoReporte = iValue
 End Property
+
+'RHA 12/01/2021 CAMBIO 52 INCIO
+Property Let Paciente(iValue As String)
+    lc_Paciente = iValue
+End Property
+'RHA 12/01/2021 CAMBIO 52 FIN
+
 Property Let TextoDelFiltro(iValue As String)
    lc_TextoDelFiltro = iValue
 End Property
@@ -2268,6 +2278,11 @@ End If
                         crParamDef.AddCurrentValue (lcTitDireccion)
                     Case "lcEESStelefono"
                         crParamDef.AddCurrentValue (lcTitTelefono)
+                     'RHA 12/01/2021 CAMBIO 52 INCIO
+                    Case "LcPaciente"
+                        crParamDef.AddCurrentValue (lc_Paciente)
+                    'RHA 12/01/2021 CAMBIO 52 FIN
+                    
                  End Select
              Next
              crReport.Database.SetDataSource rsReporte

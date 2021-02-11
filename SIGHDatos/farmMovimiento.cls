@@ -97,6 +97,12 @@ With oCommand
    .Parameters.Append oParameter
    Set oParameter = .CreateParameter("@IdUsuarioAuditoria", adInteger, adParamInput, 0, oTabla.IdUsuarioAuditoria)
    .Parameters.Append oParameter
+   
+    'RHA 12/01/2021 CAMBIO 50 INCIO
+    Set oParameter = .CreateParameter("@DocExterno", adVarChar, adParamInput, 20, IIf(oTabla.docExterno = "", Null, oTabla.docExterno))
+   .Parameters.Append oParameter
+   'RHA 12/01/2021 CAMBIO 50 FIN
+   
    .Execute
 End With
  
@@ -157,6 +163,12 @@ With oCommand
    .Parameters.Append oParameter
    Set oParameter = .CreateParameter("@IdUsuarioAuditoria", adInteger, adParamInput, 0, oTabla.IdUsuarioAuditoria)
    .Parameters.Append oParameter
+   
+   'RHA 12/01/2021 CAMBIO 50 INCIO
+    Set oParameter = .CreateParameter("@DocExterno", adVarChar, adParamInput, 20, IIf(oTabla.docExterno = "", Null, oTabla.docExterno))
+   .Parameters.Append oParameter
+   'RHA 12/01/2021 CAMBIO 50 FIN
+   
    .Execute
 End With
  
@@ -241,6 +253,9 @@ Dim oParameter As ADODB.Parameter
        oTabla.FechaCreacion = IIf(IsNull(oRecordset!FechaCreacion), 0, oRecordset!FechaCreacion)
        oTabla.IdUsuario = IIf(IsNull(oRecordset!IdUsuario), 0, oRecordset!IdUsuario)
        oTabla.IdEstadoMovimiento = IIf(IsNull(oRecordset!IdEstadoMovimiento), 0, oRecordset!IdEstadoMovimiento)
+       
+       oTabla.docExterno = IIf(IsNull(oRecordset!docExterno), "", oRecordset!docExterno) 'RHA 12/01/2021 CAMBIO 50
+       
    SeleccionarPorId = True
    ms_MensajeError = ""
    End If
@@ -267,6 +282,7 @@ Sub SetDefaults(ByVal oTabla As DOfarmMovimiento)
    oTabla.FechaCreacion = Now
    oTabla.IdUsuario = 0
    oTabla.IdEstadoMovimiento = 0
+    oTabla.docExterno = "" 'RHA 12/01/2021 CAMBIO 50
 End Sub
 
 '********************************   Correlativo  ***************************************

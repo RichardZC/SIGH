@@ -99,6 +99,24 @@ Begin VB.Form FarmNotaIngreso
       TabIndex        =   16
       Top             =   90
       Width           =   15045
+      Begin VB.TextBox txtdocext 
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   315
+         Left            =   8010
+         MaxLength       =   20
+         TabIndex        =   62
+         Top             =   1920
+         Visible         =   0   'False
+         Width           =   1425
+      End
       Begin VB.CheckBox chkPacienteForaneo 
          Caption         =   "Paciente Foráneo"
          BeginProperty Font 
@@ -118,7 +136,7 @@ Begin VB.Form FarmNotaIngreso
       End
       Begin VB.Frame fraPacienteForaneo 
          Height          =   1305
-         Left            =   6840
+         Left            =   6600
          TabIndex        =   54
          Top             =   960
          Visible         =   0   'False
@@ -182,8 +200,8 @@ Begin VB.Form FarmNotaIngreso
          TabIndex        =   41
          Top             =   105
          Visible         =   0   'False
-         Width           =   10320
-         _ExtentX        =   18203
+         Width           =   11880
+         _ExtentX        =   20955
          _ExtentY        =   4048
          _Version        =   131072
          GridFlags       =   17040384
@@ -234,7 +252,7 @@ Begin VB.Form FarmNotaIngreso
          Left            =   8010
          MaxLength       =   20
          TabIndex        =   2
-         Top             =   1260
+         Top             =   900
          Width           =   1425
       End
       Begin VB.TextBox txtNdocO 
@@ -251,7 +269,7 @@ Begin VB.Form FarmNotaIngreso
          Left            =   8010
          MaxLength       =   20
          TabIndex        =   4
-         Top             =   1590
+         Top             =   1230
          Width           =   1425
       End
       Begin VB.TextBox txtRuc 
@@ -433,7 +451,7 @@ Begin VB.Form FarmNotaIngreso
          Height          =   315
          Left            =   8010
          TabIndex        =   7
-         Top             =   1950
+         Top             =   1590
          Width           =   1440
       End
       Begin VB.TextBox txtHoraRegistro 
@@ -517,7 +535,7 @@ Begin VB.Form FarmNotaIngreso
          Left            =   9465
          TabIndex        =   43
          ToolTipText     =   "Debe existir el ODBC HIS q apunte a c:\archiv...\dig...\gal...\archivos"
-         Top             =   1260
+         Top             =   900
          Visible         =   0   'False
          Width           =   1020
       End
@@ -671,6 +689,17 @@ Begin VB.Form FarmNotaIngreso
             Width           =   705
          End
       End
+      Begin VB.Label lblNDoc 
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Caption         =   "N° Doc. Externo"
+         Height          =   210
+         Left            =   6600
+         TabIndex        =   63
+         Top             =   1920
+         Visible         =   0   'False
+         Width           =   1440
+      End
       Begin VB.Label Label1 
          AutoSize        =   -1  'True
          Caption         =   "Concepto"
@@ -741,7 +770,7 @@ Begin VB.Form FarmNotaIngreso
          Height          =   210
          Left            =   7110
          TabIndex        =   31
-         Top             =   1260
+         Top             =   900
          Width           =   840
       End
       Begin VB.Label Label10 
@@ -768,7 +797,7 @@ Begin VB.Form FarmNotaIngreso
          Height          =   210
          Left            =   6705
          TabIndex        =   28
-         Top             =   1590
+         Top             =   1230
          Width           =   1245
       End
       Begin VB.Label Label13 
@@ -795,7 +824,7 @@ Begin VB.Form FarmNotaIngreso
          Height          =   210
          Left            =   7110
          TabIndex        =   25
-         Top             =   1950
+         Top             =   1590
          Width           =   840
       End
       Begin VB.Label Label16 
@@ -1015,7 +1044,17 @@ Private Sub cmbConcepto_Click()
     oRsConceptos.MoveFirst
     oRsConceptos.Find "idTipoConcepto=" & mo_cmbConceptos.BoundText
     mo_cmbTipoDocum.BoundText = oRsConceptos.Fields!DocumentoId
-    '
+    
+    'RHA 12/01/2021 CAMBIO 50 INCIO
+     If Trim(Me.cmbConcepto.Text) = "COMPRA" Then
+        Me.txtdocext.Visible = True
+    Me.lblNDoc.Visible = True
+    Else
+        Me.txtdocext.Visible = False
+    Me.lblNDoc.Visible = False
+    End If
+    'RHA 12/01/2021 CAMBIO 50 FIN
+    
     If oRsConceptos.Fields!DocumentoId = LcIdTipoDocumentoNINGUNO Then     'Ninguno
        mo_Formulario.HabilitarDeshabilitar txtNdocum, False
        mo_Formulario.HabilitarDeshabilitar txtFrecepcion, False
@@ -1506,6 +1545,9 @@ Sub CargarDatosALosControles()
    txtNproceso.Text = mo_farmMovimientoNotaIngreso.NumeroProceso
    txtNcuenta.Text = mo_farmMovimientoNotaIngreso.idCuentaAtencion
    txtNcuenta_LostFocus
+   
+   Me.txtdocext.Text = mo_farmMovimiento.docExterno 'RHA 12/01/2021 CAMBIO 50
+   
    'PAQUETES
    If mo_ReglasFarmacia.LaNIoNSesUnARMADO_PAQUETE(mo_farmMovimiento.IdAlmacenDestino, mo_farmMovimiento.idTipoConcepto, _
                                                   mo_farmMovimiento.DocumentoNumero, True) = True Then
@@ -1943,6 +1985,9 @@ Sub CargaDatosAlObjetosDeDatos()
             .MovTipo = lcConstanteMovimientoEntrada                                'igual
             .Observaciones = txtObservaciones.Text                                 'vacio
             .Total = lnTotalDocumento                                              'sumar
+            
+            .docExterno = txtdocext.Text 'RHA 12/01/2021 CAMBIO 50
+            
         End With
         With mo_farmMovimientoNotaIngreso
             .DocumentoFechaRecepcion = IIf(txtFrecepcion.Text = SIGHEntidades.FECHA_VACIA_DMY, 0, txtFrecepcion.Text)  'hoy
@@ -1977,6 +2022,8 @@ Sub CargaDatosAlObjetosDeDatos()
             .IdUsuarioAuditoria = ml_idUsuario
             .Total = lnTotalDocumento
             '.FechaCreacion = txtFregistro.Text
+            .docExterno = txtdocext.Text 'RHA 12/01/2021 CAMBIO 50
+            
         End With
         With mo_farmMovimientoNotaIngreso
             .DocumentoFechaRecepcion = IIf(txtFrecepcion.Text = SIGHEntidades.FECHA_VACIA_DMY, 0, txtFrecepcion.Text)
@@ -2218,6 +2265,15 @@ Private Sub ImprimeDocumento()
     oRptClase.HoraFin = Trim(cmbTipoDocum.Text) & " - " & txtNdocum.Text
     oRptClase.Importe = lnTotalDocumento
     oRptClase.TipoReporte = "NiNs"
+    
+     'RHA 15/01/2021 CAMBIO 52 INICIO
+    If Len(Trim(Me.txtNombrePaciente.Text)) = 0 Then
+    oRptClase.Paciente = " "
+    Else
+    oRptClase.Paciente = "Paciente: " & Me.txtNombrePaciente.Text
+    End If
+    'RHA 15/01/2021 CAMBIO 52 FIN
+        '
     '
     oRptClase.Observaciones = Trim(Me.txtObservaciones.Text)
     oRptClase.Observaciones = Trim(Me.txtObservaciones.Text) & "  (" & Label1.Caption & ":  " & cmbConcepto.Text & ")"    'debb-07/10/2016
