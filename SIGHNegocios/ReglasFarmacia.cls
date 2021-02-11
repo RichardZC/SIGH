@@ -10740,25 +10740,35 @@ End Function
 'Modific. por:  Sheyla Cynthia Carpio Quispe
 'Dia Modific.: 2021-02-08
 '----------------------------------------------------------------------------
-Function ValidaSiMovimientoCumpleRangoTiempo(fecha_movimiento As String, hora_movimiento As String, hora_limite As String) As Boolean
-'Se contruye la fecha límite para el movimiento
-Dim fecha_limite As Date
-fecha_limite = DateAdd("d", 1, fecha_movimiento)
-Dim fecha_servidor As Date
-fecha_servidor = lcBuscaParametro.RetornaFechaServidorSQL
-'Dim horaM As Double
-'Dim horaL As Double
-'horaM = CDbl(Replace(hora_movimiento, ":", "."))
-'horaL = CDbl(Replace(hora_limite, ":", "."))
-   If (fecha_servidor = fecha_limite) Then
-    If (CDbl(Replace(hora_movimiento, ":", ".")) <= CDbl(Replace(hora_limite, ":", "."))) Then
-      ValidaSiMovimientoCumpleRangoTiempo = True
+Function ValidaSiMovimientoCumpleRangoTiempo(fecha_movimiento As String) As Boolean
+'Se verifica si el valor del parametro 602 esta establecido para validación de la hora límite.
+ On Error GoTo Error
+ Dim hora_limite As String
+ hora_limite = lcBuscaParametro.SeleccionaFilaParametro(602) 'Hora límite permitido para la modificación.
+    If hora_limite = "" Then 'Si no tiene valor, no hay restrincción de tiempo para modificar
+         ValidaSiMovimientoCumpleRangoTiempo = True 'Si se puede modificar
+    Else 'Si el parámetro tiene valor, se evalúa si el movimiento esta dentro del rago de tiempo permitido
+        'Se contruye la fecha límite para el movimiento
+        Dim fecha_limite As Date
+        fecha_limite = DateAdd("d", 1, fecha_movimiento) 'Hasta un día después de la creación del movimiento
+        Dim fecha_servidor As Date
+        fecha_servidor = lcBuscaParametro.RetornaFechaServidorSQL
+        Dim hora_servidor As Double
+        hora_servidor = CDbl(Replace(lcBuscaParametro.RetornaHoraServidorSQLserverFormatoGalenhos, ":", "."))
+           If (fecha_servidor = fecha_limite) Then
+            If (hora_servidor <= CDbl(Replace(hora_limite, ":", "."))) Then
+                ValidaSiMovimientoCumpleRangoTiempo = True
+            Else
+                ValidaSiMovimientoCumpleRangoTiempo = False
+            End If
+           Else
+                ValidaSiMovimientoCumpleRangoTiempo = False
+           End If
     End If
-   
-   End If
-  
-        ValidaSiMovimientoCumpleRangoTiempo = False
-End Function
+    Exit Function
+Error:    ms_MensajeError = " " + Err.Description: MsgBox ms_MensajeError + Chr(13) + "Por favor contacte al personal de soporte técnico", vbInformation, "Error al validar la hora límite."
+    Exit Function
+    End Function
 
 
 
