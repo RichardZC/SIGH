@@ -518,7 +518,7 @@ Begin VB.Form HerrReprogramacMedica
             Strikethrough   =   0   'False
          EndProperty
          Height          =   700
-         Left            =   1290
+         Left            =   1320
          Picture         =   "HerrReprogramacMedica.frx":3185
          Style           =   1  'Graphical
          TabIndex        =   44
@@ -1063,7 +1063,12 @@ If wxFranklin = "*" Then Exit Sub
                       (Me.txtHrFin.Text >= oRsTmp!HoraInicio And Me.txtHrFin.Text <= oRsTmp!HoraFin) Then
                         MsgBox "Yá se programo al 'Médico' ese mismo día", vbInformation, "Mensaje"
                         oConexion.Close
-                        oConexionExterna.CloDoEvents
+                        
+                        'RHA 20/01/2021 Cambio 46 Inicio
+                         'Antes:oConexionExterna.CloDoEvents
+                        oConexionExterna.Close
+                        'RHA 18/01/2021 Cambio 46 Fin
+                        
                         'SCCQ 20/02/2020 Cambio7 Inicio
                         'BORRAR DATOS DE cmbNuevoIdServicioCE
                         cmbNuevoIdServicioCE.Clear
@@ -1113,13 +1118,19 @@ If wxFranklin = "*" Then Exit Sub
                            oRsTmp2.Close
                            Set oRsTmp2 = mo_ReglasFacturacion.FactOrdenServicioSeleccionarPorIdCuenta(oRsTmp1.Fields!idCuentaAtencion)
                            oRsTmp2.Filter = "idEstadoFacturacion<>9"
-                           If oRsTmp2.RecordCount <= 1 Then
+                           
+                          'RHA 20/01/2021 Cambio 46 Inicio
+                         'Antes: If oRsTmp2.RecordCount <= 1  Then
+                           If oRsTmp2.RecordCount = 3 Or oRsTmp2.RecordCount = 1 Then
+                         'RHA 20/01/2021 Cambio 46 Fin
                               lbPasaAtencion = True
                            Else
                               lnAtencionesFarmaciaServicios = lnAtencionesFarmaciaServicios + 1
+                              lbHuboCitadoFueraDeHora = True
                            End If
                         Else
                            lnAtencionesFarmaciaServicios = lnAtencionesFarmaciaServicios + 1
+                           lbHuboCitadoFueraDeHora = True
                         End If
                         oRsTmp2.Close
                         If lbPasaAtencion = True Then
@@ -1157,13 +1168,13 @@ If wxFranklin = "*" Then Exit Sub
                        lnIdServicioCENew = Val(mo_cmbNuevoIdServicioCE.BoundText)
                        mo_ReglasDeProgMedica.CitasActualizaDatosDeReprogramacionXfechaServicioCE txtFechaRequeridaDesde.Text, _
                                                              oRsTmp1.Fields!idAtencion, lnIdProgramacionNew, lnIdServicioCENew, oConexion
+                       
                        'SCCQ 21/02/2020 Cambio7 Fin
-                       If oRsTmp1!idFuenteFinanciamiento = sghFuenteFinanciamiento.sghFFSIS Then
-                          ActualizaMedicoEnFuasYaEmitidas oConexionExterna, oRsTmp1!idCuentaAtencion, _
+                      ' If oRsTmp1!idFuenteFinanciamiento = sghFuenteFinanciamiento.sghFFSIS Then
+                         ' ActualizaMedicoEnFuasYaEmitidas oConexionExterna, oRsTmp1!idCuentaAtencion, _
                                                        0, txtFechaRequeridaDesde.Text, ""
-                                                       
-                          
-                       End If
+                      ' End If
+                       
                        EnviaEmail oConexion, oRsTmp1!idPaciente, txtFechaRequeridaDesde.Text & " " & oRsTmp1.Fields!HoraIngreso, _
                                   txtFechaInicio.Text, oRsTmp1!idCuentaAtencion
                     Else
@@ -1189,6 +1200,7 @@ If wxFranklin = "*" Then Exit Sub
                '
             End If
             oRsTmp1.Close
+            
         Else
             '********Por otro Medico
             Set oRsTmp1 = mo_ReglasAdmision.AtencionesCEseleccionarPorFechaServicioMedico(txtFechaInicio.Text, Val(mo_cmbIdServicioCE.BoundText), Val(mo_cmbIdResponsable.BoundText))
@@ -1208,13 +1220,20 @@ If wxFranklin = "*" Then Exit Sub
                            oRsTmp2.Close
                            Set oRsTmp2 = mo_ReglasFacturacion.FactOrdenServicioSeleccionarPorIdCuenta(oRsTmp1.Fields!idCuentaAtencion)
                            oRsTmp2.Filter = "idEstadoFacturacion<>9"
-                           If oRsTmp2.RecordCount <= 1 Then
+                           
+                         'RHA 20/01/2021 Cambio 46 Inicio
+                         'Antes: If oRsTmp2.RecordCount <= 1  Then
+                           If oRsTmp2.RecordCount = 3 Or oRsTmp2.RecordCount = 1 Then
+                         'RHA 20/01/2021 Cambio 46 Fin
                               lbPasaAtencion = True
                            Else
                               lnAtencionesFarmaciaServicios = lnAtencionesFarmaciaServicios + 1
+                              lbHuboCitadoFueraDeHora = True
                            End If
                         Else
                            lnAtencionesFarmaciaServicios = lnAtencionesFarmaciaServicios + 1
+                           lbHuboCitadoFueraDeHora = True
+                           
                         End If
                         oRsTmp2.Close
                         If lbPasaAtencion = True Then
@@ -1244,6 +1263,7 @@ If wxFranklin = "*" Then Exit Sub
                        lnAtencionesPasadas = lnAtencionesPasadas + 1
                        mo_ReglasDeProgMedica.CitasActualizaDatosDeReporgramacionXmedico Val(mo_cmbIdResponsableNew.BoundText), _
                                                                      lnIdProgramacionNew, oRsTmp1.Fields!idAtencion, oConexion
+                       
                        If oRsTmp1!idFuenteFinanciamiento = sghFuenteFinanciamiento.sghFFSIS Then
                           ActualizaMedicoEnFuasYaEmitidas oConexionExterna, oRsTmp1!idCuentaAtencion, _
                                                        Val(mo_cmbIdResponsableNew.BoundText), 0, ""
@@ -1277,6 +1297,7 @@ If wxFranklin = "*" Then Exit Sub
         Set oRsTmp1 = mo_ReglasDeProgMedica.CitasWebCuposSeleccionarPorFechas(CDate(txtFechaInicio.Text), _
                                            CDate(txtFechaInicio.Text), Val(mo_cmbIdResponsable.BoundText), _
                                            Val(mo_cmbIdServicioCE.BoundText), oConexionExterna)
+      
          lcMensajeWeb = ""
          If oRsTmp1.RecordCount > 0 Then
             oRsTmp1.MoveFirst
@@ -1348,6 +1369,7 @@ ErrorProceso:
     MsgBox Err.Description
     Exit Sub
     Resume
+
 End Sub
 
 'SCCQ 19/02/2020 Cambio 7 Inicio

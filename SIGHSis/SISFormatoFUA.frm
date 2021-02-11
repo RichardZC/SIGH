@@ -6031,7 +6031,7 @@ Private Sub Form_Activate()
     If mc_GuardarFua = "S" Then
         Me.btnguardafua_Click
     End If
-  'HRA 10/12/2020 47 Cambio Fin
+  'HRA 10/12/2020  Cambio 47 Fin
   
 End Sub
 
