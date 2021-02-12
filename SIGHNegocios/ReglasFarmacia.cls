@@ -10740,7 +10740,7 @@ End Function
 'Modific. por:  Sheyla Cynthia Carpio Quispe
 'Dia Modific.: 2021-02-08
 '----------------------------------------------------------------------------
-Function ValidaSiMovimientoCumpleRangoTiempo(fecha_movimiento As String) As Boolean
+Function ValidaSiMovimientoCumpleRangoTiempo(fecha_movimiento As String) As Boolean 'Solo para fechas pasadas
 'Se verifica si el valor del parametro 602 esta establecido para validación de la hora límite.
  On Error GoTo Error
  Dim hora_limite As String

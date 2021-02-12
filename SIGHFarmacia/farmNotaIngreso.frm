@@ -1650,7 +1650,7 @@ Sub CargarDatosALosControles()
          btnAceptar.Enabled = False
       End If
    End If
-   'SCCQ 09/02/2021 Cambio53 Inicio
+   'SCCQ 09-02-2021 Cambio 53 Inicio
    'Si tiene permiso y la opción es diferente de sonsultar (MODIFICAR o ELIMINAR)
    If mo_PermisosFacturacion.ActualizaFechaDocumentoES = True And mi_Opcion <> sghConsultar Then
    '1: Consultar si es movimiento de fecha anterior
@@ -1658,12 +1658,12 @@ Sub CargarDatosALosControles()
      '2: Verifica si esta dentro del rango permitido
         If mo_ReglasFarmacia.ValidaSiMovimientoCumpleRangoTiempo(txtFregistro.Text) = False Then 'No esta dentro del rango permitido
             'No está dentro del rango permitido
-             MsgBox "Se superó la hora límite permitido para la modificación", vbExclamation, Me.Caption
+             MsgBox "Se superó la hora límite permitido para la modificación/anulación", vbExclamation, Me.Caption
              btnAceptar.Enabled = False
         End If
     End If
    End If
-   'SCCQ 09/02/2021 Cambio53 Fin
+   'SCCQ 09-02-2021 Cambio 53 Fin
    Set mo_PermisosFacturacion = Nothing
    Set mo_ReglasSeguridad = Nothing
 End Sub
@@ -1695,6 +1695,18 @@ Private Sub btnAceptar_Click()
             End If
        End If
    Case sghModificar
+   'SCCQ 12-02-2020 Cambio 53 Inicio
+   '1: Consultar si es movimiento de fecha anterior
+    If CDate(lcBuscaParametro.RetornaFechaServidorSQL) <> CDate(txtFregistro.Text) Then 'Si es de fecha anterior
+     '2: Verifica si esta dentro del rango permitido
+        If mo_ReglasFarmacia.ValidaSiMovimientoCumpleRangoTiempo(txtFregistro.Text) = False Then 'No esta dentro del rango permitido
+                 'No está dentro del rango permitido
+                  MsgBox "Se superó la hora límite permitido para la modificación", vbExclamation, Me.Caption
+                  btnAceptar.Enabled = False
+                  Exit Sub
+         End If
+    End If
+   'SCCQ 12-02-2020 Cambio 53 Fin
    'SCCQ 12/10/2020 Cambio28 Inicio
     'Antes: If ValidarDatosObligatorios() Then
        If ValidarDatosObligatorios("M") Then
@@ -1711,6 +1723,18 @@ Private Sub btnAceptar_Click()
             End If
        End If
    Case sghEliminar
+     'SCCQ 12-02-2020 Cambio 53 Inicio
+   '1: Consultar si es movimiento de fecha anterior
+    If CDate(lcBuscaParametro.RetornaFechaServidorSQL) <> CDate(txtFregistro.Text) Then 'Si es de fecha anterior
+     '2: Verifica si esta dentro del rango permitido
+        If mo_ReglasFarmacia.ValidaSiMovimientoCumpleRangoTiempo(txtFregistro.Text) = False Then 'No esta dentro del rango permitido
+                 'No está dentro del rango permitido
+                  MsgBox "Se superó la hora límite permitido para la anulación", vbExclamation, Me.Caption
+                  btnAceptar.Enabled = False
+                  Exit Sub
+         End If
+    End If
+   'SCCQ 12-02-2020 Cambio 53 Fin
         If MsgBox("Esta seguro de Anular ?", vbQuestion + vbYesNo, "") = vbYes Then
             CargaDatosAlObjetosDeDatos
             If AnularNI() Then
