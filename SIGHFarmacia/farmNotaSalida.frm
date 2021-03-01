@@ -1087,7 +1087,7 @@ Private Sub btnAceptar_Click()
             End If
        End If
    Case sghModificar
-   'SCCQ 18-02-2020 Cambio 53 Inicio
+   'SCCQ 18-02-2021 Cambio 53 Inicio
    '1: Consultar si es movimiento de fecha anterior
     If CDate(lcBuscaParametro.RetornaFechaServidorSQL) <> CDate(txtFregistro.Text) Then 'Si es de fecha anterior
      '2: Verifica si esta dentro del rango permitido
@@ -1098,7 +1098,7 @@ Private Sub btnAceptar_Click()
                   Exit Sub
          End If
     End If
-   'SCCQ 18-02-2020 Cambio 53 Fin
+   'SCCQ 18-02-2021 Cambio 53 Fin
        'SCCQ 09/10/2020 Cambio28 Inicio
         'Antes:  If ValidarDatosObligatorios() Then
         If ValidarDatosObligatorios("M") Then
@@ -1116,7 +1116,7 @@ Private Sub btnAceptar_Click()
             End If
        End If
    Case sghEliminar
-         'SCCQ 18-02-2020 Cambio 53 Inicio
+         'SCCQ 18-02-2021 Cambio 53 Inicio
         '1: Consultar si es movimiento de fecha anterior
          If CDate(lcBuscaParametro.RetornaFechaServidorSQL) <> CDate(txtFregistro.Text) Then 'Si es de fecha anterior
           '2: Verifica si esta dentro del rango permitido
@@ -1127,7 +1127,7 @@ Private Sub btnAceptar_Click()
                        Exit Sub
               End If
          End If
-        'SCCQ 18-02-2020 Cambio 53 Fin
+        'SCCQ 18-02-2021 Cambio 53 Fin
         If MsgBox("Esta seguro de Anular ?", vbQuestion + vbYesNo, "") = vbYes Then
             CargaDatosAlObjetosDeDatos
             If AnularNS() Then
