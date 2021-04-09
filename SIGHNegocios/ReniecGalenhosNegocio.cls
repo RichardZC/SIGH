@@ -12,7 +12,7 @@ Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = True
 '------------------------------------------------------------------------------------
-'        Organización: Usaid - Politicas en Salud
+'        Organizaciï¿½n: Usaid - Politicas en Salud
 '        Aplicativo: SisGalenPlus v.3
 '        Programa: Clase para conectarse a REINIEC
 '        Programado por: Barrantes D
@@ -179,16 +179,16 @@ Public Sub ConsultarDNIenReniec(ms_NroDocumento As String)
     Dim parser As DOMDocument
     Set parser = New DOMDocument
     ms_ApellidoPaterno = ""
-    ' cargar el código SOAP
+    ' cargar el cï¿½digo SOAP
     parser.loadXML DesfRENIEC
-    ' Indicar el parámetro a enviar
+    ' Indicar el parï¿½metro a enviar
     parser.selectSingleNode("/soap:Envelope/soap:Body/GetReniec/strDNIAuto").Text = lcDNIautorizado
     parser.selectSingleNode("/soap:Envelope/soap:Body/GetReniec/strDNICon").Text = ms_NroDocumento
     '
-    ' Mostrar el código XML enviado al servicio Web
+    ' Mostrar el cï¿½digo XML enviado al servicio Web
     ' Text1.Text = parser.xml
     '
-    ' Ejecutar la operación HTTP POST
+    ' Ejecutar la operaciï¿½n HTTP POST
     enviarComando parser.XML, "http://tempuri.org/GetReniec"
     Set parser = Nothing
      
@@ -197,11 +197,11 @@ Public Sub ConsultarDNIenReniec(ms_NroDocumento As String)
 Private Sub enviarComando(ByVal sXml As String, ByVal sSoapAction As String)
     ' Enviar el comando al servicio Web
     '
-    ' usar XMLHTTPRequest para enviar la información al servicio Web
+    ' usar XMLHTTPRequest para enviar la informaciï¿½n al servicio Web
     Dim oHttReq As XMLHTTPRequest
     Set oHttReq = New XMLHTTPRequest
     '
-    ' Enviar el comando de forma síncrona (se espera a que se reciba la respuesta)
+    ' Enviar el comando de forma sï¿½ncrona (se espera a que se reciba la respuesta)
     oHttReq.Open "POST", RutaWeb, False
 
     
@@ -209,15 +209,15 @@ Private Sub enviarComando(ByVal sXml As String, ByVal sSoapAction As String)
     oHttReq.setRequestHeader "Content-Type", "text/xml; charset=utf-8"
     oHttReq.setRequestHeader "SOAPAction", sSoapAction
 
-'<(Inicio) Añadido Por: WABG el: 27/01/2021-11:11:09 a.m.en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
+'<(Inicio) Aï¿½adido Por: WABG el: 27/01/2021-11:11:09 a.m.en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
     On Error Resume Next
-'</(Fin) Añadido Por: WABG el: 27/01/2021-11:11:09 a.m. en el Equipo: SISGALENPLUS-PC<CAMBIO-37>
+'</(Fin) Aï¿½adido Por: WABG el: 27/01/2021-11:11:09 a.m. en el Equipo: SISGALENPLUS-PC<CAMBIO-37>
 
     
     ' enviar el comando
     oHttReq.send sXml
     '
-    ' este será el texto recibido del servicio Web
+    ' este serï¿½ el texto recibido del servicio Web
     procesarRespuesta oHttReq.responseText
     Set oHttReq = Nothing
 End Sub
@@ -249,8 +249,8 @@ Private Sub procesarRespuesta(ByVal s As String)
             ms_TercerNombre = ""
           MsgBox "Puede ser problema de CABLE," & Chr(13) & _
                  "No hay servicio de INTERNET," & Chr(13) & _
-                 "hay problemas en la página WEB RENIEC," & Chr(13) & _
-                 "el IP o Persona Responsable no está inscrita en MINSA", vbInformation, "PROBLEMAS CON LA WEB RENIEC"
+                 "hay problemas en la pï¿½gina WEB RENIEC," & Chr(13) & _
+                 "el IP o Persona Responsable no estï¿½ inscrita en MINSA", vbInformation, "PROBLEMAS CON LA WEB RENIEC"
        End If
        Exit Sub
     End If
@@ -268,7 +268,7 @@ Private Sub procesarRespuesta(ByVal s As String)
             ms_PrimerNombre = ""
             ms_SegundoNombre = ""
             ms_TercerNombre = ""
-          MsgBox "Hubo conexión a la RENIEC, pero no está devolviendo correctamente los datos", vbInformation, "Mensaje"
+          MsgBox "Hubo conexiï¿½n a la RENIEC, pero no estï¿½ devolviendo correctamente los datos", vbInformation, "Mensaje"
           Set parser = Nothing
        End If
        Exit Sub
@@ -419,20 +419,20 @@ Private Sub procesarRespuesta(ByVal s As String)
     lcTextoBusqueda2 = "</string><string>"
     lnPosActual2 = InStr(lnPosActual1, lcDatosWeb, lcTextoBusqueda2)
     LcTexto1 = Mid(lcDatosWeb, lnPosActual1, lnPosActual2 - lnPosActual1)
-    lcDniAbuscar = LcTexto1
+    
     'DEBB-Desagrega Datos (fin)
     'DEBB-Graba auditoria (inicio)
-    If mb_SeAccesaAlaWebDesdeGalenhos = True And mb_lbElProcesoEsMasivoNoMuestraErrores = False Then
-        Dim oRsGrabaAuditoria As New Recordset
-        Dim lcBuscaParametro As New SIGHDatos.Parametros
-        Dim oReglasComunes As New ReglasComunes
-        oReglasComunes.AuditoriaInsertaDesdeReniec lcDniAbuscar, _
-                       lcDniAbuscar & " " & Left(Trim(ms_ApellidoPaterno) & " " & Trim(ms_ApellidoMaterno) & " " & ms_PrimerNombre & " " & ms_SegundoNombre, 90), _
-                       lcBuscaParametro.RetornaFechaHoraServidorSQL
-        Set oRsGrabaAuditoria = Nothing
-        Set lcBuscaParametro = Nothing
-        Set oReglasComunes = Nothing
-    End If
+    'If mb_SeAccesaAlaWebDesdeGalenhos = True And mb_lbElProcesoEsMasivoNoMuestraErrores = False Then
+    '   ' Dim oRsGrabaAuditoria As New Recordset
+    '    'Dim lcBuscaParametro As New SIGHDatos.Parametros
+    '   'Dim oReglasComunes As New ReglasComunes
+    '   ' oReglasComunes.AuditoriaInsertaDesdeReniec lcDniAbuscar, _
+    '                 '  lcDniAbuscar & " " & Left(Trim(ms_ApellidoPaterno) & " " & Trim(ms_ApellidoMaterno) & " " & ms_PrimerNombre & " " & ms_SegundoNombre, 90), _
+    '                   lcBuscaParametro.RetornaFechaHoraServidorSQL
+    '    Set oRsGrabaAuditoria = Nothing
+    '    Set lcBuscaParametro = Nothing
+    '    Set oReglasComunes = Nothing
+    'End If
     'DEBB-Graba auditoria (fin)
 End Sub
 
@@ -449,7 +449,7 @@ Public Sub inicializar()
      End If
      If Len(lcDNIautorizado) <> 8 Or Len(RutaWeb) = 0 Then
         If mb_SeAccesaAlaWebDesdeGalenhos = True Then
-           MsgBox "No podrá accesar a la WEB RENIEC, tiene problemas con parámetros 297, 298", vbInformation, "Mensaje"
+           MsgBox "No podrï¿½ accesar a la WEB RENIEC, tiene problemas con parï¿½metros 297, 298", vbInformation, "Mensaje"
         End If
      End If
      Set lcBuscaParametro = Nothing
@@ -538,7 +538,7 @@ Function ConsultarDNIMQReniec(lcDNI As String) As Boolean
     
     If Err.Number > 0 Then
 '        If Err.Number = 91 Then
-'          MsgBox "No hay conexiòn con el MQ-Reniec del MINSA, Verificar su conexciòn, Se buscarà en la base local", vbInformation, "PROBLEMAS CON LA WEB"
+'          MsgBox "No hay conexiï¿½n con el MQ-Reniec del MINSA, Verificar su conexciï¿½n, Se buscarï¿½ en la base local", vbInformation, "PROBLEMAS CON LA WEB"
 '        Else
 '            MsgBox Err.Description
 '        End If
@@ -555,7 +555,7 @@ Function ConsultarDNIMQReniec(lcDNI As String) As Boolean
         LcTexto1 = Mid(lcDatosWeb, lnPosActual1, lnPosActual2 - lnPosActual1)
         If Trim(LcTexto1) <> "0000" Then
 '           If mb_SeAccesaAlaWebDesdeGalenhos = True And mb_lbElProcesoEsMasivoNoMuestraErrores = False Then
-'              MsgBox "Hubo conexión a la RENIEC, pero no está devolviendo correctamente los datos", vbInformation, "Mensaje"
+'              MsgBox "Hubo conexiï¿½n a la RENIEC, pero no estï¿½ devolviendo correctamente los datos", vbInformation, "Mensaje"
 '              Set parser = Nothing
 '           End If'
             Set parser = Nothing
