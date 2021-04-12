@@ -137,7 +137,7 @@ Public Sub ConsultarDNIenReniec(ms_NroDocumento As String)
     Set parser = New DOMDocument
     ms_ApellidoPaterno = ""
     ' cargar el código SOAP
-    parser.loadXML DesfRENIEC
+    parser.LoadXml DesfRENIEC
     '
     ' Indicar el parámetro a enviar
     
@@ -148,7 +148,7 @@ Public Sub ConsultarDNIenReniec(ms_NroDocumento As String)
     ' Text1.Text = parser.xml
     '
     ' Ejecutar la operación HTTP POST
-    enviarComando parser.xml, "http://tempuri.org/GetReniec"
+    enviarComando parser.XML, "http://tempuri.org/GetReniec"
     Set parser = Nothing
 End Sub
 
@@ -181,7 +181,7 @@ Private Sub procesarRespuesta(ByVal s As String)
     ' Poner los datos en el analizador de XML
     Dim parser As DOMDocument
     Set parser = New DOMDocument
-    parser.loadXML s
+    parser.LoadXml s
     '
     On Error Resume Next
     'DEBB-Desagrega Datos (inicio)
@@ -189,7 +189,7 @@ Private Sub procesarRespuesta(ByVal s As String)
     Dim lnPosActual1 As Integer, lnPosActual2 As Integer, lnPosInicial As Integer
     Dim LcTexto1 As String, lcDniAbuscar As String, lcUbigeoDomicilio As String
     'lcDatosWeb = Me.txtDatosBasicos.Text
-    lcDatosWeb = parser.selectSingleNode("/soap:Envelope/soap:Body/GetReniecResponse/GetReniecResult").xml
+    lcDatosWeb = parser.selectSingleNode("/soap:Envelope/soap:Body/GetReniecResponse/GetReniecResult").XML
     If Err.Number > 0 Then
        If mb_SeAccesaAlaWebDesdeGalenhos = True Then
           MsgBox "Puede ser problema de CABLE," & Chr(13) & _
@@ -356,29 +356,32 @@ Private Sub procesarRespuesta(ByVal s As String)
     LcTexto1 = Mid(lcDatosWeb, lnPosActual1, lnPosActual2 - lnPosActual1)
     '21-Nro DNI
     lcTextoBusqueda1 = "</string><string>"
-    lnPosActual1 = lnPosActual2 + Len(lcTextoBusqueda1)
+    lnPosActual1 = (lnPosActual2) + Len(lcTextoBusqueda1)
     lcTextoBusqueda2 = "</string><string>"
     lnPosActual2 = InStr(lnPosActual1, lcDatosWeb, lcTextoBusqueda2)
     LcTexto1 = Mid(lcDatosWeb, lnPosActual1, lnPosActual2 - lnPosActual1)
     lcDniAbuscar = LcTexto1
+
     'DEBB-Desagrega Datos (fin)
     'DEBB-Graba auditoria (inicio)
-    If mb_SeAccesaAlaWebDesdeGalenhos = True And mb_lbElProcesoEsMasivoNoMuestraErrores = False Then
-        Dim oRsGrabaAuditoria As New Recordset
-        Dim lcBuscaParametro As New SIGHDatos.Parametros
-        Dim oReglasComunes As New ReglasComunes
-        oReglasComunes.AuditoriaInsertaDesdeReniec lcDniAbuscar, _
-                       lcDniAbuscar & " " & Left(Trim(ms_ApellidoPaterno) & " " & Trim(ms_ApellidoMaterno) & " " & ms_PrimerNombre & " " & ms_SegundoNombre, 90), _
-                       lcBuscaParametro.RetornaFechaHoraServidorSQL
-        Set oRsGrabaAuditoria = Nothing
-        Set lcBuscaParametro = Nothing
-        Set oReglasComunes = Nothing
-    End If
+'<(Inicio)Comentado Por: WABG el: 31/03/2021-01:18:49 p.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
+'    If mb_SeAccesaAlaWebDesdeGalenhos = True And mb_lbElProcesoEsMasivoNoMuestraErrores = False Then
+'        Dim oRsGrabaAuditoria As New Recordset
+'        Dim lcBuscaParametro As New SIGHDatos.Parametros
+'        Dim oReglasComunes As New ReglasComunes
+'        oReglasComunes.AuditoriaInsertaDesdeReniec lcDniAbuscar, _
+'                       lcDniAbuscar & " " & Left(Trim(ms_ApellidoPaterno) & " " & Trim(ms_ApellidoMaterno) & " " & ms_PrimerNombre & " " & ms_SegundoNombre, 90), _
+'                       lcBuscaParametro.RetornaFechaHoraServidorSQL
+'        Set oRsGrabaAuditoria = Nothing
+'        Set lcBuscaParametro = Nothing
+'        Set oReglasComunes = Nothing
+'    End If
+'</(Fin)Comentado por: WABG el: 31/03/2021-01:18:49 p.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-37>
     'DEBB-Graba auditoria (fin)
 
 End Sub
 
-Public Sub inicializar()
+Public Sub Inicializar()
      Dim lcBuscaParametro As New SIGHDatos.Parametros
      Dim oCrypKey As New CrypKey.Util
      lcDNIautorizado = lcBuscaParametro.SeleccionaFilaParametro(297)
