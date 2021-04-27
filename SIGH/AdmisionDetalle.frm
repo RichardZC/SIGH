@@ -167,9 +167,9 @@ Begin VB.Form AdmisionCEDetalle
          TabCaption(1)   =   "2.2 Citas para otros días"
          TabPicture(1)   =   "AdmisionDetalle.frx":0D1E
          Tab(1).ControlEnabled=   0   'False
-         Tab(1).Control(0)=   "Label9"
+         Tab(1).Control(0)=   "UcPacientesSunasa1"
          Tab(1).Control(1)=   "ucCitasLista11"
-         Tab(1).Control(2)=   "UcPacientesSunasa1"
+         Tab(1).Control(2)=   "Label9"
          Tab(1).ControlCount=   3
          Begin VB.Frame FraGeneraCita 
             Caption         =   "Forma que se genera la CITA"
@@ -5530,14 +5530,15 @@ Sub CargaDatosAlObjetosDeDatos()
                 .SisCodigo = lcSIScodigo
                 If mi_Opcion = sghAgregar Then
                    .FuaCodigoPrestacion = ""
+                   'SCCQ 23-04-2021 Reversion Cambio 46 Inicio
                                 
-                    .FuaCodigoPrestacion1 = Me.ucSISfuaCodPrestacion1.CodigoPrestacion 'HRA 10/12/2020 Cambio 46
-                    
+                    '.FuaCodigoPrestacion1 = Me.ucSISfuaCodPrestacion1.CodigoPrestacion 'HRA 10/12/2020 Cambio 46
+                    'SCCQ 23-04-2021 Reversion Cambio 46 Fin
                 ElseIf wxParametro302 = "S" And Me.ucSISfuaCodPrestacion1.CodigoPrestacion <> "" Then
                    .FuaCodigoPrestacion = Me.ucSISfuaCodPrestacion1.CodigoPrestacion
-              
-                  .FuaCodigoPrestacion1 = Me.ucSISfuaCodPrestacion1.CodigoPrestacion 'HRA 10/12/2020 Cambio 46
-                   
+                   'SCCQ 23-04-2021 Reversion Cambio 46 Inicio
+                  '.FuaCodigoPrestacion1 = Me.ucSISfuaCodPrestacion1.CodigoPrestacion 'HRA 10/12/2020 Cambio 46
+                   'SCCQ 23-04-2021 Reversion Cambio 46 Fin
                 End If
                 
            Else

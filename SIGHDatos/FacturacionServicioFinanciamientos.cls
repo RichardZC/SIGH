@@ -80,13 +80,12 @@ With oCommand
    .Parameters.Append oParameter
    Set oParameter = .CreateParameter("@IdUsuarioAuditoria", adInteger, adParamInput, 0, oTabla.IdUsuarioAuditoria)
    .Parameters.Append oParameter
-   
+    'SCCQ 26-04-2021 Reversion Cambio 46 Inicio
     'HRA 10/12/2020 Cambio 46 Inicio
-   Set oParameter = .CreateParameter("@FuaCodigoPrestacion", adVarChar, adParamInput, 3, IIf(oTabla.CodPres = "", Null, oTabla.CodPres))
-   .Parameters.Append oParameter
+'   Set oParameter = .CreateParameter("@FuaCodigoPrestacion", adVarChar, adParamInput, 3, IIf(oTabla.CodPres = "", Null, oTabla.CodPres))
+'   .Parameters.Append oParameter
    'HRA 10/12/2020 Cambio 46 Fin
-
-
+    'SCCQ 26-04-2021 Reversion Cambio 46 Fin
    
    .Execute
 End With
@@ -139,10 +138,12 @@ With oCommand
    Set oParameter = .CreateParameter("@IdUsuarioAuditoria", adInteger, adParamInput, 0, oTabla.IdUsuarioAuditoria)
    .Parameters.Append oParameter
        .Execute
+    'SCCQ Reversion Cambio 46 Inicio
     'RHA 17/11/2020 Cambio 46 Inicio
-    Set oParameter = .CreateParameter("@FuaCodigoPrestacion", adVarChar, adParamInput, 3, IIf(oTabla.CodPres = "", Null, oTabla.CodPres))
-   .Parameters.Append oParameter
+'    Set oParameter = .CreateParameter("@FuaCodigoPrestacion", adVarChar, adParamInput, 3, IIf(oTabla.CodPres = "", Null, oTabla.CodPres))
+'   .Parameters.Append oParameter
     'RHA 17/11/2020 Cambio 46 Fin
+     'SCCQ Reversion Cambio 46 Fin
 End With
  
 Modificar = True

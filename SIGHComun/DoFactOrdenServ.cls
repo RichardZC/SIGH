@@ -11,7 +11,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = True
-'------------------------------------------------------------------------------------
+ '------------------------------------------------------------------------------------
 '        Organización: Usaid - Politicas en Salud
 '        Aplicativo: SisGalenPlus v.3
 '        Programa:  Clase para capa de estructura de la tabla FactOrdenServicio
@@ -35,16 +35,17 @@ Dim ml_IdUsuarioDespacho As Long
 Dim ml_IdEstadoFacturacion As Long
 Dim ml_IdServicioPaciente As Long
 Dim mda_FechaHoraRealizaCpt As Date
-
+'SCCQ 23-04-2021 Reversion Cambio 46 Inicio
 'RHA 17/11/2020 Cambio 46 Inicio
-Dim ml_CodPres As String
-Property Get CodPres() As String
-   CodPres = ml_CodPres
-End Property
-Property Let CodPres(sValue As String)
-   ml_CodPres = sValue
-End Property
+'Dim ml_CodPres As String
+'Property Get CodPres() As String
+'   CodPres = ml_CodPres
+'End Property
+'Property Let CodPres(sValue As String)
+'   ml_CodPres = sValue
+'End Property
 'RHA 17/11/2020 Cambio 46 Fin
+'SCCQ 23-04-2021 Reversion Cambio 46 Fin
 
 
 Property Let FechaHoraRealizaCpt(daValue As Date)

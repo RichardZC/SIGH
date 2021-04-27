@@ -32,23 +32,24 @@ Dim mc_Total As Currency
 Dim ms_LabConfHIS As String
 Dim ml_GrupoHIS As Long
 Dim ml_SubGrupoHIS As Long
-
+'SCCQ 23-04-2021 Reversion Cambio 46 Inicio
 'RHA 17/11/2020 Cambio 46 Inicio
-Dim ml_IdFinan As Long
-Dim ml_CodPres As String
-Property Get IdFinan() As Long
-   IdFinan = ml_IdFinan
-End Property
-Property Let IdFinan(lValue As Long)
-   ml_IdFinan = lValue
-End Property
-Property Get CodPres() As String
-   CodPres = ml_CodPres
-End Property
-Property Let CodPres(lValue As String)
-   ml_CodPres = lValue
-End Property
+'Dim ml_IdFinan As Long
+'Dim ml_CodPres As String
+'Property Get IdFinan() As Long
+'   IdFinan = ml_IdFinan
+'End Property
+'Property Let IdFinan(lValue As Long)
+'   ml_IdFinan = lValue
+'End Property
+'Property Get CodPres() As String
+'   CodPres = ml_CodPres
+'End Property
+'Property Let CodPres(lValue As String)
+'   ml_CodPres = lValue
+'End Property
 'RHA 17/11/2020 Cambio 46 Fin
+'SCCQ 23-04-2021 Reversion Cambio 46 Fin
 
 Property Get GrupoHIS() As Long
    GrupoHIS = ml_GrupoHIS

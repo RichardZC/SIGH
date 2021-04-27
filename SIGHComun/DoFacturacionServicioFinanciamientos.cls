@@ -33,16 +33,17 @@ Dim ml_IdUsuarioAutoriza As Long
 Dim ml_idFuenteFinanciamiento As Long
 Dim ml_IdEstadoFacturacion As Long
 
-
+'SCCQ 26-04-2021 Reversion Cambio 46 Inicio
 'RHA 17/11/2020 Cambio 46 Inicio
-Dim ml_CodPres As String
-Property Get CodPres() As String
-   CodPres = ml_CodPres
-End Property
-Property Let CodPres(lValue As String)
-   ml_CodPres = lValue
-End Property
+'Dim ml_CodPres As String
+'Property Get CodPres() As String
+'   CodPres = ml_CodPres
+'End Property
+'Property Let CodPres(lValue As String)
+'   ml_CodPres = lValue
+'End Property
 'RHA 17/11/2020 Cambio 46 Fin
+'SCCQ 26-04-2021 Reversion Cambio 46 Fin
 
 
 Property Let IdEstadoFacturacion(iValue As Long)
