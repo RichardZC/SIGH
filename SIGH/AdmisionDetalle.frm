@@ -167,9 +167,9 @@ Begin VB.Form AdmisionCEDetalle
          TabCaption(1)   =   "2.2 Citas para otros días"
          TabPicture(1)   =   "AdmisionDetalle.frx":0D1E
          Tab(1).ControlEnabled=   0   'False
-         Tab(1).Control(0)=   "UcPacientesSunasa1"
+         Tab(1).Control(0)=   "Label9"
          Tab(1).Control(1)=   "ucCitasLista11"
-         Tab(1).Control(2)=   "Label9"
+         Tab(1).Control(2)=   "UcPacientesSunasa1"
          Tab(1).ControlCount=   3
          Begin VB.Frame FraGeneraCita 
             Caption         =   "Forma que se genera la CITA"
@@ -6091,6 +6091,24 @@ Sub CargaDeServiciosAFacturar()
         If Me.chkNuevoFolder.Value = 1 Then
             mo_FacturacionServicios.Add CargarNuevoFolder()
         End If
+        'SCCQ 28-04-2021 Cambio 46 Inicio
+        'Validar que sea cuenta SIS y código prestacional 056
+        If mo_cmbIdFormaPago.BoundText = 2 And Me.ucSISfuaCodPrestacion1.CodigoPrestacion = "056" Then 'SIS
+            'Verificar si se encuentra activo el parámetro 602
+            If lcBuscaParametro.SeleccionaFilaParametro(602) = "S" Then
+                'Si se encuentra activo, agregar la orden segun valor del servicio en el parámetro 602 ("Oximetría no invasiva para determinar saturación de oxígeno")
+                mo_FacturacionServicios.Add CargarProcedimientoFUA(lcBuscaParametro.SeleccionaFilaParametroValorInt(602)) 'Agregar orden para "Oximetría no invasiva para determinar saturación de oxígeno"
+            End If
+            
+            'Verificar si se encuentra activo el parámetro 603
+            If lcBuscaParametro.SeleccionaFilaParametro(603) = "S" Then
+                'Si se encuentra activo, agregar la orden segun valor del servicio en el parámetro 603("Atención de enfermería")
+                mo_FacturacionServicios.Add CargarProcedimientoFUA(lcBuscaParametro.SeleccionaFilaParametroValorInt(603)) 'Agregar orden para "Atención de enfermería"
+            End If
+        
+        End If
+        'SCCQ 28-04-2021 Cambio 46 Fin
+
     End If
         
 End Sub
@@ -7507,4 +7525,87 @@ errActCita:
     lblNroAtencion.Caption = lcErrorSql & Chr(13) & Err.Description
 End Sub
 
+'SCCQ 28/04/2021 Cambio 46 Inicio
+Function CargarProcedimientoFUA(idProductoFUA As String) As DOFacturacionServicios
+Dim oServicio As New DOFacturacionServicios
+Dim oRsBuscaSeguro As New ADODB.Recordset
+Dim oConexion As New ADODB.Connection
+Dim PrSeguro As Double
+            
+            With oServicio
+                .idAtencion = Me.idAtencion
+                .IdFacturacionServicio = 0
+                .IdFuenteFinanciamiento = Val(mo_cmbIdFuentesFinanciamiento.BoundText)
+                .idTipoFinanciamiento = Val(mo_cmbIdFormaPago.BoundText)
+                .Cantidad = 1
+                .idProducto = idProductoFUA
+                .IdUsuarioAuditoria = ml_idUsuario
+                .idestadofacturacion = sghEstadoFacturacion.sghRegistrado
+                .FechaAutorizaPendiente = 0
+                .FechaAutorizaSeguro = 0
+                .IdCentroCosto = 0
+                .IdUsuarioAutorizaPendiente = 0
+                .IdUsuarioAutorizaSeguro = 0
+                .PrecioUnitario = 0
+                .TotalPorPagar = 0
+                .idPuntoCarga = 6
+                '********pone Seguros en forma automatica, sin necesidad de ir a SEGUROS-inicio
+                If mi_Opcion = sghModificar Then
+                   .IdOrden = lnIdFactServicios
+                End If
+                PrSeguro = 0
+                oConexion.Open sighEntidades.CadenaConexion
+                oConexion.CursorLocation = adUseClient
+                If Val(mo_cmbIdFormaPago.BoundText) = 9 Then
+                   'Si es EXONERACIONES tomará el PRECIO de un Paciente Normal
+                   Set oRsBuscaSeguro = mo_AdminFacturacion.CatalogoServiciosHospSeleccionarXidProductoIdTipoFinanciamiento(.idProducto, 1, oConexion)
+                Else
+                   Set oRsBuscaSeguro = mo_AdminFacturacion.CatalogoServiciosHospSeleccionarXidProductoIdTipoFinanciamiento(.idProducto, Val(mo_cmbIdFormaPago.BoundText), oConexion)
+                End If
+                If oRsBuscaSeguro.RecordCount > 0 Then
+                   PrSeguro = oRsBuscaSeguro.Fields!PrecioUnitario
+                End If
+                oRsBuscaSeguro.Close
+                Set oRsBuscaSeguro = Nothing
+                oConexion.Close
+                Set oConexion = Nothing
+                .idTipoFinanciamiento = Val(mo_cmbIdFormaPago.BoundText)
+                .CantidadSIS = 0
+                .precioSIS = 0
+                .ImporteSIS = 0
+                .CantidadSOAT = 0
+                .PrecioSOAT = 0
+                .ImporteSOAT = 0
+                .importeEXO = 0
+                .cantidadConv = 0
+                .precConv = 0
+                .ImporteConv = 0
+                Select Case Val(mo_cmbIdFormaPago.BoundText)
+                Case 1  'Contado
+                Case 2  'SIS
+                     If PrSeguro > 0 Then
+                        .CantidadSIS = 1
+                        .precioSIS = PrSeguro
+                        .ImporteSIS = PrSeguro
+                        .idestadofacturacion = 10
+                        .FechaAutorizaSeguro = Now
+                     Else
+                        .idTipoFinanciamiento = 1
+                        'mo_Atenciones.IdFormaPago = 1
+                        'mo_cmbIdFormaPago.BoundText = "1"
+                     End If
+             
+                Case 9  'Exonerados
+                    .importeEXO = PrSeguro
+                    .idestadofacturacion = 10
+                    .idTipoFinanciamiento = 1
+                    .FechaAutorizaEXO = Now
+                End Select
+                '********pone Seguros en forma automatica, sin necesidad de ir a SEGUROS-fin
+            End With
+            
+            Set CargarProcedimientoFUA = oServicio
+
+End Function
+'SCCQ 28/04/2021 Cambio 46 Fin
 
