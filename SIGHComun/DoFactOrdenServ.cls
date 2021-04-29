@@ -35,7 +35,7 @@ Dim ml_IdUsuarioDespacho As Long
 Dim ml_IdEstadoFacturacion As Long
 Dim ml_IdServicioPaciente As Long
 Dim mda_FechaHoraRealizaCpt As Date
-'SCCQ 23-04-2021 Reversion Cambio 46 Inicio
+'SCCQ 23-04-2021 Cambio 64 Inicio (Reversion Cambio 46)
 'RHA 17/11/2020 Cambio 46 Inicio
 'Dim ml_CodPres As String
 'Property Get CodPres() As String
@@ -45,7 +45,7 @@ Dim mda_FechaHoraRealizaCpt As Date
 '   ml_CodPres = sValue
 'End Property
 'RHA 17/11/2020 Cambio 46 Fin
-'SCCQ 23-04-2021 Reversion Cambio 46 Fin
+'SCCQ 23-04-2021 Cambio 64 Fin (Reversion Cambio 46)
 
 
 Property Let FechaHoraRealizaCpt(daValue As Date)

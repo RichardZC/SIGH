@@ -167,9 +167,9 @@ Begin VB.Form AdmisionCEDetalle
          TabCaption(1)   =   "2.2 Citas para otros días"
          TabPicture(1)   =   "AdmisionDetalle.frx":0D1E
          Tab(1).ControlEnabled=   0   'False
-         Tab(1).Control(0)=   "Label9"
+         Tab(1).Control(0)=   "UcPacientesSunasa1"
          Tab(1).Control(1)=   "ucCitasLista11"
-         Tab(1).Control(2)=   "UcPacientesSunasa1"
+         Tab(1).Control(2)=   "Label9"
          Tab(1).ControlCount=   3
          Begin VB.Frame FraGeneraCita 
             Caption         =   "Forma que se genera la CITA"
@@ -5530,15 +5530,15 @@ Sub CargaDatosAlObjetosDeDatos()
                 .SisCodigo = lcSIScodigo
                 If mi_Opcion = sghAgregar Then
                    .FuaCodigoPrestacion = ""
-                   'SCCQ 23-04-2021 Reversion Cambio 46 Inicio
+                   'SCCQ 23-04-2021 Cambio 64 Inicio (Reversion Cambio 46)
                                 
                     '.FuaCodigoPrestacion1 = Me.ucSISfuaCodPrestacion1.CodigoPrestacion 'HRA 10/12/2020 Cambio 46
-                    'SCCQ 23-04-2021 Reversion Cambio 46 Fin
+                    'SCCQ 23-04-2021 Cambio 64 Fin (Reversion Cambio 46)
                 ElseIf wxParametro302 = "S" And Me.ucSISfuaCodPrestacion1.CodigoPrestacion <> "" Then
                    .FuaCodigoPrestacion = Me.ucSISfuaCodPrestacion1.CodigoPrestacion
-                   'SCCQ 23-04-2021 Reversion Cambio 46 Inicio
+                   'SCCQ 23-04-2021 Cambio 64 Inicio (Reversion Cambio 46)
                   '.FuaCodigoPrestacion1 = Me.ucSISfuaCodPrestacion1.CodigoPrestacion 'HRA 10/12/2020 Cambio 46
-                   'SCCQ 23-04-2021 Reversion Cambio 46 Fin
+                   'SCCQ 23-04-2021 Cambio 64 Fin (Reversion Cambio 46)
                 End If
                 
            Else
@@ -6091,7 +6091,7 @@ Sub CargaDeServiciosAFacturar()
         If Me.chkNuevoFolder.Value = 1 Then
             mo_FacturacionServicios.Add CargarNuevoFolder()
         End If
-        'SCCQ 28-04-2021 Cambio 46 Inicio
+        'SCCQ 28-04-2021 Cambio 64 Inicio
         'Validar que sea cuenta SIS y código prestacional 056
         If mo_cmbIdFormaPago.BoundText = 2 And Me.ucSISfuaCodPrestacion1.CodigoPrestacion = "056" Then 'SIS
             'Verificar si se encuentra activo el parámetro 602
@@ -6107,7 +6107,7 @@ Sub CargaDeServiciosAFacturar()
             End If
         
         End If
-        'SCCQ 28-04-2021 Cambio 46 Fin
+        'SCCQ 28-04-2021 Cambio 64 Fin
 
     End If
         
@@ -7525,7 +7525,7 @@ errActCita:
     lblNroAtencion.Caption = lcErrorSql & Chr(13) & Err.Description
 End Sub
 
-'SCCQ 28/04/2021 Cambio 46 Inicio
+'SCCQ 28/04/2021 Cambio 64 Inicio
 Function CargarProcedimientoFUA(idProductoFUA As String) As DOFacturacionServicios
 Dim oServicio As New DOFacturacionServicios
 Dim oRsBuscaSeguro As New ADODB.Recordset
@@ -7607,5 +7607,5 @@ Dim PrSeguro As Double
             Set CargarProcedimientoFUA = oServicio
 
 End Function
-'SCCQ 28/04/2021 Cambio 46 Fin
+'SCCQ 28/04/2021 Cambio 64 Fin
 

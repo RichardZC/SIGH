@@ -1161,9 +1161,9 @@ Function AdmisionCEAgregar(oDOCuentaAtencion As DOCuentaAtencion, oDoAtencion As
 1430          .IdUsuarioAuditoria = oDoAtencion.IdUsuarioAuditoria
 1440          .fechaDespacho = .FechaCreacion
 1450          .IdUsuarioDespacho = oDoAtencion.IdUsuarioAuditoria
-              'SCCQ 23-04-2021 Reversion Cambio 46 Inicio
+              'SCCQ 23-04-2021 Cambio 64 Inicio (Reversion Cambio 46)
                '.CodPres = mo_DoAtencionDatosAdicionales.FuaCodigoPrestacion1 'HRA 09/12/2020 Cambio 46
-              'SCCQ 23-04-2021 Reversion Cambio 46 Fin
+              'SCCQ 23-04-2021 Cambio 64 Fin (Reversion Cambio 46)
 1460      End With
 1470      If Not oFactOrdenesServicio.Insertar(oDoFactOrdenServ) Then
 1480          bProcesoOK = False: ms_MensajeError = oFactOrdenesServicio.MensajeError: GoTo Terminar
@@ -1216,12 +1216,12 @@ Function AdmisionCEAgregar(oDOCuentaAtencion As DOCuentaAtencion, oDoAtencion As
 1820                      .IdUsuarioAuditoria = oDoAtencion.IdUsuarioAuditoria
 1830                      .Precio = lnPrecioUnitario
 1840                      .total = oDOFacturacionServicio.cantidad * lnPrecioUnitario
-                          'SCCQ 26-04-2021 Reversion Cambio 46 Inicio
+                          'SCCQ 26-04-2021 Cambio 64 Inicio (Reversion Cambio 46)
                           'HRA 09/12/2020 Cambio 46 Inicio
                           '.IdFinan = oDoAtencion.IdFormaPago
                           '.CodPres = mo_DoAtencionDatosAdicionales.FuaCodigoPrestacion1
                           'HRA 09/12/2020 Cambio 46 Fin
-                          'SCCQ 26-04-2021 Reversion Cambio 46 Fin
+                          'SCCQ 26-04-2021 Cambio 64 Fin (Reversion Cambio 46)
                    
 1850                  End With
 1860                  If Not oFacturacionServicioDespacho.Insertar(oDoFacturacionServicioDesp) Then
@@ -1255,12 +1255,12 @@ Function AdmisionCEAgregar(oDOCuentaAtencion As DOCuentaAtencion, oDoAtencion As
 2120                         .PrecioFinanciado = lnPrecioUnitario
 2130                         .TotalFinanciado = oDOFacturacionServicio.cantidad * lnPrecioUnitario
                              .idFuenteFinanciamiento = oDoAtencion.idFuenteFinanciamiento
-                             'SCCQ 26-04-2021 Reversion Cambio 46 Inicio
+                             'SCCQ 26-04-2021 Cambio 64 Inicio (Reversion Cambio 46)
                              'HRA 09/12/2020 Cambio 46 Inicio
 2140                         '.idFuenteFinanciamiento = oDoAtencion.IdFormaPago
                              '.CodPres = mo_DoAtencionDatosAdicionales.FuaCodigoPrestacion1
                              'HRA 09/12/2020 Cambio 46
-                             'SCCQ 26-04-2021 Reversion Cambio 46 Fin
+                             'SCCQ 26-04-2021 Cambio 64 Fin (Reversion Cambio 46)
                                                 
 2150                     End With
 2160                     If Not oFacturacionServicioFinan.Insertar(oDoFacturacionServicioFinanc) Then
@@ -2006,12 +2006,12 @@ Function AdmisionCEModificar(oDOCuentaAtencion As DOCuentaAtencion, oDoAtencion 
 1840                              .IdUsuarioAuditoria = oDoAtencion.IdUsuarioAuditoria
 1850                              .Precio = lnPrecioUnitario
 1860                              .total = oDOFacturacionServicio.cantidad * lnPrecioUnitario
-                                   'SCCQ 26-04-2021 Reversion Cambio 46 Inicio
+                                   'SCCQ 26-04-2021 Cambio 64 Inicio (Reversion Cambio 46)
                                    'HRA 09/12/2020 Cambio 46 Inicio
                                    '.IdFinan = oDoAtencion.IdFormaPago
                                    '.CodPres = mo_DoAtencionDatosAdicionales.FuaCodigoPrestacion1
                                    'HRA 09/12/2020 Cambio 46 Fin
-                                   'SCCQ 26-04-2021 Reversion Cambio 46 Fin
+                                   'SCCQ 26-04-2021 Cambio 64 Fin (Reversion Cambio 46)
                                  
 1870                          End With
 1880                          If Not oFacturacionServicioDespacho.Insertar(oDoFacturacionServicioDesp) Then
@@ -2044,12 +2044,12 @@ Function AdmisionCEModificar(oDOCuentaAtencion As DOCuentaAtencion, oDoAtencion 
 2130                                 .PrecioFinanciado = lnPrecioUnitario
 2140                                 .TotalFinanciado = oDOFacturacionServicio.cantidad * lnPrecioUnitario
                                      .idFuenteFinanciamiento = oDoAtencion.idFuenteFinanciamiento
-                                     'SCCQ 26-04-2021 Reversion Cambio 46 Inicio
+                                     'SCCQ 26-04-2021 Cambio 64 Inicio (Reversion Cambio 46)
                                      'HRA 09/12/2020 Cambio 46 Inicio
 2150                                 '.idFuenteFinanciamiento = oDoAtencion.IdFormaPago
                                      '.CodPres = mo_DoAtencionDatosAdicionales.FuaCodigoPrestacion1
                                      'HRA 09/12/2020 Cambio 46 Fin
-                                    'SCCQ 26-04-2021 Reversion Cambio 46 Fin
+                                    'SCCQ 26-04-2021 Cambio 64 Fin (Reversion Cambio 46)
 2160                             End With
 2170                             If Not oFacturacionServicioFinan.Insertar(oDoFacturacionServicioFinanc) Then
 2180                                 bProcesoOK = False: ms_MensajeError = oFacturacionServicioFinan.MensajeError: GoTo Terminar

@@ -1063,13 +1063,13 @@ If wxFranklin = "*" Then Exit Sub
                       (Me.txtHrFin.Text >= oRsTmp!HoraInicio And Me.txtHrFin.Text <= oRsTmp!HoraFin) Then
                         MsgBox "Yá se programo al 'Médico' ese mismo día", vbInformation, "Mensaje"
                         oConexion.Close
-                        'SCCQ 26-04-2021 Reversion Cambio 46 Inicio
+                        'SCCQ 26-04-2021 Cambio 64 Inicio (Reversion Cambio 46)
                         oConexionExterna.CloDoEvents
                         'RHA 20/01/2021 Cambio 46 Inicio
                          'Antes:oConexionExterna.CloDoEvents
                         'oConexionExterna.Close
                         'RHA 18/01/2021 Cambio 46 Fin
-                        'SCCQ 26-04-2021 Reversion Cambio 46 Fin
+                        'SCCQ 26-04-2021 Cambio 64 Fin (Reversion Cambio 46)
                         
                         'SCCQ 20/02/2020 Cambio7 Inicio
                         'BORRAR DATOS DE cmbNuevoIdServicioCE
@@ -1120,13 +1120,13 @@ If wxFranklin = "*" Then Exit Sub
                            oRsTmp2.Close
                            Set oRsTmp2 = mo_ReglasFacturacion.FactOrdenServicioSeleccionarPorIdCuenta(oRsTmp1.Fields!idCuentaAtencion)
                            oRsTmp2.Filter = "idEstadoFacturacion<>9"
-                          'SCCQ 26-04-2021 Reversion Cambio 46 Inicio
+                          'SCCQ 26-04-2021 Cambio 64 Inicio (Reversion Cambio 46)
                           If oRsTmp2.RecordCount <= 1 Then
                           'RHA 20/01/2021 Cambio 46 Inicio
                          'Antes: If oRsTmp2.RecordCount <= 1  Then
                            'If oRsTmp2.RecordCount = 3 Or oRsTmp2.RecordCount = 1 Then
                          'RHA 20/01/2021 Cambio 46 Fin
-                          'SCCQ 26-04-2021 Reversion Cambio 46 Fin
+                          'SCCQ 26-04-2021 Cambio 64 Fin (Reversion Cambio 46)
                               lbPasaAtencion = True
                            Else
                               lnAtencionesFarmaciaServicios = lnAtencionesFarmaciaServicios + 1
@@ -1224,25 +1224,25 @@ If wxFranklin = "*" Then Exit Sub
                            oRsTmp2.Close
                            Set oRsTmp2 = mo_ReglasFacturacion.FactOrdenServicioSeleccionarPorIdCuenta(oRsTmp1.Fields!idCuentaAtencion)
                            oRsTmp2.Filter = "idEstadoFacturacion<>9"
-                         'SCCQ 26-04-2021 Reversion Cambio 46 Inicio
+                         'SCCQ 26-04-2021 Cambio 64 Inicio (Reversion Cambio 46)
                          If oRsTmp2.RecordCount <= 1 Then
                          'RHA 20/01/2021 Cambio 46 Inicio
                          'Antes: If oRsTmp2.RecordCount <= 1  Then
                            'If oRsTmp2.RecordCount = 3 Or oRsTmp2.RecordCount = 1 Then
                          'RHA 20/01/2021 Cambio 46 Fin
-                         'SCCQ 26-04-2021 Reversion Cambio 46 Fin
+                         'SCCQ 26-04-2021 Cambio 64 Fin (Reversion Cambio 46)
                               lbPasaAtencion = True
                            Else
                               lnAtencionesFarmaciaServicios = lnAtencionesFarmaciaServicios + 1
-                              'SCCQ 26-04-2021 Reversion Cambio 46 Inicio
+                              'SCCQ 26-04-2021 Cambio 64 Inicio (Reversion Cambio 46)
                               lbHuboCitadoFueraDeHora = True 'Código sin firma
-                              'SCCQ 26-04-2021 Reversion Cambio 46 Fin
+                              'SCCQ 26-04-2021 Cambio 64 Fin (Reversion Cambio 46)
                            End If
                         Else
                            lnAtencionesFarmaciaServicios = lnAtencionesFarmaciaServicios + 1
-                           'SCCQ 26-04-2021 Reversion Cambio 46 Inicio
+                           'SCCQ 26-04-2021 Cambio 64 Inicio (Reversion Cambio 46)
                            lbHuboCitadoFueraDeHora = True 'Código sin firma
-                           'SCCQ 26-04-2021 Reversion Cambio 46 Fin
+                           'SCCQ 26-04-2021 Cambio 64 Fin (Reversion Cambio 46)
                         End If
                         oRsTmp2.Close
                         If lbPasaAtencion = True Then

@@ -32,7 +32,7 @@ Dim mc_Total As Currency
 Dim ms_LabConfHIS As String
 Dim ml_GrupoHIS As Long
 Dim ml_SubGrupoHIS As Long
-'SCCQ 23-04-2021 Reversion Cambio 46 Inicio
+'SCCQ 23-04-2021 Cambio 64 Inicio (Reversion Cambio 46)
 'RHA 17/11/2020 Cambio 46 Inicio
 'Dim ml_IdFinan As Long
 'Dim ml_CodPres As String
@@ -49,7 +49,7 @@ Dim ml_SubGrupoHIS As Long
 '   ml_CodPres = lValue
 'End Property
 'RHA 17/11/2020 Cambio 46 Fin
-'SCCQ 23-04-2021 Reversion Cambio 46 Fin
+'SCCQ 23-04-2021 Cambio 64 Fin (Reversion Cambio 46)
 
 Property Get GrupoHIS() As Long
    GrupoHIS = ml_GrupoHIS
