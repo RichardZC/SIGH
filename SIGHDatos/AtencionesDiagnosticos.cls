@@ -436,7 +436,7 @@ ManejadorDeError:
 Exit Function
 End Function
 
-Function SeleccionarDiagnosticosDeEgreso(lIdAtencion As Long) As ADODB.Recordset
+Function SeleccionarDiagnosticosDeEgreso(lIdAtencion As Long) As ADODB.Recordset 'scrafet reporte 5
 On Error GoTo ManejadorDeError
 Dim oRecordset As New ADODB.Recordset
 Dim oCommand As New ADODB.Command

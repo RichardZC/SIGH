@@ -610,8 +610,7 @@ ManejadorDeError:
     MsgBox Err.Description
 End Function
 
-
-Function ReporteParaHistoriaClinica(ByVal lIdAtencion As Long) As ADODB.Recordset
+Function ReporteParaHistoriaClinica(ByVal lIdAtencion As Long) As ADODB.Recordset 'scrafet reporte 2
 On Error GoTo ManejadorDeError
 Dim oRecordset As New ADODB.Recordset
 Dim oCommand As New ADODB.Command
@@ -637,6 +636,45 @@ ManejadorDeError:
    Trace Err.Number & " " + Err.Description, "ReporteParaHistoriaClinica"
 Exit Function
 End Function
+
+'<(Inicio) Añadido Por: WABG el: 13/05/2021-09:34:11 a.m.en el Equipo: SISGALENPLUS-PC><CAMBIO-RF>
+'--------------------------------------------------------------------------------
+' Project    :       SIGHDatos
+' Procedure  :       ObtenerDatosAdicionalesDeAtencionPorIdAtencion
+' Description:       [obtiene los datos desde la tabla sigh.dbo.AtencionesDatosAdicionales]
+' Created by :       WABG
+' Machine    :       SISGALENPLUS-PC
+' Date-Time  :       13/05/2021-09:35:32 a.m.
+' Parameters :       lIdAtencion (Long)
+'--------------------------------------------------------------------------------
+Function ObtenerDatosAdicionalesDeAtencionPorIdAtencion(ByVal lIdAtencion As Long) As ADODB.Recordset
+On Error GoTo ManejadorDeError
+Dim oRecordset As New ADODB.Recordset
+Dim oCommand As New ADODB.Command
+Dim sSql As String
+Dim sWhere As String
+Dim oParameter As ADODB.Parameter
+     Set ObtenerDatosAdicionalesDeAtencionPorIdAtencion = Nothing
+     With oCommand
+        .CommandType = adCmdText
+        Set .ActiveConnection = mo_Conexion
+        .CommandTimeout = 150
+        .CommandType = adCmdStoredProc
+       .CommandText = "usp_ObtenerDatosAdicionalesDeAtencionPorIdAtencion"
+        Set oParameter = .CreateParameter("@IdAtencion", adInteger, adParamInput, 0, lIdAtencion): .Parameters.Append oParameter
+        Set oRecordset = .Execute
+        Set oRecordset.ActiveConnection = Nothing
+     End With
+     Set ObtenerDatosAdicionalesDeAtencionPorIdAtencion = oRecordset
+     ms_MensajeError = ""
+     Set oCommand = Nothing
+Exit Function
+ManejadorDeError:
+   Trace Err.Number & " " + Err.Description, "ObtenerDatosAdicionalesDeAtencionPorIdAtencion"
+Exit Function
+End Function
+'</(Fin) Añadido Por: WABG el: 13/05/2021-09:34:11 a.m. en el Equipo: SISGALENPLUS-PC<CAMBIO-RF>
+
 Function SeleccionarUltimaAtencionHospitalizacion(ByVal lIdPaciente As Long, lTipoServicio As Long) As DOAtencion
 On Error GoTo ManejadorDeError
 Dim oRecordset As New Recordset

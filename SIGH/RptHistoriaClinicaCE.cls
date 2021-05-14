@@ -43,7 +43,7 @@ End Property
 
 
 
-Sub CrearReporteHistoriaClinicaDeLaAtencionCE(ml_lnHwnd As Long)
+Sub CrearReporteHistoriaClinicaDeLaAtencionCE(ml_lnHwnd As Long) ' scrafet reporte 3
 
 Dim rsreporte As New Recordset
 Dim NroHistoria As Long
@@ -121,6 +121,11 @@ On Error GoTo ManejadorError
     Else
         NroHistoria = rsreporte!NroHistoriaClinica
             If lbEsOpenOffice = True Then
+                
+'<(Inicio) Añadido Por: WABG el: 13/05/2021-09:39:47 a.m.en el Equipo: SISGALENPLUS-PC><CAMBIO-RF>
+                Call Feuille.getcellbyposition(22, 4).setFormula("'" & rsreporte!idCuentaAtencion) 'agregando para Nro Cuenta WABG
+'</(Fin) Añadido Por: WABG el: 13/05/2021-09:39:47 a.m. en el Equipo: SISGALENPLUS-PC<CAMBIO-RF>
+                                                                
                 Call Feuille.getcellbyposition(84, 6).setFormula("'" & rsreporte!NroHistoriaClinica)
                 Call Feuille.getcellbyposition(27, 9).setFormula("'" & mo_ReporteUtil.ArmarNombreDePaciente(mo_ReporteUtil.NullToVacio(rsreporte!ApellidoPaterno), mo_ReporteUtil.NullToVacio(rsreporte!ApellidoMaterno), mo_ReporteUtil.NullToVacio(rsreporte!PrimerNombre), mo_ReporteUtil.NullToVacio(rsreporte!SegundoNombre)))
                 Call Feuille.getcellbyposition(27, 11).setFormula("'" & mo_ReporteUtil.NullToVacio(rsreporte!FechaIngreso))
@@ -141,8 +146,13 @@ On Error GoTo ManejadorError
                 Call Feuille.getcellbyposition(84, 18).setFormula("'" & mo_ReporteUtil.NullToVacio(rsreporte!ProvinciaDomicilio))
                 Call Feuille.getcellbyposition(84, 19).setFormula("'" & mo_ReporteUtil.NullToVacio(rsreporte!CentroPobladoDomicilio))
             Else
-                
-                oWorkSheet.Cells(7, 85).Value = HCigualDNI_DevuelveHistoriaConCerosIzquierda(Trim(Str(rsreporte!NroHistoriaClinica)), True)
+            
+                           
+'<(Inicio) Añadido Por: WABG el: 13/05/2021-09:40:30 a.m.en el Equipo: SISGALENPLUS-PC><CAMBIO-RF>
+                oWorkSheet.Cells(6, 21).Value = "'" & mo_ReporteUtil.NullToVacio(Str(rsreporte!idCuentaAtencion))
+'</(Fin) Añadido Por: WABG el: 13/05/2021-09:40:30 a.m. en el Equipo: SISGALENPLUS-PC<CAMBIO-RF>
+                           
+                oWorkSheet.Cells(6, 85).Value = HCigualDNI_DevuelveHistoriaConCerosIzquierda(Trim(Str(rsreporte!NroHistoriaClinica)), True)
                 oWorkSheet.Cells(10, 28).Value = "'" & mo_ReporteUtil.ArmarNombreDePaciente(mo_ReporteUtil.NullToVacio(rsreporte!ApellidoPaterno), mo_ReporteUtil.NullToVacio(rsreporte!ApellidoMaterno), mo_ReporteUtil.NullToVacio(rsreporte!PrimerNombre), mo_ReporteUtil.NullToVacio(rsreporte!SegundoNombre))
                 oWorkSheet.Cells(12, 28).Value = "'" & mo_ReporteUtil.NullToVacio(rsreporte!FechaIngreso)
                 oWorkSheet.Cells(13, 28).Value = "'" & mo_ReporteUtil.NullToVacio(rsreporte!HoraIngreso)
@@ -176,12 +186,14 @@ On Error GoTo ManejadorError
                 Call Feuille.getcellbyposition(27, 26).setFormula("'" & mo_ReporteUtil.NullToVacio(rsreporte!ddistritoProc))
                 Call Feuille.getcellbyposition(27, 27).setFormula("'" & mo_ReporteUtil.NullToVacio(rsreporte!dCentroPobladoProc))
             Else
-                oWorkSheet.Cells(16, 85).Value = "'" & mo_ReporteUtil.NullToVacio(rsreporte!docupacion)
-                
-                oWorkSheet.Cells(25, 28).Value = "'" & mo_ReporteUtil.NullToVacio(rsreporte!dDptoProc)
-                oWorkSheet.Cells(26, 28).Value = "'" & mo_ReporteUtil.NullToVacio(rsreporte!dprovinciaProc)
-                oWorkSheet.Cells(27, 28).Value = "'" & mo_ReporteUtil.NullToVacio(rsreporte!ddistritoProc)
-                oWorkSheet.Cells(28, 28).Value = "'" & mo_ReporteUtil.NullToVacio(rsreporte!dCentroPobladoProc)
+'<(Inicio)Comentado Por: WABG el: 14/05/2021-09:14:36 a.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-RF>
+'                oWorkSheet.Cells(16, 85).Value = "'" & mo_ReporteUtil.NullToVacio(rsreporte!docupacion)
+'
+'                oWorkSheet.Cells(25, 28).Value = "'" & mo_ReporteUtil.NullToVacio(rsreporte!dDptoProc)
+'                oWorkSheet.Cells(26, 28).Value = "'" & mo_ReporteUtil.NullToVacio(rsreporte!dprovinciaProc)
+'                oWorkSheet.Cells(27, 28).Value = "'" & mo_ReporteUtil.NullToVacio(rsreporte!ddistritoProc)
+'                oWorkSheet.Cells(28, 28).Value = "'" & mo_ReporteUtil.NullToVacio(rsreporte!dCentroPobladoProc)
+'</(Fin)Comentado por: WABG el: 14/05/2021-09:14:36 a.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-RF>
             End If
         End If
         rsreporte.Close
@@ -193,12 +205,35 @@ On Error GoTo ManejadorError
                 Call Feuille.getcellbyposition(84, 26).setFormula("'" & mo_ReporteUtil.NullToVacio(rsreporte!ddistritoNacim))
                 Call Feuille.getcellbyposition(84, 27).setFormula("'" & mo_ReporteUtil.NullToVacio(rsreporte!dCentroPobladoNacim))
             Else
-                oWorkSheet.Cells(25, 85).Value = "'" & mo_ReporteUtil.NullToVacio(rsreporte!ddptoNacim)
-                oWorkSheet.Cells(26, 85).Value = "'" & mo_ReporteUtil.NullToVacio(rsreporte!dProvinciaNacim)
-                oWorkSheet.Cells(27, 85).Value = "'" & mo_ReporteUtil.NullToVacio(rsreporte!ddistritoNacim)
-                oWorkSheet.Cells(28, 85).Value = "'" & mo_ReporteUtil.NullToVacio(rsreporte!dCentroPobladoNacim)
+'<(Inicio)Comentado Por: WABG el: 14/05/2021-09:14:51 a.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-RF>
+'                oWorkSheet.Cells(25, 85).Value = "'" & mo_ReporteUtil.NullToVacio(rsreporte!ddptoNacim)
+'                oWorkSheet.Cells(26, 85).Value = "'" & mo_ReporteUtil.NullToVacio(rsreporte!dProvinciaNacim)
+'                oWorkSheet.Cells(27, 85).Value = "'" & mo_ReporteUtil.NullToVacio(rsreporte!ddistritoNacim)
+'                oWorkSheet.Cells(28, 85).Value = "'" & mo_ReporteUtil.NullToVacio(rsreporte!dCentroPobladoNacim)
+'</(Fin)Comentado por: WABG el: 14/05/2021-09:14:51 a.m. en el Equipo: SISGALENPLUS-PC><CAMBIO-RF>
             End If
         End If
+'<(Inicio) Añadido Por: WABG el: 13/05/2021-09:47:38 a.m.en el Equipo: SISGALENPLUS-PC><CAMBIO-RF>
+        'rsreporte.Close
+        Set rsreporte = mo_AdminReportes.ObtenerDatosAdicionalesDeAtencionPorIdAtencion(ml_idAtencion)
+        If rsreporte.RecordCount > 0 Then
+            If lbEsOpenOffice = True Then
+            
+                Call Feuille.getcellbyposition(16, 14).setFormula("'" & mo_ReporteUtil.NullToVacio(rsreporte!NroReferenciaOrigen))
+                
+            Else
+            
+                oWorkSheet.Cells(7, 84).Value = "'" & mo_ReporteUtil.NullToVacio(rsreporte!NroReferenciaOrigen)
+                oWorkSheet.Cells(7, 16).Value = "'" & mo_ReporteUtil.NullToVacio(rsreporte!IdEstablecimientoOrigen)
+                 oWorkSheet.Cells(7, 25).Value = "'" & mo_ReporteUtil.NullToVacio(rsreporte!NombreEstablecimiento)
+                
+                
+            End If
+        End If
+        ' Set rsreporte = Nothing
+         rsreporte.Close
+'</(Fin) Añadido Por: WABG el: 13/05/2021-09:47:38 a.m. en el Equipo: SISGALENPLUS-PC<CAMBIO-RF>
+
        ' If lbEsOpenOffice = True Then
        '    Call Feuille.getcellbyposition(27, 30).setFormula("'" & sighentidades.NombreUsuario)
        '    Call Feuille.getcellbyposition(84, 30).setFormula("'" & sighentidades.RetornaNombrePC)

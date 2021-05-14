@@ -35,7 +35,7 @@ End Property
 '---------------------------------------------------------------------------------------------
 '                           REPORTES DE FILIACION DE PACIENTE
 '---------------------------------------------------------------------------------------------
-Function ReporteAtencionesParaHistoriaClinica(idAtencion As Long) As ADODB.Recordset
+Function ReporteAtencionesParaHistoriaClinica(idAtencion As Long) As ADODB.Recordset ' scrafet reporte 1
 Dim oAtencion As New Atenciones
 Dim oConexion As New ADODB.Connection
 
@@ -50,6 +50,32 @@ Dim oConexion As New ADODB.Connection
     Set oConexion = Nothing
     Set oAtencion = Nothing
 End Function
+'<(Inicio) Añadido Por: WABG el: 13/05/2021-09:45:24 a.m.en el Equipo: SISGALENPLUS-PC><CAMBIO-RF>
+'---------------------------------------------------------------------------------------------
+'                           REPORTES DE FILIACION DE PACIENTE (REFERENCIA)
+'---------------------------------------------------------------------------------------------
+Function ObtenerDatosAdicionalesDeAtencionPorIdAtencion(idAtencion As Long) As ADODB.Recordset
+Dim oAtencion As New Atenciones
+Dim oConexion As New ADODB.Connection
+
+  oConexion.CursorLocation = adUseClient
+  oConexion.CommandTimeout = 300
+  oConexion.Open sighentidades.CadenaConexion
+  
+    Set oAtencion.Conexion = oConexion
+    Set ObtenerDatosAdicionalesDeAtencionPorIdAtencion = oAtencion.ObtenerDatosAdicionalesDeAtencionPorIdAtencion(idAtencion)
+    oConexion.Close
+    ms_MensajeError = oAtencion.MensajeError
+    Set oConexion = Nothing
+    Set oAtencion = Nothing
+End Function
+
+'---------------------------------------------------------------------------------------------
+'                           REPORTES DE FILIACION DE PACIENTE (DIAGNOSTICO)
+'---------------------------------------------------------------------------------------------
+'</(Fin) Añadido Por: WABG el: 13/05/2021-09:45:24 a.m. en el Equipo: SISGALENPLUS-PC<CAMBIO-RF>
+
+
 '---------------------------------------------------------------------------------------------
 '                           REPORTES DE PROGRAMACION MEDICA
 '---------------------------------------------------------------------------------------------
@@ -433,7 +459,7 @@ ManejadorDeError:
 Exit Function
 End Function
 
-Function ReporteAtencionesDiagnosticosDeEgreso(idAtencion As Long) As ADODB.Recordset
+Function ReporteAtencionesDiagnosticosDeEgreso(idAtencion As Long) As ADODB.Recordset 'scrafet reporte 4
 Dim oAtencion As New AtencionesDiagnosticos
 Dim oConexion As New ADODB.Connection
     
