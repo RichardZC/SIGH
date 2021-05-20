@@ -32,38 +32,34 @@ Const RutaDeRegistroSIGH = "Software\Digital Works Corporation\SIGH"
 Property Get CadenaConexion() As String
   On Error Resume Next
   Dim oCrypKey As New CrypKey.Util
-'  CadenaConexion = oCrypKey.DecryptString(oReg.ObtenerCadena(oReg.HKEY_LOCAL_MACHINE, RutaDeRegistroSIGH, "CadenaConexion:"))
-CadenaConexion = "Provider=SQLNCLI11;DataBase=SIGH;Uid=sa;Pwd=Password123.;Server=10.100.15.82" 'GLCC21122020
+  CadenaConexion = oCrypKey.DecryptString(oReg.ObtenerCadena(oReg.HKEY_LOCAL_MACHINE, RutaDeRegistroSIGH, "CadenaConexion:"))
   'CadenaConexion = oReg.ObtenerCadena(oReg.HKEY_LOCAL_MACHINE, RutaDeRegistroSIGH, "CadenaConexion:")
   'Frank
 '  CadenaConexion = "Provider=SQLOLEDB.1;User Id=sa;Password=123456;Initial Catalog=sigh;Data Source=SCEIP138758"
 End Property
 
 Property Let CadenaConexion(sValor As String)
- ' oReg.GuardarCadena oReg.HKEY_LOCAL_MACHINE, RutaDeRegistroSIGH + "\", "CadenaConexion:", sValor
+  oReg.GuardarCadena oReg.HKEY_LOCAL_MACHINE, RutaDeRegistroSIGH + "\", "CadenaConexion:", sValor
 End Property
 
 Property Get CadenaConexionShape() As String
   Dim oCrypKey As New CrypKey.Util
   On Error Resume Next
- ' CadenaConexionShape = oCrypKey.DecryptString(oReg.ObtenerCadena(oReg.HKEY_LOCAL_MACHINE, RutaDeRegistroSIGH, "CadenaConexionShape:"))
- CadenaConexionShape = "Provider=MSDataShape;Data Provider=SQLOLEDB;User Id=sa;Password=Password123.;Initial Catalog=SIGH;Data Source=10.100.15.82"
+  CadenaConexionShape = oCrypKey.DecryptString(oReg.ObtenerCadena(oReg.HKEY_LOCAL_MACHINE, RutaDeRegistroSIGH, "CadenaConexionShape:"))
 End Property
 
 Property Let CadenaConexionShape(sValor As String)
- ' oReg.GuardarCadena oReg.HKEY_LOCAL_MACHINE, RutaDeRegistroSIGH + "\", "CadenaConexionShape:", sValor
- 
+  oReg.GuardarCadena oReg.HKEY_LOCAL_MACHINE, RutaDeRegistroSIGH + "\", "CadenaConexionShape:", sValor
 End Property
 
 Property Get CadenaConexionIntegrada() As String
   Dim oCrypKey As New CrypKey.Util
- ' CadenaConexionIntegrada = oCrypKey.DecryptString(oReg.ObtenerCadena(oReg.HKEY_LOCAL_MACHINE, RutaDeRegistroSIGH, "CadenaConexionIntegrada:"))
+  CadenaConexionIntegrada = oCrypKey.DecryptString(oReg.ObtenerCadena(oReg.HKEY_LOCAL_MACHINE, RutaDeRegistroSIGH, "CadenaConexionIntegrada:"))
   'CadenaConexionIntegrada = oReg.ObtenerCadena(oReg.HKEY_LOCAL_MACHINE, RutaDeRegistroSIGH, "CadenaConexionIntegrada:")
-  CadenaConexionIntegrada = "Provider=MSDataShape;Data Provider=SQLOLEDB;User Id=sa;Password=Password123.;Initial Catalog=SIGH;Data Source=10.100.15.82"
 End Property
 
 Property Let CadenaConexionIntegrada(sValor As String)
- ' oReg.GuardarCadena oReg.HKEY_LOCAL_MACHINE, RutaDeRegistroSIGH + "\", "CadenaConexionIntegrada:", sValor
+  oReg.GuardarCadena oReg.HKEY_LOCAL_MACHINE, RutaDeRegistroSIGH + "\", "CadenaConexionIntegrada:", sValor
 End Property
 
 '**********************************

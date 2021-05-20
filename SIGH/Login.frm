@@ -200,22 +200,22 @@ On Error GoTo ErrorManager
     
     'SCCQ 20/11/2020 Cambio22 Inicio
     'PROCESO DE VALIDAR VERSIÓN DEL APLICATIVO
-'    Dim lcBuscaParametro As New SIGHDatos.Parametros
-'    Dim version As String
-'    version = "30042021u75hra" 'Verisión actual de los dlls del sistema
-'    If version <> lcBuscaParametro.SeleccionaFilaParametro(314) Then 'Parámetro 314 versión del sistema en la Base de Datos
-'        MsgBox "El sistema se actualizará con la última versión", vbExclamation, Me.Caption
-'        Dim rutaRaiz As String
-'        rutaRaiz = App.Path & "\actualizahra.bat"
-'        Shell (rutaRaiz)
-'        Set lcBuscaParametro = Nothing
-'        version = ""
-'        rutaRaiz = ""
-'        End
-'    End If
-'    Set lcBuscaParametro = Nothing
-'        version = ""
-'        rutaRaiz = ""
+    Dim lcBuscaParametro As New SIGHDatos.Parametros
+    Dim version As String
+    version = "30042021u75hra" 'Verisión actual de los dlls del sistema
+    If version <> lcBuscaParametro.SeleccionaFilaParametro(314) Then 'Parámetro 314 versión del sistema en la Base de Datos
+        MsgBox "El sistema se actualizará con la última versión", vbExclamation, Me.Caption
+        Dim rutaRaiz As String
+        rutaRaiz = App.Path & "\actualizahra.bat"
+        Shell (rutaRaiz)
+        Set lcBuscaParametro = Nothing
+        version = ""
+        rutaRaiz = ""
+        End
+    End If
+    Set lcBuscaParametro = Nothing
+        version = ""
+        rutaRaiz = ""
     'SCCQ 20/11/2020 Cambio22 Fin
     
      Dim lcMensaje As String, lbSeTerminaSistema As Boolean, oRsCitasWeb As New Recordset

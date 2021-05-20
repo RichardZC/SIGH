@@ -50,7 +50,7 @@ Dim oConexion As New ADODB.Connection
     Set oConexion = Nothing
     Set oAtencion = Nothing
 End Function
-'<(Inicio) Añadido Por: WABG el: 13/05/2021-09:45:24 a.m.en el Equipo: SISGALENPLUS-PC><CAMBIO-RF>
+'<(Inicio) Añadido Por: WABG el: 13/05/2021-09:45:24 a.m.en el Equipo: SISGALENPLUS-PC><CAMBIO-74>
 '---------------------------------------------------------------------------------------------
 '                           REPORTES DE FILIACION DE PACIENTE (REFERENCIA)
 '---------------------------------------------------------------------------------------------
@@ -73,7 +73,7 @@ End Function
 '---------------------------------------------------------------------------------------------
 '                           REPORTES DE FILIACION DE PACIENTE (DIAGNOSTICO)
 '---------------------------------------------------------------------------------------------
-'</(Fin) Añadido Por: WABG el: 13/05/2021-09:45:24 a.m. en el Equipo: SISGALENPLUS-PC<CAMBIO-RF>
+'</(Fin) Añadido Por: WABG el: 13/05/2021-09:45:24 a.m. en el Equipo: SISGALENPLUS-PC<CAMBIO-74>
 
 
 '---------------------------------------------------------------------------------------------

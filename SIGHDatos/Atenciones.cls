@@ -637,7 +637,7 @@ ManejadorDeError:
 Exit Function
 End Function
 
-'<(Inicio) Añadido Por: WABG el: 13/05/2021-09:34:11 a.m.en el Equipo: SISGALENPLUS-PC><CAMBIO-RF>
+'<(Inicio) Añadido Por: WABG el: 13/05/2021-09:34:11 a.m.en el Equipo: SISGALENPLUS-PC><CAMBIO-74>
 '--------------------------------------------------------------------------------
 ' Project    :       SIGHDatos
 ' Procedure  :       ObtenerDatosAdicionalesDeAtencionPorIdAtencion
@@ -673,7 +673,7 @@ ManejadorDeError:
    Trace Err.Number & " " + Err.Description, "ObtenerDatosAdicionalesDeAtencionPorIdAtencion"
 Exit Function
 End Function
-'</(Fin) Añadido Por: WABG el: 13/05/2021-09:34:11 a.m. en el Equipo: SISGALENPLUS-PC<CAMBIO-RF>
+'</(Fin) Añadido Por: WABG el: 13/05/2021-09:34:11 a.m. en el Equipo: SISGALENPLUS-PC<CAMBIO-74>
 
 Function SeleccionarUltimaAtencionHospitalizacion(ByVal lIdPaciente As Long, lTipoServicio As Long) As DOAtencion
 On Error GoTo ManejadorDeError
