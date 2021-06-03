@@ -226,6 +226,7 @@ On Error GoTo ManejadorError
                 oWorkSheet.Cells(7, 84).Value = "'" & mo_ReporteUtil.NullToVacio(rsreporte!NroReferenciaOrigen)
                 oWorkSheet.Cells(7, 16).Value = "'" & mo_ReporteUtil.NullToVacio(rsreporte!IdEstablecimientoOrigen)
                  oWorkSheet.Cells(7, 25).Value = "'" & mo_ReporteUtil.NullToVacio(rsreporte!NombreEstablecimiento)
+                 oWorkSheet.Cells(3, 40).Value = "'" & mo_ReporteUtil.NullToVacio(rsreporte!FuenteFinanciamiento)
                 
                 
             End If
